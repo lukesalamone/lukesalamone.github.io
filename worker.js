@@ -5,7 +5,7 @@ const MAX_DEPTH = 3;
 let startTime = null;
 let timeElapsed = 0;
 let masks = {};
-let winnerCache = new Map();
+// let winnerCache = new Map();
 
 onmessage = event => {
     this._checkWinner = new Function(event.data.fn.args, event.data.fn.body);
@@ -22,12 +22,12 @@ onmessage = event => {
     arr.pop();
     masks.v = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];
     arr.pop();
-    masks.d2 = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];;
+    masks.d2 = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];
 
     bestMove(event.data.matrix);
 
-    console.log('CACHE hits: %s, misses: %s', cacheHits, cacheMisses);
-    console.log('spent %s ms in checkWinner()', timeElapsed);
+    console.log('CACHE hits: %d, misses: %d', cacheHits, cacheMisses);
+    console.log('spent %f ms in checkWinner()', timeElapsed);
 
     sendMove(this.move);
 }
@@ -277,9 +277,9 @@ function staticEval(matrix){
 }
 
 function checkWinner(matrix){
-    if(winnerCache.has(matrix)){
-        return winnerCache.get(matrix);
-    }
+    // if(winnerCache.has(matrix)){
+    //     return winnerCache.get(matrix);
+    // }
 
     startClock()
     let manMatrix = [];
@@ -299,18 +299,18 @@ function checkWinner(matrix){
     }
 
     if(this._checkWinner(manMatrix, masks.h1, masks.h2, masks.v, masks.d1, masks.d2)){
-        winnerCache.set(matrix, 1);
+        // winnerCache.set(matrix, 1);
         stopClock();
         return 1;
     }
 
     if(this._checkWinner(cpuMatrix, masks.h1, masks.h2, masks.v, masks.d1, masks.d2)){
-        winnerCache.set(matrix, -1);
+        // winnerCache.set(matrix, -1);
         stopClock();
         return -1;
     }
 
-    winnerCache.set(matrix, 0);
+    // winnerCache.set(matrix, 0);
     stopClock();
     return 0;
 }

@@ -6,7 +6,6 @@
     *
     *   Execute a WebWorker to prevent freezing the main UI.
 */
-let totalCalcs = 0;
 
 class GameAI {
     constructor(board){
@@ -17,8 +16,8 @@ class GameAI {
         return new Promise((resolve, reject) => {
 
             let matrix = this.board.getRawMatrix();
-            let off = null;
-            ({matrix, off} = Board.pruneMatrix(matrix, 5));
+            // let off = null;
+            // ({matrix, off} = Board.pruneMatrix(matrix, 5));
             let worker = new Worker('worker.js');
 
             worker.onmessage = event => {
@@ -29,7 +28,8 @@ class GameAI {
                 switch(event.data.type){
                     case 'move':
                         let [y, x] = event.data.val;
-                        resolve([y+off.y, x+off.x]);
+                        // resolve([y+off.y, x+off.x]);
+                        resolve([y, x]);
                         worker.terminate();
                         break;
                     case 'progress':

@@ -1,4 +1,4 @@
-const SIZE = 20;
+const SIZE = 15;
 
 class Board{
     constructor(parentNode, onSquareClickedCb) {
@@ -292,6 +292,8 @@ class Board{
             for(let i=0; i<squareList.length; i+=10){
                 let promises = Array.from({length: 10}, (k,v)=>v);
                 promises = promises.map(a => {
+                    if(i+a >= squareList.length) return Promise.resolve();
+
                     let num = squareList[i+a];
                     let x = num % boardSize, y = Math.floor(num / boardSize);
                     return board.getSquare(y, x).twinkle();
@@ -307,6 +309,8 @@ class Board{
             for(let i=squareList.length-1; i>0; i-=10){
                 let promises = Array.from({length: 10}, (k,v)=>v);
                 promises = promises.map(a => {
+                    if(i-a < 0) return Promise.resolve();
+
                     let num = squareList[i-a];
                     let x = num % boardSize, y = Math.floor(num / boardSize);
                     return board.getSquare(y, x).untwinkle();

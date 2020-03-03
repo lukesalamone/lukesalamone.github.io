@@ -9,7 +9,7 @@ class Square{
         this.domObj.id = row + '_' + col;
 
         //debug
-        this.domObj.title = this.domObj.id;
+        // this.domObj.title = this.domObj.id;
     }
 
     setVal(val){
