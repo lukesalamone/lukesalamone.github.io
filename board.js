@@ -4,6 +4,25 @@ class Board{
     constructor(parentNode, onSquareClickedCb) {
         this.matrix = [];
         this.parentNode = parentNode;
+        this.onSquareClickedCb = onSquareClickedCb;
+        this.left = Infinity;
+        this.right = -Infinity;
+        this.top = Infinity;
+        this.bottom = -Infinity;
+        this.totalMoves = 0;
+        this.boardBitsHuman = new Array(SIZE ** 2).fill(0);
+        this.boardBitsCpu = new Array(SIZE ** 2).fill(0);
+
+
+        this.hMask1 = [1,1,1,1,1, ...new Array(SIZE-5).fill(0)];
+        this.hMask2 = [...new Array(SIZE-5).fill(0), 1,1,1,1,1];
+
+        let arr = new Array(SIZE+1).fill(0);
+        this.dMask1 = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];
+        arr.pop();
+        this.vMask = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];
+        arr.pop();
+        this.dMask2 = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];
 
         // generate board
         for(let i=0; i<SIZE; i++){
@@ -14,7 +33,9 @@ class Board{
 
             for(let j=0; j<SIZE; j++){
                 let square = new Square(i, j);
+
                 square.setOnClick(onSquareClickedCb(i, j));
+
                 row.appendChild(square.getDomObj());
                 r.push(square);
             }
@@ -22,6 +43,32 @@ class Board{
             parentNode.appendChild(row);
             this.matrix.push(r);
         }
+    }
+
+    onSquareClicked(row, col){
+        this.totalMoves++;
+        this.left = Math.min(col, this.left);
+        this.right = Math.max(col, this.right);
+        this.top = Math.min(row, this.top);
+        this.bottom = Math.max(row, this.bottom);
+        this.boardBitsHuman[row * SIZE + col] = 1;
+        this.matrix[row][col].onHumanSelect();
+    }
+
+    onCpuClick(row, col){
+        // do stuff
+        this.totalMoves++;
+        this.left = Math.min(col, this.left);
+        this.right = Math.max(col, this.right);
+        this.top = Math.min(row, this.top);
+        this.bottom = Math.max(row, this.bottom);
+        this.boardBitsCpu[row * SIZE + col] = -1;
+
+        this.matrix[row][col].onCpuSelect();
+    }
+
+    getTotalMoves(){
+        return this.totalMoves;
     }
 
     getSize(){
@@ -70,25 +117,14 @@ class Board{
     // remove empty squares that only necessary squares are evaluated
     // optional padding will be applied around played squares
     static pruneMatrix(matrix, padding){
-        let left = Infinity, right = 0, top = Infinity, bottom = 0;
-        const MATRIX_SIZE = 20;
-
-        for(let i=0; i<matrix.length; i++){
-            for(let j=0; j<matrix[i].length; j++){
-                if(matrix[i][j]){
-                    top = Math.min(top, i);
-                    bottom = Math.max(bottom, i);
-                    left = Math.min(left, j);
-                    right = Math.max(right, j);
-                }
-            }
-        }
+        let left = this.left, right = this.right, top = this.top, bottom = this.bottom;
+        const SIZE = 20;
 
         if(padding){
             left = Math.max(0, left - padding);
-            right = Math.min(MATRIX_SIZE, right + padding);
+            right = Math.min(SIZE, right + padding);
             top = Math.max(0, top - padding);
-            bottom = Math.min(MATRIX_SIZE, bottom + padding);
+            bottom = Math.min(SIZE, bottom + padding);
         }
 
         // always return square matrix
@@ -157,16 +193,25 @@ class Board{
         };
     }
 
-    static checkWinner3(matrix, hMask1, hMask2, vMask, dMask1, dMask2){
+    checkWinner(){
+        if(this.totalMoves < 9){
+            return 0;
+        }
+
         // flatten matrix
-        matrix = [].concat.apply([], [...matrix]);
+        let matrix = this.boardBitsHuman;
 
         for(let i=0; i<matrix.length; i++){
-            if(matchMask(matrix, hMask1, i)) return 1;
-            if(matchMask(matrix, hMask2, i)) return 1;
-            if(matchMask(matrix, vMask, i)) return 1;
-            if(matchMask(matrix, dMask1, i)) return 1;
-            if(matchMask(matrix, dMask2, i)) return 1;
+            if(matchMask(this.boardBitsHuman, this.hMask1, i)) return 1;
+            if(matchMask(this.boardBitsHuman, this.hMask2, i)) return 1;
+            if(matchMask(this.boardBitsHuman, this.vMask, i)) return 1;
+            if(matchMask(this.boardBitsHuman, this.dMask1, i)) return 1;
+            if(matchMask(this.boardBitsHuman, this.dMask2, i)) return 1;
+            if(matchMask(this.boardBitsCpu, this.hMask1, i)) return -1;
+            if(matchMask(this.boardBitsCpu, this.hMask2, i)) return -1;
+            if(matchMask(this.boardBitsCpu, this.vMask, i)) return -1;
+            if(matchMask(this.boardBitsCpu, this.dMask1, i)) return -1;
+            if(matchMask(this.boardBitsCpu, this.dMask2, i)) return -1;
         }
 
         return 0;
@@ -181,98 +226,6 @@ class Board{
             }
 
             return true;
-        }
-    }
-
-
-    // enhance with bitmasks
-    static checkWinner2(matrix){
-        const IN_A_ROW = 5;
-
-        // move masks across matrix and check for matches
-        for(let i=0; i<matrix.length-IN_A_ROW; i++){    // i = 0 -> 14
-            for(let j=0; j<matrix[i].length; j++){      // j = 0 -> 19
-                let resH = 1, resV = 1, resD1 = 1, resD2 = 1;
-
-                for(let k=0; k<IN_A_ROW; k++){
-                    resH &= matrix[j][i+1+k];
-                    resV &= matrix[i+1+k][j];
-                    resD1 &= matrix[i+k][j+k];
-                    resD2 &= matrix[i+k][j+4-k];
-                }
-
-                if(resH || resV || resD1 || resD2) return 1;
-            }
-        }
-
-        return 0;
-    }
-
-
-
-    // return 1 if human wins, -1 if AI wins, 0 for no winner
-    static checkWinner(matrix){
-        for(let i=0; i<matrix.length; i++){
-            let res = {hor:{}, ver:{}, dg1:{}, dg2:{}, dg3:{}, dg4:{}};
-
-            // build results obj
-            for(let key in res){
-                res[key] = {streak:0, current:0};
-            }
-
-            for(let j=0; j<matrix[i].length; j++){
-                // check horizontals
-                let winner = check(matrix[i][j], res.hor);
-                if(winner) return winner;
-
-                // check verticals
-                winner = check(matrix[j][i], res.ver);
-                if(winner) return winner;
-
-                // check all four diagonals
-                if(i < 4 || j > i) continue;
-
-                let len = matrix.length;
-                winner = check(matrix[i-j][j], res.dg1);
-                if(winner) return winner;
-
-                winner = check(matrix[len-1-j][i-j], res.dg2);
-                if(winner) return winner;
-
-                winner = check(matrix[j][len-1-i+j], res.dg3);
-                if(winner) return winner;
-
-                winner = check(matrix[len-1-i+j][len-1-j], res.dg4);
-                if(winner) return winner;
-            }// end inner for loop
-        }// end outer for loop
-
-        return 0;
-
-        function check(square, obj){
-            if(!!square){
-                if(square === obj.current){
-                    obj.streak++;
-                } else {
-                    obj.streak = 1;
-                    obj.current = square;
-                }
-            } else {
-                obj.streak = 0;
-                obj.current = 0;
-            }
-
-            if(obj.streak === 5){
-                // a player has won
-                return obj.current;
-            } else {
-                // no player has won
-                return 0;
-            }
-        }
-
-        function highlight(a, b){
-            board.getSquare(a, b).twinkle();
         }
     }
 

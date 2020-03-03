@@ -10,6 +10,7 @@
 class GameAI {
     constructor(board){
         this.board = board;
+        this.caches = {};
     }
 
     getNextMove(){
@@ -44,6 +45,9 @@ class GameAI {
                     case 'debug':
                         // debug events
                         break;
+                    case 'cache':
+                        this.caches[event.data.val.name] = event.data.val.cache;
+                        break;
                 }
             }
 
@@ -53,7 +57,8 @@ class GameAI {
 
             worker.postMessage({
                 matrix: matrix,
-                fn: serializedFn(Board.checkWinner3)
+                winnerCache: this.caches.winnerCache,
+                totalMoves: this.board.getTotalMoves()
             });
         });
 
@@ -67,6 +72,5 @@ class GameAI {
                 body: fn.substring(fn.indexOf("{") + 1, fn.lastIndexOf("}"))
             }
         }
-
     }
 }

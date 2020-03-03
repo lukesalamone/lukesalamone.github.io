@@ -1,15 +1,17 @@
 let cacheHits = 0;
 let cacheMisses = 0;
-let movesPlayed = 0;
-const MAX_DEPTH = 3;
+const MAX_DEPTH = 4;
 let startTime = null;
 let timeElapsed = 0;
 let masks = {};
+let totalCalcs = 0;
 // let winnerCache = new Map();
 
 onmessage = event => {
-    this._checkWinner = new Function(event.data.fn.args, event.data.fn.body);
+    this.winnerCache = event.data.winnerCache || {};
     this.cache = new Map();
+    this.totalMoves = event.data.totalMoves;
+    debugger;
 
     // generate masks
     let size = event.data.matrix.length;
@@ -24,23 +26,31 @@ onmessage = event => {
     arr.pop();
     masks.d2 = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];
 
-    bestMove(event.data.matrix);
+    let move = bestMove(event.data.matrix);
 
-    console.log('CACHE hits: %d, misses: %d', cacheHits, cacheMisses);
-    console.log('spent %f ms in checkWinner()', timeElapsed);
+    console.log('CACHE hits: %s, misses: %s', cacheHits, cacheMisses);
+    console.log('spent %s ms in checkWinner()', timeElapsed);
+    console.log('totalCalcs: %s', totalCalcs);
 
-    sendMove(this.move);
+    sendCache('winnerCache', this.winnerCache);
+    sendMove(move);
 }
 
 function bestMove(matrix){
     let bestScore = -Infinity;
+    let squares = getSquaresToCheck(matrix, 0);
 
-    let squares = getSquaresToCheck(matrix);
+    if(squares.length === 1){
+        sendProgress(1, squares.length);
+        return squares[0];
+    }
+
+    let move = null;
 
     for(let i=0; i<squares.length; i++){
         let [y, x] = squares[i];
         matrix[y][x] = -1;
-        let score = alphabeta(matrix, 0, -Infinity, Infinity, false);
+        let score = alphabeta(matrix, 1, -Infinity, Infinity, false);
         matrix[y][x] = 0;
 
         console.log('%s evaluated to %s', JSON.stringify([y, x]), score);
@@ -48,7 +58,7 @@ function bestMove(matrix){
 
         if(score > bestScore){
             bestScore = score;
-            this.move = [y, x];
+            move = [y, x];
         }
     }
 
@@ -60,7 +70,7 @@ function alphabeta(matrix, depth, alpha, beta, isAiTurn){
         return checkCache(matrix);
     }
 
-    let winner = this.checkWinner(matrix);
+    let winner = this.checkWinner(matrix, depth);
     if(winner){
         putCache(matrix, -9999*winner);
 
@@ -75,7 +85,7 @@ function alphabeta(matrix, depth, alpha, beta, isAiTurn){
 
     // if AI's turn, we want to maximize score
     let best = isAiTurn ? -Infinity : Infinity;
-    let squares = getSquaresToCheck(matrix);
+    let squares = getSquaresToCheck(matrix, depth);
 
     for(let i=0; i<squares.length; i++){
         let [y, x] = squares[i];
@@ -104,7 +114,7 @@ function alphabeta(matrix, depth, alpha, beta, isAiTurn){
 
 // enhance by checking for forced wins first
 // i.e. squares which can complete a 5 in a row
-function getSquaresToCheck(matrix){
+function getSquaresToCheck(matrix, depth){
     let adjacent = [];
     let forcedWins = [];
 
@@ -117,12 +127,12 @@ function getSquaresToCheck(matrix){
 
                 // check forced win for human
                 matrix[i][j] = 1;
-                if(this.checkWinner(matrix)){
+                if(this.checkWinner(matrix, depth)){
                     forcedWins.push([i, j]);
                 }
 
                 matrix[i][j] = -1;
-                if(this.checkWinner(matrix)){
+                if(this.checkWinner(matrix, depth)){
                     forcedWins.push([i, j]);
                 }
 
@@ -276,10 +286,14 @@ function staticEval(matrix){
     }
 }
 
-function checkWinner(matrix){
-    // if(winnerCache.has(matrix)){
-    //     return winnerCache.get(matrix);
-    // }
+function checkWinner(matrix, depth){
+    if(this.totalMoves + depth < 9){
+        return 0;
+    }
+
+    if(matrix in this.winnerCache){
+        return winnerCache[matrix];
+    }
 
     startClock()
     let manMatrix = [];
@@ -298,21 +312,49 @@ function checkWinner(matrix){
         cpuMatrix.push(cpu);
     }
 
-    if(this._checkWinner(manMatrix, masks.h1, masks.h2, masks.v, masks.d1, masks.d2)){
-        // winnerCache.set(matrix, 1);
+    if(_checkWinner(manMatrix, masks.h1, masks.h2, masks.v, masks.d1, masks.d2)){
+        this.winnerCache[matrix] = 1;
         stopClock();
         return 1;
     }
 
-    if(this._checkWinner(cpuMatrix, masks.h1, masks.h2, masks.v, masks.d1, masks.d2)){
-        // winnerCache.set(matrix, -1);
+    if(_checkWinner(cpuMatrix, masks.h1, masks.h2, masks.v, masks.d1, masks.d2)){
+        this.winnerCache[matrix] = -1;
         stopClock();
         return -1;
     }
 
-    // winnerCache.set(matrix, 0);
+    this.winnerCache[matrix] = 0;
     stopClock();
     return 0;
+
+    function _checkWinner(matrix, hMask1, hMask2, vMask, dMask1, dMask2){
+        // flatten matrix
+        matrix = [].concat.apply([], [...matrix]);
+
+        for(let i=0; i<matrix.length; i++){
+            if(matchMask(matrix, hMask1, i)) return 1;
+            if(matchMask(matrix, hMask2, i)) return 1;
+            if(matchMask(matrix, vMask, i)) return 1;
+            if(matchMask(matrix, dMask1, i)) return 1;
+            if(matchMask(matrix, dMask2, i)) return 1;
+        }
+
+        return 0;
+
+        function matchMask(matrix, mask, start){
+            if(matrix.length < mask.length + start){
+                return false;
+            }
+
+            for(let i=0; i<mask.length; i++){
+                if(mask[i] && !matrix[start+i]) return false;
+            }
+
+            return true;
+        }
+    }
+
 }
 
 // enhance cache by excluding depth and turn as keys
@@ -360,6 +402,16 @@ function sendProgress(completed, total){
             total: total
         }
     });
+}
+
+function sendCache(cacheName, cache){
+    postMessage({
+        type: 'cache',
+        val: {
+            name: cacheName,
+            cache: cache
+        }
+    })
 }
 
 function startClock(){

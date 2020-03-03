@@ -45,9 +45,9 @@ function onSquareClicked(y, x){
         }
 
         // assign human to square
-        square.setVal(1);
-        square.getDomObj().classList.add('orange');
-        let winner = Board.checkWinner(board.getRawMatrix());
+        board.onSquareClicked(y, x);
+
+        let winner = board.checkWinner();
 
         if(winner){
             console.log('game over. %s is the winner', (winner === 1) ? 'human' : 'cpu');
@@ -62,10 +62,9 @@ function onSquareClicked(y, x){
         let [row, col] = await ai.getNextMove(board.getOccupiedSquares());
 
         document.querySelector('#board').classList.remove('thinking');
+        board.onCpuClick(row, col);
 
-        square = board.getSquare(row, col);
-        square.onCpuSelect();
-        winner = Board.checkWinner(board.getRawMatrix());
+        winner = board.checkWinner();
 
         if(winner){
             console.log('game over. %s is the winner', (winner === 1) ? 'human' : 'cpu');
