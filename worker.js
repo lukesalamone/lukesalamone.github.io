@@ -31,10 +31,13 @@ function bestMove(matrix, humanBits, cpuBits){
 
     for(let i=0; i<squares.length; i++){
         let [y, x] = squares[i];
+        let pos = y*15+x;
 
         matrix[y][x] = -1;
+        cpuBits |= 1n << BigInt(pos);
         let score = alphabeta(matrix, 1, -Infinity, Infinity, false, humanBits, cpuBits);
         matrix[y][x] = 0;
+        cpuBits &= ~(1n << BigInt(pos));
 
         console.log('%s evaluated to %s', JSON.stringify([y, x]), score);
 
@@ -101,7 +104,6 @@ function alphabeta(matrix, depth, alpha, beta, isAiTurn, playerBits, opponentBit
 // enhance by checking for forced wins first
 // i.e. squares which can complete a 5 in a row
 function getSquaresToCheck(matrix, depth){
-    let forcedWins = [];
     let adjacent = new Set();
 
     startClock('getSquaresToCheck');
@@ -132,7 +134,7 @@ function getSquaresToCheck(matrix, depth){
         put(i+1, j-1);
 
         function put(x, y){
-            if(x<0 || y<0 || x>matrix.length-2 || y>matrix.length-2){
+            if(!!matrix[y][x] || x<0 || y<0 || x>matrix.length-2 || y>matrix.length-2){
                 return;
             }
 
