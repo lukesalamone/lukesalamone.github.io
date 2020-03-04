@@ -58,7 +58,9 @@ class GameAI {
             worker.postMessage({
                 matrix: matrix,
                 winnerCache: this.caches.winnerCache,
-                totalMoves: this.board.getTotalMoves()
+                totalMoves: this.board.getTotalMoves(),
+                humanBits: this.board.getHumanBits(),
+                cpuBits: this.board.getCpuBits()
             });
         });
 

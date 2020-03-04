@@ -45,8 +45,8 @@ body {
 }
 
 #board {
-    width: 621px;
-    height: 621px;
+    width: 691px;
+    height: 691px;
     margin: -20px auto 0;
     box-shadow: inset 0px -12px 40px 0px #f0f;
 }
@@ -66,8 +66,8 @@ body {
 
 .square {
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-left: 1px solid #f0f;
     border-top: 1px solid #f0f;
     cursor: pointer;

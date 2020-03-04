@@ -1,4 +1,8 @@
 const SIZE = 15;
+const H_MASK    = 31n;
+const V_MASK    = 1152956690052710401n;
+const D1_MASK   = 18447025552981295105n;
+const D2_MASK   = 1152991877646254096n;
 
 class Board{
     constructor(parentNode, onSquareClickedCb) {
@@ -12,6 +16,8 @@ class Board{
         this.totalMoves = 0;
         this.boardBitsHuman = new Array(SIZE ** 2).fill(0);
         this.boardBitsCpu = new Array(SIZE ** 2).fill(0);
+        this.bigBitsHuman = BigInt(0);
+        this.bigBitsCpu = BigInt(0);
 
 
         this.hMask1 = [1,1,1,1,1, ...new Array(SIZE-5).fill(0)];
@@ -23,6 +29,8 @@ class Board{
         this.vMask = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];
         arr.pop();
         this.dMask2 = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];
+
+        generateBitmasks(this);
 
         // generate board
         for(let i=0; i<SIZE; i++){
@@ -43,6 +51,22 @@ class Board{
             parentNode.appendChild(row);
             this.matrix.push(r);
         }
+
+        function generateBitmasks(self){
+            let masks = {
+                h1: arrToBigInt(self.hMask1),
+                h2: arrToBigInt(self.hMask2),
+                v: arrToBigInt(self.vMask),
+                d1: arrToBigInt(self.dMask1),
+                d2: arrToBigInt(self.dMask2)
+            };
+
+            self.bitmasks = masks;
+
+            function arrToBigInt(arr){
+                return BigInt(parseInt(arr.join(''), 2));
+            }
+        }
     }
 
     onSquareClicked(row, col){
@@ -52,6 +76,9 @@ class Board{
         this.top = Math.min(row, this.top);
         this.bottom = Math.max(row, this.bottom);
         this.boardBitsHuman[row * SIZE + col] = 1;
+
+        this.bigBitsHuman |= 1n << BigInt(row * SIZE + col);
+
         this.matrix[row][col].onHumanSelect();
     }
 
@@ -63,6 +90,8 @@ class Board{
         this.top = Math.min(row, this.top);
         this.bottom = Math.max(row, this.bottom);
         this.boardBitsCpu[row * SIZE + col] = -1;
+
+        this.bigBitsCpu |= 1n << BigInt(row * SIZE + col);
 
         this.matrix[row][col].onCpuSelect();
     }
@@ -112,6 +141,14 @@ class Board{
 
     getRow(num){
         return this.matrix[num];
+    }
+
+    getHumanBits(){
+        return this.bigBitsHuman;
+    }
+
+    getCpuBits(){
+        return this.bigBitsCpu;
     }
 
     // remove empty squares that only necessary squares are evaluated
@@ -198,34 +235,38 @@ class Board{
             return 0;
         }
 
-        // flatten matrix
-        let matrix = this.boardBitsHuman;
-
-        for(let i=0; i<matrix.length; i++){
-            if(matchMask(this.boardBitsHuman, this.hMask1, i)) return 1;
-            if(matchMask(this.boardBitsHuman, this.hMask2, i)) return 1;
-            if(matchMask(this.boardBitsHuman, this.vMask, i)) return 1;
-            if(matchMask(this.boardBitsHuman, this.dMask1, i)) return 1;
-            if(matchMask(this.boardBitsHuman, this.dMask2, i)) return 1;
-            if(matchMask(this.boardBitsCpu, this.hMask1, i)) return -1;
-            if(matchMask(this.boardBitsCpu, this.hMask2, i)) return -1;
-            if(matchMask(this.boardBitsCpu, this.vMask, i)) return -1;
-            if(matchMask(this.boardBitsCpu, this.dMask1, i)) return -1;
-            if(matchMask(this.boardBitsCpu, this.dMask2, i)) return -1;
-        }
+        if(hasWon(this.bigBitsHuman)) return 1;
+        if(hasWon(this.bigBitsCpu)) return -1;
 
         return 0;
 
-        function matchMask(matrix, mask, start){
-            if(matrix.length < mask.length + start){
+        function hasWon(matrix){
+            const h  = 31n;
+            const v   = 1152956690052710401n;
+            const d1  = 18447025552981295105n;
+            const d2  = 1152991877646254096n;
+
+            if(matchBitmask(matrix, h)) return 1;
+            if(matchBitmask(matrix, d1)) return 1;
+            if(matchBitmask(matrix, d2)) return 1;
+
+            // vertical is a "bit" different :)
+            while(v <= matrix){
+                if((v & matrix) === v) return 1;
+
+                v *= 2n;
+            }
+
+            return 0;
+
+            function matchBitmask(matrix, mask){
+                for(let i=0; mask<=matrix; i++, mask*=2n){
+                    if(i%15 > 10) continue;
+                    if((mask & matrix) === mask) return true;
+                }
+
                 return false;
             }
-
-            for(let i=0; i<mask.length; i++){
-                if(mask[i] && !matrix[start+i]) return false;
-            }
-
-            return true;
         }
     }
 

@@ -1,47 +1,29 @@
-let cacheHits = 0;
-let cacheMisses = 0;
 const MAX_DEPTH = 4;
-let startTime = null;
-let timeElapsed = 0;
-let masks = {};
 let totalCalcs = 0;
-// let winnerCache = new Map();
+let timers = {};
 
 onmessage = event => {
-    this.winnerCache = event.data.winnerCache || {};
-    this.cache = new Map();
+    startClock('totalTime');
     this.totalMoves = event.data.totalMoves;
-    debugger;
+    this.humanBits = event.data.humanBits;
+    this.cpuBits = event.data.cpuBits;
 
-    // generate masks
     let size = event.data.matrix.length;
+    let move = bestMove(event.data.matrix, this.humanBits, this.cpuBits);
 
-    masks.h1 = [1,1,1,1,1, ...new Array(size-5).fill(0)];
-    masks.h2 = [...new Array(size-5).fill(0), 1,1,1,1,1];
-
-    let arr = new Array(size+1).fill(0);
-    masks.d1 = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];
-    arr.pop();
-    masks.v = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];
-    arr.pop();
-    masks.d2 = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];
-
-    let move = bestMove(event.data.matrix);
-
-    console.log('CACHE hits: %s, misses: %s', cacheHits, cacheMisses);
-    console.log('spent %s ms in checkWinner()', timeElapsed);
     console.log('totalCalcs: %s', totalCalcs);
+    stopClock('totalTime');
 
-    sendCache('winnerCache', this.winnerCache);
+    console.table(timers);
     sendMove(move);
 }
 
-function bestMove(matrix){
+function bestMove(matrix, humanBits, cpuBits){
     let bestScore = -Infinity;
     let squares = getSquaresToCheck(matrix, 0);
 
     if(squares.length === 1){
-        sendProgress(1, squares.length);
+        sendProgress(1, 1);
         return squares[0];
     }
 
@@ -49,11 +31,18 @@ function bestMove(matrix){
 
     for(let i=0; i<squares.length; i++){
         let [y, x] = squares[i];
+
         matrix[y][x] = -1;
-        let score = alphabeta(matrix, 1, -Infinity, Infinity, false);
+        let score = alphabeta(matrix, 1, -Infinity, Infinity, false, humanBits, cpuBits);
         matrix[y][x] = 0;
 
         console.log('%s evaluated to %s', JSON.stringify([y, x]), score);
+
+        if(score === 9999){
+            sendProgress(1, 1);
+            return [y, x];
+        }
+
         sendProgress(i+1, squares.length);
 
         if(score > bestScore){
@@ -65,16 +54,10 @@ function bestMove(matrix){
     return move;
 }
 
-function alphabeta(matrix, depth, alpha, beta, isAiTurn){
-    if(checkCache(matrix) !== false){
-        return checkCache(matrix);
-    }
-
-    let winner = this.checkWinner(matrix, depth);
-    if(winner){
-        putCache(matrix, -9999*winner);
-
-        return -9999 * winner;
+function alphabeta(matrix, depth, alpha, beta, isAiTurn, playerBits, opponentBits){
+    totalCalcs++;
+    if(this.checkWinner(opponentBits, depth)){
+        return isAiTurn ? -9999 : 9999;
     }
 
     // stop at MAX_DEPTH
@@ -89,9 +72,12 @@ function alphabeta(matrix, depth, alpha, beta, isAiTurn){
 
     for(let i=0; i<squares.length; i++){
         let [y, x] = squares[i];
-        matrix[y][x] = (isAiTurn ? -1 : 1);
+        let pos = y*15+x;
 
-        let score = alphabeta(matrix, depth+1, alpha, beta, !isAiTurn);
+        matrix[y][x] = (isAiTurn ? -1 : 1);
+        playerBits |= 1n << BigInt(pos);
+
+        let score = alphabeta(matrix, depth+1, alpha, beta, !isAiTurn, opponentBits, playerBits);
         best = isAiTurn ? Math.max(score, best) : Math.min(score, best);
 
         if(isAiTurn){
@@ -101,6 +87,7 @@ function alphabeta(matrix, depth, alpha, beta, isAiTurn){
         }
 
         matrix[y][x] = 0;
+        playerBits &= ~(1n << BigInt(pos));
 
         if(alpha >= beta){
             // console.log('alpha beta pruned at %s', JSON.stringify([y, x]));
@@ -108,61 +95,60 @@ function alphabeta(matrix, depth, alpha, beta, isAiTurn){
         }
     }
 
-    putCache(matrix, best);
     return best;
 }
 
 // enhance by checking for forced wins first
 // i.e. squares which can complete a 5 in a row
 function getSquaresToCheck(matrix, depth){
-    let adjacent = [];
     let forcedWins = [];
+    let adjacent = new Set();
 
-    // debugger;
+    startClock('getSquaresToCheck');
 
     for(let i=0; i<matrix.length; i++){
         for(let j=0; j<matrix[i].length; j++){
-            if(!matrix[i][j] && isTouchingOccupied(i, j)){
-                adjacent.push([i, j]);
-
-                // check forced win for human
-                matrix[i][j] = 1;
-                if(this.checkWinner(matrix, depth)){
-                    forcedWins.push([i, j]);
-                }
-
-                matrix[i][j] = -1;
-                if(this.checkWinner(matrix, depth)){
-                    forcedWins.push([i, j]);
-                }
-
-                matrix[i][j] = 0;
+            if(!!matrix[i][j]){
+                addAdjacent(i, j);
             }
         }
     }
 
-    return forcedWins.length ? forcedWins : adjacent;
+    adjacent = [...adjacent].map(z => {
+        return [z >> 4, z & 0x0F];
+    });
 
-    function isTouchingOccupied(i, j){
-        return (occupied(i+1, j) || occupied(i-1, j) || occupied(i, j+1)
-            || occupied(i, j-1) || occupied(i+1, j+1) || occupied(i-1, j+1)
-            || occupied(i-1, j-1) || occupied(i+1, j-1));
+    stopClock('getSquaresToCheck');
+    return adjacent;
 
-        function occupied(x, y){
-            try {
-                return matrix[x][y];
-            } catch(e){
-                return false;
+    function addAdjacent(i, j){
+        put(i+1, j);
+        put(i-1, j);
+        put(i, j+1);
+        put(i, j-1);
+        put(i+1, j+1);
+        put(i-1, j+1);
+        put(i-1, j-1);
+        put(i+1, j-1);
+
+        function put(x, y){
+            if(x<0 || y<0 || x>matrix.length-2 || y>matrix.length-2){
+                return;
             }
+
+            let val = (x << 4) | y;
+            adjacent.add(val);
         }
     }
 }
 
 function staticEval(matrix){
+    startClock('staticEval');
     let a = horizontalScore(matrix) || 0;
     let b = verticalScore(matrix) || 0;
     let c = diagonalScore(matrix) || 0;
 
+    stopClock('staticEval');
     return a + b + c;
 
     // perform static analysis on the rows of the board
@@ -286,75 +272,49 @@ function staticEval(matrix){
     }
 }
 
-function checkWinner(matrix, depth){
+function checkWinner(bits, depth){
     if(this.totalMoves + depth < 9){
-        return 0;
+        return false;
     }
 
-    if(matrix in this.winnerCache){
-        return winnerCache[matrix];
+    startClock('checkWinner')
+
+    if(hasWon(bits)){
+        stopClock('checkWinner');
+        return true;
     }
 
-    startClock()
-    let manMatrix = [];
-    let cpuMatrix = [];
+    stopClock('checkWinner');
+    return false;
 
-    for(let i=0; i<matrix.length; i++){
-        man = [];
-        cpu = [];
+    function hasWon(matrix){
+        let h  = 31n;
+        let v   = 1152956690052710401n;
+        let d1  = 18447025552981295105n;
+        let d2  = 1152991877646254096n;
 
-        for(let j=0; j<matrix[i].length; j++){
-            man.push(matrix[i][j] === 1);
-            cpu.push(matrix[i][j] === -1);
-        }
+        if(matchBitmask(matrix, h)) return 1;
+        if(matchBitmask(matrix, d1)) return 1;
+        if(matchBitmask(matrix, d2)) return 1;
 
-        manMatrix.push(man);
-        cpuMatrix.push(cpu);
-    }
+        // vertical is a "bit" different :)
+        while(v <= matrix){
+            if((v & matrix) === v) return 1;
 
-    if(_checkWinner(manMatrix, masks.h1, masks.h2, masks.v, masks.d1, masks.d2)){
-        this.winnerCache[matrix] = 1;
-        stopClock();
-        return 1;
-    }
-
-    if(_checkWinner(cpuMatrix, masks.h1, masks.h2, masks.v, masks.d1, masks.d2)){
-        this.winnerCache[matrix] = -1;
-        stopClock();
-        return -1;
-    }
-
-    this.winnerCache[matrix] = 0;
-    stopClock();
-    return 0;
-
-    function _checkWinner(matrix, hMask1, hMask2, vMask, dMask1, dMask2){
-        // flatten matrix
-        matrix = [].concat.apply([], [...matrix]);
-
-        for(let i=0; i<matrix.length; i++){
-            if(matchMask(matrix, hMask1, i)) return 1;
-            if(matchMask(matrix, hMask2, i)) return 1;
-            if(matchMask(matrix, vMask, i)) return 1;
-            if(matchMask(matrix, dMask1, i)) return 1;
-            if(matchMask(matrix, dMask2, i)) return 1;
+            v *= 2n;
         }
 
         return 0;
 
-        function matchMask(matrix, mask, start){
-            if(matrix.length < mask.length + start){
-                return false;
+        function matchBitmask(matrix, mask){
+            for(let i=0; mask<=matrix; i++, mask*=2n){
+                if(i%15 > 10) continue;
+                if((mask & matrix) === mask) return true;
             }
 
-            for(let i=0; i<mask.length; i++){
-                if(mask[i] && !matrix[start+i]) return false;
-            }
-
-            return true;
+            return false;
         }
     }
-
 }
 
 // enhance cache by excluding depth and turn as keys
@@ -414,10 +374,11 @@ function sendCache(cacheName, cache){
     })
 }
 
-function startClock(){
-    startTime = performance.now();
+function startClock(name){
+    timers[name] = timers[name] || {start: 0, elapsed: 0};
+    timers[name].start = performance.now();
 }
 
-function stopClock(){
-    timeElapsed += performance.now() - startTime;
+function stopClock(name){
+    timers[name].elapsed += performance.now() - timers[name].start;
 }
