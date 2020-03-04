@@ -65,8 +65,11 @@ function alphabeta(matrix, depth, alpha, beta, isAiTurn, playerBits, opponentBit
 
     // stop at MAX_DEPTH
     if(depth >= MAX_DEPTH){
-        let eval = staticEval(matrix);
-        return eval;
+        if(this.checkWinner(playerBits, depth)){
+            return isAiTurn ? 9999 : -9999;
+        } else {
+            return staticEval(matrix);
+        }
     }
 
     // if AI's turn, we want to maximize score
@@ -133,12 +136,12 @@ function getSquaresToCheck(matrix, depth){
         put(i-1, j-1);
         put(i+1, j-1);
 
-        function put(x, y){
+        function put(y, x){
             if(!!matrix[y][x] || x<0 || y<0 || x>matrix.length-2 || y>matrix.length-2){
                 return;
             }
 
-            let val = (x << 4) | y;
+            let val = (y << 4) | x;
             adjacent.add(val);
         }
     }

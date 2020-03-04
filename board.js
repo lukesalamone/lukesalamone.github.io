@@ -241,10 +241,10 @@ class Board{
         return 0;
 
         function hasWon(matrix){
-            const h  = 31n;
-            const v   = 1152956690052710401n;
-            const d1  = 18447025552981295105n;
-            const d2  = 1152991877646254096n;
+            let h  = 31n;
+            let v   = 1152956690052710401n;
+            let d1  = 18447025552981295105n;
+            let d2  = 1152991877646254096n;
 
             if(matchBitmask(matrix, h)) return 1;
             if(matchBitmask(matrix, d1)) return 1;
