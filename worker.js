@@ -1,6 +1,7 @@
 const MAX_DEPTH = 4;
 let totalCalcs = 0;
 let timers = {};
+let winnerCache = {};
 
 onmessage = event => {
     startClock('totalTime');
@@ -278,17 +279,24 @@ function staticEval(matrix){
 }
 
 function checkWinner(bits, depth){
+    startClock('checkWinner');
     if(this.totalMoves + depth < 9){
         return false;
     }
 
-    startClock('checkWinner')
+    if(bits in winnerCache){
+        return winnerCache[bits];
+    }
+
+    startClock('checkWinner');
 
     if(hasWon(bits)){
+        winnerCache[bits] = true;
         stopClock('checkWinner');
         return true;
     }
 
+    winnerCache[bits] = false;
     stopClock('checkWinner');
     return false;
 
