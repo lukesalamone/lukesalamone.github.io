@@ -1,11 +1,8 @@
 const SIZE = 15;
-const H_MASK    = 31n;
-const V_MASK    = 1152956690052710401n;
-const D1_MASK   = 18447025552981295105n;
-const D2_MASK   = 1152991877646254096n;
 
 class Board{
     constructor(parentNode, onSquareClickedCb) {
+        JSBI.one = JSBI.BigInt(1);
         this.matrix = [];
         this.parentNode = parentNode;
         this.onSquareClickedCb = onSquareClickedCb;
@@ -14,23 +11,10 @@ class Board{
         this.top = Infinity;
         this.bottom = -Infinity;
         this.totalMoves = 0;
-        this.boardBitsHuman = new Array(SIZE ** 2).fill(0);
-        this.boardBitsCpu = new Array(SIZE ** 2).fill(0);
-        this.bigBitsHuman = BigInt(0);
-        this.bigBitsCpu = BigInt(0);
-
-
-        this.hMask1 = [1,1,1,1,1, ...new Array(SIZE-5).fill(0)];
-        this.hMask2 = [...new Array(SIZE-5).fill(0), 1,1,1,1,1];
-
-        let arr = new Array(SIZE+1).fill(0);
-        this.dMask1 = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];
-        arr.pop();
-        this.vMask = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];
-        arr.pop();
-        this.dMask2 = [1, ...arr, 1, ...arr, 1, ...arr, 1, ...arr, 1];
-
-        generateBitmasks(this);
+        this.bitsHuman = new Array(SIZE ** 2).fill(0).join('');
+        this.bitsCpu = new Array(SIZE ** 2).fill(0).join('');
+        this.bigBitsHuman = JSBI.BigInt(0);
+        this.bigBitsCpu = JSBI.BigInt(0);
 
         // generate board
         for(let i=0; i<SIZE; i++){
@@ -51,48 +35,30 @@ class Board{
             parentNode.appendChild(row);
             this.matrix.push(r);
         }
-
-        function generateBitmasks(self){
-            let masks = {
-                h1: arrToBigInt(self.hMask1),
-                h2: arrToBigInt(self.hMask2),
-                v: arrToBigInt(self.vMask),
-                d1: arrToBigInt(self.dMask1),
-                d2: arrToBigInt(self.dMask2)
-            };
-
-            self.bitmasks = masks;
-
-            function arrToBigInt(arr){
-                return BigInt(parseInt(arr.join(''), 2));
-            }
-        }
     }
 
     onSquareClicked(row, col){
+        let pos = JSBI.BigInt(row * SIZE + col);
         this.totalMoves++;
         this.left = Math.min(col, this.left);
         this.right = Math.max(col, this.right);
         this.top = Math.min(row, this.top);
         this.bottom = Math.max(row, this.bottom);
-        this.boardBitsHuman[row * SIZE + col] = 1;
 
-        this.bigBitsHuman |= 1n << BigInt(row * SIZE + col);
-
+        this.bigBitsHuman = JSBI.bitwiseOr(this.bigBitsHuman, JSBI.leftShift(JSBI.one, pos));
         this.matrix[row][col].onHumanSelect();
     }
 
     onCpuClick(row, col){
         // do stuff
+        let pos = JSBI.BigInt(row * SIZE + col);
         this.totalMoves++;
         this.left = Math.min(col, this.left);
         this.right = Math.max(col, this.right);
         this.top = Math.min(row, this.top);
         this.bottom = Math.max(row, this.bottom);
-        this.boardBitsCpu[row * SIZE + col] = -1;
 
-        this.bigBitsCpu |= 1n << BigInt(row * SIZE + col);
-
+        this.bigBitsCpu = JSBI.bitwiseOr(this.bigBitsCpu, JSBI.leftShift(JSBI.one, pos));
         this.matrix[row][col].onCpuSelect();
     }
 
@@ -241,28 +207,27 @@ class Board{
         return 0;
 
         function hasWon(matrix){
-            let h  = 31n;
-            let v   = 1152956690052710401n;
-            let d1  = 18447025552981295105n;
-            let d2  = 1152991877646254096n;
+            let h = JSBI.BigInt('31');
+            let v = JSBI.BigInt('1152956690052710401');
+            let d1 = JSBI.BigInt('18447025552981295105');
+            let d2 = JSBI.BigInt('1152991877646254096');
 
             if(matchBitmask(matrix, h)) return 1;
             if(matchBitmask(matrix, d1)) return 1;
             if(matchBitmask(matrix, d2)) return 1;
 
             // vertical is a "bit" different :)
-            while(v <= matrix){
-                if((v & matrix) === v) return 1;
-
-                v *= 2n;
+            while(JSBI.lessThanOrEqual(v, matrix)){
+                if(JSBI.equal(JSBI.bitwiseAnd(v, matrix), v)) return 1;
+                v = JSBI.leftShift(v, JSBI.one);
             }
 
             return 0;
 
             function matchBitmask(matrix, mask){
-                for(let i=0; mask<=matrix; i++, mask*=2n){
+                for(let i=0; JSBI.lessThanOrEqual(mask, matrix); i++, mask = JSBI.leftShift(mask, JSBI.one)){
                     if(i%15 > 10) continue;
-                    if((mask & matrix) === mask) return true;
+                    if(JSBI.equal(JSBI.bitwiseAnd(mask, matrix), mask)) return true;
                 }
 
                 return false;
