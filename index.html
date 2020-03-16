@@ -2,7 +2,6 @@
     <head>
         <meta charset="UTF-8">
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
-        <script type="text/javascript" src="bi.js"></script>
         <script type="text/javascript" src="ai.js"></script>
         <script type="text/javascript" src="square.js"></script>
         <script type="text/javascript" src="board.js"></script>
@@ -61,6 +60,9 @@
                     <p>In practice, in addition to a depth limitation, this minimax algorithm also reduces the branching factor by limiting the squares which will be evaluated to those which are adjacent to squares which have been played. Given the fact that a disconnected "island" square cannot immediately lead to a win, this seems to be a reasonable simplification.</p>
 
                     <p>At the leaf nodes of the tree, either the game is over (the human has won or the computer has won) or the board needs to be evaluated with regards to who is winning.</p>
+
+                    <h2>Minimax with alpha-beta pruning</h2>
+                    Alpha-beta pruning is an improvement on the minimax algorithm, reducing the number of branches and leaf nodes which need to be evaluated. This is acheived by "pruning" unnecessary branches, ignoring them because the parent minimizer/maximizer would never choose it. For a maximizer (whose parent is a minimizer), this will occur if the parent minimizer has already seen a lower evaluation than a number the maximizing child sees. 
 
                     <h2>Static evaluator</h2>
                     <p>This function is used to evaluate a board position with regards to which player is winning, and by how much. The MiniMax algorithm will then choose the highest value for itself, while minimizing the options for its opponent. For gomoku, it was important to derive an evaluation function which could be calculated quickly, and which builds towards the final desired result of 5 squares in a row. Note that such a function would necessarily be isomorphic in four directions: vertical, horizontal, and on both diagonals.</p>
