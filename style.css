@@ -186,10 +186,29 @@ body {
     margin: 0 120px;
 }
 
+.overlay .about a {
+    color: #fa0;
+}
+
+.overlay .about .picture-holder {
+    display: block;
+    text-align: center;
+}
+
+.overlay .about .picture-holder img {
+    max-width: 100%;
+    background-color: #f0f3;
+    background-color: #f0f3;
+}
+
 .overlay p {
     margin: 20px 0;
     font-size: 18px;
     line-height: 1.5em;
+}
+
+.overlay p:last-child {
+    margin-bottom: 150px;
 }
 
 .overlay .close {

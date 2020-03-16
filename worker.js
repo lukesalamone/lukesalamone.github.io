@@ -21,15 +21,9 @@ onmessage = event => {
 }
 
 function bestMove(matrix, humanBits, cpuBits){
-    let bestScore = -Infinity;
     let squares = getSquaresToCheck(matrix, 0);
-
-    if(squares.length === 1){
-        sendProgress(1, 1);
-        return squares[0];
-    }
-
     let move = null;
+    let alpha = -Infinity, beta = Infinity, bestScore = -Infinity;
 
     for(let i=0; i<squares.length; i++){
         let [y, x] = squares[i];
@@ -37,7 +31,7 @@ function bestMove(matrix, humanBits, cpuBits){
 
         matrix[y][x] = -1;
         cpuBits |= 1n << BigInt(pos);
-        let score = alphabeta(matrix, 1, -Infinity, Infinity, false, humanBits, cpuBits);
+        let score = alphabeta(matrix, 1, alpha, beta, false, humanBits, cpuBits);
         matrix[y][x] = 0;
         cpuBits &= ~(1n << BigInt(pos));
 
@@ -51,6 +45,7 @@ function bestMove(matrix, humanBits, cpuBits){
         sendProgress(i+1, squares.length);
 
         if(score > bestScore){
+            alpha = score;
             bestScore = score;
             move = [y, x];
         }
@@ -80,26 +75,30 @@ function alphabeta(matrix, depth, alpha, beta, isAiTurn, playerBits, opponentBit
 
     for(let i=0; i<squares.length; i++){
         let [y, x] = squares[i];
-        let pos = y*15+x;
+        let pos = BigInt(y*15+x);
 
         matrix[y][x] = (isAiTurn ? -1 : 1);
-        playerBits |= 1n << BigInt(pos);
+        playerBits |= 1n << pos;
 
         let score = alphabeta(matrix, depth+1, alpha, beta, !isAiTurn, opponentBits, playerBits);
-        best = isAiTurn ? Math.max(score, best) : Math.min(score, best);
-
-        if(isAiTurn){
-            alpha = Math.max(alpha, best);
-        } else {
-            beta = Math.min(beta, best);
-        }
 
         matrix[y][x] = 0;
-        playerBits &= ~(1n << BigInt(pos));
+        playerBits &= ~(1n << pos);
 
-        if(alpha >= beta){
-            // console.log('alpha beta pruned at %s', JSON.stringify([y, x]));
-            break;
+        if(isAiTurn){
+            if(score >= beta){
+                return score;
+            }
+
+            best = Math.max(score, best);
+            alpha = Math.max(alpha, score);
+        } else {
+            if(score <= alpha){
+                return score;
+            }
+
+            best = Math.min(score, best);
+            beta = Math.min(beta, score);
         }
     }
 
@@ -139,7 +138,7 @@ function getSquaresToCheck(matrix, depth){
         put(i+1, j-1);
 
         function put(y, x){
-            if(!!matrix[y][x] || x<0 || y<0 || x>matrix.length-2 || y>matrix.length-2){
+            if(x<0 || y<0 || x>matrix.length-2 || y>matrix.length-2 || !!matrix[y][x]){
                 return;
             }
 
