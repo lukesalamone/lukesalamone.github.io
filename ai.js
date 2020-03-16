@@ -59,8 +59,8 @@ class GameAI {
                 matrix: matrix,
                 winnerCache: this.caches.winnerCache,
                 totalMoves: this.board.getTotalMoves(),
-                humanBits: this.board.getHumanBits(),
-                cpuBits: this.board.getCpuBits()
+                humanBits: this.board.getHumanBits().toString(),
+                cpuBits: this.board.getCpuBits().toString()
             });
         });
 

@@ -5,6 +5,10 @@ let thinking = false;
 
 document.addEventListener("DOMContentLoaded", async () => {
 
+    // String.prototype.replaceAt=function(i, replacement) {
+    //     return this.substr(0,i) + replacement+ this.substr(i + replacement.length);
+    // }
+
     document.querySelector('#about').onclick = openAbout;
     document.querySelector('.overlay .close').onclick = closeAbout;
     document.querySelector('#play-again').onclick = onNewGameClicked;
