@@ -158,7 +158,8 @@ If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing gam
 <p>For this experiment I used the <a href="http://www.blogmybrain.com/words-with-friends-cheat/words.txt">Zynga dictionary</a>, the same dictionary used in the game Words With Friends. The dictionary contains 173,000 words. It does not include any proper nouns or profanities.</p>
 <h1 id="live-experiment">Live experiment</h1>
 <p>Below you can experiment with this algorithm among 4 letter words. Enter a secret word, and the steps used to uncover the secret word will be displayed below. (Need inspiration? Try comparing <em>jazz</em> to <em>rock</em> or <em>blue</em> to <em>grey</em>.)</p>
-<!-- raw HTML omitted -->
+<div id="demo1" style="margin:20px;background:#ddd;padding:20px;font-family:monospace">
+    <script src="/js/hangman-demo1.js"></script>
 <pre><code>&lt;div style=&quot;width:100%; text-align:center&quot;&gt;
     &lt;input placeholder=&quot;enter 4 letter word&quot;&gt;&lt;/input&gt;
     &lt;button id=&quot;play&quot;&gt;play word&lt;/button&gt;
@@ -166,7 +167,7 @@ If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing gam
 &lt;/div&gt;
 &lt;div id=&quot;output&quot; style=&quot;margin: 20px 0&quot;&gt;&lt;/div&gt;
 </code></pre>
-<!-- raw HTML omitted -->
+</div>
 <p>Notice how some words have much higher difficulty than others? This is due to the fact that some words have many &ldquo;siblings&rdquo; which differ by only one letter. For example the pattern &ldquo;.ays&rdquo; could match the letters c, d, f, h, j, k, l, n, or r. Knowing the last 3 letters gives us no indication of which of these nine letters it will be.</p>
 <p>One apparent shortcoming of the above calculation is that it assumes that letters with equal probability will be picked in alphabetical order, and therefore letters last in the alphabet will be picked last. Although this has the benefit of creating a deterministic algorithm which will always return the same result for the same word, in real life we don&rsquo;t know in which order people will pick letters. In actuality the words <em>days</em>, <em>jays</em> and <em>rays</em> have equal difficulty each is equally likely to be the secret word.</p>
 <h1 id="preliminary-results">Preliminary results</h1>
@@ -261,7 +262,9 @@ If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing gam
 <p>Now, I think that we can improve upon our results a bit. Rather than calculating difficulty deterministically, we can instead randomize the ordering which letters will be picked in. This should dramatically reduce some of the outliers from above, bringing &ldquo;rays&rdquo; down from a difficulty of 14 to something more reasonable.</p>
 <p>Such a stochastic calculation will require simulating millions of games. For my 173,000 word dictionary, simply simulating 10 games would involve 1.7 million games. Fortunately, this operation is highly parallelizable. It should be possible to split the dictionary into 100 or even 1000 pieces and derive the results for each piece simultaneously.</p>
 <p>A simulation of this algorithm is shown below, with a graph of the average number of mistakes the new randomized algorithm incurs before discovering your secret word. The simulation is set up to play 500 rounds of games, and the final average is displayed at the top.</p>
-<!-- raw HTML omitted -->
+<div id="demo2" style="margin:20px;background:#ddd;padding:20px;font-family:monospace">
+    <script src="/js/chart.min.js"></script>
+    <script src="/js/hangman-demo2.js"></script>
 <pre><code>&lt;div style=&quot;width:100%; text-align:center&quot;&gt;
     &lt;input placeholder=&quot;enter 4 letter word&quot;&gt;&lt;/input&gt;
     &lt;button class=&quot;play&quot;&gt;play word&lt;/button&gt;
@@ -272,7 +275,7 @@ If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing gam
     &lt;canvas&gt;&lt;/canvas&gt;
 &lt;/div&gt;
 </code></pre>
-<!-- raw HTML omitted -->
+</div>
 ]]></content>
         </item>
         
@@ -282,13 +285,32 @@ If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing gam
             <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
             
             <guid>https://lukesalamone.github.io/posts/monte-carlo/</guid>
-            <description>A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.
-Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input.</description>
-            <content type="html"><![CDATA[<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+            <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to.</description>
+            <content type="html"><![CDATA[<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
 <p>A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.</p>
 <p>Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input. In the case of calculating Pi, this can be modeled geometrically. The <em>random distribution</em> is all points within the square, and the outcome is whether a selected point lies within the circle inside of the square. We know that for a square circumscribed about a circle,</p>
 <p><code>$ A_{circle} = \pi r ^ 2, A_{square} = (2r) ^ 2 = 4r ^ 2 $</code></p>
@@ -298,7 +320,9 @@ Monte Carlo simulations work when the input can be drawn from a random probabili
 <p><code>$ \sqrt{ x^2 + y^2 } &lt; 1 $</code></p>
 <p>So all dots greater than 1 unit from the origin are outside the circle.</p>
 <p>Below is a simulation of the derivation of the value of Pi. Click &ldquo;start simulation&rdquo; to see for yourself. <strong>Warning:</strong> this simulation may become slow once many dots are drawn on the screen.</p>
-<!-- raw HTML omitted -->
+<div id="sim1" style="font-family: monospace; background-color: #444; margin: 20px 0">
+    <script src="/js/chart.min.js" type="text/javascript"></script>
+    <script src="/js/monte-carlo.js" type="text/javascript"></script>
 <pre><code>&lt;div style=&quot;padding: 20px; text-align: center&quot;&gt;
     &lt;button class=&quot;start&quot;&gt;start simulation&lt;/button&gt;
     &lt;button class=&quot;stop&quot; disabled&gt;stop simulation&lt;/button&gt;
@@ -312,9 +336,22 @@ Monte Carlo simulations work when the input can be drawn from a random probabili
     &lt;p style=&quot;margin:0&quot; id=&quot;pi&quot;&gt;Approximate value of pi: 0&lt;/p&gt;
 &lt;/div&gt;
 </code></pre>
-<!-- raw HTML omitted -->
+</div>
 <p>Next, I was interested in the way that this simulation would play out once the number of points became large. Intuitively, this should approach Pi, but doing so requires that the random numbers generated by browsers be evenly distributed.</p>
-<!-- raw HTML omitted -->
+<div id="sim2" style="font-family: monospace; background-color: #444; margin: 20px 0">
+    <div style="padding: 20px; text-align: center">
+        <button class="start">start simulation</button>
+        <button class="stop" disabled>stop simulation</button>
+    </div>
+    <div style="width:600px; height:700px">
+        <canvas></canvas>
+    </div>
+    <div style="color: #fff; margin-left: 20px;">
+        <p style="margin:0" class="num-points">Number of points: 0</p>
+        <p style="margin:0" class="pi">Approximate value of pi: 0</p>
+        <p style="margin:0" class="pct-error">% error: 0</p>
+    </div>
+</div>
 ]]></content>
         </item>
         

@@ -266,7 +266,8 @@ If you&rsquo;re not familiar with the rules of hangman, it is a guessing game pl
 <p>For this experiment I used the <a href="http://www.blogmybrain.com/words-with-friends-cheat/words.txt">Zynga dictionary</a>, the same dictionary used in the game Words With Friends. The dictionary contains 173,000 words. It does not include any proper nouns or profanities.</p>
 <h1 id="live-experiment">Live experiment</h1>
 <p>Below you can experiment with this algorithm among 4 letter words. Enter a secret word, and the steps used to uncover the secret word will be displayed below. (Need inspiration? Try comparing <em>jazz</em> to <em>rock</em> or <em>blue</em> to <em>grey</em>.)</p>
-<!-- raw HTML omitted -->
+<div id="demo1" style="margin:20px;background:#ddd;padding:20px;font-family:monospace">
+    <script src="../../js/hangman-demo1.js"></script>
 <pre><code>&lt;div style=&quot;width:100%; text-align:center&quot;&gt;
     &lt;input placeholder=&quot;enter 4 letter word&quot;&gt;&lt;/input&gt;
     &lt;button id=&quot;play&quot;&gt;play word&lt;/button&gt;
@@ -274,7 +275,7 @@ If you&rsquo;re not familiar with the rules of hangman, it is a guessing game pl
 &lt;/div&gt;
 &lt;div id=&quot;output&quot; style=&quot;margin: 20px 0&quot;&gt;&lt;/div&gt;
 </code></pre>
-<!-- raw HTML omitted -->
+</div>
 <p>Notice how some words have much higher difficulty than others? This is due to the fact that some words have many &ldquo;siblings&rdquo; which differ by only one letter. For example the pattern &ldquo;.ays&rdquo; could match the letters c, d, f, h, j, k, l, n, or r. Knowing the last 3 letters gives us no indication of which of these nine letters it will be.</p>
 <p>One apparent shortcoming of the above calculation is that it assumes that letters with equal probability will be picked in alphabetical order, and therefore letters last in the alphabet will be picked last. Although this has the benefit of creating a deterministic algorithm which will always return the same result for the same word, in real life we don&rsquo;t know in which order people will pick letters. In actuality the words <em>days</em>, <em>jays</em> and <em>rays</em> have equal difficulty each is equally likely to be the secret word.</p>
 <h1 id="preliminary-results">Preliminary results</h1>
@@ -369,7 +370,9 @@ If you&rsquo;re not familiar with the rules of hangman, it is a guessing game pl
 <p>Now, I think that we can improve upon our results a bit. Rather than calculating difficulty deterministically, we can instead randomize the ordering which letters will be picked in. This should dramatically reduce some of the outliers from above, bringing &ldquo;rays&rdquo; down from a difficulty of 14 to something more reasonable.</p>
 <p>Such a stochastic calculation will require simulating millions of games. For my 173,000 word dictionary, simply simulating 10 games would involve 1.7 million games. Fortunately, this operation is highly parallelizable. It should be possible to split the dictionary into 100 or even 1000 pieces and derive the results for each piece simultaneously.</p>
 <p>A simulation of this algorithm is shown below, with a graph of the average number of mistakes the new randomized algorithm incurs before discovering your secret word. The simulation is set up to play 500 rounds of games, and the final average is displayed at the top.</p>
-<!-- raw HTML omitted -->
+<div id="demo2" style="margin:20px;background:#ddd;padding:20px;font-family:monospace">
+    <script src="../../js/chart.min.js"></script>
+    <script src="../../js/hangman-demo2.js"></script>
 <pre><code>&lt;div style=&quot;width:100%; text-align:center&quot;&gt;
     &lt;input placeholder=&quot;enter 4 letter word&quot;&gt;&lt;/input&gt;
     &lt;button class=&quot;play&quot;&gt;play word&lt;/button&gt;
@@ -380,7 +383,7 @@ If you&rsquo;re not familiar with the rules of hangman, it is a guessing game pl
     &lt;canvas&gt;&lt;/canvas&gt;
 &lt;/div&gt;
 </code></pre>
-<!-- raw HTML omitted -->
+</div>
 
       </div>
     </article>
