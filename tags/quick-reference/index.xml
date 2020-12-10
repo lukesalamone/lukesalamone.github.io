@@ -15,10 +15,7 @@
       
       <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
       <description>Need to switch between python versions often? Use pyenv.
-Installing pyenv Run curl https://pyenv.run | bash from terminal to install pyenv.
-Check it&amp;rsquo;s installed correctly by running which pyenv.
-Install another python version Run pyenv install --list to see a list of available python versions. Once you&amp;rsquo;ve chosen a version install it like pyenv install 3.7.5 by substituting the version you want for 3.7.5.
-List installed python versions Run pyenv versions to check installed versions.</description>
+Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.</description>
     </item>
     
   </channel>

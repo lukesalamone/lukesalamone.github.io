@@ -16,35 +16,43 @@
             
             <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
             <description>Need to switch between python versions often? Use pyenv.
-Installing pyenv Run curl https://pyenv.run | bash from terminal to install pyenv.
-Check it&amp;rsquo;s installed correctly by running which pyenv.
-Install another python version Run pyenv install --list to see a list of available python versions. Once you&amp;rsquo;ve chosen a version install it like pyenv install 3.7.5 by substituting the version you want for 3.7.5.
-List installed python versions Run pyenv versions to check installed versions.</description>
+Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.</description>
             <content type="html"><![CDATA[
 
-<p>Need to switch between python versions often? Use <code>pyenv</code>.</p>
+<p>Need to switch between python versions often? Use <a href="https://github.com/pyenv/pyenv"><code>pyenv</code></a>.</p>
 
 <h3 id="installing-pyenv">Installing pyenv</h3>
 
-<p>Run <code>curl https://pyenv.run | bash</code> from terminal to install <code>pyenv</code>.</p>
+<pre><code class="language-bash"># install pyenv
+curl https://pyenv.run | bash
 
-<p>Check it&rsquo;s installed correctly by running <code>which pyenv</code>.</p>
+# check pyenv install location
+which pyenv
+</code></pre>
 
 <h3 id="install-another-python-version">Install another python version</h3>
 
-<p>Run <code>pyenv install --list</code> to see a list of available python versions. Once you&rsquo;ve chosen a version install it like <code>pyenv install 3.7.5</code> by substituting the version you want for <code>3.7.5</code>.</p>
+<pre><code class="language-bash"># see a list of available python versions
+pyenv install --list
 
-<h3 id="list-installed-python-versions">List installed python versions</h3>
+# check installed python versions
+pyenv versions
 
-<p>Run <code>pyenv versions</code> to check installed versions.</p>
+# installs python 3.7.5
+pyenv install 3.7.5
+</code></pre>
 
 <h3 id="switch-python-versions">Switch python versions</h3>
 
-<p>Use <code>pyenv global 3.7.5</code> to use python 3.7.5 everywhere on your machine.</p>
+<pre><code class="language-bash"># use python 3.7.5 everywhere on your machine
+pyenv global 3.7.5
 
-<p>Use <code>pyenv local 3.7.5</code> to use python 3.7.5 in the current directory.</p>
+# use python 3.7.5 in current directory
+pyenv local 3.7.5
 
-<p>Use <code>pyenv shell 3.7.5</code> to use python 3.7.5 in the current shell session.</p>
+# use python 3.7.5 in current shell session
+pyenv shell 3.7.5
+</code></pre>
 ]]></content>
         </item>
         
