@@ -2,90 +2,90 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Luke Salamone&#39;s Blog</title>
-    <link>lukesalamone.github.io/tags/</link>
+    <link>https://lukesalamone.github.io/tags/</link>
     <description>Recent content in Tags on Luke Salamone&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 24 Oct 2020 17:45:41 -0500</lastBuildDate><atom:link href="lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Oct 2020 17:45:41 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>javascript</title>
-      <link>lukesalamone.github.io/tags/javascript/</link>
+      <link>https://lukesalamone.github.io/tags/javascript/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
       
-      <guid>lukesalamone.github.io/tags/javascript/</guid>
+      <guid>https://lukesalamone.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>minimax</title>
-      <link>lukesalamone.github.io/tags/minimax/</link>
+      <link>https://lukesalamone.github.io/tags/minimax/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
       
-      <guid>lukesalamone.github.io/tags/minimax/</guid>
+      <guid>https://lukesalamone.github.io/tags/minimax/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python</title>
-      <link>lukesalamone.github.io/tags/python/</link>
+      <link>https://lukesalamone.github.io/tags/python/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
       
-      <guid>lukesalamone.github.io/tags/python/</guid>
+      <guid>https://lukesalamone.github.io/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>quick-reference</title>
-      <link>lukesalamone.github.io/tags/quick-reference/</link>
+      <link>https://lukesalamone.github.io/tags/quick-reference/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
       
-      <guid>lukesalamone.github.io/tags/quick-reference/</guid>
+      <guid>https://lukesalamone.github.io/tags/quick-reference/</guid>
       <description></description>
     </item>
     
     <item>
       <title>geometry</title>
-      <link>lukesalamone.github.io/tags/geometry/</link>
+      <link>https://lukesalamone.github.io/tags/geometry/</link>
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
       
-      <guid>lukesalamone.github.io/tags/geometry/</guid>
+      <guid>https://lukesalamone.github.io/tags/geometry/</guid>
       <description></description>
     </item>
     
     <item>
       <title>monte-carlo</title>
-      <link>lukesalamone.github.io/tags/monte-carlo/</link>
+      <link>https://lukesalamone.github.io/tags/monte-carlo/</link>
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
       
-      <guid>lukesalamone.github.io/tags/monte-carlo/</guid>
+      <guid>https://lukesalamone.github.io/tags/monte-carlo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>statistics</title>
-      <link>lukesalamone.github.io/tags/statistics/</link>
+      <link>https://lukesalamone.github.io/tags/statistics/</link>
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
       
-      <guid>lukesalamone.github.io/tags/statistics/</guid>
+      <guid>https://lukesalamone.github.io/tags/statistics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ai</title>
-      <link>lukesalamone.github.io/tags/ai/</link>
+      <link>https://lukesalamone.github.io/tags/ai/</link>
       <pubDate>Tue, 19 May 2020 14:28:57 +0800</pubDate>
       
-      <guid>lukesalamone.github.io/tags/ai/</guid>
+      <guid>https://lukesalamone.github.io/tags/ai/</guid>
       <description></description>
     </item>
     
     <item>
       <title>game-theory</title>
-      <link>lukesalamone.github.io/tags/game-theory/</link>
+      <link>https://lukesalamone.github.io/tags/game-theory/</link>
       <pubDate>Tue, 19 May 2020 14:28:57 +0800</pubDate>
       
-      <guid>lukesalamone.github.io/tags/game-theory/</guid>
+      <guid>https://lukesalamone.github.io/tags/game-theory/</guid>
       <description></description>
     </item>
     

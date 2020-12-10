@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>python on Luke Salamone&#39;s Blog</title>
-    <link>lukesalamone.github.io/tags/python/</link>
+    <link>https://lukesalamone.github.io/tags/python/</link>
     <description>Recent content in python on Luke Salamone&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 24 Oct 2020 17:45:41 -0500</lastBuildDate><atom:link href="lukesalamone.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Oct 2020 17:45:41 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Managing Python Environments</title>
-      <link>lukesalamone.github.io/posts/managing-python-environments/</link>
+      <link>https://lukesalamone.github.io/posts/managing-python-environments/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
       
-      <guid>lukesalamone.github.io/posts/managing-python-environments/</guid>
+      <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
       <description>Need to switch between python versions often? Use pyenv.
 Installing pyenv Run curl https://pyenv.run | bash from terminal to install pyenv.
 Check it&amp;rsquo;s installed correctly by running which pyenv.
