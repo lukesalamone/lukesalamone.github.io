@@ -1,28 +1,28 @@
 window.onload = async function(){
-    $('#play').onclick = () => {
-        $('#play').disabled = true;
+    $('#demo1 .play').onclick = () => {
+        $('#demo1 .play').disabled = true;
         $('#demo1 input').disabled = true;
         playGame($('#demo1 input').value, window.dictionary);
-        $('#reset').disabled = false;
+        $('#demo1 .reset').disabled = false;
     };
 
-    $('#reset').onclick = () => {
+    $('#demo1 .reset').onclick = () => {
         $('#demo1 input').value = '';
         $('#demo1 input').disabled = false;
         clear();
-        $('#reset').disabled = true;
-        $('#play').disabled = false;
+        $('#demo1 .reset').disabled = true;
+        $('#demo1 .play').disabled = false;
     };
 
-    $('#reset').disabled = true;
+    $('#demo1 .reset').disabled = true;
 
     if(!window.dictionary){
         $('#demo1 input').disabled = true;
-        $('#play').disabled = true;
+        $('#demo1 .play').disabled = true;
         print('loading dictionary...');
         window.dictionary = await fetch('/four-letters.json');
         window.dictionary = await dictionary.json();
-        $('#play').disabled = false;
+        $('#demo1 .play').disabled = false;
         $('#demo1 input').disabled = false;
         clear();
     }
@@ -33,12 +33,12 @@ function print(str){
 
     let elem = document.createElement('div');
     elem.innerText = str;
-    $('#output').appendChild(elem);
+    $('#demo1 .output').appendChild(elem);
 }
 
 function clear(){
-    while ($('#output').firstChild) {
-        $('#output').removeChild($('#output').firstChild);
+    while ($('#demo1 .output').firstChild) {
+        $('#demo1 .output').removeChild($('#demo1 .output').firstChild);
     }
 }
 
@@ -48,7 +48,7 @@ function $(str){
 
 function playGame(secret, dictionary){
     clear();
-    $('#play').disabled = true;
+    $('#demo1 .play').disabled = true;
 
     if(secret.length !== 4){
         print('secret word must have 4 letters!')
