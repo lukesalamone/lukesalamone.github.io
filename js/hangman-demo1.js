@@ -1,4 +1,4 @@
-window.onload = async function(){
+window.addEventListener('load', async function(){
     $('#demo1 .play').onclick = () => {
         $('#demo1 .play').disabled = true;
         $('#demo1 input').disabled = true;
@@ -26,7 +26,7 @@ window.onload = async function(){
         $('#demo1 input').disabled = false;
         clear();
     }
-}
+});
 
 function print(str){
     str = str || '\n';
