@@ -20,7 +20,7 @@ window.onload = async function(){
         $('#demo1 input').disabled = true;
         $('#play').disabled = true;
         print('loading dictionary...');
-        window.dictionary = await fetch('/static/four-letters.json');
+        window.dictionary = await fetch('/four-letters.json');
         window.dictionary = await dictionary.json();
         $('#play').disabled = false;
         $('#demo1 input').disabled = false;
