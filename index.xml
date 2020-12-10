@@ -2,28 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Luke Salamone&#39;s Blog</title>
-    <link>/</link>
+    <link>lukesalamone.github.io/</link>
     <description>Recent content on Luke Salamone&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 24 Oct 2020 20:05:22 -0500</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Should you go to grad school for AI?</title>
-      <link>/posts/ai-grad-school/</link>
-      <pubDate>Sat, 24 Oct 2020 20:05:22 -0500</pubDate>
-      
-      <guid>/posts/ai-grad-school/</guid>
-      <description>You&amp;rsquo;re interested in artificial intelligence. You&amp;rsquo;ve seen some of the awesome state of the art things that can be done with machine learning. So you want a piece of the action.
-Grad school is expensive. How expensive will depend a lot on where you go and whether you get financial assistance (e.g. you may be able to TA). But one thing is absolutely clear: you are the customer. You&amp;rsquo;re probably going to be paying 10s of thousands for a degree, and that doesn&amp;rsquo;t take into account the salary you would have made had you not gone to school.</description>
-    </item>
-    
+    <lastBuildDate>Sat, 24 Oct 2020 17:45:41 -0500</lastBuildDate><atom:link href="lukesalamone.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Managing Python Environments</title>
-      <link>/posts/managing-python-environments/</link>
+      <link>lukesalamone.github.io/posts/managing-python-environments/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
       
-      <guid>/posts/managing-python-environments/</guid>
+      <guid>lukesalamone.github.io/posts/managing-python-environments/</guid>
       <description>Need to switch between python versions often? Use pyenv.
 Installing pyenv Run curl https://pyenv.run | bash from terminal to install pyenv.
 Check it&amp;rsquo;s installed correctly by running which pyenv.
@@ -33,30 +23,30 @@ List installed python versions Run pyenv versions to check installed versions.</
     
     <item>
       <title>What is the Hardest Hangman Word?</title>
-      <link>/posts/hardest-hangman-word/</link>
+      <link>lukesalamone.github.io/posts/hardest-hangman-word/</link>
       <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
       
-      <guid>/posts/hardest-hangman-word/</guid>
+      <guid>lukesalamone.github.io/posts/hardest-hangman-word/</guid>
       <description>It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.
 If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people.</description>
     </item>
     
     <item>
       <title>Estimating Pi with a Monte Carlo Simulation</title>
-      <link>/posts/monte-carlo/</link>
+      <link>lukesalamone.github.io/posts/monte-carlo/</link>
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
       
-      <guid>/posts/monte-carlo/</guid>
+      <guid>lukesalamone.github.io/posts/monte-carlo/</guid>
       <description>A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.
 Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input.</description>
     </item>
     
     <item>
       <title>Creating an AI for Gomoku</title>
-      <link>/posts/gomoku2049/</link>
+      <link>lukesalamone.github.io/posts/gomoku2049/</link>
       <pubDate>Tue, 19 May 2020 14:28:57 +0800</pubDate>
       
-      <guid>/posts/gomoku2049/</guid>
+      <guid>lukesalamone.github.io/posts/gomoku2049/</guid>
       <description>Gomoku is a strategy game similar to tic tac toe, but played on a larger board and with the goal of getting 5 in a row rather than 3. Since the game has perfect information and has simple rules, I thought it would be a fun exercise in creating a game AI. In February 2020 I decided to code up Gomoku2049. The game is a demonstration of MiniMax, which is an algorithm for finding the move which minimizes the opponent’s best moves.</description>
     </item>
     

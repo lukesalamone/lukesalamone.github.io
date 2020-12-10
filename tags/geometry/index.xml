@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>geometry on Luke Salamone&#39;s Blog</title>
-    <link>/tags/geometry/</link>
+    <link>lukesalamone.github.io/tags/geometry/</link>
     <description>Recent content in geometry on Luke Salamone&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 09 Jul 2020 15:40:14 +0800</lastBuildDate><atom:link href="/tags/geometry/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Jul 2020 15:40:14 +0800</lastBuildDate><atom:link href="lukesalamone.github.io/tags/geometry/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Estimating Pi with a Monte Carlo Simulation</title>
-      <link>/posts/monte-carlo/</link>
+      <link>lukesalamone.github.io/posts/monte-carlo/</link>
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
       
-      <guid>/posts/monte-carlo/</guid>
+      <guid>lukesalamone.github.io/posts/monte-carlo/</guid>
       <description>A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.
 Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input.</description>
     </item>
