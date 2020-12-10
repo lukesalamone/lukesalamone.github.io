@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.
+Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input." />
+<meta name="keywords" content=", monte-carlo, statistics, geometry, javascript" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="/posts/monte-carlo/" />
+
+
+    <title>
+        
+            Estimating Pi with a Monte Carlo Simulation :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.da3847a1b7160e57e860832fb4a5c1a53f7937795ee972d0e035b811ed2a5eb7.css">
+
+
+
+
+
+
+<meta itemprop="name" content="Estimating Pi with a Monte Carlo Simulation">
+<meta itemprop="description" content="A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.
+Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input.">
+<meta itemprop="datePublished" content="2020-07-09T15:40:14+08:00" />
+<meta itemprop="dateModified" content="2020-07-09T15:40:14+08:00" />
+<meta itemprop="wordCount" content="415">
+<meta itemprop="image" content=""/>
+
+
+
+<meta itemprop="keywords" content="monte-carlo,statistics,geometry,javascript," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content=""/>
+
+<meta name="twitter:title" content="Estimating Pi with a Monte Carlo Simulation"/>
+<meta name="twitter:description" content="A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.
+Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input."/>
+
+
+
+    <meta property="og:title" content="Estimating Pi with a Monte Carlo Simulation" />
+<meta property="og:description" content="A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.
+Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/monte-carlo/" />
+<meta property="og:image" content=""/>
+<meta property="article:published_time" content="2020-07-09T15:40:14+08:00" />
+<meta property="article:modified_time" content="2020-07-09T15:40:14+08:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-07-09 15:40:14 &#43;0800 &#43;0800" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="./img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="./img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/posts">Blog</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        2 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="/posts/monte-carlo/">Estimating Pi with a Monte Carlo Simulation</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.</p>
+<p>Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input. In the case of calculating Pi, this can be modeled geometrically. The <em>random distribution</em> is all points within the square, and the outcome is whether a selected point lies within the circle inside of the square. We know that for a square circumscribed about a circle,</p>
+<p><code>$ A_{circle} = \pi r ^ 2, A_{square} = (2r) ^ 2 = 4r ^ 2 $</code></p>
+<p><code>$ { A_{circle}  \over  A_{square} } = { \pi r^2  \over 4r ^ 2 } = { \pi \over 4 } $</code></p>
+<p><code>$ { 4 ({ A_{circle}  \over  A_{square} }) } = \pi $</code></p>
+<p>If we notice that the probability that a randomly placed dot will fall within the circle is the same as the ratio of their areas (i.e. the circle takes up about 78% of the area of the square, so a random dot has about a 78% chance of landing inside the circle), then multiplying that probability by 4 gives Pi. By placing dots randomly, we play out that probability in real-time. As to whether a given dot lies within the circle, we simply use the Pythagorean theorum to calculate its distance from the origin:</p>
+<p><code>$ \sqrt{ x^2 + y^2 } &lt; 1 $</code></p>
+<p>So all dots greater than 1 unit from the origin are outside the circle.</p>
+<p>Below is a simulation of the derivation of the value of Pi. Click &ldquo;start simulation&rdquo; to see for yourself. <strong>Warning:</strong> this simulation may become slow once many dots are drawn on the screen.</p>
+<!-- raw HTML omitted -->
+<pre><code>&lt;div style=&quot;padding: 20px; text-align: center&quot;&gt;
+    &lt;button class=&quot;start&quot;&gt;start simulation&lt;/button&gt;
+    &lt;button class=&quot;stop&quot; disabled&gt;stop simulation&lt;/button&gt;
+&lt;/div&gt;
+&lt;div style=&quot;width:500px; height:500px&quot;&gt;
+    &lt;canvas&gt;&lt;/canvas&gt;
+&lt;/div&gt;
+&lt;div style=&quot;color: #fff; margin-left: 20px;&quot;&gt;
+    &lt;p style=&quot;margin:0&quot; id=&quot;num-points&quot;&gt;Number of points: 0&lt;/p&gt;
+    &lt;p style=&quot;margin:0&quot; id=&quot;pct-inside&quot;&gt;% inside circle: 0&lt;/p&gt;
+    &lt;p style=&quot;margin:0&quot; id=&quot;pi&quot;&gt;Approximate value of pi: 0&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<p>Next, I was interested in the way that this simulation would play out once the number of points became large. Intuitively, this should approach Pi, but doing so requires that the random numbers generated by browsers be evenly distributed.</p>
+<!-- raw HTML omitted -->
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="tags/monte-carlo/">monte-carlo</a></span>
+        <span class="tag"><a href="tags/statistics/">statistics</a></span>
+        <span class="tag"><a href="tags/geometry/">geometry</a></span>
+        <span class="tag"><a href="tags/javascript/">javascript</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        415 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2020-07-09 02:40
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="/posts/hardest-hangman-word/">
+                <span class="button__icon">←</span>
+                <span class="button__text">What is the Hardest Hangman Word?</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="/posts/gomoku2049/">
+                <span class="button__text">Creating an AI for Gomoku</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            <span>Luke Salamone</span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+
+
+
+    </body>
+</html>

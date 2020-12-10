@@ -3,19 +3,96 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/</loc>
-  </url>
-  
-  <url>
     <loc>/</loc>
+    <lastmod>2020-10-24T20:05:22-05:00</lastmod>
   </url>
   
   <url>
-    <loc>/series/</loc>
+    <loc>/posts/</loc>
+    <lastmod>2020-10-24T20:05:22-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/ai-grad-school/</loc>
+    <lastmod>2020-10-24T20:05:22-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/javascript/</loc>
+    <lastmod>2020-10-24T17:45:41-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/managing-python-environments/</loc>
+    <lastmod>2020-10-24T17:45:41-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/minimax/</loc>
+    <lastmod>2020-10-24T17:45:41-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/python/</loc>
+    <lastmod>2020-10-24T17:45:41-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/quick-reference/</loc>
+    <lastmod>2020-10-24T17:45:41-05:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/</loc>
+    <lastmod>2020-10-24T17:45:41-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/hardest-hangman-word/</loc>
+    <lastmod>2020-07-21T17:34:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/monte-carlo/</loc>
+    <lastmod>2020-07-09T15:40:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/geometry/</loc>
+    <lastmod>2020-07-09T15:40:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/monte-carlo/</loc>
+    <lastmod>2020-07-09T15:40:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/statistics/</loc>
+    <lastmod>2020-07-09T15:40:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/ai/</loc>
+    <lastmod>2020-05-19T14:28:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/gomoku2049/</loc>
+    <lastmod>2020-05-19T14:28:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/game-theory/</loc>
+    <lastmod>2020-05-19T14:28:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/</loc>
+  </url>
+  
+  <url>
+    <loc>/series/</loc>
   </url>
   
 </urlset>
