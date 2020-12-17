@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 09 Jul 2020 15:40:14 +0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Jul 2020 17:34:05 +0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What is the Hardest Hangman Word?</title>
+      <link>https://lukesalamone.github.io/posts/hardest-hangman-word/</link>
+      <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/hardest-hangman-word/</guid>
+      <description>It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.
+If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people.</description>
+    </item>
+    
     <item>
       <title>Estimating Pi with a Monte Carlo Simulation</title>
       <link>https://lukesalamone.github.io/posts/monte-carlo/</link>
