@@ -20,7 +20,9 @@ In this paper, the authors present a novel neural network architecture to enable
 Motivation Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one.</description>
             <content type="html"><![CDATA[
 
-<iframe src="https://player.vimeo.com/video/491725663" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+<div style="text-align:center">
+  <iframe src="https://player.vimeo.com/video/491725663" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+</div>
 
 <p><em>The following is a transcript of the above video</em></p>
 
