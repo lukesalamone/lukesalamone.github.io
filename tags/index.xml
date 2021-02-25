@@ -18,15 +18,6 @@
     </item>
     
     <item>
-      <title>untagged</title>
-      <link>https://lukesalamone.github.io/tags/untagged/</link>
-      <pubDate>Sat, 26 Dec 2020 23:12:08 -0600</pubDate>
-      
-      <guid>https://lukesalamone.github.io/tags/untagged/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>audio</title>
       <link>https://lukesalamone.github.io/tags/audio/</link>
       <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
@@ -59,42 +50,6 @@
       <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
       
       <guid>https://lukesalamone.github.io/tags/video/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>aws</title>
-      <link>https://lukesalamone.github.io/tags/aws/</link>
-      <pubDate>Thu, 10 Dec 2020 16:02:57 -0600</pubDate>
-      
-      <guid>https://lukesalamone.github.io/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>clustering</title>
-      <link>https://lukesalamone.github.io/tags/clustering/</link>
-      <pubDate>Thu, 10 Dec 2020 13:57:26 -0600</pubDate>
-      
-      <guid>https://lukesalamone.github.io/tags/clustering/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>machine-learning</title>
-      <link>https://lukesalamone.github.io/tags/machine-learning/</link>
-      <pubDate>Thu, 10 Dec 2020 13:57:26 -0600</pubDate>
-      
-      <guid>https://lukesalamone.github.io/tags/machine-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>math</title>
-      <link>https://lukesalamone.github.io/tags/math/</link>
-      <pubDate>Thu, 10 Dec 2020 13:57:26 -0600</pubDate>
-      
-      <guid>https://lukesalamone.github.io/tags/math/</guid>
       <description></description>
     </item>
     

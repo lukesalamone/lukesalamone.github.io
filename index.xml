@@ -19,15 +19,6 @@ name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s
     </item>
     
     <item>
-      <title>CPD Use of Force</title>
-      <link>https://lukesalamone.github.io/posts/cpd-use-of-force/</link>
-      <pubDate>Sat, 26 Dec 2020 23:12:08 -0600</pubDate>
-      
-      <guid>https://lukesalamone.github.io/posts/cpd-use-of-force/</guid>
-      <description> </description>
-    </item>
-    
-    <item>
       <title>Siamese Neural Networks (Video)</title>
       <link>https://lukesalamone.github.io/posts/siamese-nn-video/</link>
       <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
@@ -36,44 +27,6 @@ name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s
       <description>The following is a transcript of the above video
 In this paper, the authors present a novel neural network architecture to enable audio search via sounds humans are able to make, for example humming and whistling. This is an important capability when searching through audio for a specific sound.
 Motivation Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one.</description>
-    </item>
-    
-    <item>
-      <title>Translate Imessages</title>
-      <link>https://lukesalamone.github.io/posts/translate-imessages/</link>
-      <pubDate>Thu, 10 Dec 2020 16:02:57 -0600</pubDate>
-      
-      <guid>https://lukesalamone.github.io/posts/translate-imessages/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>GMMs for Dummies (part 1)</title>
-      <link>https://lukesalamone.github.io/posts/gmm-for-dummies-1/</link>
-      <pubDate>Thu, 10 Dec 2020 13:57:26 -0600</pubDate>
-      
-      <guid>https://lukesalamone.github.io/posts/gmm-for-dummies-1/</guid>
-      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i This article is an overview of the fit method of a Gaussian Mixture Model.</description>
-    </item>
-    
-    <item>
-      <title>Should you go to grad school for AI?</title>
-      <link>https://lukesalamone.github.io/posts/ai-grad-school/</link>
-      <pubDate>Sat, 24 Oct 2020 20:05:22 -0500</pubDate>
-      
-      <guid>https://lukesalamone.github.io/posts/ai-grad-school/</guid>
-      <description>You&amp;rsquo;re interested in artificial intelligence. You&amp;rsquo;ve seen some of the awesome state of the art things that can be done with machine learning. So you want a piece of the action.
-Grad school is expensive. How expensive will depend a lot on where you go and whether you get financial assistance (e.g. you may be able to TA). But one thing is absolutely clear: you are the customer. You&amp;rsquo;re probably going to be paying 10s of thousands for a degree, and that doesn&amp;rsquo;t take into account the salary you would have made had you not gone to school.</description>
-    </item>
-    
-    <item>
-      <title>Gaussian Mixture Models for Dummies</title>
-      <link>https://lukesalamone.github.io/posts/gmm-for-dummies-0/</link>
-      <pubDate>Sat, 24 Oct 2020 18:10:29 -0500</pubDate>
-      
-      <guid>https://lukesalamone.github.io/posts/gmm-for-dummies-0/</guid>
-      <description>Are you studying machine learning and want to know more about Gaussian Mixture Models? You&amp;rsquo;ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.
-Overview Gaussian Mixture Models are used to group data points into different clusters. In this way, it is similar to K-means clustering, where each cluster is specified by a point at its center.</description>
     </item>
     
     <item>
