@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 17 Dec 2020 11:22:43 -0600</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Feb 2021 21:22:42 -0600</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python</title>
+      <link>https://lukesalamone.github.io/tags/python/</link>
+      <pubDate>Wed, 24 Feb 2021 21:22:42 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>untagged</title>
+      <link>https://lukesalamone.github.io/tags/untagged/</link>
+      <pubDate>Sat, 26 Dec 2020 23:12:08 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/untagged/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>audio</title>
       <link>https://lukesalamone.github.io/tags/audio/</link>
@@ -45,6 +63,42 @@
     </item>
     
     <item>
+      <title>aws</title>
+      <link>https://lukesalamone.github.io/tags/aws/</link>
+      <pubDate>Thu, 10 Dec 2020 16:02:57 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>clustering</title>
+      <link>https://lukesalamone.github.io/tags/clustering/</link>
+      <pubDate>Thu, 10 Dec 2020 13:57:26 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/clustering/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine-learning</title>
+      <link>https://lukesalamone.github.io/tags/machine-learning/</link>
+      <pubDate>Thu, 10 Dec 2020 13:57:26 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>math</title>
+      <link>https://lukesalamone.github.io/tags/math/</link>
+      <pubDate>Thu, 10 Dec 2020 13:57:26 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/math/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>javascript</title>
       <link>https://lukesalamone.github.io/tags/javascript/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
@@ -59,15 +113,6 @@
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
       
       <guid>https://lukesalamone.github.io/tags/minimax/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://lukesalamone.github.io/tags/python/</link>
-      <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
-      
-      <guid>https://lukesalamone.github.io/tags/python/</guid>
       <description></description>
     </item>
     

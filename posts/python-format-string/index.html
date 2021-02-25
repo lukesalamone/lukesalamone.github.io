@@ -5,17 +5,17 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="description" content="Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3." />
-<meta name="keywords" content=", python, quick-reference, javascript, minimax" />
+<meta name="description" content="There are three main ways to format strings in python:
+name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s and I like %s.&amp;quot; % (name, food) # str.format() &amp;quot;My name is {0} and I like {1}.&amp;quot;.format(name, food) # f-strings f&amp;quot;My name is {name} and I like {food}.&amp;quot;  " />
+<meta name="keywords" content=", python" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://lukesalamone.github.io/posts/managing-python-environments/" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/python-format-string/" />
 
 
     <title>
         
-            Managing Python Environments :: Luke Salamone&#39;s Blog 
+            How to use python f-strings :: Luke Salamone&#39;s Blog 
         
     </title>
 
@@ -33,42 +33,42 @@ Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv ins
 
 
 
-<meta itemprop="name" content="Managing Python Environments">
-<meta itemprop="description" content="Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.">
-<meta itemprop="datePublished" content="2020-10-24T17:45:41-05:00" />
-<meta itemprop="dateModified" content="2020-10-24T17:45:41-05:00" />
-<meta itemprop="wordCount" content="89">
+<meta itemprop="name" content="How to use python f-strings">
+<meta itemprop="description" content="There are three main ways to format strings in python:
+name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &quot;My name is %s and I like %s.&quot; % (name, food) # str.format() &quot;My name is {0} and I like {1}.&quot;.format(name, food) # f-strings f&quot;My name is {name} and I like {food}.&quot;  ">
+<meta itemprop="datePublished" content="2021-02-24T21:22:42-06:00" />
+<meta itemprop="dateModified" content="2021-02-24T21:22:42-06:00" />
+<meta itemprop="wordCount" content="51">
 <meta itemprop="image" content="https://lukesalamone.github.io"/>
 
 
 
-<meta itemprop="keywords" content="python,quick-reference,javascript,minimax," />
+<meta itemprop="keywords" content="python," />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="Managing Python Environments"/>
-<meta name="twitter:description" content="Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3."/>
+<meta name="twitter:title" content="How to use python f-strings"/>
+<meta name="twitter:description" content="There are three main ways to format strings in python:
+name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &quot;My name is %s and I like %s.&quot; % (name, food) # str.format() &quot;My name is {0} and I like {1}.&quot;.format(name, food) # f-strings f&quot;My name is {name} and I like {food}.&quot;  "/>
 
 
 
-    <meta property="og:title" content="Managing Python Environments" />
-<meta property="og:description" content="Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3." />
+    <meta property="og:title" content="How to use python f-strings" />
+<meta property="og:description" content="There are three main ways to format strings in python:
+name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &quot;My name is %s and I like %s.&quot; % (name, food) # str.format() &quot;My name is {0} and I like {1}.&quot;.format(name, food) # f-strings f&quot;My name is {name} and I like {food}.&quot;  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/managing-python-environments/" />
+<meta property="og:url" content="https://lukesalamone.github.io/posts/python-format-string/" />
 <meta property="og:image" content="https://lukesalamone.github.io"/>
-<meta property="article:published_time" content="2020-10-24T17:45:41-05:00" />
-<meta property="article:modified_time" content="2020-10-24T17:45:41-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
+<meta property="article:published_time" content="2021-02-24T21:22:42-06:00" />
+<meta property="article:modified_time" content="2021-02-24T21:22:42-06:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2020-10-24 17:45:41 -0500 CDT" />
+    <meta property="article:published_time" content="2021-02-24 21:22:42 -0600 CST" />
 
 
 
@@ -125,47 +125,25 @@ Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv ins
 
     <article>
       <h1 class="post-title">
-        <a href="https://lukesalamone.github.io/posts/managing-python-environments/">Managing Python Environments</a>
+        <a href="https://lukesalamone.github.io/posts/python-format-string/">How to use python f-strings</a>
       </h1>
 
       
 
       <div class="post-content">
-        
+        <p>There are three main ways to format strings in python:</p>
 
-<p>Need to switch between python versions often? Use <a href="https://github.com/pyenv/pyenv"><code>pyenv</code></a>.</p>
+<pre><code class="language-python">name = 'Luke'
+food = 'pizza'
 
-<h3 id="installing-pyenv">Installing pyenv</h3>
+# old style
+&quot;My name is %s and I like %s.&quot; % (name, food)
 
-<pre><code class="language-bash"># install pyenv
-curl https://pyenv.run | bash
+# str.format()
+&quot;My name is {0} and I like {1}.&quot;.format(name, food)
 
-# check pyenv install location
-which pyenv
-</code></pre>
-
-<h3 id="install-another-python-version">Install another python version</h3>
-
-<pre><code class="language-bash"># see a list of available python versions
-pyenv install --list
-
-# check installed python versions
-pyenv versions
-
-# installs python 3.7.5
-pyenv install 3.7.5
-</code></pre>
-
-<h3 id="switch-python-versions">Switch python versions</h3>
-
-<pre><code class="language-bash"># use python 3.7.5 everywhere on your machine
-pyenv global 3.7.5
-
-# use python 3.7.5 in current directory
-pyenv local 3.7.5
-
-# use python 3.7.5 in current shell session
-pyenv shell 3.7.5
+# f-strings
+f&quot;My name is {name} and I like {food}.&quot;
 </code></pre>
 
       </div>
@@ -179,9 +157,6 @@ pyenv shell 3.7.5
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
         <span class="tag"><a href="https://lukesalamone.github.io/tags/python/">python</a></span>
-        <span class="tag"><a href="https://lukesalamone.github.io/tags/quick-reference/">quick-reference</a></span>
-        <span class="tag"><a href="https://lukesalamone.github.io/tags/javascript/">javascript</a></span>
-        <span class="tag"><a href="https://lukesalamone.github.io/tags/minimax/">minimax</a></span>
         
     </p>
 
@@ -195,7 +170,7 @@ pyenv shell 3.7.5
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        89 Words
+        51 Words
       </p>
 
       <p>
@@ -206,7 +181,7 @@ pyenv shell 3.7.5
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2020-10-24 17:45
+          2021-02-24 21:22
         
 
          
@@ -224,18 +199,11 @@ pyenv shell 3.7.5
 
         <div class="pagination__buttons">
           
-            <span class="button previous">
-              <a href="https://lukesalamone.github.io/posts/gmm-for-dummies-0/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Gaussian Mixture Models for Dummies</span>
-              </a>
-            </span>
-          
 
           
             <span class="button next">
-              <a href="https://lukesalamone.github.io/posts/hardest-hangman-word/">
-                <span class="button__text">What is the Hardest Hangman Word?</span>
+              <a href="https://lukesalamone.github.io/posts/cpd-use-of-force/">
+                <span class="button__text">CPD Use of Force</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

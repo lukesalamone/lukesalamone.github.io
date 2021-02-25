@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i This article is an overview of the fit method of a Gaussian Mixture Model." />
+<meta name="keywords" content=", machine-learning, math, clustering, python" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/gmm-for-dummies-1/" />
+
+
+    <title>
+        
+            GMMs for Dummies (part 1) :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.51acb8e7040202c70c7b5ef77a2512e0e5ce41bc6555576ce1cc3be68c247c79.css">
+
+
+
+
+
+
+<meta itemprop="name" content="GMMs for Dummies (part 1)">
+<meta itemprop="description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i This article is an overview of the fit method of a Gaussian Mixture Model.">
+<meta itemprop="datePublished" content="2020-12-10T13:57:26-06:00" />
+<meta itemprop="dateModified" content="2020-12-10T13:57:26-06:00" />
+<meta itemprop="wordCount" content="839">
+<meta itemprop="image" content="https://lukesalamone.github.io"/>
+
+
+
+<meta itemprop="keywords" content="machine-learning,math,clustering,python," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lukesalamone.github.io"/>
+
+<meta name="twitter:title" content="GMMs for Dummies (part 1)"/>
+<meta name="twitter:description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i This article is an overview of the fit method of a Gaussian Mixture Model."/>
+
+
+
+    <meta property="og:title" content="GMMs for Dummies (part 1)" />
+<meta property="og:description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i This article is an overview of the fit method of a Gaussian Mixture Model." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lukesalamone.github.io/posts/gmm-for-dummies-1/" />
+<meta property="og:image" content="https://lukesalamone.github.io"/>
+<meta property="article:published_time" content="2020-12-10T13:57:26-06:00" />
+<meta property="article:modified_time" content="2020-12-10T13:57:26-06:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-12-10 13:57:26 -0600 CST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        4 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/gmm-for-dummies-1/">GMMs for Dummies (part 1)</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      },
+      extensions: ["AMSmath.js", "AMSsymbols.js"]
+    }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<p>This article is an overview of the <code>fit</code> method of a Gaussian Mixture Model. This method has two major sub-parts: the <em>expectation step</em>, and the <em>Maximization step</em>. These two parts will be run inside of an update loop which typically terminates after a set number of iterations or the algorithm has stopped improving.</p>
+
+<p>I personally find that examples are the best way to understand many concepts, so in this article I will use a dataset with 4 features, each of the features having 3 dimensions:</p>
+
+<table>
+<thead>
+<tr>
+<th>feature</th>
+<th>d<sub>0</sub></th>
+<th>d<sub>1</sub></th>
+<th>d<sub>2</sub></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>x<sub>0</sub></td>
+<td>x<sub>00</sub></td>
+<td>x<sub>01</sub></td>
+<td>x<sub>02</sub></td>
+</tr>
+
+<tr>
+<td>x<sub>1</sub></td>
+<td>x<sub>10</sub></td>
+<td>x<sub>11</sub></td>
+<td>x<sub>12</sub></td>
+</tr>
+
+<tr>
+<td>x<sub>2</sub></td>
+<td>x<sub>20</sub></td>
+<td>x<sub>21</sub></td>
+<td>x<sub>22</sub></td>
+</tr>
+
+<tr>
+<td>x<sub>3</sub></td>
+<td>x<sub>30</sub></td>
+<td>x<sub>31</sub></td>
+<td>x<sub>32</sub></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="expectation-step">Expectation Step</h2>
+
+<p>The purpose of this step is to calculate for each of our features, the probability of that feature belonging to cluster k. In this example we have 4 clusters and 4 data points. So we need to fill in the following table:</p>
+
+<table>
+<thead>
+<tr>
+<th>feature</th>
+<th>k<sub>0</sub></th>
+<th>k<sub>1</sub></th>
+<th>k<sub>2</sub></th>
+<th>k<sub>3</sub></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>x<sub>0</sub></td>
+<td>γ<sub>00</sub></td>
+<td>γ<sub>01</sub></td>
+<td>γ<sub>02</sub></td>
+<td>γ<sub>03</sub></td>
+</tr>
+
+<tr>
+<td>x<sub>1</sub></td>
+<td>γ<sub>10</sub></td>
+<td>γ<sub>11</sub></td>
+<td>γ<sub>12</sub></td>
+<td>γ<sub>13</sub></td>
+</tr>
+
+<tr>
+<td>x<sub>2</sub></td>
+<td>γ<sub>20</sub></td>
+<td>γ<sub>21</sub></td>
+<td>γ<sub>22</sub></td>
+<td>γ<sub>23</sub></td>
+</tr>
+
+<tr>
+<td>x<sub>3</sub></td>
+<td>γ<sub>30</sub></td>
+<td>γ<sub>31</sub></td>
+<td>γ<sub>32</sub></td>
+<td>γ<sub>33</sub></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="maximization-step">Maximization Step</h2>
+
+<p>In this step we need to update three variables for each of the clusters: the weight, the mean, and the variance. In this article I will use w<sub>j</sub> to represent the weight of the j<sup>th</sup> gaussian, μ<sub>j</sub> to represent the j<sup>th</sup> mean, and σ<sub>j</sub> to represent the j<sup>th</sup> variance.</p>
+
+<h3 id="calculating-w-sub-j-sub">Calculating w<sub>j</sub></h3>
+
+<p>The first variable will be r<sub>j</sub>, which is the sum of gammas corresponding to a given cluster k<sub>j</sub>. In other words,</p>
+
+<p style="text-align: center; font-size: 1.5em">
+$ r_{j} = \sum_{i=0}^3 γ_{ji} $
+</p>
+
+<p>Basically, r<sub>j</sub> is the sum of the gammas in the j<sup>th</sup> column. We will use this r<sub>j</sub> to calculate a w<sub>j</sub> for each cluster, the &ldquo;mixing weight&rdquo; of the gaussian. Divide by the number of features (in this case 4):</p>
+
+<p style="text-align: center; font-size: 1.5em">
+$ w_{j} = {r_{j} \over 4} $
+</p>
+
+<h3 id="calculating-μ-sub-j-sub">Calculating μ<sub>j</sub></h3>
+
+<p>Next we calculate the means μ<sub>j</sub> of the gaussians i.e. the point in n-dimensional space over which the (n+1)-dimensional bell curve is centered. Because in our example each feature x<sub>i</sub> contains 3 dimensions (x<sub>0</sub> = [d<sub>00</sub>, d<sub>01</sub>, d<sub>02</sub>]), the means will also need to have 3 dimensions each.</p>
+
+<p>μ<sub>j</sub> is calculated as follows:</p>
+
+<p style="font-size: 1.5em">
+$$ μ_{j} = {1 \over r_{j} } \sum_{i=0}^3 γ_{ji} x_{i} $$
+</p>
+
+<p>Let&rsquo;s work through the first μ. For simplicity we will multiply by r<sub>j</sub> for now. For the first mean μ<sub>0</sub>:</p>
+
+<p style="font-size: 1.5em">
+$$ r_j μ_0 = γ_{00} x_{0} + γ_{01} x_{1} + γ_{02} x_{2} + γ_{03} x_{3} $$
+</p>
+
+<p style="font-size: 1.5em">
+$$ = γ_{00} \begin{bmatrix}
+d_{00} \\
+d_{01} \\
+d_{02}
+\end{bmatrix} +
+γ_{01}
+\begin{bmatrix}
+d_{10} \\
+d_{11} \\
+d_{12}
+\end{bmatrix} +
+γ_{02}
+\begin{bmatrix}
+d_{20} \\
+d_{21} \\
+d_{22}
+\end{bmatrix} +
+γ_{03}
+\begin{bmatrix}
+d_{30} \\
+d_{31} \\
+d_{32}
+\end{bmatrix}$$
+</p>
+
+<p>So we are essentially multiplying the gammas associated with a gaussian by all of the features we have. This matrix multiplication can be rolled up into</p>
+
+<p style="font-size: 1.5em">
+$$ = \begin{bmatrix}
+d_{00} & d_{10} & d_{20} & d_{30} \\
+d_{01} & d_{11} & d_{21} & d_{31} \\
+d_{02} & d_{12} & d_{22} & d_{32}
+\end{bmatrix}
+\begin{bmatrix}
+γ_{00} \\
+γ_{01} \\
+γ_{02} \\
+γ_{03} \\
+\end{bmatrix}
+= \begin{bmatrix}
+μ_{00} \\
+μ_{01} \\
+μ_{02}
+\end{bmatrix}
+$$
+</p>
+
+<p>Don&rsquo;t forget to divide by r<sub>j</sub> again! It makes sense that each μ should have 3 dimensions, since our features also each have 3 dimensions.</p>
+
+<h3 id="calculating-σ-sub-j-sub">Calculating σ<sub>j</sub></h3>
+
+<p>Technically this is σ<sup>2</sup> if you&rsquo;re here from statistics, but since we never take the square root it doesn&rsquo;t matter for our purposes.</p>
+
+<h3 id="all-together-now-e-step-with-code">All together now. E step with code.</h3>
+
+<p>Alright, enough math. As fun as it is for you to read, it&rsquo;s even more fun to write in markdown.</p>
+
+<p>All of the math above for calculating w, μ and σ can be written succinctly in python. Here I am using <a href="https://numpy.org/">numpy</a> to take advantage of some pretty slick matrix operations they have available.</p>
+
+<pre><code class="language-python">&quot;&quot;&quot;
+Fit GMM to the given data using self.n_clusters number of gaussians.
+Features may be multi-dimensional.
+
+Args:
+  features: numpy array containing inputs of size
+    (n_samples, n_dimensions)
+  expectations: numpy array containing gammas from E step. Size is
+    (n_features, n_clusters)
+Returns:
+  means: updated means
+  covariances: updated covariances
+  mixing_weights: updated mixing weights
+&quot;&quot;&quot;
+
+def maximization_step(self, features, expectations):
+  # initialize lists to hold our parameters
+  mixing_weights, means, covariances = [], [], []
+
+  for cluster in range(self.n_clusters):
+    # gammas will hold a column from the expectations matrix
+    gammas = expectations[:,cluster]
+
+    # r is just the sum of a column
+    r = np.sum(gammas)
+
+    # calculate mixing weight
+    w = r / len(features)
+    mixing_weights.append(w)
+
+    # calculate means
+    # the @ symbol is a slick shortcut for matrix multiplication
+    mu = (gammas @ features) / r
+    means.append(mu)
+
+    # calculate covariances
+    diff_sq = (features-mu) ** 2
+    cov = (gammas @ diff_sq) / r
+    covariances.append(cov)
+
+  return means, covariances, mixing_weights
+</code></pre>
+
+<h2 id="resources">Resources</h2>
+
+<p><a href="https://www.python-course.eu/expectation_maximization_and_gaussian_mixture_models.php">https://www.python-course.eu/expectation_maximization_and_gaussian_mixture_models.php</a></p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/machine-learning/">machine-learning</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/math/">math</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/clustering/">clustering</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/python/">python</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        839 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2020-12-10 13:57
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://lukesalamone.github.io/posts/translate-imessages/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Translate Imessages</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/ai-grad-school/">
+                <span class="button__text">Should you go to grad school for AI?</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            <span><a href="https://lukesalamone.com/" target="_blank">Luke Salamone</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+
+
+
+    </body>
+</html>

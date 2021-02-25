@@ -3,22 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://lukesalamone.github.io/posts/python-format-string/</loc>
+    <lastmod>2021-02-24T21:22:42-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/</loc>
+    <lastmod>2021-02-24T21:22:42-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/posts/</loc>
+    <lastmod>2021-02-24T21:22:42-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/tags/python/</loc>
+    <lastmod>2021-02-24T21:22:42-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/tags/</loc>
+    <lastmod>2021-02-24T21:22:42-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/posts/cpd-use-of-force/</loc>
+    <lastmod>2020-12-26T23:12:08-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/tags/untagged/</loc>
+    <lastmod>2020-12-26T23:12:08-06:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://lukesalamone.github.io/tags/audio/</loc>
     <lastmod>2020-12-17T11:22:43-06:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lukesalamone.github.io/</loc>
-    <lastmod>2020-12-17T11:22:43-06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://lukesalamone.github.io/tags/neural-networks/</loc>
-    <lastmod>2020-12-17T11:22:43-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lukesalamone.github.io/posts/</loc>
     <lastmod>2020-12-17T11:22:43-06:00</lastmod>
   </url>
   
@@ -33,13 +58,48 @@
   </url>
   
   <url>
-    <loc>https://lukesalamone.github.io/tags/</loc>
+    <loc>https://lukesalamone.github.io/tags/video/</loc>
     <lastmod>2020-12-17T11:22:43-06:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lukesalamone.github.io/tags/video/</loc>
-    <lastmod>2020-12-17T11:22:43-06:00</lastmod>
+    <loc>https://lukesalamone.github.io/tags/aws/</loc>
+    <lastmod>2020-12-10T16:02:57-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/posts/translate-imessages/</loc>
+    <lastmod>2020-12-10T16:02:57-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/tags/clustering/</loc>
+    <lastmod>2020-12-10T13:57:26-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/posts/gmm-for-dummies-1/</loc>
+    <lastmod>2020-12-10T13:57:26-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/tags/machine-learning/</loc>
+    <lastmod>2020-12-10T13:57:26-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/tags/math/</loc>
+    <lastmod>2020-12-10T13:57:26-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/posts/ai-grad-school/</loc>
+    <lastmod>2020-10-24T20:05:22-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/posts/gmm-for-dummies-0/</loc>
+    <lastmod>2020-10-24T18:10:29-05:00</lastmod>
   </url>
   
   <url>
@@ -54,11 +114,6 @@
   
   <url>
     <loc>https://lukesalamone.github.io/tags/minimax/</loc>
-    <lastmod>2020-10-24T17:45:41-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lukesalamone.github.io/tags/python/</loc>
     <lastmod>2020-10-24T17:45:41-05:00</lastmod>
   </url>
   
