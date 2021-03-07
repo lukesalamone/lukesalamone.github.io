@@ -7,9 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 24 Feb 2021 21:22:42 -0600</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Mar 2021 14:05:27 -0600</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>How to use python f-strings</title>
+      <title>Python: Read &amp; Write Json</title>
+      <link>https://lukesalamone.github.io/posts/read-write-json/</link>
+      <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/read-write-json/</guid>
+      <description>Often it is useful to save python data to json files. The following code will demonstrate how that can be done.
+ &amp;ldquo;God bless JSON!&amp;rdquo; ~ a soon to be famous programmer
+ import json data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} filename = &#39;awesome_data.json&#39; # write data to file with open(filename, &#39;w&#39;) as f: json.dump(data, f) # read json from file with open(filename, &#39;r&#39;) as f: data = json.load(f) print(data) # prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}  </description>
+    </item>
+    
+    <item>
+      <title>Python: Formatting a string</title>
       <link>https://lukesalamone.github.io/posts/python-format-string/</link>
       <pubDate>Wed, 24 Feb 2021 21:22:42 -0600</pubDate>
       

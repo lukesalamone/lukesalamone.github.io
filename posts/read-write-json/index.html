@@ -5,17 +5,18 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="description" content="There are three main ways to format strings in python:
-name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s and I like %s.&amp;quot; % (name, food) # str.format() &amp;quot;My name is {0} and I like {1}.&amp;quot;.format(name, food) # f-strings f&amp;quot;My name is {name} and I like {food}.&amp;quot;  " />
-<meta name="keywords" content=", python, quick-reference" />
+<meta name="description" content="Often it is useful to save python data to json files. The following code will demonstrate how that can be done.
+ &amp;ldquo;God bless JSON!&amp;rdquo; ~ a soon to be famous programmer
+ import json data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} filename = &#39;awesome_data.json&#39; # write data to file with open(filename, &#39;w&#39;) as f: json.dump(data, f) # read json from file with open(filename, &#39;r&#39;) as f: data = json.load(f) print(data) # prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}  " />
+<meta name="keywords" content=", python, json, quick-reference" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://lukesalamone.github.io/posts/python-format-string/" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/read-write-json/" />
 
 
     <title>
         
-            Python: Formatting a string :: Luke Salamone&#39;s Blog 
+            Python: Read &amp; Write Json :: Luke Salamone&#39;s Blog 
         
     </title>
 
@@ -33,42 +34,45 @@ name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s
 
 
 
-<meta itemprop="name" content="Python: Formatting a string">
-<meta itemprop="description" content="There are three main ways to format strings in python:
-name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &quot;My name is %s and I like %s.&quot; % (name, food) # str.format() &quot;My name is {0} and I like {1}.&quot;.format(name, food) # f-strings f&quot;My name is {name} and I like {food}.&quot;  ">
-<meta itemprop="datePublished" content="2021-02-24T21:22:42-06:00" />
-<meta itemprop="dateModified" content="2021-02-24T21:22:42-06:00" />
-<meta itemprop="wordCount" content="51">
+<meta itemprop="name" content="Python: Read &amp; Write Json">
+<meta itemprop="description" content="Often it is useful to save python data to json files. The following code will demonstrate how that can be done.
+ &ldquo;God bless JSON!&rdquo; ~ a soon to be famous programmer
+ import json data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} filename = &#39;awesome_data.json&#39; # write data to file with open(filename, &#39;w&#39;) as f: json.dump(data, f) # read json from file with open(filename, &#39;r&#39;) as f: data = json.load(f) print(data) # prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}  ">
+<meta itemprop="datePublished" content="2021-03-07T14:05:27-06:00" />
+<meta itemprop="dateModified" content="2021-03-07T14:05:27-06:00" />
+<meta itemprop="wordCount" content="74">
 <meta itemprop="image" content="https://lukesalamone.github.io"/>
 
 
 
-<meta itemprop="keywords" content="python,quick-reference," />
+<meta itemprop="keywords" content="python,json,quick-reference," />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="Python: Formatting a string"/>
-<meta name="twitter:description" content="There are three main ways to format strings in python:
-name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &quot;My name is %s and I like %s.&quot; % (name, food) # str.format() &quot;My name is {0} and I like {1}.&quot;.format(name, food) # f-strings f&quot;My name is {name} and I like {food}.&quot;  "/>
+<meta name="twitter:title" content="Python: Read &amp; Write Json"/>
+<meta name="twitter:description" content="Often it is useful to save python data to json files. The following code will demonstrate how that can be done.
+ &ldquo;God bless JSON!&rdquo; ~ a soon to be famous programmer
+ import json data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} filename = &#39;awesome_data.json&#39; # write data to file with open(filename, &#39;w&#39;) as f: json.dump(data, f) # read json from file with open(filename, &#39;r&#39;) as f: data = json.load(f) print(data) # prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}  "/>
 
 
 
-    <meta property="og:title" content="Python: Formatting a string" />
-<meta property="og:description" content="There are three main ways to format strings in python:
-name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &quot;My name is %s and I like %s.&quot; % (name, food) # str.format() &quot;My name is {0} and I like {1}.&quot;.format(name, food) # f-strings f&quot;My name is {name} and I like {food}.&quot;  " />
+    <meta property="og:title" content="Python: Read &amp; Write Json" />
+<meta property="og:description" content="Often it is useful to save python data to json files. The following code will demonstrate how that can be done.
+ &ldquo;God bless JSON!&rdquo; ~ a soon to be famous programmer
+ import json data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} filename = &#39;awesome_data.json&#39; # write data to file with open(filename, &#39;w&#39;) as f: json.dump(data, f) # read json from file with open(filename, &#39;r&#39;) as f: data = json.load(f) print(data) # prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/python-format-string/" />
+<meta property="og:url" content="https://lukesalamone.github.io/posts/read-write-json/" />
 <meta property="og:image" content="https://lukesalamone.github.io"/>
-<meta property="article:published_time" content="2021-02-24T21:22:42-06:00" />
-<meta property="article:modified_time" content="2021-02-24T21:22:42-06:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
+<meta property="article:published_time" content="2021-03-07T14:05:27-06:00" />
+<meta property="article:modified_time" content="2021-03-07T14:05:27-06:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2021-02-24 21:22:42 -0600 CST" />
+    <meta property="article:published_time" content="2021-03-07 14:05:27 -0600 CST" />
 
 
 
@@ -125,25 +129,35 @@ name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &quot;My name is %s and
 
     <article>
       <h1 class="post-title">
-        <a href="https://lukesalamone.github.io/posts/python-format-string/">Python: Formatting a string</a>
+        <a href="https://lukesalamone.github.io/posts/read-write-json/">Python: Read &amp; Write Json</a>
       </h1>
 
       
 
       <div class="post-content">
-        <p>There are three main ways to format strings in python:</p>
+        <p>Often it is useful to save python data to json files. The following code will demonstrate how that can be done.</p>
 
-<pre><code class="language-python">name = 'Luke'
-food = 'pizza'
+<blockquote>
+<p>&ldquo;God bless JSON!&rdquo; ~ a soon to be famous programmer</p>
+</blockquote>
 
-# old style
-&quot;My name is %s and I like %s.&quot; % (name, food)
+<pre><code class="language-python">import json
 
-# str.format()
-&quot;My name is {0} and I like {1}.&quot;.format(name, food)
+data = {'a': 1, 'b':'hello', 'c':False}
+filename = 'awesome_data.json'
 
-# f-strings
-f&quot;My name is {name} and I like {food}.&quot;
+# write data to file
+with open(filename, 'w') as f:
+  json.dump(data, f)
+
+
+# read json from file
+with open(filename, 'r') as f:
+  data = json.load(f)
+
+
+print(data)
+# prints {'a': 1, 'b':'hello', 'c':False}
 </code></pre>
 
       </div>
@@ -157,6 +171,7 @@ f&quot;My name is {name} and I like {food}.&quot;
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
         <span class="tag"><a href="https://lukesalamone.github.io/tags/python/">python</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/json/">json</a></span>
         <span class="tag"><a href="https://lukesalamone.github.io/tags/quick-reference/">quick-reference</a></span>
         
     </p>
@@ -171,7 +186,7 @@ f&quot;My name is {name} and I like {food}.&quot;
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        51 Words
+        74 Words
       </p>
 
       <p>
@@ -182,7 +197,7 @@ f&quot;My name is {name} and I like {food}.&quot;
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-02-24 21:22
+          2021-03-07 14:05
         
 
          
@@ -200,18 +215,11 @@ f&quot;My name is {name} and I like {food}.&quot;
 
         <div class="pagination__buttons">
           
-            <span class="button previous">
-              <a href="https://lukesalamone.github.io/posts/read-write-json/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Python: Read &amp; Write Json</span>
-              </a>
-            </span>
-          
 
           
             <span class="button next">
-              <a href="https://lukesalamone.github.io/posts/siamese-nn-video/">
-                <span class="button__text">Siamese Neural Networks (Video)</span>
+              <a href="https://lukesalamone.github.io/posts/python-format-string/">
+                <span class="button__text">Python: Formatting a string</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

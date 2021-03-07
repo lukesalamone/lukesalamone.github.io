@@ -7,22 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 24 Feb 2021 21:22:42 -0600</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Mar 2021 14:05:27 -0600</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>how-to</title>
-      <link>https://lukesalamone.github.io/tags/how-to/</link>
-      <pubDate>Wed, 24 Feb 2021 21:22:42 -0600</pubDate>
+      <title>json</title>
+      <link>https://lukesalamone.github.io/tags/json/</link>
+      <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
       
-      <guid>https://lukesalamone.github.io/tags/how-to/</guid>
+      <guid>https://lukesalamone.github.io/tags/json/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python</title>
       <link>https://lukesalamone.github.io/tags/python/</link>
-      <pubDate>Wed, 24 Feb 2021 21:22:42 -0600</pubDate>
+      <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
       
       <guid>https://lukesalamone.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>quick-reference</title>
+      <link>https://lukesalamone.github.io/tags/quick-reference/</link>
+      <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/quick-reference/</guid>
       <description></description>
     </item>
     
@@ -77,15 +86,6 @@
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
       
       <guid>https://lukesalamone.github.io/tags/minimax/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>quick-reference</title>
-      <link>https://lukesalamone.github.io/tags/quick-reference/</link>
-      <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
-      
-      <guid>https://lukesalamone.github.io/tags/quick-reference/</guid>
       <description></description>
     </item>
     

@@ -7,7 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 24 Oct 2020 17:45:41 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/quick-reference/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Mar 2021 14:05:27 -0600</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/quick-reference/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python: Read &amp; Write Json</title>
+      <link>https://lukesalamone.github.io/posts/read-write-json/</link>
+      <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/read-write-json/</guid>
+      <description>Often it is useful to save python data to json files. The following code will demonstrate how that can be done.
+ &amp;ldquo;God bless JSON!&amp;rdquo; ~ a soon to be famous programmer
+ import json data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} filename = &#39;awesome_data.json&#39; # write data to file with open(filename, &#39;w&#39;) as f: json.dump(data, f) # read json from file with open(filename, &#39;r&#39;) as f: data = json.load(f) print(data) # prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}  </description>
+    </item>
+    
+    <item>
+      <title>Python: Formatting a string</title>
+      <link>https://lukesalamone.github.io/posts/python-format-string/</link>
+      <pubDate>Wed, 24 Feb 2021 21:22:42 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/python-format-string/</guid>
+      <description>There are three main ways to format strings in python:
+name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s and I like %s.&amp;quot; % (name, food) # str.format() &amp;quot;My name is {0} and I like {1}.&amp;quot;.format(name, food) # f-strings f&amp;quot;My name is {name} and I like {food}.&amp;quot;  </description>
+    </item>
+    
     <item>
       <title>Managing Python Environments</title>
       <link>https://lukesalamone.github.io/posts/managing-python-environments/</link>
