@@ -3,17 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://lukesalamone.github.io/tags/json/</loc>
-    <lastmod>2021-03-07T14:05:27-06:00</lastmod>
+    <loc>https://lukesalamone.github.io/tags/aws/</loc>
+    <lastmod>2021-03-10T03:03:53-06:00</lastmod>
   </url>
   
   <url>
     <loc>https://lukesalamone.github.io/</loc>
-    <lastmod>2021-03-07T14:05:27-06:00</lastmod>
+    <lastmod>2021-03-10T03:03:53-06:00</lastmod>
   </url>
   
   <url>
     <loc>https://lukesalamone.github.io/posts/</loc>
+    <lastmod>2021-03-10T03:03:53-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/tags/quick-reference/</loc>
+    <lastmod>2021-03-10T03:03:53-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/posts/s3-bucket-url/</loc>
+    <lastmod>2021-03-10T03:03:53-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/tags/</loc>
+    <lastmod>2021-03-10T03:03:53-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lukesalamone.github.io/tags/json/</loc>
     <lastmod>2021-03-07T14:05:27-06:00</lastmod>
   </url>
   
@@ -24,16 +44,6 @@
   
   <url>
     <loc>https://lukesalamone.github.io/posts/read-write-json/</loc>
-    <lastmod>2021-03-07T14:05:27-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lukesalamone.github.io/tags/quick-reference/</loc>
-    <lastmod>2021-03-07T14:05:27-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lukesalamone.github.io/tags/</loc>
     <lastmod>2021-03-07T14:05:27-06:00</lastmod>
   </url>
   
