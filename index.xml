@@ -30,6 +30,17 @@ For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo
     </item>
     
     <item>
+      <title>Autoencoding Stock Prices</title>
+      <link>https://lukesalamone.github.io/posts/build-an-autoencoder/</link>
+      <pubDate>Sun, 07 Mar 2021 01:31:51 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/build-an-autoencoder/</guid>
+      <description>Autoencoding stock prices as found in Heaton et al., 2016
+  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
+Once we&amp;rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index.</description>
+    </item>
+    
+    <item>
       <title>Python: Formatting a string</title>
       <link>https://lukesalamone.github.io/posts/python-format-string/</link>
       <pubDate>Wed, 24 Feb 2021 21:22:42 -0600</pubDate>

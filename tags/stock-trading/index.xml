@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>stock-trading on Luke Salamone&#39;s Blog</title>
+    <link>https://lukesalamone.github.io/tags/stock-trading/</link>
+    <description>Recent content in stock-trading on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sun, 07 Mar 2021 01:31:51 -0600</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/stock-trading/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Autoencoding Stock Prices</title>
+      <link>https://lukesalamone.github.io/posts/build-an-autoencoder/</link>
+      <pubDate>Sun, 07 Mar 2021 01:31:51 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/build-an-autoencoder/</guid>
+      <description>Autoencoding stock prices as found in Heaton et al., 2016
+  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
+Once we&amp;rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index.</description>
+    </item>
+    
+  </channel>
+</rss>
