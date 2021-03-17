@@ -14,8 +14,9 @@
       <pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
       
       <guid>https://lukesalamone.github.io/posts/s3-bucket-url/</guid>
-      <description>Assuming your bucket is publicly accessible, the url of your S3 bucket will be http://[bucket-name].s3-website-[region].amazonaws.com.
-For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be http://mybucket.s3-website-us-east-1.amazonaws.com.</description>
+      <description>Assuming your bucket is publicly accessible, the url of your S3 bucket will be
+http://[bucket-name].s3-website-[region].amazonaws.com  For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be
+http://mybucket.s3-website-us-east-1.amazonaws.com  </description>
     </item>
     
   </channel>

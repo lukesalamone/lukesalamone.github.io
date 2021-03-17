@@ -15,11 +15,18 @@
             <pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
             
             <guid>https://lukesalamone.github.io/posts/s3-bucket-url/</guid>
-            <description>Assuming your bucket is publicly accessible, the url of your S3 bucket will be http://[bucket-name].s3-website-[region].amazonaws.com.
-For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be http://mybucket.s3-website-us-east-1.amazonaws.com.</description>
-            <content type="html"><![CDATA[<p>Assuming your bucket is publicly accessible, the url of your S3 bucket will be <code>http://[bucket-name].s3-website-[region].amazonaws.com</code>.</p>
+            <description>Assuming your bucket is publicly accessible, the url of your S3 bucket will be
+http://[bucket-name].s3-website-[region].amazonaws.com  For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be
+http://mybucket.s3-website-us-east-1.amazonaws.com  </description>
+            <content type="html"><![CDATA[<p>Assuming your bucket is publicly accessible, the url of your S3 bucket will be</p>
 
-<p>For example for &ldquo;mybucket&rdquo; in &ldquo;us-east-1&rdquo; your url will be <code>http://mybucket.s3-website-us-east-1.amazonaws.com</code>.</p>
+<pre><code>http://[bucket-name].s3-website-[region].amazonaws.com
+</code></pre>
+
+<p>For example for &ldquo;mybucket&rdquo; in &ldquo;us-east-1&rdquo; your url will be</p>
+
+<pre><code>http://mybucket.s3-website-us-east-1.amazonaws.com
+</code></pre>
 ]]></content>
         </item>
         
