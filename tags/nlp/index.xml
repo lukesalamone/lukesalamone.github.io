@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 01 Apr 2021 12:14:49 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Apr 2021 00:50:38 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What is Temperature in NLP?🐭</title>
+      <link>https://lukesalamone.github.io/posts/what-is-temperature/</link>
+      <pubDate>Fri, 02 Apr 2021 00:50:38 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/what-is-temperature/</guid>
+      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Temperature is a parameter used in natural language processing models to increase or decrease the &amp;ldquo;confidence&amp;rdquo; a model has in its most likely response.</description>
+    </item>
+    
     <item>
       <title>What is Perplexity?</title>
       <link>https://lukesalamone.github.io/posts/perplexity/</link>
