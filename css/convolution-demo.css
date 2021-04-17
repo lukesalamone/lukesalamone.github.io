@@ -1,0 +1,59 @@
+#input-grid {
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+}
+
+#output-grid {
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+#errors {
+  float:left;
+  color: #a00;
+}
+
+#input-output .row {
+  float: left;
+  font-size: 0;
+  display: block;
+  clear: both;
+}
+
+#input-output .row div{
+  background: #fff;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  border-left: 1px solid #555;
+  border-top: 1px solid #555;
+}
+
+#input-output .row div:first-child {
+  border-left: none;
+}
+
+#input-output .row:first-child div {
+  border-top: none;
+}
+
+#input-output .row div.window-left {
+  border-left: 1px solid #a100ff !important;
+}
+
+#input-output .row div.window-top {
+  border-top: 1px solid #a100ff !important;
+}
+
+#input-output .row div.window-right {
+  border-right: 1px solid #a100ff !important;
+}
+
+#input-output .row div.window-bottom {
+  border-bottom: 1px solid #a100ff !important;
+}

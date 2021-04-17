@@ -6,8 +6,119 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Fri, 02 Apr 2021 00:50:38 -0500</lastBuildDate>
+        <lastBuildDate>Fri, 16 Apr 2021 21:08:53 -0500</lastBuildDate>
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>How to Train and Run a Simple Language Model</title>
+            <link>https://lukesalamone.github.io/posts/running-simple-language-model/</link>
+            <pubDate>Fri, 16 Apr 2021 21:08:53 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/running-simple-language-model/</guid>
+            <description>This article will show how to run a simple language model, KenLM. It&amp;rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&amp;rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.
+Let&amp;rsquo;s work backwards from where we&amp;rsquo;re trying to get to. When you&amp;rsquo;ve finished, you should be able to run the following script:</description>
+            <content type="html"><![CDATA[
+
+<p>This article will show how to run a simple language model, KenLM. It&rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.</p>
+
+<p>Let&rsquo;s work backwards from where we&rsquo;re trying to get to. When you&rsquo;ve finished, you should be able to run the following script:</p>
+
+<pre><code class="language-python">import kenlm
+
+path = 'path/to/model.arpa'
+lm = kenlm.LanguageModel(path)
+
+sentence = &quot;I am not superstitious but I am a little stitious&quot;
+print(model.score(sentence))
+</code></pre>
+
+<p>The first step will be to build KenLM. Then, we will build the ARPA file which KenLM uses to evaluate.</p>
+
+<h2 id="building-kenlm">Building KenLM</h2>
+
+<p>First, clone this repository:</p>
+
+<p><code>git clone git@github.com:kpu/kenlm.git</code></p>
+
+<p>Now we need to build the KenLM toolkit. Run the following to build:</p>
+
+<pre><code>mkdir -p build
+cd build
+cmake ..
+make -j 4
+</code></pre>
+
+<p>Now we just need to provide the model with a <code>.arpa</code> ngram language model file. So let&rsquo;s get one.</p>
+
+<h2 id="building-an-ngram-language-model-from-wikitext-2">Building an ngram language model from Wikitext-2</h2>
+
+<p>First, let&rsquo;s clone a repository which will build an ARPA file. This repository builds the ngram file from <a href="https://paperswithcode.com/dataset/wikitext-2">Wikitext-2</a>, a common dataset used in natural language processing.</p>
+
+<pre><code>git clone git@github.com:daandouwe/ngram-lm.git
+cd ngram-lm
+mkdir data
+./get-data.sh
+mkdir arpa
+./main.py --order 3 --interpolate --save-arpa --name wiki-interpolate
+</code></pre>
+
+<p>Once that has finished, you&rsquo;ll have new <code>.arpa</code> in the <code>arpa</code> directory you created. This script took the longest to run on my machine. Be patient, your computer is busy reading all of Wikipedia.</p>
+
+<h2 id="all-together-now">All Together Now</h2>
+
+<p>Now we&rsquo;re finally ready to evaluate a sentence with the language model.</p>
+
+<pre><code class="language-python">import kenlm
+
+path = 'path/to/model.arpa'
+lm = kenlm.LanguageModel(path)
+
+sentence = &quot;I am not superstitious but I am a little stitious&quot;
+print(model.score(sentence))
+</code></pre>
+
+<p>Which prints something like</p>
+
+<pre><code>----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+-24.47921371459961
+</code></pre>
+
+<p>Now if you&rsquo;re interested in a bit more information about what&rsquo;s going on, you can add this bit at the bottom:</p>
+
+<pre><code class="language-python">words = ['&lt;s&gt;'] + sentence.split() + ['&lt;/s&gt;']
+for i, (prob, length, oov) in enumerate(lm.full_scores(sentence)):
+  print(f'{prob} {length}: {&quot; &quot;.join(words[i+2-length:i+2])}')
+  if oov:
+    print(f'\t&quot;{words[i+1]}&quot; is an OOV')
+
+for w in words:
+  if not w in lm:
+    print(f'&quot;{w}&quot; is an OOV')
+</code></pre>
+
+<p>Which adds this to your output:</p>
+
+<pre><code>-3.1138248443603516 2: &lt;s&gt; I
+-1.1560251712799072 3: &lt;s&gt; I am
+-1.1645264625549316 3: I am not
+-4.912360191345215 1: superstitious
+-4.504511833190918 1: but
+-2.2214112281799316 2: but I
+-1.1531075239181519 3: but I am
+-1.2614283561706543 3: I am a
+-0.9001830816268921 3: am a little
+-1.2325057983398438 3: a little stitious
+	&quot;stitious&quot; is an OOV
+-2.8593297004699707 2: stitious &lt;/s&gt;
+&quot;stitious&quot; is an OOV
+</code></pre>
+
+<p>To the left of each term is the log (base 10) probability of each term occurring. For the first term, <code>&lt;s&gt; I</code> means start of sentence followed by &ldquo;I&rdquo;, which the model has assigned a log probability of -3.11. That&rsquo;s around 0.00078. You might think it&rsquo;s strange that a sentence beginning with &ldquo;I&rdquo; is so unlikely but we are using Wikitext-2. Wikitext-2 is Wikipedia articles. Not a lot of sentences on Wikipedia begin with &ldquo;I&rdquo;.</p>
+
+<p>Notice that &ldquo;stitious&rdquo; is an OOV (out of vocabulary) term here. Clearly the language model doesn&rsquo;t appreciate humor. We&rsquo;ll have to tackle that next time.</p>
+]]></content>
+        </item>
         
         <item>
             <title>What is Temperature in NLP?🐭</title>
