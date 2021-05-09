@@ -474,6 +474,26 @@ http://mybucket.s3-website-us-east-1.amazonaws.com  </description>
         </item>
         
         <item>
+            <title>About My Quick Reference Articles</title>
+            <link>https://lukesalamone.github.io/posts/why-how-to/</link>
+            <pubDate>Sun, 07 Mar 2021 14:44:37 -0600</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/why-how-to/</guid>
+            <description>I&amp;rsquo;ve created a few quick-reference articles and it might not be clear why. There are a few reasons:
+ These articles are mainly a reference for me. I find myself searching the same things over and over, looking for the purple link, scrolling through the article, then copy &amp;amp; pasting code. I&amp;rsquo;d rather not go through the hassle. These articles aim to solve that problem. I aim to keep the answers above the fold.</description>
+            <content type="html"><![CDATA[<p>I&rsquo;ve created a few quick-reference articles and it might not be clear why. There are a few reasons:</p>
+
+<ol>
+<li>These articles are mainly a reference for me. I find myself searching the same things over and over, looking for the purple link, scrolling through the article, then copy &amp; pasting code. I&rsquo;d rather not go through the hassle. These articles aim to solve that problem.</li>
+<li>I aim to keep the answers <a href="https://en.wikipedia.org/wiki/Above_the_fold#In_web_design">above the fold</a>. I don&rsquo;t want to have to scroll down to find the answer. I almost never read the surrounding prose when I am in &ldquo;coding mode&rdquo;.</li>
+<li>Writing these things out explicitly helps me to remember them. Paradoxically, this may make these how-to pages less useful to me, but maybe someone else will find them useful.</li>
+</ol>
+
+<p>These quick reference articles don&rsquo;t explain much because I don&rsquo;t need an explanation of what is going on. I just need a chunk of working code. There are other websites which have far more comprehensive guides covering how to do things. They cover all of the fundamentals of how things are done. But I don&rsquo;t need that, I just want a 30 second reference with a working chunk of code.</p>
+]]></content>
+        </item>
+        
+        <item>
             <title>Python: Read &amp; Write Json</title>
             <link>https://lukesalamone.github.io/posts/read-write-json/</link>
             <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>

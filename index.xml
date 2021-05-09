@@ -58,6 +58,16 @@ http://mybucket.s3-website-us-east-1.amazonaws.com  </description>
     </item>
     
     <item>
+      <title>About My Quick Reference Articles</title>
+      <link>https://lukesalamone.github.io/posts/why-how-to/</link>
+      <pubDate>Sun, 07 Mar 2021 14:44:37 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/why-how-to/</guid>
+      <description>I&amp;rsquo;ve created a few quick-reference articles and it might not be clear why. There are a few reasons:
+ These articles are mainly a reference for me. I find myself searching the same things over and over, looking for the purple link, scrolling through the article, then copy &amp;amp; pasting code. I&amp;rsquo;d rather not go through the hassle. These articles aim to solve that problem. I aim to keep the answers above the fold.</description>
+    </item>
+    
+    <item>
       <title>Python: Read &amp; Write Json</title>
       <link>https://lukesalamone.github.io/posts/read-write-json/</link>
       <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
