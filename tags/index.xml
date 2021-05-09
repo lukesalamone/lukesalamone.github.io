@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 16 Apr 2021 21:08:53 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 May 2021 15:06:11 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python</title>
+      <link>https://lukesalamone.github.io/tags/python/</link>
+      <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>quick-reference</title>
+      <link>https://lukesalamone.github.io/tags/quick-reference/</link>
+      <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/quick-reference/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>webdev</title>
+      <link>https://lukesalamone.github.io/tags/webdev/</link>
+      <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/webdev/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>nlp</title>
       <link>https://lukesalamone.github.io/tags/nlp/</link>
@@ -36,29 +63,11 @@
     </item>
     
     <item>
-      <title>quick-reference</title>
-      <link>https://lukesalamone.github.io/tags/quick-reference/</link>
-      <pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
-      
-      <guid>https://lukesalamone.github.io/tags/quick-reference/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>json</title>
       <link>https://lukesalamone.github.io/tags/json/</link>
       <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
       
       <guid>https://lukesalamone.github.io/tags/json/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://lukesalamone.github.io/tags/python/</link>
-      <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
-      
-      <guid>https://lukesalamone.github.io/tags/python/</guid>
       <description></description>
     </item>
     
