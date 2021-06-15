@@ -6,8 +6,89 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Sun, 09 May 2021 15:06:11 -0500</lastBuildDate>
+        <lastBuildDate>Mon, 14 Jun 2021 21:05:06 -0500</lastBuildDate>
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>How Does Convolution Work?</title>
+            <link>https://lukesalamone.github.io/posts/how-does-convolution-work/</link>
+            <pubDate>Mon, 14 Jun 2021 21:05:06 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/how-does-convolution-work/</guid>
+            <description>You have probably heard of convolution in the context of convolutional neural networks. But what&amp;rsquo;s really going on? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!
+  Demo    Settings Here you can control the hyperparameters of the convolutional layer.
+ padding:    kernel size:    stride:    speed:        As you&amp;rsquo;ve probably figured out, the left side shows the input, a 20x20 handwritten digit, and the right side shows the output as it is being drawn.</description>
+            <content type="html"><![CDATA[
+
+<p>You have probably heard of convolution in the context of convolutional neural networks. But what&rsquo;s really going on? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!</p>
+
+<p><script src="/js/util.js"></script>
+<script src="/js/convolution-demo.js"></script>
+<link rel="stylesheet" href="/css/convolution-demo.css" /></p>
+
+<h2 id="demo">Demo</h2>
+
+<div id="input-output">
+  <div id="input-grid"></div>
+  <div id="output-grid"></div>
+</div>
+
+<h2 id="settings">Settings</h2>
+
+<p>Here you can control the hyperparameters of the convolutional layer.</p>
+
+<div id="controls">
+  <table>
+    <tr id="padding">
+      <td>padding: <span class="val"></span></td>
+      <td><input type="range" min="0" max="2" value="0"></td>
+    </tr>
+    <tr id="kernelsize">
+      <td>kernel size: <span class="val"></span></td>
+      <td><input type="range" min="1" max="4" value="2"></td>
+    </tr>
+    <tr id="stride">
+      <td>stride: <span class="val"></span></td>
+      <td><input type="range" min="1" max="3" value="1"></td>
+    </tr>
+    <tr id="speed">
+      <td>speed: <span class="val"></span></td>
+      <td><input type="range" min="1" max="5" value="3"></td>
+    </tr>
+    <tr id="errors" style="display:none">
+      <td colspan="2"></td>
+    </tr>
+  </table>
+</div>
+
+<p>As you&rsquo;ve probably figured out, the left side shows the input, a 20x20 handwritten digit, and the right side shows the output as it is being drawn. A convolutional layer will pass a filter over the input, selecting only a small group of pixels at a time.</p>
+
+<p>Not shown: once the filter selects a window of pixels, it will compute a dot product with the pixel values and its own weights. In this demo the filter weights are assumed to be 1 for simplicity.</p>
+
+<h2 id="more-on-the-hyperparameters">More on the hyperparameters</h2>
+
+<p>Sometimes the settings will result in an invalid convolution. This happens if the kernel extends beyond the activation map. We can write a python function to check whether it will be valid:</p>
+
+<pre><code class="language-python">def valid_convolution(input_size, kernel_size, padding, stride):
+  if (input_size + 2*padding - kernel_size) % stride == 0:
+    return True
+  else:
+    return False
+</code></pre>
+
+<h3 id="padding">Padding</h3>
+
+<p>Increasing the padding will add extra pixels, typically zeros, around the edges of the input. This is done in order to ensure that the layer parameters will be valid. Additionally, it causes pixels which would have been on the edges to be more to the middle of the activation map.</p>
+
+<h3 id="kernel-size">Kernel Size</h3>
+
+<p>This refers to the &ldquo;sliding window&rdquo; which passes over the input. Choosing a larger kernel tends to increase the &ldquo;smudging&rdquo; which happens in the output, while a smaller kernel preserves more information for deeper layers. Sometimes kernel size is referred to as filter size.</p>
+
+<h3 id="stride">Stride</h3>
+
+<p>Stride refers to the distance the sliding window will move between steps. A stride of 1 moves the window one pixel to the right, while a stride of 2 moves the window 2 pixels. A larger stride can reduce output layer size at the expense of granularity.</p>
+]]></content>
+        </item>
         
         <item>
             <title>Python: Serve an HTML File</title>
@@ -540,9 +621,8 @@ print(data)
 Once we&amp;rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index.</description>
             <content type="html"><![CDATA[
 
-<figure>
-    <img src="/img/autoencoder.png"
-         alt="Autoencoding stock prices as found in Heaton et al., 2016"/> <figcaption>
+<figure><img src="/img/autoencoder.png"
+         alt="Autoencoding stock prices as found in Heaton et al., 2016"/><figcaption>
             <p>Autoencoding stock prices as found in Heaton et al., 2016</p>
         </figcaption>
 </figure>
@@ -1226,9 +1306,8 @@ In February 2020 I decided to code up Gomoku2049. The game is a demonstration of
 
 <h2 id="minimax-with-alpha-beta-pruning">Minimax with alpha-beta pruning</h2>
 
-<figure>
-    <img src="/img/game-tree.png"
-         alt="In the tree above, the current game is shown on the left, green to move. If green fails to block orange’s 3 in a row now, orange cannot be stopped."/> <figcaption>
+<figure><img src="/img/game-tree.png"
+         alt="In the tree above, the current game is shown on the left, green to move. If green fails to block orange’s 3 in a row now, orange cannot be stopped."/><figcaption>
             <p>In the tree above, the current game is shown on the left, green to move. If green fails to block orange’s 3 in a row now, orange cannot be stopped.</p>
         </figcaption>
 </figure>
@@ -1265,9 +1344,8 @@ At the leaf nodes of the tree, either the game is over (the human has won or the
 
 <p>The biggest benefit of representing the game board this way is that it facilitates bitwise operations, which drastically reduces the time complexity for the static evaluator and gameover functions.</p>
 
-<figure>
-    <img src="/img/bitmask.gif"
-         alt="Here the mask is shown in white, and the actual squares occupied are shown in orange. With each step in the bitmask check, the board and the mask are bitwise ANDed together, a very fast operation which reduces the computational complexity required in the static evaluator and gameover function."/> <figcaption>
+<figure><img src="/img/bitmask.gif"
+         alt="Here the mask is shown in white, and the actual squares occupied are shown in orange. With each step in the bitmask check, the board and the mask are bitwise ANDed together, a very fast operation which reduces the computational complexity required in the static evaluator and gameover function."/><figcaption>
             <p>Here the mask is shown in white, and the actual squares occupied are shown in orange. With each step in the bitmask check, the board and the mask are bitwise ANDed together, a very fast operation which reduces the computational complexity required in the static evaluator and gameover function.</p>
         </figcaption>
 </figure>

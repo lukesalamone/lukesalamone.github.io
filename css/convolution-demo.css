@@ -1,5 +1,18 @@
+article table {
+  width: 400px;
+  margin: auto;
+}
+
+article table tbody tr:nth-child(even) {
+  background-color: inherit;
+}
+
+article table tbody td {
+    min-width: 210px;
+}
+
 #input-grid {
-  padding: 20px;
+  padding: 20px 10px;
   position: relative;
   overflow: hidden;
   display: inline-block;
@@ -7,15 +20,22 @@
 }
 
 #output-grid {
-  padding: 20px;
+  padding: 20px 10px;
   position: relative;
   overflow: hidden;
   display: inline-block;
+  min-height: 340px;
 }
 
 #errors {
-  float:left;
+  /* float:left; */
   color: #a00;
+  text-align: center;
+  font-weight: bold;
+}
+
+#input-output {
+  min-height: 390px;
 }
 
 #input-output .row {
@@ -56,4 +76,10 @@
 
 #input-output .row div.window-bottom {
   border-bottom: 1px solid #a100ff !important;
+}
+
+#controls {
+  width: 100%;
+  background-color: #ffffff08;
+  margin: 20px 0;
 }
