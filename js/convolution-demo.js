@@ -16,6 +16,10 @@ window.onload = async function(){
       reset(getPadding(), getKernelSize(), getStride());
     });
 
+  $('#number select').onchange = () => {
+    reset(getPadding(), getKernelSize(), getStride());
+  }
+
   $("#padding input").oninput = function(){
     reset(getPadding(), getKernelSize(), getStride());
     $('#padding .val').innerText = this.value;
@@ -172,7 +176,7 @@ function clearOutput(padding, kernelSize, stride){
 }
 
 function paddedInput(){
-  window.num = deepCopy(window.numbers[0]);
+  window.num = deepCopy(window.numbers[getNumber()]);
   let padding = getPadding();
   if(!padding) return window.num;
 
@@ -236,6 +240,10 @@ function convolute(x, y, kernelSize){
   }
 
   return max;
+}
+
+function getNumber(){
+  return $('#number select').selectedIndex;
 }
 
 function getPadding(){
