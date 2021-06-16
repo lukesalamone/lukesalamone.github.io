@@ -16,8 +16,7 @@
             
             <guid>https://lukesalamone.github.io/posts/how-does-convolution-work/</guid>
             <description>You have probably heard of convolution in the context of convolutional neural networks. But what&amp;rsquo;s really going on? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!
-  Demo    Settings Here you can control the hyperparameters of the convolutional layer.
- number:   four three eight    padding:    kernel size:    stride:    speed:        As you&amp;rsquo;ve probably figured out, the left side shows the input, a 20x20 handwritten digit, and the right side shows the output as it is being drawn.</description>
+      number:   four three eight    padding:    kernel size:    stride:    speed:        You can use the settings above to control the hyperparameters of the convolutional layer.</description>
             <content type="html"><![CDATA[
 
 <p>You have probably heard of convolution in the context of convolutional neural networks. But what&rsquo;s really going on? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!</p>
@@ -26,16 +25,10 @@
 <script src="/js/convolution-demo.js"></script>
 <link rel="stylesheet" href="/css/convolution-demo.css" /></p>
 
-<h2 id="demo">Demo</h2>
-
 <div id="input-output">
   <div id="input-grid"></div>
   <div id="output-grid"></div>
 </div>
-
-<h2 id="settings">Settings</h2>
-
-<p>Here you can control the hyperparameters of the convolutional layer.</p>
 
 <div id="controls">
   <table>
@@ -70,6 +63,8 @@
     </tr>
   </table>
 </div>
+
+<p>You can use the settings above to control the hyperparameters of the convolutional layer.</p>
 
 <p>As you&rsquo;ve probably figured out, the left side shows the input, a 20x20 handwritten digit, and the right side shows the output as it is being drawn. A convolutional layer will pass a filter over the input, selecting only a small group of pixels at a time.</p>
 
