@@ -48,7 +48,7 @@
 <meta itemprop="description" content="Let&rsquo;s explore how GPT-2 tokenizes text.
 What is tokenization? It&rsquo;s important to understand that GPT-2 doesn&rsquo;t work with strings directly. Instead, it needs to tokenize the input string, which is essentially a process for converting the string into a list of numbers, or &ldquo;tokens&rdquo;. It is these tokens which are passed into the model during training or for inference. As a concrete example, let&rsquo;s look at a few sample sentences:"><meta itemprop="datePublished" content="2021-06-17T19:30:48-05:00" />
 <meta itemprop="dateModified" content="2021-06-17T19:30:48-05:00" />
-<meta itemprop="wordCount" content="708"><meta itemprop="image" content="https://lukesalamone.github.io"/>
+<meta itemprop="wordCount" content="821"><meta itemprop="image" content="https://lukesalamone.github.io"/>
 <meta itemprop="keywords" content="nlp,gpt2," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://lukesalamone.github.io"/>
@@ -275,6 +275,22 @@ len(nltk_words)
 
 <p>Looking at these non-word alphabetic strings, it&rsquo;s interesting to see how the Internet (as GPT-2 saw it) was encoded. Then again, it also contains a lot of proper nouns which wouldn&rsquo;t be in a normal dictionary like &ldquo;starbucks&rdquo;.</p>
 
+<p>Other tokens are clearly vestiges of the scraping process which was used to gather text which GPT-2 trained on. Tokens like &ldquo;rawdownloadcloneembedreportprint&rdquo;, &ldquo;buyableinstoreandonline&rdquo;, &ldquo;randomredditorwithno&rdquo;, and &ldquo;itemthumbnailimage&rdquo; contain next to zero semantic value and the vocabulary space would probably have been better served with more meaningful tokens.</p>
+
+<p>The following are the longest non-dictionary tokens found in GPT-2&rsquo;s vocabulary:</p>
+
+<p>| Token ID | String                           |
+| 39177    | ItemThumbnailImage               |
+| 30210    | guiActiveUnfocused               |
+| 39755    | isSpecialOrderable               |
+| 31576    | externalActionCode               |
+| 39753    | quickShipAvailable               |
+| 39757    | channelAvailability              |
+| 36174    | RandomRedditorWithNo             |
+| 30899    | cloneembedreportprint            |
+| 40242    | BuyableInstoreAndOnline          |
+| 30906    | rawdownloadcloneembedreportprint |</p>
+
 <p>We may also be able to measure performance of GPT-2 on certain tasks based on how many of the tokens were dictionary words. It might be true, for example, that sentences with higher proportions of dictionary word tokens would perform better on sentence completion tasks.</p>
 
       </div>
@@ -302,7 +318,7 @@ len(nltk_words)
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        708 Words
+        821 Words
       </p>
 
       <p>

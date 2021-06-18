@@ -156,6 +156,22 @@ len(nltk_words)
 
 <p>Looking at these non-word alphabetic strings, it&rsquo;s interesting to see how the Internet (as GPT-2 saw it) was encoded. Then again, it also contains a lot of proper nouns which wouldn&rsquo;t be in a normal dictionary like &ldquo;starbucks&rdquo;.</p>
 
+<p>Other tokens are clearly vestiges of the scraping process which was used to gather text which GPT-2 trained on. Tokens like &ldquo;rawdownloadcloneembedreportprint&rdquo;, &ldquo;buyableinstoreandonline&rdquo;, &ldquo;randomredditorwithno&rdquo;, and &ldquo;itemthumbnailimage&rdquo; contain next to zero semantic value and the vocabulary space would probably have been better served with more meaningful tokens.</p>
+
+<p>The following are the longest non-dictionary tokens found in GPT-2&rsquo;s vocabulary:</p>
+
+<p>| Token ID | String                           |
+| 39177    | ItemThumbnailImage               |
+| 30210    | guiActiveUnfocused               |
+| 39755    | isSpecialOrderable               |
+| 31576    | externalActionCode               |
+| 39753    | quickShipAvailable               |
+| 39757    | channelAvailability              |
+| 36174    | RandomRedditorWithNo             |
+| 30899    | cloneembedreportprint            |
+| 40242    | BuyableInstoreAndOnline          |
+| 30906    | rawdownloadcloneembedreportprint |</p>
+
 <p>We may also be able to measure performance of GPT-2 on certain tasks based on how many of the tokens were dictionary words. It might be true, for example, that sentences with higher proportions of dictionary word tokens would perform better on sentence completion tasks.</p>
 ]]></content>
         </item>
