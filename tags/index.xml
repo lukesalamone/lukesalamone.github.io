@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 14 Jun 2021 21:05:06 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Jun 2021 19:30:48 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>gpt2</title>
+      <link>https://lukesalamone.github.io/tags/gpt2/</link>
+      <pubDate>Thu, 17 Jun 2021 19:30:48 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/gpt2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nlp</title>
+      <link>https://lukesalamone.github.io/tags/nlp/</link>
+      <pubDate>Thu, 17 Jun 2021 19:30:48 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>computer-vision</title>
       <link>https://lukesalamone.github.io/tags/computer-vision/</link>
@@ -41,15 +59,6 @@
       <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
       
       <guid>https://lukesalamone.github.io/tags/webdev/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>nlp</title>
-      <link>https://lukesalamone.github.io/tags/nlp/</link>
-      <pubDate>Fri, 16 Apr 2021 21:08:53 -0500</pubDate>
-      
-      <guid>https://lukesalamone.github.io/tags/nlp/</guid>
       <description></description>
     </item>
     

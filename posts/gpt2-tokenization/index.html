@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="keywords" content=", nlp, gpt2" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/gpt2-tokenization/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GBJCJFKED"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9GBJCJFKED');
+</script>
+
+
+    <title>
+        
+            How does GPT-2 Tokenize Text? :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.efa93b157f2afdb60a6756d332b57828012c64eea8bb44daff9e73c1e1de8114.css">
+
+
+
+
+
+
+<meta itemprop="name" content="How does GPT-2 Tokenize Text?">
+<meta itemprop="description" content="Let&rsquo;s explore how GPT-2 tokenizes text.
+What is tokenization? It&rsquo;s important to understand that GPT-2 doesn&rsquo;t work with strings directly. Instead, it needs to tokenize the input string, which is essentially a process for converting the string into a list of numbers, or &ldquo;tokens&rdquo;. It is these tokens which are passed into the model during training or for inference. As a concrete example, let&rsquo;s look at a few sample sentences:"><meta itemprop="datePublished" content="2021-06-17T19:30:48-05:00" />
+<meta itemprop="dateModified" content="2021-06-17T19:30:48-05:00" />
+<meta itemprop="wordCount" content="708"><meta itemprop="image" content="https://lukesalamone.github.io"/>
+<meta itemprop="keywords" content="nlp,gpt2," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lukesalamone.github.io"/>
+
+<meta name="twitter:title" content="How does GPT-2 Tokenize Text?"/>
+<meta name="twitter:description" content="Let&rsquo;s explore how GPT-2 tokenizes text.
+What is tokenization? It&rsquo;s important to understand that GPT-2 doesn&rsquo;t work with strings directly. Instead, it needs to tokenize the input string, which is essentially a process for converting the string into a list of numbers, or &ldquo;tokens&rdquo;. It is these tokens which are passed into the model during training or for inference. As a concrete example, let&rsquo;s look at a few sample sentences:"/>
+
+
+
+    <meta property="og:title" content="How does GPT-2 Tokenize Text?" />
+<meta property="og:description" content="Let&rsquo;s explore how GPT-2 tokenizes text.
+What is tokenization? It&rsquo;s important to understand that GPT-2 doesn&rsquo;t work with strings directly. Instead, it needs to tokenize the input string, which is essentially a process for converting the string into a list of numbers, or &ldquo;tokens&rdquo;. It is these tokens which are passed into the model during training or for inference. As a concrete example, let&rsquo;s look at a few sample sentences:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lukesalamone.github.io/posts/gpt2-tokenization/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-17T19:30:48-05:00" />
+<meta property="article:modified_time" content="2021-06-17T19:30:48-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-06-17 19:30:48 -0500 CDT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        4 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/gpt2-tokenization/">How does GPT-2 Tokenize Text?</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        
+
+<p>Let&rsquo;s explore how GPT-2 tokenizes text.</p>
+
+<h2 id="what-is-tokenization">What is tokenization?</h2>
+
+<p>It&rsquo;s important to understand that GPT-2 doesn&rsquo;t work with strings directly. Instead, it needs to tokenize the input string, which is essentially a process for converting the string into a list of numbers, or &ldquo;tokens&rdquo;. It is these tokens which are passed into the model during training or for inference. As a concrete example, let&rsquo;s look at a few sample sentences:</p>
+
+<pre><code class="language-python">tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+tokens1 = tokenizer('I love my dog')
+</code></pre>
+
+<p>When we look at <code>tokens1</code> we see there are 4 tokens:</p>
+
+<pre><code class="language-python">{'input_ids': [40, 1842, 616, 3290], 'attention_mask': [1, 1, 1, 1]}
+</code></pre>
+
+<p>Here what we care about is the <code>'input_ids'</code> list. We can ignore the <code>'attention_mask'</code> for now. We can convert the tokens in <code>[40, 1842, 616, 3290]</code> back into strings using <code>tokenizer.decode</code>:</p>
+
+<pre><code class="language-python">tokens1 = tokens1['input_ids']
+
+[tokenizer.decode(x) for x in tokens1]
+# prints ['I', ' love', ' my', ' dog']
+
+[tokenizer.decode(x).strip().lower() for x in tokens1]
+# prints ['i', 'love', 'my', 'dog']
+</code></pre>
+
+<p>This process allows us to recover the tokens as strings from the tokenizer. For dictionary lookups, we&rsquo;ll also lowercase the strings and remove the whitespace from them.</p>
+
+<p>Now, let&rsquo;s see what happens when we do the same thing with more complex words:</p>
+
+<pre><code class="language-python">tokens2 = tokenizer('My favorite color is chartreuse')['token_ids']
+[tokenizer.decode(x).strip().lower() for x in tokens2]
+# prints ['my', 'favorite', 'color', 'is', 'chart', 're', 'use']
+</code></pre>
+
+<p>Because &ldquo;chartreuse&rdquo; isn&rsquo;t in GPT-2&rsquo;s vocabulary, it is tokenized as &ldquo;chart&rdquo;, &ldquo;re&rdquo; and &ldquo;use&rdquo;.</p>
+
+<!-- ### About that attention mask
+For brevity I glossed over what `attention_mask` does above. If you're interested in attention masks, [I have a blog post on that very topic](/posts/what-are-attention-masks)! -->
+
+<h2 id="english-words">English words</h2>
+
+<p>Now it would be interesting to see how many tokens in GPT-2&rsquo;s vocabulary are actually English words. This is an imprecise metric since it depends heavily on which dictionary we use. (There is no single authoritative source of all English words.) I&rsquo;ll use several dictionaries and compare the results.</p>
+
+<h3 id="enchant">Enchant</h3>
+
+<p><a href="https://pyenchant.github.io/pyenchant/tutorial.html">PyEnchant</a> contains a python module <code>enchant</code> which we can use to check if a word is spelled correctly. It can also make spelling suggestions for incorrectly spelled words:</p>
+
+<pre><code class="language-python">import enchant
+d = enchant.request_dict(&quot;en_US&quot;)
+d.check('Hello')
+# prints True
+
+d.check('Helo')
+# prints False
+</code></pre>
+
+<h3 id="nltk-words">NLTK words</h3>
+
+<p>The popular NLP library <a href="https://www.nltk.org/">NLTK</a> also contains a word list, accessible through its <code>corpus</code> module.</p>
+
+<pre><code class="language-python">from nltk.corpus import words
+
+nltk_words = set(words.words())
+len(nltk_words)
+# prints 235892
+</code></pre>
+
+<h3 id="english-350k">English 350k</h3>
+
+<p>This list of words was taken from this <a href="https://github.com/dwyl/english-words/blob/master/words_alpha.txt">github repository</a>. It is a convenient list of lowercased words containing only letters. It seems to be the biggest of the word lists.</p>
+
+<h3 id="lemmatization">Lemmatization</h3>
+
+<p>We can bump our numbers up slightly through <a href="https://en.wikipedia.org/wiki/Lemmatisation">lemmatization</a>:</p>
+
+<blockquote>
+<p>In many languages, words appear in several inflected forms. For example, in English, the verb &lsquo;to walk&rsquo; may appear as &lsquo;walk&rsquo;, &lsquo;walked&rsquo;, &lsquo;walks&rsquo; or &lsquo;walking&rsquo;. The base form, &lsquo;walk&rsquo;, that one might look up in a dictionary, is called the lemma for the word. The association of the base form with a part of speech is often called a lexeme of the word.</p>
+</blockquote>
+
+<p>For our lemmatizer we will use <code>WordNetLemmatizer</code> from <code>nltk.stem.wordnet</code>.</p>
+
+<h2 id="testing-gpt-2-tokens">Testing GPT-2 tokens</h2>
+
+<p>So of the tokens which GPT-2 uses, how many are English words? We can break this down metric by the dictionary used.</p>
+
+<table>
+<thead>
+<tr>
+<th>Dictionary</th>
+<th>% Words</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>English370k †</td>
+<td>67.01%</td>
+</tr>
+
+<tr>
+<td>English370k</td>
+<td>66.61%</td>
+</tr>
+
+<tr>
+<td>Enchant †</td>
+<td>56.50%</td>
+</tr>
+
+<tr>
+<td>Enchant</td>
+<td>56.25%</td>
+</tr>
+
+<tr>
+<td>NLTK words †</td>
+<td>50.65%</td>
+</tr>
+
+<tr>
+<td>NLTK words</td>
+<td>40.92%</td>
+</tr>
+</tbody>
+</table>
+
+<p>† indicates words were lemmatized</p>
+
+<p>So the English370k word list seems to capture the most tokens from the three dictionaries. Also note the mild impact of lemmatization: although it may bump some of the percentages up a bit, it&rsquo;s not enough for one dictionary to outperform another.</p>
+
+<p>Looking at the tokens which aren&rsquo;t in the dictionary, it&rsquo;s pretty clear why: they&rsquo;re symbols, numbers, and characters from languages other than English (lots of Arabic and Chinese characters). If we remove these, we end up with about 8700 tokens containing only letters, which is around 17% of GPT-2&rsquo;s total vocabulary. I&rsquo;ve included this list in a <a href="https://gist.github.com/lukesalamone/22ce6f362db3bdd09eda3cc5cbf5576f">github gist</a>.</p>
+
+<h2 id="now-what">Now what?</h2>
+
+<p>Looking at these non-word alphabetic strings, it&rsquo;s interesting to see how the Internet (as GPT-2 saw it) was encoded. Then again, it also contains a lot of proper nouns which wouldn&rsquo;t be in a normal dictionary like &ldquo;starbucks&rdquo;.</p>
+
+<p>We may also be able to measure performance of GPT-2 on certain tasks based on how many of the tokens were dictionary words. It might be true, for example, that sentences with higher proportions of dictionary word tokens would perform better on sentence completion tasks.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/nlp/">nlp</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/gpt2/">gpt2</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        708 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-06-17 19:30
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/how-does-convolution-work/">
+                <span class="button__text">How Does Convolution Work?</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a></span>
+            <span>&nbsp;|&nbsp;</span>
+            <span><a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.a0f363fdf81cdc5cfacc447a79c33189eb000d090336cd04aac8ee256f423b3133b836c281944c19c75e38d0b0b449f01ce5807e37798b7ac94ac1db51983fc4.js" integrity="sha512-oPNj/fgc3Fz6zER6ecMxiesADQkDNs0EqsjuJW9COzEzuDbCgZRMGcdeONCwtEnwHOWAfjd5i3rJSsHbUZg/xA=="></script>
+
+
+
+    </body>
+</html>

@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 16 Apr 2021 21:08:53 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Jun 2021 19:30:48 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How does GPT-2 Tokenize Text?</title>
+      <link>https://lukesalamone.github.io/posts/gpt2-tokenization/</link>
+      <pubDate>Thu, 17 Jun 2021 19:30:48 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/gpt2-tokenization/</guid>
+      <description>Let&amp;rsquo;s explore how GPT-2 tokenizes text.
+What is tokenization? It&amp;rsquo;s important to understand that GPT-2 doesn&amp;rsquo;t work with strings directly. Instead, it needs to tokenize the input string, which is essentially a process for converting the string into a list of numbers, or &amp;ldquo;tokens&amp;rdquo;. It is these tokens which are passed into the model during training or for inference. As a concrete example, let&amp;rsquo;s look at a few sample sentences:</description>
+    </item>
+    
     <item>
       <title>How to Train and Run a Simple Language Model</title>
       <link>https://lukesalamone.github.io/posts/running-simple-language-model/</link>

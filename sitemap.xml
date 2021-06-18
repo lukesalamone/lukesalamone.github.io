@@ -2,19 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lukesalamone.github.io/tags/gpt2/</loc>
+    <lastmod>2021-06-17T19:30:48-05:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/posts/gpt2-tokenization/</loc>
+    <lastmod>2021-06-17T19:30:48-05:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/</loc>
+    <lastmod>2021-06-17T19:30:48-05:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/nlp/</loc>
+    <lastmod>2021-06-17T19:30:48-05:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/posts/</loc>
+    <lastmod>2021-06-17T19:30:48-05:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/</loc>
+    <lastmod>2021-06-17T19:30:48-05:00</lastmod>
+  </url><url>
     <loc>https://lukesalamone.github.io/tags/computer-vision/</loc>
     <lastmod>2021-06-14T21:05:06-05:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/posts/how-does-convolution-work/</loc>
-    <lastmod>2021-06-14T21:05:06-05:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/</loc>
-    <lastmod>2021-06-14T21:05:06-05:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/posts/</loc>
-    <lastmod>2021-06-14T21:05:06-05:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/</loc>
     <lastmod>2021-06-14T21:05:06-05:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/python/</loc>
@@ -30,9 +39,6 @@
     <lastmod>2021-05-09T15:06:11-05:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/posts/running-simple-language-model/</loc>
-    <lastmod>2021-04-16T21:08:53-05:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/nlp/</loc>
     <lastmod>2021-04-16T21:08:53-05:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/posts/what-is-temperature/</loc>
