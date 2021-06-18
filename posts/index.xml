@@ -160,17 +160,66 @@ len(nltk_words)
 
 <p>The following are the longest non-dictionary tokens found in GPT-2&rsquo;s vocabulary:</p>
 
-<p>| Token ID | String                           |
-| 39177    | ItemThumbnailImage               |
-| 30210    | guiActiveUnfocused               |
-| 39755    | isSpecialOrderable               |
-| 31576    | externalActionCode               |
-| 39753    | quickShipAvailable               |
-| 39757    | channelAvailability              |
-| 36174    | RandomRedditorWithNo             |
-| 30899    | cloneembedreportprint            |
-| 40242    | BuyableInstoreAndOnline          |
-| 30906    | rawdownloadcloneembedreportprint |</p>
+<table>
+<thead>
+<tr>
+<th>Token ID</th>
+<th>String</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>39177</td>
+<td>ItemThumbnailImage</td>
+</tr>
+
+<tr>
+<td>30210</td>
+<td>guiActiveUnfocused</td>
+</tr>
+
+<tr>
+<td>39755</td>
+<td>isSpecialOrderable</td>
+</tr>
+
+<tr>
+<td>31576</td>
+<td>externalActionCode</td>
+</tr>
+
+<tr>
+<td>39753</td>
+<td>quickShipAvailable</td>
+</tr>
+
+<tr>
+<td>39757</td>
+<td>channelAvailability</td>
+</tr>
+
+<tr>
+<td>36174</td>
+<td>RandomRedditorWithNo</td>
+</tr>
+
+<tr>
+<td>30899</td>
+<td>cloneembedreportprint</td>
+</tr>
+
+<tr>
+<td>40242</td>
+<td>BuyableInstoreAndOnline</td>
+</tr>
+
+<tr>
+<td>30906</td>
+<td>rawdownloadcloneembedreportprint</td>
+</tr>
+</tbody>
+</table>
 
 <p>We may also be able to measure performance of GPT-2 on certain tasks based on how many of the tokens were dictionary words. It might be true, for example, that sentences with higher proportions of dictionary word tokens would perform better on sentence completion tasks.</p>
 ]]></content>
