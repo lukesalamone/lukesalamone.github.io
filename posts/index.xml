@@ -234,7 +234,7 @@ len(nltk_words)
         <item>
             <title>What Are Attention Masks?</title>
             <link>https://lukesalamone.github.io/posts/what-are-attention-masks/</link>
-            <pubDate>Thu, 17 Jun 2021 16:09:36 -0500</pubDate>
+            <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
             
             <guid>https://lukesalamone.github.io/posts/what-are-attention-masks/</guid>
             <description>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths.
