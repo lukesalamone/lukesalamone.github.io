@@ -19,6 +19,18 @@ What is tokenization? It&amp;rsquo;s important to understand that GPT-2 doesn&am
     </item>
     
     <item>
+      <title>What Are Attention Masks?</title>
+      <link>https://lukesalamone.github.io/posts/what-are-attention-masks/</link>
+      <pubDate>Thu, 17 Jun 2021 16:09:36 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/what-are-attention-masks/</guid>
+      <description>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths.
+If you want to perform inference with transformers one sequene at a time, you can ignore attention masks. The &amp;ldquo;slow way&amp;rdquo; will be sufficient for your needs.
+The slow way We can perform inference with GPT-2 using sequences one at a time, but it&amp;rsquo;s slow:
+from transformers import GPT2LMHeadModel, GPT2Tokenizer tokenizer = GPT2Tokenizer.</description>
+    </item>
+    
+    <item>
       <title>How to Train and Run a Simple Language Model</title>
       <link>https://lukesalamone.github.io/posts/running-simple-language-model/</link>
       <pubDate>Fri, 16 Apr 2021 21:08:53 -0500</pubDate>
