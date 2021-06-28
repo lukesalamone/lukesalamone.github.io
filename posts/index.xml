@@ -6,8 +6,124 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Thu, 17 Jun 2021 19:30:48 -0500</lastBuildDate>
+        <lastBuildDate>Mon, 21 Jun 2021 01:04:42 -0500</lastBuildDate>
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>BERT vs GPT-2: Which is better?</title>
+            <link>https://lukesalamone.github.io/posts/bert-vs-gpt2/</link>
+            <pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/bert-vs-gpt2/</guid>
+            <description>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.
+This experiment can be found on my Github
+BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task).</description>
+            <content type="html"><![CDATA[
+
+<p>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.</p>
+
+<p><a href="https://github.com/lukesalamone/gpt2-vs-bert">This experiment can be found on my Github</a></p>
+
+<h2 id="bert">BERT</h2>
+
+<p>The <a href="https://arxiv.org/pdf/1810.04805.pdf">Devlin et al. model</a> was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the <em>cloze</em> task). During pretraining, 15% of tokens are hidden from the model, and it is trained to predict the masked tokens. As a result, I was able to evaluate its ability to correctly predict a masked token at a random position in a fixed-size input.</p>
+
+<p>We looked at the following varieties of BERT:</p>
+
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th># Parameters</th>
+<th>Compare to</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>bert-base-uncased</td>
+<td>110 million</td>
+<td>gpt2</td>
+</tr>
+
+<tr>
+<td>bert-base-cased</td>
+<td>109 million</td>
+<td>gpt2</td>
+</tr>
+
+<tr>
+<td>bert-large-uncased</td>
+<td>336 million</td>
+<td>gpt2-medium</td>
+</tr>
+
+<tr>
+<td>bert-large-cased</td>
+<td>335 million</td>
+<td>gpt2-medium</td>
+</tr>
+</tbody>
+</table>
+
+<p>This table also includes corresponding GPT-2 models which have a similar number of parameters. <a href="https://huggingface.co/transformers/pretrained_models.html">Source</a></p>
+
+<h2 id="gpt-2">GPT-2</h2>
+
+<p>The <a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">Radford et al. model</a> hit the scene in February of 2019. Like BERT it is a transformer-based  model, and comes in various sizes ranging from 117M parameters up to 1.5B parameters (gpt2-xl). Because GPT-2 is an autoregressive model, experiments with this family of models perform one token of generation following input context, comparing with the target token for accuracy measurement.</p>
+
+<p>Here we will be evaluating two flavors of this model:</p>
+
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th># Parameters</th>
+<th>Compare to</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>gpt2</td>
+<td>117 million</td>
+<td>bert-base</td>
+</tr>
+
+<tr>
+<td>gpt2-medium</td>
+<td>345 million</td>
+<td>bert-large</td>
+</tr>
+</tbody>
+</table>
+
+<p>This table also includes corresponding BERT models which have a similar number of parameters. <a href="https://huggingface.co/transformers/pretrained_models.html">Source</a></p>
+
+<h2 id="wikitext-token-prediction">Wikitext Token prediction</h2>
+
+<p>To evaluate the models, I sampled 10,000 random sequences from <a href="https://paperswithcode.com/dataset/wikitext-2">Wikitext-2</a>.</p>
+
+<p><strong>For BERT</strong>, a random sequence of 100 tokens is selected. Then, for each sequence, a random position within that sequence is selected and masked. BERT will be required to predict this token, so accuracy is measured as the percentage of the time which its masked token is predicted correctly.</p>
+
+<p><strong>For GPT-2</strong>, a random sequence of 100 tokens is selected. Then, for each sequence, a random position within that sequence is selected. Because GPT-2 is autoregressive, it cannot attend to tokens on the right, so the sequence is truncated at the selected position. The sequence is then padded appropriately to maintain a fixed sequence length of 100.</p>
+
+<p>Below we can see the performance of all 6 models on these tasks. The data has been smoothed by bucketing into groups of 5 positions at once (i.e. positions 0-4, 5-9, etc). You can see that performance of GPT-2 continues to rise as it is given additional context, while BERT models are relatively stable after being given around 5 tokens of context. Interestingly, BERT performance drops off quite steeply over the last 5-10 token positions.</p>
+
+<p><script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.0/dist/chart.min.js" type="text/javascript"></script>
+<script src="/js/bert-vs-gpt2.js"></script>
+<script src="/js/util.js"></script>
+<div id="graph1"><canvas></canvas></div></p>
+
+<p>When we zoom in on the final 10 positions, things start to get interesting. Both varieties of GPT-2 actually beat out all varieties of BERT at the final position.</p>
+
+<div id="graph2"><canvas></canvas></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>BERT and GPT-2 perform quite differently on the token position task depending on the position of the token being predicted. For a fixed sequence length of 100 tokens, BERT performs best when the masked token is between positions 5 and 95, while GPT-2 tends to continually improve as context length increases. Interestingly, when the final token in the sequence is to be predicted, BERT&rsquo;s performance falls off dramatically, while GPT-2 performance remains stable.</p>
+]]></content>
+        </item>
         
         <item>
             <title>How does GPT-2 Tokenize Text?</title>

@@ -7,11 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 17 Jun 2021 19:30:48 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Jun 2021 01:04:42 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bert</title>
+      <link>https://lukesalamone.github.io/tags/bert/</link>
+      <pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/bert/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>gpt2</title>
       <link>https://lukesalamone.github.io/tags/gpt2/</link>
-      <pubDate>Thu, 17 Jun 2021 19:30:48 -0500</pubDate>
+      <pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
       
       <guid>https://lukesalamone.github.io/tags/gpt2/</guid>
       <description></description>
@@ -20,18 +29,9 @@
     <item>
       <title>nlp</title>
       <link>https://lukesalamone.github.io/tags/nlp/</link>
-      <pubDate>Thu, 17 Jun 2021 19:30:48 -0500</pubDate>
+      <pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
       
       <guid>https://lukesalamone.github.io/tags/nlp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>bert</title>
-      <link>https://lukesalamone.github.io/tags/bert/</link>
-      <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
-      
-      <guid>https://lukesalamone.github.io/tags/bert/</guid>
       <description></description>
     </item>
     
