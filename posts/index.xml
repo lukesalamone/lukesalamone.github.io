@@ -10,25 +10,25 @@
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>BERT vs GPT-2: Which is better?</title>
+            <title>BERT vs GPT-2 Performance</title>
             <link>https://lukesalamone.github.io/posts/bert-vs-gpt2/</link>
             <pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
             
             <guid>https://lukesalamone.github.io/posts/bert-vs-gpt2/</guid>
             <description>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.
-This experiment can be found on my Github
+The code used in this experiment can be found on my Github
 BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task).</description>
             <content type="html"><![CDATA[
 
 <p>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.</p>
 
-<p><a href="https://github.com/lukesalamone/gpt2-vs-bert">This experiment can be found on my Github</a></p>
+<p><a href="https://github.com/lukesalamone/gpt2-vs-bert">The code used in this experiment can be found on my Github</a></p>
 
 <h2 id="bert">BERT</h2>
 
 <p>The <a href="https://arxiv.org/pdf/1810.04805.pdf">Devlin et al. model</a> was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the <em>cloze</em> task). During pretraining, 15% of tokens are hidden from the model, and it is trained to predict the masked tokens. As a result, I was able to evaluate its ability to correctly predict a masked token at a random position in a fixed-size input.</p>
 
-<p>We looked at the following varieties of BERT:</p>
+<p>I looked at the following varieties of BERT:</p>
 
 <table>
 <thead>
