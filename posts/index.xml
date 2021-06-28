@@ -121,7 +121,7 @@ BERT The Devlin et al. model was released in November 2018. It is a transformer-
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>BERT and GPT-2 perform quite differently on the token position task depending on the position of the token being predicted. For a fixed sequence length of 100 tokens, BERT performs best when the masked token is between positions 5 and 95, while GPT-2 tends to continually improve as context length increases. Interestingly, when the final token in the sequence is to be predicted, BERT&rsquo;s performance falls off dramatically, while GPT-2 performance remains stable.</p>
+<p>BERT and GPT-2 perform quite differently on the token prediction task depending on the position of the token being predicted. For a fixed sequence length of 100 tokens, BERT performs best when the masked token is between positions 5 and 95, while GPT-2 tends to continually improve as context length increases. Interestingly, when the final token in the sequence is to be predicted, BERT&rsquo;s performance falls off dramatically, while GPT-2 performance remains stable.</p>
 ]]></content>
         </item>
         

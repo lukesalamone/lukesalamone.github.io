@@ -58,12 +58,15 @@ window.onload = async function(){
       scales: {
         x: {
           display: true,
-          title: {display: true, text: 'position'}
+          title: {display: true, text: 'position'},
+          grid: {display: false}
         },
         y: {
           display: true,
           title: {display: true, text: 'accuracy'},
           suggestedMin: 0,
+          suggestedMax: 0.9,
+          grid: {display: false}
         }
       }
     }
