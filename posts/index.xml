@@ -10,20 +10,20 @@
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>How to Connect Google Colab to Your Google Drive</title>
+            <title>Colab: Connect to Google Drive</title>
             <link>https://lukesalamone.github.io/posts/connect-to-colab/</link>
             <pubDate>Wed, 30 Jun 2021 22:58:18 -0500</pubDate>
             
             <guid>https://lukesalamone.github.io/posts/connect-to-colab/</guid>
-            <description>To connect your notebook to your Drive directory:
-from google.colab import drive drive.mount(&#39;/content/gdrive&#39;)  That is all.</description>
-            <content type="html"><![CDATA[<p>To connect your notebook to your Drive directory:</p>
+            <description>Here&amp;rsquo;s how to connect your Google Colab notebook to your Drive directory:
+from google.colab import drive drive.mount(&#39;/content/gdrive&#39;)  Follow the prompts from there. That is all.</description>
+            <content type="html"><![CDATA[<p>Here&rsquo;s how to connect your Google Colab notebook to your Drive directory:</p>
 
 <pre><code class="language-python">from google.colab import drive
 drive.mount('/content/gdrive')
 </code></pre>
 
-<p>That is all.</p>
+<p>Follow the prompts from there. That is all.</p>
 ]]></content>
         </item>
         
