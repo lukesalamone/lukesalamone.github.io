@@ -15,7 +15,7 @@
       
       <guid>https://lukesalamone.github.io/posts/connect-to-colab/</guid>
       <description>To connect your notebook to your Drive directory:
-from google.colab import drive drive.mount(‘/content/gdrive’)  That is all.</description>
+from google.colab import drive drive.mount(&#39;/content/gdrive&#39;)  That is all.</description>
     </item>
     
     <item>
