@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 15 Jun 2021 19:09:36 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Jun 2021 22:58:18 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Connect Google Colab to Your Google Drive</title>
+      <link>https://lukesalamone.github.io/posts/connect-to-colab/</link>
+      <pubDate>Wed, 30 Jun 2021 22:58:18 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/connect-to-colab/</guid>
+      <description>To connect your notebook to your Drive directory:
+from google.colab import drive drive.mount(‘/content/gdrive’)  That is all.</description>
+    </item>
+    
     <item>
       <title>What Are Attention Masks?</title>
       <link>https://lukesalamone.github.io/posts/what-are-attention-masks/</link>
