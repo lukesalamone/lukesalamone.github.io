@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="keywords" content=", computer-vision" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/how-does-convolution-work/" />
+
+<meta property="og:title" content="How do convolutional neural networks work?"/>
+<meta property="og:image" content="https://lukesalamone.github.io/img/covers/cnn-cover.png"/>
+<meta property="og:description" content="Check out this interactive demo of a convolutional neural network to get a better idea of how they work!"/>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GBJCJFKED"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9GBJCJFKED');
+</script>
+
+
+    <title>
+        
+            How Does Convolution Work? :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.efa93b157f2afdb60a6756d332b57828012c64eea8bb44daff9e73c1e1de8114.css">
+
+
+
+
+
+
+<meta itemprop="name" content="How Does Convolution Work?">
+<meta itemprop="description" content="Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!
+      number:   four three eight    padding:    kernel size:    stride:    speed:        You can use the settings above to control the hyperparameters of the convolutional layer."><meta itemprop="datePublished" content="2021-06-14T21:05:06-05:00" />
+<meta itemprop="dateModified" content="2021-06-14T21:05:06-05:00" />
+<meta itemprop="wordCount" content="362"><meta itemprop="image" content="https://lukesalamone.github.io"/>
+<meta itemprop="keywords" content="computer-vision," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lukesalamone.github.io"/>
+
+<meta name="twitter:title" content="How Does Convolution Work?"/>
+<meta name="twitter:description" content="Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!
+      number:   four three eight    padding:    kernel size:    stride:    speed:        You can use the settings above to control the hyperparameters of the convolutional layer."/>
+
+
+
+    <meta property="og:title" content="How Does Convolution Work?" />
+<meta property="og:description" content="Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!
+      number:   four three eight    padding:    kernel size:    stride:    speed:        You can use the settings above to control the hyperparameters of the convolutional layer." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lukesalamone.github.io/posts/how-does-convolution-work/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-14T21:05:06-05:00" />
+<meta property="article:modified_time" content="2021-06-14T21:05:06-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-06-14 21:05:06 -0500 CDT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        2 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/how-does-convolution-work/">How Does Convolution Work?</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        
+
+<p>Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!</p>
+
+<p><script src="../../js/util.js"></script>
+<script src="../../js/convolution-demo.js"></script>
+<link rel="stylesheet" href="../../css/convolution-demo.css" /></p>
+
+<div id="input-output">
+  <div id="input-grid"></div>
+  <div id="output-grid"></div>
+</div>
+
+<div id="controls">
+  <table>
+    <tr id="number">
+      <td>number:</td>
+      <td>
+        <select>
+          <option value="four">four</option>
+          <option value="three">three</option>
+          <option value="eight">eight</option>
+        </select>
+      </td>
+    </tr>
+    <tr id="padding">
+      <td>padding: <span class="val"></span></td>
+      <td><input type="range" min="0" max="2" value="0"></td>
+    </tr>
+    <tr id="kernelsize">
+      <td>kernel size: <span class="val"></span></td>
+      <td><input type="range" min="1" max="4" value="2"></td>
+    </tr>
+    <tr id="stride">
+      <td>stride: <span class="val"></span></td>
+      <td><input type="range" min="1" max="3" value="1"></td>
+    </tr>
+    <tr id="speed">
+      <td>speed: <span class="val"></span></td>
+      <td><input type="range" min="1" max="5" value="3"></td>
+    </tr>
+    <tr id="errors" style="display:none">
+      <td colspan="2"></td>
+    </tr>
+  </table>
+</div>
+
+<p>You can use the settings above to control the hyperparameters of the convolutional layer.</p>
+
+<p>As you&rsquo;ve probably figured out, the left side shows the input, a 20x20 handwritten digit, and the right side shows the output as it is being drawn. A convolutional layer will pass a filter over the input, selecting only a small group of pixels at a time.</p>
+
+<p>Not shown: once the filter selects a window of pixels, it will compute a dot product with the pixel values and its own weights. In this demo the filter weights are assumed to be 1 for simplicity.</p>
+
+<h2 id="more-on-the-hyperparameters">More on the hyperparameters</h2>
+
+<p>Sometimes the settings will result in an invalid convolution. This happens if the kernel extends beyond the activation map. We can write a python function to check whether it will be valid:</p>
+
+<pre><code class="language-python">def valid_convolution(input_size, kernel_size, padding, stride):
+  if (input_size + 2*padding - kernel_size) % stride == 0:
+    return True
+  else:
+    return False
+</code></pre>
+
+<h3 id="padding">Padding</h3>
+
+<p>Increasing the padding will add extra pixels, typically zeros, around the edges of the input. This is done in order to ensure that the layer parameters will be valid. Additionally, it causes pixels which would have been on the edges to be more to the middle of the activation map.</p>
+
+<h3 id="kernel-size">Kernel Size</h3>
+
+<p>This refers to the &ldquo;sliding window&rdquo; which passes over the input. Choosing a larger kernel tends to increase the &ldquo;smudging&rdquo; which happens in the output, while a smaller kernel preserves more information for deeper layers. Sometimes kernel size is referred to as filter size.</p>
+
+<h3 id="stride">Stride</h3>
+
+<p>Stride refers to the distance the sliding window will move between steps. A stride of 1 moves the window one pixel to the right, while a stride of 2 moves the window 2 pixels. A larger stride can reduce output layer size at the expense of granularity.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/computer-vision/">computer-vision</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        362 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-06-14 21:05
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://lukesalamone.github.io/posts/what-are-attention-masks/">
+                <span class="button__icon">←</span>
+                <span class="button__text">What Are Attention Masks?</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/python-serve-html/">
+                <span class="button__text">Python: Serve an HTML File</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a></span>
+            <span>&nbsp;|&nbsp;</span>
+            <span><a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.e087295eb748ea4dccb937e793af37d150248c9c64b8f6e779e456768c1fc7a86f0db045a8e8724252a732a9fa2ff4ad584c55e135714f31d667274f45f2d32a.js" integrity="sha512-4IcpXrdI6k3MuTfnk6830VAkjJxkuPbneeRWdowfx6hvDbBFqOhyQlKnMqn6L/StWExV4TVxTzHWZydPRfLTKg=="></script>
+
+
+
+    </body>
+</html>

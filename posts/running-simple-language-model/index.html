@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="keywords" content=", nlp" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/running-simple-language-model/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GBJCJFKED"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9GBJCJFKED');
+</script>
+
+
+    <title>
+        
+            How to Train and Run a Simple Language Model :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.efa93b157f2afdb60a6756d332b57828012c64eea8bb44daff9e73c1e1de8114.css">
+
+
+
+
+
+
+<meta itemprop="name" content="How to Train and Run a Simple Language Model">
+<meta itemprop="description" content="This article will show how to run a simple language model, KenLM. It&rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.
+Let&rsquo;s work backwards from where we&rsquo;re trying to get to. When you&rsquo;ve finished, you should be able to run the following script:"><meta itemprop="datePublished" content="2021-04-16T21:08:53-05:00" />
+<meta itemprop="dateModified" content="2021-04-16T21:08:53-05:00" />
+<meta itemprop="wordCount" content="514"><meta itemprop="image" content="https://lukesalamone.github.io"/>
+<meta itemprop="keywords" content="nlp," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lukesalamone.github.io"/>
+
+<meta name="twitter:title" content="How to Train and Run a Simple Language Model"/>
+<meta name="twitter:description" content="This article will show how to run a simple language model, KenLM. It&rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.
+Let&rsquo;s work backwards from where we&rsquo;re trying to get to. When you&rsquo;ve finished, you should be able to run the following script:"/>
+
+
+
+    <meta property="og:title" content="How to Train and Run a Simple Language Model" />
+<meta property="og:description" content="This article will show how to run a simple language model, KenLM. It&rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.
+Let&rsquo;s work backwards from where we&rsquo;re trying to get to. When you&rsquo;ve finished, you should be able to run the following script:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lukesalamone.github.io/posts/running-simple-language-model/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-16T21:08:53-05:00" />
+<meta property="article:modified_time" content="2021-04-16T21:08:53-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-04-16 21:08:53 -0500 CDT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        3 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/running-simple-language-model/">How to Train and Run a Simple Language Model</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        
+
+<p>This article will show how to run a simple language model, KenLM. It&rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.</p>
+
+<p>Let&rsquo;s work backwards from where we&rsquo;re trying to get to. When you&rsquo;ve finished, you should be able to run the following script:</p>
+
+<pre><code class="language-python">import kenlm
+
+path = 'path/to/model.arpa'
+lm = kenlm.LanguageModel(path)
+
+sentence = &quot;I am not superstitious but I am a little stitious&quot;
+print(model.score(sentence))
+</code></pre>
+
+<p>The first step will be to build KenLM. Then, we will build the ARPA file which KenLM uses to evaluate.</p>
+
+<h2 id="building-kenlm">Building KenLM</h2>
+
+<p>First, clone this repository:</p>
+
+<p><code>git clone git@github.com:kpu/kenlm.git</code></p>
+
+<p>Now we need to build the KenLM toolkit. Run the following to build:</p>
+
+<pre><code>mkdir -p build
+cd build
+cmake ..
+make -j 4
+</code></pre>
+
+<p>Now we just need to provide the model with a <code>.arpa</code> ngram language model file. So let&rsquo;s get one.</p>
+
+<h2 id="building-an-ngram-language-model-from-wikitext-2">Building an ngram language model from Wikitext-2</h2>
+
+<p>First, let&rsquo;s clone a repository which will build an ARPA file. This repository builds the ngram file from <a href="https://paperswithcode.com/dataset/wikitext-2">Wikitext-2</a>, a common dataset used in natural language processing.</p>
+
+<pre><code>git clone git@github.com:daandouwe/ngram-lm.git
+cd ngram-lm
+mkdir data
+./get-data.sh
+mkdir arpa
+./main.py --order 3 --interpolate --save-arpa --name wiki-interpolate
+</code></pre>
+
+<p>Once that has finished, you&rsquo;ll have new <code>.arpa</code> in the <code>arpa</code> directory you created. This script took the longest to run on my machine. Be patient, your computer is busy reading all of Wikipedia.</p>
+
+<h2 id="all-together-now">All Together Now</h2>
+
+<p>Now we&rsquo;re finally ready to evaluate a sentence with the language model.</p>
+
+<pre><code class="language-python">import kenlm
+
+path = 'path/to/model.arpa'
+lm = kenlm.LanguageModel(path)
+
+sentence = &quot;I am not superstitious but I am a little stitious&quot;
+print(model.score(sentence))
+</code></pre>
+
+<p>Which prints something like</p>
+
+<pre><code>----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+-24.47921371459961
+</code></pre>
+
+<p>Now if you&rsquo;re interested in a bit more information about what&rsquo;s going on, you can add this bit at the bottom:</p>
+
+<pre><code class="language-python">words = ['&lt;s&gt;'] + sentence.split() + ['&lt;/s&gt;']
+for i, (prob, length, oov) in enumerate(lm.full_scores(sentence)):
+  print(f'{prob} {length}: {&quot; &quot;.join(words[i+2-length:i+2])}')
+  if oov:
+    print(f'\t&quot;{words[i+1]}&quot; is an OOV')
+
+for w in words:
+  if not w in lm:
+    print(f'&quot;{w}&quot; is an OOV')
+</code></pre>
+
+<p>Which adds this to your output:</p>
+
+<pre><code>-3.1138248443603516 2: &lt;s&gt; I
+-1.1560251712799072 3: &lt;s&gt; I am
+-1.1645264625549316 3: I am not
+-4.912360191345215 1: superstitious
+-4.504511833190918 1: but
+-2.2214112281799316 2: but I
+-1.1531075239181519 3: but I am
+-1.2614283561706543 3: I am a
+-0.9001830816268921 3: am a little
+-1.2325057983398438 3: a little stitious
+	&quot;stitious&quot; is an OOV
+-2.8593297004699707 2: stitious &lt;/s&gt;
+&quot;stitious&quot; is an OOV
+</code></pre>
+
+<p>To the left of each term is the log (base 10) probability of each term occurring. For the first term, <code>&lt;s&gt; I</code> means start of sentence followed by &ldquo;I&rdquo;, which the model has assigned a log probability of -3.11. That&rsquo;s around 0.00078. You might think it&rsquo;s strange that a sentence beginning with &ldquo;I&rdquo; is so unlikely but we are using Wikitext-2. Wikitext-2 is Wikipedia articles. Not a lot of sentences on Wikipedia begin with &ldquo;I&rdquo;.</p>
+
+<p>Notice that &ldquo;stitious&rdquo; is an OOV (out of vocabulary) term here. Clearly the language model doesn&rsquo;t appreciate humor. We&rsquo;ll have to tackle that next time.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/nlp/">nlp</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        514 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-04-16 21:08
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://lukesalamone.github.io/posts/python-serve-html/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Python: Serve an HTML File</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/what-is-temperature/">
+                <span class="button__text">What is Temperature in NLP?🐭</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a></span>
+            <span>&nbsp;|&nbsp;</span>
+            <span><a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.e087295eb748ea4dccb937e793af37d150248c9c64b8f6e779e456768c1fc7a86f0db045a8e8724252a732a9fa2ff4ad584c55e135714f31d667274f45f2d32a.js" integrity="sha512-4IcpXrdI6k3MuTfnk6830VAkjJxkuPbneeRWdowfx6hvDbBFqOhyQlKnMqn6L/StWExV4TVxTzHWZydPRfLTKg=="></script>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="keywords" content=", nlp, bert, gpt2" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/bert-vs-gpt2/" />
+
+<meta property="og:title" content="BERT vs GPT-2: Which is better?"/>
+<meta property="og:image" content="https://lukesalamone.github.io/img/covers/gpt2_vs_bert.png"/>
+<meta property="og:description" content="GPT-2 and BERT in a head to head...which one will come out on top?"/>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GBJCJFKED"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9GBJCJFKED');
+</script>
+
+
+    <title>
+        
+            BERT vs GPT-2 Performance :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.efa93b157f2afdb60a6756d332b57828012c64eea8bb44daff9e73c1e1de8114.css">
+
+
+
+
+
+
+<meta itemprop="name" content="BERT vs GPT-2 Performance">
+<meta itemprop="description" content="There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.
+The code used in this experiment can be found on my Github
+BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task)."><meta itemprop="datePublished" content="2021-06-21T01:04:42-05:00" />
+<meta itemprop="dateModified" content="2021-06-21T01:04:42-05:00" />
+<meta itemprop="wordCount" content="570"><meta itemprop="image" content="https://lukesalamone.github.io"/>
+<meta itemprop="keywords" content="nlp,bert,gpt2," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lukesalamone.github.io"/>
+
+<meta name="twitter:title" content="BERT vs GPT-2 Performance"/>
+<meta name="twitter:description" content="There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.
+The code used in this experiment can be found on my Github
+BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task)."/>
+
+
+
+    <meta property="og:title" content="BERT vs GPT-2 Performance" />
+<meta property="og:description" content="There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.
+The code used in this experiment can be found on my Github
+BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lukesalamone.github.io/posts/bert-vs-gpt2/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-21T01:04:42-05:00" />
+<meta property="article:modified_time" content="2021-06-21T01:04:42-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-06-21 01:04:42 -0500 CDT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        3 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/bert-vs-gpt2/">BERT vs GPT-2 Performance</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        
+
+<p>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.</p>
+
+<p><a href="https://github.com/lukesalamone/gpt2-vs-bert">The code used in this experiment can be found on my Github</a></p>
+
+<h2 id="bert">BERT</h2>
+
+<p>The <a href="https://arxiv.org/pdf/1810.04805.pdf">Devlin et al. model</a> was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the <em>cloze</em> task). During pretraining, 15% of tokens are hidden from the model, and it is trained to predict the masked tokens. As a result, I was able to evaluate its ability to correctly predict a masked token at a random position in a fixed-size input.</p>
+
+<p>I looked at the following varieties of BERT:</p>
+
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th># Parameters</th>
+<th>Compare to</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>bert-base-uncased</td>
+<td>110 million</td>
+<td>gpt2</td>
+</tr>
+
+<tr>
+<td>bert-base-cased</td>
+<td>109 million</td>
+<td>gpt2</td>
+</tr>
+
+<tr>
+<td>bert-large-uncased</td>
+<td>336 million</td>
+<td>gpt2-medium</td>
+</tr>
+
+<tr>
+<td>bert-large-cased</td>
+<td>335 million</td>
+<td>gpt2-medium</td>
+</tr>
+</tbody>
+</table>
+
+<p>This table also includes corresponding GPT-2 models which have a similar number of parameters. <a href="https://huggingface.co/transformers/pretrained_models.html">Source</a></p>
+
+<h2 id="gpt-2">GPT-2</h2>
+
+<p>The <a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">Radford et al. model</a> hit the scene in February of 2019. Like BERT it is a transformer-based  model, and comes in various sizes ranging from 117M parameters up to 1.5B parameters (gpt2-xl). Because GPT-2 is an autoregressive model, experiments with this family of models perform one token of generation following input context, comparing with the target token for accuracy measurement.</p>
+
+<p>Here we will be evaluating two flavors of this model:</p>
+
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th># Parameters</th>
+<th>Compare to</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>gpt2</td>
+<td>117 million</td>
+<td>bert-base</td>
+</tr>
+
+<tr>
+<td>gpt2-medium</td>
+<td>345 million</td>
+<td>bert-large</td>
+</tr>
+</tbody>
+</table>
+
+<p>This table also includes corresponding BERT models which have a similar number of parameters. <a href="https://huggingface.co/transformers/pretrained_models.html">Source</a></p>
+
+<h2 id="wikitext-token-prediction">Wikitext Token prediction</h2>
+
+<p>To evaluate the models, I sampled 10,000 random sequences from <a href="https://paperswithcode.com/dataset/wikitext-2">Wikitext-2</a>.</p>
+
+<p><strong>For BERT</strong>, a random sequence of 100 tokens is selected. Then, for each sequence, a random position within that sequence is selected and masked. BERT will be required to predict this token, so accuracy is measured as the percentage of the time which its masked token is predicted correctly.</p>
+
+<p><strong>For GPT-2</strong>, a random sequence of 100 tokens is selected. Then, for each sequence, a random position within that sequence is selected. Because GPT-2 is autoregressive, it cannot attend to tokens on the right, so the sequence is truncated at the selected position. The sequence is then padded appropriately to maintain a fixed sequence length of 100.</p>
+
+<p>Below we can see the performance of all 6 models on these tasks. The data has been smoothed by bucketing into groups of 5 positions at once (i.e. positions 0-4, 5-9, etc). You can see that performance of GPT-2 continues to rise as it is given additional context, while BERT models are relatively stable after being given around 5 tokens of context. Interestingly, BERT performance drops off quite steeply over the last 5-10 token positions.</p>
+
+<p><script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.0/dist/chart.min.js" type="text/javascript"></script>
+<script src="../../js/bert-vs-gpt2.js"></script>
+<script src="../../js/util.js"></script>
+<div id="graph1"><canvas></canvas></div></p>
+
+<p>When we zoom in on the final 10 positions, things start to get interesting. Both varieties of GPT-2 actually beat out all varieties of BERT at the final position.</p>
+
+<div id="graph2"><canvas></canvas></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>BERT and GPT-2 perform quite differently on the token prediction task depending on the position of the token being predicted. For a fixed sequence length of 100 tokens, BERT performs best when the masked token is between positions 5 and 95, while GPT-2 tends to continually improve as context length increases. Interestingly, when the final token in the sequence is to be predicted, BERT&rsquo;s performance falls off dramatically, while GPT-2 performance remains stable.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/nlp/">nlp</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/bert/">bert</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/gpt2/">gpt2</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        570 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-06-21 01:04
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://lukesalamone.github.io/posts/connect-to-colab/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Colab: Connect to Google Drive</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/gpt2-tokenization/">
+                <span class="button__text">How does GPT-2 Tokenize Text?</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a></span>
+            <span>&nbsp;|&nbsp;</span>
+            <span><a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.e087295eb748ea4dccb937e793af37d150248c9c64b8f6e779e456768c1fc7a86f0db045a8e8724252a732a9fa2ff4ad584c55e135714f31d667274f45f2d32a.js" integrity="sha512-4IcpXrdI6k3MuTfnk6830VAkjJxkuPbneeRWdowfx6hvDbBFqOhyQlKnMqn6L/StWExV4TVxTzHWZydPRfLTKg=="></script>
+
+
+
+    </body>
+</html>

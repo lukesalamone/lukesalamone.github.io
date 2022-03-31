@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Luke Salamone&#39;s Blog</title>
+    <link>https://lukesalamone.github.io/tags/</link>
+    <description>Recent content in Tags on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Wed, 30 Mar 2022 20:05:26 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>archive</title>
+      <link>https://lukesalamone.github.io/tags/archive/</link>
+      <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/archive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>compress</title>
+      <link>https://lukesalamone.github.io/tags/compress/</link>
+      <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/compress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tar</title>
+      <link>https://lukesalamone.github.io/tags/tar/</link>
+      <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/tar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>uncompress</title>
+      <link>https://lukesalamone.github.io/tags/uncompress/</link>
+      <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/uncompress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>untar</title>
+      <link>https://lukesalamone.github.io/tags/untar/</link>
+      <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/untar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gpt2</title>
+      <link>https://lukesalamone.github.io/tags/gpt2/</link>
+      <pubDate>Sun, 19 Sep 2021 20:13:09 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/gpt2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nlp</title>
+      <link>https://lukesalamone.github.io/tags/nlp/</link>
+      <pubDate>Sun, 19 Sep 2021 20:13:09 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jupyter</title>
+      <link>https://lukesalamone.github.io/tags/jupyter/</link>
+      <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/jupyter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://lukesalamone.github.io/tags/python/</link>
+      <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>quick-reference</title>
+      <link>https://lukesalamone.github.io/tags/quick-reference/</link>
+      <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/quick-reference/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>statistics</title>
+      <link>https://lukesalamone.github.io/tags/statistics/</link>
+      <pubDate>Wed, 07 Jul 2021 14:23:12 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/statistics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bert</title>
+      <link>https://lukesalamone.github.io/tags/bert/</link>
+      <pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/bert/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>huggingface</title>
+      <link>https://lukesalamone.github.io/tags/huggingface/</link>
+      <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/huggingface/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pytorch</title>
+      <link>https://lukesalamone.github.io/tags/pytorch/</link>
+      <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/pytorch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>transformers</title>
+      <link>https://lukesalamone.github.io/tags/transformers/</link>
+      <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/transformers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>computer-vision</title>
+      <link>https://lukesalamone.github.io/tags/computer-vision/</link>
+      <pubDate>Mon, 14 Jun 2021 21:05:06 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/computer-vision/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>webdev</title>
+      <link>https://lukesalamone.github.io/tags/webdev/</link>
+      <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/webdev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aws</title>
+      <link>https://lukesalamone.github.io/tags/aws/</link>
+      <pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>json</title>
+      <link>https://lukesalamone.github.io/tags/json/</link>
+      <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/json/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>neural-networks</title>
+      <link>https://lukesalamone.github.io/tags/neural-networks/</link>
+      <pubDate>Sun, 07 Mar 2021 01:31:51 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/neural-networks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>stock-trading</title>
+      <link>https://lukesalamone.github.io/tags/stock-trading/</link>
+      <pubDate>Sun, 07 Mar 2021 01:31:51 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/stock-trading/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>audio</title>
+      <link>https://lukesalamone.github.io/tags/audio/</link>
+      <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/audio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>siamese-neural-network</title>
+      <link>https://lukesalamone.github.io/tags/siamese-neural-network/</link>
+      <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/siamese-neural-network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>video</title>
+      <link>https://lukesalamone.github.io/tags/video/</link>
+      <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/video/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>javascript</title>
+      <link>https://lukesalamone.github.io/tags/javascript/</link>
+      <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>minimax</title>
+      <link>https://lukesalamone.github.io/tags/minimax/</link>
+      <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/minimax/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>monte-carlo</title>
+      <link>https://lukesalamone.github.io/tags/monte-carlo/</link>
+      <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/monte-carlo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>geometry</title>
+      <link>https://lukesalamone.github.io/tags/geometry/</link>
+      <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/geometry/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ai</title>
+      <link>https://lukesalamone.github.io/tags/ai/</link>
+      <pubDate>Tue, 19 May 2020 14:28:57 +0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>game-theory</title>
+      <link>https://lukesalamone.github.io/tags/game-theory/</link>
+      <pubDate>Tue, 19 May 2020 14:28:57 +0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/game-theory/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

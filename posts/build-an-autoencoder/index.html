@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="keywords" content=", neural-networks, pytorch, stock-trading" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/build-an-autoencoder/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GBJCJFKED"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9GBJCJFKED');
+</script>
+
+
+    <title>
+        
+            Autoencoding Stock Prices :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.efa93b157f2afdb60a6756d332b57828012c64eea8bb44daff9e73c1e1de8114.css">
+
+
+
+
+
+
+<meta itemprop="name" content="Autoencoding Stock Prices">
+<meta itemprop="description" content="Autoencoding stock prices as found in Heaton et al., 2016
+  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
+Once we&rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index."><meta itemprop="datePublished" content="2021-03-07T01:31:51-06:00" />
+<meta itemprop="dateModified" content="2021-03-07T01:31:51-06:00" />
+<meta itemprop="wordCount" content="705"><meta itemprop="image" content="https://lukesalamone.github.io"/>
+<meta itemprop="keywords" content="neural-networks,pytorch,stock-trading," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lukesalamone.github.io"/>
+
+<meta name="twitter:title" content="Autoencoding Stock Prices"/>
+<meta name="twitter:description" content="Autoencoding stock prices as found in Heaton et al., 2016
+  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
+Once we&rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index."/>
+
+
+
+    <meta property="og:title" content="Autoencoding Stock Prices" />
+<meta property="og:description" content="Autoencoding stock prices as found in Heaton et al., 2016
+  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
+Once we&rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lukesalamone.github.io/posts/build-an-autoencoder/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-07T01:31:51-06:00" />
+<meta property="article:modified_time" content="2021-03-07T01:31:51-06:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-03-07 01:31:51 -0600 CST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        4 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/build-an-autoencoder/">Autoencoding Stock Prices</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        
+
+<figure><img src="../../img/autoencoder.png"
+         alt="Autoencoding stock prices as found in Heaton et al., 2016"/><figcaption>
+            <p>Autoencoding stock prices as found in Heaton et al., 2016</p>
+        </figcaption>
+</figure>
+
+
+<p>So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms <a href="https://arxiv.org/pdf/1602.06561.pdf">here</a>.</p>
+
+<p>Once we&rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index. This can be useful for finding deeper insights into an index, and doesn&rsquo;t require a priori knowledge of the index price or the weighting of its components. Note, this is only one metric which one could use to determine how well one member of the group follows the group overall. Another might be <a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">Pearson Correlation</a>.</p>
+
+<h2 id="github-repository">Github repository</h2>
+
+<p>To follow along with the code in this tutorial, please download the <a href="https://github.com/lukesalamone/stock-data-autoencoder">corresponding repository on Github</a>:</p>
+
+<pre><code>git clone git@github.com:lukesalamone/stock-data-autoencoder.git
+cd stock-data-autoencoder
+pip install -r requirements.txt
+</code></pre>
+
+<h1 id="what-is-an-autoencoder">What is an autoencoder?</h1>
+
+<p>An autoencoder is a neural network which encodes information back to itself. The structure of the network is such that the input layers (the &ldquo;encoder&rdquo;) will be large compared to the hidden layers (the &ldquo;code&rdquo;), forcing the network to compress information inside its hidden layers.</p>
+
+<p>The idea of our autoencoder is that we would like to encode stock price information back to itself while discarding trends that aren&rsquo;t important. To do this, we will feed our network stock price data and ask the network to return those prices to us as outputs. Component stocks which are important to the index will be preserved well and thus be highly accurate, while components which are less important will not be well-preserved. We will measure the performance of the network on each component using mean squared error.</p>
+
+<h1 id="the-model">The model</h1>
+
+<p>We will use an autoencoder with a number of inputs and outputs equal to the number of component stocks in our index. For this exercise, we will use the <a href="https://en.wikipedia.org/wiki/S%26P_500">S&amp;P 500 index</a> which contains 505 components. This means our input and output size will be 505. We will also use a hidden layer with 5 units.</p>
+
+<pre><code class="language-python">class StonksNet(nn.Module):
+  def __init__(self, size):
+    super().__init__()
+      self.fc1 = nn.Linear(in_features=size, out_features=5)
+      self.out = nn.Linear(in_features=5, out_features=size)
+
+  def forward(self, x: Tensor) -&gt; Tensor:
+    x = F.relu(self.fc1(x))
+    x = F.relu(self.out(x))
+    return x
+</code></pre>
+
+<h1 id="the-data">The data</h1>
+
+<p>We will use daily stock prices downloaded using <a href="https://pypi.org/project/yfinance/">yfinance</a>. This data is readily available online and I recommend downloading it for yourself. We will use data between January 1, 1991 to January 1, 2021 (30 years of data).</p>
+
+<p>To download the S&amp;P 500 stock data please run <code>gather_stocks.py</code> from the project directory:</p>
+
+<pre><code>python gather_stocks.py
+</code></pre>
+
+<p>This will download all 505 components into the <code>stock_data</code> directory. Data will also be cleaned such that each component has the same number of days, which will be important when feeding it into the model.</p>
+
+<h1 id="training-the-model">Training the model</h1>
+
+<p>The model itself is a simple feed-forward neural network. As such, we use a standard training loop to train the model. We don&rsquo;t expect the loss to ever fall to zero during training since it is impossible for the network to perfectly encode and decode so many inputs into so few hidden code units. Some information will inevitably be lost. In my training, validation losses bottomed out at around 4000, but yours may be different depending on the initialization of your autoencoder.</p>
+
+<p><img src="../../img/autoencoder_validation_losses.png" alt="validation loss" /></p>
+
+<h1 id="ranking-components">Ranking components</h1>
+
+<p>Finally we&rsquo;re ready to rank the components of the S&amp;P 500 for &ldquo;closeness&rdquo;. After running <code>python train_model.py</code> you will see the best and worst components as scored by the autoencoder. Here were my results, yours may be different.</p>
+
+<pre><code>best 5 results:
+DRE: 16.66
+LNT: 37.27
+MU: 38.88
+HOLX: 43.18
+CERN: 47.46
+
+worst 5 results:
+HUM: 105244.19
+SHW: 108542.73
+LMT: 113654.48
+C: 357073.88
+NVR: 10955169.00
+</code></pre>
+
+<h1 id="future-research">Future research</h1>
+
+<p>Upon inspection, it appears that better results might be achieved if we normalize the stock data before training. It appears that stocks with higher prices and higher volatility tended to perform worse than those with tight price ranges. In a way this is expected, since the autoencoder will naturally have a harder time modeling large values with a limited set of hidden units. However, normalizing the prices into similar ranges might be an interesting exercise to see if we can squeeze even more out of the model.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/neural-networks/">neural-networks</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/pytorch/">pytorch</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/stock-trading/">stock-trading</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        705 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-03-07 01:31
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://lukesalamone.github.io/posts/read-write-json/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Python: Read &amp; Write Json</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/python-format-string/">
+                <span class="button__text">Python: Formatting a string</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a></span>
+            <span>&nbsp;|&nbsp;</span>
+            <span><a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.e087295eb748ea4dccb937e793af37d150248c9c64b8f6e779e456768c1fc7a86f0db045a8e8724252a732a9fa2ff4ad584c55e135714f31d667274f45f2d32a.js" integrity="sha512-4IcpXrdI6k3MuTfnk6830VAkjJxkuPbneeRWdowfx6hvDbBFqOhyQlKnMqn6L/StWExV4TVxTzHWZydPRfLTKg=="></script>
+
+
+
+    </body>
+</html>

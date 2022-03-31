@@ -1,0 +1,2114 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Luke Salamone&#39;s Blog</title>
+        <link>https://lukesalamone.github.io/posts/</link>
+        <description>Recent content in Posts on Luke Salamone&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+        <lastBuildDate>Wed, 30 Mar 2022 20:05:26 -0500</lastBuildDate>
+        <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>How to Zip and Unzip a tar.gz File</title>
+            <link>https://lukesalamone.github.io/posts/how-to-tar-untar-file/</link>
+            <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/how-to-tar-untar-file/</guid>
+            <description>If you want to extract a tar archive
+tar -xf archive.tar.gz  If you want to compress a directory
+tar -czvf archive.tar.gz /path/to/directory  That&amp;rsquo;s all.</description>
+            <content type="html"><![CDATA[<p>If you want to extract a tar archive</p>
+
+<pre><code class="language-console">tar -xf archive.tar.gz
+</code></pre>
+
+<p>If you want to compress a directory</p>
+
+<pre><code class="language-console">tar -czvf archive.tar.gz /path/to/directory
+</code></pre>
+
+<p>That&rsquo;s all.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Paper Summary: Defending Against Neural Fake News</title>
+            <link>https://lukesalamone.github.io/posts/grover-paper-summary/</link>
+            <pubDate>Sun, 19 Sep 2021 20:13:09 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/grover-paper-summary/</guid>
+            <description>Defending Against Neural Fake News by Zellers et al. presents a model for controllable text generation called Grover. This model can be used to create highly believable computer-generated news articles. The authors present this paper as a method of detecting and preventing the spread of fake news. They claim their model is 92% accurate at detecting fake news stories, partially due to artifacts that generators include in the generated text.</description>
+            <content type="html"><![CDATA[<p><a href="https://arxiv.org/abs/1905.12616"><em>Defending Against Neural Fake News</em></a> by Zellers et al. presents a model for controllable text generation called Grover. This model can be used to create highly believable computer-generated news articles. The authors present this paper as a method of detecting and preventing the spread of fake news. They claim their model is 92% accurate at detecting fake news stories, partially due to artifacts that generators include in the generated text.</p>
+
+<p>Grover functions in an adversarial manner:<br />
+ - an “adversary” generates synthetic stories<br />
+ - a “discriminator” identifies fake stories</p>
+
+<p>Current generative models are fairly good at creating realistic-looking text, but largely lack the ability to be controlled via tunable parameters. In contrast, Grover models news stories as distributions like (<em>domain</em>, <em>date</em>, <em>authors</em>, <em>headline</em>, <em>body</em>) to be sampled from. Adversaries specify domain, date, and headline, and the generator creates the body and author as well as a more appropriate headline.</p>
+
+<figure><img src="/img/grover-prob-distribution.png"
+         alt="Grover samples from a joint distribution of the parts of a news article."/><figcaption>
+            <p>Grover samples from a joint distribution of the parts of a news article.</p>
+        </figcaption>
+</figure>
+
+
+<p>Grover is built using a transformer architecture similar to BERT and GPT. Depending on the model size, the number of parameters varies from similar to GPT to on par with GPT-2. The authors use the RealNews corpus, resulting in 120 gigabytes of total file size. Training took 2 weeks on 256 TPU v3 cores.</p>
+
+<figure><img src="/img/grover-vs-human.png"
+         alt="Grover is actually better at writing synthetic articles than humans are according to authors."/><figcaption>
+            <p>Grover is actually better at writing synthetic articles than humans are according to authors.</p>
+        </figcaption>
+</figure>
+
+
+<p>The results of the authors&rsquo; subjective experiments show that humans have a hard time identifying Grover-written propaganda. Using Mechanical Turk, articles were rated according to stylistic consistency, content sensibility, and overall trustworthiness. Grover, on the other hand, turns out to be a fairly good discriminator.</p>
+
+<p>The authors also tested GPT2, BERT, and FastText on the task of classifying news as human or synthetic. The researchers set up the experiment in an unpaired setting (give a human/synthetic classification for a single article) and a paired setting (determine which is the human and which is the synthetic between 2 articles). Unsurprisingly, the paired setting was far easier. Also unsurprisingly, the larger models perform better at discriminating when paired with smaller generators.</p>
+
+<figure><img src="/img/grover-discrimination-results.png"
+         alt="For generators of the same size, discrimination accuracy was around 90-91%."/><figcaption>
+            <p>For generators of the same size, discrimination accuracy was around 90-91%.</p>
+        </figcaption>
+</figure>
+
+
+<p>When comparing generator/discriminator pairs with the same numbers of parameters, classification accuracy was around 90-92%.
+Grover tends to leave artifacts when generating text, and this fact may be part of the reason discriminators are so good at identifying synthetic text. For one, the authors identify “exposure bias” as one of the reasons. The fact that Grover is never trained on generated text, only on human-authored articles seems to contribute to this. Perplexity also tends to vary over the length of the generated article, and depending on the sampling variance may fall out of the distribution of human language.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Connect Jupyter to Remote</title>
+            <link>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</link>
+            <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</guid>
+            <description>Here&amp;rsquo;s how to connect to a remote Jupyter notebook.
+Create an ssh tunnel to your remote machine:
+ssh -L 8080:localhost:8080 user@12.34.56.78  Start Jupyter on that machine in headless mode:
+jupyter notebook --no-browser --port=8080  Use a browser to open one of the urls that Jupyter presents:
+http://localhost:8080/?token=xyz</description>
+            <content type="html"><![CDATA[<p>Here&rsquo;s how to connect to a remote Jupyter notebook.</p>
+
+<p>Create an ssh tunnel to your remote machine:</p>
+
+<pre><code>ssh -L 8080:localhost:8080 user@12.34.56.78
+</code></pre>
+
+<p>Start Jupyter on that machine in headless mode:</p>
+
+<pre><code>jupyter notebook --no-browser --port=8080
+</code></pre>
+
+<p>Use a browser to open one of the urls that Jupyter presents:<br />
+<a href="http://localhost:8080/?token=xyz">http://localhost:8080/?token=xyz</a></p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>What is Marginalization?</title>
+            <link>https://lukesalamone.github.io/posts/what-is-marginalization/</link>
+            <pubDate>Wed, 07 Jul 2021 14:23:12 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/what-is-marginalization/</guid>
+            <description>In machine learning and statistics, marginalization simply means summing over a set of independent variables. For example, suppose an avid tennis player kept track of the number of days he played tennis over a period of time as well as the weather on that day:
+ .blue { background-color:#09f1; } .gray { background-color:#80808012; }    weather     sunny cloudy rainy totals   play? yes 70 25 1 96  no 70 5 9 84  totals 140 30 10 180   (In this table we&amp;rsquo;re keeping track of the number of days.</description>
+            <content type="html"><![CDATA[<p>In machine learning and statistics, marginalization simply means summing over a set of independent variables. For example, suppose an avid tennis player kept track of the number of days he played tennis over a period of time as well as the weather on that day:</p>
+
+<style>
+  .blue {
+    background-color:#09f1;
+  }
+  .gray {
+    background-color:#80808012;
+  }
+</style>
+
+<table style="width:100%">
+  <tr style="font-weight:bold">
+    <th></th>
+    <th></th>
+    <th colspan="3" style="text-align:center">weather</th>
+    <th></th>
+  </tr>
+  <tr style="font-weight:bold; text-align:center; background-color: inherit">
+    <td></td>
+    <th></th>
+    <td>sunny</td>
+    <td>cloudy</td>
+    <td>rainy</td>
+    <th>totals</th>
+  </tr>
+  <tr>
+    <td rowspan="2" style="font-weight:bold; text-align:right">play?</td>
+    <td style="text-align:right">yes</td>
+    <td class="blue">70</td>
+    <td class="blue">25</td>
+    <td class="blue">1</td>
+    <td class="gray" style="font-weight:bold">96</td>
+  </tr>
+  <tr style="background-color: inherit;">
+    <td style="text-align:right">no</td>
+    <td class="blue">70</td>
+    <td class="blue">5</td>
+    <td class="blue">9</td>
+    <td class="gray" style="font-weight:bold">84</td>
+  </tr>
+  <tr style="font-weight:bold">
+    <td colspan="2" style="text-align:right">totals</td>
+    <td class="gray">140</td>
+    <td class="gray">30</td>
+    <td class="gray">10</td>
+    <td class="gray">180</td>
+  </tr>
+</table>
+
+<p>(<em>In this table we&rsquo;re keeping track of the number of days. If you want probabilities, divide each value in the table by 180. But I think whole numbers are easier to think about so I&rsquo;m keeping them.</em>)</p>
+
+<p>To marginalize one of the variables, we just sum one of the variables. For example, to marginalize the weather, we would sum each of the rows to find that <sup>96</sup>&frasl;<sub>180</sub>=53% of the time tennis was played, and 47% of the time tennis was not played. Likewise, to marginalize the boolean variable of whether tennis was played, we just sum the columns: no matter whether tennis was played on that day, how many days was it sunny? 140.</p>
+
+<p>Another way of saying this is the marginal distribution of sunny weather is the first column (containing 70 and 70). The marginal distribution of playing tennis is the first row (containing 70, 25, and 1).</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Colab: Connect to Google Drive</title>
+            <link>https://lukesalamone.github.io/posts/connect-to-colab/</link>
+            <pubDate>Wed, 30 Jun 2021 22:58:18 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/connect-to-colab/</guid>
+            <description>Here&amp;rsquo;s how to connect your Google Colab notebook to your Drive directory:
+from google.colab import drive drive.mount(&#39;/content/gdrive&#39;)  Follow the prompts from there. That is all.</description>
+            <content type="html"><![CDATA[<p>Here&rsquo;s how to connect your Google Colab notebook to your Drive directory:</p>
+
+<pre><code class="language-python">from google.colab import drive
+drive.mount('/content/gdrive')
+</code></pre>
+
+<p>Follow the prompts from there. That is all.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>BERT vs GPT-2 Performance</title>
+            <link>https://lukesalamone.github.io/posts/bert-vs-gpt2/</link>
+            <pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/bert-vs-gpt2/</guid>
+            <description>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.
+The code used in this experiment can be found on my Github
+BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task).</description>
+            <content type="html"><![CDATA[
+
+<p>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.</p>
+
+<p><a href="https://github.com/lukesalamone/gpt2-vs-bert">The code used in this experiment can be found on my Github</a></p>
+
+<h2 id="bert">BERT</h2>
+
+<p>The <a href="https://arxiv.org/pdf/1810.04805.pdf">Devlin et al. model</a> was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the <em>cloze</em> task). During pretraining, 15% of tokens are hidden from the model, and it is trained to predict the masked tokens. As a result, I was able to evaluate its ability to correctly predict a masked token at a random position in a fixed-size input.</p>
+
+<p>I looked at the following varieties of BERT:</p>
+
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th># Parameters</th>
+<th>Compare to</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>bert-base-uncased</td>
+<td>110 million</td>
+<td>gpt2</td>
+</tr>
+
+<tr>
+<td>bert-base-cased</td>
+<td>109 million</td>
+<td>gpt2</td>
+</tr>
+
+<tr>
+<td>bert-large-uncased</td>
+<td>336 million</td>
+<td>gpt2-medium</td>
+</tr>
+
+<tr>
+<td>bert-large-cased</td>
+<td>335 million</td>
+<td>gpt2-medium</td>
+</tr>
+</tbody>
+</table>
+
+<p>This table also includes corresponding GPT-2 models which have a similar number of parameters. <a href="https://huggingface.co/transformers/pretrained_models.html">Source</a></p>
+
+<h2 id="gpt-2">GPT-2</h2>
+
+<p>The <a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">Radford et al. model</a> hit the scene in February of 2019. Like BERT it is a transformer-based  model, and comes in various sizes ranging from 117M parameters up to 1.5B parameters (gpt2-xl). Because GPT-2 is an autoregressive model, experiments with this family of models perform one token of generation following input context, comparing with the target token for accuracy measurement.</p>
+
+<p>Here we will be evaluating two flavors of this model:</p>
+
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th># Parameters</th>
+<th>Compare to</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>gpt2</td>
+<td>117 million</td>
+<td>bert-base</td>
+</tr>
+
+<tr>
+<td>gpt2-medium</td>
+<td>345 million</td>
+<td>bert-large</td>
+</tr>
+</tbody>
+</table>
+
+<p>This table also includes corresponding BERT models which have a similar number of parameters. <a href="https://huggingface.co/transformers/pretrained_models.html">Source</a></p>
+
+<h2 id="wikitext-token-prediction">Wikitext Token prediction</h2>
+
+<p>To evaluate the models, I sampled 10,000 random sequences from <a href="https://paperswithcode.com/dataset/wikitext-2">Wikitext-2</a>.</p>
+
+<p><strong>For BERT</strong>, a random sequence of 100 tokens is selected. Then, for each sequence, a random position within that sequence is selected and masked. BERT will be required to predict this token, so accuracy is measured as the percentage of the time which its masked token is predicted correctly.</p>
+
+<p><strong>For GPT-2</strong>, a random sequence of 100 tokens is selected. Then, for each sequence, a random position within that sequence is selected. Because GPT-2 is autoregressive, it cannot attend to tokens on the right, so the sequence is truncated at the selected position. The sequence is then padded appropriately to maintain a fixed sequence length of 100.</p>
+
+<p>Below we can see the performance of all 6 models on these tasks. The data has been smoothed by bucketing into groups of 5 positions at once (i.e. positions 0-4, 5-9, etc). You can see that performance of GPT-2 continues to rise as it is given additional context, while BERT models are relatively stable after being given around 5 tokens of context. Interestingly, BERT performance drops off quite steeply over the last 5-10 token positions.</p>
+
+<p><script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.0/dist/chart.min.js" type="text/javascript"></script>
+<script src="/js/bert-vs-gpt2.js"></script>
+<script src="/js/util.js"></script>
+<div id="graph1"><canvas></canvas></div></p>
+
+<p>When we zoom in on the final 10 positions, things start to get interesting. Both varieties of GPT-2 actually beat out all varieties of BERT at the final position.</p>
+
+<div id="graph2"><canvas></canvas></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>BERT and GPT-2 perform quite differently on the token prediction task depending on the position of the token being predicted. For a fixed sequence length of 100 tokens, BERT performs best when the masked token is between positions 5 and 95, while GPT-2 tends to continually improve as context length increases. Interestingly, when the final token in the sequence is to be predicted, BERT&rsquo;s performance falls off dramatically, while GPT-2 performance remains stable.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>How does GPT-2 Tokenize Text?</title>
+            <link>https://lukesalamone.github.io/posts/gpt2-tokenization/</link>
+            <pubDate>Thu, 17 Jun 2021 19:30:48 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/gpt2-tokenization/</guid>
+            <description>Let&amp;rsquo;s explore how GPT-2 tokenizes text.
+What is tokenization? It&amp;rsquo;s important to understand that GPT-2 doesn&amp;rsquo;t work with strings directly. Instead, it needs to tokenize the input string, which is essentially a process for converting the string into a list of numbers, or &amp;ldquo;tokens&amp;rdquo;. It is these tokens which are passed into the model during training or for inference. As a concrete example, let&amp;rsquo;s look at a few sample sentences:</description>
+            <content type="html"><![CDATA[
+
+<p>Let&rsquo;s explore how GPT-2 tokenizes text.</p>
+
+<h2 id="what-is-tokenization">What is tokenization?</h2>
+
+<p>It&rsquo;s important to understand that GPT-2 doesn&rsquo;t work with strings directly. Instead, it needs to tokenize the input string, which is essentially a process for converting the string into a list of numbers, or &ldquo;tokens&rdquo;. It is these tokens which are passed into the model during training or for inference. As a concrete example, let&rsquo;s look at a few sample sentences:</p>
+
+<pre><code class="language-python">tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+tokens1 = tokenizer('I love my dog')
+</code></pre>
+
+<p>When we look at <code>tokens1</code> we see there are 4 tokens:</p>
+
+<pre><code class="language-python">{'input_ids': [40, 1842, 616, 3290], 'attention_mask': [1, 1, 1, 1]}
+</code></pre>
+
+<p>Here what we care about is the <code>'input_ids'</code> list. We can ignore the <code>'attention_mask'</code> for now. We can convert the tokens in <code>[40, 1842, 616, 3290]</code> back into strings using <code>tokenizer.decode</code>:</p>
+
+<pre><code class="language-python">tokens1 = tokens1['input_ids']
+
+[tokenizer.decode(x) for x in tokens1]
+# prints ['I', ' love', ' my', ' dog']
+
+[tokenizer.decode(x).strip().lower() for x in tokens1]
+# prints ['i', 'love', 'my', 'dog']
+</code></pre>
+
+<p>This process allows us to recover the tokens as strings from the tokenizer. For dictionary lookups, we&rsquo;ll also lowercase the strings and remove the whitespace from them.</p>
+
+<p>Now, let&rsquo;s see what happens when we do the same thing with more complex words:</p>
+
+<pre><code class="language-python">tokens2 = tokenizer('My favorite color is chartreuse')['token_ids']
+[tokenizer.decode(x).strip().lower() for x in tokens2]
+# prints ['my', 'favorite', 'color', 'is', 'chart', 're', 'use']
+</code></pre>
+
+<p>Because &ldquo;chartreuse&rdquo; isn&rsquo;t in GPT-2&rsquo;s vocabulary, it is tokenized as &ldquo;chart&rdquo;, &ldquo;re&rdquo; and &ldquo;use&rdquo;.</p>
+
+<h3 id="about-that-attention-mask">About that attention mask</h3>
+
+<p>For brevity I glossed over what <code>attention_mask</code> does above. If you&rsquo;re interested in attention masks, <a href="/posts/what-are-attention-masks">I have a blog post on that very topic</a>!</p>
+
+<h2 id="english-words">English words</h2>
+
+<p>Now it would be interesting to see how many tokens in GPT-2&rsquo;s vocabulary are actually English words. This is an imprecise metric since it depends heavily on which dictionary we use. (There is no single authoritative source of all English words.) I&rsquo;ll use several dictionaries and compare the results.</p>
+
+<h3 id="enchant">Enchant</h3>
+
+<p><a href="https://pyenchant.github.io/pyenchant/tutorial.html">PyEnchant</a> contains a python module <code>enchant</code> which we can use to check if a word is spelled correctly. It can also make spelling suggestions for incorrectly spelled words:</p>
+
+<pre><code class="language-python">import enchant
+d = enchant.request_dict(&quot;en_US&quot;)
+d.check('Hello')
+# prints True
+
+d.check('Helo')
+# prints False
+</code></pre>
+
+<h3 id="nltk-words">NLTK words</h3>
+
+<p>The popular NLP library <a href="https://www.nltk.org/">NLTK</a> also contains a word list, accessible through its <code>corpus</code> module.</p>
+
+<pre><code class="language-python">from nltk.corpus import words
+
+nltk_words = set(words.words())
+len(nltk_words)
+# prints 235892
+</code></pre>
+
+<h3 id="english-350k">English 350k</h3>
+
+<p>This list of words was taken from this <a href="https://github.com/dwyl/english-words/blob/master/words_alpha.txt">github repository</a>. It is a convenient list of lowercased words containing only letters. It seems to be the biggest of the word lists.</p>
+
+<h3 id="lemmatization">Lemmatization</h3>
+
+<p>We can bump our numbers up slightly through <a href="https://en.wikipedia.org/wiki/Lemmatisation">lemmatization</a>:</p>
+
+<blockquote>
+<p>In many languages, words appear in several inflected forms. For example, in English, the verb &lsquo;to walk&rsquo; may appear as &lsquo;walk&rsquo;, &lsquo;walked&rsquo;, &lsquo;walks&rsquo; or &lsquo;walking&rsquo;. The base form, &lsquo;walk&rsquo;, that one might look up in a dictionary, is called the lemma for the word. The association of the base form with a part of speech is often called a lexeme of the word.</p>
+</blockquote>
+
+<p>For our lemmatizer we will use <code>WordNetLemmatizer</code> from <code>nltk.stem.wordnet</code>.</p>
+
+<h2 id="testing-gpt-2-tokens">Testing GPT-2 tokens</h2>
+
+<p>So of the tokens which GPT-2 uses, how many are English words? We can break this down metric by the dictionary used.</p>
+
+<table>
+<thead>
+<tr>
+<th>Dictionary</th>
+<th>% Words</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>English370k †</td>
+<td>72.92%</td>
+</tr>
+
+<tr>
+<td>English370k</td>
+<td>72.59%</td>
+</tr>
+
+<tr>
+<td>Enchant †</td>
+<td>60.48%</td>
+</tr>
+
+<tr>
+<td>Enchant</td>
+<td>60.17%</td>
+</tr>
+
+<tr>
+<td>NLTK words †</td>
+<td>57.07%</td>
+</tr>
+
+<tr>
+<td>NLTK words</td>
+<td>48.27%</td>
+</tr>
+</tbody>
+</table>
+
+<p><em>† indicates words were lemmatized</em></p>
+
+<p>So the English370k word list seems to capture the most tokens from the three dictionaries. Also note the mild impact of lemmatization: although it may bump some of the percentages up a bit, it&rsquo;s not enough for one dictionary to outperform another.</p>
+
+<div id="pie"><canvas></canvas></div>
+
+<p>Looking at the tokens which aren&rsquo;t in the dictionary, around 73% of them are non-word alphabetical strings. The final 27% is accounted for by symbols, numbers, and non-ascii character sequences (unicode characters from languages like Arabic, Korean, and Chinese). If we remove these, we end up with about 10k tokens containing only letters, which is around 21% of GPT-2&rsquo;s total vocabulary. I&rsquo;ve included this list in a <a href="https://gist.github.com/lukesalamone/22ce6f362db3bdd09eda3cc5cbf5576f">github gist</a> (duplicates removed).</p>
+
+<h2 id="now-what">Now what?</h2>
+
+<p>Looking at these non-word alphabetical strings, it&rsquo;s interesting to see how the Internet (as GPT-2 saw it) was encoded. Then again, it also contains a lot of proper nouns which wouldn&rsquo;t be in a normal dictionary like &ldquo;starbucks&rdquo;.</p>
+
+<p>Other tokens are clearly vestiges of the scraping process which was used to gather text which GPT-2 trained on. Tokens like &ldquo;rawdownloadcloneembedreportprint&rdquo;, &ldquo;buyableinstoreandonline&rdquo;, &ldquo;randomredditorwithno&rdquo;, and &ldquo;itemthumbnailimage&rdquo; contain next to zero semantic value and the vocabulary space would probably have been better served with more meaningful tokens.</p>
+
+<p>The following are the longest non-dictionary tokens found in GPT-2&rsquo;s vocabulary:</p>
+
+<table>
+<thead>
+<tr>
+<th>Token ID</th>
+<th>String</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>39177</td>
+<td>ItemThumbnailImage</td>
+</tr>
+
+<tr>
+<td>30210</td>
+<td>guiActiveUnfocused</td>
+</tr>
+
+<tr>
+<td>39755</td>
+<td>isSpecialOrderable</td>
+</tr>
+
+<tr>
+<td>31576</td>
+<td>externalActionCode</td>
+</tr>
+
+<tr>
+<td>39753</td>
+<td>quickShipAvailable</td>
+</tr>
+
+<tr>
+<td>39757</td>
+<td>channelAvailability</td>
+</tr>
+
+<tr>
+<td>36174</td>
+<td>RandomRedditorWithNo</td>
+</tr>
+
+<tr>
+<td>30899</td>
+<td>cloneembedreportprint</td>
+</tr>
+
+<tr>
+<td>40242</td>
+<td>BuyableInstoreAndOnline</td>
+</tr>
+
+<tr>
+<td>30906</td>
+<td>rawdownloadcloneembedreportprint</td>
+</tr>
+</tbody>
+</table>
+
+<p>We may also be able to measure performance of GPT-2 on certain tasks based on how many of the tokens were dictionary words. It might be true, for example, that sentences with higher proportions of dictionary word tokens would perform better on sentence completion tasks.</p>
+
+<script src="/js/chart.min.js" type="text/javascript"></script>
+<script src="/js/gpt2-tokens-pie.js" type="text/javascript"></script>
+]]></content>
+        </item>
+        
+        <item>
+            <title>What Are Attention Masks?</title>
+            <link>https://lukesalamone.github.io/posts/what-are-attention-masks/</link>
+            <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/what-are-attention-masks/</guid>
+            <description>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.
+ Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.</description>
+            <content type="html"><![CDATA[
+
+<p>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &ldquo;attention_mask&rdquo; tensor to identify which tokens are padding.</p>
+
+<figure><img src="/img/attention_mask.png"
+         alt="Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)"/><figcaption>
+            <p>Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)</p>
+        </figcaption>
+</figure>
+
+
+<p>If you want to perform inference with transformers one sequence at a time, you can ignore attention masks. The &ldquo;slow way&rdquo; will be sufficient for your needs.</p>
+
+<h2 id="the-slow-way">The slow way</h2>
+
+<p>We can perform inference with GPT-2 using sequences one at a time, but it&rsquo;s slow:</p>
+
+<pre><code class="language-python">from transformers import GPT2LMHeadModel, GPT2Tokenizer
+
+tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+gpt2 = GPT2LMHeadModel.from_pretrained('gpt2')
+
+context = tokenizer('It will rain in the', return_tensors='pt')
+
+prediction = gpt2.generate(**context, max_length=10)
+tokenizer.decode(prediction[0])
+# prints 'It will rain in the morning, and the rain'
+</code></pre>
+
+<p>It&rsquo;s way faster to batch the inputs, which means adding their token vectors to the context and performing inference only once.</p>
+
+<h2 id="the-un-slow-way">The un-slow way</h2>
+
+<p>The cool way to perform inference on many samples is with batching. It&rsquo;s much faster but it&rsquo;s also slightly more complicated.</p>
+
+<pre><code class="language-python">tokenizer.padding_side = &quot;left&quot;
+tokenizer.pad_token = tokenizer.eos_token
+
+sentences = [&quot;It will rain in the&quot;,
+            &quot;I want to eat a big bowl of&quot;,
+            &quot;My dog is&quot;]
+inputs = tokenizer(sentences, return_tensors=&quot;pt&quot;, padding=True)
+
+output_sequences = gpt2.generate(**inputs)
+
+for seq in output_sequences:
+    print(tokenizer.decode(seq))
+</code></pre>
+
+<p>What&rsquo;s happening here? And what does this have to do with attention masks? First let&rsquo;s explain padding, then take a look at the code line by line.</p>
+
+<p>We feed tokens into transformer-based language models like GPT-2 and BERT for inference as <a href="https://pytorch.org/docs/stable/tensors.html">tensors</a>. A tensor is like a python list but with a few extra features and restrictions. Specifically, for a tensor of dimension 2+, all vectors in that dimension need to be the same length. For example,</p>
+
+<pre><code class="language-python">from torch import tensor
+
+tensor([[1,2], [3,4]])  # ok
+tensor([[1,2], [3]])   # error!
+</code></pre>
+
+<p>When we tokenize an input, it it will be turned into a tensor containing sequence of integers, each corresponding to an item in the transformer&rsquo;s vocabulary. Here is an example tokenization in GPT-2:</p>
+
+<table>
+<thead>
+<tr>
+<th>String</th>
+<th>Token ID</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>It</td>
+<td>1026</td>
+</tr>
+
+<tr>
+<td>will</td>
+<td>481</td>
+</tr>
+
+<tr>
+<td>rain</td>
+<td>6290</td>
+</tr>
+
+<tr>
+<td>in</td>
+<td>287</td>
+</tr>
+
+<tr>
+<td>the</td>
+<td>262</td>
+</tr>
+</tbody>
+</table>
+
+<p>Suppose we wanted to include a second sequence in our input:</p>
+
+<table>
+<thead>
+<tr>
+<th>String</th>
+<th>Token ID</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>My</td>
+<td>3666</td>
+</tr>
+
+<tr>
+<td>dog</td>
+<td>3290</td>
+</tr>
+
+<tr>
+<td>is</td>
+<td>318</td>
+</tr>
+</tbody>
+</table>
+
+<p>Because these two sequences have different lengths, we can&rsquo;t just combine them in one tensor. Instead, we have to <em>pad</em> the shorter sequences with dummy tokens so that each sequence is the same length. And because we want the model to continue to add to the right side of our sequence, we will pad the left side of shorter sequences.</p>
+
+<table>
+<thead>
+<tr>
+<th>String</th>
+<th>Token ID</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>&lt;pad&gt;</code></td>
+<td>50256</td>
+</tr>
+
+<tr>
+<td>My</td>
+<td>3666</td>
+</tr>
+
+<tr>
+<td>dog</td>
+<td>3290</td>
+</tr>
+
+<tr>
+<td>is</td>
+<td>318</td>
+</tr>
+</tbody>
+</table>
+
+<p>This is where the attention mask comes in. The attention mask simply shows the transformer which tokens are padding, placing 0s in the positions of padding tokens and 1s in the positions of actual tokens. Now that we understand that, let&rsquo;s look at the code line by line.</p>
+
+<pre><code class="language-python">tokenizer.padding_side = &quot;left&quot;
+</code></pre>
+
+<p>This line tells the tokenizer to begin padding from the left (default is right) because the logits of the rightmost token will be used to predict future tokens.</p>
+
+<pre><code class="language-python">tokenizer.pad_token = tokenizer.eos_token
+</code></pre>
+
+<p>This line specifies which token we will use for padding. It doesn&rsquo;t matter which one you choose, but here we&rsquo;re choosing the &ldquo;end of sequence&rdquo; token.</p>
+
+<pre><code class="language-python">sentences = [&quot;It will rain in the&quot;,
+            &quot;I want to eat a big bowl of&quot;,
+            &quot;My dog is&quot;]
+</code></pre>
+
+<p>These three sequences all have different lengths when tokenized, so should be a good test of our padding method.</p>
+
+<pre><code class="language-python">inputs = tokenizer(sentences, return_tensors=&quot;pt&quot;, padding=True)
+</code></pre>
+
+<p>Now we tokenize. We&rsquo;re passing in the sentences from above, telling the tokenizer to use PyTorch tensors (rather than Tensorflow), and telling the tokenizer to add padding for us. We can print <code>inputs</code> here to confirm that, yes, tokenization is working as we thought:</p>
+
+<pre><code class="language-python">{'input_ids': tensor([
+    [50256, 50256, 50256,  1026,   481,  6290,   287,   262],
+    [   40,   765,   284,  4483,   257,  1263,  9396,   286],
+    [50256, 50256, 50256, 50256, 50256,  3666,  3290,   318]
+  ]),
+'attention_mask': tensor([
+    [0, 0, 0, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0, 1, 1, 1]
+  ])}
+</code></pre>
+
+<p>As you can see, the first and third sequence include padding at the beginning, and the <code>attention_mask</code> parameter marks the position of this padding.</p>
+
+<p>Now let&rsquo;s actually pass this input into the model to generate new text:</p>
+
+<pre><code class="language-python">output_sequences = gpt2.generate(**inputs)
+</code></pre>
+
+<p>If you&rsquo;re unfamiliar with <code>**kwargs</code> syntax for function calls, this passes in the <code>inputs</code> dict as named parameters, using the keys as the parameter names and the values as the corresponding argument values. <a href="https://docs.python.org/3/tutorial/controlflow.html#keyword-arguments">Check the docs for more info</a>.</p>
+
+<p>Finally, we just need to loop through each of the generated sequences and print out the result in human readable form, using the <code>decode()</code> function to convert token IDs to strings.</p>
+
+<pre><code class="language-python">for seq in output_sequences:
+    print(tokenizer.decode(seq))
+</code></pre>
+]]></content>
+        </item>
+        
+        <item>
+            <title>How Does Convolution Work?</title>
+            <link>https://lukesalamone.github.io/posts/how-does-convolution-work/</link>
+            <pubDate>Mon, 14 Jun 2021 21:05:06 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/how-does-convolution-work/</guid>
+            <description>Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&amp;rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!
+      number:   four three eight    padding:    kernel size:    stride:    speed:        You can use the settings above to control the hyperparameters of the convolutional layer.</description>
+            <content type="html"><![CDATA[
+
+<p>Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!</p>
+
+<p><script src="/js/util.js"></script>
+<script src="/js/convolution-demo.js"></script>
+<link rel="stylesheet" href="/css/convolution-demo.css" /></p>
+
+<div id="input-output">
+  <div id="input-grid"></div>
+  <div id="output-grid"></div>
+</div>
+
+<div id="controls">
+  <table>
+    <tr id="number">
+      <td>number:</td>
+      <td>
+        <select>
+          <option value="four">four</option>
+          <option value="three">three</option>
+          <option value="eight">eight</option>
+        </select>
+      </td>
+    </tr>
+    <tr id="padding">
+      <td>padding: <span class="val"></span></td>
+      <td><input type="range" min="0" max="2" value="0"></td>
+    </tr>
+    <tr id="kernelsize">
+      <td>kernel size: <span class="val"></span></td>
+      <td><input type="range" min="1" max="4" value="2"></td>
+    </tr>
+    <tr id="stride">
+      <td>stride: <span class="val"></span></td>
+      <td><input type="range" min="1" max="3" value="1"></td>
+    </tr>
+    <tr id="speed">
+      <td>speed: <span class="val"></span></td>
+      <td><input type="range" min="1" max="5" value="3"></td>
+    </tr>
+    <tr id="errors" style="display:none">
+      <td colspan="2"></td>
+    </tr>
+  </table>
+</div>
+
+<p>You can use the settings above to control the hyperparameters of the convolutional layer.</p>
+
+<p>As you&rsquo;ve probably figured out, the left side shows the input, a 20x20 handwritten digit, and the right side shows the output as it is being drawn. A convolutional layer will pass a filter over the input, selecting only a small group of pixels at a time.</p>
+
+<p>Not shown: once the filter selects a window of pixels, it will compute a dot product with the pixel values and its own weights. In this demo the filter weights are assumed to be 1 for simplicity.</p>
+
+<h2 id="more-on-the-hyperparameters">More on the hyperparameters</h2>
+
+<p>Sometimes the settings will result in an invalid convolution. This happens if the kernel extends beyond the activation map. We can write a python function to check whether it will be valid:</p>
+
+<pre><code class="language-python">def valid_convolution(input_size, kernel_size, padding, stride):
+  if (input_size + 2*padding - kernel_size) % stride == 0:
+    return True
+  else:
+    return False
+</code></pre>
+
+<h3 id="padding">Padding</h3>
+
+<p>Increasing the padding will add extra pixels, typically zeros, around the edges of the input. This is done in order to ensure that the layer parameters will be valid. Additionally, it causes pixels which would have been on the edges to be more to the middle of the activation map.</p>
+
+<h3 id="kernel-size">Kernel Size</h3>
+
+<p>This refers to the &ldquo;sliding window&rdquo; which passes over the input. Choosing a larger kernel tends to increase the &ldquo;smudging&rdquo; which happens in the output, while a smaller kernel preserves more information for deeper layers. Sometimes kernel size is referred to as filter size.</p>
+
+<h3 id="stride">Stride</h3>
+
+<p>Stride refers to the distance the sliding window will move between steps. A stride of 1 moves the window one pixel to the right, while a stride of 2 moves the window 2 pixels. A larger stride can reduce output layer size at the expense of granularity.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Python: Serve an HTML File</title>
+            <link>https://lukesalamone.github.io/posts/python-serve-html/</link>
+            <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/python-serve-html/</guid>
+            <description>If you want to serve some HTML with python run
+python -m http.server 8000  This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
+            <content type="html"><![CDATA[<p>If you want to serve some HTML with python run</p>
+
+<pre><code class="language-console">python -m http.server 8000
+</code></pre>
+
+<p>This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>How to Train and Run a Simple Language Model</title>
+            <link>https://lukesalamone.github.io/posts/running-simple-language-model/</link>
+            <pubDate>Fri, 16 Apr 2021 21:08:53 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/running-simple-language-model/</guid>
+            <description>This article will show how to run a simple language model, KenLM. It&amp;rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&amp;rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.
+Let&amp;rsquo;s work backwards from where we&amp;rsquo;re trying to get to. When you&amp;rsquo;ve finished, you should be able to run the following script:</description>
+            <content type="html"><![CDATA[
+
+<p>This article will show how to run a simple language model, KenLM. It&rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.</p>
+
+<p>Let&rsquo;s work backwards from where we&rsquo;re trying to get to. When you&rsquo;ve finished, you should be able to run the following script:</p>
+
+<pre><code class="language-python">import kenlm
+
+path = 'path/to/model.arpa'
+lm = kenlm.LanguageModel(path)
+
+sentence = &quot;I am not superstitious but I am a little stitious&quot;
+print(model.score(sentence))
+</code></pre>
+
+<p>The first step will be to build KenLM. Then, we will build the ARPA file which KenLM uses to evaluate.</p>
+
+<h2 id="building-kenlm">Building KenLM</h2>
+
+<p>First, clone this repository:</p>
+
+<p><code>git clone git@github.com:kpu/kenlm.git</code></p>
+
+<p>Now we need to build the KenLM toolkit. Run the following to build:</p>
+
+<pre><code>mkdir -p build
+cd build
+cmake ..
+make -j 4
+</code></pre>
+
+<p>Now we just need to provide the model with a <code>.arpa</code> ngram language model file. So let&rsquo;s get one.</p>
+
+<h2 id="building-an-ngram-language-model-from-wikitext-2">Building an ngram language model from Wikitext-2</h2>
+
+<p>First, let&rsquo;s clone a repository which will build an ARPA file. This repository builds the ngram file from <a href="https://paperswithcode.com/dataset/wikitext-2">Wikitext-2</a>, a common dataset used in natural language processing.</p>
+
+<pre><code>git clone git@github.com:daandouwe/ngram-lm.git
+cd ngram-lm
+mkdir data
+./get-data.sh
+mkdir arpa
+./main.py --order 3 --interpolate --save-arpa --name wiki-interpolate
+</code></pre>
+
+<p>Once that has finished, you&rsquo;ll have new <code>.arpa</code> in the <code>arpa</code> directory you created. This script took the longest to run on my machine. Be patient, your computer is busy reading all of Wikipedia.</p>
+
+<h2 id="all-together-now">All Together Now</h2>
+
+<p>Now we&rsquo;re finally ready to evaluate a sentence with the language model.</p>
+
+<pre><code class="language-python">import kenlm
+
+path = 'path/to/model.arpa'
+lm = kenlm.LanguageModel(path)
+
+sentence = &quot;I am not superstitious but I am a little stitious&quot;
+print(model.score(sentence))
+</code></pre>
+
+<p>Which prints something like</p>
+
+<pre><code>----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+-24.47921371459961
+</code></pre>
+
+<p>Now if you&rsquo;re interested in a bit more information about what&rsquo;s going on, you can add this bit at the bottom:</p>
+
+<pre><code class="language-python">words = ['&lt;s&gt;'] + sentence.split() + ['&lt;/s&gt;']
+for i, (prob, length, oov) in enumerate(lm.full_scores(sentence)):
+  print(f'{prob} {length}: {&quot; &quot;.join(words[i+2-length:i+2])}')
+  if oov:
+    print(f'\t&quot;{words[i+1]}&quot; is an OOV')
+
+for w in words:
+  if not w in lm:
+    print(f'&quot;{w}&quot; is an OOV')
+</code></pre>
+
+<p>Which adds this to your output:</p>
+
+<pre><code>-3.1138248443603516 2: &lt;s&gt; I
+-1.1560251712799072 3: &lt;s&gt; I am
+-1.1645264625549316 3: I am not
+-4.912360191345215 1: superstitious
+-4.504511833190918 1: but
+-2.2214112281799316 2: but I
+-1.1531075239181519 3: but I am
+-1.2614283561706543 3: I am a
+-0.9001830816268921 3: am a little
+-1.2325057983398438 3: a little stitious
+	&quot;stitious&quot; is an OOV
+-2.8593297004699707 2: stitious &lt;/s&gt;
+&quot;stitious&quot; is an OOV
+</code></pre>
+
+<p>To the left of each term is the log (base 10) probability of each term occurring. For the first term, <code>&lt;s&gt; I</code> means start of sentence followed by &ldquo;I&rdquo;, which the model has assigned a log probability of -3.11. That&rsquo;s around 0.00078. You might think it&rsquo;s strange that a sentence beginning with &ldquo;I&rdquo; is so unlikely but we are using Wikitext-2. Wikitext-2 is Wikipedia articles. Not a lot of sentences on Wikipedia begin with &ldquo;I&rdquo;.</p>
+
+<p>Notice that &ldquo;stitious&rdquo; is an OOV (out of vocabulary) term here. Clearly the language model doesn&rsquo;t appreciate humor. We&rsquo;ll have to tackle that next time.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>What is Temperature in NLP?🐭</title>
+            <link>https://lukesalamone.github.io/posts/what-is-temperature/</link>
+            <pubDate>Fri, 02 Apr 2021 00:50:38 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/what-is-temperature/</guid>
+            <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Temperature is a parameter used in natural language processing models to increase or decrease the &amp;ldquo;confidence&amp;rdquo; a model has in its most likely response.</description>
+            <content type="html"><![CDATA[
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      },
+      extensions: ["AMSmath.js", "AMSsymbols.js"]
+    }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<p>Temperature is a parameter used in natural language processing models to increase or decrease the &ldquo;confidence&rdquo; a model has in its most likely response.</p>
+
+<p>In my opinion, the most intuitive way of understanding how temperature affects model outputs is to play with it yourself. If you&rsquo;re interested in the mathematical details, I&rsquo;ve included them below, but I won&rsquo;t be offended if you just want to play around with the slider 😃 .</p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<script src="/js/temperature-demo.js"></script>
+
+<p><canvas id="myChart" style="background-color: #0000"></canvas>
+<span>Temperature (θ):
+<input type="range" min="1" max="1000" value="250" class="slider" id="myRange">
+<span id="temperature">25.0</span></p>
+
+<h2 id="what-s-going-on">What&rsquo;s going on?</h2>
+
+<p>Suppose we have a language model which predicts the last word in the sentence &ldquo;The mouse ate the _____&ldquo;. Given the previous words in the sentence and its prior training, our language model will try to fill in the blank with a reasonable final token. Suppose those raw outputs are as follows:</p>
+
+<table>
+<thead>
+<tr>
+<th>token</th>
+<th>logit</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>cat</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>cheese</td>
+<td>70</td>
+</tr>
+
+<tr>
+<td>pizza</td>
+<td>40</td>
+</tr>
+
+<tr>
+<td>cookie</td>
+<td>65</td>
+</tr>
+
+<tr>
+<td>fondue</td>
+<td>55</td>
+</tr>
+
+<tr>
+<td>banana</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>baguette</td>
+<td>15</td>
+</tr>
+
+<tr>
+<td>cake</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+
+<p>These outputs make sense. A mouse probably eats cheese, but <a href="https://en.wikipedia.org/wiki/If_You_Give_a_Mouse_a_Cookie">mice are also known to eat cookies</a>. A mouse probably wouldn&rsquo;t eat a baguette unless it was <a href="https://imgur.com/a/484AEO3">a French mouse</a>.</p>
+
+<p>Since these are the raw outputs of the model, they won&rsquo;t sum to 100. To normalize these values, we typically use <a href="https://en.wikipedia.org/wiki/Softmax_function">softmax</a>:</p>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<p style="text-align: center; font-size: 1.5em">
+$ σ(z_i) = {e^{z_i} \over \sum_{j=0}^N e^{z_j}} $
+</p>
+
+<p>When modulating with temperature, we introduce an additional temperature variable θ which affects the softmax distribution. A higher temperature θ &ldquo;excites&rdquo; previously low probability outputs. A lower temperature θ lowers the smaller outputs relative to the largest outputs. To accomplish this, we replace each z<sub>i</sub> in the formula above with the quotient z<sub>i</sub>/θ:</p>
+
+<p style="text-align: center; font-size: 1.5em">
+$ σ(z_i) = {e^{z_i \over θ} \over \sum_{j=0}^N e^{z_j \over θ}} $
+</p>
+
+<p>Higher temperatures make the model more &ldquo;creative&rdquo; which can be useful when generating prose, for example. Lower temperatures make the model more &ldquo;confident&rdquo; which can be useful in applications like question answering.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>What is Perplexity?</title>
+            <link>https://lukesalamone.github.io/posts/perplexity/</link>
+            <pubDate>Thu, 01 Apr 2021 12:14:49 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/perplexity/</guid>
+            <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i TLDR: NLP metric ranging from 1 to infinity.</description>
+            <content type="html"><![CDATA[
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      },
+      extensions: ["AMSmath.js", "AMSsymbols.js"]
+    }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<p><strong>TLDR: NLP metric ranging from 1 to infinity. Lower is better.</strong></p>
+
+<p>In natural language processing, perplexity is the most common metric used to measure the performance of a language model. To calculate perplexity, we use the following formula:</p>
+
+<p style="text-align: center; font-size: 1.5em">
+$ perplexity = e^z $
+</p>
+
+<p style="text-align:center">where</p>
+
+<p style="text-align: center; font-size: 1.5em">
+$ z = -{1 \over N} \sum_{i=0}^N ln(P_{n}) $
+</p>
+
+<p>Typically we use base <code>e</code> when calculating perplexity, but this is not required. Any base will do, so sometimes the formula will use base 2 or base 10, along with logarithms to the corresponding base.</p>
+
+<h2 id="example">Example</h2>
+
+<p>Imagine that we have a language model which generates the following sequence of tokens:</p>
+
+<p><code>&lt;start&gt;</code> <code>jack</code> <code>and</code> <code>jill</code> <code>went</code> <code>up</code> <code>the</code> <code>hill</code></p>
+
+<p>And suppose that the conditional probabilities for each of the tokens are as follows:</p>
+
+<table>
+<thead>
+<tr>
+<th>token</th>
+<th>probability</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>&lt;start&gt;</code></td>
+<td>15%</td>
+</tr>
+
+<tr>
+<td><code>jack</code></td>
+<td>5%</td>
+</tr>
+
+<tr>
+<td><code>and</code></td>
+<td>12%</td>
+</tr>
+
+<tr>
+<td><code>jill</code></td>
+<td>18%</td>
+</tr>
+
+<tr>
+<td><code>went</code></td>
+<td>25%</td>
+</tr>
+
+<tr>
+<td><code>up</code></td>
+<td>40%</td>
+</tr>
+
+<tr>
+<td><code>the</code></td>
+<td>33%</td>
+</tr>
+
+<tr>
+<td><code>hill</code></td>
+<td>50%</td>
+</tr>
+</tbody>
+</table>
+
+<p>For the purposes of calculating perplexity it doesn&rsquo;t matter how the sequence was generated. It may be using an n-gram model or an LSTM or a transformer. All that matters is the probabilities the model assigns to each of the tokens. To calculate perplexity, we calculate the logarithm of each of the values above:</p>
+
+<table>
+<thead>
+<tr>
+<th>token</th>
+<th>P</th>
+<th>ln(P)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>&lt;start&gt;</code></td>
+<td>15%</td>
+<td>-1.897</td>
+</tr>
+
+<tr>
+<td><code>jack</code></td>
+<td>5%</td>
+<td>-2.996</td>
+</tr>
+
+<tr>
+<td><code>and</code></td>
+<td>12%</td>
+<td>-2.120</td>
+</tr>
+
+<tr>
+<td><code>jill</code></td>
+<td>18%</td>
+<td>-1.715</td>
+</tr>
+
+<tr>
+<td><code>went</code></td>
+<td>25%</td>
+<td>-1.386</td>
+</tr>
+
+<tr>
+<td><code>up</code></td>
+<td>40%</td>
+<td>-0.916</td>
+</tr>
+
+<tr>
+<td><code>the</code></td>
+<td>33%</td>
+<td>-1.109</td>
+</tr>
+
+<tr>
+<td><code>hill</code></td>
+<td>50%</td>
+<td>-0.693</td>
+</tr>
+</tbody>
+</table>
+
+<p>Summing the logs, we get -12.832. Since there are 8 tokens, we divide -12.832 by 8 to get -1.604. Negating that allows us to calculate the final perplexity:</p>
+
+<p style="text-align: center; font-size: 1.5em">
+$ perplexity = e^{1.604} = 4.973 $
+</p>
+
+<p>Therefore the perplexity of this sequence is about 4.973.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>S3 Bucket Url</title>
+            <link>https://lukesalamone.github.io/posts/s3-bucket-url/</link>
+            <pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/s3-bucket-url/</guid>
+            <description>Assuming your bucket is publicly accessible, the url of your S3 bucket will be
+http://[bucket-name].s3-website-[region].amazonaws.com  For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be
+http://mybucket.s3-website-us-east-1.amazonaws.com  </description>
+            <content type="html"><![CDATA[<p>Assuming your bucket is publicly accessible, the url of your S3 bucket will be</p>
+
+<pre><code>http://[bucket-name].s3-website-[region].amazonaws.com
+</code></pre>
+
+<p>For example for &ldquo;mybucket&rdquo; in &ldquo;us-east-1&rdquo; your url will be</p>
+
+<pre><code>http://mybucket.s3-website-us-east-1.amazonaws.com
+</code></pre>
+]]></content>
+        </item>
+        
+        <item>
+            <title>About My Quick Reference Articles</title>
+            <link>https://lukesalamone.github.io/posts/why-how-to/</link>
+            <pubDate>Sun, 07 Mar 2021 14:44:37 -0600</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/why-how-to/</guid>
+            <description>I&amp;rsquo;ve created a few quick-reference articles and it might not be clear why. There are a few reasons:
+ These articles are mainly a reference for me. I find myself searching the same things over and over, looking for the purple link, scrolling through the article, then copy &amp;amp; pasting code. I&amp;rsquo;d rather not go through the hassle. These articles aim to solve that problem. I aim to keep the answers above the fold.</description>
+            <content type="html"><![CDATA[<p>I&rsquo;ve created a few quick-reference articles and it might not be clear why. There are a few reasons:</p>
+
+<ol>
+<li>These articles are mainly a reference for me. I find myself searching the same things over and over, looking for the purple link, scrolling through the article, then copy &amp; pasting code. I&rsquo;d rather not go through the hassle. These articles aim to solve that problem.</li>
+<li>I aim to keep the answers <a href="https://en.wikipedia.org/wiki/Above_the_fold#In_web_design">above the fold</a>. I don&rsquo;t want to have to scroll down to find the answer. I almost never read the surrounding prose when I am in &ldquo;coding mode&rdquo;.</li>
+<li>I don&rsquo;t have ads or popups on my blog. I will never ask people to sign up for a newsletter or login to read more. I also don&rsquo;t use pictures unless there&rsquo;s a good reason. <a href="https://www.google.com/search?q=ai+thinking+robot+stock+photo&amp;tbm=isch">The &ldquo;thinking AI robot stock photo&rdquo; industry is definitely a bubble.</a></li>
+<li>Writing these things out explicitly helps me to remember them. Paradoxically, this may make these how-to pages less useful to me, but maybe someone else will find them useful.</li>
+</ol>
+
+<p>These quick reference articles don&rsquo;t explain much because I don&rsquo;t need an explanation of what is going on. I just need a chunk of working code. There are other websites which have far more comprehensive guides covering how to do things. They cover all of the fundamentals of how things are done. But I don&rsquo;t need that, I just want a 30 second reference with a working chunk of code.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Python: Read &amp; Write Json</title>
+            <link>https://lukesalamone.github.io/posts/read-write-json/</link>
+            <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/read-write-json/</guid>
+            <description>Often it is useful to save python data to json files. The following code will demonstrate how that can be done.
+ &amp;ldquo;God bless JSON!&amp;rdquo; ~ a soon to be famous programmer
+ import json data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} filename = &#39;awesome_data.json&#39; # write data to file with open(filename, &#39;w&#39;) as f: json.dump(data, f) # read json from file with open(filename, &#39;r&#39;) as f: data = json.load(f) print(data) # prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}  </description>
+            <content type="html"><![CDATA[<p>Often it is useful to save python data to json files. The following code will demonstrate how that can be done.</p>
+
+<blockquote>
+<p>&ldquo;God bless JSON!&rdquo; ~ a soon to be famous programmer</p>
+</blockquote>
+
+<pre><code class="language-python">import json
+
+data = {'a': 1, 'b':'hello', 'c':False}
+filename = 'awesome_data.json'
+
+# write data to file
+with open(filename, 'w') as f:
+  json.dump(data, f)
+
+
+# read json from file
+with open(filename, 'r') as f:
+  data = json.load(f)
+
+
+print(data)
+# prints {'a': 1, 'b':'hello', 'c':False}
+</code></pre>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Autoencoding Stock Prices</title>
+            <link>https://lukesalamone.github.io/posts/build-an-autoencoder/</link>
+            <pubDate>Sun, 07 Mar 2021 01:31:51 -0600</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/build-an-autoencoder/</guid>
+            <description>Autoencoding stock prices as found in Heaton et al., 2016
+  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
+Once we&amp;rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index.</description>
+            <content type="html"><![CDATA[
+
+<figure><img src="/img/autoencoder.png"
+         alt="Autoencoding stock prices as found in Heaton et al., 2016"/><figcaption>
+            <p>Autoencoding stock prices as found in Heaton et al., 2016</p>
+        </figcaption>
+</figure>
+
+
+<p>So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms <a href="https://arxiv.org/pdf/1602.06561.pdf">here</a>.</p>
+
+<p>Once we&rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index. This can be useful for finding deeper insights into an index, and doesn&rsquo;t require a priori knowledge of the index price or the weighting of its components. Note, this is only one metric which one could use to determine how well one member of the group follows the group overall. Another might be <a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">Pearson Correlation</a>.</p>
+
+<h2 id="github-repository">Github repository</h2>
+
+<p>To follow along with the code in this tutorial, please download the <a href="https://github.com/lukesalamone/stock-data-autoencoder">corresponding repository on Github</a>:</p>
+
+<pre><code>git clone git@github.com:lukesalamone/stock-data-autoencoder.git
+cd stock-data-autoencoder
+pip install -r requirements.txt
+</code></pre>
+
+<h1 id="what-is-an-autoencoder">What is an autoencoder?</h1>
+
+<p>An autoencoder is a neural network which encodes information back to itself. The structure of the network is such that the input layers (the &ldquo;encoder&rdquo;) will be large compared to the hidden layers (the &ldquo;code&rdquo;), forcing the network to compress information inside its hidden layers.</p>
+
+<p>The idea of our autoencoder is that we would like to encode stock price information back to itself while discarding trends that aren&rsquo;t important. To do this, we will feed our network stock price data and ask the network to return those prices to us as outputs. Component stocks which are important to the index will be preserved well and thus be highly accurate, while components which are less important will not be well-preserved. We will measure the performance of the network on each component using mean squared error.</p>
+
+<h1 id="the-model">The model</h1>
+
+<p>We will use an autoencoder with a number of inputs and outputs equal to the number of component stocks in our index. For this exercise, we will use the <a href="https://en.wikipedia.org/wiki/S%26P_500">S&amp;P 500 index</a> which contains 505 components. This means our input and output size will be 505. We will also use a hidden layer with 5 units.</p>
+
+<pre><code class="language-python">class StonksNet(nn.Module):
+  def __init__(self, size):
+    super().__init__()
+      self.fc1 = nn.Linear(in_features=size, out_features=5)
+      self.out = nn.Linear(in_features=5, out_features=size)
+
+  def forward(self, x: Tensor) -&gt; Tensor:
+    x = F.relu(self.fc1(x))
+    x = F.relu(self.out(x))
+    return x
+</code></pre>
+
+<h1 id="the-data">The data</h1>
+
+<p>We will use daily stock prices downloaded using <a href="https://pypi.org/project/yfinance/">yfinance</a>. This data is readily available online and I recommend downloading it for yourself. We will use data between January 1, 1991 to January 1, 2021 (30 years of data).</p>
+
+<p>To download the S&amp;P 500 stock data please run <code>gather_stocks.py</code> from the project directory:</p>
+
+<pre><code>python gather_stocks.py
+</code></pre>
+
+<p>This will download all 505 components into the <code>stock_data</code> directory. Data will also be cleaned such that each component has the same number of days, which will be important when feeding it into the model.</p>
+
+<h1 id="training-the-model">Training the model</h1>
+
+<p>The model itself is a simple feed-forward neural network. As such, we use a standard training loop to train the model. We don&rsquo;t expect the loss to ever fall to zero during training since it is impossible for the network to perfectly encode and decode so many inputs into so few hidden code units. Some information will inevitably be lost. In my training, validation losses bottomed out at around 4000, but yours may be different depending on the initialization of your autoencoder.</p>
+
+<p><img src="/img/autoencoder_validation_losses.png" alt="validation loss" /></p>
+
+<h1 id="ranking-components">Ranking components</h1>
+
+<p>Finally we&rsquo;re ready to rank the components of the S&amp;P 500 for &ldquo;closeness&rdquo;. After running <code>python train_model.py</code> you will see the best and worst components as scored by the autoencoder. Here were my results, yours may be different.</p>
+
+<pre><code>best 5 results:
+DRE: 16.66
+LNT: 37.27
+MU: 38.88
+HOLX: 43.18
+CERN: 47.46
+
+worst 5 results:
+HUM: 105244.19
+SHW: 108542.73
+LMT: 113654.48
+C: 357073.88
+NVR: 10955169.00
+</code></pre>
+
+<h1 id="future-research">Future research</h1>
+
+<p>Upon inspection, it appears that better results might be achieved if we normalize the stock data before training. It appears that stocks with higher prices and higher volatility tended to perform worse than those with tight price ranges. In a way this is expected, since the autoencoder will naturally have a harder time modeling large values with a limited set of hidden units. However, normalizing the prices into similar ranges might be an interesting exercise to see if we can squeeze even more out of the model.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Python: Formatting a string</title>
+            <link>https://lukesalamone.github.io/posts/python-format-string/</link>
+            <pubDate>Wed, 24 Feb 2021 21:22:42 -0600</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/python-format-string/</guid>
+            <description>There are three main ways to format strings in python:
+name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s and I like %s.&amp;quot; % (name, food) # str.format() &amp;quot;My name is {0} and I like {1}.&amp;quot;.format(name, food) # f-strings f&amp;quot;My name is {name} and I like {food}.&amp;quot;  </description>
+            <content type="html"><![CDATA[<p>There are three main ways to format strings in python:</p>
+
+<pre><code class="language-python">name = 'Luke'
+food = 'pizza'
+
+# old style
+&quot;My name is %s and I like %s.&quot; % (name, food)
+
+# str.format()
+&quot;My name is {0} and I like {1}.&quot;.format(name, food)
+
+# f-strings
+f&quot;My name is {name} and I like {food}.&quot;
+</code></pre>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Siamese Neural Networks (Video)</title>
+            <link>https://lukesalamone.github.io/posts/siamese-nn-video/</link>
+            <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/siamese-nn-video/</guid>
+            <description>The following is a transcript of the above video
+In this paper, the authors present a novel neural network architecture to enable audio search via sounds humans are able to make, for example humming and whistling. This is an important capability when searching through audio for a specific sound.
+Motivation Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one.</description>
+            <content type="html"><![CDATA[
+
+<div style="text-align:center">
+  <iframe src="https://player.vimeo.com/video/491725663" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+</div>
+
+<p><em>The following is a transcript of the above video</em></p>
+
+<p>In this paper, the authors present a novel neural network architecture to enable audio search via sounds humans are able to make, for example humming and whistling. This is an important capability when searching through audio for a specific sound.</p>
+
+<h2 id="motivation">Motivation</h2>
+
+<p>Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one. It could be very tedious to listen to every single one until you can find the right sound. Even if the sounds do have some kind of word labels, it could be hard to pinpoint exactly which words to search for. A lot of sounds don’t exactly lend themselves to text descriptors, so finding the right sound can be difficult with a text search.</p>
+
+<p>This paper contains three main contributions:</p>
+
+<p>First, it introduces a new neural network architecture for matching imitated sounds with a sound corpus, the semi-siamese convolutional neural network.</p>
+
+<p>Second, the researchers built a second architecture which utilizes transfer learning from other audio tasks in an attempt for better performance.</p>
+
+<p>Third, the researchers visualized and sonified input patterns which excited the neurons in different layers.</p>
+
+<p>Both neural networks outperform the state of the art systems as we will see later on.</p>
+
+<h2 id="data">Data</h2>
+
+<p>To train the siamese model, the authors used a dataset called VocalSketch, which contains sounds from 4 broad categories: acoustic instruments, commercial synthesizers, everyday, and single synthesizer notes. The dataset also contains a number of human vocal imitations of each of the sounds.
+For each of the 4 categories in VocalSketch, the researchers selected half of the sounds in each category along with corresponding vocal imitations as the training and validation set, and the other half for their test set.</p>
+
+<p>Since each of the categories other than Everyday contained 40 sounds, 20 sounds would be for training and 20 for test and validation. The everyday category contained 120 sounds, so that category had 60 in training and 60 in test.
+Each sound in the dataset has 10 corresponding human vocal imitations. In the training set, 7 of them for each sound were selected for training, and the remaining 3 were used for validation. Overall, the researchers used this dataset to create 840 positive and 840 negative pairs for training, and 360 positive and negative pairs for validation.</p>
+
+<p>I thought it was interesting that the researchers opted not to use balanced categories of 20 sounds for each category. There isn’t a comment in the paper about the reasoning behind this but it may be due to the difficulty of categorizing this class of sounds.</p>
+
+<p>The transfer learning model required pretraining the two towers on two additional datasets before training the full network on VocalSketch.</p>
+
+<p>For the vocal imitation tower, they used a dataset called VoxForge. From this dataset the researchers selected 8 thousand samples for each of 7 different languages. They used a 70 - 30 split for training and testing, and achieved a 69.8% accuracy, which seems pretty good for a 7 class classification task.</p>
+
+<p>For the second transfer learning tower, the environmental sound classification tower, they used a dataset called UrbanSound8k. This dataset contains 8732 sound samples in 10 different classes, things like car horns, jackhammers, and street music. The researchers used 10 fold cross validation when pretraining on this dataset and achieved a 70.2% accuracy over the dataset.</p>
+
+<p>Note that for pre-training the two towers, the researchers used a slightly modified neural network architecture, appending two fully connected layers to categorize the results into the necessary number of classes.</p>
+
+<p>So how are sounds fed into the neural networks? You’re probably familiar with the way that convolutional neural networks work with images. Typically the input for each image is of a shape width by height by color depth. Creating an input when working with sound is similar. The width of the audio file in this case is time, and the height is the frequencies during that time step. This is similar to the output of a spectrogram.</p>
+
+<p>In order to be fed into the network, audio must first undergo a preprocessing step. The specific preprocessing involved varied between the networks, but generally involves downsampling the audio and splitting it by frequency band. This resulted in an input which resembles a spectrogram image.</p>
+
+<h2 id="methodology">Methodology</h2>
+
+<p>The heart of this problem is an architecture the researchers dubbed siamese style or semi siamese neural networks. A true siamese neural network consists of two identical neural network towers with the same weights, and is used similar to the way that hashing is used to match similar inputs. A siamese style network is similar to a siamese neural network, but may have different weights in one of its towers.</p>
+
+<p>The first network the researchers called IMINET, which included a true siamese neural network as one of its configurations. This network consisted of two convolutional network towers, a concatenation step, and a fully-connected network with three more layers to compute a similarity score between 0 and 1. The convolutional neural networks in IMINET had the same structure, even though in some configurations their weights were not the same. They consisted of four convolutional layers with pool layers following convolutional layers 1 and 2.</p>
+
+<p>The researchers detailed the parameters they used for each of the convolutional layers, specifically the number of filters and the receptive field size. Each of the filters in a layer learns to detect various characteristics of the input, and the receptive field is the part of the input that the filter is able to see. The max pooling layers output the maximum value among all of their inputs, reducing the number of inputs for the next layer in the network.</p>
+
+<p>The researchers experimented with three different configurations for the convolutional network towers: a tied configuration, where both towers would share the exact same weights and biases; an untied configuration, where the two towers were required to share no weights and biases at all; and a partially tied configuration, where weights and biases were shared for convolutional layers 3 and 4 but not 1 and 2. Because the untied and partially tied configurations are not truly siamese neural networks, the researchers called these configurations semi siamese.</p>
+
+<p>After both inputs pass through the convolutional towers, they are concatenated together into one input vector and fed into a fully connected network with three layers. This network’s job is to compute a similarity score between 0 and 1 for the two inputs. Both of the first two layers used ReLU activation. The final layer was a single neuron which used sigmoid activation to squash its input into an output between 0 and 1.</p>
+
+<p>This architecture achieved state of the art results in sound retrieval which I will discuss in a moment along with the rest of the findings of this paper.</p>
+
+<p>The second neural network developed by researchers was called TL-IMINET. This network was very similar to the first network, but this time the researchers tried using transfer learning to achieve better performance. The researchers hypothesized that the vocal imitation task shares many characteristics with language identification, and that sound recognition shares many similarities with environmental sound classification. This would allow networks which were pre-trained on these tasks to require only fine tuning to be adapted to this task.</p>
+
+<p>The network architectures for the language identification and environmental classification tasks were slightly different from those used in IMINET and are shown here. Note that the towers are also different in architecture from each other.</p>
+
+<p>The researchers also experimented with fusion strategies between different models. For IMINET, the similarity likelihoods for all three configurations were multiplied together to achieve a combined score. They also experimented with combining IMINET with the previous state of the art model. Since that model computes a cosine distance between the input sound and a candidate sound, this output was converted into a likelihood using softmax, and that softmax was multiplied by the output of IMINET. The transfer learning model TL-IMINET was also combined with the state of the art model in a similar way by computing the softmax and multiplying by the output of TL-IMINET. These fusion strategies ended up improving the performance of each of the models quite a bit.</p>
+
+<h2 id="experiments-and-findings">Experiments and Findings</h2>
+
+<p>To measure the performance of these networks, recall that the output of the networks was a number between 0 and 1 indicating how similar the network believed the two inputs were to each other. For example, two very similar inputs might have a similarity rating of 0.9, while two dissimilar inputs might have a similarity rating of 0.1. After gathering the similarity of the human vocalization sound to each of its potential matches, the matches were ranked according to their similarity score.</p>
+
+<p>The authors then used a metric called mean reciprocal rank, which is a number between 0 and 1 indicating how well the algorithm ranked the sounds. For example, a mean reciprocal rank of 0.5 suggests that the target sound is ranked second among all possible matches on average.</p>
+
+<p>Here are the performances of the various network configurations when measured by mean reciprocal rank. The researchers highlighted several insights which could be drawn from their results.</p>
+
+<p>First, it seems that tied configurations performed the best among all configurations of IMINET. This runs contrary to the researchers’ expectations that untied configurations would outperform tied configurations.</p>
+
+<p>Second, the tied configuration outperformed the previous state of the art benchmark in two categories of sounds: commercial synthesizers and everyday. It performed worse than the state of the art for acoustic instruments, and was about the same performance for the single synthesizer category.</p>
+
+<p>Third, IMINET achieved even better performance in most categories by using an ensemble of different configurations.</p>
+
+<p>Fourth, even without pretraining, the TL-IMINET model performed better than the untied configuration of IMINET for all categories except commercial synthesizers. This is interesting because the only difference between these two models is the network structure of the convolutional towers.</p>
+
+<p>And finally, the pre-trained TL-IMINET model outperformed the previous state of the art model by quite a bit in all categories, but the best performing configuration overall was TL-IMINET fused with the previous state of the art model.</p>
+
+<p>One of the most interesting experiments was the visualization of the input patterns which activate neurons in each of the layers. This was done by performing gradient ascent of the neuron activation with respect to the input from a random initialization state. Visualizing the convolutional layers showed that the first layer tends to learn local features like edges, intermediate layer neurons learn more complex features like texture and direction, and the deepest layer recognizes concentrations of frequency ranges. The visualizations also helped to confirm that pretraining indeed helped the networks to learn more detail. The patterns from the pretrained vocal imitation tower were sharper than those in the naive IMINET towers.</p>
+
+<h2 id="takeaways">Takeaways</h2>
+
+<p>There are a few key takeaways from this research. The first is that the transfer learners had much better performance than the naive non-transfer learner, as evidenced by the fact that TL-IMINET performed better than IMINET for most categories even though neither model was pretrained. The research also showed that ensemble methods can outperform any single model on its own. IMINET performed better when used in combination with its different configurations, and combining it with the state of the art model performed better than either model on its own. Finally, visualizing the inputs can help to confirm that the network is learning the correct things, and helps to provide insights as to what types of sound properties are important.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Managing Python Environments</title>
+            <link>https://lukesalamone.github.io/posts/managing-python-environments/</link>
+            <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
+            <description>Need to switch between python versions often? Use pyenv.
+Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.</description>
+            <content type="html"><![CDATA[
+
+<p>Need to switch between python versions often? Use <a href="https://github.com/pyenv/pyenv"><code>pyenv</code></a>.</p>
+
+<h3 id="installing-pyenv">Installing pyenv</h3>
+
+<pre><code class="language-bash"># install pyenv
+curl https://pyenv.run | bash
+
+# check pyenv install location
+which pyenv
+</code></pre>
+
+<h3 id="install-another-python-version">Install another python version</h3>
+
+<pre><code class="language-bash"># see a list of available python versions
+pyenv install --list
+
+# check installed python versions
+pyenv versions
+
+# installs python 3.7.5
+pyenv install 3.7.5
+</code></pre>
+
+<h3 id="switch-python-versions">Switch python versions</h3>
+
+<pre><code class="language-bash"># use python 3.7.5 everywhere on your machine
+pyenv global 3.7.5
+
+# use python 3.7.5 in current directory
+pyenv local 3.7.5
+
+# use python 3.7.5 in current shell session
+pyenv shell 3.7.5
+</code></pre>
+]]></content>
+        </item>
+        
+        <item>
+            <title>What is the Hardest Hangman Word?</title>
+            <link>https://lukesalamone.github.io/posts/hardest-hangman-word/</link>
+            <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/hardest-hangman-word/</guid>
+            <description>It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.
+If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people.</description>
+            <content type="html"><![CDATA[
+
+<p><img src="https://i.imgur.com/p33HisS.png" alt="Example hangman game" /></p>
+
+<p>It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.</p>
+
+<p>If you&rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people. Player A chooses a secret word, and tells player B the length of the secret word. Player B guesses letters which she thinks might be in the word. If she chooses a correct letter, player A reveals the locations of <em>each instance</em> of the guessed letter. However, if player B guesses an incorrect letter, this counts as a &ldquo;strike&rdquo; against her. After an agreed-upon number of strikes, player B loses.</p>
+
+<h1 id="an-algorithmic-approach">An algorithmic approach</h1>
+
+<p>A few years ago, I created a &ldquo;hangman solver&rdquo; for the popular paper and pencil game. This game assessed each game analytically, to determine a list of possible words given the clues available. The algorithm works as follows: at the beginning of the game, we know the length of the secret word, which narrows our dictionary considerably. Then, for each letter in the alphabet, count the number of words available which contain that letter.</p>
+
+<p>Suppose our dictionary consisted of a random list of 50 four-letter words as follows:</p>
+
+<pre><code class="language-javascript">[&quot;pull&quot;, &quot;dipt&quot;, &quot;dorp&quot;, &quot;poky&quot;, &quot;jism&quot;, &quot;cues&quot;, &quot;hood&quot;, &quot;drag&quot;,
+&quot;inky&quot;, &quot;mhos&quot;, &quot;kerf&quot;, &quot;jess&quot;, &quot;mete&quot;, &quot;lues&quot;, &quot;wipe&quot;, &quot;kane&quot;,
+&quot;tiro&quot;, &quot;keys&quot;, &quot;jape&quot;, &quot;lime&quot;, &quot;sees&quot;, &quot;sass&quot;, &quot;demo&quot;, &quot;ilia&quot;,
+&quot;mink&quot;, &quot;dips&quot;, &quot;hove&quot;, &quot;jees&quot;, &quot;that&quot;, &quot;pops&quot;, &quot;isle&quot;, &quot;teas&quot;,
+&quot;dens&quot;, &quot;dogy&quot;, &quot;pink&quot;, &quot;sizy&quot;, &quot;cole&quot;, &quot;pact&quot;, &quot;thaw&quot;, &quot;lead&quot;,
+&quot;mile&quot;, &quot;dodo&quot;, &quot;litu&quot;, &quot;scup&quot;, &quot;colt&quot;, &quot;soma&quot;, &quot;seat&quot;, &quot;dewy&quot;,
+&quot;pits&quot;, &quot;mojo&quot;]
+</code></pre>
+
+<p>This would result in letter counts as follows:</p>
+
+<table>
+<thead>
+<tr>
+<th>letter</th>
+<th>count</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>a</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>b</td>
+<td>7</td>
+</tr>
+
+<tr>
+<td>c</td>
+<td>15</td>
+</tr>
+
+<tr>
+<td>d</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>e</td>
+<td>26</td>
+</tr>
+
+<tr>
+<td>f</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>g</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>h</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>i</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>j</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>k</td>
+<td>6</td>
+</tr>
+
+<tr>
+<td>l</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>m</td>
+<td>6</td>
+</tr>
+
+<tr>
+<td>n</td>
+<td>6</td>
+</tr>
+
+<tr>
+<td>o</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>p</td>
+<td>7</td>
+</tr>
+
+<tr>
+<td>r</td>
+<td>8</td>
+</tr>
+
+<tr>
+<td>s</td>
+<td>15</td>
+</tr>
+
+<tr>
+<td>t</td>
+<td>13</td>
+</tr>
+
+<tr>
+<td>u</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>w</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>x</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>y</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+
+<p>In this case, the letter E is found in 26 words, the most of any letter. Therefore our algorithm should pick E since it is the safest guess. Once we guess a letter correctly, this gives important positional information which can filter the word list even further.</p>
+
+<p>This process is repeated, each time picking the most likely letter, given the constraints we know. If we know some of the letters in the secret word, we can eliminate any words that don&rsquo;t have those letters in those positions. If we have guessed a letter incorrectly, we know that letter isn&rsquo;t in the secret word and can eliminate all words which have that letter. You can see a python implementation of this algorithm <a href="https://gist.github.com/lukesalamone/a815cda5e427b28db78e0caafdbbc0f3#file-hangman_solver-py">here</a>.</p>
+
+<p>For this experiment I used the <a href="http://www.blogmybrain.com/words-with-friends-cheat/words.txt">Zynga dictionary</a>, the same dictionary used in the game Words With Friends. The dictionary contains 173,000 words. It does not include any proper nouns or profanities.</p>
+
+<h1 id="live-experiment">Live experiment</h1>
+
+<p>Below you can experiment with this algorithm among 4 letter words. Enter a secret word, and the steps used to uncover the secret word will be displayed below. (Need inspiration? Try comparing <em>jazz</em> to <em>rock</em> or <em>blue</em> to <em>grey</em>.)</p>
+
+<div id="demo1" style="margin:20px;background:#ddd;padding:20px;font-family:monospace">
+    <script src="/js/hangman-demo1.js"></script>
+
+    <div style="width:100%; text-align:center">
+        <input placeholder="enter 4 letter word"></input>
+        <button class="play">play word</button>
+        <button class="reset">reset</button>
+    </div>
+    <div class="output" style="margin: 20px 0"></div>
+</div>
+
+<p>Notice how some words have much higher difficulty than others? This is due to the fact that some words have many &ldquo;siblings&rdquo; which differ by only one letter. For example the pattern &ldquo;.ays&rdquo; could match the letters c, d, f, h, j, k, l, n, or r. Knowing the last 3 letters gives us no indication of which of these nine letters it will be.</p>
+
+<p>One apparent shortcoming of the above calculation is that it assumes that letters with equal probability will be picked in alphabetical order, and therefore letters last in the alphabet will be picked last. Although this has the benefit of creating a deterministic algorithm which will always return the same result for the same word, in real life we don&rsquo;t know in which order people will pick letters. In actuality the words <em>days</em>, <em>jays</em> and <em>rays</em> have equal difficulty each is equally likely to be the secret word.</p>
+
+<h1 id="preliminary-results">Preliminary results</h1>
+
+<p>With this preliminary caveat in mind, we can still calculate the difficulty of every word in the dictionary. If we assume that in a situation where multiple letters are equally probable, our opponent will break the tie using alphabetical ordering, which hangman words are the hardest to guess? Here are the top 17:</p>
+
+<table>
+<thead>
+<tr>
+<th>word</th>
+<th>difficulty</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>zill</td>
+<td>19</td>
+</tr>
+
+<tr>
+<td>zills</td>
+<td>18</td>
+</tr>
+
+<tr>
+<td>yill</td>
+<td>18</td>
+</tr>
+
+<tr>
+<td>zin</td>
+<td>17</td>
+</tr>
+
+<tr>
+<td>zax</td>
+<td>17</td>
+</tr>
+
+<tr>
+<td>yills</td>
+<td>17</td>
+</tr>
+
+<tr>
+<td>will</td>
+<td>17</td>
+</tr>
+
+<tr>
+<td>vox</td>
+<td>17</td>
+</tr>
+
+<tr>
+<td>mem</td>
+<td>17</td>
+</tr>
+
+<tr>
+<td>zins</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>yuck</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>yin</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>wills</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>vill</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>oak</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>jazz</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>foy</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>(27 more)</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="previous-research">Previous research</h1>
+
+<p>I should note that <a href="https://web.archive.org/web/20100815092214/http://blog.wolfram.com/2010/08/13/25-best-hangman-words/">previous research by Jon McLoone in 2010</a> has explored the same topic, although he used slightly different methodology and a smaller 90,000 word dictionary. His algorithm was not deterministic, and so does not always pick the most frequent letter available. Instead, his algorithm picks a letter with a probability proportional to the frequency with which it occurs in candidate words. For example, if we refer to the letter frequencies of the 50 word 4-letter dictionary above, <em>j</em> appears in just 1 word, while <em>e</em> appears in 26 of them. In this case, since the sum of the numbers in the frequency table is 188, McLoone&rsquo;s algorithm would pick <em>z</em> in 1 out of every 188 first guesses, and <em>e</em> in 26 of them.  Although it might seem that this strategy is not optimal, it does avoid the deterministic results shown above.</p>
+
+<p>Additionally, McLoone chose to remain faithful to the logic of the hangman game, opting to end the games after a given number of mistakes, and recording the probability that a given word was not discovered after the game ended. So an 8-game means that the game was ended after 8 mistakes, and a 13-game after 13 mistakes. Using this methodology, he found the hardest hangman words were as follows:</p>
+
+<p><img src="https://i.imgur.com/N5ginNw.gif" alt="Jon McLoone results" /></p>
+
+<h1 id="future-research">Future research</h1>
+
+<p>Now, I think that we can improve upon our results a bit. Rather than calculating difficulty deterministically, we can instead randomize the ordering which letters will be picked in. This should dramatically reduce some of the outliers from above, bringing &ldquo;rays&rdquo; down from a difficulty of 14 to something more reasonable.</p>
+
+<p>Such a stochastic calculation will require simulating millions of games. For my 173,000 word dictionary, simply simulating 10 games would involve 1.7 million games. Fortunately, this operation is highly parallelizable. It should be possible to split the dictionary into 100 or even 1000 pieces and derive the results for each piece simultaneously.</p>
+
+<p>A simulation of this algorithm is shown below, with a graph of the average number of mistakes the new randomized algorithm incurs before discovering your secret word. The simulation is set up to play 500 rounds of games, and the final average is displayed at the top.</p>
+
+<div id="demo2" style="margin:20px;background:#ddd;padding:20px;font-family:monospace">
+    <script src="/js/chart.min.js"></script>
+    <script src="/js/hangman-demo2.js"></script>
+
+    <div style="width:100%; text-align:center">
+        <input placeholder="enter 4 letter word"></input>
+        <button class="play">play word</button>
+        <button class="reset">reset</button>
+    </div>
+    <div class="messages"><span></span></div>
+    <div class="canvas-holder" style="display:none;width:500px;height:500px">
+        <canvas></canvas>
+    </div>
+</div>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Estimating Pi with a Monte Carlo Simulation</title>
+            <link>https://lukesalamone.github.io/posts/monte-carlo/</link>
+            <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/monte-carlo/</guid>
+            <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to.</description>
+            <content type="html"><![CDATA[<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<p>A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.</p>
+
+<p>Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input. In the case of calculating Pi, this can be modeled geometrically. The <em>random distribution</em> is all points within the square, and the outcome is whether a selected point lies within the circle inside of the square. We know that for a square circumscribed about a circle,</p>
+
+<p><code>$ A_{circle} = \pi r ^ 2, A_{square} = (2r) ^ 2 = 4r ^ 2 $</code></p>
+
+<p><code>$ { A_{circle}  \over  A_{square} } = { \pi r^2  \over 4r ^ 2 } = { \pi \over 4 } $</code></p>
+
+<p><code>$ { 4 ({ A_{circle}  \over  A_{square} }) } = \pi $</code></p>
+
+<p>If we notice that the probability that a randomly placed dot will fall within the circle is the same as the ratio of their areas (i.e. the circle takes up about 78% of the area of the square, so a random dot has about a 78% chance of landing inside the circle), then multiplying that probability by 4 gives Pi. By placing dots randomly, we play out that probability in real-time. As to whether a given dot lies within the circle, we simply use the Pythagorean theorum to calculate its distance from the origin:</p>
+
+<p><code>$ \sqrt{ x^2 + y^2 } &lt; 1 $</code></p>
+
+<p>So all dots greater than 1 unit from the origin are outside the circle.</p>
+
+<p>Below is a simulation of the derivation of the value of Pi. Click &ldquo;start simulation&rdquo; to see for yourself. <strong>Warning:</strong> this simulation may become slow once many dots are drawn on the screen.</p>
+
+<div id="sim1" style="font-family: monospace; background-color: #444; margin: 20px 0">
+    <script src="/js/chart.min.js" type="text/javascript"></script>
+    <script src="/js/monte-carlo.js" type="text/javascript"></script>
+
+    <div style="padding: 20px; text-align: center">
+        <button class="start">start simulation</button>
+        <button class="stop" disabled>stop simulation</button>
+    </div>
+    <div style="width:500px; height:500px">
+        <canvas></canvas>
+    </div>
+    <div style="color: #fff; margin-left: 20px;">
+        <p style="margin:0" id="num-points">Number of points: 0</p>
+        <p style="margin:0" id="pct-inside">% inside circle: 0</p>
+        <p style="margin:0" id="pi">Approximate value of pi: 0</p>
+    </div>
+</div>
+
+<p>Next, I was interested in the way that this simulation would play out once the number of points became large. Intuitively, this should approach Pi, but doing so requires that the random numbers generated by browsers be evenly distributed.</p>
+
+<div id="sim2" style="font-family: monospace; background-color: #444; margin: 20px 0">
+    <div style="padding: 20px; text-align: center">
+        <button class="start">start simulation</button>
+        <button class="stop" disabled>stop simulation</button>
+    </div>
+    <div style="width:600px; height:700px">
+        <canvas></canvas>
+    </div>
+    <div style="color: #fff; margin-left: 20px;">
+        <p style="margin:0" class="num-points">Number of points: 0</p>
+        <p style="margin:0" class="pi">Approximate value of pi: 0</p>
+        <p style="margin:0" class="pct-error">% error: 0</p>
+    </div>
+</div>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Creating an AI for Gomoku</title>
+            <link>https://lukesalamone.github.io/posts/gomoku2049/</link>
+            <pubDate>Tue, 19 May 2020 14:28:57 +0800</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/gomoku2049/</guid>
+            <description>Gomoku is a strategy game similar to tic tac toe, but played on a larger board and with the goal of getting 5 in a row rather than 3. Since the game has perfect information and has simple rules, I thought it would be a fun exercise in creating a game AI. In February 2020 I decided to code up Gomoku2049. The game is a demonstration of MiniMax, which is an algorithm for finding the move which minimizes the opponent’s best moves.</description>
+            <content type="html"><![CDATA[
+
+<p>Gomoku is a strategy game similar to tic tac toe, but played on a larger board and with the goal of getting 5 in a row rather than 3. Since the game has perfect information and has simple rules, I thought it would be a fun exercise in creating a game AI.
+In February 2020 I decided to code up Gomoku2049. The game is a demonstration of MiniMax, which is an algorithm for finding the move which minimizes the opponent’s best moves. This article is an overview of the game’s technical highlights.</p>
+
+<p><a href="http://gomoku2049.s3-website-us-east-1.amazonaws.com/#">Click here to try out the game!</a></p>
+
+<h2 id="minimax-with-alpha-beta-pruning">Minimax with alpha-beta pruning</h2>
+
+<figure><img src="/img/game-tree.png"
+         alt="In the tree above, the current game is shown on the left, green to move. If green fails to block orange’s 3 in a row now, orange cannot be stopped."/><figcaption>
+            <p>In the tree above, the current game is shown on the left, green to move. If green fails to block orange’s 3 in a row now, orange cannot be stopped.</p>
+        </figcaption>
+</figure>
+
+
+<p>The Minimax algorithm represents every game as a tree of moves, with the current game position at the root of the tree. The algorithm is recursive with exponential time complexity and can have a very high branching factor: after the first move there are 225–1=224 possible moves. Because it is not feasible to evaluate all possible games to completion, Minimax calculation is usually limited to a fixed depth, after which the algorithm evaluates terminal leaf nodes using the gameover function and the static evaluator.</p>
+
+<p>After each human move (known as “plies”), Minimax assigns a score to each of the possible reply moves. By convention, the AI will score favorable moves with a positive score, and unfavorable moves with a negative score. The move corresponding to the highest score is then selected. In other words, the AI is called the “maximizer”. Likewise, the human is known as the minimizer. To determine the score of each possible move, the minimax algorithm will recursively either maximize or minimize the possible moves available. After a given depth, the evaluation will stop, and return either an infinite value (+∞ for an AI win, -∞ for human win) or a finite evaluation of the state of the board. This static evaluation can be rather expensive, but luckily even a rough approximation is effective.</p>
+
+<p>In practice, in addition to a depth limitation, this minimax algorithm also reduces the branching factor by limiting the squares which will be evaluated to those which are adjacent to squares which have been played. Given the fact that a disconnected “island” square cannot immediately lead to a win, this seems to be a reasonable simplification.
+At the leaf nodes of the tree, either the game is over (the human has won or the computer has won) or the board needs to be evaluated with regards to who is winning.</p>
+
+<h2 id="alpha-beta-pruning">Alpha-beta pruning</h2>
+
+<p>Alpha-beta pruning is an improvement on the minimax algorithm, reducing the number of branches and leaf nodes which need to be evaluated. This is achieved by “pruning” unnecessary branches, ignoring them because the parent minimizer/maximizer would never choose it. For a maximizer (whose parent is a minimizer), this will occur if the parent minimizer has already seen a lower evaluation than a number the maximizing child sees.</p>
+
+<h2 id="static-evaluator">Static evaluator</h2>
+
+<p>This function is used to evaluate a board position with regards to which player is winning, and by how much. The MiniMax algorithm will then choose the highest value for itself, while minimizing the options for its opponent. For gomoku, it was important to derive an evaluation function which could be calculated quickly, and which builds towards the final desired result of 5 squares in a row. Note that such a function would necessarily be isomorphic in four directions: vertical, horizontal, and on both diagonals.</p>
+
+<p>My initial thought was that this would be extremely computationally expensive. There are many permutations of selected squares which can lead to a win, and many which do not. For example, XX — — OOO — — XX with O to move will lead to a win for O, but with X to move will not. However, I convinced myself that any static evaluation which built towards a win would find winning nodes at sufficient depth, so finding extremely detailed evaluation was less important than a general approximation.</p>
+
+<p>Building from this thought, I decided to count the number of 4-in-a-rows (4s) and give them a high score, along with the 3s and 2s. Each in-a-row would be given an exponentially increasing “reward”, so that 4s scores much higher than 2×2s. For example, the payout function might be f(n) = 2^N for 2, 3, and 4 so that f(4) = 16 and 2×f(2) = 8. This ensures the desired result, that the optimal configuration of N squares is Ns.</p>
+
+<p>Eventually, I determined that it was sufficient to simply count 2s with overlaps, since allowing double counts would still favor longer sequences of squares, but would not require separate checks for each length. Therefore, if 2s was rewarded 1, then XXX would be rewarded 2, and XXXX would be rewarded 3. This means that 4s is still more the most efficient configuration of four squares, since XX — XX only evaluates to 2.</p>
+
+<h2 id="gameover-function">Gameover function</h2>
+
+<p>This function simply needs to return true if the game is over and a player has won. After the simplifications to the static evaluator, the gameover function behaves almost identically. Instead of counting 2s, we check for the presence of 5s.</p>
+
+<h2 id="bitmasks">Bitmasks</h2>
+
+<p>Here is where the fun begins. I realized that a very efficient way of representing a game board was with a sequence of bits, where 1 represented an occupied square, and 0 represented an unoccupied square. A game state would therefore only require a bit sequence for each player (the game engine would prevent overlapping bits). For a 15×15=225 square board, each player’s occupied squares could be represented with a number 225 bits in length. Although Javascript Numbers are only 53 bits long, Javascript has a newer primitive, BigInt, which can store numbers of arbitrary length.</p>
+
+<p>The biggest benefit of representing the game board this way is that it facilitates bitwise operations, which drastically reduces the time complexity for the static evaluator and gameover functions.</p>
+
+<figure><img src="/img/bitmask.gif"
+         alt="Here the mask is shown in white, and the actual squares occupied are shown in orange. With each step in the bitmask check, the board and the mask are bitwise ANDed together, a very fast operation which reduces the computational complexity required in the static evaluator and gameover function."/><figcaption>
+            <p>Here the mask is shown in white, and the actual squares occupied are shown in orange. With each step in the bitmask check, the board and the mask are bitwise ANDed together, a very fast operation which reduces the computational complexity required in the static evaluator and gameover function.</p>
+        </figcaption>
+</figure>
+
+
+<h2 id="about-bigint">About BigInt</h2>
+
+<p>The BigInt primitive is a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">newer built-in type</a> in Javascript, and as such is unsupported in some browsers. In particular, Internet Explorer and Safari do not have BigInt as a primitive. Although there are polyfills available for BigInt, they do not have the same performance as the native type. I decided that as a demonstration of the Minimax algorithm, supporting all browsers was not a priority.</p>
+
+<h2 id="web-workers">Web Workers</h2>
+
+<p>Most people know that Javascript is single threaded. It is, except when it isn’t. Web Workers are a way of multithreading in the browser, which in this context is pretty important because it helps to avoid freezing the user interface. In this game, the board state is handed off to a Web Worker thread, which computes the best move and returns it to the main thread. Progress is reported back periodically to the main thread as well, which is shown in a progress bar underneath the Gomoku2049 logo.</p>
+
+<p>Theoretically, I could have taken further advantage of multithreading when creating this game. Each branch in the decision tree can be parallelized, allowing for simultaneous computation of each node’s value. For example, a new thread could be used to evaluate each of the AI’s possible moves. Unfortunately, the number of possible moves for the AI can be quite high later in the game, and browsers limit the number of Web Workers allowed (Chrome allows 60, Firefox allows 20, etc.) so instead of spawning a new worker for each top level branch, threads would need to be spawned from a shared thread pool.</p>
+
+<p><a href="https://github.com/lukesalamone/gomoku-2049">The full source code for this game can be found here.</a></p>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

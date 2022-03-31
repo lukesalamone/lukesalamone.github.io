@@ -1,0 +1,85 @@
+article table {
+  width: 400px;
+  margin: auto;
+}
+
+article table tbody tr:nth-child(even) {
+  background-color: inherit;
+}
+
+article table tbody td {
+    min-width: 210px;
+}
+
+#input-grid {
+  padding: 20px 10px;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+}
+
+#output-grid {
+  padding: 20px 10px;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  min-height: 340px;
+}
+
+#errors {
+  /* float:left; */
+  color: #a00;
+  text-align: center;
+  font-weight: bold;
+}
+
+#input-output {
+  min-height: 390px;
+}
+
+#input-output .row {
+  float: left;
+  font-size: 0;
+  display: block;
+  clear: both;
+}
+
+#input-output .row div{
+  background: #fff;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  border-left: 1px solid #555;
+  border-top: 1px solid #555;
+}
+
+#input-output .row div:first-child {
+  border-left: none;
+}
+
+#input-output .row:first-child div {
+  border-top: none;
+}
+
+#input-output .row div.window-left {
+  border-left: 1px solid #a100ff !important;
+}
+
+#input-output .row div.window-top {
+  border-top: 1px solid #a100ff !important;
+}
+
+#input-output .row div.window-right {
+  border-right: 1px solid #a100ff !important;
+}
+
+#input-output .row div.window-bottom {
+  border-bottom: 1px solid #a100ff !important;
+}
+
+#controls {
+  width: 100%;
+  background-color: #ffffff08;
+  margin: 20px 0;
+}

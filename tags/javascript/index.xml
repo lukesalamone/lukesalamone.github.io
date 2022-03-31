@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on Luke Salamone&#39;s Blog</title>
+    <link>https://lukesalamone.github.io/tags/javascript/</link>
+    <description>Recent content in javascript on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 24 Oct 2020 17:45:41 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Managing Python Environments</title>
+      <link>https://lukesalamone.github.io/posts/managing-python-environments/</link>
+      <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
+      <description>Need to switch between python versions often? Use pyenv.
+Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.</description>
+    </item>
+    
+    <item>
+      <title>What is the Hardest Hangman Word?</title>
+      <link>https://lukesalamone.github.io/posts/hardest-hangman-word/</link>
+      <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/hardest-hangman-word/</guid>
+      <description>It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.
+If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people.</description>
+    </item>
+    
+    <item>
+      <title>Estimating Pi with a Monte Carlo Simulation</title>
+      <link>https://lukesalamone.github.io/posts/monte-carlo/</link>
+      <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/monte-carlo/</guid>
+      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to.</description>
+    </item>
+    
+    <item>
+      <title>Creating an AI for Gomoku</title>
+      <link>https://lukesalamone.github.io/posts/gomoku2049/</link>
+      <pubDate>Tue, 19 May 2020 14:28:57 +0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/gomoku2049/</guid>
+      <description>Gomoku is a strategy game similar to tic tac toe, but played on a larger board and with the goal of getting 5 in a row rather than 3. Since the game has perfect information and has simple rules, I thought it would be a fun exercise in creating a game AI. In February 2020 I decided to code up Gomoku2049. The game is a demonstration of MiniMax, which is an algorithm for finding the move which minimizes the opponent’s best moves.</description>
+    </item>
+    
+  </channel>
+</rss>
