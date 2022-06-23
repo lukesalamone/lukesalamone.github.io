@@ -15,7 +15,8 @@
       
       <guid>https://lukesalamone.github.io/posts/python-serve-html/</guid>
       <description>If you want to serve some HTML with python run
-python -m http.server 8000  This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
+python -m http.server 8000  Then navigate to http://localhost:8000.
+This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
     </item>
     
   </channel>

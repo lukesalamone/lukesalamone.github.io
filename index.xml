@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 30 Mar 2022 20:05:26 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Jun 2022 23:56:14 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Alphabet Chess</title>
+      <link>https://lukesalamone.github.io/posts/alphabet-chess/</link>
+      <pubDate>Fri, 10 Jun 2022 23:56:14 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/alphabet-chess/</guid>
+      <description>Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.
+The EGG Opening I was inspired the other day after watching a video by Eric Rosen called &amp;ldquo;Quadruple Egg&amp;rdquo;. Chess boards are usually notated from left to right with the letters A through H.</description>
+    </item>
+    
     <item>
       <title>How to Zip and Unzip a tar.gz File</title>
       <link>https://lukesalamone.github.io/posts/how-to-tar-untar-file/</link>
@@ -109,7 +119,8 @@ What is tokenization? It&amp;rsquo;s important to understand that GPT-2 doesn&am
       
       <guid>https://lukesalamone.github.io/posts/python-serve-html/</guid>
       <description>If you want to serve some HTML with python run
-python -m http.server 8000  This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
+python -m http.server 8000  Then navigate to http://localhost:8000.
+This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
     </item>
     
     <item>

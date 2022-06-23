@@ -1,0 +1,78 @@
+.heatmap_holder {
+  font-size: 0;
+  position: absolute;
+  top: 30px;
+  right: 0;
+}
+
+.legend {
+  margin: 0 auto;
+  position: absolute;
+  left: 270px;
+}
+
+.legend>div {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.legend_middle {
+  height: 10px;
+}
+
+.legend_middle>div {
+  width: 1px;
+  height: 100%;
+  display: inline-block;
+  float: left;
+}
+
+.heatmap_row {}
+
+.heatmap_cell {
+  display: inline-block;
+}
+
+.heatmap_cell.shade {
+  filter: saturate(0.5);
+}
+
+.label_left, .label_bottom {
+  cursor: pointer;
+  color: #fffa;
+}
+
+.label_left span:hover, .label_bottom span:hover {
+  color: #fff;
+}
+
+.label_left {
+  position: absolute;
+  left: 0;
+  top: 30px;
+  width: 50px;
+  height: 100%;
+}
+
+.label_left>div {
+  text-align: right;
+  padding: 0 5px;
+  font-size: 15px;
+  line-height: 20px;
+  font-family: monospace;
+}
+
+.label_bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  writing-mode: vertical-lr;
+  font-family: monospace;
+  height: 15px;
+}
+
+.label_bottom>div {
+  line-height: 20px;
+  font-size: 15px;
+  width: 19.2px;
+}

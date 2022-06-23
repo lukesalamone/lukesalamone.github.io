@@ -6,8 +6,76 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Wed, 30 Mar 2022 20:05:26 -0500</lastBuildDate>
+        <lastBuildDate>Fri, 10 Jun 2022 23:56:14 -0500</lastBuildDate>
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Alphabet Chess</title>
+            <link>https://lukesalamone.github.io/posts/alphabet-chess/</link>
+            <pubDate>Fri, 10 Jun 2022 23:56:14 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/alphabet-chess/</guid>
+            <description>Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.
+The EGG Opening I was inspired the other day after watching a video by Eric Rosen called &amp;ldquo;Quadruple Egg&amp;rdquo;. Chess boards are usually notated from left to right with the letters A through H.</description>
+            <content type="html"><![CDATA[
+
+<p>Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.</p>
+
+<h1 id="the-egg-opening">The EGG Opening</h1>
+
+<p>I was inspired the other day after watching a <a href="https://www.youtube.com/watch?v=J6G3cP991Yc">video</a> by Eric Rosen called &ldquo;Quadruple Egg&rdquo;. Chess boards are usually notated from left to right with the letters A through H. (These columns are called &ldquo;files&rdquo;.) The &ldquo;egg&rdquo; opening, therefore, involves moving the E pawn, then the G pawn twice, spelling the word &ldquo;egg&rdquo;. It&rsquo;s an extremely unconventional opening, but how bad is it compared with unrestricted openings?</p>
+
+<h1 id="what-are-the-best-i-e-least-bad-alphabetic-openings">What are the best (i.e. least bad) alphabetic openings?</h1>
+
+<p>We can call the Egg Opening one version of an alphabetical chess opening: an opening where the piece moved must start on a file corresponding to the next letter in a given word. In this definition, the pieces don&rsquo;t have to be pawns.</p>
+
+<p>This raises an interesting question: what are the best and worst alphabetical openings? Under engine evaluation, they will all be losing, because the opponent is not limited in which piece they can move. However, as we will see, some are much worse than others.</p>
+
+<h2 id="four-letters">Four letters</h2>
+
+<p>English doesn&rsquo;t have an official dictionary, so I chose <a href="https://gist.github.com/paulcc/3799331">this list</a> of four letter words. From there, we need to eliminate all words with letters after H. This leaves us with <a href="https://gist.github.com/lukesalamone/eab96ddde6eb326b8e339c41f5f52bda">37 words</a>. Don&rsquo;t ask me what they all mean:</p>
+
+<pre><code>abbe, abed, aced, ache, aged, agha,
+baba, babe, bach, bade, bead, beef,
+cafe, cage, ceca, cede, chad, chef,
+dace, dada, dead, deaf, deed,
+each, edda, edge, egad,
+face, fade, feed,
+gaff, gaga, gage, geed, ghee,
+head, heed
+</code></pre>
+
+<p>A simple way of measuring how bad each of these is would be to evaluate them against Stockfish to see how badly we&rsquo;re losing after playing these moves. In this simulation, we play as white each time.</p>
+
+<p><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script src="/js/heatmap.js"></script>
+<script src="/js/alpha_chess.js"></script>
+<canvas id="myChart" style="background-color: #0000"></canvas></p>
+
+<p>This measurement approach has a problem, though: Stockfish is assuming that white can make any move, and playing black&rsquo;s moves accordingly. In reality, white&rsquo;s moves are extremely restricted. If black knew about this restriction, he would be much more aggressive.</p>
+
+<p>Further, if black were to discover which word white is playing, he could punish white. And even if black doesn&rsquo;t know exactly which word white is playing, black could eliminate moves which definitely can&rsquo;t form English words. For example, if white&rsquo;s first move is H, the next move will definitely be E.</p>
+
+<h1 id="alphabetical-chess">Alphabetical Chess</h1>
+
+<p>What if both players were required to play their first four moves from dictionary words? And what if those words were pre-assigned but secret to each other? For example, if each player drew a card from a deck. In this game, if a player is unable to make a move with a piece of the correct letter, he loses.</p>
+
+<p>There are a few interesting features of this chess variant:</p>
+
+<ol>
+<li>Your starting word will have a big impact on how the game will turn out.</li>
+<li>Figuring out your opponent&rsquo;s word will give you a big advantage.</li>
+<li>Checks and other attacks can be devastating. You may not be able to respond to the attack, and checks may end the game immediately.</li>
+</ol>
+
+<p>In that case, it isn&rsquo;t necessarily true that the best and worst words from above will still be the best and worst when pitted against another randomly chosen word. It&rsquo;s a rock-paper-scissors situation: depending on which word A you happen to get, there is another word B which best counters your word, and another word C which your word best counters.</p>
+
+<p><link rel="stylesheet" href="/css/heatmap.css" />
+<div id="heatmap" style="margin-bottom: 50px"></div></p>
+
+<p>Here the y-axis shows the word which was played with the white pieces, and the x-axis shows the word played with black.</p>
+]]></content>
+        </item>
         
         <item>
             <title>How to Zip and Unzip a tar.gz File</title>
@@ -841,11 +909,14 @@ tensor([[1,2], [3]])   # error!
             
             <guid>https://lukesalamone.github.io/posts/python-serve-html/</guid>
             <description>If you want to serve some HTML with python run
-python -m http.server 8000  This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
+python -m http.server 8000  Then navigate to http://localhost:8000.
+This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
             <content type="html"><![CDATA[<p>If you want to serve some HTML with python run</p>
 
 <pre><code class="language-console">python -m http.server 8000
 </code></pre>
+
+<p>Then navigate to <a href="http://localhost:8000/">http://localhost:8000</a>.</p>
 
 <p>This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</p>
 ]]></content>
