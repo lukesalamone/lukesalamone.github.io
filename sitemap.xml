@@ -2,22 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lukesalamone.github.io/tags/ai/</loc>
+    <lastmod>2022-10-07T20:17:21-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/chess/</loc>
+    <lastmod>2022-10-07T20:17:21-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/explainability/</loc>
+    <lastmod>2022-10-07T20:17:21-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/</loc>
+    <lastmod>2022-10-07T20:17:21-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/posts/</loc>
+    <lastmod>2022-10-07T20:17:21-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/</loc>
+    <lastmod>2022-10-07T20:17:21-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/posts/chess-engine-history/</loc>
+    <lastmod>2022-10-07T20:17:21-07:00</lastmod>
+  </url><url>
     <loc>https://lukesalamone.github.io/posts/alphabet-chess/</loc>
     <lastmod>2022-06-10T23:56:14-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/chess/</loc>
-    <lastmod>2022-06-10T23:56:14-05:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/</loc>
-    <lastmod>2022-06-10T23:56:14-05:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/posts/</loc>
-    <lastmod>2022-06-10T23:56:14-05:00</lastmod>
-  </url><url>
     <loc>https://lukesalamone.github.io/tags/statistics/</loc>
-    <lastmod>2022-06-10T23:56:14-05:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/</loc>
     <lastmod>2022-06-10T23:56:14-05:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/archive/</loc>
@@ -166,9 +175,6 @@
   </url><url>
     <loc>https://lukesalamone.github.io/tags/geometry/</loc>
     <lastmod>2020-07-09T15:40:14+08:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/ai/</loc>
-    <lastmod>2020-05-19T14:28:57+08:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/posts/gomoku2049/</loc>
     <lastmod>2020-05-19T14:28:57+08:00</lastmod>
