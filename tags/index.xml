@@ -45,6 +45,33 @@
     </item>
     
     <item>
+      <title>machine-learning</title>
+      <link>https://lukesalamone.github.io/tags/machine-learning/</link>
+      <pubDate>Thu, 28 Apr 2022 18:22:07 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://lukesalamone.github.io/tags/python/</link>
+      <pubDate>Thu, 28 Apr 2022 18:22:07 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pytorch</title>
+      <link>https://lukesalamone.github.io/tags/pytorch/</link>
+      <pubDate>Thu, 28 Apr 2022 18:22:07 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/pytorch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>archive</title>
       <link>https://lukesalamone.github.io/tags/archive/</link>
       <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
@@ -117,15 +144,6 @@
     </item>
     
     <item>
-      <title>python</title>
-      <link>https://lukesalamone.github.io/tags/python/</link>
-      <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
-      
-      <guid>https://lukesalamone.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>quick-reference</title>
       <link>https://lukesalamone.github.io/tags/quick-reference/</link>
       <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
@@ -149,15 +167,6 @@
       <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
       
       <guid>https://lukesalamone.github.io/tags/huggingface/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pytorch</title>
-      <link>https://lukesalamone.github.io/tags/pytorch/</link>
-      <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
-      
-      <guid>https://lukesalamone.github.io/tags/pytorch/</guid>
       <description></description>
     </item>
     

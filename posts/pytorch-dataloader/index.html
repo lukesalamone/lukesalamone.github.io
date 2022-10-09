@@ -5,10 +5,10 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="keywords" content=", tar, archive, compress, uncompress, untar" />
+<meta name="keywords" content=", pytorch, machine-learning, python" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://lukesalamone.github.io/posts/how-to-tar-untar-file/" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/pytorch-dataloader/" />
 
 <meta property="og:title" content=""/>
 <meta property="og:image" content=""/>
@@ -26,7 +26,7 @@
 
     <title>
         
-            How to Zip and Unzip a tar.gz File :: Luke Salamone&#39;s Blog 
+            How to Create a Custom Pytorch Dataloader :: Luke Salamone&#39;s Blog 
         
     </title>
 
@@ -44,31 +44,31 @@
 
 
 
-<meta itemprop="name" content="How to Zip and Unzip a tar.gz File">
-<meta itemprop="description" content="If you want to extract a tar archive
-tar -xf archive.tar.gz  If you want to compress a directory
-tar -czvf archive.tar.gz /path/to/directory  That&rsquo;s all."><meta itemprop="datePublished" content="2022-03-30T20:05:26-05:00" />
-<meta itemprop="dateModified" content="2022-03-30T20:05:26-05:00" />
-<meta itemprop="wordCount" content="24"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="tar,archive,compress,uncompress,untar," />
+<meta itemprop="name" content="How to Create a Custom Pytorch Dataloader">
+<meta itemprop="description" content="First, create a custom dataset class.
+from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx]  Next, create a custom dataloader where we specify the batch size.
+features, labels = load_data() # features &amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)  Finally, iterate over the dataloader during training."><meta itemprop="datePublished" content="2022-04-28T18:22:07-05:00" />
+<meta itemprop="dateModified" content="2022-04-28T18:22:07-05:00" />
+<meta itemprop="wordCount" content="97"><meta itemprop="image" content="https://lukesalamone.github.io"/>
+<meta itemprop="keywords" content="pytorch,machine-learning,python," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="How to Zip and Unzip a tar.gz File"/>
-<meta name="twitter:description" content="If you want to extract a tar archive
-tar -xf archive.tar.gz  If you want to compress a directory
-tar -czvf archive.tar.gz /path/to/directory  That&rsquo;s all."/>
+<meta name="twitter:title" content="How to Create a Custom Pytorch Dataloader"/>
+<meta name="twitter:description" content="First, create a custom dataset class.
+from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx]  Next, create a custom dataloader where we specify the batch size.
+features, labels = load_data() # features &amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)  Finally, iterate over the dataloader during training."/>
 
 
 
-    <meta property="og:title" content="How to Zip and Unzip a tar.gz File" />
-<meta property="og:description" content="If you want to extract a tar archive
-tar -xf archive.tar.gz  If you want to compress a directory
-tar -czvf archive.tar.gz /path/to/directory  That&rsquo;s all." />
+    <meta property="og:title" content="How to Create a Custom Pytorch Dataloader" />
+<meta property="og:description" content="First, create a custom dataset class.
+from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx]  Next, create a custom dataloader where we specify the batch size.
+features, labels = load_data() # features &amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)  Finally, iterate over the dataloader during training." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/how-to-tar-untar-file/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-03-30T20:05:26-05:00" />
-<meta property="article:modified_time" content="2022-03-30T20:05:26-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
+<meta property="og:url" content="https://lukesalamone.github.io/posts/pytorch-dataloader/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-28T18:22:07-05:00" />
+<meta property="article:modified_time" content="2022-04-28T18:22:07-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
 
 
 
@@ -76,7 +76,7 @@ tar -czvf archive.tar.gz /path/to/directory  That&rsquo;s all." />
 
 
 
-    <meta property="article:published_time" content="2022-03-30 20:05:26 -0500 -0500" />
+    <meta property="article:published_time" content="2022-04-28 18:22:07 -0500 -0500" />
 
 
 
@@ -131,23 +131,50 @@ tar -czvf archive.tar.gz /path/to/directory  That&rsquo;s all." />
 
     <article>
       <h1 class="post-title">
-        <a href="https://lukesalamone.github.io/posts/how-to-tar-untar-file/">How to Zip and Unzip a tar.gz File</a>
+        <a href="https://lukesalamone.github.io/posts/pytorch-dataloader/">How to Create a Custom Pytorch Dataloader</a>
       </h1>
 
       
 
       <div class="post-content">
-        <p>If you want to extract a tar archive</p>
+        <p>First, create a custom dataset class.</p>
 
-<pre><code class="language-console">tar -xf archive.tar.gz
+<pre><code class="language-python">from torch.utils.data import Dataset, DataLoader
+
+class CustomDataset(Dataset):
+  def __init__(self, features, labels):
+
+    assert len(features) == len(labels)
+    self.features = features
+    self.labels = labels
+
+  def __len__(self):
+    return len(self.features)
+
+  def __getitem__(self, idx):
+    return self.features[idx], self.labels[idx]
 </code></pre>
 
-<p>If you want to compress a directory</p>
+<p>Next, create a custom dataloader where we specify the batch size.</p>
 
-<pre><code class="language-console">tar -czvf archive.tar.gz /path/to/directory
+<pre><code class="language-python">features, labels = load_data()
+
+# features &amp; labels must have equal lengths
+# e.g. features = [[1,2,3],[4,5,6]]
+#      labels = [7,8]
+
+dataset = CustomDataset(features, labels)
+dataloader = DataLoader(dataset,
+                        batch_size=batch_size,
+                        shuffle=True)
 </code></pre>
 
-<p>That&rsquo;s all.</p>
+<p>Finally, iterate over the dataloader during training.</p>
+
+<pre><code class="language-python">for epoch in range(num_epochs):
+  for x, y in train_dataloader:
+    # do stuff
+</code></pre>
 
       </div>
     </article>
@@ -159,11 +186,9 @@ tar -czvf archive.tar.gz /path/to/directory  That&rsquo;s all." />
     <p>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
-        <span class="tag"><a href="https://lukesalamone.github.io/tags/tar/">tar</a></span>
-        <span class="tag"><a href="https://lukesalamone.github.io/tags/archive/">archive</a></span>
-        <span class="tag"><a href="https://lukesalamone.github.io/tags/compress/">compress</a></span>
-        <span class="tag"><a href="https://lukesalamone.github.io/tags/uncompress/">uncompress</a></span>
-        <span class="tag"><a href="https://lukesalamone.github.io/tags/untar/">untar</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/pytorch/">pytorch</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/machine-learning/">machine-learning</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/python/">python</a></span>
         
     </p>
 
@@ -177,7 +202,7 @@ tar -czvf archive.tar.gz /path/to/directory  That&rsquo;s all." />
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        24 Words
+        97 Words
       </p>
 
       <p>
@@ -188,7 +213,7 @@ tar -czvf archive.tar.gz /path/to/directory  That&rsquo;s all." />
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2022-03-30 18:05
+          2022-04-28 16:22
         
 
         
@@ -207,17 +232,17 @@ tar -czvf archive.tar.gz /path/to/directory  That&rsquo;s all." />
         <div class="pagination__buttons">
           
             <span class="button previous">
-              <a href="https://lukesalamone.github.io/posts/pytorch-dataloader/">
+              <a href="https://lukesalamone.github.io/posts/alphabet-chess/">
                 <span class="button__icon">←</span>
-                <span class="button__text">How to Create a Custom Pytorch Dataloader</span>
+                <span class="button__text">Alphabet Chess</span>
               </a>
             </span>
           
 
           
             <span class="button next">
-              <a href="https://lukesalamone.github.io/posts/grover-paper-summary/">
-                <span class="button__text">Paper Summary: Defending Against Neural Fake News</span>
+              <a href="https://lukesalamone.github.io/posts/how-to-tar-untar-file/">
+                <span class="button__text">How to Zip and Unzip a tar.gz File</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

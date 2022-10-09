@@ -183,6 +183,56 @@ head, heed
         </item>
         
         <item>
+            <title>How to Create a Custom Pytorch Dataloader</title>
+            <link>https://lukesalamone.github.io/posts/pytorch-dataloader/</link>
+            <pubDate>Thu, 28 Apr 2022 18:22:07 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/pytorch-dataloader/</guid>
+            <description>First, create a custom dataset class.
+from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx]  Next, create a custom dataloader where we specify the batch size.
+features, labels = load_data() # features &amp;amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)  Finally, iterate over the dataloader during training.</description>
+            <content type="html"><![CDATA[<p>First, create a custom dataset class.</p>
+
+<pre><code class="language-python">from torch.utils.data import Dataset, DataLoader
+
+class CustomDataset(Dataset):
+  def __init__(self, features, labels):
+
+    assert len(features) == len(labels)
+    self.features = features
+    self.labels = labels
+
+  def __len__(self):
+    return len(self.features)
+
+  def __getitem__(self, idx):
+    return self.features[idx], self.labels[idx]
+</code></pre>
+
+<p>Next, create a custom dataloader where we specify the batch size.</p>
+
+<pre><code class="language-python">features, labels = load_data()
+
+# features &amp; labels must have equal lengths
+# e.g. features = [[1,2,3],[4,5,6]]
+#      labels = [7,8]
+
+dataset = CustomDataset(features, labels)
+dataloader = DataLoader(dataset,
+                        batch_size=batch_size,
+                        shuffle=True)
+</code></pre>
+
+<p>Finally, iterate over the dataloader during training.</p>
+
+<pre><code class="language-python">for epoch in range(num_epochs):
+  for x, y in train_dataloader:
+    # do stuff
+</code></pre>
+]]></content>
+        </item>
+        
+        <item>
             <title>How to Zip and Unzip a tar.gz File</title>
             <link>https://lukesalamone.github.io/posts/how-to-tar-untar-file/</link>
             <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
