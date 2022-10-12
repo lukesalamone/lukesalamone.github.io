@@ -2,22 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</loc>
+    <lastmod>2022-10-08T15:17:36-07:00</lastmod>
+  </url><url>
     <loc>https://lukesalamone.github.io/tags/ai/</loc>
-    <lastmod>2022-10-07T20:17:21-07:00</lastmod>
+    <lastmod>2022-10-08T15:17:36-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/chess/</loc>
-    <lastmod>2022-10-07T20:17:21-07:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/explainability/</loc>
-    <lastmod>2022-10-07T20:17:21-07:00</lastmod>
+    <lastmod>2022-10-08T15:17:36-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/</loc>
-    <lastmod>2022-10-07T20:17:21-07:00</lastmod>
+    <lastmod>2022-10-08T15:17:36-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/posts/</loc>
-    <lastmod>2022-10-07T20:17:21-07:00</lastmod>
+    <lastmod>2022-10-08T15:17:36-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/qualitative-reasoning/</loc>
+    <lastmod>2022-10-08T15:17:36-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/</loc>
+    <lastmod>2022-10-08T15:17:36-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/explainability/</loc>
     <lastmod>2022-10-07T20:17:21-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/posts/chess-engine-history/</loc>

@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 07 Oct 2022 20:17:21 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Oct 2022 15:17:36 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A new type of chess tournament</title>
+      <link>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</link>
+      <pubDate>Sat, 08 Oct 2022 15:17:36 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</guid>
+      <description>This is part 2 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
+In the previous post I discussed the history of chess engines and why they don&amp;rsquo;t &amp;ldquo;think&amp;rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it.</description>
+    </item>
+    
     <item>
       <title>The Chess Engine&#39;s Final Horizon</title>
       <link>https://lukesalamone.github.io/posts/chess-engine-history/</link>
