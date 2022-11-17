@@ -6,8 +6,104 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Sat, 08 Oct 2022 15:17:36 -0700</lastBuildDate>
+        <lastBuildDate>Wed, 16 Nov 2022 15:24:15 -0500</lastBuildDate>
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>A Few Notes on the Transformer</title>
+            <link>https://lukesalamone.github.io/posts/self-attention/</link>
+            <pubDate>Wed, 16 Nov 2022 15:24:15 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/self-attention/</guid>
+            <description>A self-attention block depicted as a neural network.
+  In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.
+What is attention? At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren&amp;rsquo;t.</description>
+            <content type="html"><![CDATA[
+
+<figure><img src="/img/self-attention.png"
+         alt="A self-attention block depicted as a neural network."/><figcaption>
+            <p>A self-attention block depicted as a neural network.</p>
+        </figcaption>
+</figure>
+
+
+<p>In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in <a href="https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf">Attention is All You Need</a> by Vaswani et al.</p>
+
+<h2 id="what-is-attention">What is attention?</h2>
+
+<p>At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren&rsquo;t. In language models, attention is used as a way for the model to learn which portions of a sentence are relevant to each word.</p>
+
+<h2 id="what-is-attention-for">What is attention for?</h2>
+
+<p>Let&rsquo;s use an example:</p>
+
+<blockquote>
+<p>I am sitting at the library with my friend.</p>
+</blockquote>
+
+<p>It should be pretty clear that not all words in this sentence are equally important. What words are relevant to &ldquo;I&rdquo;? Probably &ldquo;sitting&rdquo;, &ldquo;library&rdquo;, and &ldquo;friend&rdquo;. Likewise, &ldquo;the&rdquo; might only be relevant to &ldquo;library&rdquo;. Attention provides a way for a model to increase and decrease the importance of each word.</p>
+
+<p>Since the value of each token in the sequence is dependent on other tokens, this method of generating word embeddings is very different from more classical methods like <a href="https://arxiv.org/pdf/1301.3781.pdf">Word2Vec</a> and <a href="https://nlp.stanford.edu/projects/glove/">GloVe</a>. There is no one fixed vector for a given word.</p>
+
+<p>And this makes sense. Many words in English are homonyms, and have identical spellings for distinct meanings. For example, &ldquo;rock&rdquo; is a genre of music but also can mean a stone. <a href="https://www.npr.org/2011/05/30/136796448/has-run-run-amok-it-has-645-meanings-so-far">The word &ldquo;run&rdquo; has 645 meanings and has recently replaced &ldquo;set&rdquo; as the word with the most definitions.</a> It would not make sense for all of these homonyms to have the same vector.</p>
+
+<h2 id="an-interactive-example">An interactive example</h2>
+
+<p>You can hover over each word to see the relative importances of each word in the sentence to the hovered word.</p>
+
+<p><div id="attention_demo"></div>
+<link rel="stylesheet" href="/css/attention-demo.css" />
+<script src="/js/attention_demo.js"></script></p>
+
+<h2 id="how-does-self-attention-work">How does self-attention work?</h2>
+
+<p><figure><img src="/img/scaled-dot-prod-attention.png"
+         alt="The Vaswani paper describes scaled dot product attention, which involves normalizing by the square root of the input dimension."/><figcaption>
+            <p>The Vaswani paper describes scaled dot product attention, which involves normalizing by the square root of the input dimension.</p>
+        </figcaption>
+</figure>
+
+This is the part where Vaswani delves into a database analogy with <strong>keys</strong>, <strong>queries</strong>, and <strong>values</strong>. Most online resources try to salvage this analogy. Personally, I always found this a bit confusing. What you need to know is that keys, values, and queries correspond to 3 matrices M<sub>k</sub>, M<sub>q</sub>, and M<sub>v</sub>, which are used in a dot product with the original input vectors.</p>
+
+<p>In linear algebra terms this means multiplying the 1xd input vector by a matrix of size dxd. In neural network terms, this means passing the input vector through a full-connected layer. After M<sub>k</sub> and M<sub>q</sub> are multiplied, they are normalized by the square root of d<sub>k</sub>, a constant representing the dimension of the input vector.</p>
+
+<h2 id="can-we-attend-to-multiple-parts-of-a-sentence">Can we attend to multiple parts of a sentence?</h2>
+
+<figure><img src="/img/multi_head_attention.png"
+         alt="Multi-headed attention means performing attention n times in parallel inside of an encoder block."/><figcaption>
+            <p>Multi-headed attention means performing attention n times in parallel inside of an encoder block.</p>
+        </figcaption>
+</figure>
+
+
+<p>Yes, that is called multi-headed attention. Its architecture is very similar, using  additional M<sub>k</sub>, M<sub>q</sub>, and M<sub>v</sub> matrices for each additional &ldquo;attention head&rdquo;. In the Vaswani paper they used 8 heads.</p>
+
+<h2 id="how-do-transformers-compare-with-other-architectures-e-g-rnn-cnn">How do transformers compare with other architectures (e.g. RNN/CNN)?</h2>
+
+<figure><img src="/img/attention_performance.png"
+         alt="When the input sequence length n is lower than the input dimensionality d, self-attention is faster than recurrent neural networks. Self-attention is also easily parallelizable."/><figcaption>
+            <p>When the input sequence length n is lower than the input dimensionality d, self-attention is faster than recurrent neural networks. Self-attention is also easily parallelizable.</p>
+        </figcaption>
+</figure>
+
+
+<p>Generally speaking, RNNs are able to memorize but not parallelize, and CNNs are able to parallelize but not memorize. Transformers are able to do both.</p>
+
+<p>The Vaswani paper outlines three main benefits:</p>
+
+<ol>
+<li><p>Computational complexity per layer. Self-attention layers are faster than recurrent layers when the input sequence length is smaller than the input vector dimensionality.</p></li>
+
+<li><p>The opportunity to parallelize calculations. Each head in multi-headed attention can be computed separately in an encoder layer.</p></li>
+
+<li><p>Easier to learn long-range dependencies. For many English sentences, especially fairly complex ones found in more scientific writings, the full context of a word cannot be learned from its immediate neighbors. Sometimes it can&rsquo;t even be found in the same sentence. However, even though most language models prior to the transformer had theoretically infinite input sequence lengths, in practice it was quite difficult for them to learn long-range dependencies. Because a transformer sees its whole input simultaneously, Vaswani argues, it is able to more easily learn those dependencies.</p></li>
+</ol>
+
+<h2 id="is-that-all">Is that all?</h2>
+
+<p>No. In part two I will describe the encoder and decoder blocks, as well as the self-supervised training process.</p>
+]]></content>
+        </item>
         
         <item>
             <title>A new type of chess tournament</title>

@@ -1,63 +1,76 @@
 const words = ['I', 'am', 'sitting', 'at', 'the', 'library', 'with', 'my', 'friend'];
 const values = [
-  [10,8,8,2,1,6,1,3,7],
-  [8,10,9,5,2,7,2,2,4],
-  [8,9,10,8,2,8,5,1,6],
-  [2,5,0,10,0,0,0,0,0],
-  [1,2,0,0,10,0,0,0,0],
-  [6,7,0,0,0,10,0,0,0],
-  [1,2,0,0,0,0,10,0,0],
-  [3,2,0,0,0,0,0,10,0],
-  [7,4,0,0,0,0,0,0,10]
-]
+  [10, 6, 5, 0, 0, 2, 0, 1, 2],
+  [4, 10, 6, 1, 1, 2, 0, 0, 0],
+  [4, 7, 10, 5, 1, 4, 2, 0, 1],
+  [0, 1, 0, 10, 4, 5, 2, 1, 1],
+  [0, 0, 0, 0, 10, 9, 0, 0, 1],
+  [3, 0, 4, 9, 1, 10, 7, 0, 6],
+  [0, 0, 1, 0, 1, 2, 10, 4, 4],
+  [4, 0, 0, 0, 0, 0, 1, 10, 4],
+  [4, 1, 0, 0, 1, 0, 5, 10, 8]
+];
 
-
-window.onload = function(){
-  let container = document.querySelector('#attention_matrix');
-  createMatrix(container);
-
-
-
-
-
-
-}
-
+let container = document.querySelector('#attention_demo');
+createMatrix(container);
 
 function createMatrix(container){
   let sentenceHolder = document.createElement('div');
-  let matrixHolder = document.createElement('table');
+  // let matrixHolder = document.createElement('table');
   sentenceHolder.className = 'sentence';
-  matrixHolder.className = 'matrix';
-  container.appendChild(sentenceHolder);
-  container.appendChild(matrixHolder);
-
-  // create sentence
-  words.forEach(word => {
+  // matrixHolder.className = 'matrix';
+  //
+  //
+  // // create sentence
+  words.forEach((word, i) => {
     let elem = document.createElement('span');
     elem.innerHTML = word;
+    elem.onmouseover = wordFocus(i);
+    elem.onmouseout = wordBlur();
     sentenceHolder.appendChild(elem);
   });
 
   // create table
-  let headerRow = document.createElement('tr');
-  ['',...words].forEach(word => {
-    let th = document.createElement('th');
-    th.innerHTML = word;
-    headerRow.appendChild(th);
-  });
-  matrixHolder.appendChild(headerRow);
-
-  words.forEach((word,i) => {
-    let tr = document.createElement('tr');
-    let label = document.createElement('td');
+  let table = document.createElement('div');
+  table.classList.add('table');
+  window.amounts = [];
+  words.forEach(word => {
+    let row = document.createElement('div');
+    row.classList.add('row');
+    let label = document.createElement('div');
+    label.classList.add('label');
     label.innerHTML = word;
-    tr.appendChild(label);
-    words.forEach((word,j) => {
-      let td = document.createElement('td');
-      // todo set background color
-      tr.appendChild(td);
-    });
-    matrixHolder.appendChild(tr);
+    let amountHolder = document.createElement('div');
+    amountHolder.classList.add('amountHolder');
+    let amount = document.createElement('div');
+    amount.classList.add('amount');
+    window.amounts.push(amount);
+    amountHolder.appendChild(amount);
+    row.appendChild(label);
+    row.appendChild(amountHolder);
+    table.appendChild(row);
   });
+
+  container.appendChild(sentenceHolder);
+  container.appendChild(table);
+}
+
+function wordFocus(idx){
+  return () => {
+    let sizes = values[idx];
+    sizes.forEach((size, i) => {
+      let w = 600 * size / 10;
+      window.amounts[i].style.width = w + 'px';
+    });
+    $('#attention_demo').classList.add('focused');
+  }
+}
+
+function wordBlur(){
+  return () => {
+    window.amounts.forEach(amount => {
+      amount.style.width = '600px';
+    });
+    $('#attention_demo').classList.remove('focused');
+  }
 }
