@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lukesalamone.github.io/posts/digging-to-china/</loc>
+    <lastmod>2022-11-23T10:07:36-08:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/</loc>
+    <lastmod>2022-11-23T10:07:36-08:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/posts/</loc>
+    <lastmod>2022-11-23T10:07:36-08:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/python/</loc>
+    <lastmod>2022-11-23T10:07:36-08:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/</loc>
+    <lastmod>2022-11-23T10:07:36-08:00</lastmod>
+  </url><url>
     <loc>https://lukesalamone.github.io/posts/self-attention/</loc>
     <lastmod>2022-11-16T15:24:15-05:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/attention/</loc>
-    <lastmod>2022-11-16T15:24:15-05:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/</loc>
-    <lastmod>2022-11-16T15:24:15-05:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/posts/</loc>
-    <lastmod>2022-11-16T15:24:15-05:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/</loc>
     <lastmod>2022-11-16T15:24:15-05:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/transformer/</loc>
@@ -54,9 +60,6 @@
     <lastmod>2022-04-28T18:22:07-05:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/machine-learning/</loc>
-    <lastmod>2022-04-28T18:22:07-05:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/python/</loc>
     <lastmod>2022-04-28T18:22:07-05:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/pytorch/</loc>

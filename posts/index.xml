@@ -6,8 +6,129 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Wed, 16 Nov 2022 15:24:15 -0500</lastBuildDate>
+        <lastBuildDate>Wed, 23 Nov 2022 10:07:36 -0800</lastBuildDate>
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Digging to China</title>
+            <link>https://lukesalamone.github.io/posts/digging-to-china/</link>
+            <pubDate>Wed, 23 Nov 2022 10:07:36 -0800</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/digging-to-china/</guid>
+            <description>White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.
+  If you want to fly across the Pacific Ocean, you&amp;rsquo;ll have to board an airplane and fly around 12 hours. It&amp;rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &amp;ldquo;Digging to China&amp;rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.</description>
+            <content type="html"><![CDATA[
+
+<figure><img src="/img/antipode_land.png"
+         alt="White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface."/><figcaption>
+            <p>White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&rsquo;s surface.</p>
+        </figcaption>
+</figure>
+
+
+<p>If you want to fly across the Pacific Ocean, you&rsquo;ll have to board an airplane and fly around 12 hours. It&rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &ldquo;Digging to China&rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.</p>
+
+<p>I&rsquo;m embarrassed to say that I only found out recently that&rsquo;s actually not true, and that the opposite end of the earth for most of the US is actually somewhere west of Australia. For North America, there are actually very few places whose antipode (the point on the exact opposite side of the globe) is on dry land. If you could dig a hole through the center of the earth from the US, you&rsquo;d pop out in the Pacific Ocean.</p>
+
+<p>It is actually possible to &ldquo;dig to China&rdquo; though. Most of South America (excluding most of Brazil) has an antipode in east Asia. In fact, several of the world&rsquo;s biggest cities have antipodes on dry land. I&rsquo;ll get to this later.</p>
+
+<h2 id="calculating-antipodes">Calculating Antipodes</h2>
+
+<p>Given the latitude and longitude of a point on earth, it&rsquo;s pretty easy to calculate its antipode:</p>
+
+<pre><code class="language-python">def antipode(lat, lon):
+  lat = 0 - lat
+  lon = 180 + lon if lon &lt; 0 else lon - 180
+  return lat, lon
+</code></pre>
+
+<h2 id="dry-land">Dry land?</h2>
+
+<p>Once I have the antipode of a particular latitude and longitude, I want to know if it&rsquo;s on dry land or not. The process of figuring out what&rsquo;s at a particular latitude/longitude point is called reverse geocoding, and there are a few nice tools for doing this for dry land. These tools will give fairly good information about the country a point is in.</p>
+
+<p>But for now all I care about is whether a particular point is on land or water, not what country it&rsquo;s in. I wasn&rsquo;t able to find a great tool online that does this, so I opted for a more brute force method.</p>
+
+<p>I used <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Blue_Marble_2002.png/2560px-Blue_Marble_2002.png">this picture from Wikipedia</a> which represents almost all water as the same color of blue. Based on that, I can create a boolean map to detect oceans, and reverse project pixels from that image to geographic coordinates. Simple enough.</p>
+
+<h2 id="pixels-to-geocoordinates">Pixels to Geocoordinates</h2>
+
+<p>Once you have the (x,y) coordinates they need to be converted to longitude and latitude. Latitude is how far north (or south) you are on the globe and ranges from -90 degrees at the North Pole to 90 degrees at the South Pole. On a flat map this is represented by a y coordinate.</p>
+
+<p>Longitude represents how far east or west you are from the Prime Meridian (which runs through Greenwich, UK) and ranges from -180 to 180, both of which represent the same meridian.</p>
+
+<p>How a latitude/longitude point is projected onto the globe depends on the map projection. In this case we&rsquo;re using <a href="https://en.wikipedia.org/wiki/Equirectangular_projection">Equirectangular projection</a>, so we just need to reverse that operation to get the x/y coordinates. The formula for doing so is:</p>
+
+<pre><code class="language-python">#height is the height of the image
+def lat2y(lat):
+    return int((90 - lat) * (height / 180))
+
+# width is the width of the image
+def lon2x(lon):
+    return int((lon + 180) * (width / 360))
+
+# the reverse operations of the above
+def y2lat(y):
+    return 90 - 180 * y / height
+
+def x2lon(x):
+    return 360 * x / width - 180
+</code></pre>
+
+<h2 id="pixel-antipodes">Pixel Antipodes</h2>
+
+<p>Now we can calculate the antipodes of a pixel.</p>
+
+<pre><code class="language-python">def pixel_antipode(y, x):
+    lat, lon = antipode(y2lat(y), x2lon(x))
+    return lat2y(lat), lon2x(lon)
+</code></pre>
+
+<h2 id="antipodal-cities">Antipodal Cities</h2>
+
+<p>If we look at <a href="https://en.wikipedia.org/wiki/List_of_largest_cities">a list of the world&rsquo;s largest cities</a>, which of them have antipodes on land? In the top 20, only four cities do.</p>
+
+<table>
+<thead>
+<tr>
+<th>city</th>
+<th>population (millions)</th>
+<th>lat, lon</th>
+<th>antipode country</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Shanghai🇨🇳</td>
+<td>25.5</td>
+<td>31.2, 121.5</td>
+<td>Argentina🇦🇷</td>
+</tr>
+
+<tr>
+<td>Beijing🇨🇳</td>
+<td>19.6</td>
+<td>39.9, 116.4</td>
+<td>Argentina🇦🇷</td>
+</tr>
+
+<tr>
+<td>Manila🇵🇭</td>
+<td>13.5</td>
+<td>14.6, 121.0</td>
+<td>Brazil🇧🇷</td>
+</tr>
+
+<tr>
+<td>Tianjin🇨🇳</td>
+<td>13.2</td>
+<td>39.1, 117.2</td>
+<td>Argentina🇦🇷</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+        </item>
         
         <item>
             <title>A Few Notes on the Transformer</title>
