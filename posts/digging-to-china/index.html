@@ -48,7 +48,7 @@
 <meta itemprop="description" content="White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&rsquo;s surface.
   If you want to fly across the Pacific Ocean, you&rsquo;ll have to board an airplane and fly around 12 hours. It&rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &ldquo;Digging to China&rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia."><meta itemprop="datePublished" content="2022-11-23T10:07:36-08:00" />
 <meta itemprop="dateModified" content="2022-11-23T10:07:36-08:00" />
-<meta itemprop="wordCount" content="668"><meta itemprop="image" content="https://lukesalamone.github.io"/>
+<meta itemprop="wordCount" content="661"><meta itemprop="image" content="https://lukesalamone.github.io"/>
 <meta itemprop="keywords" content="python,geography," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://lukesalamone.github.io"/>
@@ -145,7 +145,7 @@
 
 <p>If you want to fly across the Pacific Ocean, you&rsquo;ll have to board an airplane and fly around 12 hours. It&rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &ldquo;Digging to China&rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.</p>
 
-<p>I&rsquo;m embarrassed to say that I only found out recently that&rsquo;s actually not true, and that the opposite end of the earth for most of the US is actually somewhere west of Australia. For North America, there are actually very few places whose antipode (the point on the exact opposite side of the globe) is on dry land. If you could dig a hole through the center of the earth from the US, you&rsquo;d pop out in the Pacific Ocean.</p>
+<p>For the US, that&rsquo;s actually not true. The opposite end of the earth for most of the US is actually somewhere west of Australia. For North America, there are actually very few places whose antipode (the point on the exact opposite side of the globe) is on dry land. If you could dig a hole through the center of the earth from the US, you&rsquo;d pop out in the Pacific Ocean.</p>
 
 <p>It is actually possible to &ldquo;dig to China&rdquo; though. Most of South America (excluding most of Brazil) has an antipode in east Asia. In fact, several of the world&rsquo;s biggest cities have antipodes on dry land. I&rsquo;ll get to this later.</p>
 
@@ -165,7 +165,7 @@
 
 <p>But for now all I care about is whether a particular point is on land or water, not what country it&rsquo;s in. I wasn&rsquo;t able to find a great tool online that does this, so I opted for a more brute force method.</p>
 
-<p>I used <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Blue_Marble_2002.png/2560px-Blue_Marble_2002.png">this picture from Wikipedia</a> which represents almost all water as the same color of blue. Based on that, I can create a boolean map to detect oceans, and reverse project pixels from that image to geographic coordinates. Simple enough.</p>
+<p>I used <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Blue_Marble_2002.png/2560px-Blue_Marble_2002.png">this picture from Wikipedia</a> which represents almost all water as the same color of blue. Based on that, I can create a boolean mask to indicate oceans and lakes, and reverse project pixels from that image to geographic coordinates. Simple enough.</p>
 
 <h2 id="pixels-to-geocoordinates">Pixels to Geocoordinates</h2>
 
@@ -270,7 +270,7 @@ def x2lon(x):
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        668 Words
+        661 Words
       </p>
 
       <p>
