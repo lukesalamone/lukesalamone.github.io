@@ -463,8 +463,7 @@ Computers that play chess, otherwise known as chess engines, have existed since 
             <pubDate>Sat, 02 Jul 2022 16:24:10 -0500</pubDate>
             
             <guid>https://lukesalamone.github.io/posts/a-suboptimal-minimax/</guid>
-            <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i TLDR: If we know what our chess opponent will do, we can beat them faster.
-Minimax solves for optimal opponent play, minimizing the best move an opponent could make.</description>
+            <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we relaxed this restriction, and instead assumed that an opponent will make moves according to some known policy function?</description>
             <content type="html"><![CDATA[
 
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
@@ -496,9 +495,9 @@ MathJax.Hub.Config({
 });
 </script>
 
-<p><strong><em>TLDR: If we know what our chess opponent will do, we can beat them faster.</em></strong></p>
+<p>Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we relaxed this restriction, and instead assumed that an opponent will make moves according to some known policy function? In other words, if we knew what the opponent was going to do ahead of time, we could beat them faster by playing moves which take advantage of this fact, even if our move isn&rsquo;t objectively the best move.</p>
 
-<p>Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we relaxed this restriction, and instead assumed that an opponent will make moves according to some known policy function? In other words, if we knew what the opponent was going to do ahead of time, we could beat them faster by playing moves which take advantage of this fact. For the purposes of this problem let&rsquo;s assume it is a chess algorithm but it can be generalized to any algorithm which can use minimax.</p>
+<p>For the purposes of this problem let&rsquo;s assume it is a chess algorithm but this concept can be generalized to any algorithm which can use minimax. Anyone who has played a game against another person understands the idea of &ldquo;downloading&rdquo; your opponent: playing against a person enough that you feel like you know what they will do. <a href="https://www.youtube.com/watch?v=42LatV92k1s">Hikaru Nakamura does</a>.</p>
 
 <p>It seems like this type of player would have many possible applications, including training set to specific skill levels to trainers personalized at the individual level to learn from.</p>
 
