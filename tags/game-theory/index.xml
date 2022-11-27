@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 19 May 2020 14:28:57 +0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/game-theory/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Jul 2022 16:24:10 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/game-theory/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Suboptimal Minimax</title>
+      <link>https://lukesalamone.github.io/posts/a-suboptimal-minimax/</link>
+      <pubDate>Sat, 02 Jul 2022 16:24:10 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/a-suboptimal-minimax/</guid>
+      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i TLDR: If we know what our chess opponent will do, we can beat them faster.
+Minimax solves for optimal opponent play, minimizing the best move an opponent could make.</description>
+    </item>
+    
     <item>
       <title>Creating an AI for Gomoku</title>
       <link>https://lukesalamone.github.io/posts/gomoku2049/</link>

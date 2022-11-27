@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="keywords" content=", chess, ai, game-theory" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/a-suboptimal-minimax/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GBJCJFKED"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9GBJCJFKED');
+</script>
+
+
+    <title>
+        
+            A Suboptimal Minimax :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.8a6383efac6dd742c5d60f7b7fd685e292562affcc27ebd03293f62544a84aed.css">
+
+
+
+
+
+
+<meta itemprop="name" content="A Suboptimal Minimax">
+<meta itemprop="description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i TLDR: If we know what our chess opponent will do, we can beat them faster.
+Minimax solves for optimal opponent play, minimizing the best move an opponent could make."><meta itemprop="datePublished" content="2022-07-02T16:24:10-05:00" />
+<meta itemprop="dateModified" content="2022-07-02T16:24:10-05:00" />
+<meta itemprop="wordCount" content="938"><meta itemprop="image" content="https://lukesalamone.github.io"/>
+<meta itemprop="keywords" content="chess,ai,game-theory," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lukesalamone.github.io"/>
+
+<meta name="twitter:title" content="A Suboptimal Minimax"/>
+<meta name="twitter:description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i TLDR: If we know what our chess opponent will do, we can beat them faster.
+Minimax solves for optimal opponent play, minimizing the best move an opponent could make."/>
+
+
+
+    <meta property="og:title" content="A Suboptimal Minimax" />
+<meta property="og:description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i TLDR: If we know what our chess opponent will do, we can beat them faster.
+Minimax solves for optimal opponent play, minimizing the best move an opponent could make." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lukesalamone.github.io/posts/a-suboptimal-minimax/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-02T16:24:10-05:00" />
+<meta property="article:modified_time" content="2022-07-02T16:24:10-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2022-07-02 16:24:10 -0500 -0500" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="Search here" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        5 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/a-suboptimal-minimax/">A Suboptimal Minimax</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      },
+      extensions: ["AMSmath.js", "AMSsymbols.js"]
+    }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<p><strong><em>TLDR: If we know what our chess opponent will do, we can beat them faster.</em></strong></p>
+
+<p>Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we relaxed this restriction, and instead assumed that an opponent will make moves according to some known policy function? In other words, if we knew what the opponent was going to do ahead of time, we could beat them faster by playing moves which take advantage of this fact. For the purposes of this problem let&rsquo;s assume it is a chess algorithm but it can be generalized to any algorithm which can use minimax.</p>
+
+<p>It seems like this type of player would have many possible applications, including training set to specific skill levels to trainers personalized at the individual level to learn from.</p>
+
+<h2 id="prior-work">Prior work</h2>
+
+<p>There has been previous work in terms of opponent modeling in chess. <a href="https://maiachess.com/">Maia chess</a> has been trained to model several Elo levels of opponent play which makes it ideal to be used as a backbone in my experiments.</p>
+
+<h2 id="the-policy-function">The Policy Function</h2>
+
+<p>We can think of the policy function as a model of the opponent. We will therefore be optimizing an algorithm to play against this model, rather than the optimal opponent.</p>
+
+<p>The specifics of the policy function are as follows. The function takes two parameters, a board position <code>B</code> and an opponent skill level <code>L</code>. The parameter <code>L</code> is important because the <em>nature</em> of the opponent&rsquo;s suboptimal play is important. All levels of chess players play sub-optimally, but the types of mistakes a beginner or intermediate-level player will make are different from a grandmaster. The algorithm should exploit this fact. In practice, this algorithm should play in a much more &ldquo;trappy&rdquo; way than the methodical slow grind of a typical chess engine.</p>
+
+<p>Formally, at move $i$ there will be $n_i$ possible moves. For each of the $n_i$ moves, we should calculate an evaluation weighted by the opponent&rsquo;s probability of playing responses to that move:</p>
+
+<p style="text-align: center; font-size: 1.5em">
+$ e_i(m_i) = p_L(M_{i+1}) \cdot r(M_{i+1}) $
+</p>
+
+<p>Where $M_{i+1}$ is the set of possible moves the opponent can make in response to move $m_i$, $p_L$ is the probability distribution of each move in $M_i$ being made, and $r$ is some real evaluation of the board position.</p>
+
+<p>Let&rsquo;s use an example. Suppose that at some stage in the game the algorithm must choose between 2 possible moves. For simplicity, the opponent will have 4 possible replies after each of the two possible moves. After the algorithm makes the the first possible move, the probabilities look like this:</p>
+
+<h3 id="opponent-move-distribution-at-position-1">Opponent move distribution at position 1</h3>
+
+<table>
+<thead>
+<tr>
+<th>Move</th>
+<th>Opponent probability of play</th>
+<th>Resulting position evaluation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>0.6</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>0.3</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>0.1</td>
+<td>0.5</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>0.1</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+
+<p style="text-align: center; font-size: 1.5em">
+$ \begin{bmatrix} 0.6 \\ 0.3 \\ 0.1 \\ 0.1 \end{bmatrix}
+\cdot \begin{bmatrix} 5 \\ 1 \\ 0.5 \\ -1 \end{bmatrix} = 3.25 $
+</p>
+
+<h3 id="opponent-move-distribution-at-position-2">Opponent move distribution at position 2</h3>
+
+<p>And after the second possible move, the opponent move distribution looks like this:</p>
+
+<table>
+<thead>
+<tr>
+<th>Move</th>
+<th>Opponent probability of play</th>
+<th>Resulting position evaluation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>0.9</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>0.05</td>
+<td>0.5</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>0.03</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>0.02</td>
+<td>-2</td>
+</tr>
+</tbody>
+</table>
+
+<p style="text-align: center; font-size: 1.5em">
+$ \begin{bmatrix} 0.9 \\ 0.05 \\ 0.03 \\ 0.02 \end{bmatrix}
+\cdot \begin{bmatrix} 4 \\ 0.5 \\ 0 \\ -2 \end{bmatrix} = 3.585 $
+</p>
+
+<p><em>In these tables positions are evaluated from the algorithm&rsquo;s point of view, so higher evaluation=better. Assume the evaluation function is a standard evaluation from a chess engine e.g. Stockfish.</em></p>
+
+<p>In this example it is clear that the algorithm should choose move 2, because it is highly likely that after making this move the algorithm will have a decisive advantage.</p>
+
+<h2 id="checkmates">Checkmates</h2>
+
+<p>All of this works quite well in the middle-game, where position evaluations are all within a reasonable range. But what happens when one of the opponent&rsquo;s moves leads to checkmate? How much value should we give to the possibility that an opponent might blunder into checkmate? The above calculation only works for finite numbers. The evaluation of a checkmate is +/- infinity. Instead, let&rsquo;s choose a large, finite number for checkmate.</p>
+
+<p>The behavior of the algorithm depends heavily on our choice for this checkmate evaluation, the <code>CHECKMATE_WEIGHT</code>. If the number is too high, the algorithm will favor positions where the opponent <em>might</em> get checkmated, playing risky moves. If the number is too low, the algorithm will choose other branches which win less quickly. After a bit of trial and error, I settled on +10 for checkmate. This is enough for the algorithm to seek out these types of positions.</p>
+
+<p>A further question is what to do once checkmate is inevitable. That is, what should the algorithm do once it will definitely win? One option is to continue to sample from the distribution, continuing to play the move which maximizes winning chances. At the beginning, this was my intuition. Unfortunately, this leads to many draws by repetition.</p>
+
+<p>Instead, once the game is in a forced-win situation (&ldquo;mate in N moves&rdquo;) the algorithm will stop sampling from the distribution and simply play the moves which lead to checkmate. While this will inevitably lead to a win, it changes the character of the algorithm somewhat. Therefore, I have limited the lookahead to checkmates in the immediate next few moves (specifically, mate in 5 or fewer moves). Since the original goal was to create an algorithm which is used for training, this seems reasonable.</p>
+
+<h2 id="games">Games</h2>
+
+<p>A list of games is forthcoming.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/chess/">chess</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/ai/">ai</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/game-theory/">game-theory</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        938 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2022-07-02 14:24
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://lukesalamone.github.io/posts/chess-engine-history/">
+                <span class="button__icon">←</span>
+                <span class="button__text">The Chess Engine&#39;s Final Horizon</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/alphabet-chess/">
+                <span class="button__text">Alphabet Chess</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+  </main>
+  <div id="shadow-search" class="posts">
+    <div class="posts-group">
+      <div class="post-year">2022</div>
+      <ul class="posts-list"></ul>
+    </div>
+  </div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a></span>
+            <span>&nbsp;|&nbsp;</span>
+            <span><a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.6e3c1600024e56e8bc744e9d2307abeb07531c35d8a501e933992234d69d5ac4b89d2a70dbeb88af234d9f7a031494ce781ffeb155e6027abcfd4f10ce80a3f8.js" integrity="sha512-bjwWAAJOVui8dE6dIwer6wdTHDXYpQHpM5kiNNadWsS4nSpw2&#43;uIryNNn3oDFJTOeB/&#43;sVXmAnq8/U8QzoCj&#43;A=="></script>
+
+
+
+    </body>
+</html>
