@@ -635,9 +635,11 @@ $ \begin{bmatrix} 0.9 \\ 0.05 \\ 0.03 \\ 0.02 \end{bmatrix}
             <pubDate>Fri, 10 Jun 2022 23:56:14 -0500</pubDate>
             
             <guid>https://lukesalamone.github.io/posts/alphabet-chess/</guid>
-            <description>Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.
-The EGG Opening I was inspired the other day after watching a video by Eric Rosen called &amp;ldquo;Quadruple Egg&amp;rdquo;. Chess boards are usually notated from left to right with the letters A through H.</description>
+            <description>TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.
+Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.</description>
             <content type="html"><![CDATA[
+
+<p><strong><em>TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.</em></strong></p>
 
 <p>Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.</p>
 
@@ -678,7 +680,7 @@ head, heed
 
 <h1 id="alphabetical-chess">Alphabetical Chess</h1>
 
-<p>What if both players were required to play their first four moves from dictionary words? And what if those words were pre-assigned but secret to each other? For example, if each player drew a card from a deck. In this game, if a player is unable to make a move with a piece of the correct letter, he loses.</p>
+<p>What if both players were required to play their first four moves from dictionary words? And what if those words were pre-assigned but secret to each other? For example, if each player drew a card from a deck. In this game, if a player is unable to make a move with a piece of the correct letter, they lose.</p>
 
 <p>There are a few interesting features of this chess variant:</p>
 
@@ -694,6 +696,18 @@ head, heed
 <div id="heatmap" style="margin-bottom: 50px"></div></p>
 
 <p>Here the y-axis shows the word which was played with the white pieces, and the x-axis shows the word played with black.</p>
+
+<h1 id="cool-things-about-alphabet-chess">Cool Things About Alphabet Chess</h1>
+
+<p>There are a few interesting benefits to this variant:</p>
+
+<ol>
+<li><p>Handicaps are quite easily built in. The longer your secret word is, the more restricted your play is and the more of a handicap you will have.</p></li>
+
+<li><p>An element of gamesmanship and imperfect information. Players can win on the board with good moves, but also &ldquo;off-board&rdquo; by figuring out their opponent&rsquo;s secret word.</p></li>
+
+<li><p>Prevents good players from using memorized openings.</p></li>
+</ol>
 ]]></content>
         </item>
         

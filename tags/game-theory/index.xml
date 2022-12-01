@@ -18,6 +18,16 @@
     </item>
     
     <item>
+      <title>Alphabet Chess</title>
+      <link>https://lukesalamone.github.io/posts/alphabet-chess/</link>
+      <pubDate>Fri, 10 Jun 2022 23:56:14 -0500</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/alphabet-chess/</guid>
+      <description>TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.
+Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.</description>
+    </item>
+    
+    <item>
       <title>Creating an AI for Gomoku</title>
       <link>https://lukesalamone.github.io/posts/gomoku2049/</link>
       <pubDate>Tue, 19 May 2020 14:28:57 +0800</pubDate>
