@@ -526,8 +526,8 @@ $ e_i(m_i) = p_L(M_{i+1}) \cdot r(M_{i+1}) $
 <table>
 <thead>
 <tr>
-<th>Move</th>
-<th>Opponent probability of play</th>
+<th>Opponent Move</th>
+<th>Probability of play</th>
 <th>Resulting position evaluation</th>
 </tr>
 </thead>
@@ -571,8 +571,8 @@ $ \begin{bmatrix} 0.6 \\ 0.3 \\ 0.1 \\ 0.1 \end{bmatrix}
 <table>
 <thead>
 <tr>
-<th>Move</th>
-<th>Opponent probability of play</th>
+<th>Opponent Move</th>
+<th>Probability of play</th>
 <th>Resulting position evaluation</th>
 </tr>
 </thead>
