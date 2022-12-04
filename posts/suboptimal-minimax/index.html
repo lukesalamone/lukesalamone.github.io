@@ -8,7 +8,7 @@
 <meta name="keywords" content=", chess, ai, game-theory" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://lukesalamone.github.io/posts/a-suboptimal-minimax/" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/suboptimal-minimax/" />
 
 <meta property="og:title" content=""/>
 <meta property="og:image" content=""/>
@@ -26,7 +26,7 @@
 
     <title>
         
-            A Suboptimal Minimax :: Luke Salamone&#39;s Blog 
+            When Suboptimal Minimax is Better :: Luke Salamone&#39;s Blog 
         
     </title>
 
@@ -44,23 +44,23 @@
 
 
 
-<meta itemprop="name" content="A Suboptimal Minimax">
-<meta itemprop="description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we relaxed this restriction, and instead assumed that an opponent will make moves according to some known policy function?"><meta itemprop="datePublished" content="2022-07-02T16:24:10-05:00" />
+<meta itemprop="name" content="When Suboptimal Minimax is Better">
+<meta itemprop="description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&rsquo;t make the best move?"><meta itemprop="datePublished" content="2022-07-02T16:24:10-05:00" />
 <meta itemprop="dateModified" content="2022-07-02T16:24:10-05:00" />
-<meta itemprop="wordCount" content="967"><meta itemprop="image" content="https://lukesalamone.github.io"/>
+<meta itemprop="wordCount" content="961"><meta itemprop="image" content="https://lukesalamone.github.io"/>
 <meta itemprop="keywords" content="chess,ai,game-theory," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="A Suboptimal Minimax"/>
-<meta name="twitter:description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we relaxed this restriction, and instead assumed that an opponent will make moves according to some known policy function?"/>
+<meta name="twitter:title" content="When Suboptimal Minimax is Better"/>
+<meta name="twitter:description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&rsquo;t make the best move?"/>
 
 
 
-    <meta property="og:title" content="A Suboptimal Minimax" />
-<meta property="og:description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we relaxed this restriction, and instead assumed that an opponent will make moves according to some known policy function?" />
+    <meta property="og:title" content="When Suboptimal Minimax is Better" />
+<meta property="og:description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&rsquo;t make the best move?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/a-suboptimal-minimax/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://lukesalamone.github.io/posts/suboptimal-minimax/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-02T16:24:10-05:00" />
 <meta property="article:modified_time" content="2022-07-02T16:24:10-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
 
@@ -125,7 +125,7 @@
 
     <article>
       <h1 class="post-title">
-        <a href="https://lukesalamone.github.io/posts/a-suboptimal-minimax/">A Suboptimal Minimax</a>
+        <a href="https://lukesalamone.github.io/posts/suboptimal-minimax/">When Suboptimal Minimax is Better</a>
       </h1>
 
       
@@ -162,15 +162,15 @@ MathJax.Hub.Config({
 });
 </script>
 
-<p>Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we relaxed this restriction, and instead assumed that an opponent will make moves according to some known policy function? In other words, if we knew what the opponent was going to do ahead of time, we could beat them faster by playing moves which take advantage of this fact, even if our move isn&rsquo;t objectively the best move.</p>
+<p>Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&rsquo;t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn&rsquo;t objectively the best move. <a href="https://www.youtube.com/watch?v=XsdefZRavj4">Don&rsquo;t play the game, play the man.</a></p>
 
 <p>For the purposes of this problem let&rsquo;s assume it is a chess algorithm but this concept can be generalized to any algorithm which can use minimax. Anyone who has played a game against another person understands the idea of &ldquo;downloading&rdquo; your opponent: playing against a person enough that you feel like you know what they will do. <a href="https://www.youtube.com/watch?v=42LatV92k1s">Hikaru Nakamura does</a>.</p>
 
-<p>It seems like this type of player would have many possible applications, including training set to specific skill levels to trainers personalized at the individual level to learn from.</p>
+<p>It seems like this type of player would have many possible applications, including training for specific skill levels and even trainers personalized to an individual&rsquo;s playing style.</p>
 
 <h2 id="prior-work">Prior work</h2>
 
-<p>There has been previous work in terms of opponent modeling in chess. <a href="https://maiachess.com/">Maia chess</a> has been trained to model several Elo levels of opponent play which makes it ideal to be used as a backbone in my experiments.</p>
+<p>There has been <a href="https://www.chessprogramming.org/Opponent_Model_Search#Further_Research">previous work</a> in terms of opponent modeling in chess. <a href="https://maiachess.com/">Maia chess</a> has been trained to model several Elo levels of opponent play which makes it ideal to be used as a backbone in my experiments.</p>
 
 <h2 id="the-policy-function">The Policy Function</h2>
 
@@ -320,7 +320,7 @@ $ \begin{bmatrix} 0.9 \\ 0.05 \\ 0.03 \\ 0.02 \end{bmatrix}
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        967 Words
+        961 Words
       </p>
 
       <p>

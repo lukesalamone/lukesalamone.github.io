@@ -458,12 +458,12 @@ Computers that play chess, otherwise known as chess engines, have existed since 
         </item>
         
         <item>
-            <title>A Suboptimal Minimax</title>
-            <link>https://lukesalamone.github.io/posts/a-suboptimal-minimax/</link>
+            <title>When Suboptimal Minimax is Better</title>
+            <link>https://lukesalamone.github.io/posts/suboptimal-minimax/</link>
             <pubDate>Sat, 02 Jul 2022 16:24:10 -0500</pubDate>
             
-            <guid>https://lukesalamone.github.io/posts/a-suboptimal-minimax/</guid>
-            <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we relaxed this restriction, and instead assumed that an opponent will make moves according to some known policy function?</description>
+            <guid>https://lukesalamone.github.io/posts/suboptimal-minimax/</guid>
+            <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&amp;rsquo;t make the best move?</description>
             <content type="html"><![CDATA[
 
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
@@ -495,15 +495,15 @@ MathJax.Hub.Config({
 });
 </script>
 
-<p>Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we relaxed this restriction, and instead assumed that an opponent will make moves according to some known policy function? In other words, if we knew what the opponent was going to do ahead of time, we could beat them faster by playing moves which take advantage of this fact, even if our move isn&rsquo;t objectively the best move.</p>
+<p>Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&rsquo;t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn&rsquo;t objectively the best move. <a href="https://www.youtube.com/watch?v=XsdefZRavj4">Don&rsquo;t play the game, play the man.</a></p>
 
 <p>For the purposes of this problem let&rsquo;s assume it is a chess algorithm but this concept can be generalized to any algorithm which can use minimax. Anyone who has played a game against another person understands the idea of &ldquo;downloading&rdquo; your opponent: playing against a person enough that you feel like you know what they will do. <a href="https://www.youtube.com/watch?v=42LatV92k1s">Hikaru Nakamura does</a>.</p>
 
-<p>It seems like this type of player would have many possible applications, including training set to specific skill levels to trainers personalized at the individual level to learn from.</p>
+<p>It seems like this type of player would have many possible applications, including training for specific skill levels and even trainers personalized to an individual&rsquo;s playing style.</p>
 
 <h2 id="prior-work">Prior work</h2>
 
-<p>There has been previous work in terms of opponent modeling in chess. <a href="https://maiachess.com/">Maia chess</a> has been trained to model several Elo levels of opponent play which makes it ideal to be used as a backbone in my experiments.</p>
+<p>There has been <a href="https://www.chessprogramming.org/Opponent_Model_Search#Further_Research">previous work</a> in terms of opponent modeling in chess. <a href="https://maiachess.com/">Maia chess</a> has been trained to model several Elo levels of opponent play which makes it ideal to be used as a backbone in my experiments.</p>
 
 <h2 id="the-policy-function">The Policy Function</h2>
 
@@ -669,10 +669,9 @@ head, heed
 
 <p>A simple way of measuring how bad each of these is would be to evaluate them against Stockfish to see how badly we&rsquo;re losing after playing these moves. In this simulation, we play as white each time.</p>
 
-<p><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 <script src="/js/heatmap.js"></script>
 <script src="/js/alpha_chess.js"></script>
-<!-- <canvas id="myChart" style="background-color: #0000"></canvas> --></p>
 
 <p><img src="/img/alpha_chess_disadvantage_depth_20.png" alt="depth 20" /></p>
 
