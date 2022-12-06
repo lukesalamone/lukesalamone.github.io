@@ -16,13 +16,12 @@
             
             <guid>https://lukesalamone.github.io/posts/best-antimaia-games/</guid>
             <description>This is a follow up to When Suboptimal Minimax is Better. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.
-The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&amp;rsquo;t objectively &amp;ldquo;optimal&amp;rdquo; as far as minimax is concerned.
-   White Black Games White win % Average half moves per game     Antimaia 1900 Maia 1900 100 100% 37   Maia 1900 Antimaia 1900 100 0% 43   Maia 1900 Stockfish @10 100 0% 67   Stockfish @10 Maia 1900 100 100% 70    As you can see, Antimaia finishes its games much more quickly (12-16 moves faster!</description>
+The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&amp;rsquo;t objectively &amp;ldquo;optimal&amp;rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player.</description>
             <content type="html"><![CDATA[
 
 <p>This is a follow up to <a href="/posts/suboptimal-minimax">When Suboptimal Minimax is Better</a>. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.</p>
 
-<p>The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned.</p>
+<p>The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player. Antimaia 1900 is specifically designed to counter Maia 1900.</p>
 
 <table>
 <thead>
@@ -69,6 +68,12 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
 </tr>
 </tbody>
 </table>
+
+<ul>
+<li>Maia 1900 uses Maia Chess weights trained on games from players rated near 1900.<br /></li>
+<li>Antimaia 1900 uses Maia 1900 weights and Stockfish @10.<br /></li>
+<li>Stockfish @10 is Stockfish 14.1 evaluated at depth 10.<br /></li>
+</ul>
 
 <p>As you can see, Antimaia finishes its games much more quickly (12-16 moves faster!). This demonstrates that Antimaia is exploiting weaknesses in Maia&rsquo;s policy as measured by Stockfish, and playing high risk/high reward moves which usually pay off.</p>
 

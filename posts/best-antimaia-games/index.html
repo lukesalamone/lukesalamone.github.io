@@ -46,25 +46,22 @@
 
 <meta itemprop="name" content="My Favorite Antimaia Games">
 <meta itemprop="description" content="This is a follow up to When Suboptimal Minimax is Better. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.
-The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned.
-   White Black Games White win % Average half moves per game     Antimaia 1900 Maia 1900 100 100% 37   Maia 1900 Antimaia 1900 100 0% 43   Maia 1900 Stockfish @10 100 0% 67   Stockfish @10 Maia 1900 100 100% 70    As you can see, Antimaia finishes its games much more quickly (12-16 moves faster!"><meta itemprop="datePublished" content="2022-11-26T20:25:13-08:00" />
+The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player."><meta itemprop="datePublished" content="2022-11-26T20:25:13-08:00" />
 <meta itemprop="dateModified" content="2022-11-26T20:25:13-08:00" />
-<meta itemprop="wordCount" content="343"><meta itemprop="image" content="https://lukesalamone.github.io"/>
+<meta itemprop="wordCount" content="396"><meta itemprop="image" content="https://lukesalamone.github.io"/>
 <meta itemprop="keywords" content="chess,ai,game-theory," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
 <meta name="twitter:title" content="My Favorite Antimaia Games"/>
 <meta name="twitter:description" content="This is a follow up to When Suboptimal Minimax is Better. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.
-The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned.
-   White Black Games White win % Average half moves per game     Antimaia 1900 Maia 1900 100 100% 37   Maia 1900 Antimaia 1900 100 0% 43   Maia 1900 Stockfish @10 100 0% 67   Stockfish @10 Maia 1900 100 100% 70    As you can see, Antimaia finishes its games much more quickly (12-16 moves faster!"/>
+The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player."/>
 
 
 
     <meta property="og:title" content="My Favorite Antimaia Games" />
 <meta property="og:description" content="This is a follow up to When Suboptimal Minimax is Better. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.
-The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned.
-   White Black Games White win % Average half moves per game     Antimaia 1900 Maia 1900 100 100% 37   Maia 1900 Antimaia 1900 100 0% 43   Maia 1900 Stockfish @10 100 0% 67   Stockfish @10 Maia 1900 100 100% 70    As you can see, Antimaia finishes its games much more quickly (12-16 moves faster!" />
+The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lukesalamone.github.io/posts/best-antimaia-games/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-11-26T20:25:13-08:00" />
@@ -141,7 +138,7 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
 
 <p>This is a follow up to <a href="../../posts/suboptimal-minimax">When Suboptimal Minimax is Better</a>. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.</p>
 
-<p>The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned.</p>
+<p>The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player. Antimaia 1900 is specifically designed to counter Maia 1900.</p>
 
 <table>
 <thead>
@@ -188,6 +185,12 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
 </tr>
 </tbody>
 </table>
+
+<ul>
+<li>Maia 1900 uses Maia Chess weights trained on games from players rated near 1900.<br /></li>
+<li>Antimaia 1900 uses Maia 1900 weights and Stockfish @10.<br /></li>
+<li>Stockfish @10 is Stockfish 14.1 evaluated at depth 10.<br /></li>
+</ul>
 
 <p>As you can see, Antimaia finishes its games much more quickly (12-16 moves faster!). This demonstrates that Antimaia is exploiting weaknesses in Maia&rsquo;s policy as measured by Stockfish, and playing high risk/high reward moves which usually pay off.</p>
 
@@ -266,7 +269,7 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        343 Words
+        396 Words
       </p>
 
       <p>
