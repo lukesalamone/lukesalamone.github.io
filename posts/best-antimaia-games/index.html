@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="keywords" content=", chess, ai, game-theory" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/best-antimaia-games/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GBJCJFKED"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9GBJCJFKED');
+</script>
+
+
+    <title>
+        
+            My Favorite Antimaia Games :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.8a6383efac6dd742c5d60f7b7fd685e292562affcc27ebd03293f62544a84aed.css">
+
+
+
+
+
+
+<meta itemprop="name" content="My Favorite Antimaia Games">
+<meta itemprop="description" content="This is a follow up to When Suboptimal Minimax is Better. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.
+The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned.
+   White Black Games White win % Average half moves per game     Antimaia 1900 Maia 1900 100 100% 37   Maia 1900 Antimaia 1900 100 0% 43   Maia 1900 Stockfish @10 100 0% 67   Stockfish @10 Maia 1900 100 100% 70    As you can see, Antimaia finishes its games much more quickly (12-16 moves faster!"><meta itemprop="datePublished" content="2022-11-26T20:25:13-08:00" />
+<meta itemprop="dateModified" content="2022-11-26T20:25:13-08:00" />
+<meta itemprop="wordCount" content="343"><meta itemprop="image" content="https://lukesalamone.github.io"/>
+<meta itemprop="keywords" content="chess,ai,game-theory," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lukesalamone.github.io"/>
+
+<meta name="twitter:title" content="My Favorite Antimaia Games"/>
+<meta name="twitter:description" content="This is a follow up to When Suboptimal Minimax is Better. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.
+The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned.
+   White Black Games White win % Average half moves per game     Antimaia 1900 Maia 1900 100 100% 37   Maia 1900 Antimaia 1900 100 0% 43   Maia 1900 Stockfish @10 100 0% 67   Stockfish @10 Maia 1900 100 100% 70    As you can see, Antimaia finishes its games much more quickly (12-16 moves faster!"/>
+
+
+
+    <meta property="og:title" content="My Favorite Antimaia Games" />
+<meta property="og:description" content="This is a follow up to When Suboptimal Minimax is Better. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.
+The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned.
+   White Black Games White win % Average half moves per game     Antimaia 1900 Maia 1900 100 100% 37   Maia 1900 Antimaia 1900 100 0% 43   Maia 1900 Stockfish @10 100 0% 67   Stockfish @10 Maia 1900 100 100% 70    As you can see, Antimaia finishes its games much more quickly (12-16 moves faster!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lukesalamone.github.io/posts/best-antimaia-games/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-26T20:25:13-08:00" />
+<meta property="article:modified_time" content="2022-11-26T20:25:13-08:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2022-11-26 20:25:13 -0800 PST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="Search here" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        2 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/best-antimaia-games/">My Favorite Antimaia Games</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        
+
+<p>This is a follow up to <a href="../../posts/suboptimal-minimax">When Suboptimal Minimax is Better</a>. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.</p>
+
+<p>The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned.</p>
+
+<table>
+<thead>
+<tr>
+<th>White</th>
+<th>Black</th>
+<th>Games</th>
+<th>White win %</th>
+<th>Average half moves per game</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Antimaia 1900</td>
+<td>Maia 1900</td>
+<td>100</td>
+<td>100%</td>
+<td>37</td>
+</tr>
+
+<tr>
+<td>Maia 1900</td>
+<td>Antimaia 1900</td>
+<td>100</td>
+<td>0%</td>
+<td>43</td>
+</tr>
+
+<tr>
+<td>Maia 1900</td>
+<td>Stockfish @10</td>
+<td>100</td>
+<td>0%</td>
+<td>67</td>
+</tr>
+
+<tr>
+<td>Stockfish @10</td>
+<td>Maia 1900</td>
+<td>100</td>
+<td>100%</td>
+<td>70</td>
+</tr>
+</tbody>
+</table>
+
+<p>As you can see, Antimaia finishes its games much more quickly (12-16 moves faster!). This demonstrates that Antimaia is exploiting weaknesses in Maia&rsquo;s policy as measured by Stockfish, and playing high risk/high reward moves which usually pay off.</p>
+
+<h2 id="selected-games">Selected Games</h2>
+
+<p>I had to keep reminding myself that even though these games look ridiculous, Maia plays poorly because Antimaia is finding moves where Maia is most likely to mess up.</p>
+
+<h3 id="antimaia-vs-maia">Antimaia vs Maia</h3>
+
+<ul>
+<li><p><a href="https://lichess.org/cRCrl2yO">Game 15</a>: Smothered mate comes out of nowhere.
+<img src="https://lichess1.org/game/export/gif/white/cRCrl2yO.gif" alt="gif" /></p></li>
+
+<li><p><a href="https://lichess.org/CIJn9rD0">Game 24</a>: Antimaia lays a poison pawn trap then waits patiently for 2 moves before Maia falls for it, blundering a queen.
+<img src="https://lichess1.org/game/export/gif/white/CIJn9rD0.gif" alt="gif" /></p></li>
+
+<li><p><a href="https://lichess.org/EySDK7IP">Game 32</a>: The shortest game. Another nice checkmate delivered by the knight.
+<img src="https://lichess1.org/game/export/gif/white/EySDK7IP.gif" alt="gif" /></p></li>
+
+<li><p><a href="https://lichess.org/kkRE06DB">Game 59</a>: Maia blunders a piece and then falls for Antimaia&rsquo;s poison rook to get checkmated.
+<img src="https://lichess1.org/game/export/gif/white/kkRE06DB.gif" alt="gif" /></p></li>
+
+<li><p><a href="https://lichess.org/qTJg2D26">Game 75</a>: Promoting to a knight not because it&rsquo;s the best move, but because it doesn&rsquo;t matter.
+<img src="https://lichess1.org/game/export/gif/white/qTJg2D26.gif" alt="gif" /></p></li>
+
+<li><p><a href="https://lichess.org/ERFLY3Wa">Game 88</a>: Antimaia makes the crazy move Bh7 but Maia blunders into checkmate by taking with the knight.
+<img src="https://lichess1.org/game/export/gif/white/ERFLY3Wa.gif" alt="gif" /></p></li>
+</ul>
+
+<h3 id="maia-vs-antimaia">Maia vs. Antimaia</h3>
+
+<ul>
+<li><p><a href="https://lichess.org/aCUt0XbV">Game 2</a>: Queen takes e3 is objectively a horrible move but Antimaia gambles correctly that Maia won&rsquo;t know how to respond.
+<img src="https://lichess1.org/game/export/gif/black/aCUt0XbV.gif" alt="gif" /></p></li>
+
+<li><p><a href="https://lichess.org/pgPCKq4E">Game 7</a>: Antimaia baits Maia into blundering a queen and mate in 3.
+<img src="https://lichess1.org/game/export/gif/black/pgPCKq4E.gif" alt="gif" /></p></li>
+
+<li><p><a href="https://lichess.org/DyBQrLwo">Game 51</a>: Antimaia tricks Maia with a poison pawn.
+<img src="https://lichess1.org/game/export/gif/black/DyBQrLwo.gif" alt="gif" /></p></li>
+
+<li><p><a href="https://lichess.org/25aF17bv">Game 59</a>: Maia manages to lose in 5 moves.
+<img src="https://lichess1.org/game/export/gif/black/25aF17bv.gif" alt="gif" /></p></li>
+
+<li><p><a href="https://lichess.org/my88HT0H">Game 69</a>: Antimaia swindles a queen.
+<img src="https://lichess1.org/game/export/gif/black/my88HT0H.gif" alt="gif" /></p></li>
+</ul>
+
+<h2 id="the-rest-of-the-games">The rest of the games</h2>
+
+<p>I added the rest of the games to github: <a href="https://github.com/lukesalamone/antimaia_games">https://github.com/lukesalamone/antimaia_games</a></p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/chess/">chess</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/ai/">ai</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/game-theory/">game-theory</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        343 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2022-11-26 20:25
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/earth-antipodes/">
+                <span class="button__text">The Other End of the Earth</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+  </main>
+  <div id="shadow-search" class="posts">
+    <div class="posts-group">
+      <div class="post-year">2022</div>
+      <ul class="posts-list"></ul>
+    </div>
+  </div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a></span>
+            <span>&nbsp;|&nbsp;</span>
+            <span><a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.567a045e1a758917392e81f486ec406e4332ad8eae91390d123b353718439e031c7a8e647093fbbbdfdeb79858075b8f80efb6c461dd1d981edccafb72d2e0b2.js" integrity="sha512-VnoEXhp1iRc5LoH0huxAbkMyrY6ukTkNEjs1NxhDngMceo5kcJP7u9/et5hYB1uPgO&#43;2xGHdHZge3Mr7ctLgsg=="></script>
+
+
+
+    </body>
+</html>

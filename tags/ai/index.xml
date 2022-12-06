@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 08 Oct 2022 15:17:36 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Nov 2022 20:25:13 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My Favorite Antimaia Games</title>
+      <link>https://lukesalamone.github.io/posts/best-antimaia-games/</link>
+      <pubDate>Sat, 26 Nov 2022 20:25:13 -0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/best-antimaia-games/</guid>
+      <description>This is a follow up to When Suboptimal Minimax is Better. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.
+The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&amp;rsquo;t objectively &amp;ldquo;optimal&amp;rdquo; as far as minimax is concerned.
+   White Black Games White win % Average half moves per game     Antimaia 1900 Maia 1900 100 100% 37   Maia 1900 Antimaia 1900 100 0% 43   Maia 1900 Stockfish @10 100 0% 67   Stockfish @10 Maia 1900 100 100% 70    As you can see, Antimaia finishes its games much more quickly (12-16 moves faster!</description>
+    </item>
+    
     <item>
       <title>A new type of chess tournament</title>
       <link>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</link>
