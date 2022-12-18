@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lukesalamone.github.io/</loc>
+    <lastmod>2022-12-17T16:53:47-08:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/machine-learning/</loc>
+    <lastmod>2022-12-17T16:53:47-08:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/posts/dual-encoders-ranking/</loc>
+    <lastmod>2022-12-17T16:53:47-08:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/posts/</loc>
+    <lastmod>2022-12-17T16:53:47-08:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/search/</loc>
+    <lastmod>2022-12-17T16:53:47-08:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/</loc>
+    <lastmod>2022-12-17T16:53:47-08:00</lastmod>
+  </url><url>
     <loc>https://lukesalamone.github.io/tags/ai/</loc>
     <lastmod>2022-11-26T20:25:13-08:00</lastmod>
   </url><url>
@@ -11,16 +29,7 @@
     <loc>https://lukesalamone.github.io/tags/game-theory/</loc>
     <lastmod>2022-11-26T20:25:13-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/</loc>
-    <lastmod>2022-11-26T20:25:13-08:00</lastmod>
-  </url><url>
     <loc>https://lukesalamone.github.io/posts/best-antimaia-games/</loc>
-    <lastmod>2022-11-26T20:25:13-08:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/posts/</loc>
-    <lastmod>2022-11-26T20:25:13-08:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/</loc>
     <lastmod>2022-11-26T20:25:13-08:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/geography/</loc>
@@ -69,9 +78,6 @@
     <lastmod>2022-05-17T17:47:25+07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/posts/pytorch-dataloader/</loc>
-    <lastmod>2022-04-28T18:22:07-05:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/machine-learning/</loc>
     <lastmod>2022-04-28T18:22:07-05:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/pytorch/</loc>

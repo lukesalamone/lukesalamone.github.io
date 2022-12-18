@@ -6,8 +6,95 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Sat, 26 Nov 2022 20:25:13 -0800</lastBuildDate>
+        <lastBuildDate>Sat, 17 Dec 2022 16:53:47 -0800</lastBuildDate>
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Paper Summary: Dual-Encoders Ranking</title>
+            <link>https://lukesalamone.github.io/posts/dual-encoders-ranking/</link>
+            <pubDate>Sat, 17 Dec 2022 16:53:47 -0800</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/dual-encoders-ranking/</guid>
+            <description>In Defense of Dual-Encoders for Neural Ranking by Menon et. al. discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&amp;rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.
+Background Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches.</description>
+            <content type="html"><![CDATA[
+
+<p><a href="https://proceedings.mlr.press/v162/menon22a/menon22a.pdf">In Defense of Dual-Encoders for Neural Ranking by Menon et. al.</a> discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.</p>
+
+<h2 id="background">Background</h2>
+
+<p>Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches. An example of a bag-of-words approach might simply be to count the number of similar words between the query and each document, and return the document with the highest number of similar words. There are word-stuffing issues with this idea, but the larger issue is that a bag-of-words strategy can&rsquo;t account for synonyms. If I search for <em>bad guy</em> I will never find <em>villain</em> without some additional logic to account for this. A neural network implicitly understands the relationship between words, and avoids the fragile logic of simple word counts.</p>
+
+<p>The idea of a neural encoding approach is pretty simple. For each document in your corpus, pass the query a document into a function which will return a similarity score between 0 and 1. Then, just sort the documents by that score. There are two main architectures for doing this: dual-encoders and cross-attention models.</p>
+
+<figure><img src="/img/dual_vs_cross_encoder.png"
+         alt="Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models."/><figcaption>
+            <p>Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models.</p>
+        </figcaption>
+</figure>
+
+
+<p>The great thing about DE models is that document embeddings can be computed ahead of time. When users enter a query, only that query embedding needs to be calculated, and then compared with the embeddings already calculated for each of the documents. It&rsquo;s a lot faster. So much faster, in fact, that CA is generally not used for initial retrieval, only for reranking afterwards.</p>
+
+<p>However, DE models tend to be less accurate than CA models. It would be great if it was possible to transfer some of the benefits of CA models to DE models.</p>
+
+<h2 id="the-problem">The Problem</h2>
+
+<p>It&rsquo;s unclear whether the shortcomings of DEs are due to the DE model&rsquo;s capacity or because of its training procedure. DEs may be overfitting.</p>
+
+<figure><img src="/img/dual_encoder_overfitting.png"
+         alt="DE models can match CA model training performance but are often lower during evaluation."/><figcaption>
+            <p>DE models can match CA model training performance but are often lower during evaluation.</p>
+        </figcaption>
+</figure>
+
+
+<p>Dual encoders can also be improved by distillation, of which there are two kinds:<br />
+1. Logit matching. Try to match embeddings between teacher and student.<br />
+2. Probability matching. Try to match the softmax probabilities between teacher and student.</p>
+
+<figure><img src="/img/de_ca_margins.png"
+         alt="CA models have better separation between positive and negative examples, strongly predicting negative examples. DE models have more overlap between positive and negative predictions. Normalizing the margins between positive and negative predictions (higher is better), CA models clearly have better performance. The distilled model is slightly better than the DE model."/><figcaption>
+            <p>CA models have better separation between positive and negative examples, strongly predicting negative examples. DE models have more overlap between positive and negative predictions. Normalizing the margins between positive and negative predictions (higher is better), CA models clearly have better performance. The distilled model is slightly better than the DE model.</p>
+        </figcaption>
+</figure>
+
+
+<p>Part of the cause of this discrepancy may be the fact that DE models have noisier updates. DE models may have difficulty modeling negative scores since updating their weights on positive (q, d+) pairs can inadvertently increase scores for negative (q, d-) pairs. Dropout also doesn&rsquo;t seem to mitigate overfitting.</p>
+
+<figure><img src="/img/de_ca_score_evolution.png"
+         alt="The evolution of scores for five positive and five negative documents for a fixed query. Scores from the CA model separate much more smoothly than in the DE model."/><figcaption>
+            <p>The evolution of scores for five positive and five negative documents for a fixed query. Scores from the CA model separate much more smoothly than in the DE model.</p>
+        </figcaption>
+</figure>
+
+
+<h2 id="solutions">Solutions</h2>
+
+<p>Previous work has tried to improve training procedures in several ways:<br />
+1. Adjusting the scoring layer. Usually embeddings are scored with a simple dot product, but a more sophisticated scoring function may be able to capture more information at the cost of inference speed.<br />
+2. Distilling predictions from CA models. Model distillation uses a teacher-student framework where the smaller &ldquo;student&rdquo; model attempts to mirror the &ldquo;teacher&rdquo;. This paper explores a new approach to distillation.</p>
+
+<p>The authors introduce <em>multi-margin MSE loss</em> (M3SE):</p>
+
+<figure><img src="/img/m3se.png"/>
+</figure>
+
+
+<p>M3SE loss attempts to match the margins of score differences between teacher and student. For performance reasons, however, rather than matching each margin, it only encourages the student to be less than or equal to the teacher&rsquo;s highest negative score.</p>
+
+<p>M3SE can be seen as an extension of Margin MSE loss where instead of matching logits it matches raw scores. It can also be seen as a smooth approximation of softmax cross-entropy loss. The authors also highlight parallels between M3SE and RankDistil.</p>
+
+<h2 id="results">Results</h2>
+
+<figure><img src="/img/m3se_results.png"
+         alt="Apart from TREC, M3SE distillation appears to nearly close the gap with cross-attention models. Distilled models are 6-layer BERT models with embedding size 768."/><figcaption>
+            <p>Apart from TREC, M3SE distillation appears to nearly close the gap with cross-attention models. Distilled models are 6-layer BERT models with embedding size 768.</p>
+        </figcaption>
+</figure>
+
+]]></content>
+        </item>
         
         <item>
             <title>My Favorite Antimaia Games</title>

@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 26 Nov 2022 20:25:13 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Dec 2022 16:53:47 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>machine-learning</title>
+      <link>https://lukesalamone.github.io/tags/machine-learning/</link>
+      <pubDate>Sat, 17 Dec 2022 16:53:47 -0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>search</title>
+      <link>https://lukesalamone.github.io/tags/search/</link>
+      <pubDate>Sat, 17 Dec 2022 16:53:47 -0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/tags/search/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>ai</title>
       <link>https://lukesalamone.github.io/tags/ai/</link>
@@ -104,15 +122,6 @@
       <pubDate>Tue, 17 May 2022 17:47:25 +0700</pubDate>
       
       <guid>https://lukesalamone.github.io/tags/nlp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>machine-learning</title>
-      <link>https://lukesalamone.github.io/tags/machine-learning/</link>
-      <pubDate>Thu, 28 Apr 2022 18:22:07 -0500</pubDate>
-      
-      <guid>https://lukesalamone.github.io/tags/machine-learning/</guid>
       <description></description>
     </item>
     
