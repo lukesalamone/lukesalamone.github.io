@@ -433,6 +433,57 @@ This is the part where Vaswani delves into a database analogy with <strong>keys<
         </item>
         
         <item>
+            <title>Rolling My Own Blog Search</title>
+            <link>https://lukesalamone.github.io/posts/rolling-my-own-blog-search/</link>
+            <pubDate>Wed, 09 Nov 2022 02:42:51 -0700</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/rolling-my-own-blog-search/</guid>
+            <description>I&amp;rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&amp;rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:
+ The search needs to be fast, useful, and aesthetically pleasing. Search in the browser. Standing up a server is a lot of extra work. It&amp;rsquo;s also overkill since I only have about 30 articles so far.</description>
+            <content type="html"><![CDATA[
+
+<p>I&rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:</p>
+
+<ol>
+<li>The search needs to be fast, useful, and aesthetically pleasing.</li>
+<li>Search in the browser. Standing up a server is a lot of extra work. It&rsquo;s also overkill since I only have about 30 articles so far.</li>
+</ol>
+
+<h2 id="semantic-search">Semantic search</h2>
+
+<p>I have done some experiments with small neural networks deployed using ONNX but ultimately they don&rsquo;t seem to be a good fit for this blog. My model was not quite as snappy as I&rsquo;d have liked it to be, and while I was able to get the model under 10MB, it still added a good amount of bloat to the page size. Further, it wasn&rsquo;t clear to me that the search results were significantly better, and in some cases they were worse. In any case, the advantages were not enough to justify the added page size.</p>
+
+<p>I did learn a lot with this experiment which probably deserves a blog post of its own at some point. I might revisit semantic matching at a later point as well.</p>
+
+<h2 id="bm25">BM25</h2>
+
+<p>Rather than loading a neural network, I decided instead to index the text of my blog and use <a href="https://en.wikipedia.org/wiki/Okapi_BM25">BM25</a> to rank documents.</p>
+
+<p>One difficulty in this was finding the actual algorithm which didn&rsquo;t include a ton of extra code. I was only interested in the function itself, not all of the extra boilerplate code floating around. In the end I broke down and rewrote it myself.</p>
+
+<h2 id="tokenizing-text">Tokenizing Text</h2>
+
+<p>BM25 works by scoring document tokens against query tokens. Documents with more relevant tokens should be scored higher than those with fewer relevant tokens.</p>
+
+<p>This raises the question of how to convert a query string into a group of tokens. Initially, I simply split by word. That is,</p>
+
+<pre><code>&quot;hello my friend&quot; =&gt; ['hello', 'my', 'friend']
+</code></pre>
+
+<p>Although this works pretty well, it has the downside that different forms of a word will be missed. For example &ldquo;friends&rdquo; will not match with &ldquo;friend&rdquo;. To solve this problem, I decided to use fixed token sizes of three characters instead:</p>
+
+<pre><code>&quot;hello my friend&quot; =&gt; ['hel', 'ell', 'llo', 'lo#', '#my', 'my#', '#fr', 'fri', 'rie', 'ien', 'end']
+</code></pre>
+
+<p>In this way &ldquo;friend&rdquo; will be tokenized very similarly to &ldquo;friends&rdquo;, so the penalty for mismatches between forms of words will be minimized. Subjectively, I felt that this yielded a much more fluid and versatile ranking as well.</p>
+
+<h2 id="multi-factor-scoring">Multi-factor scoring</h2>
+
+<p>My blog posts have title, body, and tags. I could simply concatenate them all together and score the combined string, and it would work pretty well. But this seems to throw away the fact that the title and tags may have more concentrated information than the article body does. They deserve to be weighted differently. I decided to weight the title/body/tags components as 30/50/20 in the final ranking.</p>
+]]></content>
+        </item>
+        
+        <item>
             <title>A new type of chess tournament</title>
             <link>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</link>
             <pubDate>Sat, 08 Oct 2022 15:17:36 -0700</pubDate>
