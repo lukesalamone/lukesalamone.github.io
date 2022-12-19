@@ -451,7 +451,7 @@ This is the part where Vaswani delves into a database analogy with <strong>keys<
 
 <h2 id="semantic-search">Semantic search</h2>
 
-<p>I did some experiments with small neural networks deployed using ONNX but ultimately they didn&rsquo;t seem to be a good fit for this blog. My model was not quite as snappy as I&rsquo;d have liked it to be, and while I was able to get the model under 10MB, it still added a good amount of bloat to the page size. Further, it wasn&rsquo;t clear to me that the search results were significantly better, and in some cases they were worse. In any case, the advantages were not enough to justify the added page size.</p>
+<p>I did some experiments with small neural networks deployed using ONNX but ultimately they didn&rsquo;t seem to be a good fit for this blog. The search experience was not quite as snappy as I&rsquo;d have liked it to be, and while I was able to get the model under 10MB, it still added a good amount of bloat to the page size. Further, it wasn&rsquo;t clear to me that the search results were significantly better, and in some cases they were worse. In any case, the advantages were not enough to justify the added page size.</p>
 
 <p>I did learn a lot with this experiment which probably deserves a blog post of its own at some point. I might revisit semantic matching at a later point as well.</p>
 
