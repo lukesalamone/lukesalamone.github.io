@@ -166,10 +166,6 @@ head, heed
 
 <p>A simple way of measuring how bad each of these is would be to evaluate them against Stockfish to see how badly we&rsquo;re losing after playing these moves. In this simulation, we play as white each time.</p>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-<script src="../../js/heatmap.js"></script>
-<script src="../../js/alpha_chess.js"></script>
-
 <p><img src="../../img/alpha_chess_disadvantage_depth_20.png" alt="depth 20" /></p>
 
 <p>This measurement approach has a problem, though: Stockfish is assuming that white can make any move, and playing black&rsquo;s moves accordingly. In reality, white&rsquo;s moves are extremely restricted. If black knew about this restriction, he would be much more aggressive.</p>
