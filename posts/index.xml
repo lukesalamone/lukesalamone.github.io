@@ -6,8 +6,113 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Mon, 17 Apr 2023 19:46:25 -0700</lastBuildDate>
+        <lastBuildDate>Sun, 30 Jul 2023 22:45:57 -0700</lastBuildDate>
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Can ChatGPT Recognize Handwritten Digits?</title>
+            <link>https://lukesalamone.github.io/posts/chatgpt-mnist/</link>
+            <pubDate>Sun, 30 Jul 2023 22:45:57 -0700</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/chatgpt-mnist/</guid>
+            <description>TLDR: No. No it cannot.
+This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a decoder-only model. It shouldn&amp;rsquo;t be able to perform an image recognition task. But then again, a decoder-only model wouldn&amp;rsquo;t have been my first choice for translation or summarization either. In my experience, ChatGPT has created translations which are at least as coherent and idiomatic as Google Translate, if not more so.</description>
+            <content type="html"><![CDATA[
+
+<p><strong>TLDR: No. No it cannot.</strong></p>
+
+<p>This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a decoder-only model. It shouldn&rsquo;t be able to perform an image recognition task. But then again, a decoder-only model wouldn&rsquo;t have been my first choice for translation or summarization either. In my experience, ChatGPT has created translations which are at least as coherent and idiomatic as Google Translate, if not more so.</p>
+
+<p>So I thought, why not give it a shot?</p>
+
+<h1 id="process">Process</h1>
+
+<p><a href="https://pytorch.org/vision/main/generated/torchvision.datasets.MNIST.html#torchvision.datasets.MNIST">MNIST</a> is a computer vision dataset containing thousands of handwritten digits along with their actual labels. Images are represented as 28x28 tensors where each element of the tensor represents a intensity pixel intensity between 0 and 1. Traditionally this is formulated into a classification problem, with the goal of choosing the correct class out of the 10.</p>
+
+<p>To simplify the input, I flattened the tensor and translated the pixel intensity values to the range 0-10. This allowed me to use fewer tokens at the expense of some of the gradations between light and dark.</p>
+
+<p>I gathered 10 random examples from each of the 10 classes (100 total images) and fed them into <code>gpt-3.5-turbo</code> with the following prompt:</p>
+
+<blockquote>
+<p>The following is a flattened representation of an image of a handwritten digit. The image was 28x28 but has been flattened to 1x784. Each number represents a pixel intensity from 0-10. Please tell me which digit the following pixel list represents:</p>
+</blockquote>
+
+<p>Followed by the list of 784 pixel intensities.</p>
+
+<h2 id="results">Results</h2>
+
+<p>ChatGPT scored <sup>11</sup>&frasl;<sub>100</sub>. Barely better than guessing. A summary of the sessions can be found at <a href="https://gist.github.com/lukesalamone/744272ef00e56afb6cab56cdc70a593a">this gist</a>. A visual summary is below, with the blue signifying correct guesses.</p>
+
+<p><em>Note: although the image shows the digits sorted, they were prompted in random order.</em></p>
+
+<p><img src="/img/chatgpt_mnist.png" alt="chatgpt performance on 100 handwritten digits" /></p>
+
+<p>It is interesting that only the 0s and the 7s were correctly identified. Let&rsquo;s take a look at the distribution of ChatGPT&rsquo;s guesses.</p>
+
+<table>
+<thead>
+<tr>
+<th>Guess</th>
+<th>Count</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0</td>
+<td>85</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+<p>Oh. It got <sup>8</sup>&frasl;<sub>10</sub> zeros correct because it guessed zero 85% of the time.</p>
+]]></content>
+        </item>
         
         <item>
             <title>Paper Summary: Antenna Design with Evolutionary Algorithms</title>
