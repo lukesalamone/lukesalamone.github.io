@@ -14,8 +14,8 @@
       <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
       
       <guid>https://lukesalamone.github.io/posts/game-of-life-3d/</guid>
-      <description>Conway&amp;rsquo;s Game of Life is a simulation developed in 1970 describing a grid of binary cells and transition rules for each cell which depend on the state of the cell&amp;rsquo;s neighbors. It&amp;rsquo;s capable of creating some pretty cool patterns on its own.
-This variant of the Game of Life uses three overlapping channels. So instead of just one simulation, there are three simultaneous simulations. I visualize these in the three color channels, red, green and blue.</description>
+      <description>Conway&amp;rsquo;s Game of Life is a simulation developed in 1970 describing a grid of binary cells and transition rules for each cell which depend on the state of the cell&amp;rsquo;s neighbors. It&amp;rsquo;s capable of creating some pretty cool patterns.
+This variant of the Game of Life uses three overlapping channels, so instead of just one simulation, there are three simultaneous simulations. I visualize these in the three color channels, red, green and blue.</description>
     </item>
     
   </channel>

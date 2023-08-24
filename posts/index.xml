@@ -15,13 +15,13 @@
             <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
             
             <guid>https://lukesalamone.github.io/posts/game-of-life-3d/</guid>
-            <description>Conway&amp;rsquo;s Game of Life is a simulation developed in 1970 describing a grid of binary cells and transition rules for each cell which depend on the state of the cell&amp;rsquo;s neighbors. It&amp;rsquo;s capable of creating some pretty cool patterns on its own.
-This variant of the Game of Life uses three overlapping channels. So instead of just one simulation, there are three simultaneous simulations. I visualize these in the three color channels, red, green and blue.</description>
-            <content type="html"><![CDATA[<p><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway&rsquo;s Game of Life</a> is a simulation developed in 1970 describing a grid of binary cells and transition rules for each cell which depend on the state of the cell&rsquo;s neighbors. It&rsquo;s capable of creating some pretty cool patterns on its own.</p>
+            <description>Conway&amp;rsquo;s Game of Life is a simulation developed in 1970 describing a grid of binary cells and transition rules for each cell which depend on the state of the cell&amp;rsquo;s neighbors. It&amp;rsquo;s capable of creating some pretty cool patterns.
+This variant of the Game of Life uses three overlapping channels, so instead of just one simulation, there are three simultaneous simulations. I visualize these in the three color channels, red, green and blue.</description>
+            <content type="html"><![CDATA[<p><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway&rsquo;s Game of Life</a> is a simulation developed in 1970 describing a grid of binary cells and transition rules for each cell which depend on the state of the cell&rsquo;s neighbors. It&rsquo;s capable of creating some pretty cool patterns.</p>
 
-<p>This variant of the Game of Life uses three overlapping channels. So instead of just one simulation, there are three simultaneous simulations. I visualize these in the three color channels, red, green and blue. Two or more channels active on the same cell are represented with <a href="https://en.wikipedia.org/wiki/Additive_color">additive color mixing</a>.</p>
+<p>This variant of the Game of Life uses three overlapping channels, so instead of just one simulation, there are three simultaneous simulations. I visualize these in the three color channels, red, green and blue. Two or more channels active on the same cell are represented with <a href="https://en.wikipedia.org/wiki/Additive_color">additive color mixing</a>.</p>
 
-<p>These additional channels enable additional interaction between channels, which is pretty neat. I&rsquo;ve added a rule which for a dead cell D, sums the active neighbors in other channels and activates D if the if that sum is 9. One nice result of this inter-channel interaction is that stagnant colors can be reactivated by other colors that pass by.</p>
+<p>These additional channels enable additional interaction between channels, which is pretty neat. I&rsquo;ve added a rule which revives a dead cell if the sum of its active neighbors from other channels is 9. One nice result of this inter-channel interaction is that stagnant colors can be reactivated by other colors that pass by.</p>
 
 <p>Finding parameters that don&rsquo;t cause the simulation to blow up or die out is a bit of a trial and error. I made an empirical choice which results in a lively &ldquo;pond&rdquo; after the chaotic initial state. I&rsquo;m sure there are other nice combinations as well.</p>
 
