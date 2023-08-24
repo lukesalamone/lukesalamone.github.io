@@ -1,0 +1,27 @@
+#game-of-life-container .row {
+  display: block;
+  font-size: 0;
+  background-color: #000;
+  width: 600px;
+  margin: auto;
+}
+
+#game-of-life-container .box {
+  width: 4px;
+  height: 4px;
+  display: inline-block;
+}
+
+#game-of-life-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#game-of-life-controls button {
+  display: inline-block;
+}
+
+#game-of-life-controls button:hover {
+  background: #1e90ff20;
+}

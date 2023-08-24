@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lukesalamone.github.io/posts/game-of-life-3d/</loc>
+    <lastmod>2023-08-23T23:34:38-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/javascript/</loc>
+    <lastmod>2023-08-23T23:34:38-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/</loc>
+    <lastmod>2023-08-23T23:34:38-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/posts/</loc>
+    <lastmod>2023-08-23T23:34:38-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/simulation/</loc>
+    <lastmod>2023-08-23T23:34:38-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/</loc>
+    <lastmod>2023-08-23T23:34:38-07:00</lastmod>
+  </url><url>
     <loc>https://lukesalamone.github.io/posts/chatgpt-mnist/</loc>
     <lastmod>2023-07-30T22:45:57-07:00</lastmod>
   </url><url>
@@ -9,15 +27,6 @@
     <lastmod>2023-07-30T22:45:57-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/computer-vision/</loc>
-    <lastmod>2023-07-30T22:45:57-07:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/</loc>
-    <lastmod>2023-07-30T22:45:57-07:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/posts/</loc>
-    <lastmod>2023-07-30T22:45:57-07:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/</loc>
     <lastmod>2023-07-30T22:45:57-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/ai/</loc>
@@ -214,9 +223,6 @@
   </url><url>
     <loc>https://lukesalamone.github.io/tags/video/</loc>
     <lastmod>2020-12-17T11:22:43-06:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/javascript/</loc>
-    <lastmod>2020-10-24T17:45:41-05:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/posts/managing-python-environments/</loc>
     <lastmod>2020-10-24T17:45:41-05:00</lastmod>

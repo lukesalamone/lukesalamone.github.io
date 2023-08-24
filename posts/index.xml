@@ -6,8 +6,38 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Sun, 30 Jul 2023 22:45:57 -0700</lastBuildDate>
+        <lastBuildDate>Wed, 23 Aug 2023 23:34:38 -0700</lastBuildDate>
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>A 3D Game of Life</title>
+            <link>https://lukesalamone.github.io/posts/game-of-life-3d/</link>
+            <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/game-of-life-3d/</guid>
+            <description>Conway&amp;rsquo;s Game of Life is a simulation developed in 1970 describing a grid of binary cells and transition rules for each cell which depend on the state of the cell&amp;rsquo;s neighbors. It&amp;rsquo;s capable of creating some pretty cool patterns on its own.
+This variant of the Game of Life uses three overlapping channels. So instead of just one simulation, there are three simultaneous simulations. I visualize these in the three color channels, red, green and blue.</description>
+            <content type="html"><![CDATA[<p><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway&rsquo;s Game of Life</a> is a simulation developed in 1970 describing a grid of binary cells and transition rules for each cell which depend on the state of the cell&rsquo;s neighbors. It&rsquo;s capable of creating some pretty cool patterns on its own.</p>
+
+<p>This variant of the Game of Life uses three overlapping channels. So instead of just one simulation, there are three simultaneous simulations. I visualize these in the three color channels, red, green and blue. Two or more channels active on the same cell are represented with <a href="https://en.wikipedia.org/wiki/Additive_color">additive color mixing</a>.</p>
+
+<p>These additional channels enable additional interaction between channels, which is pretty neat. I&rsquo;ve added a rule which for a dead cell D, sums the active neighbors in other channels and activates D if the if that sum is 9. One nice result of this inter-channel interaction is that stagnant colors can be reactivated by other colors that pass by.</p>
+
+<p>Finding parameters that don&rsquo;t cause the simulation to blow up or die out is a bit of a trial and error. I made an empirical choice which results in a lively &ldquo;pond&rdquo; after the chaotic initial state. I&rsquo;m sure there are other nice combinations as well.</p>
+
+<p>Other variants I experimented with briefly were to include more than three channels and to consider more complex relationships between the channels. However these ran slower and/or were harder to balance between chaotic and desolate tendencies.</p>
+
+<div id="game-of-life-controls">
+  <button class="start">start game</button>
+  <button class="pause" style="display:none">pause game</button>
+</div>
+
+<div id="game-of-life-container"></div>
+
+<p><script src="/js/game_of_life.js"></script>
+<link rel="stylesheet" href="/css/game-of-life.css" /></p>
+]]></content>
+        </item>
         
         <item>
             <title>Can ChatGPT Recognize Handwritten Digits?</title>
