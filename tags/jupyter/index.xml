@@ -16,7 +16,7 @@
       <guid>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</guid>
       <description>Here&amp;rsquo;s how to connect to a remote Jupyter notebook.
 Create an ssh tunnel to your remote machine:
-ssh -L 8080:localhost:8080 user@12.34.56.78  Start Jupyter on that machine in headless mode:
+ssh -L 8080:localhost:8080 user@12.34.56.78 # or use a .pem file to connect to ec2 ssh -L 8080:localhost:8080 -i &amp;quot;aws.pem&amp;quot; ec2-user@ec2-12-34-56-78.compute-1.amazonaws.com  Start Jupyter on that machine in headless mode:
 jupyter notebook --no-browser --port=8080  Use a browser to open one of the urls that Jupyter presents:
 http://localhost:8080/?token=xyz</description>
     </item>
