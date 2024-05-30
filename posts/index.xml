@@ -10,6 +10,66 @@
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>How does HNSW work?</title>
+            <link>https://lukesalamone.github.io/posts/how-does-hnsw-work/</link>
+            <pubDate>Mon, 20 May 2024 13:38:01 -0700</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/how-does-hnsw-work/</guid>
+            <description>Suppose we have a vector database with a billion items in it (the haystack). And suppose we are looking for K vectors, the needles which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing 1-distance(x,y).) And also suppose that we&amp;rsquo;d like to do this quickly.
+Naive and semi-naive approaches One approach might be to compare every vector and take the argmax. In that case, for vectors of length D our runtime will be 1 billion x D.</description>
+            <content type="html"><![CDATA[<p>Suppose we have a vector database with a billion items in it (the <em>haystack</em>). And suppose we are looking for K vectors, the <em>needles</em> which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing <code>1-distance(x,y)</code>.) And also suppose that we&rsquo;d like to do this quickly.</p>
+<h2 id="naive-and-semi-naive-approaches">Naive and semi-naive approaches</h2>
+<p>One approach might be to compare every vector and take the argmax. In that case, for vectors of length D our runtime will be <code>1 billion x D</code>.</p>
+<pre><code class="language-python">def search(needle, haystack, arg_k=1):
+    # normalize needle and haystack vectors
+    needle /= np.linalg.norm(needle)
+    haystack /= np.linalg.norm(haystack, axis=1, keepdims=True)
+    
+    # compute cosine similarities
+    similarities = np.dot(haystack, needle)
+    
+    # get the indexes of the top k elements
+    idx_topk = np.argpartition(a, -k)[-k:]
+
+    # return haystack vector with highest cosine similarity
+    return haystack[idx_topk]
+</code></pre>
+<p>In practice, there are some optimizations we can try which can increase the practical speed of this operation:</p>
+<ul>
+<li>We can parallelize computations on-device with <a href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data">SIMD</a> or <a href="https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms">BLAS</a>.</li>
+<li>We can parallelize computations on-device with GPU.</li>
+<li>We can parallelize across cores for machines with multiple cores.</li>
+<li>We can parallelize across devices. For example, partitioning the database across 10 clusters, finding a &ldquo;winner&rdquo; from each cluster, and then repeating the search across the 10 winners.</li>
+</ul>
+<p>There are also some relatively simple but &ldquo;destructive&rdquo; techniques we can also try:</p>
+<ul>
+<li>We can try pruning the dataset in some way beforehand. For example, maybe we don&rsquo;t need to consider old or unpopular vectors.</li>
+<li>We can try reducing the dimensionality of the vectors with something like PCA.</li>
+<li>We can try quantizing the vectors e.g. <code>f64</code> -&gt; <code>f16</code> reduces memory requirements 4x. (Usually this requires quantization-aware training.)</li>
+</ul>
+<h2 id="hierarchical-navigable-small-worlds-hnsw">Hierarchical Navigable Small Worlds (HNSW)</h2>
+<p>Sometimes linear time is still too slow. In that case, we can consider an <em>approximate</em> solution, where some acceptable percent of vectors returned are actually not in the top K nearest neighbors. This is called approximate nearest neighbors (ANN). If we have a large system, it&rsquo;s possible to <a href="https://sbert.net/examples/applications/retrieve_rerank/">use another more precise model to rerank</a> the vectors results anyways. In that case, we just need to set K large enough to reliably include the vectors we really need.</p>
+<p>ANN algorithms typically come in three flavors: graph based approaches, space partitioning based approaches, and hash based approaches. If your dataset is large enough, you might add compression (e.g. product quantization) on top of it.</p>
+<h3 id="intuition">Intuition</h3>
+<p><a href="https://arxiv.org/pdf/1603.09320">HNSW</a> is a bit of a Six Degrees of Kevin Bacon approach. I&rsquo;ll give what I think this is a fairly good intuition for how it works.</p>
+<p>Suppose you have 1,000 friends and you&rsquo;d like to know which five of them live closest to a landmark like the Golden Gate Bridge. You don’t have everyone&rsquo;s exact address, but each friend keeps a list of their close friends&rsquo; addresses. You might start with a friend who lives in the US. From there, you check their friends to find who lives closest to the target, and then search among their friends for someone even closer. By using a hierarchical approach, you don&rsquo;t need to search through everyone, just those likely to be closest.</p>
+<p>In the analogy, the Golden Gate Bridge is the &ldquo;needle&rdquo; and the friends are the &ldquo;haystack&rdquo;. This is a pretty efficient method, but of course it is possible to miss a node if their friend wasn&rsquo;t linked to an earlier friend.</p>
+<h3 id="searching">Searching</h3>
+<p>Searching is fairly straightforward. Start from an entry point (maybe a random point) in the top layer. For each of the neighbors of the entry point, compute the distance between the query and that point. If any of the neighbors are closer to the query, hop to that neighbor and repeat the process. Select the closest point and go to the next layer down. We keep searching until we reach layer 0.</p>
+<p>To compute the K nearest neighbors during search (with K &gt; 1) we simply maintain a min heap, and add all nodes considered during the search. The number of nodes returned in this search (K) is also known as <code>ef_search</code> in the HNSW paper.</p>
+<h3 id="addition">Addition</h3>
+<p>To add a vector X, we start by computing the highest layer <code>L</code> the node will appear in. <code>L</code> is randomly selected using an exponentially decaying probability. (All nodes appear in level 0, but can have skip links to higher levels.) Next, starting from the top layer, we traverse the graph structure as if we were searching for X.</p>
+<p>Once we reach layer <code>L</code> from earlier, we begin to make connections. Connections can be made with previously found nearest neighbors or nearest neighbors on the current layer. The number of nearest neighbors to consider connections with is controlled by the <code>ef_construction</code> parameter. The number of links to actually create is controlled by the parameter <code>M</code>.</p>
+<h4 id="performance-considerations">Performance considerations</h4>
+<ul>
+<li>HNSW can require a large amount of memory. This can be reduced with product quantization, a lossy vector compression method.</li>
+<li>Adding new elements is slow. There is a tradeoff between index quality and time required to build the index controlled by <code>ef_construction</code>.</li>
+</ul>
+<p>More information about HNSW parameters can be found <a href="https://github.com/nmslib/hnswlib/blob/master/ALGO_PARAMS.md">here</a>.</p>
+]]></content>
+        </item>
+        
+        <item>
             <title>A 3D Game of Life</title>
             <link>https://lukesalamone.github.io/posts/game-of-life-3d/</link>
             <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
