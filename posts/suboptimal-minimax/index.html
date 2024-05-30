@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="keywords" content=", chess, ai, game-theory" />
+<meta name="keywords" content="homepage, blog, chess, ai, game-theory" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/suboptimal-minimax/" />
@@ -42,26 +42,35 @@
 
 
 
-<meta itemprop="name" content="When Suboptimal Minimax is Better">
-<meta itemprop="description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&rsquo;t make the best move?"><meta itemprop="datePublished" content="2022-07-02T16:24:10-05:00" />
-<meta itemprop="dateModified" content="2022-07-02T16:24:10-05:00" />
-<meta itemprop="wordCount" content="969"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="chess,ai,game-theory," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="When Suboptimal Minimax is Better"/>
-<meta name="twitter:description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&rsquo;t make the best move?"/>
+  <meta itemprop="name" content="When Suboptimal Minimax is Better">
+  <meta itemprop="description" content="Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn’t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn’t objectively the best move. Don’t play the game, play the man.">
+  <meta itemprop="datePublished" content="2022-07-02T16:24:10-05:00">
+  <meta itemprop="dateModified" content="2022-07-02T16:24:10-05:00">
+  <meta itemprop="wordCount" content="926">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Chess,Ai,Game-Theory">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="When Suboptimal Minimax is Better">
+  <meta name="twitter:description" content="Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn’t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn’t objectively the best move. Don’t play the game, play the man.">
 
 
 
-    <meta property="og:title" content="When Suboptimal Minimax is Better" />
-<meta property="og:description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&rsquo;t make the best move?" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/suboptimal-minimax/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-07-02T16:24:10-05:00" />
-<meta property="article:modified_time" content="2022-07-02T16:24:10-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/suboptimal-minimax/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="When Suboptimal Minimax is Better">
+  <meta property="og:description" content="Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn’t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn’t objectively the best move. Don’t play the game, play the man.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-07-02T16:24:10-05:00">
+    <meta property="article:modified_time" content="2022-07-02T16:24:10-05:00">
+    <meta property="article:tag" content="Chess">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="Game-Theory">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -129,10 +138,7 @@
       
 
       <div class="post-content">
-        
-
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   tex2jax: {
@@ -150,7 +156,6 @@ MathJax.Hub.Config({
   }
 });
 </script>
-
 <script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
     var all = MathJax.Hub.getAllJax(), i;
@@ -159,35 +164,21 @@ MathJax.Hub.Config({
     }
 });
 </script>
-
 <p>Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&rsquo;t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn&rsquo;t objectively the best move. <a href="https://www.youtube.com/watch?v=XsdefZRavj4">Don&rsquo;t play the game, play the man.</a></p>
-
 <p>For the purposes of this problem let&rsquo;s assume it is a chess algorithm but this concept can be generalized to any algorithm which can use minimax. Anyone who has played a game against another person understands the idea of &ldquo;downloading&rdquo; your opponent: playing against a person enough that you feel like you know what they will do. <a href="https://www.youtube.com/watch?v=42LatV92k1s">Hikaru Nakamura does</a>.</p>
-
 <p>It seems like this type of player would have many possible applications, including training for specific skill levels and even trainers personalized to an individual&rsquo;s playing style.</p>
-
 <h2 id="prior-work">Prior work</h2>
-
 <p>There has been <a href="https://www.chessprogramming.org/Opponent_Model_Search#Further_Research">previous work</a> in terms of opponent modeling in chess. <a href="https://maiachess.com/">Maia chess</a> has been trained to model several Elo levels of opponent play which makes it ideal to be used as a backbone in my experiments.</p>
-
 <h2 id="the-policy-function">The Policy Function</h2>
-
 <p>We can think of the policy function as a model of the opponent. We will therefore be optimizing an algorithm to play against this model, rather than the optimal opponent.</p>
-
 <p>The specifics of the policy function are as follows. The function takes two parameters, a board position <code>B</code> and an opponent skill level <code>L</code>. The parameter <code>L</code> is important because the <em>nature</em> of the opponent&rsquo;s suboptimal play is important. All levels of chess players play sub-optimally, but the types of mistakes a beginner or intermediate-level player will make are different from a grandmaster. The algorithm should exploit this fact. In practice, this algorithm should play in a much more &ldquo;trappy&rdquo; way than the methodical slow grind of a typical chess engine.</p>
-
 <p>Formally, at move $i$ there will be $n_i$ possible moves. For each of the $n_i$ moves, we should calculate an evaluation weighted by the opponent&rsquo;s probability of playing responses to that move:</p>
-
 <p style="text-align: center; font-size: 1.5em">
 $ e_i(m_i) = p_L(M_{i+1}) \cdot r(M_{i+1}) $
 </p>
-
 <p>Where $M_{i+1}$ is the set of possible moves the opponent can make in response to move $m_i$, $p_L$ is the probability distribution of each move in $M_i$ being made, and $r$ is some real evaluation of the board position.</p>
-
 <p>Let&rsquo;s use an example. Suppose that at some stage in the game the algorithm must choose between 2 possible moves. For simplicity, the opponent will have 4 possible replies after each of the two possible moves. After the algorithm makes the the first possible move, the probabilities look like this:</p>
-
 <h3 id="opponent-move-distribution-at-position-1">Opponent move distribution at position 1</h3>
-
 <table>
 <thead>
 <tr>
@@ -196,26 +187,22 @@ $ e_i(m_i) = p_L(M_{i+1}) \cdot r(M_{i+1}) $
 <th>Resulting position evaluation</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>1</td>
 <td>0.6</td>
 <td>5</td>
 </tr>
-
 <tr>
 <td>2</td>
 <td>0.3</td>
 <td>1</td>
 </tr>
-
 <tr>
 <td>3</td>
 <td>0.1</td>
 <td>0.5</td>
 </tr>
-
 <tr>
 <td>4</td>
 <td>0.1</td>
@@ -223,16 +210,12 @@ $ e_i(m_i) = p_L(M_{i+1}) \cdot r(M_{i+1}) $
 </tr>
 </tbody>
 </table>
-
 <p style="text-align: center; font-size: 1.5em">
 $ \begin{bmatrix} 0.6 \\ 0.3 \\ 0.1 \\ 0.1 \end{bmatrix}
 \cdot \begin{bmatrix} 5 \\ 1 \\ 0.5 \\ -1 \end{bmatrix} = 3.25 $
 </p>
-
 <h3 id="opponent-move-distribution-at-position-2">Opponent move distribution at position 2</h3>
-
 <p>And after the second possible move, the opponent move distribution looks like this:</p>
-
 <table>
 <thead>
 <tr>
@@ -241,26 +224,22 @@ $ \begin{bmatrix} 0.6 \\ 0.3 \\ 0.1 \\ 0.1 \end{bmatrix}
 <th>Resulting position evaluation</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>1</td>
 <td>0.9</td>
 <td>4</td>
 </tr>
-
 <tr>
 <td>2</td>
 <td>0.05</td>
 <td>0.5</td>
 </tr>
-
 <tr>
 <td>3</td>
 <td>0.03</td>
 <td>0</td>
 </tr>
-
 <tr>
 <td>4</td>
 <td>0.02</td>
@@ -268,29 +247,19 @@ $ \begin{bmatrix} 0.6 \\ 0.3 \\ 0.1 \\ 0.1 \end{bmatrix}
 </tr>
 </tbody>
 </table>
-
 <p style="text-align: center; font-size: 1.5em">
 $ \begin{bmatrix} 0.9 \\ 0.05 \\ 0.03 \\ 0.02 \end{bmatrix}
 \cdot \begin{bmatrix} 4 \\ 0.5 \\ 0 \\ -2 \end{bmatrix} = 3.585 $
 </p>
-
 <p><em>In these tables positions are evaluated from the algorithm&rsquo;s point of view, so higher evaluation=better. Assume the evaluation function is a standard evaluation from a chess engine e.g. Stockfish.</em></p>
-
 <p>In this example it is clear that the algorithm should choose move 2, because it is highly likely that after making this move the algorithm will have a decisive advantage.</p>
-
 <h2 id="checkmates">Checkmates</h2>
-
 <p>All of this works quite well in the middle-game, where position evaluations are all within a reasonable range. But what happens when one of the opponent&rsquo;s moves leads to checkmate? How much value should we give to the possibility that an opponent might blunder into checkmate? The above calculation only works for finite numbers. The evaluation of a checkmate is +/- infinity. Instead, let&rsquo;s choose a large, finite number for checkmate.</p>
-
 <p>The behavior of the algorithm depends heavily on our choice for this checkmate evaluation, the <code>CHECKMATE_WEIGHT</code>. If the number is too high, the algorithm will favor positions where the opponent <em>might</em> get checkmated, playing risky moves. If the number is too low, the algorithm will choose other branches which win less quickly. After a bit of trial and error, I settled on +10 for checkmate. This is enough for the algorithm to seek out these types of positions.</p>
-
 <p>A further question is what to do once checkmate is inevitable. That is, what should the algorithm do once it will definitely win? One option is to continue to sample from the distribution, continuing to play the move which maximizes winning chances. At the beginning, this was my intuition. Unfortunately, this leads to many draws by repetition.</p>
-
 <p>Instead, once the game is in a forced-win situation (&ldquo;mate in N moves&rdquo;) the algorithm will stop sampling from the distribution and simply play the moves which lead to checkmate. While this will inevitably lead to a win, it changes the character of the algorithm somewhat. Therefore, I have limited the lookahead to checkmates in the immediate next few moves (specifically, mate in 5 or fewer moves). Since the original goal was to create an algorithm which is used for training, this seems reasonable.</p>
-
 <h2 id="games">Games</h2>
-
-<p>I simulated 400 matches testing this opponent modeling approach, which I wrote about <a href="../../posts/best-antimaia-games">here</a>.</p>
+<p>I simulated 400 matches testing this opponent modeling approach, which I wrote about <a href="../../posts/best-antimaia-games/">here</a>.</p>
 
       </div>
     </article>
@@ -318,7 +287,7 @@ $ \begin{bmatrix} 0.9 \\ 0.05 \\ 0.03 \\ 0.02 \end{bmatrix}
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        969 Words
+        926 Words
       </p>
 
       <p>
@@ -383,7 +352,7 @@ $ \begin{bmatrix} 0.9 \\ 0.05 \\ 0.03 \\ 0.02 \end{bmatrix}
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2024</span>
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>
@@ -397,7 +366,7 @@ $ \begin{bmatrix} 0.9 \\ 0.05 \\ 0.03 \\ 0.02 \end{bmatrix}
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.fdc5aa536e3e114f1858ac9d803de25aba14817a1fa56e188943bfc00702be87ecb0b477b68f6868a13772d5fd57341d069d167527d85cf7fab246f9aafba8cd.js" integrity="sha512-/cWqU24&#43;EU8YWKydgD3iWroUgXofpW4YiUO/wAcCvofssLR3to9oaKE3ctX9VzQdBp0WdSfYXPf6skb5qvuozQ=="></script>
 
 
 

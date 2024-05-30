@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>search on Luke Salamone&#39;s Blog</title>
+    <title>Search on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/search/</link>
-    <description>Recent content in search on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Search on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 17 Dec 2022 16:53:47 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/search/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Dec 2022 16:53:47 -0800</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/search/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Paper Summary: Dual-Encoders in Ranking</title>
       <link>https://lukesalamone.github.io/posts/dual-encoders-ranking/</link>
       <pubDate>Sat, 17 Dec 2022 16:53:47 -0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/dual-encoders-ranking/</guid>
-      <description>In Defense of Dual-Encoders for Neural Ranking by Menon et. al. discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&amp;rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.
-Background Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches.</description>
+      <description>In Defense of Dual-Encoders for Neural Ranking by Menon et. al. discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&amp;rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.&#xA;Background Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches.</description>
     </item>
-    
     <item>
       <title>Rolling My Own Blog Search</title>
       <link>https://lukesalamone.github.io/posts/rolling-my-own-blog-search/</link>
       <pubDate>Wed, 09 Nov 2022 02:42:51 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/rolling-my-own-blog-search/</guid>
-      <description>I&amp;rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&amp;rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:
- The search needs to be fast, useful, and aesthetically pleasing. Search in the browser. Standing up a server is a lot of extra work. It&amp;rsquo;s also overkill since I only have about 30 articles so far.</description>
+      <description>I&amp;rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&amp;rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:&#xA;The search needs to be fast, useful, and aesthetically pleasing. Search in the browser. Standing up a server is a lot of extra work. It&amp;rsquo;s also overkill since I only have about 30 articles so far.</description>
     </item>
-    
   </channel>
 </rss>

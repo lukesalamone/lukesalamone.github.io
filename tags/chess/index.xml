@@ -1,61 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>chess on Luke Salamone&#39;s Blog</title>
+    <title>Chess on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/chess/</link>
-    <description>Recent content in chess on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Chess on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 26 Nov 2022 20:25:13 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/chess/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Nov 2022 20:25:13 -0800</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/chess/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My Favorite Antimaia Games</title>
       <link>https://lukesalamone.github.io/posts/best-antimaia-games/</link>
       <pubDate>Sat, 26 Nov 2022 20:25:13 -0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/best-antimaia-games/</guid>
-      <description>This is a follow up to When Suboptimal Minimax is Better. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.
-The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&amp;rsquo;t objectively &amp;ldquo;optimal&amp;rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player.</description>
+      <description>This is a follow up to When Suboptimal Minimax is Better. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.&#xA;The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&amp;rsquo;t objectively &amp;ldquo;optimal&amp;rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player.</description>
     </item>
-    
     <item>
       <title>A new type of chess tournament</title>
       <link>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</link>
       <pubDate>Sat, 08 Oct 2022 15:17:36 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</guid>
-      <description>This is part 2 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
-In the previous post I discussed the history of chess engines and why they don&amp;rsquo;t &amp;ldquo;think&amp;rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it.</description>
+      <description>This is part 2 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.&#xA;In the previous post I discussed the history of chess engines and why they don&amp;rsquo;t &amp;ldquo;think&amp;rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it.</description>
     </item>
-    
     <item>
       <title>The Chess Engine&#39;s Final Horizon</title>
       <link>https://lukesalamone.github.io/posts/chess-engine-history/</link>
       <pubDate>Fri, 07 Oct 2022 20:17:21 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/chess-engine-history/</guid>
-      <description>This is part 1 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 2 here.
-Computers that play chess, otherwise known as chess engines, have existed since at least the late 1940s. Because the game was said to require the perfect combination of planning, strategy, psychology, and calculation, chess was once thought to be an activity directly correlated with intelligence, and that only a truly intelligent computer should be able to defeat humans.</description>
+      <description>This is part 1 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 2 here.&#xA;Computers that play chess, otherwise known as chess engines, have existed since at least the late 1940s. Because the game was said to require the perfect combination of planning, strategy, psychology, and calculation, chess was once thought to be an activity directly correlated with intelligence, and that only a truly intelligent computer should be able to defeat humans.</description>
     </item>
-    
     <item>
       <title>When Suboptimal Minimax is Better</title>
       <link>https://lukesalamone.github.io/posts/suboptimal-minimax/</link>
       <pubDate>Sat, 02 Jul 2022 16:24:10 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/suboptimal-minimax/</guid>
-      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&amp;rsquo;t make the best move?</description>
+      <description>Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&amp;rsquo;t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn&amp;rsquo;t objectively the best move. Don&amp;rsquo;t play the game, play the man.</description>
     </item>
-    
     <item>
       <title>Alphabet Chess</title>
       <link>https://lukesalamone.github.io/posts/alphabet-chess/</link>
       <pubDate>Fri, 10 Jun 2022 23:56:14 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/alphabet-chess/</guid>
-      <description>TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.
-Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.</description>
+      <description>TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.&#xA;Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.</description>
     </item>
-    
   </channel>
 </rss>

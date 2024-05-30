@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>monte-carlo on Luke Salamone&#39;s Blog</title>
+    <title>Monte-Carlo on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/monte-carlo/</link>
-    <description>Recent content in monte-carlo on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Monte-Carlo on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 21 Jul 2020 17:34:05 +0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Jul 2020 17:34:05 +0800</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What is the Hardest Hangman Word?</title>
       <link>https://lukesalamone.github.io/posts/hardest-hangman-word/</link>
       <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/hardest-hangman-word/</guid>
-      <description>It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.
-If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people.</description>
+      <description>It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.&#xA;If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people.</description>
     </item>
-    
     <item>
       <title>Estimating Pi with a Monte Carlo Simulation</title>
       <link>https://lukesalamone.github.io/posts/monte-carlo/</link>
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/monte-carlo/</guid>
-      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to.</description>
+      <description>A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.&#xA;Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input.</description>
     </item>
-    
   </channel>
 </rss>

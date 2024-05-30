@@ -1,44 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>pytorch on Luke Salamone&#39;s Blog</title>
+    <title>Pytorch on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/pytorch/</link>
-    <description>Recent content in pytorch on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Pytorch on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 28 Apr 2022 18:22:07 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Apr 2022 18:22:07 -0500</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Create a Custom Pytorch Dataloader</title>
       <link>https://lukesalamone.github.io/posts/pytorch-dataloader/</link>
       <pubDate>Thu, 28 Apr 2022 18:22:07 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/pytorch-dataloader/</guid>
-      <description>First, create a custom dataset class.
-from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx]  Next, create a custom dataloader where we specify the batch size.
-features, labels = load_data() # features &amp;amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)  Finally, iterate over the dataloader during training.</description>
+      <description>First, create a custom dataset class.&#xA;from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx] Next, create a custom dataloader where we specify the batch size.&#xA;features, labels = load_data() # features &amp;amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True) Finally, iterate over the dataloader during training.</description>
     </item>
-    
     <item>
       <title>What Are Attention Masks?</title>
       <link>https://lukesalamone.github.io/posts/what-are-attention-masks/</link>
       <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/what-are-attention-masks/</guid>
-      <description>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.
- Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.</description>
+      <description>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.&#xA;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.</description>
     </item>
-    
     <item>
       <title>Autoencoding Stock Prices</title>
       <link>https://lukesalamone.github.io/posts/build-an-autoencoder/</link>
       <pubDate>Sun, 07 Mar 2021 01:31:51 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/build-an-autoencoder/</guid>
-      <description>Autoencoding stock prices as found in Heaton et al., 2016
-  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
-Once we&amp;rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index.</description>
+      <description>Autoencoding stock prices as found in Heaton et al., 2016&#xA;So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.&#xA;Once we&amp;rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index. This can be useful for finding deeper insights into an index, and doesn&amp;rsquo;t require a priori knowledge of the index price or the weighting of its components.</description>
     </item>
-    
   </channel>
 </rss>

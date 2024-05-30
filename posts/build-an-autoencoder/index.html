@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="keywords" content=", neural-networks, pytorch, stock-trading" />
+<meta name="keywords" content="homepage, blog, neural-networks, pytorch, stock-trading" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/build-an-autoencoder/" />
@@ -42,32 +42,41 @@
 
 
 
-<meta itemprop="name" content="Autoencoding Stock Prices">
-<meta itemprop="description" content="Autoencoding stock prices as found in Heaton et al., 2016
-  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
-Once we&rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index."><meta itemprop="datePublished" content="2021-03-07T01:31:51-06:00" />
-<meta itemprop="dateModified" content="2021-03-07T01:31:51-06:00" />
-<meta itemprop="wordCount" content="705"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="neural-networks,pytorch,stock-trading," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="Autoencoding Stock Prices"/>
-<meta name="twitter:description" content="Autoencoding stock prices as found in Heaton et al., 2016
-  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
-Once we&rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index."/>
+  <meta itemprop="name" content="Autoencoding Stock Prices">
+  <meta itemprop="description" content="Autoencoding stock prices as found in Heaton et al., 2016
+So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
+Once we’ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index. This can be useful for finding deeper insights into an index, and doesn’t require a priori knowledge of the index price or the weighting of its components.">
+  <meta itemprop="datePublished" content="2021-03-07T01:31:51-06:00">
+  <meta itemprop="dateModified" content="2021-03-07T01:31:51-06:00">
+  <meta itemprop="wordCount" content="705">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Neural-Networks,Pytorch,Stock-Trading">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="Autoencoding Stock Prices">
+  <meta name="twitter:description" content="Autoencoding stock prices as found in Heaton et al., 2016
+So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
+Once we’ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index. This can be useful for finding deeper insights into an index, and doesn’t require a priori knowledge of the index price or the weighting of its components.">
 
 
 
-    <meta property="og:title" content="Autoencoding Stock Prices" />
-<meta property="og:description" content="Autoencoding stock prices as found in Heaton et al., 2016
-  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
-Once we&rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/build-an-autoencoder/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-03-07T01:31:51-06:00" />
-<meta property="article:modified_time" content="2021-03-07T01:31:51-06:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/build-an-autoencoder/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="Autoencoding Stock Prices">
+  <meta property="og:description" content="Autoencoding stock prices as found in Heaton et al., 2016
+So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
+Once we’ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index. This can be useful for finding deeper insights into an index, and doesn’t require a priori knowledge of the index price or the weighting of its components.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-03-07T01:31:51-06:00">
+    <meta property="article:modified_time" content="2021-03-07T01:31:51-06:00">
+    <meta property="article:tag" content="Neural-Networks">
+    <meta property="article:tag" content="Pytorch">
+    <meta property="article:tag" content="Stock-Trading">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -135,71 +144,47 @@ Once we&rsquo;ve trained the autoencoder, we can use it to measure how well each
       
 
       <div class="post-content">
-        
-
-<figure><img src="../../img/autoencoder.png"
-         alt="Autoencoding stock prices as found in Heaton et al., 2016"/><figcaption>
-            <p>Autoencoding stock prices as found in Heaton et al., 2016</p>
-        </figcaption>
+        <figure><img src="../../img/autoencoder.png"
+    alt="Autoencoding stock prices as found in Heaton et al., 2016"><figcaption>
+      <p>Autoencoding stock prices as found in Heaton et al., 2016</p>
+    </figcaption>
 </figure>
 
-
 <p>So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms <a href="https://arxiv.org/pdf/1602.06561.pdf">here</a>.</p>
-
 <p>Once we&rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index. This can be useful for finding deeper insights into an index, and doesn&rsquo;t require a priori knowledge of the index price or the weighting of its components. Note, this is only one metric which one could use to determine how well one member of the group follows the group overall. Another might be <a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">Pearson Correlation</a>.</p>
-
 <h2 id="github-repository">Github repository</h2>
-
 <p>To follow along with the code in this tutorial, please download the <a href="https://github.com/lukesalamone/stock-data-autoencoder">corresponding repository on Github</a>:</p>
-
 <pre><code>git clone git@github.com:lukesalamone/stock-data-autoencoder.git
 cd stock-data-autoencoder
 pip install -r requirements.txt
 </code></pre>
-
 <h1 id="what-is-an-autoencoder">What is an autoencoder?</h1>
-
 <p>An autoencoder is a neural network which encodes information back to itself. The structure of the network is such that the input layers (the &ldquo;encoder&rdquo;) will be large compared to the hidden layers (the &ldquo;code&rdquo;), forcing the network to compress information inside its hidden layers.</p>
-
 <p>The idea of our autoencoder is that we would like to encode stock price information back to itself while discarding trends that aren&rsquo;t important. To do this, we will feed our network stock price data and ask the network to return those prices to us as outputs. Component stocks which are important to the index will be preserved well and thus be highly accurate, while components which are less important will not be well-preserved. We will measure the performance of the network on each component using mean squared error.</p>
-
 <h1 id="the-model">The model</h1>
-
 <p>We will use an autoencoder with a number of inputs and outputs equal to the number of component stocks in our index. For this exercise, we will use the <a href="https://en.wikipedia.org/wiki/S%26P_500">S&amp;P 500 index</a> which contains 505 components. This means our input and output size will be 505. We will also use a hidden layer with 5 units.</p>
-
 <pre><code class="language-python">class StonksNet(nn.Module):
-  def __init__(self, size):
-    super().__init__()
-      self.fc1 = nn.Linear(in_features=size, out_features=5)
-      self.out = nn.Linear(in_features=5, out_features=size)
+ def __init__(self, size):
+   super().__init__()
+     self.fc1 = nn.Linear(in_features=size, out_features=5)
+     self.out = nn.Linear(in_features=5, out_features=size)
 
-  def forward(self, x: Tensor) -&gt; Tensor:
-    x = F.relu(self.fc1(x))
-    x = F.relu(self.out(x))
-    return x
+ def forward(self, x: Tensor) -&gt; Tensor:
+   x = F.relu(self.fc1(x))
+   x = F.relu(self.out(x))
+   return x
 </code></pre>
-
 <h1 id="the-data">The data</h1>
-
 <p>We will use daily stock prices downloaded using <a href="https://pypi.org/project/yfinance/">yfinance</a>. This data is readily available online and I recommend downloading it for yourself. We will use data between January 1, 1991 to January 1, 2021 (30 years of data).</p>
-
 <p>To download the S&amp;P 500 stock data please run <code>gather_stocks.py</code> from the project directory:</p>
-
 <pre><code>python gather_stocks.py
 </code></pre>
-
 <p>This will download all 505 components into the <code>stock_data</code> directory. Data will also be cleaned such that each component has the same number of days, which will be important when feeding it into the model.</p>
-
 <h1 id="training-the-model">Training the model</h1>
-
 <p>The model itself is a simple feed-forward neural network. As such, we use a standard training loop to train the model. We don&rsquo;t expect the loss to ever fall to zero during training since it is impossible for the network to perfectly encode and decode so many inputs into so few hidden code units. Some information will inevitably be lost. In my training, validation losses bottomed out at around 4000, but yours may be different depending on the initialization of your autoencoder.</p>
-
-<p><img src="../../img/autoencoder_validation_losses.png" alt="validation loss" /></p>
-
+<p><img alt="validation loss" src="../../img/autoencoder_validation_losses.png"></p>
 <h1 id="ranking-components">Ranking components</h1>
-
 <p>Finally we&rsquo;re ready to rank the components of the S&amp;P 500 for &ldquo;closeness&rdquo;. After running <code>python train_model.py</code> you will see the best and worst components as scored by the autoencoder. Here were my results, yours may be different.</p>
-
 <pre><code>best 5 results:
 DRE: 16.66
 LNT: 37.27
@@ -214,9 +199,7 @@ LMT: 113654.48
 C: 357073.88
 NVR: 10955169.00
 </code></pre>
-
 <h1 id="future-research">Future research</h1>
-
 <p>Upon inspection, it appears that better results might be achieved if we normalize the stock data before training. It appears that stocks with higher prices and higher volatility tended to perform worse than those with tight price ranges. In a way this is expected, since the autoencoder will naturally have a harder time modeling large values with a limited set of hidden units. However, normalizing the prices into similar ranges might be an interesting exercise to see if we can squeeze even more out of the model.</p>
 
       </div>
@@ -310,7 +293,7 @@ NVR: 10955169.00
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2024</span>
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>
@@ -324,7 +307,7 @@ NVR: 10955169.00
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.fdc5aa536e3e114f1858ac9d803de25aba14817a1fa56e188943bfc00702be87ecb0b477b68f6868a13772d5fd57341d069d167527d85cf7fab246f9aafba8cd.js" integrity="sha512-/cWqU24&#43;EU8YWKydgD3iWroUgXofpW4YiUO/wAcCvofssLR3to9oaKE3ctX9VzQdBp0WdSfYXPf6skb5qvuozQ=="></script>
 
 
 

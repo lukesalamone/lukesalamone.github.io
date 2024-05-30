@@ -1,61 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>statistics on Luke Salamone&#39;s Blog</title>
+    <title>Statistics on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/statistics/</link>
-    <description>Recent content in statistics on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Statistics on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 10 Jun 2022 23:56:14 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Jun 2022 23:56:14 -0500</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Alphabet Chess</title>
       <link>https://lukesalamone.github.io/posts/alphabet-chess/</link>
       <pubDate>Fri, 10 Jun 2022 23:56:14 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/alphabet-chess/</guid>
-      <description>TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.
-Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.</description>
+      <description>TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.&#xA;Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.</description>
     </item>
-    
     <item>
       <title>What is Marginalization?</title>
       <link>https://lukesalamone.github.io/posts/what-is-marginalization/</link>
       <pubDate>Wed, 07 Jul 2021 14:23:12 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/what-is-marginalization/</guid>
-      <description>In machine learning and statistics, marginalization simply means summing over a set of independent variables. For example, suppose an avid tennis player kept track of the number of days he played tennis over a period of time as well as the weather on that day:
- .blue { background-color:#09f1; } .gray { background-color:#80808012; }    weather     sunny cloudy rainy totals   play? yes 70 25 1 96  no 70 5 9 84  totals 140 30 10 180   (In this table we&amp;rsquo;re keeping track of the number of days.</description>
+      <description>In machine learning and statistics, marginalization simply means summing over a set of independent variables. For example, suppose an avid tennis player kept track of the number of days he played tennis over a period of time as well as the weather on that day:&#xA;weather sunny cloudy rainy totals play? yes 70 25 1 96 no 70 5 9 84 totals 140 30 10 180 (In this table we&amp;rsquo;re keeping track of the number of days.</description>
     </item>
-    
     <item>
       <title>What is Perplexity?</title>
       <link>https://lukesalamone.github.io/posts/perplexity/</link>
       <pubDate>Thu, 01 Apr 2021 12:14:49 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/perplexity/</guid>
-      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i TLDR: NLP metric ranging from 1 to infinity. Lower is better.
-In natural language processing, perplexity is the most common metric used to measure the performance of a language model.</description>
+      <description>TLDR: NLP metric ranging from 1 to infinity. Lower is better.&#xA;In natural language processing, perplexity is the most common metric used to measure the performance of a language model. To calculate perplexity, we use the following formula:&#xA;$ perplexity = e^z $ where&#xA;$ z = -{1 \over N} \sum_{i=0}^N ln(P_{n}) $ Typically we use base e when calculating perplexity, but this is not required. Any base will do, so sometimes the formula will use base 2 or base 10, along with logarithms to the corresponding base.</description>
     </item>
-    
     <item>
       <title>What is the Hardest Hangman Word?</title>
       <link>https://lukesalamone.github.io/posts/hardest-hangman-word/</link>
       <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/hardest-hangman-word/</guid>
-      <description>It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.
-If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people.</description>
+      <description>It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.&#xA;If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people.</description>
     </item>
-    
     <item>
       <title>Estimating Pi with a Monte Carlo Simulation</title>
       <link>https://lukesalamone.github.io/posts/monte-carlo/</link>
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/monte-carlo/</guid>
-      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to.</description>
+      <description>A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.&#xA;Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input.</description>
     </item>
-    
   </channel>
 </rss>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="keywords" content=", neural-networks, audio, video, siamese-neural-network" />
+<meta name="keywords" content="homepage, blog, neural-networks, audio, video, siamese-neural-network" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/siamese-nn-video/" />
@@ -42,32 +42,42 @@
 
 
 
-<meta itemprop="name" content="Siamese Neural Networks (Video)">
-<meta itemprop="description" content="The following is a transcript of the above video
+
+  <meta itemprop="name" content="Siamese Neural Networks (Video)">
+  <meta itemprop="description" content="The following is a transcript of the above video
 In this paper, the authors present a novel neural network architecture to enable audio search via sounds humans are able to make, for example humming and whistling. This is an important capability when searching through audio for a specific sound.
-Motivation Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one."><meta itemprop="datePublished" content="2020-12-17T11:22:43-06:00" />
-<meta itemprop="dateModified" content="2020-12-17T11:22:43-06:00" />
-<meta itemprop="wordCount" content="1928"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="neural-networks,audio,video,siamese-neural-network," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
+Motivation Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one. It could be very tedious to listen to every single one until you can find the right sound.">
+  <meta itemprop="datePublished" content="2020-12-17T11:22:43-06:00">
+  <meta itemprop="dateModified" content="2020-12-17T11:22:43-06:00">
+  <meta itemprop="wordCount" content="1928">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Neural-Networks,Audio,Video,Siamese-Neural-Network">
 
-<meta name="twitter:title" content="Siamese Neural Networks (Video)"/>
-<meta name="twitter:description" content="The following is a transcript of the above video
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="Siamese Neural Networks (Video)">
+  <meta name="twitter:description" content="The following is a transcript of the above video
 In this paper, the authors present a novel neural network architecture to enable audio search via sounds humans are able to make, for example humming and whistling. This is an important capability when searching through audio for a specific sound.
-Motivation Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one."/>
+Motivation Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one. It could be very tedious to listen to every single one until you can find the right sound.">
 
 
 
-    <meta property="og:title" content="Siamese Neural Networks (Video)" />
-<meta property="og:description" content="The following is a transcript of the above video
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/siamese-nn-video/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="Siamese Neural Networks (Video)">
+  <meta property="og:description" content="The following is a transcript of the above video
 In this paper, the authors present a novel neural network architecture to enable audio search via sounds humans are able to make, for example humming and whistling. This is an important capability when searching through audio for a specific sound.
-Motivation Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/siamese-nn-video/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-12-17T11:22:43-06:00" />
-<meta property="article:modified_time" content="2020-12-17T11:22:43-06:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+Motivation Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one. It could be very tedious to listen to every single one until you can find the right sound.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-12-17T11:22:43-06:00">
+    <meta property="article:modified_time" content="2020-12-17T11:22:43-06:00">
+    <meta property="article:tag" content="Neural-Networks">
+    <meta property="article:tag" content="Audio">
+    <meta property="article:tag" content="Video">
+    <meta property="article:tag" content="Siamese-Neural-Network">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -135,94 +145,51 @@ Motivation Imagine you have hundreds of unlabeled sound effects on your computer
       
 
       <div class="post-content">
-        
-
-<div style="text-align:center">
+        <div style="text-align:center">
   <iframe src="https://player.vimeo.com/video/491725663" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 </div>
-
 <p><em>The following is a transcript of the above video</em></p>
-
 <p>In this paper, the authors present a novel neural network architecture to enable audio search via sounds humans are able to make, for example humming and whistling. This is an important capability when searching through audio for a specific sound.</p>
-
 <h2 id="motivation">Motivation</h2>
-
 <p>Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one. It could be very tedious to listen to every single one until you can find the right sound. Even if the sounds do have some kind of word labels, it could be hard to pinpoint exactly which words to search for. A lot of sounds don’t exactly lend themselves to text descriptors, so finding the right sound can be difficult with a text search.</p>
-
 <p>This paper contains three main contributions:</p>
-
 <p>First, it introduces a new neural network architecture for matching imitated sounds with a sound corpus, the semi-siamese convolutional neural network.</p>
-
 <p>Second, the researchers built a second architecture which utilizes transfer learning from other audio tasks in an attempt for better performance.</p>
-
 <p>Third, the researchers visualized and sonified input patterns which excited the neurons in different layers.</p>
-
 <p>Both neural networks outperform the state of the art systems as we will see later on.</p>
-
 <h2 id="data">Data</h2>
-
 <p>To train the siamese model, the authors used a dataset called VocalSketch, which contains sounds from 4 broad categories: acoustic instruments, commercial synthesizers, everyday, and single synthesizer notes. The dataset also contains a number of human vocal imitations of each of the sounds.
 For each of the 4 categories in VocalSketch, the researchers selected half of the sounds in each category along with corresponding vocal imitations as the training and validation set, and the other half for their test set.</p>
-
 <p>Since each of the categories other than Everyday contained 40 sounds, 20 sounds would be for training and 20 for test and validation. The everyday category contained 120 sounds, so that category had 60 in training and 60 in test.
 Each sound in the dataset has 10 corresponding human vocal imitations. In the training set, 7 of them for each sound were selected for training, and the remaining 3 were used for validation. Overall, the researchers used this dataset to create 840 positive and 840 negative pairs for training, and 360 positive and negative pairs for validation.</p>
-
 <p>I thought it was interesting that the researchers opted not to use balanced categories of 20 sounds for each category. There isn’t a comment in the paper about the reasoning behind this but it may be due to the difficulty of categorizing this class of sounds.</p>
-
 <p>The transfer learning model required pretraining the two towers on two additional datasets before training the full network on VocalSketch.</p>
-
 <p>For the vocal imitation tower, they used a dataset called VoxForge. From this dataset the researchers selected 8 thousand samples for each of 7 different languages. They used a 70 - 30 split for training and testing, and achieved a 69.8% accuracy, which seems pretty good for a 7 class classification task.</p>
-
 <p>For the second transfer learning tower, the environmental sound classification tower, they used a dataset called UrbanSound8k. This dataset contains 8732 sound samples in 10 different classes, things like car horns, jackhammers, and street music. The researchers used 10 fold cross validation when pretraining on this dataset and achieved a 70.2% accuracy over the dataset.</p>
-
 <p>Note that for pre-training the two towers, the researchers used a slightly modified neural network architecture, appending two fully connected layers to categorize the results into the necessary number of classes.</p>
-
 <p>So how are sounds fed into the neural networks? You’re probably familiar with the way that convolutional neural networks work with images. Typically the input for each image is of a shape width by height by color depth. Creating an input when working with sound is similar. The width of the audio file in this case is time, and the height is the frequencies during that time step. This is similar to the output of a spectrogram.</p>
-
 <p>In order to be fed into the network, audio must first undergo a preprocessing step. The specific preprocessing involved varied between the networks, but generally involves downsampling the audio and splitting it by frequency band. This resulted in an input which resembles a spectrogram image.</p>
-
 <h2 id="methodology">Methodology</h2>
-
 <p>The heart of this problem is an architecture the researchers dubbed siamese style or semi siamese neural networks. A true siamese neural network consists of two identical neural network towers with the same weights, and is used similar to the way that hashing is used to match similar inputs. A siamese style network is similar to a siamese neural network, but may have different weights in one of its towers.</p>
-
 <p>The first network the researchers called IMINET, which included a true siamese neural network as one of its configurations. This network consisted of two convolutional network towers, a concatenation step, and a fully-connected network with three more layers to compute a similarity score between 0 and 1. The convolutional neural networks in IMINET had the same structure, even though in some configurations their weights were not the same. They consisted of four convolutional layers with pool layers following convolutional layers 1 and 2.</p>
-
 <p>The researchers detailed the parameters they used for each of the convolutional layers, specifically the number of filters and the receptive field size. Each of the filters in a layer learns to detect various characteristics of the input, and the receptive field is the part of the input that the filter is able to see. The max pooling layers output the maximum value among all of their inputs, reducing the number of inputs for the next layer in the network.</p>
-
 <p>The researchers experimented with three different configurations for the convolutional network towers: a tied configuration, where both towers would share the exact same weights and biases; an untied configuration, where the two towers were required to share no weights and biases at all; and a partially tied configuration, where weights and biases were shared for convolutional layers 3 and 4 but not 1 and 2. Because the untied and partially tied configurations are not truly siamese neural networks, the researchers called these configurations semi siamese.</p>
-
 <p>After both inputs pass through the convolutional towers, they are concatenated together into one input vector and fed into a fully connected network with three layers. This network’s job is to compute a similarity score between 0 and 1 for the two inputs. Both of the first two layers used ReLU activation. The final layer was a single neuron which used sigmoid activation to squash its input into an output between 0 and 1.</p>
-
 <p>This architecture achieved state of the art results in sound retrieval which I will discuss in a moment along with the rest of the findings of this paper.</p>
-
 <p>The second neural network developed by researchers was called TL-IMINET. This network was very similar to the first network, but this time the researchers tried using transfer learning to achieve better performance. The researchers hypothesized that the vocal imitation task shares many characteristics with language identification, and that sound recognition shares many similarities with environmental sound classification. This would allow networks which were pre-trained on these tasks to require only fine tuning to be adapted to this task.</p>
-
 <p>The network architectures for the language identification and environmental classification tasks were slightly different from those used in IMINET and are shown here. Note that the towers are also different in architecture from each other.</p>
-
 <p>The researchers also experimented with fusion strategies between different models. For IMINET, the similarity likelihoods for all three configurations were multiplied together to achieve a combined score. They also experimented with combining IMINET with the previous state of the art model. Since that model computes a cosine distance between the input sound and a candidate sound, this output was converted into a likelihood using softmax, and that softmax was multiplied by the output of IMINET. The transfer learning model TL-IMINET was also combined with the state of the art model in a similar way by computing the softmax and multiplying by the output of TL-IMINET. These fusion strategies ended up improving the performance of each of the models quite a bit.</p>
-
 <h2 id="experiments-and-findings">Experiments and Findings</h2>
-
 <p>To measure the performance of these networks, recall that the output of the networks was a number between 0 and 1 indicating how similar the network believed the two inputs were to each other. For example, two very similar inputs might have a similarity rating of 0.9, while two dissimilar inputs might have a similarity rating of 0.1. After gathering the similarity of the human vocalization sound to each of its potential matches, the matches were ranked according to their similarity score.</p>
-
 <p>The authors then used a metric called mean reciprocal rank, which is a number between 0 and 1 indicating how well the algorithm ranked the sounds. For example, a mean reciprocal rank of 0.5 suggests that the target sound is ranked second among all possible matches on average.</p>
-
 <p>Here are the performances of the various network configurations when measured by mean reciprocal rank. The researchers highlighted several insights which could be drawn from their results.</p>
-
 <p>First, it seems that tied configurations performed the best among all configurations of IMINET. This runs contrary to the researchers’ expectations that untied configurations would outperform tied configurations.</p>
-
 <p>Second, the tied configuration outperformed the previous state of the art benchmark in two categories of sounds: commercial synthesizers and everyday. It performed worse than the state of the art for acoustic instruments, and was about the same performance for the single synthesizer category.</p>
-
 <p>Third, IMINET achieved even better performance in most categories by using an ensemble of different configurations.</p>
-
 <p>Fourth, even without pretraining, the TL-IMINET model performed better than the untied configuration of IMINET for all categories except commercial synthesizers. This is interesting because the only difference between these two models is the network structure of the convolutional towers.</p>
-
 <p>And finally, the pre-trained TL-IMINET model outperformed the previous state of the art model by quite a bit in all categories, but the best performing configuration overall was TL-IMINET fused with the previous state of the art model.</p>
-
 <p>One of the most interesting experiments was the visualization of the input patterns which activate neurons in each of the layers. This was done by performing gradient ascent of the neuron activation with respect to the input from a random initialization state. Visualizing the convolutional layers showed that the first layer tends to learn local features like edges, intermediate layer neurons learn more complex features like texture and direction, and the deepest layer recognizes concentrations of frequency ranges. The visualizations also helped to confirm that pretraining indeed helped the networks to learn more detail. The patterns from the pretrained vocal imitation tower were sharper than those in the naive IMINET towers.</p>
-
 <h2 id="takeaways">Takeaways</h2>
-
 <p>There are a few key takeaways from this research. The first is that the transfer learners had much better performance than the naive non-transfer learner, as evidenced by the fact that TL-IMINET performed better than IMINET for most categories even though neither model was pretrained. The research also showed that ensemble methods can outperform any single model on its own. IMINET performed better when used in combination with its different configurations, and combining it with the state of the art model performed better than either model on its own. Finally, visualizing the inputs can help to confirm that the network is learning the correct things, and helps to provide insights as to what types of sound properties are important.</p>
 
       </div>
@@ -317,7 +284,7 @@ Each sound in the dataset has 10 corresponding human vocal imitations. In the tr
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2024</span>
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>
@@ -331,7 +298,7 @@ Each sound in the dataset has 10 corresponding human vocal imitations. In the tr
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.fdc5aa536e3e114f1858ac9d803de25aba14817a1fa56e188943bfc00702be87ecb0b477b68f6868a13772d5fd57341d069d167527d85cf7fab246f9aafba8cd.js" integrity="sha512-/cWqU24&#43;EU8YWKydgD3iWroUgXofpW4YiUO/wAcCvofssLR3to9oaKE3ctX9VzQdBp0WdSfYXPf6skb5qvuozQ=="></script>
 
 
 

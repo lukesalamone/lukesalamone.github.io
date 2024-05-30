@@ -4,387 +4,269 @@
     <title>Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/</link>
     <description>Recent content on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 23 Aug 2023 23:34:38 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Aug 2023 23:34:38 -0700</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A 3D Game of Life</title>
       <link>https://lukesalamone.github.io/posts/game-of-life-3d/</link>
       <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/game-of-life-3d/</guid>
-      <description>Conway&amp;rsquo;s Game of Life is a simulation developed in 1970 describing a grid of binary cells and transition rules for each cell which depend on the state of the cell&amp;rsquo;s neighbors. It&amp;rsquo;s capable of creating some pretty cool patterns.
-This variant of the Game of Life uses three overlapping channels, so instead of just one simulation, there are three simultaneous simulations. I visualize these in the three color channels, red, green and blue.</description>
+      <description>Conway&amp;rsquo;s Game of Life is a simulation developed in 1970 describing a grid of binary cells and transition rules for each cell which depend on the state of the cell&amp;rsquo;s neighbors. It&amp;rsquo;s capable of creating some pretty cool patterns.&#xA;This variant of the Game of Life uses three overlapping channels, so instead of just one simulation, there are three simultaneous simulations. I visualize these in the three color channels, red, green and blue.</description>
     </item>
-    
     <item>
       <title>Can ChatGPT Recognize Handwritten Digits?</title>
       <link>https://lukesalamone.github.io/posts/chatgpt-mnist/</link>
       <pubDate>Sun, 30 Jul 2023 22:45:57 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/chatgpt-mnist/</guid>
-      <description>TLDR: No. No it cannot.
-This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a decoder-only model. It shouldn&amp;rsquo;t be able to perform an image recognition task. But then again, a decoder-only model wouldn&amp;rsquo;t have been my first choice for translation or summarization either. In my experience, ChatGPT has created translations which are at least as coherent and idiomatic as Google Translate, if not more so.</description>
+      <description>TLDR: No. No it cannot.&#xA;This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a decoder-only model. It shouldn&amp;rsquo;t be able to perform an image recognition task. But then again, a decoder-only model wouldn&amp;rsquo;t have been my first choice for translation or summarization either. In my experience, ChatGPT has created translations which are at least as coherent and idiomatic as Google Translate, if not more so.</description>
     </item>
-    
     <item>
       <title>Paper Summary: Antenna Design with Evolutionary Algorithms</title>
       <link>https://lukesalamone.github.io/posts/evolutionary-antenna-design/</link>
       <pubDate>Mon, 17 Apr 2023 19:46:25 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/evolutionary-antenna-design/</guid>
-      <description>This is a summary of Automated Antenna Design with Evolutionary Algorithms, a 2006 paper by Hornby et al. As large language models become more and more synonymous with &amp;ldquo;AI&amp;rdquo;, it is interesting to see how researchers solved problems in the past.
-Typically, antennas are designed and built by hand by domain experts. This is a very time-consuming process, however, so researchers have been investigating evolutionary algorithms since the 1990s. Inspired by natural evolution, an evolutionary algorithm is based on small, random changes and an evaluation metric.</description>
+      <description>This is a summary of Automated Antenna Design with Evolutionary Algorithms, a 2006 paper by Hornby et al. As large language models become more and more synonymous with &amp;ldquo;AI&amp;rdquo;, it is interesting to see how researchers solved problems in the past.&#xA;Typically, antennas are designed and built by hand by domain experts. This is a very time-consuming process, however, so researchers have been investigating evolutionary algorithms since the 1990s. Inspired by natural evolution, an evolutionary algorithm is based on small, random changes and an evaluation metric.</description>
     </item>
-    
     <item>
       <title>Paper Summary: Dual-Encoders in Ranking</title>
       <link>https://lukesalamone.github.io/posts/dual-encoders-ranking/</link>
       <pubDate>Sat, 17 Dec 2022 16:53:47 -0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/dual-encoders-ranking/</guid>
-      <description>In Defense of Dual-Encoders for Neural Ranking by Menon et. al. discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&amp;rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.
-Background Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches.</description>
+      <description>In Defense of Dual-Encoders for Neural Ranking by Menon et. al. discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&amp;rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.&#xA;Background Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches.</description>
     </item>
-    
     <item>
       <title>My Favorite Antimaia Games</title>
       <link>https://lukesalamone.github.io/posts/best-antimaia-games/</link>
       <pubDate>Sat, 26 Nov 2022 20:25:13 -0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/best-antimaia-games/</guid>
-      <description>This is a follow up to When Suboptimal Minimax is Better. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.
-The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&amp;rsquo;t objectively &amp;ldquo;optimal&amp;rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player.</description>
+      <description>This is a follow up to When Suboptimal Minimax is Better. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.&#xA;The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&amp;rsquo;t objectively &amp;ldquo;optimal&amp;rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player.</description>
     </item>
-    
     <item>
       <title>The Other End of the Earth</title>
       <link>https://lukesalamone.github.io/posts/earth-antipodes/</link>
       <pubDate>Wed, 23 Nov 2022 10:07:36 -0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/earth-antipodes/</guid>
-      <description>White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.
-  If you want to fly across the Pacific Ocean, you&amp;rsquo;ll have to board an airplane and fly around 12 hours. It&amp;rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &amp;ldquo;Digging to China&amp;rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.</description>
+      <description>White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.&#xA;If you want to fly across the Pacific Ocean, you&amp;rsquo;ll have to board an airplane and fly around 12 hours. It&amp;rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &amp;ldquo;Digging to China&amp;rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.</description>
     </item>
-    
     <item>
       <title>A Few Notes on the Transformer</title>
       <link>https://lukesalamone.github.io/posts/self-attention/</link>
       <pubDate>Wed, 16 Nov 2022 15:24:15 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/self-attention/</guid>
-      <description>A self-attention block depicted as a neural network.
-  In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.
-What is attention? At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren&amp;rsquo;t.</description>
+      <description>A self-attention block depicted as a neural network.&#xA;In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.&#xA;What is attention? At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren&amp;rsquo;t.</description>
     </item>
-    
     <item>
       <title>Rolling My Own Blog Search</title>
       <link>https://lukesalamone.github.io/posts/rolling-my-own-blog-search/</link>
       <pubDate>Wed, 09 Nov 2022 02:42:51 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/rolling-my-own-blog-search/</guid>
-      <description>I&amp;rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&amp;rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:
- The search needs to be fast, useful, and aesthetically pleasing. Search in the browser. Standing up a server is a lot of extra work. It&amp;rsquo;s also overkill since I only have about 30 articles so far.</description>
+      <description>I&amp;rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&amp;rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:&#xA;The search needs to be fast, useful, and aesthetically pleasing. Search in the browser. Standing up a server is a lot of extra work. It&amp;rsquo;s also overkill since I only have about 30 articles so far.</description>
     </item>
-    
     <item>
       <title>A new type of chess tournament</title>
       <link>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</link>
       <pubDate>Sat, 08 Oct 2022 15:17:36 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</guid>
-      <description>This is part 2 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
-In the previous post I discussed the history of chess engines and why they don&amp;rsquo;t &amp;ldquo;think&amp;rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it.</description>
+      <description>This is part 2 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.&#xA;In the previous post I discussed the history of chess engines and why they don&amp;rsquo;t &amp;ldquo;think&amp;rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it.</description>
     </item>
-    
     <item>
       <title>The Chess Engine&#39;s Final Horizon</title>
       <link>https://lukesalamone.github.io/posts/chess-engine-history/</link>
       <pubDate>Fri, 07 Oct 2022 20:17:21 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/chess-engine-history/</guid>
-      <description>This is part 1 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 2 here.
-Computers that play chess, otherwise known as chess engines, have existed since at least the late 1940s. Because the game was said to require the perfect combination of planning, strategy, psychology, and calculation, chess was once thought to be an activity directly correlated with intelligence, and that only a truly intelligent computer should be able to defeat humans.</description>
+      <description>This is part 1 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 2 here.&#xA;Computers that play chess, otherwise known as chess engines, have existed since at least the late 1940s. Because the game was said to require the perfect combination of planning, strategy, psychology, and calculation, chess was once thought to be an activity directly correlated with intelligence, and that only a truly intelligent computer should be able to defeat humans.</description>
     </item>
-    
     <item>
       <title>When Suboptimal Minimax is Better</title>
       <link>https://lukesalamone.github.io/posts/suboptimal-minimax/</link>
       <pubDate>Sat, 02 Jul 2022 16:24:10 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/suboptimal-minimax/</guid>
-      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&amp;rsquo;t make the best move?</description>
+      <description>Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&amp;rsquo;t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn&amp;rsquo;t objectively the best move. Don&amp;rsquo;t play the game, play the man.</description>
     </item>
-    
     <item>
       <title>Alphabet Chess</title>
       <link>https://lukesalamone.github.io/posts/alphabet-chess/</link>
       <pubDate>Fri, 10 Jun 2022 23:56:14 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/alphabet-chess/</guid>
-      <description>TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.
-Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.</description>
+      <description>TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.&#xA;Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.</description>
     </item>
-    
     <item>
       <title>Paper Summary: COMET (Knowledge Graph Construction)</title>
       <link>https://lukesalamone.github.io/posts/knowledge-graph-construction/</link>
       <pubDate>Tue, 17 May 2022 17:47:25 +0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/knowledge-graph-construction/</guid>
-      <description>Selected {subject, relation, object} tuples generated by COMET
-  Paper link: https://arxiv.org/abs/1906.05317
-This paper describes COMET, a method of generating knowledge bases automatically. Previous work largely focused on encyclopedic knowledge, which has well-defined relationships. This paper, however, focuses on commonsense knowledge. In this paper the authors introduce a “commonsense transformer” which trains on a knowledge base consisting of tuples and a pre-trained language model. Their trained model generates new nodes in the knowledge graph and completes phrases based on edges in the existing graph.</description>
+      <description>Selected {subject, relation, object} tuples generated by COMET&#xA;Paper link: https://arxiv.org/abs/1906.05317&#xA;This paper describes COMET, a method of generating knowledge bases automatically. Previous work largely focused on encyclopedic knowledge, which has well-defined relationships. This paper, however, focuses on commonsense knowledge. In this paper the authors introduce a “commonsense transformer” which trains on a knowledge base consisting of tuples and a pre-trained language model. Their trained model generates new nodes in the knowledge graph and completes phrases based on edges in the existing graph.</description>
     </item>
-    
     <item>
       <title>How to Create a Custom Pytorch Dataloader</title>
       <link>https://lukesalamone.github.io/posts/pytorch-dataloader/</link>
       <pubDate>Thu, 28 Apr 2022 18:22:07 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/pytorch-dataloader/</guid>
-      <description>First, create a custom dataset class.
-from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx]  Next, create a custom dataloader where we specify the batch size.
-features, labels = load_data() # features &amp;amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)  Finally, iterate over the dataloader during training.</description>
+      <description>First, create a custom dataset class.&#xA;from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx] Next, create a custom dataloader where we specify the batch size.&#xA;features, labels = load_data() # features &amp;amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True) Finally, iterate over the dataloader during training.</description>
     </item>
-    
     <item>
       <title>How to Zip and Unzip a tar.gz File</title>
       <link>https://lukesalamone.github.io/posts/how-to-tar-untar-file/</link>
       <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/how-to-tar-untar-file/</guid>
-      <description>If you want to extract a tar archive
-tar -xf archive.tar.gz  If you want to compress a directory
-tar -czvf archive.tar.gz /path/to/directory  That&amp;rsquo;s all.</description>
+      <description>If you want to extract a tar archive&#xA;tar -xf archive.tar.gz If you want to compress a directory&#xA;tar -czvf archive.tar.gz /path/to/directory That&amp;rsquo;s all.</description>
     </item>
-    
     <item>
       <title>Paper Summary: Defending Against Neural Fake News</title>
       <link>https://lukesalamone.github.io/posts/grover-paper-summary/</link>
       <pubDate>Sun, 19 Sep 2021 20:13:09 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/grover-paper-summary/</guid>
       <description>Defending Against Neural Fake News by Zellers et al. presents a model for controllable text generation called Grover. This model can be used to create highly believable computer-generated news articles. The authors present this paper as a method of detecting and preventing the spread of fake news. They claim their model is 92% accurate at detecting fake news stories, partially due to artifacts that generators include in the generated text.</description>
     </item>
-    
     <item>
       <title>Connect Jupyter to Remote</title>
       <link>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</link>
       <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</guid>
-      <description>Here&amp;rsquo;s how to connect to a remote Jupyter notebook.
-Create an ssh tunnel to your remote machine:
-ssh -L 8080:localhost:8080 user@12.34.56.78 # or use a .pem file to connect to ec2 ssh -L 8080:localhost:8080 -i &amp;quot;aws.pem&amp;quot; ec2-user@ec2-12-34-56-78.compute-1.amazonaws.com  Start Jupyter on that machine in headless mode:
-jupyter notebook --no-browser --port=8080  Use a browser to open one of the urls that Jupyter presents:
-http://localhost:8080/?token=xyz</description>
+      <description>Here&amp;rsquo;s how to connect to a remote Jupyter notebook.&#xA;Create an ssh tunnel to your remote machine:&#xA;ssh -L 8080:localhost:8080 user@12.34.56.78 # or use a .pem file to connect to ec2 ssh -L 8080:localhost:8080 -i &amp;quot;aws.pem&amp;quot; ec2-user@ec2-12-34-56-78.compute-1.amazonaws.com Start Jupyter on that machine in headless mode:&#xA;jupyter notebook --no-browser --port=8080 Use a browser to open one of the urls that Jupyter presents:&#xA;http://localhost:8080/?token=xyz</description>
     </item>
-    
     <item>
       <title>What is Marginalization?</title>
       <link>https://lukesalamone.github.io/posts/what-is-marginalization/</link>
       <pubDate>Wed, 07 Jul 2021 14:23:12 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/what-is-marginalization/</guid>
-      <description>In machine learning and statistics, marginalization simply means summing over a set of independent variables. For example, suppose an avid tennis player kept track of the number of days he played tennis over a period of time as well as the weather on that day:
- .blue { background-color:#09f1; } .gray { background-color:#80808012; }    weather     sunny cloudy rainy totals   play? yes 70 25 1 96  no 70 5 9 84  totals 140 30 10 180   (In this table we&amp;rsquo;re keeping track of the number of days.</description>
+      <description>In machine learning and statistics, marginalization simply means summing over a set of independent variables. For example, suppose an avid tennis player kept track of the number of days he played tennis over a period of time as well as the weather on that day:&#xA;weather sunny cloudy rainy totals play? yes 70 25 1 96 no 70 5 9 84 totals 140 30 10 180 (In this table we&amp;rsquo;re keeping track of the number of days.</description>
     </item>
-    
     <item>
       <title>Colab: Connect to Google Drive</title>
       <link>https://lukesalamone.github.io/posts/connect-to-colab/</link>
       <pubDate>Wed, 30 Jun 2021 22:58:18 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/connect-to-colab/</guid>
-      <description>Here&amp;rsquo;s how to connect your Google Colab notebook to your Drive directory:
-from google.colab import drive drive.mount(&#39;/content/gdrive&#39;)  Follow the prompts from there. That is all.</description>
+      <description>Here&amp;rsquo;s how to connect your Google Colab notebook to your Drive directory:&#xA;from google.colab import drive drive.mount(&#39;/content/gdrive&#39;) Follow the prompts from there. That is all.</description>
     </item>
-    
     <item>
       <title>BERT vs GPT-2 Performance</title>
       <link>https://lukesalamone.github.io/posts/bert-vs-gpt2/</link>
       <pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/bert-vs-gpt2/</guid>
-      <description>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.
-The code used in this experiment can be found on my Github
-BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task).</description>
+      <description>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.&#xA;The code used in this experiment can be found on my Github&#xA;BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task).</description>
     </item>
-    
     <item>
       <title>How does GPT-2 Tokenize Text?</title>
       <link>https://lukesalamone.github.io/posts/gpt2-tokenization/</link>
       <pubDate>Thu, 17 Jun 2021 19:30:48 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/gpt2-tokenization/</guid>
-      <description>Let&amp;rsquo;s explore how GPT-2 tokenizes text.
-What is tokenization? It&amp;rsquo;s important to understand that GPT-2 doesn&amp;rsquo;t work with strings directly. Instead, it needs to tokenize the input string, which is essentially a process for converting the string into a list of numbers, or &amp;ldquo;tokens&amp;rdquo;. It is these tokens which are passed into the model during training or for inference. As a concrete example, let&amp;rsquo;s look at a few sample sentences:</description>
+      <description>Let&amp;rsquo;s explore how GPT-2 tokenizes text.&#xA;What is tokenization? It&amp;rsquo;s important to understand that GPT-2 doesn&amp;rsquo;t work with strings directly. Instead, it needs to tokenize the input string, which is essentially a process for converting the string into a list of numbers, or &amp;ldquo;tokens&amp;rdquo;. It is these tokens which are passed into the model during training or for inference. As a concrete example, let&amp;rsquo;s look at a few sample sentences:</description>
     </item>
-    
     <item>
       <title>What Are Attention Masks?</title>
       <link>https://lukesalamone.github.io/posts/what-are-attention-masks/</link>
       <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/what-are-attention-masks/</guid>
-      <description>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.
- Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.</description>
+      <description>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.&#xA;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.</description>
     </item>
-    
     <item>
       <title>How Does Convolution Work?</title>
       <link>https://lukesalamone.github.io/posts/how-does-convolution-work/</link>
       <pubDate>Mon, 14 Jun 2021 21:05:06 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/how-does-convolution-work/</guid>
-      <description>Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&amp;rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!
-      number:   four three eight    padding:    kernel size:    stride:    speed:        You can use the settings above to control the hyperparameters of the convolutional layer.</description>
+      <description>Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&amp;rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!&#xA;number: four three eight padding: kernel size: stride: speed: You can use the settings above to control the hyperparameters of the convolutional layer.</description>
     </item>
-    
     <item>
       <title>Python: Serve an HTML File</title>
       <link>https://lukesalamone.github.io/posts/python-serve-html/</link>
       <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/python-serve-html/</guid>
-      <description>If you want to serve some HTML with python run
-python -m http.server 8000  Then navigate to http://localhost:8000.
-This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
+      <description>If you want to serve some HTML with python run&#xA;python -m http.server 8000 Then navigate to http://localhost:8000.&#xA;This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
     </item>
-    
     <item>
       <title>How to Train and Run a Simple Language Model</title>
       <link>https://lukesalamone.github.io/posts/running-simple-language-model/</link>
       <pubDate>Fri, 16 Apr 2021 21:08:53 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/running-simple-language-model/</guid>
-      <description>This article will show how to run a simple language model, KenLM. It&amp;rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&amp;rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.
-Let&amp;rsquo;s work backwards from where we&amp;rsquo;re trying to get to. When you&amp;rsquo;ve finished, you should be able to run the following script:</description>
+      <description>This article will show how to run a simple language model, KenLM. It&amp;rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&amp;rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.&#xA;Let&amp;rsquo;s work backwards from where we&amp;rsquo;re trying to get to. When you&amp;rsquo;ve finished, you should be able to run the following script:</description>
     </item>
-    
     <item>
       <title>What is Temperature in NLP?🐭</title>
       <link>https://lukesalamone.github.io/posts/what-is-temperature/</link>
       <pubDate>Fri, 02 Apr 2021 00:50:38 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/what-is-temperature/</guid>
-      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Temperature is a parameter used in natural language processing models to increase or decrease the &amp;ldquo;confidence&amp;rdquo; a model has in its most likely response.</description>
+      <description>Temperature is a parameter used in natural language processing models to increase or decrease the &amp;ldquo;confidence&amp;rdquo; a model has in its most likely response.&#xA;In my opinion, the most intuitive way of understanding how temperature affects model outputs is to play with it yourself. If you&amp;rsquo;re interested in the mathematical details, I&amp;rsquo;ve included them below, but I won&amp;rsquo;t be offended if you just want to play around with the slider 😃 .</description>
     </item>
-    
     <item>
       <title>What is Perplexity?</title>
       <link>https://lukesalamone.github.io/posts/perplexity/</link>
       <pubDate>Thu, 01 Apr 2021 12:14:49 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/perplexity/</guid>
-      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i TLDR: NLP metric ranging from 1 to infinity. Lower is better.
-In natural language processing, perplexity is the most common metric used to measure the performance of a language model.</description>
+      <description>TLDR: NLP metric ranging from 1 to infinity. Lower is better.&#xA;In natural language processing, perplexity is the most common metric used to measure the performance of a language model. To calculate perplexity, we use the following formula:&#xA;$ perplexity = e^z $ where&#xA;$ z = -{1 \over N} \sum_{i=0}^N ln(P_{n}) $ Typically we use base e when calculating perplexity, but this is not required. Any base will do, so sometimes the formula will use base 2 or base 10, along with logarithms to the corresponding base.</description>
     </item>
-    
     <item>
       <title>S3 Bucket Url</title>
       <link>https://lukesalamone.github.io/posts/s3-bucket-url/</link>
       <pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/s3-bucket-url/</guid>
-      <description>Assuming your bucket is publicly accessible, the url of your S3 bucket will be
-http://[bucket-name].s3-website-[region].amazonaws.com  For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be
-http://mybucket.s3-website-us-east-1.amazonaws.com  </description>
+      <description>Assuming your bucket is publicly accessible, the url of your S3 bucket will be&#xA;http://[bucket-name].s3-website-[region].amazonaws.com For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be&#xA;http://mybucket.s3-website-us-east-1.amazonaws.com </description>
     </item>
-    
     <item>
       <title>About My Quick Reference Articles</title>
       <link>https://lukesalamone.github.io/posts/why-how-to/</link>
       <pubDate>Sun, 07 Mar 2021 14:44:37 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/why-how-to/</guid>
-      <description>I&amp;rsquo;ve created a few quick-reference articles and it might not be clear why. There are a few reasons:
- These articles are mainly a reference for me. I find myself searching the same things over and over, looking for the purple link, scrolling through the article, then copy &amp;amp; pasting code. I&amp;rsquo;d rather not go through the hassle. These articles aim to solve that problem. I aim to keep the answers above the fold.</description>
+      <description>I&amp;rsquo;ve created a few quick-reference articles and it might not be clear why. There are a few reasons:&#xA;These articles are mainly a reference for me. I find myself searching the same things over and over, looking for the purple link, scrolling through the article, then copy &amp;amp; pasting code. I&amp;rsquo;d rather not go through the hassle. These articles aim to solve that problem. I aim to keep the answers above the fold.</description>
     </item>
-    
     <item>
       <title>Python: Read &amp; Write Json</title>
       <link>https://lukesalamone.github.io/posts/read-write-json/</link>
       <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/read-write-json/</guid>
-      <description>Often it is useful to save python data to json files. The following code will demonstrate how that can be done.
- &amp;ldquo;God bless JSON!&amp;rdquo; ~ a soon to be famous programmer
- import json data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} filename = &#39;awesome_data.json&#39; # write data to file with open(filename, &#39;w&#39;) as f: json.dump(data, f) # read json from file with open(filename, &#39;r&#39;) as f: data = json.load(f) print(data) # prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}  </description>
+      <description>Often it is useful to save python data to json files. The following code will demonstrate how that can be done.&#xA;&amp;ldquo;God bless JSON!&amp;rdquo; ~ a soon to be famous programmer&#xA;import json data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} filename = &#39;awesome_data.json&#39; # write data to file with open(filename, &#39;w&#39;) as f: json.dump(data, f) # read json from file with open(filename, &#39;r&#39;) as f: data = json.load(f) print(data) # prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} </description>
     </item>
-    
     <item>
       <title>Autoencoding Stock Prices</title>
       <link>https://lukesalamone.github.io/posts/build-an-autoencoder/</link>
       <pubDate>Sun, 07 Mar 2021 01:31:51 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/build-an-autoencoder/</guid>
-      <description>Autoencoding stock prices as found in Heaton et al., 2016
-  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
-Once we&amp;rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index.</description>
+      <description>Autoencoding stock prices as found in Heaton et al., 2016&#xA;So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.&#xA;Once we&amp;rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index. This can be useful for finding deeper insights into an index, and doesn&amp;rsquo;t require a priori knowledge of the index price or the weighting of its components.</description>
     </item>
-    
     <item>
       <title>Python: Formatting a string</title>
       <link>https://lukesalamone.github.io/posts/python-format-string/</link>
       <pubDate>Wed, 24 Feb 2021 21:22:42 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/python-format-string/</guid>
-      <description>There are three main ways to format strings in python:
-name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s and I like %s.&amp;quot; % (name, food) # str.format() &amp;quot;My name is {0} and I like {1}.&amp;quot;.format(name, food) # f-strings f&amp;quot;My name is {name} and I like {food}.&amp;quot;  </description>
+      <description>There are three main ways to format strings in python:&#xA;name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s and I like %s.&amp;quot; % (name, food) # str.format() &amp;quot;My name is {0} and I like {1}.&amp;quot;.format(name, food) # f-strings f&amp;quot;My name is {name} and I like {food}.&amp;quot; </description>
     </item>
-    
     <item>
       <title>Siamese Neural Networks (Video)</title>
       <link>https://lukesalamone.github.io/posts/siamese-nn-video/</link>
       <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/siamese-nn-video/</guid>
-      <description>The following is a transcript of the above video
-In this paper, the authors present a novel neural network architecture to enable audio search via sounds humans are able to make, for example humming and whistling. This is an important capability when searching through audio for a specific sound.
-Motivation Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one.</description>
+      <description>The following is a transcript of the above video&#xA;In this paper, the authors present a novel neural network architecture to enable audio search via sounds humans are able to make, for example humming and whistling. This is an important capability when searching through audio for a specific sound.&#xA;Motivation Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one. It could be very tedious to listen to every single one until you can find the right sound.</description>
     </item>
-    
     <item>
       <title>Managing Python Environments</title>
       <link>https://lukesalamone.github.io/posts/managing-python-environments/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
-      <description>Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.</description>
+      <description>Need to switch between python versions often? Use pyenv.&#xA;Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5 Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.7.5 # use python 3.</description>
     </item>
-    
     <item>
       <title>What is the Hardest Hangman Word?</title>
       <link>https://lukesalamone.github.io/posts/hardest-hangman-word/</link>
       <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/hardest-hangman-word/</guid>
-      <description>It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.
-If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people.</description>
+      <description>It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.&#xA;If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people.</description>
     </item>
-    
     <item>
       <title>Estimating Pi with a Monte Carlo Simulation</title>
       <link>https://lukesalamone.github.io/posts/monte-carlo/</link>
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/monte-carlo/</guid>
-      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to.</description>
+      <description>A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.&#xA;Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input.</description>
     </item>
-    
     <item>
       <title>Creating an AI for Gomoku</title>
       <link>https://lukesalamone.github.io/posts/gomoku2049/</link>
       <pubDate>Tue, 19 May 2020 14:28:57 +0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/gomoku2049/</guid>
       <description>Gomoku is a strategy game similar to tic tac toe, but played on a larger board and with the goal of getting 5 in a row rather than 3. Since the game has perfect information and has simple rules, I thought it would be a fun exercise in creating a game AI. In February 2020 I decided to code up Gomoku2049. The game is a demonstration of MiniMax, which is an algorithm for finding the move which minimizes the opponent’s best moves.</description>
     </item>
-    
   </channel>
 </rss>

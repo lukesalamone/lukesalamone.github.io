@@ -1,34 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>neural-networks on Luke Salamone&#39;s Blog</title>
+    <title>Neural-Networks on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/neural-networks/</link>
-    <description>Recent content in neural-networks on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Neural-Networks on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 07 Mar 2021 01:31:51 -0600</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/neural-networks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Mar 2021 01:31:51 -0600</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/neural-networks/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Autoencoding Stock Prices</title>
       <link>https://lukesalamone.github.io/posts/build-an-autoencoder/</link>
       <pubDate>Sun, 07 Mar 2021 01:31:51 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/build-an-autoencoder/</guid>
-      <description>Autoencoding stock prices as found in Heaton et al., 2016
-  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
-Once we&amp;rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index.</description>
+      <description>Autoencoding stock prices as found in Heaton et al., 2016&#xA;So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.&#xA;Once we&amp;rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index. This can be useful for finding deeper insights into an index, and doesn&amp;rsquo;t require a priori knowledge of the index price or the weighting of its components.</description>
     </item>
-    
     <item>
       <title>Siamese Neural Networks (Video)</title>
       <link>https://lukesalamone.github.io/posts/siamese-nn-video/</link>
       <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/siamese-nn-video/</guid>
-      <description>The following is a transcript of the above video
-In this paper, the authors present a novel neural network architecture to enable audio search via sounds humans are able to make, for example humming and whistling. This is an important capability when searching through audio for a specific sound.
-Motivation Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one.</description>
+      <description>The following is a transcript of the above video&#xA;In this paper, the authors present a novel neural network architecture to enable audio search via sounds humans are able to make, for example humming and whistling. This is an important capability when searching through audio for a specific sound.&#xA;Motivation Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one. It could be very tedious to listen to every single one until you can find the right sound.</description>
     </item>
-    
   </channel>
 </rss>

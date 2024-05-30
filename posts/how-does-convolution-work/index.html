@@ -5,13 +5,13 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="keywords" content=", computer-vision" />
+<meta name="keywords" content="homepage, blog, computer-vision" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/how-does-convolution-work/" />
 
 <meta property="og:title" content="How do convolutional neural networks work?"/>
-<meta property="og:image" content="https://lukesalamone.github.io/img/covers/cnn-cover.png"/>
+<meta property="og:image" content="https://lukesalamone.github.io//img/covers/cnn-cover.png"/>
 <meta property="og:description" content="Check out this interactive demo of a convolutional neural network to get a better idea of how they work!"/>
 
 
@@ -42,29 +42,36 @@
 
 
 
-<meta itemprop="name" content="How Does Convolution Work?">
-<meta itemprop="description" content="Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!
-      number:   four three eight    padding:    kernel size:    stride:    speed:        You can use the settings above to control the hyperparameters of the convolutional layer."><meta itemprop="datePublished" content="2021-06-14T21:05:06-05:00" />
-<meta itemprop="dateModified" content="2021-06-14T21:05:06-05:00" />
-<meta itemprop="wordCount" content="362"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="computer-vision," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="How Does Convolution Work?"/>
-<meta name="twitter:description" content="Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!
-      number:   four three eight    padding:    kernel size:    stride:    speed:        You can use the settings above to control the hyperparameters of the convolutional layer."/>
+  <meta itemprop="name" content="How Does Convolution Work?">
+  <meta itemprop="description" content="Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what’s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!
+number: four three eight padding: kernel size: stride: speed: You can use the settings above to control the hyperparameters of the convolutional layer.">
+  <meta itemprop="datePublished" content="2021-06-14T21:05:06-05:00">
+  <meta itemprop="dateModified" content="2021-06-14T21:05:06-05:00">
+  <meta itemprop="wordCount" content="362">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Computer-Vision">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="How Does Convolution Work?">
+  <meta name="twitter:description" content="Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what’s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!
+number: four three eight padding: kernel size: stride: speed: You can use the settings above to control the hyperparameters of the convolutional layer.">
 
 
 
-    <meta property="og:title" content="How Does Convolution Work?" />
-<meta property="og:description" content="Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!
-      number:   four three eight    padding:    kernel size:    stride:    speed:        You can use the settings above to control the hyperparameters of the convolutional layer." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/how-does-convolution-work/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-06-14T21:05:06-05:00" />
-<meta property="article:modified_time" content="2021-06-14T21:05:06-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/how-does-convolution-work/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="How Does Convolution Work?">
+  <meta property="og:description" content="Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what’s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!
+number: four three eight padding: kernel size: stride: speed: You can use the settings above to control the hyperparameters of the convolutional layer.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-06-14T21:05:06-05:00">
+    <meta property="article:modified_time" content="2021-06-14T21:05:06-05:00">
+    <meta property="article:tag" content="Computer-Vision">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -132,19 +139,14 @@
       
 
       <div class="post-content">
-        
-
-<p>Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!</p>
-
-<p><script src="../../js/util.js"></script>
+        <p>Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!</p>
+<script src="../../js/util.js"></script>
 <script src="../../js/convolution-demo.js"></script>
-<link rel="stylesheet" href="../../css/convolution-demo.css" /></p>
-
+<link rel="stylesheet" href="../../css/convolution-demo.css" />
 <div id="input-output">
   <div id="input-grid"></div>
   <div id="output-grid"></div>
 </div>
-
 <div id="controls">
   <table>
     <tr id="number">
@@ -178,34 +180,22 @@
     </tr>
   </table>
 </div>
-
 <p>You can use the settings above to control the hyperparameters of the convolutional layer.</p>
-
 <p>As you&rsquo;ve probably figured out, the left side shows the input, a 20x20 handwritten digit, and the right side shows the output as it is being drawn. A convolutional layer will pass a filter over the input, selecting only a small group of pixels at a time.</p>
-
 <p>Not shown: once the filter selects a window of pixels, it will compute a dot product with the pixel values and its own weights. In this demo the filter weights are assumed to be 1 for simplicity.</p>
-
 <h2 id="more-on-the-hyperparameters">More on the hyperparameters</h2>
-
 <p>Sometimes the settings will result in an invalid convolution. This happens if the kernel extends beyond the activation map. We can write a python function to check whether it will be valid:</p>
-
 <pre><code class="language-python">def valid_convolution(input_size, kernel_size, padding, stride):
   if (input_size + 2*padding - kernel_size) % stride == 0:
     return True
   else:
     return False
 </code></pre>
-
 <h3 id="padding">Padding</h3>
-
 <p>Increasing the padding will add extra pixels, typically zeros, around the edges of the input. This is done in order to ensure that the layer parameters will be valid. Additionally, it causes pixels which would have been on the edges to be more to the middle of the activation map.</p>
-
 <h3 id="kernel-size">Kernel Size</h3>
-
 <p>This refers to the &ldquo;sliding window&rdquo; which passes over the input. Choosing a larger kernel tends to increase the &ldquo;smudging&rdquo; which happens in the output, while a smaller kernel preserves more information for deeper layers. Sometimes kernel size is referred to as filter size.</p>
-
 <h3 id="stride">Stride</h3>
-
 <p>Stride refers to the distance the sliding window will move between steps. A stride of 1 moves the window one pixel to the right, while a stride of 2 moves the window 2 pixels. A larger stride can reduce output layer size at the expense of granularity.</p>
 
       </div>
@@ -297,7 +287,7 @@
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2024</span>
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>
@@ -311,7 +301,7 @@
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.fdc5aa536e3e114f1858ac9d803de25aba14817a1fa56e188943bfc00702be87ecb0b477b68f6868a13772d5fd57341d069d167527d85cf7fab246f9aafba8cd.js" integrity="sha512-/cWqU24&#43;EU8YWKydgD3iWroUgXofpW4YiUO/wAcCvofssLR3to9oaKE3ctX9VzQdBp0WdSfYXPf6skb5qvuozQ=="></script>
 
 
 

@@ -1,118 +1,83 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on Luke Salamone&#39;s Blog</title>
+    <title>Python on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/python/</link>
-    <description>Recent content in python on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Python on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 23 Nov 2022 10:07:36 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Nov 2022 10:07:36 -0800</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Other End of the Earth</title>
       <link>https://lukesalamone.github.io/posts/earth-antipodes/</link>
       <pubDate>Wed, 23 Nov 2022 10:07:36 -0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/earth-antipodes/</guid>
-      <description>White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.
-  If you want to fly across the Pacific Ocean, you&amp;rsquo;ll have to board an airplane and fly around 12 hours. It&amp;rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &amp;ldquo;Digging to China&amp;rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.</description>
+      <description>White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.&#xA;If you want to fly across the Pacific Ocean, you&amp;rsquo;ll have to board an airplane and fly around 12 hours. It&amp;rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &amp;ldquo;Digging to China&amp;rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.</description>
     </item>
-    
     <item>
       <title>How to Create a Custom Pytorch Dataloader</title>
       <link>https://lukesalamone.github.io/posts/pytorch-dataloader/</link>
       <pubDate>Thu, 28 Apr 2022 18:22:07 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/pytorch-dataloader/</guid>
-      <description>First, create a custom dataset class.
-from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx]  Next, create a custom dataloader where we specify the batch size.
-features, labels = load_data() # features &amp;amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)  Finally, iterate over the dataloader during training.</description>
+      <description>First, create a custom dataset class.&#xA;from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx] Next, create a custom dataloader where we specify the batch size.&#xA;features, labels = load_data() # features &amp;amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True) Finally, iterate over the dataloader during training.</description>
     </item>
-    
     <item>
       <title>Connect Jupyter to Remote</title>
       <link>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</link>
       <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</guid>
-      <description>Here&amp;rsquo;s how to connect to a remote Jupyter notebook.
-Create an ssh tunnel to your remote machine:
-ssh -L 8080:localhost:8080 user@12.34.56.78 # or use a .pem file to connect to ec2 ssh -L 8080:localhost:8080 -i &amp;quot;aws.pem&amp;quot; ec2-user@ec2-12-34-56-78.compute-1.amazonaws.com  Start Jupyter on that machine in headless mode:
-jupyter notebook --no-browser --port=8080  Use a browser to open one of the urls that Jupyter presents:
-http://localhost:8080/?token=xyz</description>
+      <description>Here&amp;rsquo;s how to connect to a remote Jupyter notebook.&#xA;Create an ssh tunnel to your remote machine:&#xA;ssh -L 8080:localhost:8080 user@12.34.56.78 # or use a .pem file to connect to ec2 ssh -L 8080:localhost:8080 -i &amp;quot;aws.pem&amp;quot; ec2-user@ec2-12-34-56-78.compute-1.amazonaws.com Start Jupyter on that machine in headless mode:&#xA;jupyter notebook --no-browser --port=8080 Use a browser to open one of the urls that Jupyter presents:&#xA;http://localhost:8080/?token=xyz</description>
     </item>
-    
     <item>
       <title>Colab: Connect to Google Drive</title>
       <link>https://lukesalamone.github.io/posts/connect-to-colab/</link>
       <pubDate>Wed, 30 Jun 2021 22:58:18 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/connect-to-colab/</guid>
-      <description>Here&amp;rsquo;s how to connect your Google Colab notebook to your Drive directory:
-from google.colab import drive drive.mount(&#39;/content/gdrive&#39;)  Follow the prompts from there. That is all.</description>
+      <description>Here&amp;rsquo;s how to connect your Google Colab notebook to your Drive directory:&#xA;from google.colab import drive drive.mount(&#39;/content/gdrive&#39;) Follow the prompts from there. That is all.</description>
     </item>
-    
     <item>
       <title>What Are Attention Masks?</title>
       <link>https://lukesalamone.github.io/posts/what-are-attention-masks/</link>
       <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/what-are-attention-masks/</guid>
-      <description>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.
- Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.</description>
+      <description>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.&#xA;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.</description>
     </item>
-    
     <item>
       <title>Python: Serve an HTML File</title>
       <link>https://lukesalamone.github.io/posts/python-serve-html/</link>
       <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/python-serve-html/</guid>
-      <description>If you want to serve some HTML with python run
-python -m http.server 8000  Then navigate to http://localhost:8000.
-This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
+      <description>If you want to serve some HTML with python run&#xA;python -m http.server 8000 Then navigate to http://localhost:8000.&#xA;This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
     </item>
-    
     <item>
       <title>Python: Read &amp; Write Json</title>
       <link>https://lukesalamone.github.io/posts/read-write-json/</link>
       <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/read-write-json/</guid>
-      <description>Often it is useful to save python data to json files. The following code will demonstrate how that can be done.
- &amp;ldquo;God bless JSON!&amp;rdquo; ~ a soon to be famous programmer
- import json data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} filename = &#39;awesome_data.json&#39; # write data to file with open(filename, &#39;w&#39;) as f: json.dump(data, f) # read json from file with open(filename, &#39;r&#39;) as f: data = json.load(f) print(data) # prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}  </description>
+      <description>Often it is useful to save python data to json files. The following code will demonstrate how that can be done.&#xA;&amp;ldquo;God bless JSON!&amp;rdquo; ~ a soon to be famous programmer&#xA;import json data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} filename = &#39;awesome_data.json&#39; # write data to file with open(filename, &#39;w&#39;) as f: json.dump(data, f) # read json from file with open(filename, &#39;r&#39;) as f: data = json.load(f) print(data) # prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} </description>
     </item>
-    
     <item>
       <title>Python: Formatting a string</title>
       <link>https://lukesalamone.github.io/posts/python-format-string/</link>
       <pubDate>Wed, 24 Feb 2021 21:22:42 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/python-format-string/</guid>
-      <description>There are three main ways to format strings in python:
-name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s and I like %s.&amp;quot; % (name, food) # str.format() &amp;quot;My name is {0} and I like {1}.&amp;quot;.format(name, food) # f-strings f&amp;quot;My name is {name} and I like {food}.&amp;quot;  </description>
+      <description>There are three main ways to format strings in python:&#xA;name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s and I like %s.&amp;quot; % (name, food) # str.format() &amp;quot;My name is {0} and I like {1}.&amp;quot;.format(name, food) # f-strings f&amp;quot;My name is {name} and I like {food}.&amp;quot; </description>
     </item>
-    
     <item>
       <title>Managing Python Environments</title>
       <link>https://lukesalamone.github.io/posts/managing-python-environments/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
-      <description>Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.</description>
+      <description>Need to switch between python versions often? Use pyenv.&#xA;Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5 Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.7.5 # use python 3.</description>
     </item>
-    
     <item>
       <title>What is the Hardest Hangman Word?</title>
       <link>https://lukesalamone.github.io/posts/hardest-hangman-word/</link>
       <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/hardest-hangman-word/</guid>
-      <description>It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.
-If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people.</description>
+      <description>It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.&#xA;If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people.</description>
     </item>
-    
   </channel>
 </rss>

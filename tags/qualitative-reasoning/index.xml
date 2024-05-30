@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>qualitative-reasoning on Luke Salamone&#39;s Blog</title>
+    <title>Qualitative-Reasoning on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/qualitative-reasoning/</link>
-    <description>Recent content in qualitative-reasoning on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Qualitative-Reasoning on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 08 Oct 2022 15:17:36 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/qualitative-reasoning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Oct 2022 15:17:36 -0700</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/qualitative-reasoning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A new type of chess tournament</title>
       <link>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</link>
       <pubDate>Sat, 08 Oct 2022 15:17:36 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</guid>
-      <description>This is part 2 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
-In the previous post I discussed the history of chess engines and why they don&amp;rsquo;t &amp;ldquo;think&amp;rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it.</description>
+      <description>This is part 2 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.&#xA;In the previous post I discussed the history of chess engines and why they don&amp;rsquo;t &amp;ldquo;think&amp;rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it.</description>
     </item>
-    
   </channel>
 </rss>

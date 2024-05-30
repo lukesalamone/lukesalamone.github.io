@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>paper-summary on Luke Salamone&#39;s Blog</title>
+    <title>Paper-Summary on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/paper-summary/</link>
-    <description>Recent content in paper-summary on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Paper-Summary on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 17 Apr 2023 19:46:25 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/paper-summary/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Apr 2023 19:46:25 -0700</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/paper-summary/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Paper Summary: Antenna Design with Evolutionary Algorithms</title>
       <link>https://lukesalamone.github.io/posts/evolutionary-antenna-design/</link>
       <pubDate>Mon, 17 Apr 2023 19:46:25 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/evolutionary-antenna-design/</guid>
-      <description>This is a summary of Automated Antenna Design with Evolutionary Algorithms, a 2006 paper by Hornby et al. As large language models become more and more synonymous with &amp;ldquo;AI&amp;rdquo;, it is interesting to see how researchers solved problems in the past.
-Typically, antennas are designed and built by hand by domain experts. This is a very time-consuming process, however, so researchers have been investigating evolutionary algorithms since the 1990s. Inspired by natural evolution, an evolutionary algorithm is based on small, random changes and an evaluation metric.</description>
+      <description>This is a summary of Automated Antenna Design with Evolutionary Algorithms, a 2006 paper by Hornby et al. As large language models become more and more synonymous with &amp;ldquo;AI&amp;rdquo;, it is interesting to see how researchers solved problems in the past.&#xA;Typically, antennas are designed and built by hand by domain experts. This is a very time-consuming process, however, so researchers have been investigating evolutionary algorithms since the 1990s. Inspired by natural evolution, an evolutionary algorithm is based on small, random changes and an evaluation metric.</description>
     </item>
-    
   </channel>
 </rss>

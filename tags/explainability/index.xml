@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>explainability on Luke Salamone&#39;s Blog</title>
+    <title>Explainability on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/explainability/</link>
-    <description>Recent content in explainability on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Explainability on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 07 Oct 2022 20:17:21 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/explainability/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 07 Oct 2022 20:17:21 -0700</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/explainability/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Chess Engine&#39;s Final Horizon</title>
       <link>https://lukesalamone.github.io/posts/chess-engine-history/</link>
       <pubDate>Fri, 07 Oct 2022 20:17:21 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/chess-engine-history/</guid>
-      <description>This is part 1 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 2 here.
-Computers that play chess, otherwise known as chess engines, have existed since at least the late 1940s. Because the game was said to require the perfect combination of planning, strategy, psychology, and calculation, chess was once thought to be an activity directly correlated with intelligence, and that only a truly intelligent computer should be able to defeat humans.</description>
+      <description>This is part 1 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 2 here.&#xA;Computers that play chess, otherwise known as chess engines, have existed since at least the late 1940s. Because the game was said to require the perfect combination of planning, strategy, psychology, and calculation, chess was once thought to be an activity directly correlated with intelligence, and that only a truly intelligent computer should be able to defeat humans.</description>
     </item>
-    
   </channel>
 </rss>

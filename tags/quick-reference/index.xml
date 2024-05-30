@@ -1,98 +1,69 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>quick-reference on Luke Salamone&#39;s Blog</title>
+    <title>Quick-Reference on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/quick-reference/</link>
-    <description>Recent content in quick-reference on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Quick-Reference on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 07 Sep 2021 09:10:56 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/quick-reference/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Sep 2021 09:10:56 -0500</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/quick-reference/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Connect Jupyter to Remote</title>
       <link>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</link>
       <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</guid>
-      <description>Here&amp;rsquo;s how to connect to a remote Jupyter notebook.
-Create an ssh tunnel to your remote machine:
-ssh -L 8080:localhost:8080 user@12.34.56.78 # or use a .pem file to connect to ec2 ssh -L 8080:localhost:8080 -i &amp;quot;aws.pem&amp;quot; ec2-user@ec2-12-34-56-78.compute-1.amazonaws.com  Start Jupyter on that machine in headless mode:
-jupyter notebook --no-browser --port=8080  Use a browser to open one of the urls that Jupyter presents:
-http://localhost:8080/?token=xyz</description>
+      <description>Here&amp;rsquo;s how to connect to a remote Jupyter notebook.&#xA;Create an ssh tunnel to your remote machine:&#xA;ssh -L 8080:localhost:8080 user@12.34.56.78 # or use a .pem file to connect to ec2 ssh -L 8080:localhost:8080 -i &amp;quot;aws.pem&amp;quot; ec2-user@ec2-12-34-56-78.compute-1.amazonaws.com Start Jupyter on that machine in headless mode:&#xA;jupyter notebook --no-browser --port=8080 Use a browser to open one of the urls that Jupyter presents:&#xA;http://localhost:8080/?token=xyz</description>
     </item>
-    
     <item>
       <title>Colab: Connect to Google Drive</title>
       <link>https://lukesalamone.github.io/posts/connect-to-colab/</link>
       <pubDate>Wed, 30 Jun 2021 22:58:18 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/connect-to-colab/</guid>
-      <description>Here&amp;rsquo;s how to connect your Google Colab notebook to your Drive directory:
-from google.colab import drive drive.mount(&#39;/content/gdrive&#39;)  Follow the prompts from there. That is all.</description>
+      <description>Here&amp;rsquo;s how to connect your Google Colab notebook to your Drive directory:&#xA;from google.colab import drive drive.mount(&#39;/content/gdrive&#39;) Follow the prompts from there. That is all.</description>
     </item>
-    
     <item>
       <title>Python: Serve an HTML File</title>
       <link>https://lukesalamone.github.io/posts/python-serve-html/</link>
       <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/python-serve-html/</guid>
-      <description>If you want to serve some HTML with python run
-python -m http.server 8000  Then navigate to http://localhost:8000.
-This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
+      <description>If you want to serve some HTML with python run&#xA;python -m http.server 8000 Then navigate to http://localhost:8000.&#xA;This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
     </item>
-    
     <item>
       <title>S3 Bucket Url</title>
       <link>https://lukesalamone.github.io/posts/s3-bucket-url/</link>
       <pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/s3-bucket-url/</guid>
-      <description>Assuming your bucket is publicly accessible, the url of your S3 bucket will be
-http://[bucket-name].s3-website-[region].amazonaws.com  For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be
-http://mybucket.s3-website-us-east-1.amazonaws.com  </description>
+      <description>Assuming your bucket is publicly accessible, the url of your S3 bucket will be&#xA;http://[bucket-name].s3-website-[region].amazonaws.com For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be&#xA;http://mybucket.s3-website-us-east-1.amazonaws.com </description>
     </item>
-    
     <item>
       <title>About My Quick Reference Articles</title>
       <link>https://lukesalamone.github.io/posts/why-how-to/</link>
       <pubDate>Sun, 07 Mar 2021 14:44:37 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/why-how-to/</guid>
-      <description>I&amp;rsquo;ve created a few quick-reference articles and it might not be clear why. There are a few reasons:
- These articles are mainly a reference for me. I find myself searching the same things over and over, looking for the purple link, scrolling through the article, then copy &amp;amp; pasting code. I&amp;rsquo;d rather not go through the hassle. These articles aim to solve that problem. I aim to keep the answers above the fold.</description>
+      <description>I&amp;rsquo;ve created a few quick-reference articles and it might not be clear why. There are a few reasons:&#xA;These articles are mainly a reference for me. I find myself searching the same things over and over, looking for the purple link, scrolling through the article, then copy &amp;amp; pasting code. I&amp;rsquo;d rather not go through the hassle. These articles aim to solve that problem. I aim to keep the answers above the fold.</description>
     </item>
-    
     <item>
       <title>Python: Read &amp; Write Json</title>
       <link>https://lukesalamone.github.io/posts/read-write-json/</link>
       <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/read-write-json/</guid>
-      <description>Often it is useful to save python data to json files. The following code will demonstrate how that can be done.
- &amp;ldquo;God bless JSON!&amp;rdquo; ~ a soon to be famous programmer
- import json data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} filename = &#39;awesome_data.json&#39; # write data to file with open(filename, &#39;w&#39;) as f: json.dump(data, f) # read json from file with open(filename, &#39;r&#39;) as f: data = json.load(f) print(data) # prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}  </description>
+      <description>Often it is useful to save python data to json files. The following code will demonstrate how that can be done.&#xA;&amp;ldquo;God bless JSON!&amp;rdquo; ~ a soon to be famous programmer&#xA;import json data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} filename = &#39;awesome_data.json&#39; # write data to file with open(filename, &#39;w&#39;) as f: json.dump(data, f) # read json from file with open(filename, &#39;r&#39;) as f: data = json.load(f) print(data) # prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False} </description>
     </item>
-    
     <item>
       <title>Python: Formatting a string</title>
       <link>https://lukesalamone.github.io/posts/python-format-string/</link>
       <pubDate>Wed, 24 Feb 2021 21:22:42 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/python-format-string/</guid>
-      <description>There are three main ways to format strings in python:
-name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s and I like %s.&amp;quot; % (name, food) # str.format() &amp;quot;My name is {0} and I like {1}.&amp;quot;.format(name, food) # f-strings f&amp;quot;My name is {name} and I like {food}.&amp;quot;  </description>
+      <description>There are three main ways to format strings in python:&#xA;name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s and I like %s.&amp;quot; % (name, food) # str.format() &amp;quot;My name is {0} and I like {1}.&amp;quot;.format(name, food) # f-strings f&amp;quot;My name is {name} and I like {food}.&amp;quot; </description>
     </item>
-    
     <item>
       <title>Managing Python Environments</title>
       <link>https://lukesalamone.github.io/posts/managing-python-environments/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
-      <description>Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.</description>
+      <description>Need to switch between python versions often? Use pyenv.&#xA;Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5 Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.7.5 # use python 3.</description>
     </item>
-    
   </channel>
 </rss>

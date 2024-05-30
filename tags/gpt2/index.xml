@@ -1,52 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>gpt2 on Luke Salamone&#39;s Blog</title>
+    <title>Gpt2 on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/gpt2/</link>
-    <description>Recent content in gpt2 on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Gpt2 on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 19 Sep 2021 20:13:09 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/gpt2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Sep 2021 20:13:09 -0500</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/gpt2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Paper Summary: Defending Against Neural Fake News</title>
       <link>https://lukesalamone.github.io/posts/grover-paper-summary/</link>
       <pubDate>Sun, 19 Sep 2021 20:13:09 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/grover-paper-summary/</guid>
       <description>Defending Against Neural Fake News by Zellers et al. presents a model for controllable text generation called Grover. This model can be used to create highly believable computer-generated news articles. The authors present this paper as a method of detecting and preventing the spread of fake news. They claim their model is 92% accurate at detecting fake news stories, partially due to artifacts that generators include in the generated text.</description>
     </item>
-    
     <item>
       <title>BERT vs GPT-2 Performance</title>
       <link>https://lukesalamone.github.io/posts/bert-vs-gpt2/</link>
       <pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/bert-vs-gpt2/</guid>
-      <description>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.
-The code used in this experiment can be found on my Github
-BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task).</description>
+      <description>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.&#xA;The code used in this experiment can be found on my Github&#xA;BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task).</description>
     </item>
-    
     <item>
       <title>How does GPT-2 Tokenize Text?</title>
       <link>https://lukesalamone.github.io/posts/gpt2-tokenization/</link>
       <pubDate>Thu, 17 Jun 2021 19:30:48 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/gpt2-tokenization/</guid>
-      <description>Let&amp;rsquo;s explore how GPT-2 tokenizes text.
-What is tokenization? It&amp;rsquo;s important to understand that GPT-2 doesn&amp;rsquo;t work with strings directly. Instead, it needs to tokenize the input string, which is essentially a process for converting the string into a list of numbers, or &amp;ldquo;tokens&amp;rdquo;. It is these tokens which are passed into the model during training or for inference. As a concrete example, let&amp;rsquo;s look at a few sample sentences:</description>
+      <description>Let&amp;rsquo;s explore how GPT-2 tokenizes text.&#xA;What is tokenization? It&amp;rsquo;s important to understand that GPT-2 doesn&amp;rsquo;t work with strings directly. Instead, it needs to tokenize the input string, which is essentially a process for converting the string into a list of numbers, or &amp;ldquo;tokens&amp;rdquo;. It is these tokens which are passed into the model during training or for inference. As a concrete example, let&amp;rsquo;s look at a few sample sentences:</description>
     </item>
-    
     <item>
       <title>What Are Attention Masks?</title>
       <link>https://lukesalamone.github.io/posts/what-are-attention-masks/</link>
       <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/what-are-attention-masks/</guid>
-      <description>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.
- Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.</description>
+      <description>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.&#xA;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.</description>
     </item>
-    
   </channel>
 </rss>

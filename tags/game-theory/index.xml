@@ -1,50 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>game-theory on Luke Salamone&#39;s Blog</title>
+    <title>Game-Theory on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/game-theory/</link>
-    <description>Recent content in game-theory on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Game-Theory on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 26 Nov 2022 20:25:13 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/game-theory/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Nov 2022 20:25:13 -0800</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/game-theory/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My Favorite Antimaia Games</title>
       <link>https://lukesalamone.github.io/posts/best-antimaia-games/</link>
       <pubDate>Sat, 26 Nov 2022 20:25:13 -0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/best-antimaia-games/</guid>
-      <description>This is a follow up to When Suboptimal Minimax is Better. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.
-The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&amp;rsquo;t objectively &amp;ldquo;optimal&amp;rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player.</description>
+      <description>This is a follow up to When Suboptimal Minimax is Better. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.&#xA;The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&amp;rsquo;t objectively &amp;ldquo;optimal&amp;rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player.</description>
     </item>
-    
     <item>
       <title>When Suboptimal Minimax is Better</title>
       <link>https://lukesalamone.github.io/posts/suboptimal-minimax/</link>
       <pubDate>Sat, 02 Jul 2022 16:24:10 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/suboptimal-minimax/</guid>
-      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&amp;rsquo;t make the best move?</description>
+      <description>Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&amp;rsquo;t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn&amp;rsquo;t objectively the best move. Don&amp;rsquo;t play the game, play the man.</description>
     </item>
-    
     <item>
       <title>Alphabet Chess</title>
       <link>https://lukesalamone.github.io/posts/alphabet-chess/</link>
       <pubDate>Fri, 10 Jun 2022 23:56:14 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/alphabet-chess/</guid>
-      <description>TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.
-Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.</description>
+      <description>TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.&#xA;Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.</description>
     </item>
-    
     <item>
       <title>Creating an AI for Gomoku</title>
       <link>https://lukesalamone.github.io/posts/gomoku2049/</link>
       <pubDate>Tue, 19 May 2020 14:28:57 +0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/gomoku2049/</guid>
       <description>Gomoku is a strategy game similar to tic tac toe, but played on a larger board and with the goal of getting 5 in a row rather than 3. Since the game has perfect information and has simple rules, I thought it would be a fun exercise in creating a game AI. In February 2020 I decided to code up Gomoku2049. The game is a demonstration of MiniMax, which is an algorithm for finding the move which minimizes the opponent’s best moves.</description>
     </item>
-    
   </channel>
 </rss>

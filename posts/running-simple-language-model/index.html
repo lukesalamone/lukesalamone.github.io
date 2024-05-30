@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="keywords" content=", nlp" />
+<meta name="keywords" content="homepage, blog, nlp" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/running-simple-language-model/" />
@@ -42,29 +42,36 @@
 
 
 
-<meta itemprop="name" content="How to Train and Run a Simple Language Model">
-<meta itemprop="description" content="This article will show how to run a simple language model, KenLM. It&rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.
-Let&rsquo;s work backwards from where we&rsquo;re trying to get to. When you&rsquo;ve finished, you should be able to run the following script:"><meta itemprop="datePublished" content="2021-04-16T21:08:53-05:00" />
-<meta itemprop="dateModified" content="2021-04-16T21:08:53-05:00" />
-<meta itemprop="wordCount" content="514"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="nlp," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="How to Train and Run a Simple Language Model"/>
-<meta name="twitter:description" content="This article will show how to run a simple language model, KenLM. It&rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.
-Let&rsquo;s work backwards from where we&rsquo;re trying to get to. When you&rsquo;ve finished, you should be able to run the following script:"/>
+  <meta itemprop="name" content="How to Train and Run a Simple Language Model">
+  <meta itemprop="description" content="This article will show how to run a simple language model, KenLM. It’s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you’re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.
+Let’s work backwards from where we’re trying to get to. When you’ve finished, you should be able to run the following script:">
+  <meta itemprop="datePublished" content="2021-04-16T21:08:53-05:00">
+  <meta itemprop="dateModified" content="2021-04-16T21:08:53-05:00">
+  <meta itemprop="wordCount" content="514">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Nlp">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="How to Train and Run a Simple Language Model">
+  <meta name="twitter:description" content="This article will show how to run a simple language model, KenLM. It’s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you’re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.
+Let’s work backwards from where we’re trying to get to. When you’ve finished, you should be able to run the following script:">
 
 
 
-    <meta property="og:title" content="How to Train and Run a Simple Language Model" />
-<meta property="og:description" content="This article will show how to run a simple language model, KenLM. It&rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.
-Let&rsquo;s work backwards from where we&rsquo;re trying to get to. When you&rsquo;ve finished, you should be able to run the following script:" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/running-simple-language-model/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-04-16T21:08:53-05:00" />
-<meta property="article:modified_time" content="2021-04-16T21:08:53-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/running-simple-language-model/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="How to Train and Run a Simple Language Model">
+  <meta property="og:description" content="This article will show how to run a simple language model, KenLM. It’s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you’re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.
+Let’s work backwards from where we’re trying to get to. When you’ve finished, you should be able to run the following script:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-04-16T21:08:53-05:00">
+    <meta property="article:modified_time" content="2021-04-16T21:08:53-05:00">
+    <meta property="article:tag" content="Nlp">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -132,12 +139,8 @@ Let&rsquo;s work backwards from where we&rsquo;re trying to get to. When you&rsq
       
 
       <div class="post-content">
-        
-
-<p>This article will show how to run a simple language model, KenLM. It&rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.</p>
-
+        <p>This article will show how to run a simple language model, KenLM. It&rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.</p>
 <p>Let&rsquo;s work backwards from where we&rsquo;re trying to get to. When you&rsquo;ve finished, you should be able to run the following script:</p>
-
 <pre><code class="language-python">import kenlm
 
 path = 'path/to/model.arpa'
@@ -146,29 +149,19 @@ lm = kenlm.LanguageModel(path)
 sentence = &quot;I am not superstitious but I am a little stitious&quot;
 print(model.score(sentence))
 </code></pre>
-
 <p>The first step will be to build KenLM. Then, we will build the ARPA file which KenLM uses to evaluate.</p>
-
 <h2 id="building-kenlm">Building KenLM</h2>
-
 <p>First, clone this repository:</p>
-
 <p><code>git clone git@github.com:kpu/kenlm.git</code></p>
-
 <p>Now we need to build the KenLM toolkit. Run the following to build:</p>
-
 <pre><code>mkdir -p build
 cd build
 cmake ..
 make -j 4
 </code></pre>
-
 <p>Now we just need to provide the model with a <code>.arpa</code> ngram language model file. So let&rsquo;s get one.</p>
-
 <h2 id="building-an-ngram-language-model-from-wikitext-2">Building an ngram language model from Wikitext-2</h2>
-
 <p>First, let&rsquo;s clone a repository which will build an ARPA file. This repository builds the ngram file from <a href="https://paperswithcode.com/dataset/wikitext-2">Wikitext-2</a>, a common dataset used in natural language processing.</p>
-
 <pre><code>git clone git@github.com:daandouwe/ngram-lm.git
 cd ngram-lm
 mkdir data
@@ -176,13 +169,9 @@ mkdir data
 mkdir arpa
 ./main.py --order 3 --interpolate --save-arpa --name wiki-interpolate
 </code></pre>
-
 <p>Once that has finished, you&rsquo;ll have new <code>.arpa</code> in the <code>arpa</code> directory you created. This script took the longest to run on my machine. Be patient, your computer is busy reading all of Wikipedia.</p>
-
 <h2 id="all-together-now">All Together Now</h2>
-
 <p>Now we&rsquo;re finally ready to evaluate a sentence with the language model.</p>
-
 <pre><code class="language-python">import kenlm
 
 path = 'path/to/model.arpa'
@@ -191,16 +180,12 @@ lm = kenlm.LanguageModel(path)
 sentence = &quot;I am not superstitious but I am a little stitious&quot;
 print(model.score(sentence))
 </code></pre>
-
 <p>Which prints something like</p>
-
 <pre><code>----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
 ****************************************************************************************************
 -24.47921371459961
 </code></pre>
-
 <p>Now if you&rsquo;re interested in a bit more information about what&rsquo;s going on, you can add this bit at the bottom:</p>
-
 <pre><code class="language-python">words = ['&lt;s&gt;'] + sentence.split() + ['&lt;/s&gt;']
 for i, (prob, length, oov) in enumerate(lm.full_scores(sentence)):
   print(f'{prob} {length}: {&quot; &quot;.join(words[i+2-length:i+2])}')
@@ -211,9 +196,7 @@ for w in words:
   if not w in lm:
     print(f'&quot;{w}&quot; is an OOV')
 </code></pre>
-
 <p>Which adds this to your output:</p>
-
 <pre><code>-3.1138248443603516 2: &lt;s&gt; I
 -1.1560251712799072 3: &lt;s&gt; I am
 -1.1645264625549316 3: I am not
@@ -228,9 +211,7 @@ for w in words:
 -2.8593297004699707 2: stitious &lt;/s&gt;
 &quot;stitious&quot; is an OOV
 </code></pre>
-
 <p>To the left of each term is the log (base 10) probability of each term occurring. For the first term, <code>&lt;s&gt; I</code> means start of sentence followed by &ldquo;I&rdquo;, which the model has assigned a log probability of -3.11. That&rsquo;s around 0.00078. You might think it&rsquo;s strange that a sentence beginning with &ldquo;I&rdquo; is so unlikely but we are using Wikitext-2. Wikitext-2 is Wikipedia articles. Not a lot of sentences on Wikipedia begin with &ldquo;I&rdquo;.</p>
-
 <p>Notice that &ldquo;stitious&rdquo; is an OOV (out of vocabulary) term here. Clearly the language model doesn&rsquo;t appreciate humor. We&rsquo;ll have to tackle that next time.</p>
 
       </div>
@@ -322,7 +303,7 @@ for w in words:
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2024</span>
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>
@@ -336,7 +317,7 @@ for w in words:
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.fdc5aa536e3e114f1858ac9d803de25aba14817a1fa56e188943bfc00702be87ecb0b477b68f6868a13772d5fd57341d069d167527d85cf7fab246f9aafba8cd.js" integrity="sha512-/cWqU24&#43;EU8YWKydgD3iWroUgXofpW4YiUO/wAcCvofssLR3to9oaKE3ctX9VzQdBp0WdSfYXPf6skb5qvuozQ=="></script>
 
 
 

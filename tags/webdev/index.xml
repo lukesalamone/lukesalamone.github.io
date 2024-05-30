@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>webdev on Luke Salamone&#39;s Blog</title>
+    <title>Webdev on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/webdev/</link>
-    <description>Recent content in webdev on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Webdev on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 09 May 2021 15:06:11 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/webdev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 May 2021 15:06:11 -0500</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/webdev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python: Serve an HTML File</title>
       <link>https://lukesalamone.github.io/posts/python-serve-html/</link>
       <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/python-serve-html/</guid>
-      <description>If you want to serve some HTML with python run
-python -m http.server 8000  Then navigate to http://localhost:8000.
-This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
+      <description>If you want to serve some HTML with python run&#xA;python -m http.server 8000 Then navigate to http://localhost:8000.&#xA;This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
     </item>
-    
   </channel>
 </rss>

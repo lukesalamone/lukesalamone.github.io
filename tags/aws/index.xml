@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>aws on Luke Salamone&#39;s Blog</title>
+    <title>Aws on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/aws/</link>
-    <description>Recent content in aws on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Aws on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 10 Mar 2021 03:03:53 -0600</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Mar 2021 03:03:53 -0600</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>S3 Bucket Url</title>
       <link>https://lukesalamone.github.io/posts/s3-bucket-url/</link>
       <pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/s3-bucket-url/</guid>
-      <description>Assuming your bucket is publicly accessible, the url of your S3 bucket will be
-http://[bucket-name].s3-website-[region].amazonaws.com  For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be
-http://mybucket.s3-website-us-east-1.amazonaws.com  </description>
+      <description>Assuming your bucket is publicly accessible, the url of your S3 bucket will be&#xA;http://[bucket-name].s3-website-[region].amazonaws.com For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be&#xA;http://mybucket.s3-website-us-east-1.amazonaws.com </description>
     </item>
-    
   </channel>
 </rss>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="keywords" content=", search, nlp" />
+<meta name="keywords" content="homepage, blog, search, nlp" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/rolling-my-own-blog-search/" />
@@ -42,29 +42,37 @@
 
 
 
-<meta itemprop="name" content="Rolling My Own Blog Search">
-<meta itemprop="description" content="I&rsquo;ve found myself hitting ctrl&#43;f on this blog enough that I figured it&rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:
- The search needs to be fast, useful, and aesthetically pleasing. Search in the browser. Standing up a server is a lot of extra work. It&rsquo;s also overkill since I only have about 30 articles so far."><meta itemprop="datePublished" content="2022-11-09T02:42:51-07:00" />
-<meta itemprop="dateModified" content="2022-11-09T02:42:51-07:00" />
-<meta itemprop="wordCount" content="497"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="search,nlp," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="Rolling My Own Blog Search"/>
-<meta name="twitter:description" content="I&rsquo;ve found myself hitting ctrl&#43;f on this blog enough that I figured it&rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:
- The search needs to be fast, useful, and aesthetically pleasing. Search in the browser. Standing up a server is a lot of extra work. It&rsquo;s also overkill since I only have about 30 articles so far."/>
+  <meta itemprop="name" content="Rolling My Own Blog Search">
+  <meta itemprop="description" content="I’ve found myself hitting ctrl&#43;f on this blog enough that I figured it’s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:
+The search needs to be fast, useful, and aesthetically pleasing. Search in the browser. Standing up a server is a lot of extra work. It’s also overkill since I only have about 30 articles so far.">
+  <meta itemprop="datePublished" content="2022-11-09T02:42:51-07:00">
+  <meta itemprop="dateModified" content="2022-11-09T02:42:51-07:00">
+  <meta itemprop="wordCount" content="497">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Search,Nlp">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="Rolling My Own Blog Search">
+  <meta name="twitter:description" content="I’ve found myself hitting ctrl&#43;f on this blog enough that I figured it’s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:
+The search needs to be fast, useful, and aesthetically pleasing. Search in the browser. Standing up a server is a lot of extra work. It’s also overkill since I only have about 30 articles so far.">
 
 
 
-    <meta property="og:title" content="Rolling My Own Blog Search" />
-<meta property="og:description" content="I&rsquo;ve found myself hitting ctrl&#43;f on this blog enough that I figured it&rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:
- The search needs to be fast, useful, and aesthetically pleasing. Search in the browser. Standing up a server is a lot of extra work. It&rsquo;s also overkill since I only have about 30 articles so far." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/rolling-my-own-blog-search/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-11-09T02:42:51-07:00" />
-<meta property="article:modified_time" content="2022-11-09T02:42:51-07:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/rolling-my-own-blog-search/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="Rolling My Own Blog Search">
+  <meta property="og:description" content="I’ve found myself hitting ctrl&#43;f on this blog enough that I figured it’s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:
+The search needs to be fast, useful, and aesthetically pleasing. Search in the browser. Standing up a server is a lot of extra work. It’s also overkill since I only have about 30 articles so far.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-11-09T02:42:51-07:00">
+    <meta property="article:modified_time" content="2022-11-09T02:42:51-07:00">
+    <meta property="article:tag" content="Search">
+    <meta property="article:tag" content="Nlp">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -132,45 +140,27 @@
       
 
       <div class="post-content">
-        
-
-<p>I&rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:</p>
-
+        <p>I&rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:</p>
 <ol>
 <li>The search needs to be fast, useful, and aesthetically pleasing.</li>
 <li>Search in the browser. Standing up a server is a lot of extra work. It&rsquo;s also overkill since I only have about 30 articles so far.</li>
 </ol>
-
 <h2 id="semantic-search">Semantic search</h2>
-
 <p>I did some experiments with small neural networks deployed using ONNX but ultimately they didn&rsquo;t seem to be a good fit for this blog. The search experience was not quite as snappy as I&rsquo;d have liked it to be, and while I was able to get the model under 10MB, it still added a good amount of bloat to the page size. Further, it wasn&rsquo;t clear to me that the search results were significantly better, and in some cases they were worse. In any case, the advantages were not enough to justify the added page size.</p>
-
 <p>I did learn a lot with this experiment which probably deserves a blog post of its own at some point. I might revisit semantic matching at a later point as well.</p>
-
 <h2 id="bm25">BM25</h2>
-
 <p>Rather than loading a neural network, I decided instead to index the text of my blog and use <a href="https://en.wikipedia.org/wiki/Okapi_BM25">BM25</a> to rank documents.</p>
-
 <p>One difficulty in this was finding the actual algorithm which didn&rsquo;t include a ton of extra code. I was only interested in the function itself, not all of the extra boilerplate code floating around. In the end I broke down and rewrote it myself.</p>
-
 <h2 id="tokenizing-text">Tokenizing Text</h2>
-
 <p>BM25 works by scoring document tokens against query tokens. Documents with more relevant tokens should be scored higher than those with fewer relevant tokens.</p>
-
 <p>This raises the question of how to convert a query string into a group of tokens. Initially, I simply split by word. That is,</p>
-
 <pre><code>&quot;hello my friend&quot; =&gt; ['hello', 'my', 'friend']
 </code></pre>
-
 <p>Although this works pretty well, it has the downside that different forms of a word will be missed. For example &ldquo;friends&rdquo; will not match with &ldquo;friend&rdquo;. To solve this problem, I decided to use fixed token sizes of three characters instead:</p>
-
 <pre><code>&quot;hello my friend&quot; =&gt; ['hel', 'ell', 'llo', 'lo#', '#my', 'my#', '#fr', 'fri', 'rie', 'ien', 'end']
 </code></pre>
-
 <p>In this way &ldquo;friend&rdquo; will be tokenized very similarly to &ldquo;friends&rdquo;, so the penalty for mismatches between forms of words will be minimized. Subjectively, I felt that this yielded a much more fluid and versatile ranking as well.</p>
-
 <h2 id="multi-factor-scoring">Multi-factor scoring</h2>
-
 <p>My blog posts have title, body, and tags. I could simply concatenate them all together and score the combined string, and it would work pretty well. But this seems to throw away the fact that the title and tags may have more concentrated information than the article body does. They deserve to be weighted differently. I decided to weight the title/body/tags components as 30/50/20 in the final ranking.</p>
 
       </div>
@@ -263,7 +253,7 @@
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2024</span>
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>
@@ -277,7 +267,7 @@
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.fdc5aa536e3e114f1858ac9d803de25aba14817a1fa56e188943bfc00702be87ecb0b477b68f6868a13772d5fd57341d069d167527d85cf7fab246f9aafba8cd.js" integrity="sha512-/cWqU24&#43;EU8YWKydgD3iWroUgXofpW4YiUO/wAcCvofssLR3to9oaKE3ctX9VzQdBp0WdSfYXPf6skb5qvuozQ=="></script>
 
 
 

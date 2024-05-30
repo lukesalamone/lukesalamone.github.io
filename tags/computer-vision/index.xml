@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>computer-vision on Luke Salamone&#39;s Blog</title>
+    <title>Computer-Vision on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/computer-vision/</link>
-    <description>Recent content in computer-vision on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <description>Recent content in Computer-Vision on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 30 Jul 2023 22:45:57 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/computer-vision/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Jul 2023 22:45:57 -0700</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/computer-vision/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Can ChatGPT Recognize Handwritten Digits?</title>
       <link>https://lukesalamone.github.io/posts/chatgpt-mnist/</link>
       <pubDate>Sun, 30 Jul 2023 22:45:57 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/chatgpt-mnist/</guid>
-      <description>TLDR: No. No it cannot.
-This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a decoder-only model. It shouldn&amp;rsquo;t be able to perform an image recognition task. But then again, a decoder-only model wouldn&amp;rsquo;t have been my first choice for translation or summarization either. In my experience, ChatGPT has created translations which are at least as coherent and idiomatic as Google Translate, if not more so.</description>
+      <description>TLDR: No. No it cannot.&#xA;This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a decoder-only model. It shouldn&amp;rsquo;t be able to perform an image recognition task. But then again, a decoder-only model wouldn&amp;rsquo;t have been my first choice for translation or summarization either. In my experience, ChatGPT has created translations which are at least as coherent and idiomatic as Google Translate, if not more so.</description>
     </item>
-    
     <item>
       <title>How Does Convolution Work?</title>
       <link>https://lukesalamone.github.io/posts/how-does-convolution-work/</link>
       <pubDate>Mon, 14 Jun 2021 21:05:06 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/how-does-convolution-work/</guid>
-      <description>Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&amp;rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!
-      number:   four three eight    padding:    kernel size:    stride:    speed:        You can use the settings above to control the hyperparameters of the convolutional layer.</description>
+      <description>Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&amp;rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!&#xA;number: four three eight padding: kernel size: stride: speed: You can use the settings above to control the hyperparameters of the convolutional layer.</description>
     </item>
-    
   </channel>
 </rss>
