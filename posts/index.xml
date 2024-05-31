@@ -54,6 +54,12 @@ Naive and semi-naive approaches One approach might be to compare every vector an
 <p><a href="https://arxiv.org/pdf/1603.09320">HNSW</a> is a bit of a Six Degrees of Kevin Bacon approach. I&rsquo;ll give what I think this is a fairly good intuition for how it works.</p>
 <p>Suppose you have 1,000 friends and you&rsquo;d like to know which five of them live closest to a landmark like the Golden Gate Bridge. You don’t have everyone&rsquo;s exact address, but each friend keeps a list of their close friends&rsquo; addresses. You might start with a friend who lives in the US. From there, you check their friends to find who lives closest to the target, and then search among their friends for someone even closer. By using a hierarchical approach, you don&rsquo;t need to search through everyone, just those likely to be closest.</p>
 <p>In the analogy, the Golden Gate Bridge is the &ldquo;needle&rdquo; and the friends are the &ldquo;haystack&rdquo;. This is a pretty efficient method, but of course it is possible to miss a node if their friend wasn&rsquo;t linked to an earlier friend.</p>
+<figure><img src="/img/hnsw.png"
+    alt="HNSW uses a multi-layered graph for efficient nearest neighbor search."><figcaption>
+      <p>HNSW uses a multi-layered graph for efficient nearest neighbor search.</p>
+    </figcaption>
+</figure>
+
 <h3 id="searching">Searching</h3>
 <p>Searching is fairly straightforward. Start from an entry point (maybe a random point) in the top layer. For each of the neighbors of the entry point, compute the distance between the query and that point. If any of the neighbors are closer to the query, hop to that neighbor and repeat the process. Select the closest point and go to the next layer down. We keep searching until we reach layer 0.</p>
 <p>To compute the K nearest neighbors during search (with K &gt; 1) we simply maintain a min heap, and add all nodes considered during the search. The number of nodes returned in this search (K) is also known as <code>ef_search</code> in the HNSW paper.</p>
