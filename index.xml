@@ -17,6 +17,13 @@
       <description>Suppose we have a vector database with a billion items in it (the haystack). And suppose we are looking for K vectors, the needles which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing 1-distance(x,y).) And also suppose that we&amp;rsquo;d like to do this quickly.&#xA;Naive and semi-naive approaches One approach might be to compare every vector and take the argmax. In that case, for vectors of length D our runtime will be 1 billion x D.</description>
     </item>
     <item>
+      <title>Learning the Haystack</title>
+      <link>https://lukesalamone.github.io/posts/learning-the-haystack/</link>
+      <pubDate>Wed, 27 Mar 2024 18:19:54 -0700</pubDate>
+      <guid>https://lukesalamone.github.io/posts/learning-the-haystack/</guid>
+      <description>Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.&#xA;Enterprising readers might be asking themselves how to get these vectors (also known as embeddings) in the first place. One way is to simply pay for them. This isn&amp;rsquo;t ideal for a couple of reasons:</description>
+    </item>
+    <item>
       <title>A 3D Game of Life</title>
       <link>https://lukesalamone.github.io/posts/game-of-life-3d/</link>
       <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="keywords" content="homepage, blog, vector, loss" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/learning-the-haystack/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+
+<script>
+  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+</script>
+
+
+
+
+    <title>
+        
+            Learning the Haystack :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+
+
+
+
+
+
+
+  <meta itemprop="name" content="Learning the Haystack">
+  <meta itemprop="description" content="Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.
+Enterprising readers might be asking themselves how to get these vectors (also known as embeddings) in the first place. One way is to simply pay for them. This isn’t ideal for a couple of reasons:">
+  <meta itemprop="datePublished" content="2024-03-27T18:19:54-07:00">
+  <meta itemprop="dateModified" content="2024-03-27T18:19:54-07:00">
+  <meta itemprop="wordCount" content="1083">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Vector,Loss">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="Learning the Haystack">
+  <meta name="twitter:description" content="Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.
+Enterprising readers might be asking themselves how to get these vectors (also known as embeddings) in the first place. One way is to simply pay for them. This isn’t ideal for a couple of reasons:">
+
+
+
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/learning-the-haystack/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="Learning the Haystack">
+  <meta property="og:description" content="Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.
+Enterprising readers might be asking themselves how to get these vectors (also known as embeddings) in the first place. One way is to simply pay for them. This isn’t ideal for a couple of reasons:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-03-27T18:19:54-07:00">
+    <meta property="article:modified_time" content="2024-03-27T18:19:54-07:00">
+    <meta property="article:tag" content="Vector">
+    <meta property="article:tag" content="Loss">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2024-03-27 18:19:54 -0700 PDT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="Search here" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        6 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/learning-the-haystack/">Learning the Haystack</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      },
+      extensions: ["AMSmath.js", "AMSsymbols.js"]
+    }
+  }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<p>Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.</p>
+<p>Enterprising readers might be asking themselves how to get these vectors (also known as embeddings) in the first place. One way is to simply pay for them. This isn&rsquo;t ideal for a couple of reasons:</p>
+<ol>
+<li>It can be expensive. You&rsquo;ll need to pay once to embed each document, and separately for each query. If you have a large corpus, it can be cost-prohibitive. At the time of writing, OpenAI charges about $130 per million tokens (around 1000 paragraphs) for their largest model.</li>
+<li>&ldquo;Similarity&rdquo; may mean different things depending on your use case. For example, suppose we are retrieving documents for customer support. For the embedding model to learn that two documents share user behavior characteristics (i.e. two documents were opened by support agents in the same session), that information needs to be available in the training process.</li>
+</ol>
+<p>Below is an overview of three of the main training regimes I have used for creating embeddings. For more information and in-depth examples, I highly recommend the loss overview page of the <a href="https://sbert.net/docs/sentence_transformer/loss_overview.html">Sentence Transformers</a> library. Generally speaking, there are three categories of methods: unsupervised methods, contrastive learning methods (positive/negative labels), and regression methods (floating-point labels).</p>
+<h2 id="autoencoders">Autoencoders</h2>
+<figure><img src="../../img/mona_lisa_autoencoder.png"
+    alt="An autoencoder uses a bottleneck to reduce the dimensionality of the input."><figcaption>
+      <p>An autoencoder uses a bottleneck to reduce the dimensionality of the input.</p>
+    </figcaption>
+</figure>
+
+<p>One approach for vectorizing a document, image, or other blob of information is to simply <a href="../../posts/build-an-autoencoder/">use an autoencoder</a>. An autoencoder is a function which learns a lossy compression function. It can be considered an unsupervised method since each item is its own label.</p>
+<p>However, although they are conceptually pretty simple, autoencoders aren&rsquo;t always best. They may learn an efficient representation of your document, but it may be wasting a lot of space on things you don&rsquo;t care about.</p>
+<p>For example, if it was reproducing a picture which contained a TV showing static, you may not care exactly what the static <em>looks like</em>, just that it <em>has</em> static. So it&rsquo;s probably a waste of space to try to reproduce every pixel of static. Likewise, if it were encoding people, it might be really important to you that the people have 5 fingers. Unfortunately, the autoencoder wasted too much space encoding the TV and not on boring details like numbers of fingers.</p>
+<p>See also: <a href="https://www.youtube.com/watch?v=UABxQ19Sqt0">the &ldquo;noisy TV problem&rdquo;</a></p>
+<h2 id="fine-tuning-with-sentence-transformers">Fine-tuning with Sentence Transformers</h2>
+<p>The applicability of the next few methods will depend on the format of your data and labels.</p>
+<p>Here is a simple example for creating text embeddings with <code>sentence-transformers</code> using ContrastiveLoss:</p>
+<pre><code class="language-python">from sentence_transformers import (
+  SentenceTransformer, 
+  SentenceTransformerTrainer
+)
+from sentence_transformers.losses import ContrastiveLoss
+from datasets import Dataset
+
+model = SentenceTransformer('all-MiniLM-L6-v2')
+train_dataset = Dataset.from_dict({
+    &quot;sentence1&quot;: [
+      &quot;I feel the need...&quot;, 
+      &quot;Life is like a box of chocolates.&quot;
+    ],
+    &quot;sentence2&quot;: [
+      &quot;...the need for speed!&quot;, # similar
+      &quot;Here's Johnny!&quot; # dissimilar
+    ],
+    &quot;label&quot;: [1, 0],
+})
+
+trainer = SentenceTransformerTrainer(
+    model=model,
+    train_dataset=train_dataset,
+    loss=ContrastiveLoss(model),
+)
+trainer.train()
+</code></pre>
+<p>And to generate the embedding:</p>
+<pre><code class="language-python">embedding = model.encode([&quot;There's no crying in baseball!&quot;])
+print(embedding.shape) # (1, 384)
+</code></pre>
+<h2 id="contrastive-learning-triplet-loss">Contrastive Learning: Triplet loss</h2>
+<p><a href="https://pytorch.org/docs/stable/generated/torch.nn.TripletMarginWithDistanceLoss.html">Triplet loss</a> explicitly learns embeddings to be used in cosine similarity or euclidean distance (L2 norm) comparison. It uses triplets of the form (A, P, N), where A is an anchor, P is a positive example which is similar to A, and N is a negative example which is dissimilar to A. For example <a href="https://repositori.upf.edu/bitstream/handle/10230/54158/Alonso_ismir_musi.pdf">if we wanted to learn embeddings for songs</a>, we might say a positive example is a spectrogram clip from the same artist as the anchor, and a negative sample is from a different artist.</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+\text{L} = \sum_{i=1}^N \text{max} \left(0, cos( f(a_i) - f(p_i) ) - cos( f(a_i) - f( n_i )) + m \right)
+$$
+</p>
+<p>for cosine similarity or for euclidean distiance,</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+\text{L} = \sum_{i=1}^N \text{max} \left(0, \lVert f(a_i) - f(p_i) \rVert_2 - \lVert f(a_i) - f( n_i ) \rVert_2 + m \right)
+$$
+</p>
+<p>In other words, we enforce that the distance between the anchor and the negative sample is greater than the distance between the anchor and the positive sample <em>plus</em> some margin. For cosine similarity, what this would look like is that your vectors appear as points on the perimeter of a high-dimensional clock face (i.e. the surface of an N-dimensional hypersphere). Positive samples grow closer to the anchor while the negative samples are pushed away. The higher the margin, the closer positive samples will be pushed together.</p>
+<figure><img src="../../img/contrastive_learning.png"
+    alt="Learning to differentiate Bangarang and Clair de lune. Triplet loss pushes positive examples closer to the anchor and negatives farther away. Some say Claude DeBussy was the Skrillex of 1890."><figcaption>
+      <p>Learning to differentiate Bangarang and Clair de lune. Triplet loss pushes positive examples closer to the anchor and negatives farther away. Some say Claude DeBussy was the Skrillex of 1890.</p>
+    </figcaption>
+</figure>
+
+<h2 id="contrastive-learning-contrastive-loss">Contrastive learning: Contrastive loss</h2>
+<p>If you have binary labels, you can use <a href="http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf">contrastive loss</a>. It works with positive pairs <code>(anchor, positive)</code> and negative pairs <code>(anchor, negative)</code>, denoted with a binary label. In the original paper, $ y \in [1,0] $ is the label indicating the desired distance between the points (<strong>not</strong> whether they are similar).</p>
+<p>Like triplet loss, contrastive loss also includes a margin parameter. For dissimilar pairs, a loss is incurred only if their predicted distance falls within the margin&rsquo;s radius.</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+\text{loss} = \frac{(1-y_{i})(D_{W_i})^2 + y_i \left( \text{max}(0, m - D_{W_i}) \right) ^ 2 }{2}
+$$
+</p>
+<p>Where $ D_{W_i} $ is euclidean distance between the two embeddings of sentences $ a_i $ and $ b_i $:</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+D_{W_i} = \lVert f(a_i) - f(b_i) \rVert _{2}
+$$
+</p>
+<p>Note that triplet loss is often confused with contrastive loss, but they are not the same.</p>
+<h2 id="regression-cosine-similarity-loss">Regression: Cosine similarity loss</h2>
+<p>If you already have some numerical labels for the similarity of two pieces of text, you can compute mean squared error between their predicted cosine similarity and the actual similarity.</p>
+<p>For pairs of sentences a<sub>i</sub> and b<sub>i</sub> and label y<sub>i</sub>,</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+\text{loss} = \frac{1}{N} \sum_{i=1}^{N} \left[ cos\left(f(a_{i}), f(b_{i})\right) - y_{i} \right] ^ 2
+$$
+</p>
+<h2 id="regression-cosent-loss">Regression: CoSENT loss</h2>
+<p>CoSENT loss is an improved version of cosine similarity learning which makes better use of in-batch values. For a batch with size <code>N</code> it makes up to <code>Nx(N-1)/2</code> predictions. (I.e. for a batch size of 10 we make up to 45 predictions rather than the 10 in Cosine Similarity Loss.) It is essentially a ranking loss, taking advantage of the knowledge of the relative similarities within the batch.</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+\text{loss} = \log \left( 1 + \sum_{\text{sim}(i,j) > \text{sim}(k,l)} e^{\lambda (\cos(k, l) - \cos(i, j))} \right)
+$$
+</p>
+<p>Experiments have shown <a href="https://github.com/UKPLab/sentence-transformers/pull/2454#issuecomment-1914664814">improved performance</a> over Cosine Similarity loss.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/vector/">vector</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/loss/">loss</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1083 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2024-03-27 18:19
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://lukesalamone.github.io/posts/how-does-hnsw-work/">
+                <span class="button__icon">←</span>
+                <span class="button__text">How does HNSW work?</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/game-of-life-3d/">
+                <span class="button__text">A 3D Game of Life</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+  </main>
+  <div id="shadow-search" class="posts">
+    <div class="posts-group">
+      <div class="post-year">2022</div>
+      <ul class="posts-list"></ul>
+    </div>
+  </div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2024</span>
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.fdc5aa536e3e114f1858ac9d803de25aba14817a1fa56e188943bfc00702be87ecb0b477b68f6868a13772d5fd57341d069d167527d85cf7fab246f9aafba8cd.js" integrity="sha512-/cWqU24&#43;EU8YWKydgD3iWroUgXofpW4YiUO/wAcCvofssLR3to9oaKE3ctX9VzQdBp0WdSfYXPf6skb5qvuozQ=="></script>
+
+
+
+    </body>
+</html>

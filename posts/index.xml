@@ -76,6 +76,149 @@ Naive and semi-naive approaches One approach might be to compare every vector an
         </item>
         
         <item>
+            <title>Learning the Haystack</title>
+            <link>https://lukesalamone.github.io/posts/learning-the-haystack/</link>
+            <pubDate>Wed, 27 Mar 2024 18:19:54 -0700</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/learning-the-haystack/</guid>
+            <description>Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.
+Enterprising readers might be asking themselves how to get these vectors (also known as embeddings) in the first place. One way is to simply pay for them. This isn&amp;rsquo;t ideal for a couple of reasons:</description>
+            <content type="html"><![CDATA[<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      },
+      extensions: ["AMSmath.js", "AMSsymbols.js"]
+    }
+  }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<p>Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.</p>
+<p>Enterprising readers might be asking themselves how to get these vectors (also known as embeddings) in the first place. One way is to simply pay for them. This isn&rsquo;t ideal for a couple of reasons:</p>
+<ol>
+<li>It can be expensive. You&rsquo;ll need to pay once to embed each document, and separately for each query. If you have a large corpus, it can be cost-prohibitive. At the time of writing, OpenAI charges about $130 per million tokens (around 1000 paragraphs) for their largest model.</li>
+<li>&ldquo;Similarity&rdquo; may mean different things depending on your use case. For example, suppose we are retrieving documents for customer support. For the embedding model to learn that two documents share user behavior characteristics (i.e. two documents were opened by support agents in the same session), that information needs to be available in the training process.</li>
+</ol>
+<p>Below is an overview of three of the main training regimes I have used for creating embeddings. For more information and in-depth examples, I highly recommend the loss overview page of the <a href="https://sbert.net/docs/sentence_transformer/loss_overview.html">Sentence Transformers</a> library. Generally speaking, there are three categories of methods: unsupervised methods, contrastive learning methods (positive/negative labels), and regression methods (floating-point labels).</p>
+<h2 id="autoencoders">Autoencoders</h2>
+<figure><img src="/img/mona_lisa_autoencoder.png"
+    alt="An autoencoder uses a bottleneck to reduce the dimensionality of the input."><figcaption>
+      <p>An autoencoder uses a bottleneck to reduce the dimensionality of the input.</p>
+    </figcaption>
+</figure>
+
+<p>One approach for vectorizing a document, image, or other blob of information is to simply <a href="/posts/build-an-autoencoder/">use an autoencoder</a>. An autoencoder is a function which learns a lossy compression function. It can be considered an unsupervised method since each item is its own label.</p>
+<p>However, although they are conceptually pretty simple, autoencoders aren&rsquo;t always best. They may learn an efficient representation of your document, but it may be wasting a lot of space on things you don&rsquo;t care about.</p>
+<p>For example, if it was reproducing a picture which contained a TV showing static, you may not care exactly what the static <em>looks like</em>, just that it <em>has</em> static. So it&rsquo;s probably a waste of space to try to reproduce every pixel of static. Likewise, if it were encoding people, it might be really important to you that the people have 5 fingers. Unfortunately, the autoencoder wasted too much space encoding the TV and not on boring details like numbers of fingers.</p>
+<p>See also: <a href="https://www.youtube.com/watch?v=UABxQ19Sqt0">the &ldquo;noisy TV problem&rdquo;</a></p>
+<h2 id="fine-tuning-with-sentence-transformers">Fine-tuning with Sentence Transformers</h2>
+<p>The applicability of the next few methods will depend on the format of your data and labels.</p>
+<p>Here is a simple example for creating text embeddings with <code>sentence-transformers</code> using ContrastiveLoss:</p>
+<pre><code class="language-python">from sentence_transformers import (
+  SentenceTransformer, 
+  SentenceTransformerTrainer
+)
+from sentence_transformers.losses import ContrastiveLoss
+from datasets import Dataset
+
+model = SentenceTransformer('all-MiniLM-L6-v2')
+train_dataset = Dataset.from_dict({
+    &quot;sentence1&quot;: [
+      &quot;I feel the need...&quot;, 
+      &quot;Life is like a box of chocolates.&quot;
+    ],
+    &quot;sentence2&quot;: [
+      &quot;...the need for speed!&quot;, # similar
+      &quot;Here's Johnny!&quot; # dissimilar
+    ],
+    &quot;label&quot;: [1, 0],
+})
+
+trainer = SentenceTransformerTrainer(
+    model=model,
+    train_dataset=train_dataset,
+    loss=ContrastiveLoss(model),
+)
+trainer.train()
+</code></pre>
+<p>And to generate the embedding:</p>
+<pre><code class="language-python">embedding = model.encode([&quot;There's no crying in baseball!&quot;])
+print(embedding.shape) # (1, 384)
+</code></pre>
+<h2 id="contrastive-learning-triplet-loss">Contrastive Learning: Triplet loss</h2>
+<p><a href="https://pytorch.org/docs/stable/generated/torch.nn.TripletMarginWithDistanceLoss.html">Triplet loss</a> explicitly learns embeddings to be used in cosine similarity or euclidean distance (L2 norm) comparison. It uses triplets of the form (A, P, N), where A is an anchor, P is a positive example which is similar to A, and N is a negative example which is dissimilar to A. For example <a href="https://repositori.upf.edu/bitstream/handle/10230/54158/Alonso_ismir_musi.pdf">if we wanted to learn embeddings for songs</a>, we might say a positive example is a spectrogram clip from the same artist as the anchor, and a negative sample is from a different artist.</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+\text{L} = \sum_{i=1}^N \text{max} \left(0, cos( f(a_i) - f(p_i) ) - cos( f(a_i) - f( n_i )) + m \right)
+$$
+</p>
+<p>for cosine similarity or for euclidean distiance,</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+\text{L} = \sum_{i=1}^N \text{max} \left(0, \lVert f(a_i) - f(p_i) \rVert_2 - \lVert f(a_i) - f( n_i ) \rVert_2 + m \right)
+$$
+</p>
+<p>In other words, we enforce that the distance between the anchor and the negative sample is greater than the distance between the anchor and the positive sample <em>plus</em> some margin. For cosine similarity, what this would look like is that your vectors appear as points on the perimeter of a high-dimensional clock face (i.e. the surface of an N-dimensional hypersphere). Positive samples grow closer to the anchor while the negative samples are pushed away. The higher the margin, the closer positive samples will be pushed together.</p>
+<figure><img src="/img/contrastive_learning.png"
+    alt="Learning to differentiate Bangarang and Clair de lune. Triplet loss pushes positive examples closer to the anchor and negatives farther away. Some say Claude DeBussy was the Skrillex of 1890."><figcaption>
+      <p>Learning to differentiate Bangarang and Clair de lune. Triplet loss pushes positive examples closer to the anchor and negatives farther away. Some say Claude DeBussy was the Skrillex of 1890.</p>
+    </figcaption>
+</figure>
+
+<h2 id="contrastive-learning-contrastive-loss">Contrastive learning: Contrastive loss</h2>
+<p>If you have binary labels, you can use <a href="http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf">contrastive loss</a>. It works with positive pairs <code>(anchor, positive)</code> and negative pairs <code>(anchor, negative)</code>, denoted with a binary label. In the original paper, $ y \in [1,0] $ is the label indicating the desired distance between the points (<strong>not</strong> whether they are similar).</p>
+<p>Like triplet loss, contrastive loss also includes a margin parameter. For dissimilar pairs, a loss is incurred only if their predicted distance falls within the margin&rsquo;s radius.</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+\text{loss} = \frac{(1-y_{i})(D_{W_i})^2 + y_i \left( \text{max}(0, m - D_{W_i}) \right) ^ 2 }{2}
+$$
+</p>
+<p>Where $ D_{W_i} $ is euclidean distance between the two embeddings of sentences $ a_i $ and $ b_i $:</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+D_{W_i} = \lVert f(a_i) - f(b_i) \rVert _{2}
+$$
+</p>
+<p>Note that triplet loss is often confused with contrastive loss, but they are not the same.</p>
+<h2 id="regression-cosine-similarity-loss">Regression: Cosine similarity loss</h2>
+<p>If you already have some numerical labels for the similarity of two pieces of text, you can compute mean squared error between their predicted cosine similarity and the actual similarity.</p>
+<p>For pairs of sentences a<sub>i</sub> and b<sub>i</sub> and label y<sub>i</sub>,</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+\text{loss} = \frac{1}{N} \sum_{i=1}^{N} \left[ cos\left(f(a_{i}), f(b_{i})\right) - y_{i} \right] ^ 2
+$$
+</p>
+<h2 id="regression-cosent-loss">Regression: CoSENT loss</h2>
+<p>CoSENT loss is an improved version of cosine similarity learning which makes better use of in-batch values. For a batch with size <code>N</code> it makes up to <code>Nx(N-1)/2</code> predictions. (I.e. for a batch size of 10 we make up to 45 predictions rather than the 10 in Cosine Similarity Loss.) It is essentially a ranking loss, taking advantage of the knowledge of the relative similarities within the batch.</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+\text{loss} = \log \left( 1 + \sum_{\text{sim}(i,j) > \text{sim}(k,l)} e^{\lambda (\cos(k, l) - \cos(i, j))} \right)
+$$
+</p>
+<p>Experiments have shown <a href="https://github.com/UKPLab/sentence-transformers/pull/2454#issuecomment-1914664814">improved performance</a> over Cosine Similarity loss.</p>
+]]></content>
+        </item>
+        
+        <item>
             <title>A 3D Game of Life</title>
             <link>https://lukesalamone.github.io/posts/game-of-life-3d/</link>
             <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
