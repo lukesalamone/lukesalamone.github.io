@@ -246,8 +246,7 @@ Qualitative answer There are many qualitative answers to this question, especial
 <p>Of course, this isn&rsquo;t perfect, and there&rsquo;s an argument to be made that outcomes for 2300+ elo players may not be representative of lower-rated players. It also doesn&rsquo;t take time pressure into consideration. But there is a tradeoff between accuracy of our metric and generalization power of the model.</p>
 <p><a href="https://zwischenzug.substack.com/p/centipawns-suck">One other important objection</a> to this line of inquery is that the centipawn evaluation of a position is not a constant. The evaluation varies by search depth and between engines. So if Stockfish 15 evaluates a position at +1 and Stockfish 16 evaluates the same position at +1.5, white&rsquo;s actual winning chances haven&rsquo;t changed at all. The evaluation is not anchored to any real value, especially with the introduction of NNUE eval functions.</p>
 <h2 id="references">References</h2>
-<p><a href="https://lichess.org/page/accuracy">https://lichess.org/page/accuracy</a><br>
-<a href="https://zwischenzug.substack.com/p/centipawns-suck">https://zwischenzug.substack.com/p/centipawns-suck</a></p>
+<p><a href="https://lichess.org/page/accuracy">https://lichess.org/page/accuracy</a></p>
 ]]></content>
         </item>
         
