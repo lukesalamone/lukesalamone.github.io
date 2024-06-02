@@ -45,10 +45,31 @@
       <description></description>
     </item>
     <item>
-      <title>Untagged</title>
-      <link>https://lukesalamone.github.io/tags/untagged/</link>
+      <title>Chess</title>
+      <link>https://lukesalamone.github.io/tags/chess/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lukesalamone.github.io/tags/untagged/</guid>
+      <guid>https://lukesalamone.github.io/tags/chess/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Evaluation</title>
+      <link>https://lukesalamone.github.io/tags/evaluation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lukesalamone.github.io/tags/evaluation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Explainability</title>
+      <link>https://lukesalamone.github.io/tags/explainability/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lukesalamone.github.io/tags/explainability/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Statistics</title>
+      <link>https://lukesalamone.github.io/tags/statistics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lukesalamone.github.io/tags/statistics/</guid>
       <description></description>
     </item>
     <item>
@@ -101,13 +122,6 @@
       <description></description>
     </item>
     <item>
-      <title>Chess</title>
-      <link>https://lukesalamone.github.io/tags/chess/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lukesalamone.github.io/tags/chess/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Game-Theory</title>
       <link>https://lukesalamone.github.io/tags/game-theory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -154,20 +168,6 @@
       <link>https://lukesalamone.github.io/tags/qualitative-reasoning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lukesalamone.github.io/tags/qualitative-reasoning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Explainability</title>
-      <link>https://lukesalamone.github.io/tags/explainability/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lukesalamone.github.io/tags/explainability/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Statistics</title>
-      <link>https://lukesalamone.github.io/tags/statistics/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lukesalamone.github.io/tags/statistics/</guid>
       <description></description>
     </item>
     <item>
