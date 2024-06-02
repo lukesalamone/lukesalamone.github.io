@@ -219,6 +219,39 @@ $$
         </item>
         
         <item>
+            <title>What is a blunder in chess?</title>
+            <link>https://lukesalamone.github.io/posts/chess-blunders/</link>
+            <pubDate>Fri, 25 Aug 2023 20:47:30 -0800</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/chess-blunders/</guid>
+            <description>What is a blunder in chess? The tension between the qualitative and quantitative answers to this question are at the heart of the different approaches towards chess, and more broadly, how quantitative metrics may oversimplify, but qualitative metrics
+Qualitative answer There are many qualitative answers to this question, especially when comparing &amp;ldquo;blunders&amp;rdquo; and &amp;ldquo;mistakes&amp;rdquo;:
+&amp;ldquo;a move that negatively affects their position in a significant way&amp;rdquo; ~ chess.com &amp;ldquo;severely worsens the player&amp;rsquo;s situation by allowing a loss of material, checkmate, or anything similar&amp;rdquo; ~ Wikipedia &amp;ldquo;Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.</description>
+            <content type="html"><![CDATA[<p>What is a blunder in chess? The tension between the qualitative and quantitative answers to this question are at the heart of the different approaches towards chess, and more broadly, how quantitative metrics may oversimplify, but qualitative metrics</p>
+<h2 id="qualitative-answer">Qualitative answer</h2>
+<p>There are many qualitative answers to this question, especially when comparing &ldquo;blunders&rdquo; and &ldquo;mistakes&rdquo;:</p>
+<ul>
+<li>&ldquo;a move that negatively affects their position in a significant way&rdquo; ~ <a href="https://www.chess.com/terms/chess-blunder">chess.com</a></li>
+<li>&ldquo;severely worsens the player&rsquo;s situation by allowing a loss of material, checkmate, or anything similar&rdquo; ~ <a href="https://en.wikipedia.org/wiki/Blunder_(chess)">Wikipedia</a></li>
+<li>&ldquo;Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.&rdquo; ~ <a href="https://www.reddit.com/r/chess/comments/1iiqyb/what_distinguishes_the_difference_between_a/">r/chess</a></li>
+</ul>
+<p>An issue with these qualitative answers is that while their words may be correct, smart people may still disagree with their applicability at the margins.</p>
+<h2 id="quantitative-answer">Quantitative answer</h2>
+<p>The quantitative answer considers a move which causes a significant drop in probability of winning to be blunder. What is &ldquo;significant&rdquo;? <a href="https://github.com/lichess-org/lila/blob/a02b6fb2b76edfd4c73c36b2e022d2c9265dbb42/ui/analyse/src/practice/practiceCtrl.ts#L116">A change 14% or greater</a>.</p>
+<p>How is winning probability in a chess game calculated? Objectively, since there are only three possible outcomes in a game (win, draw, loss), by definition any real advantage will lead to a win with perfect play. But objectively, humans aren&rsquo;t perfect. Even grandmasters can let an advantage slip. If <a href="https://www.youtube.com/watch?v=d7Vc0fXoTNU">Magnus Carlsen doesn&rsquo;t capitalize on your blunder</a>, was it really a blunder?</p>
+<p>From a machine learning perspective, we can view winning probability as a logistic regression problem, where centipawn evaluation is a feature, and game outcome is a label. If we further limit data points to 2300+ rated games, <a href="https://github.com/lichess-org/lila/pull/11148">this is what Lichess uses</a>.</p>
+<div style="width:100%; display: flex; justify-content: center;">
+  <iframe src="https://www.desmos.com/calculator/ieqrq3ry9z?embed" width="500" height="500" frameborder=0></iframe>
+</div>
+<p>Of course, this isn&rsquo;t perfect, and there&rsquo;s an argument to be made that outcomes for 2300+ elo players may not be representative of lower-rated players. It also doesn&rsquo;t take time pressure into consideration. But there is a tradeoff between accuracy of our metric and generalization power of the model.</p>
+<p><a href="https://zwischenzug.substack.com/p/centipawns-suck">One other important objection</a> to this line of inquery is that the centipawn evaluation of a position is not a constant. The evaluation varies by search depth and between engines. So if Stockfish 15 evaluates a position at +1 and Stockfish 16 evaluates the same position at +1.5, white&rsquo;s actual winning chances haven&rsquo;t changed at all. The evaluation is not anchored to any real value, especially with the introduction of NNUE eval functions.</p>
+<h2 id="references">References</h2>
+<p><a href="https://lichess.org/page/accuracy">https://lichess.org/page/accuracy</a><br>
+<a href="https://zwischenzug.substack.com/p/centipawns-suck">https://zwischenzug.substack.com/p/centipawns-suck</a></p>
+]]></content>
+        </item>
+        
+        <item>
             <title>A 3D Game of Life</title>
             <link>https://lukesalamone.github.io/posts/game-of-life-3d/</link>
             <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>

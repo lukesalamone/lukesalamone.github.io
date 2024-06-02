@@ -24,6 +24,13 @@
       <description>Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.&#xA;Enterprising readers might be asking themselves how to get these vectors (also known as embeddings) in the first place. One way is to simply pay for them. This isn&amp;rsquo;t ideal for a couple of reasons:</description>
     </item>
     <item>
+      <title>What is a blunder in chess?</title>
+      <link>https://lukesalamone.github.io/posts/chess-blunders/</link>
+      <pubDate>Fri, 25 Aug 2023 20:47:30 -0800</pubDate>
+      <guid>https://lukesalamone.github.io/posts/chess-blunders/</guid>
+      <description>What is a blunder in chess? The tension between the qualitative and quantitative answers to this question are at the heart of the different approaches towards chess, and more broadly, how quantitative metrics may oversimplify, but qualitative metrics&#xA;Qualitative answer There are many qualitative answers to this question, especially when comparing &amp;ldquo;blunders&amp;rdquo; and &amp;ldquo;mistakes&amp;rdquo;:&#xA;&amp;ldquo;a move that negatively affects their position in a significant way&amp;rdquo; ~ chess.com &amp;ldquo;severely worsens the player&amp;rsquo;s situation by allowing a loss of material, checkmate, or anything similar&amp;rdquo; ~ Wikipedia &amp;ldquo;Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.</description>
+    </item>
+    <item>
       <title>A 3D Game of Life</title>
       <link>https://lukesalamone.github.io/posts/game-of-life-3d/</link>
       <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
