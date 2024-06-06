@@ -14,12 +14,13 @@
 <meta property="og:image" content="https://lukesalamone.github.io//img/covers/cnn-cover.png"/>
 <meta property="og:description" content="Check out this interactive demo of a convolutional neural network to get a better idea of how they work!"/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
-
-
 
 
     <title>

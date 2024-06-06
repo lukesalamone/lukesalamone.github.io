@@ -14,12 +14,13 @@
 <meta property="og:image" content="https://lukesalamone.github.io//img/covers/transformer-cover.png"/>
 <meta property="og:description" content="Check out this interactive demo to learn how the transformer and self-attention work!"/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
-
-
 
 
     <title>

@@ -14,12 +14,13 @@
 <meta property="og:image" content="https://lukesalamone.github.io//img/covers/gpt2_vs_bert.png"/>
 <meta property="og:description" content="GPT-2 and BERT in a head to head...which one will come out on top?"/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
-
-
 
 
     <title>

@@ -14,12 +14,13 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
-
-
 
 
     <title>

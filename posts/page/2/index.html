@@ -14,12 +14,13 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
-
-
 
 
     <title>
@@ -45,7 +46,7 @@
 
   <meta itemprop="name" content="Posts">
   <meta itemprop="description" content="My new homepage or blog">
-  <meta itemprop="dateModified" content="2024-05-29T23:23:17-07:00">
+  <meta itemprop="dateModified" content="2024-06-06T16:30:27-07:00">
   <meta itemprop="image" content="https://lukesalamone.github.io/">
 
   <meta name="twitter:card" content="summary_large_image">
