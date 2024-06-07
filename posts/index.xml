@@ -9,6 +9,91 @@
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>What are Sparse Autoencoders?</title>
+            <link>https://lukesalamone.github.io/posts/sparse-autoencoder/</link>
+            <pubDate>Thu, 06 Jun 2024 16:30:27 -0700</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/sparse-autoencoder/</guid>
+            <description>TLDR: A sparse autoencoder is just a regular autoencoder that encourages sparsity with an L1 penalty or KL divergence loss rather than using a low-dimensional bottleneck.
+If you understood all of those words above, you may be interested in the OpenAI paper which used sparse autoencoders to interpret features from GPT-4.
+If not, I&amp;rsquo;ll try to break it down.
+What is an autoencoder? An autoencoder is a machine learning architecture which contains two functions: an encoder and a decoder.</description>
+            <content type="html"><![CDATA[<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      },
+      extensions: ["AMSmath.js", "AMSsymbols.js"]
+    }
+  }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<p><strong>TLDR: A sparse autoencoder is just a regular autoencoder that encourages sparsity with an L1 penalty or KL divergence loss rather than using a low-dimensional bottleneck.</strong></p>
+<p>If you understood all of those words above, you may be interested in the <a href="https://cdn.openai.com/papers/sparse-autoencoders.pdf">OpenAI paper</a> which used sparse autoencoders to interpret features from GPT-4.</p>
+<p>If not, I&rsquo;ll try to break it down.</p>
+<h2 id="what-is-an-autoencoder">What is an autoencoder?</h2>
+<p>An autoencoder is a machine learning architecture which contains two functions: an <code>encoder</code> and a <code>decoder</code>. The <code>encoder</code> learns to create an efficient representation of the input, similar to lossy file compression. The <code>decoder</code> learns to reconstruct the original input from the efficient representation.</p>
+<p>I have a couple of other pretty good explanations on this. In the first post, I described <a href="/posts/build-an-autoencoder/">how to build an autoencoder</a>. Later, I discussed their potential <a href="/posts/learning-the-haystack/#autoencoders">applications in vector retrieval</a>.</p>
+<h2 id="what-is-sparsity">What is sparsity?</h2>
+<p>Sparsity just means that most of the values in a vector are zero.</p>
+<h2 id="what-is-an-l1-penalty">What is an L1 penalty?</h2>
+<p>L1 stands for penalizing the $ L^1 $ norm of a vector. In other words, the sum of the absolute values of the values in the vector:</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+\text{L1 norm} = \sum_{i=1}^N \vert x_i \vert
+$$
+</p>
+<h2 id="what-is-kl-divergence">What is KL divergence?</h2>
+<p><a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">KL divergence</a> is a measure of the &ldquo;distance&rdquo; one probability distribution has from another:</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+D_{KL}\left( P, Q \right) = \sum_{x \in X} P(x) \log \left( \frac{P(x)}{Q(x)} \right)
+$$
+</p>
+<p>Note that KL divergence is not symmetrical, so distance isn&rsquo;t an entirely accurate description. If you&rsquo;re looking for a symmetrical measure of distribution similarity, use Jensen-Shannon divergence. Additionally, $ X $ doesn&rsquo;t have to be a continuous variable, although it often is.</p>
+<p>In the demo below you can see that as the probability distributions overlap more and more, the KL divergence decreases.</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<script src="/js/kl_divergence.js"></script>
+<p><canvas id="myChart" style="background-color: #0000"></canvas></p>
+<div style="text-align:center">
+  <span>mean:
+  <input type="range" min="300" max="600" value="400" class="slider" id="mean">
+  <span id="mean_label">40.0</span>
+</div>
+<div style="text-align:center">
+  <span>variance:
+  <input type="range" min="100" max="500" value="200" class="slider" id="variance">
+  <span id="variance_label">20.0</span>
+</div>
+<div style="text-align:center">
+  <span id="kl_divergence_label"></span>
+</div>
+<h2 id="what-is-a-kl-divergence-loss">What is a KL divergence loss?</h2>
+<p><a href="https://pytorch.org/docs/stable/generated/torch.nn.KLDivLoss.html">KL divergence loss</a> tries to force a model&rsquo;s predicted distribution to match a target distribution. Common applications of KL divergence loss are t-SNE dimensionality reduction and generative models like variational autoencoders and generative adversarial networks.</p>
+]]></content>
+        </item>
+        
+        <item>
             <title>How does HNSW work?</title>
             <link>https://lukesalamone.github.io/posts/how-does-hnsw-work/</link>
             <pubDate>Mon, 20 May 2024 13:38:01 -0700</pubDate>
@@ -220,7 +305,7 @@ $$
         <item>
             <title>What is a blunder in chess?</title>
             <link>https://lukesalamone.github.io/posts/chess-blunders/</link>
-            <pubDate>Fri, 25 Aug 2023 20:47:30 -0800</pubDate>
+            <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
             
             <guid>https://lukesalamone.github.io/posts/chess-blunders/</guid>
             <description>What is a blunder in chess? The tension between the qualitative and quantitative answers to this question is at the heart of different approaches towards chess, and more broadly, how quantitative metrics may lack context, but qualitative metrics lack precision.
