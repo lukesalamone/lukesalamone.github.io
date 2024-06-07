@@ -2807,7 +2807,7 @@ MathJax.Hub.Config({
 <p>Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input. In the case of calculating Pi, this can be modeled geometrically. The <em>random distribution</em> is all points within the square, and the outcome is whether a selected point lies within the circle inside of the square. We know that for a square circumscribed about a circle,</p>
 <p style="text-align: center; font-size: 1.5em">
 $$
-Area_{circle} = \pi r^2, A_{square} = (2r)^2 = 4r^2
+Area_{circle} = \pi r^2, Area_{square} = (2r)^2 = 4r^2
 $$
 <p>$$
 \frac{Area_{circle}}{Area_{square}} = \frac{\pi r^2}{4r^2} = \frac{\pi}{4}
