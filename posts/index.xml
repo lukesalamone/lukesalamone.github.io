@@ -2786,16 +2786,17 @@ MathJax.Hub.Config({
     processEscapes: true,
     processEnvironments: true,
     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      },
+      extensions: ["AMSmath.js", "AMSsymbols.js"]
+    }
   }
 });
 </script>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
-    // Fix <code> tags after MathJax finishes running. This is a
-    // hack to overcome a shortcoming of Markdown. Discussion at
-    // https://github.com/mojombo/jekyll/issues/199
     var all = MathJax.Hub.getAllJax(), i;
     for(i = 0; i < all.length; i += 1) {
         all[i].SourceElement().parentNode.className += ' has-jax';
@@ -2804,29 +2805,39 @@ MathJax.Hub.Config({
 </script>
 <p>A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.</p>
 <p>Monte Carlo simulations work when the input can be drawn from a random probability distribution, and the outcome can be derived deterministically from the input. In the case of calculating Pi, this can be modeled geometrically. The <em>random distribution</em> is all points within the square, and the outcome is whether a selected point lies within the circle inside of the square. We know that for a square circumscribed about a circle,</p>
-<p><code>$ A_{circle} = \pi r ^ 2, A_{square} = (2r) ^ 2 = 4r ^ 2 $</code></p>
-<p><code>$ { A_{circle}  \over  A_{square} } = { \pi r^2  \over 4r ^ 2 } = { \pi \over 4 } $</code></p>
-<p><code>$ { 4 ({ A_{circle}  \over  A_{square} }) } = \pi $</code></p>
-<p>If we notice that the probability that a randomly placed dot will fall within the circle is the same as the ratio of their areas (i.e. the circle takes up about 78% of the area of the square, so a random dot has about a 78% chance of landing inside the circle), then multiplying that probability by 4 gives Pi. By placing dots randomly, we play out that probability in real-time. As to whether a given dot lies within the circle, we simply use the Pythagorean theorum to calculate its distance from the origin:</p>
-<p><code>$ \sqrt{ x^2 + y^2 } &lt; 1 $</code></p>
-<p>So all dots greater than 1 unit from the origin are outside the circle.</p>
-<p>Below is a simulation of the derivation of the value of Pi. Click &ldquo;start simulation&rdquo; to see for yourself. <strong>Warning:</strong> this simulation may become slow once many dots are drawn on the screen.</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+Area_{circle} = \pi r^2, A_{square} = (2r)^2 = 4r^2
+$$
+<p>$$
+\frac{Area_{circle}}{Area_{square}} = \frac{\pi r^2}{4r^2} = \frac{\pi}{4}
+$$</p>
+<p>$$
+4(\frac{Area_{circle}}{Area_{square}}) = \pi
+$$</p>
+</p>
+<p>If we notice that the probability that a randomly placed dot will fall within the circle is the same as the ratio of their areas (i.e. the circle takes up about 78% of the area of the square, so a random dot has about a 78% chance of landing inside the circle), then multiplying that probability by 4 gives Pi. By placing dots randomly, we play out that probability in real-time.</p>
+<p>As to whether a given dot lies within the circle, we simply use the Pythagorean theorem to calculate its distance from the origin:</p>
+<p style="text-align: center; font-size: 1.5em">
+<p>$$ \sqrt{ x^2 + y^2 } &lt; 1  $$</p>
+</p>
+<p>In other words, all dots greater than 1 unit from the origin are outside the circle.</p>
+<p>Below is a simulation of the derivation of the value of Pi. Click &ldquo;start simulation&rdquo; to see for yourself. <strong>Warning:</strong> this simulation may become slow once many dots are drawn on the screen.
+<script src="/js/chart.min.js" type="text/javascript"></script>
+<script src="/js/monte-carlo.js" type="text/javascript"></script></p>
 <div id="sim1" style="font-family: monospace; background-color: #444; margin: 20px 0">
-    <script src="/js/chart.min.js" type="text/javascript"></script>
-    <script src="/js/monte-carlo.js" type="text/javascript"></script>
-<pre><code>&lt;div style=&quot;padding: 20px; text-align: center&quot;&gt;
-    &lt;button class=&quot;start&quot;&gt;start simulation&lt;/button&gt;
-    &lt;button class=&quot;stop&quot; disabled&gt;stop simulation&lt;/button&gt;
-&lt;/div&gt;
-&lt;div style=&quot;width:500px; height:500px&quot;&gt;
-    &lt;canvas&gt;&lt;/canvas&gt;
-&lt;/div&gt;
-&lt;div style=&quot;color: #fff; margin-left: 20px;&quot;&gt;
-    &lt;p style=&quot;margin:0&quot; id=&quot;num-points&quot;&gt;Number of points: 0&lt;/p&gt;
-    &lt;p style=&quot;margin:0&quot; id=&quot;pct-inside&quot;&gt;% inside circle: 0&lt;/p&gt;
-    &lt;p style=&quot;margin:0&quot; id=&quot;pi&quot;&gt;Approximate value of pi: 0&lt;/p&gt;
-&lt;/div&gt;
-</code></pre>
+<div style="padding: 20px; text-align: center">
+    <button class="start">start simulation</button>
+    <button class="stop" disabled>stop simulation</button>
+</div>
+<div style="width:500px; height:500px">
+    <canvas></canvas>
+</div>
+<div style="color: #fff; margin-left: 20px;">
+    <p style="margin:0" id="num-points">Number of points: 0</p>
+    <p style="margin:0" id="pct-inside">% inside circle: 0</p>
+    <p style="margin:0" id="pi">Approximate value of pi: 0</p>
+</div>
 </div>
 <p>Next, I was interested in the way that this simulation would play out once the number of points became large. Intuitively, this should approach Pi, but doing so requires that the random numbers generated by browsers be evenly distributed.</p>
 <div id="sim2" style="font-family: monospace; background-color: #444; margin: 20px 0">
