@@ -5,10 +5,10 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="keywords" content=", python, quick-reference, javascript, minimax" />
+<meta name="keywords" content=", machine-learning, clustering" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://lukesalamone.github.io/posts/managing-python-environments/" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/kmeans-clustering/" />
 
 <meta property="og:title" content=""/>
 <meta property="og:image" content=""/>
@@ -25,7 +25,7 @@
 
     <title>
         
-            Managing Python Environments :: Luke Salamone&#39;s Blog 
+            How does K-means clustering work? :: Luke Salamone&#39;s Blog 
         
     </title>
 
@@ -44,37 +44,38 @@
 
 
 
-  <meta itemprop="name" content="Managing Python Environments">
-  <meta itemprop="description" content="Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5 Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.7.5 # use python 3.">
-  <meta itemprop="datePublished" content="2020-10-24T17:45:41-05:00">
-  <meta itemprop="dateModified" content="2020-10-24T17:45:41-05:00">
-  <meta itemprop="wordCount" content="89">
+  <meta itemprop="name" content="How does K-means clustering work?">
+  <meta itemprop="description" content="K-means clustering (not to be confused with K-nearest neighbors) is an unsupervised learning algorithm used for grouping similar points together into clusters.
+start Algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence:
+assign points to cluster corresponding to closest centroid update centroid locations to the mean of all points assigned to the associated cluster The algorithm converges when the centroids stop moving, i.e. no points can be switched between clusters to a closer centroid.">
+  <meta itemprop="datePublished" content="2020-10-07T17:39:22-07:00">
+  <meta itemprop="dateModified" content="2020-10-07T17:39:22-07:00">
+  <meta itemprop="wordCount" content="125">
   <meta itemprop="image" content="https://lukesalamone.github.io/">
-  <meta itemprop="keywords" content="Python,Quick-Reference,Javascript,Minimax">
+  <meta itemprop="keywords" content="Machine-Learning,Clustering">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://lukesalamone.github.io/">
-  <meta name="twitter:title" content="Managing Python Environments">
-  <meta name="twitter:description" content="Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5 Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.7.5 # use python 3.">
+  <meta name="twitter:title" content="How does K-means clustering work?">
+  <meta name="twitter:description" content="K-means clustering (not to be confused with K-nearest neighbors) is an unsupervised learning algorithm used for grouping similar points together into clusters.
+start Algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence:
+assign points to cluster corresponding to closest centroid update centroid locations to the mean of all points assigned to the associated cluster The algorithm converges when the centroids stop moving, i.e. no points can be switched between clusters to a closer centroid.">
 
 
 
-    <meta property="og:url" content="https://lukesalamone.github.io/posts/managing-python-environments/">
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/kmeans-clustering/">
   <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
-  <meta property="og:title" content="Managing Python Environments">
-  <meta property="og:description" content="Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5 Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.7.5 # use python 3.">
+  <meta property="og:title" content="How does K-means clustering work?">
+  <meta property="og:description" content="K-means clustering (not to be confused with K-nearest neighbors) is an unsupervised learning algorithm used for grouping similar points together into clusters.
+start Algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence:
+assign points to cluster corresponding to closest centroid update centroid locations to the mean of all points assigned to the associated cluster The algorithm converges when the centroids stop moving, i.e. no points can be switched between clusters to a closer centroid.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2020-10-24T17:45:41-05:00">
-    <meta property="article:modified_time" content="2020-10-24T17:45:41-05:00">
-    <meta property="article:tag" content="Python">
-    <meta property="article:tag" content="Quick-Reference">
-    <meta property="article:tag" content="Javascript">
-    <meta property="article:tag" content="Minimax">
+    <meta property="article:published_time" content="2020-10-07T17:39:22-07:00">
+    <meta property="article:modified_time" content="2020-10-07T17:39:22-07:00">
+    <meta property="article:tag" content="Machine-Learning">
+    <meta property="article:tag" content="Clustering">
     <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
@@ -82,7 +83,7 @@ Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv ins
 
 
 
-    <meta property="article:published_time" content="2020-10-24 17:45:41 -0500 -0500" />
+    <meta property="article:published_time" content="2020-10-07 17:39:22 -0700 PDT" />
 
 
 
@@ -137,39 +138,44 @@ Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv ins
 
     <article>
       <h1 class="post-title">
-        <a href="https://lukesalamone.github.io/posts/managing-python-environments/">Managing Python Environments</a>
+        <a href="https://lukesalamone.github.io/posts/kmeans-clustering/">How does K-means clustering work?</a>
       </h1>
 
       
 
       <div class="post-content">
-        <p>Need to switch between python versions often? Use <a href="https://github.com/pyenv/pyenv"><code>pyenv</code></a>.</p>
-<h3 id="installing-pyenv">Installing pyenv</h3>
-<pre><code class="language-bash"># install pyenv
-curl https://pyenv.run | bash
+        <p>K-means clustering (not to be confused with K-nearest neighbors) is an unsupervised learning algorithm used for grouping similar points together into clusters.</p>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script src="../../js/kmeans_demo.js"></script>
+<div id='demo'>
+<button>start</button>
+<canvas id="myChart" style="background-color: #0000"></canvas>
+</div>
+<h2 id="algorithm">Algorithm</h2>
+<p>The basic K-means algorithm is fairly simple and has two steps, repeated until convergence:</p>
+<ol>
+<li>assign points to cluster corresponding to closest centroid</li>
+<li>update centroid locations to the mean of all points assigned to the associated cluster</li>
+</ol>
+<p>The algorithm converges when the centroids stop moving, i.e. no points can be switched between clusters to a closer centroid.</p>
+<pre><code class="language-python">def kmeans(points, k):
 
-# check pyenv install location
-which pyenv
-</code></pre>
-<h3 id="install-another-python-version">Install another python version</h3>
-<pre><code class="language-bash"># see a list of available python versions
-pyenv install --list
+  random.shuffle(points)
+  centroids = points[:k]
+  done = False
 
-# check installed python versions
-pyenv versions
+  while not done:
+    clusters = clear_clusters()
 
-# installs python 3.7.5
-pyenv install 3.7.5
-</code></pre>
-<h3 id="switch-python-versions">Switch python versions</h3>
-<pre><code class="language-bash"># use python 3.7.5 everywhere on your machine
-pyenv global 3.7.5
+    # assign each point to closest cluster
+    for point in points:
+      cluster_idx = closest_cluster(centroids, point)
+      clusters[cluster_idx].append(point)
 
-# use python 3.7.5 in current directory
-pyenv local 3.7.5
-
-# use python 3.7.5 in current shell session
-pyenv shell 3.7.5
+    # recalculate centroids
+    new_centroids = update_centroids(clusters)
+    done = new_centroids == centroids
+  return clusters
 </code></pre>
 
       </div>
@@ -182,10 +188,8 @@ pyenv shell 3.7.5
     <p>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
-        <span class="tag"><a href="https://lukesalamone.github.io/tags/python/">python</a></span>
-        <span class="tag"><a href="https://lukesalamone.github.io/tags/quick-reference/">quick-reference</a></span>
-        <span class="tag"><a href="https://lukesalamone.github.io/tags/javascript/">javascript</a></span>
-        <span class="tag"><a href="https://lukesalamone.github.io/tags/minimax/">minimax</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/machine-learning/">machine-learning</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/clustering/">clustering</a></span>
         
     </p>
 
@@ -199,7 +203,7 @@ pyenv shell 3.7.5
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        89 Words
+        125 Words
       </p>
 
       <p>
@@ -210,7 +214,7 @@ pyenv shell 3.7.5
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2020-10-24 15:45
+          2020-10-07 17:39
         
 
         
@@ -229,17 +233,17 @@ pyenv shell 3.7.5
         <div class="pagination__buttons">
           
             <span class="button previous">
-              <a href="https://lukesalamone.github.io/posts/siamese-nn-video/">
+              <a href="https://lukesalamone.github.io/posts/managing-python-environments/">
                 <span class="button__icon">←</span>
-                <span class="button__text">Siamese Neural Networks (Video)</span>
+                <span class="button__text">Managing Python Environments</span>
               </a>
             </span>
           
 
           
             <span class="button next">
-              <a href="https://lukesalamone.github.io/posts/kmeans-clustering/">
-                <span class="button__text">How does K-means clustering work?</span>
+              <a href="https://lukesalamone.github.io/posts/hardest-hangman-word/">
+                <span class="button__text">What is the Hardest Hangman Word?</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

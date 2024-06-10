@@ -2519,6 +2519,51 @@ pyenv shell 3.7.5
         </item>
         
         <item>
+            <title>How does K-means clustering work?</title>
+            <link>https://lukesalamone.github.io/posts/kmeans-clustering/</link>
+            <pubDate>Wed, 07 Oct 2020 17:39:22 -0700</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/kmeans-clustering/</guid>
+            <description>K-means clustering (not to be confused with K-nearest neighbors) is an unsupervised learning algorithm used for grouping similar points together into clusters.
+start Algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence:
+assign points to cluster corresponding to closest centroid update centroid locations to the mean of all points assigned to the associated cluster The algorithm converges when the centroids stop moving, i.e. no points can be switched between clusters to a closer centroid.</description>
+            <content type="html"><![CDATA[<p>K-means clustering (not to be confused with K-nearest neighbors) is an unsupervised learning algorithm used for grouping similar points together into clusters.</p>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script src="/js/kmeans_demo.js"></script>
+<div id='demo'>
+<button>start</button>
+<canvas id="myChart" style="background-color: #0000"></canvas>
+</div>
+<h2 id="algorithm">Algorithm</h2>
+<p>The basic K-means algorithm is fairly simple and has two steps, repeated until convergence:</p>
+<ol>
+<li>assign points to cluster corresponding to closest centroid</li>
+<li>update centroid locations to the mean of all points assigned to the associated cluster</li>
+</ol>
+<p>The algorithm converges when the centroids stop moving, i.e. no points can be switched between clusters to a closer centroid.</p>
+<pre><code class="language-python">def kmeans(points, k):
+
+  random.shuffle(points)
+  centroids = points[:k]
+  done = False
+
+  while not done:
+    clusters = clear_clusters()
+
+    # assign each point to closest cluster
+    for point in points:
+      cluster_idx = closest_cluster(centroids, point)
+      clusters[cluster_idx].append(point)
+
+    # recalculate centroids
+    new_centroids = update_centroids(clusters)
+    done = new_centroids == centroids
+  return clusters
+</code></pre>
+]]></content>
+        </item>
+        
+        <item>
             <title>What is the Hardest Hangman Word?</title>
             <link>https://lukesalamone.github.io/posts/hardest-hangman-word/</link>
             <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>

@@ -275,6 +275,13 @@
       <description>Need to switch between python versions often? Use pyenv.&#xA;Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5 Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.7.5 # use python 3.</description>
     </item>
     <item>
+      <title>How does K-means clustering work?</title>
+      <link>https://lukesalamone.github.io/posts/kmeans-clustering/</link>
+      <pubDate>Wed, 07 Oct 2020 17:39:22 -0700</pubDate>
+      <guid>https://lukesalamone.github.io/posts/kmeans-clustering/</guid>
+      <description>K-means clustering (not to be confused with K-nearest neighbors) is an unsupervised learning algorithm used for grouping similar points together into clusters.&#xA;start Algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence:&#xA;assign points to cluster corresponding to closest centroid update centroid locations to the mean of all points assigned to the associated cluster The algorithm converges when the centroids stop moving, i.e. no points can be switched between clusters to a closer centroid.</description>
+    </item>
+    <item>
       <title>What is the Hardest Hangman Word?</title>
       <link>https://lukesalamone.github.io/posts/hardest-hangman-word/</link>
       <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>

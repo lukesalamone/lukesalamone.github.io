@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clustering on Luke Salamone&#39;s Blog</title>
+    <link>https://lukesalamone.github.io/tags/clustering/</link>
+    <description>Recent content in Clustering on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 07 Oct 2020 17:39:22 -0700</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/clustering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How does K-means clustering work?</title>
+      <link>https://lukesalamone.github.io/posts/kmeans-clustering/</link>
+      <pubDate>Wed, 07 Oct 2020 17:39:22 -0700</pubDate>
+      <guid>https://lukesalamone.github.io/posts/kmeans-clustering/</guid>
+      <description>K-means clustering (not to be confused with K-nearest neighbors) is an unsupervised learning algorithm used for grouping similar points together into clusters.&#xA;start Algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence:&#xA;assign points to cluster corresponding to closest centroid update centroid locations to the mean of all points assigned to the associated cluster The algorithm converges when the centroids stop moving, i.e. no points can be switched between clusters to a closer centroid.</description>
+    </item>
+  </channel>
+</rss>
