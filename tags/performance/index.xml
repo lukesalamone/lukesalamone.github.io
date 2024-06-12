@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Performance on Luke Salamone&#39;s Blog</title>
+    <link>https://lukesalamone.github.io/tags/performance/</link>
+    <description>Recent content in Performance on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 04 Feb 2024 23:39:29 -0700</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vectorized K-Means Clustering</title>
+      <link>https://lukesalamone.github.io/posts/vectorized-kmeans/</link>
+      <pubDate>Sun, 04 Feb 2024 23:39:29 -0700</pubDate>
+      <guid>https://lukesalamone.github.io/posts/vectorized-kmeans/</guid>
+      <description>K-means clustering (previous discussion) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. You can see a demo (in two dimensions) below. Centroids are colored white.&#xA;start General algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.e. when no points change cluster):&#xA;assign points to the cluster corresponding to closest centroid update the centroid locations to the mean of all points assigned to the associated cluster import numpy as np &#39;&#39;&#39; General setup: we will demo 5000 points, each with two dimensions.</description>
+    </item>
+  </channel>
+</rss>

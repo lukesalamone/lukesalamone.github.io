@@ -303,6 +303,229 @@ $$
         </item>
         
         <item>
+            <title>Vectorized K-Means Clustering</title>
+            <link>https://lukesalamone.github.io/posts/vectorized-kmeans/</link>
+            <pubDate>Sun, 04 Feb 2024 23:39:29 -0700</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/vectorized-kmeans/</guid>
+            <description>K-means clustering (previous discussion) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. You can see a demo (in two dimensions) below. Centroids are colored white.
+start General algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.e. when no points change cluster):
+assign points to the cluster corresponding to closest centroid update the centroid locations to the mean of all points assigned to the associated cluster import numpy as np &#39;&#39;&#39; General setup: we will demo 5000 points, each with two dimensions.</description>
+            <content type="html"><![CDATA[<p>K-means clustering (<a href="/posts/kmeans-clustering/">previous discussion</a>) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. You can see a demo (in two dimensions) below. Centroids are colored white.</p>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script src="/js/kmeans_demo.js"></script>
+<div id='demo'>
+<button>start</button>
+<canvas id="myChart" style="background-color: #0000"></canvas>
+</div>
+<h2 id="general-algorithm">General algorithm</h2>
+<p>The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.e. when no points change cluster):</p>
+<ol>
+<li>assign points to the cluster corresponding to closest centroid</li>
+<li>update the centroid locations to the mean of all points assigned to the associated cluster</li>
+</ol>
+<pre><code class="language-python">import numpy as np
+
+'''
+General setup: we will demo 5000 points, each with two 
+dimensions. They will be clustered into 5 clusters.
+'''
+
+N, k, d = 5000, 5, 2
+points = np.random.random((N,d))
+centroids = np.random.random((k,d))
+
+while True:
+
+  # assign each point to closest cluster
+  clusters = assign_clusters(points, centroids)
+
+  # recalculate centroids
+  new_centroids = update_centroids(points, clusters, k)
+
+  # if centroids haven't changed, we're done
+  if centroids_equal(new_centroids, centroids):
+    break
+
+  # otherwise, update centroids
+  centroids = new_centroids
+</code></pre>
+<h2 id="vectorizing-the-algorithm">Vectorizing the algorithm</h2>
+<p>Now that we&rsquo;ve established the general algorithm, we might consider how it can be vectorized. In essence, this means we&rsquo;ll avoid writing for-loops in python. In numpy, this means cython will handle for-loops. For environments with a GPU, we can use PyTorch, JAX or Tensorflow to take advantage of parallel processing that GPUs excel at.</p>
+<h3 id="how-broadcasting-works">How broadcasting works</h3>
+<p>Before going further it would be good to pause and introduce broadcasting. The <a href="https://numpy.org/devdocs/user/basics.broadcasting.html">numpy guide</a> is much more comprehensive, but the gist is that because numpy needs tensors to have the same shape before performing certain arithmetic operations on them, numpy will automatically try to align their shapes. Importantly, this is done without making copies of the data. The steps for broadcasting are as follows:</p>
+<ol start="0">
+<li>A scalar will simply take the shape of the vector it&rsquo;s being broadcasted to.</li>
+<li>If one vector has fewer dimensions, left-pad its shape with 1s.</li>
+<li>Starting from the right, check dimension compatibility. If they are equal or one of them is 1, the dimensions are compatible.</li>
+</ol>
+<p>For example,</p>
+<pre><code class="language-python"># scalars are the simplest
+(np.ones((2,2)) * 3).shape # (2,2)
+
+# (3,) is left padded to (1,3)
+(np.ones((3)) * np.ones((2,3))).shape # (2,3)
+
+# if dimensions equal or one of them is 1, they are compatible
+(np.ones((2,3,1)) * np.ones((2,1,4))).shape # (2,3,4)
+
+# error! [1,1] * [1,1,1] doesn't work
+(np.ones((2)) * np.ones(3)) # incompatible shapes!
+</code></pre>
+<p>For more information, check out the Numpy guide: <a href="https://numpy.org/devdocs/user/basics.broadcasting.html">https://numpy.org/devdocs/user/basics.broadcasting.html</a>.</p>
+<h3 id="assign_clusters">assign_clusters()</h3>
+<p>Ok, back to K-means. Let&rsquo;s start with <code>assign_clusters()</code>. A point is assigned to the cluster corresponding to the centroid which is closest.</p>
+<p>The general idea is that for each point we&rsquo;d like to know its distance to each centroid. We can then take the argmin of those distances to identify the correct cluster and return a result with shape <code>(N,)</code> (N = # of points). Distance will be computed using euclidean distance i.e. subtract, square, and sum.</p>
+<p>First we expand the dimensions of the points from <code>(N,d)</code> to <code>(N,1,d)</code>. We also expand the dimensions of the centroids to <code>(1,k,d)</code>. (This happens automatically via broadcasting.) When we take the difference, we are left with a vector with shape <code>(N,k,d)</code>. For each point in <code>N</code>, this yields a vector with <code>k</code> rows and <code>d</code> columns.</p>
+<p>Now that we have the differences, we square them, and take the sum across the last dimension. This yields a vector with shape <code>(N,k)</code>.</p>
+<p>For actual euclidean distance we would then take the square root of the result, but since we just care about the relative distances we can skip this step.</p>
+<p>Finally, we just take the <code>argmin</code> of the last dimension, i.e. for each row, the index of the smallest distance. Now we have our <code>(N,)</code> result.</p>
+<pre><code class="language-python">def assign_clusters(points, centroids):
+  # (5000,2) -&gt; (5000,1,2)
+  points = np.expand_dims(points, 1)
+
+  # (5000,1,2) - (5,2)
+  # with broadcasting becomes (5000,5,2)
+  diff = points - centroids
+
+  diff = diff ** 2
+
+  # (5000,5,2) -&gt; (5000,5)
+  diff = diff.sum(-1)
+
+  # (5000,5) -&gt; (5000,)
+  diff = diff.argmin(-1)
+
+  return diff
+</code></pre>
+<h3 id="update_centroids">update_centroids()</h3>
+<p>To update the centroids, we simply take the mean of the points within that cluster. To do this, we will create a vector with shape <code>(N,k,d)</code> again, and mask out  points not in the cluster.</p>
+<p>We start by creating an <code>N x k</code> mask, where 1s correspond to the n-th point being in the k-th cluster. We will also temporarily add a dimension at the end to make this <code>N x k x 1</code>.</p>
+<p>Adding a dimension to the points vector for proper broadcasting, we can then create the <code>N x k x d</code> vector we planned above. Summing this across the first dimension yields a <code>k x d</code> vector, representing the sums of all of the points within each of the <code>k</code> clusters.</p>
+<p>Now we just need to divide by the number of points in each cluster, which we can get by summing the <code>N x k</code> mask we created earlier across the first dimension, yielding <code>k</code> counts.</p>
+<p>At this point, we can divide the sum by the counts to get the means.</p>
+<pre><code class="language-python">def update_centroids(points, clusters, k):
+    N = clusters.shape[0]
+
+    # create an N x k mask, where each row contains a 1
+    # in the position corresponding to its cluster
+    mask = np.zeros((N, k))
+    mask[np.arange(N), clusters] = 1
+
+    # add a dimension in the middle so that 
+    # multiplication will broadcast
+    # (5000,2) -&gt; (5000,1,2)
+    points = np.expand_dims(points, 1)
+
+    # (5000,5,1) * (5000,1,2) results in a (5000,5,2) vector
+    # for each of the 5000 points, we have a 5x2 vector where only
+    # one of the five rows will have non-zero values
+    masked_points = np.expand_dims(mask, -1) * points
+
+    # sum across points
+    # (5000, 5, 2) -&gt; (5, 2)
+    sums = masked_points.sum(0)
+
+    # sum across points
+    counts = mask.sum(0)
+
+    # avoid divide by zero
+    counts[counts == 0] = 1
+
+    # divide sum by count to get means
+    return sums / np.expand_dims(counts, -1)
+</code></pre>
+<h3 id="centroids_equal">centroids_equal()</h3>
+<p>As a last implementation, we need to check whether the centroids have changed. For this we can just call <code>np.array_equal()</code> on the old and new centroids vectors.</p>
+<pre><code class="language-python">def centroids_equal(vec1, vec2):
+  return np.array_equal(vec1, vec2)
+</code></pre>
+<h2 id="comparing-vectorization-vs-loops">Comparing vectorization vs loops</h2>
+<p>To compare the vectorized implementation with the non-vectorized implementation, I ran each 100 times and took the mean clock time to converge. Note that because the points are random, K-means may take different numbers of iterations to converge.</p>
+<p>The vectorized implementation (green) runs in significantly less time, between 7 and 21 times faster.</p>
+<p><canvas id="groupedBarChart" width="800" height="400"></canvas></p>
+<script>
+        const vecSpeeds = {
+          100: 1/0.00029814304085448387,
+          1000: 1/0.002743517281487584,
+          10000: 1/0.038284409288316966,
+          100000: 1/0.5512656086706557
+        };
+
+        const loopSpeeds = {
+          100: 1/0.0023364973906427624,
+          1000: 1/0.04799017548095435,
+          10000: 1/0.720272407180164,
+          100000: 1/10.535213513069321
+        };
+
+        let mult = [7.637348888, 14.978150694, 21.25242236];
+
+        const labels = Object.keys(vecSpeeds);
+        const vecData = Object.values(vecSpeeds);
+        const loopData = Object.values(loopSpeeds);
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Vectorized',
+                data: vecData,
+                backgroundColor: '#00ff0022',
+                borderColor: '#00ff00',
+                borderWidth: 1
+            }, {
+                label: 'Non-vectorized',
+                data: loopData,
+                backgroundColor: '#8a2be222',
+                borderColor: '#8a2be2',
+                borderWidth: 1
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+              scales: {
+                  y: {
+                      type: 'logarithmic',
+                      beginAtZero: true,
+                      title: {
+                          display: true,
+                          text: 'runs/sec (log scale)'
+                      }
+                  },
+                  x: {
+                    title: {
+                      display: true,
+                      text: 'number of points'
+                    }
+                  }
+              },
+              plugins: {
+                title: {
+                    display: true,
+                    text: 'K-means speeds (k=5)',
+                    font: {
+                        size: 16
+                    },
+                    padding: {
+                        top: 10,
+                        bottom: 30
+                    }
+                }
+              }
+            }
+        };
+
+        const myChart = new Chart(
+            document.getElementById('groupedBarChart'),
+            config
+        );
+</script>]]></content>
+        </item>
+        
+        <item>
             <title>What is a blunder in chess?</title>
             <link>https://lukesalamone.github.io/posts/chess-blunders/</link>
             <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>

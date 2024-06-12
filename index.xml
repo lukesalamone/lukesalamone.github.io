@@ -30,6 +30,13 @@
       <description>Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.&#xA;Enterprising readers might be asking themselves how to get these vectors (also known as embeddings) in the first place. One way is to simply pay for them. This isn&amp;rsquo;t ideal for a couple of reasons:</description>
     </item>
     <item>
+      <title>Vectorized K-Means Clustering</title>
+      <link>https://lukesalamone.github.io/posts/vectorized-kmeans/</link>
+      <pubDate>Sun, 04 Feb 2024 23:39:29 -0700</pubDate>
+      <guid>https://lukesalamone.github.io/posts/vectorized-kmeans/</guid>
+      <description>K-means clustering (previous discussion) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. You can see a demo (in two dimensions) below. Centroids are colored white.&#xA;start General algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.e. when no points change cluster):&#xA;assign points to the cluster corresponding to closest centroid update the centroid locations to the mean of all points assigned to the associated cluster import numpy as np &#39;&#39;&#39; General setup: we will demo 5000 points, each with two dimensions.</description>
+    </item>
+    <item>
       <title>What is a blunder in chess?</title>
       <link>https://lukesalamone.github.io/posts/chess-blunders/</link>
       <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>

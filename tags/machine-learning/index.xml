@@ -16,6 +16,13 @@
       <description>Suppose we have a vector database with a billion items in it (the haystack). And suppose we are looking for K vectors, the needles which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing 1-distance(x,y).) And also suppose that we&amp;rsquo;d like to do this quickly.&#xA;Naive and semi-naive approaches One approach might be to compare every vector and take the argmax. In that case, for vectors of length D our runtime will be 1 billion x D.</description>
     </item>
     <item>
+      <title>Vectorized K-Means Clustering</title>
+      <link>https://lukesalamone.github.io/posts/vectorized-kmeans/</link>
+      <pubDate>Sun, 04 Feb 2024 23:39:29 -0700</pubDate>
+      <guid>https://lukesalamone.github.io/posts/vectorized-kmeans/</guid>
+      <description>K-means clustering (previous discussion) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. You can see a demo (in two dimensions) below. Centroids are colored white.&#xA;start General algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.e. when no points change cluster):&#xA;assign points to the cluster corresponding to closest centroid update the centroid locations to the mean of all points assigned to the associated cluster import numpy as np &#39;&#39;&#39; General setup: we will demo 5000 points, each with two dimensions.</description>
+    </item>
+    <item>
       <title>Paper Summary: Dual-Encoders in Ranking</title>
       <link>https://lukesalamone.github.io/posts/dual-encoders-ranking/</link>
       <pubDate>Sat, 17 Dec 2022 16:53:47 -0800</pubDate>
