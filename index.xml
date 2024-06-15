@@ -6,8 +6,15 @@
     <description>Recent content on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 06 Jun 2024 16:30:27 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 13 Jun 2024 19:38:39 -0700</lastBuildDate>
     <atom:link href="https://lukesalamone.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Most Complex Chess Position of 2023</title>
+      <link>https://lukesalamone.github.io/posts/most-complex-chess-position-2023/</link>
+      <pubDate>Thu, 13 Jun 2024 19:38:39 -0700</pubDate>
+      <guid>https://lukesalamone.github.io/posts/most-complex-chess-position-2023/</guid>
+      <description>&amp;ldquo;Complex&amp;rdquo; isn&amp;rsquo;t a great word to describe this situation. I&amp;rsquo;m looking for a better term.&#xA;The opening position in chess has 20 legal moves. From there, the number of legal moves in a position tends to increase as pieces move towards the center of the board, before decreasing as the number of pieces on the board drops in the endgame.&#xA;People have composed artificial positions with a huge number of legal moves.</description>
+    </item>
     <item>
       <title>What are Sparse Autoencoders?</title>
       <link>https://lukesalamone.github.io/posts/sparse-autoencoder/</link>

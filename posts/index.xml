@@ -5,8 +5,202 @@
         <description>Recent content in Posts on Luke Salamone&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Thu, 06 Jun 2024 16:30:27 -0700</lastBuildDate>
+        <lastBuildDate>Thu, 13 Jun 2024 19:38:39 -0700</lastBuildDate>
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>The Most Complex Chess Position of 2023</title>
+            <link>https://lukesalamone.github.io/posts/most-complex-chess-position-2023/</link>
+            <pubDate>Thu, 13 Jun 2024 19:38:39 -0700</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/most-complex-chess-position-2023/</guid>
+            <description>&amp;ldquo;Complex&amp;rdquo; isn&amp;rsquo;t a great word to describe this situation. I&amp;rsquo;m looking for a better term.
+The opening position in chess has 20 legal moves. From there, the number of legal moves in a position tends to increase as pieces move towards the center of the board, before decreasing as the number of pieces on the board drops in the endgame.
+People have composed artificial positions with a huge number of legal moves.</description>
+            <content type="html"><![CDATA[<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<p><strong>&ldquo;Complex&rdquo; isn&rsquo;t a great word to describe this situation. I&rsquo;m looking for a better term.</strong></p>
+<p>The opening position in chess has 20 legal moves. From there, the number of legal moves in a position tends to increase as pieces move towards the center of the board, before decreasing as the number of pieces on the board drops in the endgame.</p>
+<p>People have composed <a href="https://lichess.org/analysis/fromPosition/R6R/3Q4/1Q4Q1/4Q3/2Q4Q/Q4Q2/pp1Q4/kBNN1KB1_w_-_-">artificial positions</a> with a huge number of legal moves. The highest artificial position I have found has 218 legal moves. But it&rsquo;s hard to imagine how such a position could come about in a real game, which is what I&rsquo;m interested. So I churned through all of the positions in all of the games which took place in 2023. Here is what I found.</p>
+<h2 id="most-games-max-out-around-16-moves-in">Most games max out around 16 moves in</h2>
+<p>In the chart below you can see the maximum moves at any point in the game. The x-axis represents half moves. (In other words, if white makes a move and black makes a move, that&rsquo;s two half moves.) Each game starts out with exactly 20 possible moves for white, which quickly increases in the middle game before gradually decreasing again.</p>
+<p><canvas id="movesByPly" width="800" height="600"></canvas></p>
+<p>The colors represent the percentiles, since at every slice along the x-axis there is actually a distribution of positions and associated legal moves. Interestingly, we can see that for the 10th percentile the bottom really falls out after 40 moves or so, with positions so constrained that there are only a handful of legal moves. These likely represent positions where the king is in check.</p>
+<h2 id="100-move-positions-are-rare">100+ move positions are rare</h2>
+<figure><img src="/img/pgn_processing.gif"
+    alt="Each line represents the chess position in a chunk of 5000 games with the most legal moves."><figcaption>
+      <p>Each line represents the chess position in a chunk of 5000 games with the most legal moves.</p>
+    </figcaption>
+</figure>
+
+<p>To parse the games, I wrote a multithreaded rust script with python bindings to process chunks of 5000 games. Within a chunk of games, it was pretty typical for the maximum number of legal moves in any position in any game in the chunk to be between 70 and 100.</p>
+<p><canvas id="maxMovesHist" width="800" height="600"></canvas></p>
+<p>Here is a typical position with 85 legal moves for white:</p>
+<iframe src="https://lichess.org/embed/game/bDB6sSJc?theme=auto&bg=auto#92"
+width=760 height=600 frameborder=0></iframe>
+<h2 id="very-few-ever-exceed-120">Very few ever exceed 120</h2>
+<p>When you get past 100, most of the positions have several queens. <a href="https://lichess.org/paqlYvUW">This 112 move gem has zero</a>. Here is a position with six queens:</p>
+<iframe src="https://lichess.org/embed/game/aWnIfauG?theme=auto&bg=auto#155"
+width=760 height=600 frameborder=0></iframe>
+<h2 id="the-147-move-position-">The 147 move position 🤯</h2>
+<p>Here it is, the 147 legal move masterpiece.</p>
+<iframe src="https://lichess.org/embed/game/cJq0LRav?theme=auto&bg=auto#117"
+width=760 height=600 frameborder=0></iframe>
+<script>
+  function interpolateColors(startColor, endColor, alpha, progress) {
+      function hexToRgb(hex) {
+          let r = parseInt(hex.slice(1, 3), 16);
+          let g = parseInt(hex.slice(3, 5), 16);
+          let b = parseInt(hex.slice(5, 7), 16);
+          return [r, g, b];
+      }
+
+      function rgbToHex(r, g, b) {
+          return "#" + [r, g, b].map(x => {
+              return x.toString(16).padStart(2, '0');
+          }).join('');
+      }
+
+      let startRgb = hexToRgb(startColor);
+      let endRgb = hexToRgb(endColor);
+
+      let resultRgb = startRgb.map((start, i) => {
+          return Math.round(start + progress * (endRgb[i] - start));
+      });
+
+      alpha = Math.floor(alpha * 256).toString(16).padStart(2,'0');
+      return rgbToHex(...resultRgb) + alpha;
+  }
+
+  let percentiles = {"10": [20, 21, 22, 24, 26, 26, 26, 27, 27, 27, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 27, 27, 27, 27, 27, 26, 26, 26, 26, 26, 25, 24, 24, 24, 23, 22, 22, 21, 20, 20, 19, 18, 16, 14, 12, 11, 9, 8, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3], "20": [20, 24, 24, 25, 28, 28, 29, 30, 30, 30, 30, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29, 28, 28, 28, 27, 26, 26, 26, 25, 24, 24, 24, 23, 22, 22, 21, 20, 20, 19, 18, 18, 17, 16, 16, 16, 15, 14, 13, 12, 12, 12, 11, 10, 10, 10, 9, 8, 8, 8, 8, 8, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 5], "30": [20, 24, 25, 25, 28, 30, 30, 32, 32, 32, 32, 32, 33, 33, 33, 33, 33, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 33, 33, 33, 32, 32, 32, 32, 32, 31, 30, 30, 30, 30, 29, 28, 28, 28, 27, 26, 26, 25, 24, 24, 23, 22, 22, 22, 21, 20, 20, 20, 19, 18, 18, 18, 17, 16, 16, 16, 15, 14, 14, 14, 14, 13, 12, 12, 12, 12, 11, 11, 10, 10, 10, 10, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 7], "40": [20, 24, 28, 28, 29, 31, 32, 32, 33, 34, 34, 34, 34, 34, 35, 35, 35, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 35, 35, 35, 34, 34, 34, 34, 33, 32, 32, 32, 32, 31, 30, 30, 29, 28, 28, 28, 27, 26, 26, 26, 25, 24, 24, 23, 22, 22, 22, 21, 20, 20, 20, 19, 18, 18, 18, 18, 17, 17, 16, 16, 16, 16, 15, 15, 14, 14, 14, 14, 14, 13, 13, 13, 12, 12, 12, 12, 12, 11, 11, 11], "50": [20, 24, 28, 29, 30, 32, 33, 34, 35, 36, 36, 36, 36, 36, 36, 36, 37, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 37, 37, 37, 36, 36, 36, 36, 35, 34, 34, 34, 33, 32, 32, 32, 31, 30, 30, 30, 29, 28, 28, 28, 27, 26, 26, 26, 25, 24, 24, 24, 22, 22, 22, 22, 21, 20, 20, 20, 19, 19, 18, 18, 18, 18, 18, 17, 17, 17, 16, 16, 16, 16, 16, 16, 15, 15, 15, 15, 15, 14], "60": [20, 24, 29, 30, 31, 33, 34, 35, 36, 36, 37, 38, 38, 38, 38, 38, 39, 39, 39, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 39, 38, 38, 38, 38, 38, 38, 37, 36, 36, 36, 35, 34, 34, 34, 33, 32, 32, 32, 31, 30, 30, 30, 29, 28, 28, 28, 27, 26, 26, 26, 25, 24, 24, 24, 23, 22, 22, 22, 22, 21, 21, 20, 20, 20, 20, 20, 19, 19, 19, 18, 18, 18, 18, 18, 18, 18, 18, 17], "70": [20, 25, 30, 30, 32, 34, 35, 36, 38, 38, 39, 40, 40, 40, 40, 40, 41, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 43, 43, 43, 43, 43, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 41, 40, 40, 40, 40, 40, 39, 38, 38, 38, 38, 37, 36, 36, 36, 36, 35, 34, 34, 33, 32, 32, 31, 30, 30, 30, 29, 29, 28, 28, 28, 27, 26, 26, 26, 26, 25, 24, 24, 24, 24, 23, 23, 22, 22, 22, 22, 22, 21, 21, 21, 21, 21, 20, 20, 20], "80": [20, 25, 30, 32, 34, 36, 37, 38, 39, 40, 41, 42, 42, 42, 42, 43, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 44, 44, 44, 44, 44, 44, 44, 44, 43, 42, 42, 42, 42, 42, 41, 40, 40, 40, 39, 38, 38, 38, 37, 36, 36, 36, 35, 34, 34, 34, 33, 33, 32, 32, 32, 31, 30, 30, 30, 30, 29, 28, 28, 28, 28, 27, 27, 26, 26, 26, 26, 26, 26, 25, 25, 25, 25, 25, 24, 24], "90": [20, 25, 30, 34, 36, 37, 38, 40, 41, 42, 43, 44, 45, 46, 46, 46, 46, 46, 47, 48, 48, 48, 48, 48, 48, 48, 48, 48, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 47, 46, 46, 46, 46, 46, 46, 46, 45, 44, 44, 44, 43, 42, 42, 42, 42, 42, 41, 40, 40, 40, 39, 38, 38, 38, 37, 36, 36, 36, 36, 35, 34, 34, 34, 34, 33, 33, 32, 32, 32, 32, 32, 31, 31, 31, 31, 31, 31, 30, 30, 30]};
+
+  let colors = ['#00ff0019', '#00ff1c4c', '#00ff3980', '#00ff55b3', '#00ff71e6', '#00ff8eb3', '#00ffaa80', '#00ffc64c', '#00ffe319'];
+
+  let datasets = Object.keys(percentiles).map(x => parseInt(x)).sort((a, b) => a-b).map((key, idx) => {
+    return {
+      label: `${key}th percentile`,
+      data:percentiles[key + ''],
+      backgroundColor: colors[idx],
+      borderColor: colors[idx].slice(0,7),
+      borderWidth: 1,
+      pointRadius: 0,
+      fill:'+1'
+    };
+  })
+
+  const config = {
+    type: 'line',
+    data: {
+      labels:Array.from({length: 101}, (_, index) => index),
+      datasets: datasets
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: '# legal moves'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: 'half-moves into game'
+          }
+        }
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: 'number of moves by ply',
+          font: {
+            size: 16
+          },
+          padding: {
+            top: 10,
+            bottom: 30
+          }
+        },
+        // legend: {
+        //   display: false
+        // }
+      }
+    }
+  };
+
+  const myChart = new Chart(document.getElementById('movesByPly'), config);
+</script>
+<script>
+  let histData = ["0.17519433", "0.00665346", "0.00911844", "0.00119241", "0.00079160", "0.00047095", "0.00072146", "0.02613285", "0.03529138", "0.08880962", "0.12288854", "0.04479059", "0.07246656", "0.05651430", "0.07411991", "0.09145497", "0.09567350", "0.12854999", "0.21041557", "0.33257263", "0.47246556", "0.73360371", "1.07632687", "1.61679998", "2.21595176", "2.89099704", "3.77912328", "4.69646861", "5.60022646", "6.48578751", "7.72264906", "7.51426761", "7.80676919", "7.28802002", "6.80638592", "6.17149184", "5.34672375", "4.53279758", "3.73404210", "2.97459612", "2.32694625", "1.79979008", "1.35822701", "1.00353966", "0.72842324", "0.52172519", "0.36813455", "0.25584745", "0.17628654", "0.12094461", "0.08402995", "0.05847827", "0.03977044", "0.02829723", "0.01950946", "0.01411855", "0.00987998", "0.00780579", "0.00611236", "0.00488989", "0.00388786", "0.00286580", "0.00244494", "0.00225456", "0.00195395", "0.00157318", "0.00153310", "0.00142288", "0.00124251", "0.00096195", "0.00104211", "0.00072146", "0.00084170", "0.00050101", "0.00047095", "0.00050101", "0.00045091", "0.00045091", "0.00038077", "0.00031063", "0.00029059"].map(x => parseFloat(x));
+
+
+const config2 = {
+    type: 'line',
+    data: {
+      labels:Array.from({length: 81}, (_, index) => index+20),
+      datasets: [{
+          label: `max moves`,
+          data:histData,
+          backgroundColor: '#ff00ff22',
+          borderColor: '#ff00ff',
+          borderWidth: 1,
+          pointRadius: 1,
+          fill:'origin'
+        }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: '% of games'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: 'max moves in the game'
+          }
+        }
+      },
+      plugins: {
+        tooltip: {
+                enabled: true,
+                callbacks: {
+                    title: function(context) {
+                      let pct = context[0].parsed.y.toFixed(2);
+                      let count = context[0].label;
+
+                      return `${pct}% of games had a position with ${count} legal moves`;
+                    },
+                    label: function(context) {
+                        return null
+                    },
+                }
+            },
+        title: {
+          display: true,
+          text: 'max moves by game',
+          font: {
+            size: 16
+          },
+          padding: {
+            top: 10,
+            bottom: 30
+          }
+        },
+        legend: {
+          display: false
+        }
+      }
+    }
+  };
+
+new Chart(document.getElementById('maxMovesHist'), config2);
+</script>
+]]></content>
+        </item>
         
         <item>
             <title>What are Sparse Autoencoders?</title>
