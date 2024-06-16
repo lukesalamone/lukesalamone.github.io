@@ -32,12 +32,12 @@ The opening position in chess has 20 legal moves. From there, the number of lega
 </figure>
 
 <p>To parse the games, I wrote a multithreaded rust script with python bindings to process chunks of 5000 games at a time. Within a chunk of games, it was pretty typical for the maximum number of legal moves in any position in any game in the chunk to be between 70 and 100.</p>
-<p><canvas id="maxMovesHist" width="800" height="400"></canvas></p>
-<p>Here is a typical position with 85 legal moves for white:</p>
+<!-- <canvas id="maxMovesHist" width="800" height="400"></canvas> -->
+<p>Here is a typical position with 84 legal moves for white:</p>
 <iframe src="https://lichess.org/embed/game/bDB6sSJc?theme=auto&bg=auto#92"
 width=760 height=600 frameborder=0></iframe>
 <h2 id="very-few-ever-exceed-120">Very few ever exceed 120</h2>
-<p>When you get past 100, most of the positions have several queens. There are exceptions, however. <a href="https://lichess.org/paqlYvUW">This 112 move gem has zero</a>.</p>
+<p>When you get past 100, most of the positions have several queens. There are exceptions, however. <a href="https://lichess.org/paqlYvUW#177">This 112 move gem has zero</a>.</p>
 <p>Here is a typical 120-move position with six queens:</p>
 <iframe src="https://lichess.org/embed/game/aWnIfauG?theme=auto&bg=auto#155"
 width=760 height=600 frameborder=0></iframe>
@@ -123,7 +123,7 @@ width=760 height=600 frameborder=0></iframe>
   const myChart = new Chart(document.getElementById('movesByPly'), config);
 </script>
 <script>
-  let histData = ["0.17519433", "0.00665346", "0.00911844", "0.00119241", "0.00079160", "0.00047095", "0.00072146", "0.02613285", "0.03529138", "0.08880962", "0.12288854", "0.04479059", "0.07246656", "0.05651430", "0.07411991", "0.09145497", "0.09567350", "0.12854999", "0.21041557", "0.33257263", "0.47246556", "0.73360371", "1.07632687", "1.61679998", "2.21595176", "2.89099704", "3.77912328", "4.69646861", "5.60022646", "6.48578751", "7.72264906", "7.51426761", "7.80676919", "7.28802002", "6.80638592", "6.17149184", "5.34672375", "4.53279758", "3.73404210", "2.97459612", "2.32694625", "1.79979008", "1.35822701", "1.00353966", "0.72842324", "0.52172519", "0.36813455", "0.25584745", "0.17628654", "0.12094461", "0.08402995", "0.05847827", "0.03977044", "0.02829723", "0.01950946", "0.01411855", "0.00987998", "0.00780579", "0.00611236", "0.00488989", "0.00388786", "0.00286580", "0.00244494", "0.00225456", "0.00195395", "0.00157318", "0.00153310", "0.00142288", "0.00124251", "0.00096195", "0.00104211", "0.00072146", "0.00084170", "0.00050101", "0.00047095", "0.00050101", "0.00045091", "0.00045091", "0.00038077", "0.00031063", "0.00029059"].map(x => parseFloat(x));
+  let histData = ["0.16264871", "0.00656638", "0.00871243", "0.00130045", "0.00086964", "0.00038673", "0.00075342", "0.02417359", "0.03599588", "0.08046975", "0.12240082", "0.04151829", "0.06883581", "0.05604168", "0.06971947", "0.08875537", "0.09150055", "0.11839126", "0.19631219", "0.31351120", "0.44738365", "0.69643930", "1.02187499", "1.54113618", "2.12636978", "2.79879780", "3.68506507", "4.60544467", "5.53388347", "6.45800011", "7.69917063", "7.53643576", "7.84121249", "7.36049398", "6.88992060", "6.26871116", "5.44162148", "4.60481949", "3.80167096", "3.03858799", "2.38255688", "1.83647712", "1.38158531", "1.02173072", "0.74028999", "0.52558111", "0.37072709", "0.25889421", "0.17859478", "0.12151114", "0.08456747", "0.05826788", "0.03935822", "0.02706504", "0.01928837", "0.01363772", "0.01005095", "0.00762638", "0.00556449", "0.00434419", "0.00359678", "0.00307780", "0.00240053", "0.00204987", "0.00173327", "0.00146677", "0.00138661", "0.00123633", "0.00114416", "0.00100389", "0.00084359", "0.00075142", "0.00065123", "0.00055905", "0.00054904", "0.00049493", "0.00041478", "0.00035667", "0.00037070", "0.00029856", "0.00024847"].map(x => parseFloat(x));
 
 
 const config2 = {
