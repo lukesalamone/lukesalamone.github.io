@@ -5,7 +5,7 @@
         <description>Recent content in Posts on Luke Salamone&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Thu, 13 Jun 2024 19:38:39 -0700</lastBuildDate>
+        <lastBuildDate>Sun, 16 Jun 2024 19:32:37 -0700</lastBuildDate>
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
@@ -494,16 +494,19 @@ $$
             <pubDate>Sun, 04 Feb 2024 23:39:29 -0700</pubDate>
             
             <guid>https://lukesalamone.github.io/posts/vectorized-kmeans/</guid>
-            <description>K-means clustering (previous discussion) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. You can see a demo (in two dimensions) below. Centroids are colored white.
-start General algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.e. when no points change cluster):
-assign points to the cluster corresponding to closest centroid update the centroid locations to the mean of all points assigned to the associated cluster import numpy as np &#39;&#39;&#39; General setup: we will demo 5000 points, each with two dimensions.</description>
-            <content type="html"><![CDATA[<p>K-means clustering (<a href="/posts/kmeans-clustering/">previous discussion</a>) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. You can see a demo (in two dimensions) below. Centroids are colored white.</p>
+            <description>K-means clustering (previous discussion) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. The points may represent physical locations, or embeddings in high-dimensional vector space.
+🌟Check out the demo (in two dimensions) below. Centroids are colored white.🌟
+start Note that the points are changing color only, not moving.
+General algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.</description>
+            <content type="html"><![CDATA[<p>K-means clustering (<a href="/posts/kmeans-clustering/">previous discussion</a>) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. The points may represent physical locations, or embeddings in high-dimensional vector space.</p>
+<p>🌟Check out the demo (in two dimensions) below. Centroids are colored white.🌟</p>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 <script src="/js/kmeans_demo.js"></script>
 <div id='demo'>
-<button>start</button>
-<canvas id="myChart" style="background-color: #0000"></canvas>
+<button style="border:1px solid #09f">start</button>
+<canvas id="myChart" style="background-color: #0000" width="500px" height="500px"></canvas>
 </div>
+<p>Note that the points are changing color only, not moving.</p>
 <h2 id="general-algorithm">General algorithm</h2>
 <p>The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.e. when no points change cluster):</p>
 <ol>
