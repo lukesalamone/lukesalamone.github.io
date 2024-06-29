@@ -6,8 +6,36 @@
     <description>Recent content in Tags on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 13 Jun 2024 19:38:39 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 27 Jun 2024 18:40:06 -0700</lastBuildDate>
     <atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Machine-Learning</title>
+      <link>https://lukesalamone.github.io/tags/machine-learning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lukesalamone.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pytorch</title>
+      <link>https://lukesalamone.github.io/tags/pytorch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lukesalamone.github.io/tags/pytorch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://lukesalamone.github.io/tags/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lukesalamone.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rust</title>
+      <link>https://lukesalamone.github.io/tags/rust/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lukesalamone.github.io/tags/rust/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Chess</title>
       <link>https://lukesalamone.github.io/tags/chess/</link>
@@ -34,13 +62,6 @@
       <link>https://lukesalamone.github.io/tags/llm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lukesalamone.github.io/tags/llm/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Machine-Learning</title>
-      <link>https://lukesalamone.github.io/tags/machine-learning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lukesalamone.github.io/tags/machine-learning/</guid>
       <description></description>
     </item>
     <item>
@@ -170,13 +191,6 @@
       <description></description>
     </item>
     <item>
-      <title>Python</title>
-      <link>https://lukesalamone.github.io/tags/python/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lukesalamone.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Attention</title>
       <link>https://lukesalamone.github.io/tags/attention/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -202,13 +216,6 @@
       <link>https://lukesalamone.github.io/tags/qualitative-reasoning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lukesalamone.github.io/tags/qualitative-reasoning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Pytorch</title>
-      <link>https://lukesalamone.github.io/tags/pytorch/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lukesalamone.github.io/tags/pytorch/</guid>
       <description></description>
     </item>
     <item>

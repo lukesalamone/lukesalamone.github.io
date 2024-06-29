@@ -3,18 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lukesalamone.github.io/</loc>
-    <lastmod>2024-06-16T19:32:37-07:00</lastmod>
+    <lastmod>2024-06-27T18:40:06-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/machine-learning/</loc>
+    <lastmod>2024-06-27T18:40:06-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/posts/</loc>
-    <lastmod>2024-06-16T19:32:37-07:00</lastmod>
+    <lastmod>2024-06-27T18:40:06-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/pytorch/</loc>
+    <lastmod>2024-06-27T18:40:06-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/</loc>
+    <lastmod>2024-06-27T18:40:06-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/posts/very-large-datasets/</loc>
+    <lastmod>2024-06-27T18:40:06-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</loc>
+    <lastmod>2024-06-18T16:21:35-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/python/</loc>
+    <lastmod>2024-06-18T16:21:35-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/rust/</loc>
+    <lastmod>2024-06-18T16:21:35-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/chess/</loc>
     <lastmod>2024-06-13T19:38:39-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/data/</loc>
-    <lastmod>2024-06-13T19:38:39-07:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/</loc>
     <lastmod>2024-06-13T19:38:39-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/posts/most-ramified-chess-position-2023/</loc>
@@ -30,9 +48,6 @@
     <lastmod>2024-06-06T16:30:27-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/posts/how-does-hnsw-work/</loc>
-    <lastmod>2024-05-20T13:38:01-07:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/machine-learning/</loc>
     <lastmod>2024-05-20T13:38:01-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/retrieval/</loc>
@@ -113,9 +128,6 @@
     <loc>https://lukesalamone.github.io/tags/geography/</loc>
     <lastmod>2022-11-23T10:07:36-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/python/</loc>
-    <lastmod>2022-11-23T10:07:36-08:00</lastmod>
-  </url><url>
     <loc>https://lukesalamone.github.io/posts/earth-antipodes/</loc>
     <lastmod>2022-11-23T10:07:36-08:00</lastmod>
   </url><url>
@@ -153,9 +165,6 @@
     <lastmod>2022-05-17T17:47:25+07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/posts/pytorch-dataloader/</loc>
-    <lastmod>2022-04-28T18:22:07-05:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/pytorch/</loc>
     <lastmod>2022-04-28T18:22:07-05:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/archive/</loc>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="keywords" content=", machine-learning, pytorch" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/very-large-datasets/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+<script>
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
+</script>
+
+
+    <title>
+        
+            Working with Very Large Datasets in PyTorch :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+  <meta itemprop="name" content="Working with Very Large Datasets in PyTorch">
+  <meta itemprop="description" content="In God we trust. All others must bring data. ~ W. Edwards Deming
+Datasets that fit in memory For simple machine learning problems, your PyTorch dataset class probably looks something like this:
+class SimpleDataset(Dataset): def __init__(self, features, targets): self.features = [] for feature in features: self.features.append(self._feature_transform(feature)) self.targets = targets def _feature_transform(self, feature): # Optional feature transformation function which # converts each feature into its input representation # for the model.">
+  <meta itemprop="datePublished" content="2024-06-27T18:40:06-07:00">
+  <meta itemprop="dateModified" content="2024-06-27T18:40:06-07:00">
+  <meta itemprop="wordCount" content="842">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Machine-Learning,Pytorch">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="Working with Very Large Datasets in PyTorch">
+  <meta name="twitter:description" content="In God we trust. All others must bring data. ~ W. Edwards Deming
+Datasets that fit in memory For simple machine learning problems, your PyTorch dataset class probably looks something like this:
+class SimpleDataset(Dataset): def __init__(self, features, targets): self.features = [] for feature in features: self.features.append(self._feature_transform(feature)) self.targets = targets def _feature_transform(self, feature): # Optional feature transformation function which # converts each feature into its input representation # for the model.">
+
+
+
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/very-large-datasets/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="Working with Very Large Datasets in PyTorch">
+  <meta property="og:description" content="In God we trust. All others must bring data. ~ W. Edwards Deming
+Datasets that fit in memory For simple machine learning problems, your PyTorch dataset class probably looks something like this:
+class SimpleDataset(Dataset): def __init__(self, features, targets): self.features = [] for feature in features: self.features.append(self._feature_transform(feature)) self.targets = targets def _feature_transform(self, feature): # Optional feature transformation function which # converts each feature into its input representation # for the model.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-06-27T18:40:06-07:00">
+    <meta property="article:modified_time" content="2024-06-27T18:40:06-07:00">
+    <meta property="article:tag" content="Machine-Learning">
+    <meta property="article:tag" content="Pytorch">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2024-06-27 18:40:06 -0700 PDT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="Search here" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        4 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/very-large-datasets/">Working with Very Large Datasets in PyTorch</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <blockquote>
+<p>In God we trust. All others must bring data. ~ W. Edwards Deming</p>
+</blockquote>
+<h2 id="datasets-that-fit-in-memory">Datasets that fit in memory</h2>
+<p>For simple machine learning problems, your PyTorch dataset class probably looks something like this:</p>
+<pre><code class="language-python">class SimpleDataset(Dataset):
+    def __init__(self, features, targets):
+        self.features = []
+        for feature in features:
+            self.features.append(self._feature_transform(feature))
+        self.targets = targets
+
+    def _feature_transform(self, feature):
+        # Optional feature transformation function which 
+        # converts each feature into its input representation 
+        # for the model. This might be an expensive operation, 
+        # so its best to do now rather than during training.
+        return some_transformation_fn(feature)
+
+    def __len__(self):
+        return len(self.features)
+
+    def __getitem__(self, idx):
+        return self.features[idx], self.targets[idx]
+</code></pre>
+<p>With this method, we basically load all of the data into RAM at once, which is perfectly fine for small datasets. But sooner or later you&rsquo;re going to run into a machine learning problem with a large dataset. What do I mean by this? I mean a dataset which can&rsquo;t easily fit into RAM/VRAM.</p>
+<h2 id="datasets-that-fit-on-your-hard-drive">Datasets that fit on your hard drive</h2>
+<p>There are ways around this issue. One is using memory mapping. The idea is, rather than loading all of the data into memory, let&rsquo;s store it on the disk and seek to it during training. This also means we can store the transformed tensors on the disk and load them as needed, rather than recomputing them every time we load data from disk.</p>
+<p>Now we have a two step approach. The first step is transforming the features and targets to a memory-mapped file, and the second is loading it on-demand. For the first step we will create a list of memmap files, and for the second step we will use <code>dask</code> to virtually concatenate them together and read them as if they were a contiguous array.</p>
+<pre><code class="language-python">import numpy as np
+import uuid
+import os
+
+# store all features in memmap files
+# you can do the same thing with targets
+
+features_dir = 'features/'
+
+for feature_file in feature_files:
+    with open(feature_file) as f:
+        features = transform_features(f.read())
+    
+    fname = f'{uuid.uuid4()}.memmap'
+
+    # create the file on disk
+    memmap_file = np.memmap(os.path.join(features_dir, fname), 
+                            dtype='float64', 
+                            mode='w+', 
+                            shape=features.shape)
+
+    # write features to memmap array
+    memmap_file[:,:] = features
+
+    # write changes to disk
+    memmap_file.flush()
+    
+
+# Load the data from memmaps. We can use dask to create a 
+# virtual contiguous array for simplicity.
+
+import dask.array as da
+
+class MemmapDataset(Dataset):
+    def __init__(self, 
+            feature_files, 
+            target_files, 
+            features_shape, 
+            targets_shape):
+        self.features = []
+        self.targets = []
+        
+        for file in feature_files:
+            self.features.append(np.memmap(file, 
+                                           dtype='float64', 
+                                           mode='r', 
+                                           shape=features_shape))
+        for file in target_files:
+            self.targets.append(np.memmap(file, 
+                                          dtype='float64', 
+                                          mode='r', 
+                                          shape=targets_shape))
+
+        self.features = da.concatenate(self.features, axis=0)
+        self.targets = da.concatenate(self.targets, axis=0)
+
+    def __len__(self):
+        return self.features.shape[0]
+
+    def __getitem__(self, idx):
+        return (
+            torch.tensor(self.features[idx]), 
+            torch.tensor(self.targets[idx])
+        )
+</code></pre>
+<h2 id="sparse-vectors">Sparse vectors</h2>
+<p>For very sparse vectors, where most of the items are zero, my recommendation is to store the nonzero indices of each vector rather than the whole thing. This is obviously an empirical determination, but it can require significantly less space to store the indices and build at train time than to store the entire vector. You can use a custom collate function to expand the training data during training:</p>
+<pre><code class="language-python">def collate_fn(data):
+    '''
+    Here, data is a list of tuples returned from dataset[idx] 
+    above. But supposing that &quot;features&quot; actually corresponds 
+    to the nonzero indices of the features, we can expand the 
+    tensor for training.
+
+    This example is for a model which expects input dimension
+    (bs, 1024) but you can adapt for your needs.
+    '''
+    feature_idxs, targets = zip(*data)
+    bs = len(features)
+    features = torch.zeros((bs * 1024))
+    features[feature_idxs] = 1.0
+    return features.view((bs, 1024)), targets
+</code></pre>
+<p>You then use the collate function like</p>
+<pre><code class="language-python">dataset = MemmapDataset(...) # or SimpleDataset
+dataloader = DataLoader(dataset, 
+                        collate_fn=collate_fn, 
+                        batch_size=bs)
+</code></pre>
+<h2 id="datasets-that-dont-fit-on-your-hard-drive">Datasets that don&rsquo;t fit on your hard drive</h2>
+<p>Sometimes the dataset is so big that it doesn&rsquo;t fit on your hard drive. In that case, you might need to reorganize your code a bit, preprocessing your data into unique UUID-based shard files (<code>sid</code>s), and training each <code>sid</code> one by one.</p>
+<pre><code class="language-python">sids = [
+    # you may have thousands of shard ids here
+    '5c91ad9e-4963-4dfa-8885-6a351dd9fbb8',
+    '8ecb542f-00df-468e-8f89-34a6608648d6',
+    'f4536d05-a8ff-4591-9322-10860cd06942'
+]
+
+for sid in sids:
+    dataset = ShardedDataset(sid)
+    dataloader = DataLoader(dataset, batch_size=64, shuffle=True)
+
+    for i, batch in enumerate(dataloader):
+        # do your training
+        pass
+</code></pre>
+<p>And your <code>Dataset</code> class will look something like</p>
+<pre><code class="language-python">class VeryLargeDataset(Dataset):
+    def __init__(self, sid):
+        self.data = self._load_shard(sid)
+
+    def _load_shard(self, sid):
+        # load from your hard drive or remote
+        pass
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        return self.data[idx]
+</code></pre>
+<p>Despite the reorganization required, this is a very flexible approach and can scale to an effectively infinite amount of data. For continuous training, this is often a very effective approach.</p>
+<h2 id="bonus-use-rustc-python-bindings">Bonus: Use Rust/C Python bindings</h2>
+<p>Your feature transformation might be pretty slow depending on what you need to do. In my experience I was waiting 10 minutes to process text files in Python, which really slows down the development/training process. A much more effective approach can be to use Python bindings from a faster language, such as Rust or C.</p>
+<p>Rust can even return native numpy arrays, making data transformations very efficient. For more on setting up Rust bindings, <a href="../../posts/how-to-create-rust-python-bindings/">check out my how-to article</a>.</p>
+<pre><code class="language-python">import my_bindings
+
+files_to_process = [...]
+data = []
+for file in files_to_process:
+    data.append(my_bindings.process_file(file))
+</code></pre>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/machine-learning/">machine-learning</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/pytorch/">pytorch</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        842 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2024-06-27 18:40
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/">
+                <span class="button__text">How to Create Rust Python Bindings</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+  </main>
+  <div id="shadow-search" class="posts">
+    <div class="posts-group">
+      <div class="post-year">2022</div>
+      <ul class="posts-list"></ul>
+    </div>
+  </div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2024 Luke Salamone</span>&nbsp;|&nbsp;
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.fdc5aa536e3e114f1858ac9d803de25aba14817a1fa56e188943bfc00702be87ecb0b477b68f6868a13772d5fd57341d069d167527d85cf7fab246f9aafba8cd.js" integrity="sha512-/cWqU24&#43;EU8YWKydgD3iWroUgXofpW4YiUO/wAcCvofssLR3to9oaKE3ctX9VzQdBp0WdSfYXPf6skb5qvuozQ=="></script>
+
+
+
+    </body>
+</html>

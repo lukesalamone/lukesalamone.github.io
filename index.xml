@@ -6,8 +6,22 @@
     <description>Recent content on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 13 Jun 2024 19:38:39 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 27 Jun 2024 18:40:06 -0700</lastBuildDate>
     <atom:link href="https://lukesalamone.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Working with Very Large Datasets in PyTorch</title>
+      <link>https://lukesalamone.github.io/posts/very-large-datasets/</link>
+      <pubDate>Thu, 27 Jun 2024 18:40:06 -0700</pubDate>
+      <guid>https://lukesalamone.github.io/posts/very-large-datasets/</guid>
+      <description>In God we trust. All others must bring data. ~ W. Edwards Deming&#xA;Datasets that fit in memory For simple machine learning problems, your PyTorch dataset class probably looks something like this:&#xA;class SimpleDataset(Dataset): def __init__(self, features, targets): self.features = [] for feature in features: self.features.append(self._feature_transform(feature)) self.targets = targets def _feature_transform(self, feature): # Optional feature transformation function which # converts each feature into its input representation # for the model.</description>
+    </item>
+    <item>
+      <title>How to Create Rust Python Bindings</title>
+      <link>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</link>
+      <pubDate>Tue, 18 Jun 2024 16:21:35 -0700</pubDate>
+      <guid>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</guid>
+      <description>Rust is super fast. Python is super flexible. Porting slow python code to rust can make your life a lot easier, and it&amp;rsquo;s not too difficult to set up.&#xA;I will demonstrate rust bindings for summing the integers in a large text file containing a billion digits that looks like&#xA;6,9,8,3,0,1,8,4,9,7,6,3,4,2,6,0,0,5,1,1, . . . ,4,5,9,3,3,2,8,3 General steps install rust and maturin set up boilerplate add your function compile and import Install Rust and Maturin curl --proto &#39;=https&#39; --tlsv1.</description>
+    </item>
     <item>
       <title>The Most Ramified Chess Position of 2023</title>
       <link>https://lukesalamone.github.io/posts/most-ramified-chess-position-2023/</link>

@@ -6,8 +6,15 @@
     <description>Recent content in Machine-Learning on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 20 May 2024 13:38:01 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 27 Jun 2024 18:40:06 -0700</lastBuildDate>
     <atom:link href="https://lukesalamone.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Working with Very Large Datasets in PyTorch</title>
+      <link>https://lukesalamone.github.io/posts/very-large-datasets/</link>
+      <pubDate>Thu, 27 Jun 2024 18:40:06 -0700</pubDate>
+      <guid>https://lukesalamone.github.io/posts/very-large-datasets/</guid>
+      <description>In God we trust. All others must bring data. ~ W. Edwards Deming&#xA;Datasets that fit in memory For simple machine learning problems, your PyTorch dataset class probably looks something like this:&#xA;class SimpleDataset(Dataset): def __init__(self, features, targets): self.features = [] for feature in features: self.features.append(self._feature_transform(feature)) self.targets = targets def _feature_transform(self, feature): # Optional feature transformation function which # converts each feature into its input representation # for the model.</description>
+    </item>
     <item>
       <title>How does HNSW work?</title>
       <link>https://lukesalamone.github.io/posts/how-does-hnsw-work/</link>
