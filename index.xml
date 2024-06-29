@@ -9,7 +9,7 @@
     <lastBuildDate>Thu, 27 Jun 2024 18:40:06 -0700</lastBuildDate>
     <atom:link href="https://lukesalamone.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Working with Very Large Datasets in PyTorch</title>
+      <title>Very Large Datasets in PyTorch</title>
       <link>https://lukesalamone.github.io/posts/very-large-datasets/</link>
       <pubDate>Thu, 27 Jun 2024 18:40:06 -0700</pubDate>
       <guid>https://lukesalamone.github.io/posts/very-large-datasets/</guid>
