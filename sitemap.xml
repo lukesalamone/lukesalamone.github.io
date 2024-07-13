@@ -2,28 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://lukesalamone.github.io/</loc>
-    <lastmod>2024-07-10T22:56:36-07:00</lastmod>
+    <loc>https://lukesalamone.github.io/posts/custom-pytorch-collate/</loc>
+    <lastmod>2024-07-12T14:48:27-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/</loc>
-    <lastmod>2024-07-10T22:56:36-07:00</lastmod>
+    <loc>https://lukesalamone.github.io/</loc>
+    <lastmod>2024-07-12T14:48:27-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/machine-learning/</loc>
-    <lastmod>2024-06-27T18:40:06-07:00</lastmod>
+    <lastmod>2024-07-12T14:48:27-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/posts/</loc>
+    <lastmod>2024-07-12T14:48:27-07:00</lastmod>
+  </url><url>
+    <loc>https://lukesalamone.github.io/tags/python/</loc>
+    <lastmod>2024-07-12T14:48:27-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/pytorch/</loc>
-    <lastmod>2024-06-27T18:40:06-07:00</lastmod>
+    <lastmod>2024-07-12T14:48:27-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/</loc>
-    <lastmod>2024-06-27T18:40:06-07:00</lastmod>
+    <lastmod>2024-07-12T14:48:27-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/posts/very-large-datasets/</loc>
     <lastmod>2024-06-27T18:40:06-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</loc>
-    <lastmod>2024-06-18T16:21:35-07:00</lastmod>
-  </url><url>
-    <loc>https://lukesalamone.github.io/tags/python/</loc>
     <lastmod>2024-06-18T16:21:35-07:00</lastmod>
   </url><url>
     <loc>https://lukesalamone.github.io/tags/rust/</loc>

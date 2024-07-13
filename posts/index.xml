@@ -5,8 +5,72 @@
         <description>Recent content in Posts on Luke Salamone&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Wed, 10 Jul 2024 22:56:36 -0700</lastBuildDate>
+        <lastBuildDate>Fri, 12 Jul 2024 14:48:27 -0700</lastBuildDate>
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Custom PyTorch Collate Function</title>
+            <link>https://lukesalamone.github.io/posts/custom-pytorch-collate/</link>
+            <pubDate>Fri, 12 Jul 2024 14:48:27 -0700</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/custom-pytorch-collate/</guid>
+            <description>If your Dataset class looks something like
+class MyDataset(Dataset): # ... boilerplate ... def __getitem__(self, idx): item = self.data[idx] return item[&#39;anchor&#39;], item[&#39;positive&#39;], item[&#39;negative&#39;] your collate function should be
+def collate_fn(data): anchors, pos, neg = zip(*data) anchors = tokenizer(anchors, return_tensors=&amp;quot;pt&amp;quot;, padding=True) pos = tokenizer(pos, return_tensors=&amp;quot;pt&amp;quot;, padding=True) neg = tokenizer(neg, return_tensors=&amp;quot;pt&amp;quot;, padding=True) return anchors, pos, neg and you can use it like
+dataset = MyDataset() dataloader = DataLoader(dataset, batch_size=4, shuffle=True, pin_memory=True, collate_fn=collate_fn) for anchors, positives, negatives in dataloader: anchors = anchors.</description>
+            <content type="html"><![CDATA[<p>If your <code>Dataset</code> class looks something like</p>
+<pre><code class="language-python">class MyDataset(Dataset):
+  
+  # ... boilerplate ...
+
+  def __getitem__(self, idx):
+    item = self.data[idx]
+    return item['anchor'], item['positive'], item['negative']
+</code></pre>
+<p>your collate function should be</p>
+<pre><code class="language-python">def collate_fn(data):
+    anchors, pos, neg = zip(*data)
+    anchors = tokenizer(anchors, return_tensors=&quot;pt&quot;, padding=True)
+    pos = tokenizer(pos, return_tensors=&quot;pt&quot;, padding=True)
+    neg = tokenizer(neg, return_tensors=&quot;pt&quot;, padding=True)
+    return anchors, pos, neg
+</code></pre>
+<p>and you can use it like</p>
+<pre><code class="language-python">dataset = MyDataset()
+dataloader = DataLoader(dataset, 
+                        batch_size=4, 
+                        shuffle=True,
+                        pin_memory=True,
+                        collate_fn=collate_fn)
+
+for anchors, positives, negatives in dataloader:
+  anchors = anchors.to(device)
+  positives = positives.to(device)
+  negatives = negatives.to(device)
+  
+  # do more stuff
+</code></pre>
+<h2 id="how-does-the-collate_fn-work">How does the collate_fn work?</h2>
+<figure><img src="/img/torch_collate_fn.png"
+    alt="The PyTorch collate function accepts a list of results from calls to the dataset getitem function and combines their components into tensors for convenient training."><figcaption>
+      <p>The PyTorch collate function accepts a list of results from calls to the dataset <strong>getitem</strong> function and combines their components into tensors for convenient training.</p>
+    </figcaption>
+</figure>
+
+<p>Under the hood, your DataLoader is making multiple calls to <code>dataset.__getitem__()</code>, one for each item in <code>batch_size</code>. Usually it is smart enough to know how to combine them into a tensor for training (here is the <a href="https://pytorch.org/docs/stable/_modules/torch/utils/data/_utils/collate.html#default_collate">default collate function</a>), but sometimes you need custom logic.</p>
+<p>Technically you don&rsquo;t need a collate function. You could collate within the training loop. But besides cluttering up your training loop, you won&rsquo;t be able to take advantage of multithreaded processing (<code>num_workers &gt; 1</code>), so your collation logic will block your training code.</p>
+<h2 id="what-about-pin_memory">What about pin_memory?</h2>
+<p>The <code>pin_memory</code> parameter specifies whether we should create the tensors in pinned RAM or not. This avoids some additional overhead when copying data to the GPU.</p>
+<p>A common misconception is that this is pinning the GPU VRAM. Actually, this pins the RAM, <em>not</em> the VRAM.</p>
+<p>If we check the <a href="https://developer.nvidia.com/blog/how-optimize-data-transfers-cuda-cc/">Nvidia technical blog</a> they give the following four recommendations (summarized):</p>
+<ul>
+<li>Minimize back and forth data transfers between RAM and GPU. Even if code is no faster on the GPU, it may be worth executing there to avoid the round-trip transfer cost, which is relatively slow.</li>
+<li><strong>Use page-locked (&ldquo;pinned&rdquo;) memory when possible.</strong> By default, your machine uses pageable memory which means the physical address of RAM can change. When transferring data to the GPU, CUDA first needs to copy it to a fixed &ldquo;pinned&rdquo; address to be copied over. In your DataLoader, if you specify <code>pin_memory=True</code>, the tensors will automatically be created in pinned memory, avoiding the pageable memory -&gt; pinned memory copy.</li>
+<li>Combine multiple small transfers into a large transfer to avoid overhead.</li>
+<li>Data transfers can be executed asynchronously. In PyTorch that looks like <code>tensor.to(device, non_blocking=False)</code>.</li>
+</ul>
+]]></content>
+        </item>
         
         <item>
             <title>Very Large Datasets in PyTorch</title>

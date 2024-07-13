@@ -6,8 +6,15 @@
     <description>Recent content in Machine-Learning on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 27 Jun 2024 18:40:06 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jul 2024 14:48:27 -0700</lastBuildDate>
     <atom:link href="https://lukesalamone.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Custom PyTorch Collate Function</title>
+      <link>https://lukesalamone.github.io/posts/custom-pytorch-collate/</link>
+      <pubDate>Fri, 12 Jul 2024 14:48:27 -0700</pubDate>
+      <guid>https://lukesalamone.github.io/posts/custom-pytorch-collate/</guid>
+      <description>If your Dataset class looks something like&#xA;class MyDataset(Dataset): # ... boilerplate ... def __getitem__(self, idx): item = self.data[idx] return item[&#39;anchor&#39;], item[&#39;positive&#39;], item[&#39;negative&#39;] your collate function should be&#xA;def collate_fn(data): anchors, pos, neg = zip(*data) anchors = tokenizer(anchors, return_tensors=&amp;quot;pt&amp;quot;, padding=True) pos = tokenizer(pos, return_tensors=&amp;quot;pt&amp;quot;, padding=True) neg = tokenizer(neg, return_tensors=&amp;quot;pt&amp;quot;, padding=True) return anchors, pos, neg and you can use it like&#xA;dataset = MyDataset() dataloader = DataLoader(dataset, batch_size=4, shuffle=True, pin_memory=True, collate_fn=collate_fn) for anchors, positives, negatives in dataloader: anchors = anchors.</description>
+    </item>
     <item>
       <title>Very Large Datasets in PyTorch</title>
       <link>https://lukesalamone.github.io/posts/very-large-datasets/</link>
