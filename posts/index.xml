@@ -9,6 +9,43 @@
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Space Is Really Big</title>
+            <link>https://lukesalamone.github.io/posts/space-is-really-big/</link>
+            <pubDate>Mon, 29 Jul 2024 12:16:49 -0700</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/space-is-really-big/</guid>
+            <description>More than 30 earths could fit between the earth and the moon.
+Our elementary school models of the solar system really undersell how big space is. The problem is, space is too big and human brains are bad at exponentials. Logarithmic charts like this one are technically accurate, but my brain has a hard time contextualizing it.
+To get an idea of how big space really is, let&amp;rsquo;s imagine that the earth is one millimeter wide.</description>
+            <content type="html"><![CDATA[<figure><img src="/img/earth_moon.png"
+    alt="More than 30 earths could fit between the earth and the moon."><figcaption>
+      <p>More than 30 earths could fit between the earth and the moon.</p>
+    </figcaption>
+</figure>
+
+<p>Our <a href="https://science.nasa.gov/wp-content/uploads/2023/07/pia06890-our-solar-system-banner-1920x640-1.jpg">elementary school models</a> of the solar system really undersell how big space is. The problem is, space is too big and human brains are bad at exponentials. Logarithmic charts like <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Interstellar_medium_annotated.jpg/1920px-Interstellar_medium_annotated.jpg">this one</a> are technically accurate, but my brain has a hard time contextualizing it.</p>
+<p>To get an idea of how big space really is, let&rsquo;s imagine that the earth is one millimeter wide. At that scale:</p>
+<ul>
+<li>The moon would be 3 cm away</li>
+<li>The speed of light would be about 2.36 cm per second</li>
+<li>The sun would be 10.9 cm wide (about the length of a toilet paper tube)</li>
+<li>The sun would be 11.7 meters away (as long as a school bus).
+<ul>
+<li>Note that the sun is only about 40% denser than water, so at this scale it would weigh only 0.689 kg (1.5 lb)</li>
+</ul>
+</li>
+<li>Our farthest space probe, <a href="https://en.wikipedia.org/wiki/Voyager_1">Voyager 1</a>, would be 1.91 km (1.19 miles) away. It was launched in 1977, so at this scale it is averaging about 11 cm per day or 40 m per year.</li>
+<li>Proxima Centauri, the closest star, would be 3,162 km away.
+<ul>
+<li>For context, <a href="https://www.youtube.com/watch?v=iXOyaE1doEo">here is a time lapse of a 3,900 km flight</a> between Los Angeles and New York City.</li>
+</ul>
+</li>
+</ul>
+<p>If aliens haven&rsquo;t visited Earth yet, the distance between us and even the closest star is probably a good reason why.</p>
+]]></content>
+        </item>
+        
+        <item>
             <title>Custom PyTorch Collate Function</title>
             <link>https://lukesalamone.github.io/posts/custom-pytorch-collate/</link>
             <pubDate>Fri, 12 Jul 2024 14:48:27 -0700</pubDate>

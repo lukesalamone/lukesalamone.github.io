@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Space on Luke Salamone&#39;s Blog</title>
+    <link>https://lukesalamone.github.io/tags/space/</link>
+    <description>Recent content in Space on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 29 Jul 2024 12:16:49 -0700</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/space/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Space Is Really Big</title>
+      <link>https://lukesalamone.github.io/posts/space-is-really-big/</link>
+      <pubDate>Mon, 29 Jul 2024 12:16:49 -0700</pubDate>
+      <guid>https://lukesalamone.github.io/posts/space-is-really-big/</guid>
+      <description>More than 30 earths could fit between the earth and the moon.&#xA;Our elementary school models of the solar system really undersell how big space is. The problem is, space is too big and human brains are bad at exponentials. Logarithmic charts like this one are technically accurate, but my brain has a hard time contextualizing it.&#xA;To get an idea of how big space really is, let&amp;rsquo;s imagine that the earth is one millimeter wide.</description>
+    </item>
+  </channel>
+</rss>
