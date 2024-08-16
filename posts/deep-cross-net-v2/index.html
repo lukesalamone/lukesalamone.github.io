@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="keywords" content=", deep-learning, ctr" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/deep-cross-net-v2/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+<script>
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
+</script>
+
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
+
+
+    <title>
+        
+            Summary: Deep &amp; Cross Net v2 :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+  <meta itemprop="name" content="Summary: Deep & Cross Net v2">
+  <meta itemprop="description" content="Paper link: https://arxiv.org/pdf/2008.13535
+Learning to rank is an important problem in many machine-learning products such as search, recommendation, and advertising. Originally, many machine learning systems used simple logistic regression models, but it quickly became apparent that combining two or more features together was even better. This is called feature crossing.
+A lot of research and engineering work has gone into learning useful feature crosses. The fundamental problem is that although higher-order feature crosses can be more informative, they are also more sparse, and the number of high order features grows exponentially.">
+  <meta itemprop="datePublished" content="2023-10-02T12:39:18-07:00">
+  <meta itemprop="dateModified" content="2023-10-02T12:39:18-07:00">
+  <meta itemprop="wordCount" content="1389">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Deep-Learning,Ctr">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="Summary: Deep & Cross Net v2">
+  <meta name="twitter:description" content="Paper link: https://arxiv.org/pdf/2008.13535
+Learning to rank is an important problem in many machine-learning products such as search, recommendation, and advertising. Originally, many machine learning systems used simple logistic regression models, but it quickly became apparent that combining two or more features together was even better. This is called feature crossing.
+A lot of research and engineering work has gone into learning useful feature crosses. The fundamental problem is that although higher-order feature crosses can be more informative, they are also more sparse, and the number of high order features grows exponentially.">
+
+
+
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/deep-cross-net-v2/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="Summary: Deep & Cross Net v2">
+  <meta property="og:description" content="Paper link: https://arxiv.org/pdf/2008.13535
+Learning to rank is an important problem in many machine-learning products such as search, recommendation, and advertising. Originally, many machine learning systems used simple logistic regression models, but it quickly became apparent that combining two or more features together was even better. This is called feature crossing.
+A lot of research and engineering work has gone into learning useful feature crosses. The fundamental problem is that although higher-order feature crosses can be more informative, they are also more sparse, and the number of high order features grows exponentially.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-10-02T12:39:18-07:00">
+    <meta property="article:modified_time" content="2023-10-02T12:39:18-07:00">
+    <meta property="article:tag" content="Deep-Learning">
+    <meta property="article:tag" content="Ctr">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2023-10-02 12:39:18 -0700 PDT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="Search here" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        7 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/deep-cross-net-v2/">Summary: Deep &amp; Cross Net v2</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <p>Paper link: <a href="https://arxiv.org/pdf/2008.13535">https://arxiv.org/pdf/2008.13535</a></p>
+<p>Learning to rank is an important problem in many machine-learning products such as search, recommendation, and advertising. Originally, many machine learning systems used simple logistic regression models, but it quickly became apparent that combining two or more features together was <a href="https://www.ismll.uni-hildesheim.de/pub/pdfs/Rendle2010FM.pdf">even better</a>. This is called feature crossing.</p>
+<p>A lot of research and engineering work has gone into learning useful feature crosses. The fundamental problem is that although higher-order feature crosses can be more informative, they are also more sparse, and the number of high order features grows exponentially. Some attempts to address this have been:</p>
+<table>
+<thead>
+<tr>
+<th>Architecture</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://arxiv.org/pdf/1606.07792">Wide &amp; Deep network</a></td>
+<td>Contains a wide linear model to capture feature interactions and a deep neural net (DNN) to capture nonlinear relationships.</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/1703.04247">DeepFM</a></td>
+<td>Combines a FM component to capture second-order feature interactions and a DNN to capture higher-order interactions.</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/1803.05170">xDeepFM</a></td>
+<td>Extends DeepFM by adding a compressed interaction network to model high-order vector-wise feature interactions.</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/1906.00091">DLRM</a></td>
+<td>Uses a DNN for dense features, an embedding lookup for sparse features, dot product interaction layers, and a final DNN.</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/1611.00144">PNN</a></td>
+<td>Uses a product layer to explicitly model pairwise feature interactions, followed by a neural net.</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/1810.11921">AutoInt</a></td>
+<td>Uses multi-head self-attention to model feature interactions, followed by a DNN.</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/1708.05123">DCN</a></td>
+<td>Explicitly applies feature crosses with a Cross network, followed by a DNN.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dcnv2">DCNv2</h2>
+<p>DCNv2 improves on the original DCN architecture in a few important ways. First, it uses a more expressive feature cross formula. Second, it introduces matrix factorization to dramatically reduce the required number of parameters in the model. Finally, the authors also introduce a gated mixture of experts setup to take advantage of the parameter savings.</p>
+<figure><img src="../../img/dcn_archs.png"
+    alt="DCNv2 can be implemented with a stacked (i.e. serial) architecture or a parallel architecture."><figcaption>
+      <p>DCNv2 can be implemented with a stacked (i.e. serial) architecture or a parallel architecture.</p>
+    </figcaption>
+</figure>
+
+<h3 id="embedding-layer">Embedding layer</h3>
+<p>To create the embedding layer, all features are concatenated together to create a tensor with shape <code>batch size x embedding size</code>. For one-hot encoded categorical features, they can be projected to a much lower dimensionality with a learned matrix (i.e. a single dense layer with no bias term).</p>
+<p>One convenient property of this embedding scheme is that feature order doesn&rsquo;t matter. All features will be crossed with all other features, so we don&rsquo;t need to worry about the way that features are added and removed.</p>
+<h3 id="cross-net">Cross Net</h3>
+<p>The formula for a single cross operation is</p>
+<pre><code class="language-python">&quot;&quot;&quot;
+Dimension key:
+    B: batch size
+    D: embedding dimension
+
+Params:
+    x_0: original embedding, shape BD
+    x_i: i-th embedding, shape BD
+    weight_i: i-th learned weight matrix, shape DD
+    bias_i: i-th learned bias term, shape D
+
+Returns:
+    The residual embedding after i+1 cross operations
+&quot;&quot;&quot;
+
+def cross(x_0, x_i, weight_i, bias_i):
+    x_0 = x_0.unsqueeze(-1)         # (B, D, 1)
+    x_i = x_i.unsqueeze(-1)         # (B, D, 1)
+    bias_i = bias_i.unsqueeze(-1)   # (D, 1)
+
+    kernel = weight_i @ x_i     # (D, D) @ (B, D, 1) = (B, D, 1)
+    kernel = kernel + bias_i    # (B, D, 1) + (D, 1) = (B, D, 1)
+    
+    result = x_0 * kernel + x_i # (B, D, 1)
+    return result.squeeze(-1)   # (B, D)
+</code></pre>
+<p>Note that the <code>weight_i @ x_i + bias_i</code> term is equivalent to a fully-connected neural network layer with no activation. To this result, we element-wise multiply the original embedding, then add the i-th embedding.</p>
+<h4 id="low-rank-approximation">Low rank approximation</h4>
+<p>Of course, with high embedding dimensionality, the weight matrix can easily grow to millions of parameters, and we need a weight matrix for each of the cross operations. A common technique to reduce the number of parameters is to use a low rank approximation of the weight matrix. In other words, we can replace the <code>weight @ x</code> operation with <code>weight_u @ (weight_v @ x)</code></p>
+<p>In particular, rather than requiring <code>DxD</code> parameters for each cross operation, we will now only need <code>DxR + RxD = 2xRxD</code> parameters, where <code>R</code> is the low-rank approximation dimension. So if <code>R</code> is less than half of <code>D</code>, we can save parameters using this technique.</p>
+<pre><code class="language-python">&quot;&quot;&quot;
+Dimension key:
+    B: batch size
+    D: embedding dimension
+    R: low rank dimension
+
+Params:
+    x0: original embedding, shape BD
+    xi: i-th embedding, shape BD
+    weight_u_i: i-th learned weight matrix, shape DR
+    weight_v_i: i-th learned weight matrix, shape RD
+    bias_i: i-th learned bias term, shape D
+
+Returns:
+    The residual embedding after i+1 cross operations
+&quot;&quot;&quot;
+
+def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
+    x_0 = x_0.unsqueeze(-1)         # (B, D, 1)
+    x_i = x_i.unsqueeze(-1)         # (B, D, 1)
+    bias_i = bias_i.unsqueeze(-1)   # (D, 1)
+
+    kernel = weight_v_i @ x_i       # (R, D) @ (B, D, 1) = (B, R, 1)
+    kernel = weight_u_i @ kernel    # (D, R) @ (B, R, D) = (B, D, 1)
+    kernel = kernel + bias_i        # (B, D, 1) + (D, 1) = (B, D, 1)
+    
+    result = x_0 * kernel + x_i     # (B, D, 1)
+    return result.squeeze(-1)       # (B, D)
+</code></pre>
+<h2 id="mixture-of-low-rank-experts">Mixture of low-rank experts</h2>
+<p>The parameter savings from using low-rank approximations of the weight matrices can be reinvested into additional parameters. In particular, if we have a gating function <code>G(x)</code> we can use it to decide between a group of &ldquo;experts&rdquo; which are themselves low-rank Cross networks.</p>
+<figure><img src="../../img/mixture_of_experts_dcn.png"
+    alt="A mixture of experts consists of a gating function and an expert function. The gating function determines the weight of the expert function."><figcaption>
+      <p>A mixture of experts consists of a gating function and an expert function. The gating function determines the weight of the expert function.</p>
+    </figcaption>
+</figure>
+
+<p>Note that setting <code>G(x)=1</code> and <code>K=1</code> reduces the mixture of experts to the original low-rank DCN architecture.</p>
+<h2 id="analysis-of-hyperparameters">Analysis of hyperparameters</h2>
+<p>The number of cross layers (i.e. cross depth), the choice of low-rank approximation, and the number of experts can each have a large effect on the model performance. For the depth of the crosses, the researchers found that performance improved with the number of cross layers, but diminishing returns as depth increased.</p>
+<p>The behavior of the matrix rank was interesting. For very low rank, the model performed similarly with other baselines. However, increasing from rank 4 to 64 showed dramatic performance improvement, and notable but lesser improvement afterwards. This suggests there is some &ldquo;elbow&rdquo; (the authors call this a <em>threshold rank</em>) which maintains good performance without consuming too many parameters.</p>
+<p>For the number of experts, the researchers found that the <em>total rank</em> sum of all of the experts was the main contributing factor for performance. In other words, 1x256, 4x64, 8x32, 16x16 and 32x8 all performed similarly. They hypothesized that their simple gating function was responsible for this.</p>
+<h2 id="results-on-synthetic-datasets">Results on synthetic datasets</h2>
+<p>To better understand how the DCN, DCNv2 and DNN are able to model cross interactions, the authors created synthetic functions for the various architectures to learn. They created three classes of functions with increasing difficulty to learn.</p>
+<figure><img src="../../img/synthetic_functions_dcn.png"
+    alt="Synthetic functions of increasing difficulty to be learned by DCN, DCNv2 and DNN."><figcaption>
+      <p>Synthetic functions of increasing difficulty to be learned by DCN, DCNv2 and DNN.</p>
+    </figcaption>
+</figure>
+
+<p>Note that the third equation can be modeled by a single cross operation.</p>
+<p>In their experiments, the authors found:</p>
+<ul>
+<li>The DCN consistently used the fewest parameters (maximum of 300 parameters) and was able to accurately model the simpler functions, but was unable to accurately model the third, most complicated function with a single layer. However, since a single layer was only 300 parameters, experimenting with a larger model would have been interesting.</li>
+<li>The DNN used the most parameters (up to 758k parameters) and was unable to model any of the functions as accurately as either DCN or DCNv2.</li>
+<li>The DCNv2 used up to 10k parameters for the most complex function and achieved the lowest RMSE loss by far.</li>
+</ul>
+<p>The authors also directly compared DCNv2 models with varying numbers of layers with a traditional DNN in modeling a more complex function containing sine terms and polynomials of order 1-4 and found that DNNs are highly inefficient in modeling higher order interactions.</p>
+<h2 id="results-on-criteo">Results on Criteo</h2>
+<p>Criteo is a popular click-through-rate (CTR) prediction dataset containing 7 days of user logs. It contains 13 continuous features and 26 categorical features.</p>
+<p>On Criteo, DCN-v2 (best setting using two layers) had a 0.21% better AUC than a DNN baseline. DCN-Mix (best setting using 3 layers, 4 experts, and low rank of 258) was 0.17% better on AUC than the DNN baseline.</p>
+<h2 id="results-on-movielens-1m">Results on MovieLens-1M</h2>
+<p>MovieLens-1M is a popular dataset for recommendation systems research, containing one million samples of [user-features, movie-features, rating] triplets. The task was treated as a regression problem. Ratings of 1 and 2 were set to 0 and 4 and 5 were set to 1. 3s were removed.</p>
+<p>On MovieLens, DCN-V2 was 0.24% better on AUC than the DNN baseline. DCN-Mix was even better, at +0.39% over the DNN baseline.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/deep-learning/">deep-learning</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/ctr/">ctr</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1389 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2023-10-02 12:39
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://lukesalamone.github.io/posts/vectorized-kmeans/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Vectorized K-Means Clustering</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/chess-blunders/">
+                <span class="button__text">What is a blunder in chess?</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+  </main>
+  <div id="shadow-search" class="posts">
+    <div class="posts-group">
+      <div class="post-year">2022</div>
+      <ul class="posts-list"></ul>
+    </div>
+  </div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2024 Luke Salamone</span>&nbsp;|&nbsp;
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.e5fbf64306713fe8df1194a658201f5e861815365f67b3c6fc9094ed28d21c92aeaff20b7f4c12c25ba7efabe31291ffd1074e33cd60cf8ff8d8ffef7c028d73.js" integrity="sha512-5fv2QwZxP&#43;jfEZSmWCAfXoYYFTZfZ7PG/JCU7SjSHJKur/ILf0wSwlun76vjEpH/0QdOM81gz4/42P/vfAKNcw=="></script>
+
+
+
+    </body>
+</html>

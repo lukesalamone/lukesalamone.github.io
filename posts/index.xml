@@ -1061,6 +1061,166 @@ while True:
         </item>
         
         <item>
+            <title>Summary: Deep &amp; Cross Net v2</title>
+            <link>https://lukesalamone.github.io/posts/deep-cross-net-v2/</link>
+            <pubDate>Mon, 02 Oct 2023 12:39:18 -0700</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/deep-cross-net-v2/</guid>
+            <description>Paper link: https://arxiv.org/pdf/2008.13535
+Learning to rank is an important problem in many machine-learning products such as search, recommendation, and advertising. Originally, many machine learning systems used simple logistic regression models, but it quickly became apparent that combining two or more features together was even better. This is called feature crossing.
+A lot of research and engineering work has gone into learning useful feature crosses. The fundamental problem is that although higher-order feature crosses can be more informative, they are also more sparse, and the number of high order features grows exponentially.</description>
+            <content type="html"><![CDATA[<p>Paper link: <a href="https://arxiv.org/pdf/2008.13535">https://arxiv.org/pdf/2008.13535</a></p>
+<p>Learning to rank is an important problem in many machine-learning products such as search, recommendation, and advertising. Originally, many machine learning systems used simple logistic regression models, but it quickly became apparent that combining two or more features together was <a href="https://www.ismll.uni-hildesheim.de/pub/pdfs/Rendle2010FM.pdf">even better</a>. This is called feature crossing.</p>
+<p>A lot of research and engineering work has gone into learning useful feature crosses. The fundamental problem is that although higher-order feature crosses can be more informative, they are also more sparse, and the number of high order features grows exponentially. Some attempts to address this have been:</p>
+<table>
+<thead>
+<tr>
+<th>Architecture</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://arxiv.org/pdf/1606.07792">Wide &amp; Deep network</a></td>
+<td>Contains a wide linear model to capture feature interactions and a deep neural net (DNN) to capture nonlinear relationships.</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/1703.04247">DeepFM</a></td>
+<td>Combines a FM component to capture second-order feature interactions and a DNN to capture higher-order interactions.</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/1803.05170">xDeepFM</a></td>
+<td>Extends DeepFM by adding a compressed interaction network to model high-order vector-wise feature interactions.</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/1906.00091">DLRM</a></td>
+<td>Uses a DNN for dense features, an embedding lookup for sparse features, dot product interaction layers, and a final DNN.</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/1611.00144">PNN</a></td>
+<td>Uses a product layer to explicitly model pairwise feature interactions, followed by a neural net.</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/1810.11921">AutoInt</a></td>
+<td>Uses multi-head self-attention to model feature interactions, followed by a DNN.</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/1708.05123">DCN</a></td>
+<td>Explicitly applies feature crosses with a Cross network, followed by a DNN.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dcnv2">DCNv2</h2>
+<p>DCNv2 improves on the original DCN architecture in a few important ways. First, it uses a more expressive feature cross formula. Second, it introduces matrix factorization to dramatically reduce the required number of parameters in the model. Finally, the authors also introduce a gated mixture of experts setup to take advantage of the parameter savings.</p>
+<figure><img src="/img/dcn_archs.png"
+    alt="DCNv2 can be implemented with a stacked (i.e. serial) architecture or a parallel architecture."><figcaption>
+      <p>DCNv2 can be implemented with a stacked (i.e. serial) architecture or a parallel architecture.</p>
+    </figcaption>
+</figure>
+
+<h3 id="embedding-layer">Embedding layer</h3>
+<p>To create the embedding layer, all features are concatenated together to create a tensor with shape <code>batch size x embedding size</code>. For one-hot encoded categorical features, they can be projected to a much lower dimensionality with a learned matrix (i.e. a single dense layer with no bias term).</p>
+<p>One convenient property of this embedding scheme is that feature order doesn&rsquo;t matter. All features will be crossed with all other features, so we don&rsquo;t need to worry about the way that features are added and removed.</p>
+<h3 id="cross-net">Cross Net</h3>
+<p>The formula for a single cross operation is</p>
+<pre><code class="language-python">&quot;&quot;&quot;
+Dimension key:
+    B: batch size
+    D: embedding dimension
+
+Params:
+    x_0: original embedding, shape BD
+    x_i: i-th embedding, shape BD
+    weight_i: i-th learned weight matrix, shape DD
+    bias_i: i-th learned bias term, shape D
+
+Returns:
+    The residual embedding after i+1 cross operations
+&quot;&quot;&quot;
+
+def cross(x_0, x_i, weight_i, bias_i):
+    x_0 = x_0.unsqueeze(-1)         # (B, D, 1)
+    x_i = x_i.unsqueeze(-1)         # (B, D, 1)
+    bias_i = bias_i.unsqueeze(-1)   # (D, 1)
+
+    kernel = weight_i @ x_i     # (D, D) @ (B, D, 1) = (B, D, 1)
+    kernel = kernel + bias_i    # (B, D, 1) + (D, 1) = (B, D, 1)
+    
+    result = x_0 * kernel + x_i # (B, D, 1)
+    return result.squeeze(-1)   # (B, D)
+</code></pre>
+<p>Note that the <code>weight_i @ x_i + bias_i</code> term is equivalent to a fully-connected neural network layer with no activation. To this result, we element-wise multiply the original embedding, then add the i-th embedding.</p>
+<h4 id="low-rank-approximation">Low rank approximation</h4>
+<p>Of course, with high embedding dimensionality, the weight matrix can easily grow to millions of parameters, and we need a weight matrix for each of the cross operations. A common technique to reduce the number of parameters is to use a low rank approximation of the weight matrix. In other words, we can replace the <code>weight @ x</code> operation with <code>weight_u @ (weight_v @ x)</code></p>
+<p>In particular, rather than requiring <code>DxD</code> parameters for each cross operation, we will now only need <code>DxR + RxD = 2xRxD</code> parameters, where <code>R</code> is the low-rank approximation dimension. So if <code>R</code> is less than half of <code>D</code>, we can save parameters using this technique.</p>
+<pre><code class="language-python">&quot;&quot;&quot;
+Dimension key:
+    B: batch size
+    D: embedding dimension
+    R: low rank dimension
+
+Params:
+    x0: original embedding, shape BD
+    xi: i-th embedding, shape BD
+    weight_u_i: i-th learned weight matrix, shape DR
+    weight_v_i: i-th learned weight matrix, shape RD
+    bias_i: i-th learned bias term, shape D
+
+Returns:
+    The residual embedding after i+1 cross operations
+&quot;&quot;&quot;
+
+def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
+    x_0 = x_0.unsqueeze(-1)         # (B, D, 1)
+    x_i = x_i.unsqueeze(-1)         # (B, D, 1)
+    bias_i = bias_i.unsqueeze(-1)   # (D, 1)
+
+    kernel = weight_v_i @ x_i       # (R, D) @ (B, D, 1) = (B, R, 1)
+    kernel = weight_u_i @ kernel    # (D, R) @ (B, R, D) = (B, D, 1)
+    kernel = kernel + bias_i        # (B, D, 1) + (D, 1) = (B, D, 1)
+    
+    result = x_0 * kernel + x_i     # (B, D, 1)
+    return result.squeeze(-1)       # (B, D)
+</code></pre>
+<h2 id="mixture-of-low-rank-experts">Mixture of low-rank experts</h2>
+<p>The parameter savings from using low-rank approximations of the weight matrices can be reinvested into additional parameters. In particular, if we have a gating function <code>G(x)</code> we can use it to decide between a group of &ldquo;experts&rdquo; which are themselves low-rank Cross networks.</p>
+<figure><img src="/img/mixture_of_experts_dcn.png"
+    alt="A mixture of experts consists of a gating function and an expert function. The gating function determines the weight of the expert function."><figcaption>
+      <p>A mixture of experts consists of a gating function and an expert function. The gating function determines the weight of the expert function.</p>
+    </figcaption>
+</figure>
+
+<p>Note that setting <code>G(x)=1</code> and <code>K=1</code> reduces the mixture of experts to the original low-rank DCN architecture.</p>
+<h2 id="analysis-of-hyperparameters">Analysis of hyperparameters</h2>
+<p>The number of cross layers (i.e. cross depth), the choice of low-rank approximation, and the number of experts can each have a large effect on the model performance. For the depth of the crosses, the researchers found that performance improved with the number of cross layers, but diminishing returns as depth increased.</p>
+<p>The behavior of the matrix rank was interesting. For very low rank, the model performed similarly with other baselines. However, increasing from rank 4 to 64 showed dramatic performance improvement, and notable but lesser improvement afterwards. This suggests there is some &ldquo;elbow&rdquo; (the authors call this a <em>threshold rank</em>) which maintains good performance without consuming too many parameters.</p>
+<p>For the number of experts, the researchers found that the <em>total rank</em> sum of all of the experts was the main contributing factor for performance. In other words, 1x256, 4x64, 8x32, 16x16 and 32x8 all performed similarly. They hypothesized that their simple gating function was responsible for this.</p>
+<h2 id="results-on-synthetic-datasets">Results on synthetic datasets</h2>
+<p>To better understand how the DCN, DCNv2 and DNN are able to model cross interactions, the authors created synthetic functions for the various architectures to learn. They created three classes of functions with increasing difficulty to learn.</p>
+<figure><img src="/img/synthetic_functions_dcn.png"
+    alt="Synthetic functions of increasing difficulty to be learned by DCN, DCNv2 and DNN."><figcaption>
+      <p>Synthetic functions of increasing difficulty to be learned by DCN, DCNv2 and DNN.</p>
+    </figcaption>
+</figure>
+
+<p>Note that the third equation can be modeled by a single cross operation.</p>
+<p>In their experiments, the authors found:</p>
+<ul>
+<li>The DCN consistently used the fewest parameters (maximum of 300 parameters) and was able to accurately model the simpler functions, but was unable to accurately model the third, most complicated function with a single layer. However, since a single layer was only 300 parameters, experimenting with a larger model would have been interesting.</li>
+<li>The DNN used the most parameters (up to 758k parameters) and was unable to model any of the functions as accurately as either DCN or DCNv2.</li>
+<li>The DCNv2 used up to 10k parameters for the most complex function and achieved the lowest RMSE loss by far.</li>
+</ul>
+<p>The authors also directly compared DCNv2 models with varying numbers of layers with a traditional DNN in modeling a more complex function containing sine terms and polynomials of order 1-4 and found that DNNs are highly inefficient in modeling higher order interactions.</p>
+<h2 id="results-on-criteo">Results on Criteo</h2>
+<p>Criteo is a popular click-through-rate (CTR) prediction dataset containing 7 days of user logs. It contains 13 continuous features and 26 categorical features.</p>
+<p>On Criteo, DCN-v2 (best setting using two layers) had a 0.21% better AUC than a DNN baseline. DCN-Mix (best setting using 3 layers, 4 experts, and low rank of 258) was 0.17% better on AUC than the DNN baseline.</p>
+<h2 id="results-on-movielens-1m">Results on MovieLens-1M</h2>
+<p>MovieLens-1M is a popular dataset for recommendation systems research, containing one million samples of [user-features, movie-features, rating] triplets. The task was treated as a regression problem. Ratings of 1 and 2 were set to 0 and 4 and 5 were set to 1. 3s were removed.</p>
+<p>On MovieLens, DCN-V2 was 0.24% better on AUC than the DNN baseline. DCN-Mix was even better, at +0.39% over the DNN baseline.</p>
+]]></content>
+        </item>
+        
+        <item>
             <title>What is a blunder in chess?</title>
             <link>https://lukesalamone.github.io/posts/chess-blunders/</link>
             <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
@@ -1402,7 +1562,7 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
             <description>White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.
 If you want to fly across the Pacific Ocean, you&amp;rsquo;ll have to board an airplane and fly around 12 hours. It&amp;rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &amp;ldquo;Digging to China&amp;rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.</description>
             <content type="html"><![CDATA[<figure><img src="/img/antipode_land.png"
-    alt="White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface."><figcaption>
+    alt="White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&rsquo;s surface."><figcaption>
       <p>White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&rsquo;s surface.</p>
     </figcaption>
 </figure>
@@ -1701,7 +1861,7 @@ Computers that play chess, otherwise known as chess engines, have existed since 
 <h2 id="branching-factor">Branching Factor</h2>
 <p>In any given position, there may be many possible moves. By some estimates, chess has an average branching factor of around 30, with other estimates putting the number around 40. It isn’t easy to find a concrete value for the branching factor of chess. One source claims (without citation) that the branching factor may be <a href="https://courses.csail.mit.edu/6.034f/ai3/rest.pdf">up to 40</a> (see pg. 117). However, a more recent statistical <a href="https://chess.stackexchange.com/a/24325">analysis</a> of 2.5 million chess games put the real number closer to 31.</p>
 <figure><img src="/img/avg_moves_available.png"
-    alt="The branching factor depends on the stage of the game; middle games have far more available moves than end games. Because not all games are the same length, shorter games will tend to have higher average branching factors than longer ones. Barnes&amp;rsquo; graphic is reproduced above."><figcaption>
+    alt="The branching factor depends on the stage of the game; middle games have far more available moves than end games. Because not all games are the same length, shorter games will tend to have higher average branching factors than longer ones. Barnes&rsquo; graphic is reproduced above."><figcaption>
       <p>The branching factor depends on the stage of the game; middle games have far more available moves than end games. Because not all games are the same length, shorter games will tend to have higher average branching factors than longer ones. Barnes&rsquo; graphic is reproduced above.</p>
     </figcaption>
 </figure>
