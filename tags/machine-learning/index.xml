@@ -1,88 +1,61 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>machine-learning on Luke Salamone&#39;s Blog</title>
+    <title>Machine-Learning on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/machine-learning/</link>
-    <description>Recent content in machine-learning on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 12 Jul 2024 14:48:27 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Machine-Learning on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 12 Jul 2024 14:48:27 -0700</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Custom PyTorch Collate Function</title>
       <link>https://lukesalamone.github.io/posts/custom-pytorch-collate/</link>
       <pubDate>Fri, 12 Jul 2024 14:48:27 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/custom-pytorch-collate/</guid>
-      <description>If your Dataset class looks something like
-class MyDataset(Dataset): # ... boilerplate ... def __getitem__(self, idx): item = self.data[idx] return item[&#39;anchor&#39;], item[&#39;positive&#39;], item[&#39;negative&#39;]  your collate function should be
-def collate_fn(data): anchors, pos, neg = zip(*data) anchors = tokenizer(anchors, return_tensors=&amp;quot;pt&amp;quot;, padding=True) pos = tokenizer(pos, return_tensors=&amp;quot;pt&amp;quot;, padding=True) neg = tokenizer(neg, return_tensors=&amp;quot;pt&amp;quot;, padding=True) return anchors, pos, neg  and you can use it like
-dataset = MyDataset() dataloader = DataLoader(dataset, batch_size=4, shuffle=True, pin_memory=True, collate_fn=collate_fn) for anchors, positives, negatives in dataloader: anchors = anchors.</description>
+      <description>&lt;p&gt;If your &lt;code&gt;Dataset&lt;/code&gt; class looks something like&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class MyDataset(Dataset):&#xA;  &#xA;  # ... boilerplate ...&#xA;&#xA;  def __getitem__(self, idx):&#xA;    item = self.data[idx]&#xA;    return item[&#39;anchor&#39;], item[&#39;positive&#39;], item[&#39;negative&#39;]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;your collate function should be&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def collate_fn(data):&#xA;    anchors, pos, neg = zip(*data)&#xA;    anchors = tokenizer(anchors, return_tensors=&amp;quot;pt&amp;quot;, padding=True)&#xA;    pos = tokenizer(pos, return_tensors=&amp;quot;pt&amp;quot;, padding=True)&#xA;    neg = tokenizer(neg, return_tensors=&amp;quot;pt&amp;quot;, padding=True)&#xA;    return anchors, pos, neg&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;and you can use it like&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;dataset = MyDataset()&#xA;dataloader = DataLoader(dataset, &#xA;                        batch_size=4, &#xA;                        shuffle=True,&#xA;                        pin_memory=True,&#xA;                        collate_fn=collate_fn)&#xA;&#xA;for anchors, positives, negatives in dataloader:&#xA;  anchors = anchors.to(device)&#xA;  positives = positives.to(device)&#xA;  negatives = negatives.to(device)&#xA;  &#xA;  # do more stuff&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;how-does-the-collate_fn-work&#34;&gt;How does the collate_fn work?&lt;/h2&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;../../img/torch_collate_fn.png&#34;&#xA;    alt=&#34;The PyTorch collate function accepts a list of results from calls to the dataset getitem function and combines their components into tensors for convenient training.&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;The PyTorch collate function accepts a list of results from calls to the dataset &lt;strong&gt;getitem&lt;/strong&gt; function and combines their components into tensors for convenient training.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Very Large Datasets in PyTorch</title>
       <link>https://lukesalamone.github.io/posts/very-large-datasets/</link>
       <pubDate>Thu, 27 Jun 2024 18:40:06 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/very-large-datasets/</guid>
-      <description>In God we trust. All others must bring data. ~ W. Edwards Deming
- Datasets that fit in memory For simple machine learning problems, your PyTorch dataset class probably looks something like this:
-class SimpleDataset(Dataset): def __init__(self, features, targets): self.features = [] for feature in features: self.features.append(self._feature_transform(feature)) self.targets = targets def _feature_transform(self, feature): # Optional feature transformation function which # converts each feature into its input representation # for the model.</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;In God we trust. All others must bring data. ~ W. Edwards Deming&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;datasets-that-fit-in-memory&#34;&gt;Datasets that fit in memory&lt;/h2&gt;&#xA;&lt;p&gt;For simple machine learning problems, your PyTorch dataset class probably looks something like this:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class SimpleDataset(Dataset):&#xA;    def __init__(self, features, targets):&#xA;        self.features = []&#xA;        for feature in features:&#xA;            self.features.append(self._feature_transform(feature))&#xA;        self.targets = targets&#xA;&#xA;    def _feature_transform(self, feature):&#xA;        # Optional feature transformation function which &#xA;        # converts each feature into its input representation &#xA;        # for the model. This might be an expensive operation, &#xA;        # so its best to do now rather than during training.&#xA;        return some_transformation_fn(feature)&#xA;&#xA;    def __len__(self):&#xA;        return len(self.features)&#xA;&#xA;    def __getitem__(self, idx):&#xA;        return self.features[idx], self.targets[idx]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;With this method, we basically load all of the data into RAM at once, which is perfectly fine for small datasets. But sooner or later you&amp;rsquo;re going to run into a machine learning problem with a large dataset. What do I mean by this? I mean a dataset which can&amp;rsquo;t easily fit into RAM/VRAM.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How does HNSW work?</title>
       <link>https://lukesalamone.github.io/posts/how-does-hnsw-work/</link>
       <pubDate>Mon, 20 May 2024 13:38:01 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/how-does-hnsw-work/</guid>
-      <description>Suppose we have a vector database with a billion items in it (the haystack). And suppose we are looking for K vectors, the needles which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing 1-distance(x,y).) And also suppose that we&amp;rsquo;d like to do this quickly.
-Naive and semi-naive approaches One approach might be to compare every vector and take the argmax. In that case, for vectors of length D our runtime will be 1 billion x D.</description>
+      <description>&lt;p&gt;Suppose we have a vector database with a billion items in it (the &lt;em&gt;haystack&lt;/em&gt;). And suppose we are looking for K vectors, the &lt;em&gt;needles&lt;/em&gt; which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing &lt;code&gt;1-distance(x,y)&lt;/code&gt;.) And also suppose that we&amp;rsquo;d like to do this quickly.&lt;/p&gt;&#xA;&lt;h2 id=&#34;naive-and-semi-naive-approaches&#34;&gt;Naive and semi-naive approaches&lt;/h2&gt;&#xA;&lt;p&gt;One approach might be to compare every vector and take the argmax. In that case, for vectors of length D our runtime will be &lt;code&gt;1 billion x D&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Vectorized K-Means Clustering</title>
       <link>https://lukesalamone.github.io/posts/vectorized-kmeans/</link>
       <pubDate>Sun, 04 Feb 2024 23:39:29 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/vectorized-kmeans/</guid>
-      <description>K-means clustering (previous discussion) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. The points may represent physical locations, or embeddings in high-dimensional vector space.
-🌟Check out the demo (in two dimensions) below. Centroids are colored white.🌟
-  start   Note that the points are changing color only, not moving.
-General algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.</description>
+      <description>&lt;p&gt;K-means clustering (&lt;a href=&#34;../../posts/kmeans-clustering/&#34;&gt;previous discussion&lt;/a&gt;) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. The points may represent physical locations, or embeddings in high-dimensional vector space.&lt;/p&gt;&#xA;&lt;p&gt;🌟Check out the demo (in two dimensions) below. Centroids are colored white.🌟&lt;/p&gt;&#xA;&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js&#34;&gt;&lt;/script&gt;&#xA;&lt;script src=&#34;../../js/kmeans_demo.js&#34;&gt;&lt;/script&gt;&#xA;&lt;div id=&#39;demo&#39;&gt;&#xA;&lt;button style=&#34;border:1px solid #09f&#34;&gt;start&lt;/button&gt;&#xA;&lt;canvas id=&#34;myChart&#34; style=&#34;background-color: #0000&#34; width=&#34;500px&#34; height=&#34;500px&#34;&gt;&lt;/canvas&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;Note that the points are changing color only, not moving.&lt;/p&gt;&#xA;&lt;h2 id=&#34;general-algorithm&#34;&gt;General algorithm&lt;/h2&gt;&#xA;&lt;p&gt;The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.e. when no points change cluster):&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Paper Summary: Dual-Encoders in Ranking</title>
       <link>https://lukesalamone.github.io/posts/dual-encoders-ranking/</link>
       <pubDate>Sat, 17 Dec 2022 16:53:47 -0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/dual-encoders-ranking/</guid>
-      <description>In Defense of Dual-Encoders for Neural Ranking by Menon et. al. discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&amp;rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.
-Background Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://proceedings.mlr.press/v162/menon22a/menon22a.pdf&#34;&gt;In Defense of Dual-Encoders for Neural Ranking by Menon et. al.&lt;/a&gt; discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&amp;rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.&lt;/p&gt;&#xA;&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches. An example of a bag-of-words approach might simply be to count the number of similar words between the query and each document, and return the document with the highest number of similar words. There are word-stuffing issues with this idea, but the larger issue is that a bag-of-words strategy can&amp;rsquo;t account for synonyms. If I search for &lt;em&gt;bad guy&lt;/em&gt; I will never find &lt;em&gt;villain&lt;/em&gt; without some additional logic to account for this. A neural network implicitly understands the relationship between words, and avoids the fragile logic of simple word counts.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How to Create a Custom Pytorch Dataloader</title>
       <link>https://lukesalamone.github.io/posts/pytorch-dataloader/</link>
       <pubDate>Thu, 28 Apr 2022 18:22:07 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/pytorch-dataloader/</guid>
-      <description>First, create a custom dataset class.
-from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx]  Next, create a custom dataloader where we specify the batch size.
-features, labels = load_data() # features &amp;amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)  Finally, iterate over the dataloader during training.</description>
+      <description>&lt;p&gt;First, create a custom dataset class.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from torch.utils.data import Dataset, DataLoader&#xA;&#xA;class CustomDataset(Dataset):&#xA;  def __init__(self, features, labels):&#xA;&#xA;    assert len(features) == len(labels)&#xA;    self.features = features&#xA;    self.labels = labels&#xA;&#xA;  def __len__(self):&#xA;    return len(self.features)&#xA;&#xA;  def __getitem__(self, idx):&#xA;    return self.features[idx], self.labels[idx]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Next, create a custom dataloader where we specify the batch size.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;features, labels = load_data()&#xA;&#xA;# features &amp;amp; labels must have equal lengths&#xA;# e.g. features = [[1,2,3],[4,5,6]]&#xA;#      labels = [7,8]&#xA;&#xA;dataset = CustomDataset(features, labels)&#xA;dataloader = DataLoader(dataset,&#xA;                        batch_size=batch_size,&#xA;                        shuffle=True)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Finally, iterate over the dataloader during training.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How does K-means clustering work?</title>
       <link>https://lukesalamone.github.io/posts/kmeans-clustering/</link>
       <pubDate>Wed, 07 Oct 2020 17:39:22 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/kmeans-clustering/</guid>
-      <description>K-means clustering (not to be confused with K-nearest neighbors) is an unsupervised learning algorithm used for grouping similar points together into clusters.
-  start   Algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence:
- assign points to cluster corresponding to closest centroid update centroid locations to the mean of all points assigned to the associated cluster  The algorithm converges when the centroids stop moving, i.</description>
+      <description>&lt;p&gt;K-means clustering (not to be confused with K-nearest neighbors) is an unsupervised learning algorithm used for grouping similar points together into clusters.&lt;/p&gt;&#xA;&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js&#34;&gt;&lt;/script&gt;&#xA;&lt;script src=&#34;../../js/kmeans_demo.js&#34;&gt;&lt;/script&gt;&#xA;&lt;div id=&#39;demo&#39;&gt;&#xA;&lt;button&gt;start&lt;/button&gt;&#xA;&lt;canvas id=&#34;myChart&#34; style=&#34;background-color: #0000&#34;&gt;&lt;/canvas&gt;&#xA;&lt;/div&gt;&#xA;&lt;h2 id=&#34;algorithm&#34;&gt;Algorithm&lt;/h2&gt;&#xA;&lt;p&gt;The basic K-means algorithm is fairly simple and has two steps, repeated until convergence:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;assign points to cluster corresponding to closest centroid&lt;/li&gt;&#xA;&lt;li&gt;update centroid locations to the mean of all points assigned to the associated cluster&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;The algorithm converges when the centroids stop moving, i.e. no points can be switched between clusters to a closer centroid.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>transformers on Luke Salamone&#39;s Blog</title>
+    <title>Transformers on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/transformers/</link>
-    <description>Recent content in transformers on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 15 Jun 2021 19:09:36 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/transformers/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Transformers on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 15 Jun 2021 19:09:36 -0500</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/transformers/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What Are Attention Masks?</title>
       <link>https://lukesalamone.github.io/posts/what-are-attention-masks/</link>
       <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/what-are-attention-masks/</guid>
-      <description>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.
- Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.</description>
+      <description>&lt;p&gt;TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;../../img/attention_mask.png&#34;&#xA;    alt=&#34;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

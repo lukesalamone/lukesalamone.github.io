@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>attention on Luke Salamone&#39;s Blog</title>
+    <title>Attention on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/attention/</link>
-    <description>Recent content in attention on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 16 Nov 2022 15:24:15 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/attention/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Attention on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 16 Nov 2022 15:24:15 -0500</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/attention/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A Few Notes on the Transformer</title>
       <link>https://lukesalamone.github.io/posts/self-attention/</link>
       <pubDate>Wed, 16 Nov 2022 15:24:15 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/self-attention/</guid>
-      <description>A self-attention block depicted as a neural network.
-  In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.
-What is attention? At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren&amp;rsquo;t.</description>
+      <description>&lt;figure&gt;&lt;img src=&#34;../../img/self-attention.png&#34;&#xA;    alt=&#34;A self-attention block depicted as a neural network.&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;A self-attention block depicted as a neural network.&lt;/p&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in &lt;a href=&#34;https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf&#34;&gt;Attention is All You Need&lt;/a&gt; by Vaswani et al.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-attention&#34;&gt;What is attention?&lt;/h2&gt;&#xA;&lt;p&gt;At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren&amp;rsquo;t. In language models, attention is used as a way for the model to learn which portions of a sentence are relevant to each word.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

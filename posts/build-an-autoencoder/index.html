@@ -51,32 +51,41 @@
 
 
 
-<meta itemprop="name" content="Autoencoding Stock Prices">
-<meta itemprop="description" content="Autoencoding stock prices as found in Heaton et al., 2016
-  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
-Once we&rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index."><meta itemprop="datePublished" content="2021-03-07T01:31:51-06:00" />
-<meta itemprop="dateModified" content="2021-03-07T01:31:51-06:00" />
-<meta itemprop="wordCount" content="705"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="neural-networks,pytorch,stock-trading," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="Autoencoding Stock Prices"/>
-<meta name="twitter:description" content="Autoencoding stock prices as found in Heaton et al., 2016
-  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
-Once we&rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index."/>
+  <meta itemprop="name" content="Autoencoding Stock Prices">
+  <meta itemprop="description" content="Autoencoding stock prices as found in Heaton et al., 2016
+So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
+Once we’ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index. This can be useful for finding deeper insights into an index, and doesn’t require a priori knowledge of the index price or the weighting of its components. Note, this is only one metric which one could use to determine how well one member of the group follows the group overall. Another might be Pearson Correlation.">
+  <meta itemprop="datePublished" content="2021-03-07T01:31:51-06:00">
+  <meta itemprop="dateModified" content="2021-03-07T01:31:51-06:00">
+  <meta itemprop="wordCount" content="705">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Neural-Networks,Pytorch,Stock-Trading">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="Autoencoding Stock Prices">
+  <meta name="twitter:description" content="Autoencoding stock prices as found in Heaton et al., 2016
+So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
+Once we’ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index. This can be useful for finding deeper insights into an index, and doesn’t require a priori knowledge of the index price or the weighting of its components. Note, this is only one metric which one could use to determine how well one member of the group follows the group overall. Another might be Pearson Correlation.">
 
 
 
-    <meta property="og:title" content="Autoencoding Stock Prices" />
-<meta property="og:description" content="Autoencoding stock prices as found in Heaton et al., 2016
-  So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
-Once we&rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/build-an-autoencoder/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-03-07T01:31:51-06:00" />
-<meta property="article:modified_time" content="2021-03-07T01:31:51-06:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/build-an-autoencoder/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="Autoencoding Stock Prices">
+  <meta property="og:description" content="Autoencoding stock prices as found in Heaton et al., 2016
+So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms here.
+Once we’ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index. This can be useful for finding deeper insights into an index, and doesn’t require a priori knowledge of the index price or the weighting of its components. Note, this is only one metric which one could use to determine how well one member of the group follows the group overall. Another might be Pearson Correlation.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-03-07T01:31:51-06:00">
+    <meta property="article:modified_time" content="2021-03-07T01:31:51-06:00">
+    <meta property="article:tag" content="Neural-Networks">
+    <meta property="article:tag" content="Pytorch">
+    <meta property="article:tag" content="Stock-Trading">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -145,9 +154,9 @@ Once we&rsquo;ve trained the autoencoder, we can use it to measure how well each
 
       <div class="post-content">
         <figure><img src="../../img/autoencoder.png"
-         alt="Autoencoding stock prices as found in Heaton et al., 2016"/><figcaption>
-            <p>Autoencoding stock prices as found in Heaton et al., 2016</p>
-        </figcaption>
+    alt="Autoencoding stock prices as found in Heaton et al., 2016"><figcaption>
+      <p>Autoencoding stock prices as found in Heaton et al., 2016</p>
+    </figcaption>
 </figure>
 
 <p>So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms <a href="https://arxiv.org/pdf/1602.06561.pdf">here</a>.</p>
@@ -305,7 +314,7 @@ NVR: 10955169.00
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.e5fbf64306713fe8df1194a658201f5e861815365f67b3c6fc9094ed28d21c92aeaff20b7f4c12c25ba7efabe31291ffd1074e33cd60cf8ff8d8ffef7c028d73.js" integrity="sha512-5fv2QwZxP&#43;jfEZSmWCAfXoYYFTZfZ7PG/JCU7SjSHJKur/ILf0wSwlun76vjEpH/0QdOM81gz4/42P/vfAKNcw=="></script>
 
 
 

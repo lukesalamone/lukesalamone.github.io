@@ -51,29 +51,38 @@
 
 
 
-<meta itemprop="name" content="A new type of chess tournament">
-<meta itemprop="description" content="This is part 2 of a paper I wrote for Ken Forbus&#39; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
-In the previous post I discussed the history of chess engines and why they don&rsquo;t &ldquo;think&rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it."><meta itemprop="datePublished" content="2022-10-08T15:17:36-07:00" />
-<meta itemprop="dateModified" content="2022-10-08T15:17:36-07:00" />
-<meta itemprop="wordCount" content="3180"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="chess,qualitative-reasoning,ai," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="A new type of chess tournament"/>
-<meta name="twitter:description" content="This is part 2 of a paper I wrote for Ken Forbus&#39; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
-In the previous post I discussed the history of chess engines and why they don&rsquo;t &ldquo;think&rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it."/>
+  <meta itemprop="name" content="A new type of chess tournament">
+  <meta itemprop="description" content="This is part 2 of a paper I wrote for Ken Forbus’ Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
+In the previous post I discussed the history of chess engines and why they don’t “think” like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it. At the time, though, the goal was to beat human grandmasters by any means necessary, a great engineering feat that the field had been working on for decades.">
+  <meta itemprop="datePublished" content="2022-10-08T15:17:36-07:00">
+  <meta itemprop="dateModified" content="2022-10-08T15:17:36-07:00">
+  <meta itemprop="wordCount" content="3180">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Chess,Qualitative-Reasoning,Ai">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="A new type of chess tournament">
+  <meta name="twitter:description" content="This is part 2 of a paper I wrote for Ken Forbus’ Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
+In the previous post I discussed the history of chess engines and why they don’t “think” like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it. At the time, though, the goal was to beat human grandmasters by any means necessary, a great engineering feat that the field had been working on for decades.">
 
 
 
-    <meta property="og:title" content="A new type of chess tournament" />
-<meta property="og:description" content="This is part 2 of a paper I wrote for Ken Forbus&#39; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
-In the previous post I discussed the history of chess engines and why they don&rsquo;t &ldquo;think&rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/qualitative-analysis-chess/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-10-08T15:17:36-07:00" />
-<meta property="article:modified_time" content="2022-10-08T15:17:36-07:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/qualitative-analysis-chess/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="A new type of chess tournament">
+  <meta property="og:description" content="This is part 2 of a paper I wrote for Ken Forbus’ Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
+In the previous post I discussed the history of chess engines and why they don’t “think” like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it. At the time, though, the goal was to beat human grandmasters by any means necessary, a great engineering feat that the field had been working on for decades.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-10-08T15:17:36-07:00">
+    <meta property="article:modified_time" content="2022-10-08T15:17:36-07:00">
+    <meta property="article:tag" content="Chess">
+    <meta property="article:tag" content="Qualitative-Reasoning">
+    <meta property="article:tag" content="Ai">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -141,7 +150,7 @@ In the previous post I discussed the history of chess engines and why they don&r
       
 
       <div class="post-content">
-        <p><em><strong>This is part 2 of a paper I wrote for <a href="https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/forbus-ken.html">Ken Forbus</a>' Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper <a href="../../files/anthropomorphic-chess-evaluation-via-qualitative-analysis.pdf">here</a> and part 1 <a href="../../posts/chess-engine-history">here</a>.</strong></em></p>
+        <p><em><strong>This is part 2 of a paper I wrote for <a href="https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/forbus-ken.html">Ken Forbus</a>&rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper <a href="../../files/anthropomorphic-chess-evaluation-via-qualitative-analysis.pdf">here</a> and part 1 <a href="../../posts/chess-engine-history/">here</a>.</strong></em></p>
 <p>In the previous post I discussed the history of chess engines and why they don&rsquo;t &ldquo;think&rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it. At the time, though, the goal was to beat human grandmasters by any means necessary, a great engineering feat that the field had been working on for decades.</p>
 <p>This post contains two related proposals. The first is a chess engine tournament, unique in the type of engine which will be permitted to enter and likely to succeed. Importantly, the vast majority of engines currently holding the highest performance ratings will likely not be effective.</p>
 <p>The second proposal is the outlines of a chess engine that is likely to be successful in this tournament, taking advantage of the highly qualitative nature of chess position evaluation. Although it is unlikely to perform as strongly against top-performing engines, there are several distinct advantages of such an engine. In short, there is likely to be a great deal of educational value as well as financial incentive driving the construction of highly successful qualitative chess engines.</p>
@@ -149,9 +158,9 @@ In the previous post I discussed the history of chess engines and why they don&r
 <p>Qualitatively, there are many aspects to a chess game that may be captured. Let&rsquo;s take a look at the way a grandmaster analyzes a position. It will become quite apparent that at the highest levels, the qualitative aspects of position analysis dominate over quantitative aspects (i.e. the number and value of each piece).</p>
 <p>In the selected lecture, Grandmaster Varuzhan Akobian details a game he played previously. At a key moment of the game, Akobian sacrificed his rook for a key pawn in the center of the board. The resulting position is reproduced for convenience in Figure 1.</p>
 <figure><img src="../../img/human_analysis_fig4.png"
-         alt="Figure 1. Quantitative analysis would posit that black is winning due to his extra rook for white’s knight and pawn. However, qualitative analysis provides a more complete picture of black’s predicament."/><figcaption>
-            <p>Figure 1. Quantitative analysis would posit that black is winning due to his extra rook for white’s knight and pawn. However, qualitative analysis provides a more complete picture of black’s predicament.</p>
-        </figcaption>
+    alt="Figure 1. Quantitative analysis would posit that black is winning due to his extra rook for white’s knight and pawn. However, qualitative analysis provides a more complete picture of black’s predicament."><figcaption>
+      <p>Figure 1. Quantitative analysis would posit that black is winning due to his extra rook for white’s knight and pawn. However, qualitative analysis provides a more complete picture of black’s predicament.</p>
+    </figcaption>
 </figure>
 
 <p><a href="https://youtu.be/h80Mu4N6oYI?t=1515">His analysis starts at 25:15 in the video</a>:</p>
@@ -185,14 +194,14 @@ In the previous post I discussed the history of chess engines and why they don&r
 <p>Qualitative spatial calculi may also be used to construct more psychologically plausible models of chess positions than simply noting which pieces occupy which squares, seeking to emulate the models suggested by Chase and Simon. Chess pieces have intricate relationships which can be captured, and which change whenever a piece moves to another square. Importantly, however, not all relationships are affected by the movement of a single chess piece, suggesting that performance gains may be realized by recomputing only those relationships which have changed.</p>
 <p>It is likely that low-level piece relationships may give rise to higher level relationships and tactics. For example, the concept of “capturing the defender” arises from the concept of attacking a piece A which defends B, which works when pieces A and B are attacked by pieces C and D of opposing colors. And in the case of Figure 2 below, a defender may be “deflected” to win the piece it is defending. Defensive relationships may be thought of in a chain or directed graph, with each piece defending another and the safety of a piece being considered in relation to its connection to a defensive group.</p>
 <figure><img src="../../img/human_analysis_fig5.png"
-         alt="Figure 2. White to move. From this image, many basic piece relationships are apparent with only 8 pieces left on the board. Importantly, the black king is defending the black queen. The black queen is also being attacked by the white queen, and is attacking the white queen. White’s queen is undefended, a state sometimes referred to as hanging. These relationships reveal the opportunity for a tactic. White can simultaneously move his rook to attack black’s king (danger levels) and take advantage of the defensive connection between the black king and queen with the move rook to b8. This forces black to move his king, removing the defense of his queen. In this position, black’s queen can be freely captured by white’s queen. Due to the mobility advantages of a queen over a rook, this is a favorable move sequence for white."/><figcaption>
-            <p>Figure 2. White to move. From this image, many basic piece relationships are apparent with only 8 pieces left on the board. Importantly, the black king is defending the black queen. The black queen is also being attacked by the white queen, and is attacking the white queen. White’s queen is undefended, a state sometimes referred to as hanging. These relationships reveal the opportunity for a tactic. White can simultaneously move his rook to attack black’s king (danger levels) and take advantage of the defensive connection between the black king and queen with the move rook to b8. This forces black to move his king, removing the defense of his queen. In this position, black’s queen can be freely captured by white’s queen. Due to the mobility advantages of a queen over a rook, this is a favorable move sequence for white.</p>
-        </figcaption>
+    alt="Figure 2. White to move. From this image, many basic piece relationships are apparent with only 8 pieces left on the board. Importantly, the black king is defending the black queen. The black queen is also being attacked by the white queen, and is attacking the white queen. White’s queen is undefended, a state sometimes referred to as hanging. These relationships reveal the opportunity for a tactic. White can simultaneously move his rook to attack black’s king (danger levels) and take advantage of the defensive connection between the black king and queen with the move rook to b8. This forces black to move his king, removing the defense of his queen. In this position, black’s queen can be freely captured by white’s queen. Due to the mobility advantages of a queen over a rook, this is a favorable move sequence for white."><figcaption>
+      <p>Figure 2. White to move. From this image, many basic piece relationships are apparent with only 8 pieces left on the board. Importantly, the black king is defending the black queen. The black queen is also being attacked by the white queen, and is attacking the white queen. White’s queen is undefended, a state sometimes referred to as hanging. These relationships reveal the opportunity for a tactic. White can simultaneously move his rook to attack black’s king (danger levels) and take advantage of the defensive connection between the black king and queen with the move rook to b8. This forces black to move his king, removing the defense of his queen. In this position, black’s queen can be freely captured by white’s queen. Due to the mobility advantages of a queen over a rook, this is a favorable move sequence for white.</p>
+    </figcaption>
 </figure>
 
 <h2 id="applications-of-a-qualitative-chess-engine">Applications of a qualitative chess engine</h2>
 <p>There are many benefits to reopening the pursuit of qualitative reasoning in chess. The first and most clear value proposition is that qualitative reasoning is likely to serve as a more plausible model for how humans think about the game. This is evidenced by the fact that as Chase and Simon found, chess players do not “see” the whole board at once, but rather in chunks of interrelated pieces. Even if the details of human mental models differ slightly from the implementation of a qualitative reasoning engine, it will be able to provide a traceable account of its decision-making process, an important step towards explainability.</p>
-<p>As we saw in <a href="../../posts/chess-engine-history">part 1</a>, current top chess engines reason about chess in ways that are quite contrary to human intuition. Stockfish uses full-width search, considering each move in each position without prejudice and assigning numerical values to each position. As we saw from the analysis from GM Akobian, qualitative evaluations are far more meaningful to humans.</p>
+<p>As we saw in <a href="../../posts/chess-engine-history/">part 1</a>, current top chess engines reason about chess in ways that are quite contrary to human intuition. Stockfish uses full-width search, considering each move in each position without prejudice and assigning numerical values to each position. As we saw from the analysis from GM Akobian, qualitative evaluations are far more meaningful to humans.</p>
 <p>ther chess engines approach chess in an even more alien way. Specifically, it is unlikely that any engine which makes heavy use of neural evaluation functions will model human-derived organic strategies in ways which chess players will recognize. At the far end of this spectrum is the fully neural Maia chess engine, but even Lc0’s Monte-Carlo tree search precludes consideration for cognitive plausibility.</p>
 <p>Qualitative chess engines which are able to better reproduce the types of chess reasoning used by top human chess players are also likely to serve as better pedagogical tools for those interested in studying chess. This applies at every level, from beginner to grandmaster. The skill level of such a chess engine would be quite easily tunable simply by disabling more advanced knowledge from the knowledge base.</p>
 <p>This is a far more natural method of “handicapping” than the search depth limitations used in current chess engines. Each piece of knowledge becomes a tunable parameter to the engine. As students learn concepts, the corresponding representations in the knowledge base could be enabled, allowing for gradual learning in a far more accessible way. In fact, it is likely true that a qualitative chess engine could outperform human grandmasters (who often teach chess to others) in this respect.</p>
@@ -314,7 +323,7 @@ In the previous post I discussed the history of chess engines and why they don&r
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.e5fbf64306713fe8df1194a658201f5e861815365f67b3c6fc9094ed28d21c92aeaff20b7f4c12c25ba7efabe31291ffd1074e33cd60cf8ff8d8ffef7c028d73.js" integrity="sha512-5fv2QwZxP&#43;jfEZSmWCAfXoYYFTZfZ7PG/JCU7SjSHJKur/ILf0wSwlun76vjEpH/0QdOM81gz4/42P/vfAKNcw=="></script>
 
 
 

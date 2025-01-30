@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ctr on Luke Salamone&#39;s Blog</title>
+    <title>Ctr on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/ctr/</link>
-    <description>Recent content in ctr on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 02 Oct 2023 12:39:18 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/ctr/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Ctr on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 02 Oct 2023 12:39:18 -0700</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/ctr/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Summary: Deep &amp; Cross Net v2</title>
       <link>https://lukesalamone.github.io/posts/deep-cross-net-v2/</link>
       <pubDate>Mon, 02 Oct 2023 12:39:18 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/deep-cross-net-v2/</guid>
-      <description>Paper link: https://arxiv.org/pdf/2008.13535
-Learning to rank is an important problem in many machine-learning products such as search, recommendation, and advertising. Originally, many machine learning systems used simple logistic regression models, but it quickly became apparent that combining two or more features together was even better. This is called feature crossing.
-A lot of research and engineering work has gone into learning useful feature crosses. The fundamental problem is that although higher-order feature crosses can be more informative, they are also more sparse, and the number of high order features grows exponentially.</description>
+      <description>&lt;p&gt;Paper link: &lt;a href=&#34;https://arxiv.org/pdf/2008.13535&#34;&gt;https://arxiv.org/pdf/2008.13535&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Learning to rank is an important problem in many machine-learning products such as search, recommendation, and advertising. Originally, many machine learning systems used simple logistic regression models, but it quickly became apparent that combining two or more features together was &lt;a href=&#34;https://www.ismll.uni-hildesheim.de/pub/pdfs/Rendle2010FM.pdf&#34;&gt;even better&lt;/a&gt;. This is called feature crossing.&lt;/p&gt;&#xA;&lt;p&gt;A lot of research and engineering work has gone into learning useful feature crosses. The fundamental problem is that although higher-order feature crosses can be more informative, they are also more sparse, and the number of high order features grows exponentially. Some attempts to address this have been:&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>geometry on Luke Salamone&#39;s Blog</title>
+    <title>Geometry on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/geometry/</link>
-    <description>Recent content in geometry on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 09 Jul 2020 15:40:14 +0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/geometry/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Geometry on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 09 Jul 2020 15:40:14 +0800</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/geometry/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Estimating Pi with a Monte Carlo Simulation</title>
       <link>https://lukesalamone.github.io/posts/monte-carlo/</link>
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/monte-carlo/</guid>
-      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.</description>
+      <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>uncompress on Luke Salamone&#39;s Blog</title>
+    <title>Uncompress on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/uncompress/</link>
-    <description>Recent content in uncompress on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 30 Mar 2022 20:05:26 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/uncompress/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Uncompress on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 30 Mar 2022 20:05:26 -0500</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/uncompress/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Zip and Unzip a tar.gz File</title>
       <link>https://lukesalamone.github.io/posts/how-to-tar-untar-file/</link>
       <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/how-to-tar-untar-file/</guid>
-      <description>If you want to extract a tar archive
-tar -xf archive.tar.gz  If you want to compress a directory
-tar -czvf archive.tar.gz /path/to/directory  That&amp;rsquo;s all.</description>
+      <description>&lt;p&gt;If you want to extract a tar archive&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;tar -xf archive.tar.gz&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;If you want to compress a directory&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;tar -czvf archive.tar.gz /path/to/directory&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;That&amp;rsquo;s all.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

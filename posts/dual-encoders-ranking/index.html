@@ -51,29 +51,37 @@
 
 
 
-<meta itemprop="name" content="Paper Summary: Dual-Encoders in Ranking">
-<meta itemprop="description" content="In Defense of Dual-Encoders for Neural Ranking by Menon et. al. discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.
-Background Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches."><meta itemprop="datePublished" content="2022-12-17T16:53:47-08:00" />
-<meta itemprop="dateModified" content="2022-12-17T16:53:47-08:00" />
-<meta itemprop="wordCount" content="731"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="machine-learning,search," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="Paper Summary: Dual-Encoders in Ranking"/>
-<meta name="twitter:description" content="In Defense of Dual-Encoders for Neural Ranking by Menon et. al. discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.
-Background Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches."/>
+  <meta itemprop="name" content="Paper Summary: Dual-Encoders in Ranking">
+  <meta itemprop="description" content="In Defense of Dual-Encoders for Neural Ranking by Menon et. al. discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don’t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.
+Background Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches. An example of a bag-of-words approach might simply be to count the number of similar words between the query and each document, and return the document with the highest number of similar words. There are word-stuffing issues with this idea, but the larger issue is that a bag-of-words strategy can’t account for synonyms. If I search for bad guy I will never find villain without some additional logic to account for this. A neural network implicitly understands the relationship between words, and avoids the fragile logic of simple word counts.">
+  <meta itemprop="datePublished" content="2022-12-17T16:53:47-08:00">
+  <meta itemprop="dateModified" content="2022-12-17T16:53:47-08:00">
+  <meta itemprop="wordCount" content="731">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Machine-Learning,Search">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="Paper Summary: Dual-Encoders in Ranking">
+  <meta name="twitter:description" content="In Defense of Dual-Encoders for Neural Ranking by Menon et. al. discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don’t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.
+Background Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches. An example of a bag-of-words approach might simply be to count the number of similar words between the query and each document, and return the document with the highest number of similar words. There are word-stuffing issues with this idea, but the larger issue is that a bag-of-words strategy can’t account for synonyms. If I search for bad guy I will never find villain without some additional logic to account for this. A neural network implicitly understands the relationship between words, and avoids the fragile logic of simple word counts.">
 
 
 
-    <meta property="og:title" content="Paper Summary: Dual-Encoders in Ranking" />
-<meta property="og:description" content="In Defense of Dual-Encoders for Neural Ranking by Menon et. al. discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.
-Background Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/dual-encoders-ranking/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-12-17T16:53:47-08:00" />
-<meta property="article:modified_time" content="2022-12-17T16:53:47-08:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/dual-encoders-ranking/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="Paper Summary: Dual-Encoders in Ranking">
+  <meta property="og:description" content="In Defense of Dual-Encoders for Neural Ranking by Menon et. al. discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don’t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.
+Background Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches. An example of a bag-of-words approach might simply be to count the number of similar words between the query and each document, and return the document with the highest number of similar words. There are word-stuffing issues with this idea, but the larger issue is that a bag-of-words strategy can’t account for synonyms. If I search for bad guy I will never find villain without some additional logic to account for this. A neural network implicitly understands the relationship between words, and avoids the fragile logic of simple word counts.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-12-17T16:53:47-08:00">
+    <meta property="article:modified_time" content="2022-12-17T16:53:47-08:00">
+    <meta property="article:tag" content="Machine-Learning">
+    <meta property="article:tag" content="Search">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -146,9 +154,9 @@ Background Search requires an automatic way to find the most relevant documents 
 <p>Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches. An example of a bag-of-words approach might simply be to count the number of similar words between the query and each document, and return the document with the highest number of similar words. There are word-stuffing issues with this idea, but the larger issue is that a bag-of-words strategy can&rsquo;t account for synonyms. If I search for <em>bad guy</em> I will never find <em>villain</em> without some additional logic to account for this. A neural network implicitly understands the relationship between words, and avoids the fragile logic of simple word counts.</p>
 <p>The idea of a neural encoding approach is pretty simple. For each document in your corpus, pass the query a document into a function which will return a similarity score between 0 and 1. Then, just sort the documents by that score. There are two main architectures for doing this: dual-encoders and cross-attention models.</p>
 <figure><img src="../../img/dual_vs_cross_encoder.png"
-         alt="Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models."/><figcaption>
-            <p>Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models.</p>
-        </figcaption>
+    alt="Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models."><figcaption>
+      <p>Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models.</p>
+    </figcaption>
 </figure>
 
 <p>The great thing about DE models is that document embeddings can be computed ahead of time. When users enter a query, only that query embedding needs to be calculated, and then compared with the embeddings already calculated for each of the documents. It&rsquo;s a lot faster. So much faster, in fact, that CA is generally not used for initial retrieval, only for reranking afterwards.</p>
@@ -156,9 +164,9 @@ Background Search requires an automatic way to find the most relevant documents 
 <h2 id="the-problem">The Problem</h2>
 <p>It&rsquo;s unclear whether the shortcomings of DEs are due to the DE model&rsquo;s capacity or because of its training procedure. DEs may be overfitting.</p>
 <figure><img src="../../img/dual_encoder_overfitting.png"
-         alt="DE models can match CA model training performance but are often lower during evaluation."/><figcaption>
-            <p>DE models can match CA model training performance but are often lower during evaluation.</p>
-        </figcaption>
+    alt="DE models can match CA model training performance but are often lower during evaluation."><figcaption>
+      <p>DE models can match CA model training performance but are often lower during evaluation.</p>
+    </figcaption>
 </figure>
 
 <p>Dual encoders can also be improved by distillation, of which there are two kinds:</p>
@@ -167,16 +175,16 @@ Background Search requires an automatic way to find the most relevant documents 
 <li>Probability matching. Try to match the softmax probabilities between teacher and student.</li>
 </ol>
 <figure><img src="../../img/de_ca_margins.png"
-         alt="CA models have better separation between positive and negative examples, strongly predicting negative examples. DE models have more overlap between positive and negative predictions. Normalizing the margins between positive and negative predictions (higher is better), CA models clearly have better performance. The distilled model is slightly better than the DE model."/><figcaption>
-            <p>CA models have better separation between positive and negative examples, strongly predicting negative examples. DE models have more overlap between positive and negative predictions. Normalizing the margins between positive and negative predictions (higher is better), CA models clearly have better performance. The distilled model is slightly better than the DE model.</p>
-        </figcaption>
+    alt="CA models have better separation between positive and negative examples, strongly predicting negative examples. DE models have more overlap between positive and negative predictions. Normalizing the margins between positive and negative predictions (higher is better), CA models clearly have better performance. The distilled model is slightly better than the DE model."><figcaption>
+      <p>CA models have better separation between positive and negative examples, strongly predicting negative examples. DE models have more overlap between positive and negative predictions. Normalizing the margins between positive and negative predictions (higher is better), CA models clearly have better performance. The distilled model is slightly better than the DE model.</p>
+    </figcaption>
 </figure>
 
 <p>Part of the cause of this discrepancy may be the fact that DE models have noisier updates. DE models may have difficulty modeling negative scores since updating their weights on positive (q, d+) pairs can inadvertently increase scores for negative (q, d-) pairs. Dropout also doesn&rsquo;t seem to mitigate overfitting.</p>
 <figure><img src="../../img/de_ca_score_evolution.png"
-         alt="The evolution of scores for five positive and five negative documents for a fixed query. Scores from the CA model separate much more smoothly than in the DE model."/><figcaption>
-            <p>The evolution of scores for five positive and five negative documents for a fixed query. Scores from the CA model separate much more smoothly than in the DE model.</p>
-        </figcaption>
+    alt="The evolution of scores for five positive and five negative documents for a fixed query. Scores from the CA model separate much more smoothly than in the DE model."><figcaption>
+      <p>The evolution of scores for five positive and five negative documents for a fixed query. Scores from the CA model separate much more smoothly than in the DE model.</p>
+    </figcaption>
 </figure>
 
 <h2 id="solutions">Solutions</h2>
@@ -186,16 +194,16 @@ Background Search requires an automatic way to find the most relevant documents 
 <li>Distilling predictions from CA models. Model distillation uses a teacher-student framework where the smaller &ldquo;student&rdquo; model attempts to mirror the &ldquo;teacher&rdquo;. This paper explores a new approach to distillation.</li>
 </ol>
 <p>The authors introduce <em>multi-margin MSE loss</em> (M3SE):</p>
-<figure><img src="../../img/m3se.png"/>
+<figure><img src="../../img/m3se.png">
 </figure>
 
 <p>M3SE loss attempts to match the margins of score differences between teacher and student. For performance reasons, however, rather than matching each margin, it only encourages the student to be less than or equal to the teacher&rsquo;s highest negative score.</p>
 <p>M3SE can be seen as an extension of Margin MSE loss where instead of matching logits it matches raw scores. It can also be seen as a smooth approximation of softmax cross-entropy loss. The authors also highlight parallels between M3SE and RankDistil.</p>
 <h2 id="results">Results</h2>
 <figure><img src="../../img/m3se_results.png"
-         alt="Apart from TREC, M3SE distillation appears to nearly close the gap with cross-attention models. Distilled models are 6-layer BERT models with embedding size 768."/><figcaption>
-            <p>Apart from TREC, M3SE distillation appears to nearly close the gap with cross-attention models. Distilled models are 6-layer BERT models with embedding size 768.</p>
-        </figcaption>
+    alt="Apart from TREC, M3SE distillation appears to nearly close the gap with cross-attention models. Distilled models are 6-layer BERT models with embedding size 768."><figcaption>
+      <p>Apart from TREC, M3SE distillation appears to nearly close the gap with cross-attention models. Distilled models are 6-layer BERT models with embedding size 768.</p>
+    </figcaption>
 </figure>
 
 
@@ -301,7 +309,7 @@ Background Search requires an automatic way to find the most relevant documents 
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.e5fbf64306713fe8df1194a658201f5e861815365f67b3c6fc9094ed28d21c92aeaff20b7f4c12c25ba7efabe31291ffd1074e33cd60cf8ff8d8ffef7c028d73.js" integrity="sha512-5fv2QwZxP&#43;jfEZSmWCAfXoYYFTZfZ7PG/JCU7SjSHJKur/ILf0wSwlun76vjEpH/0QdOM81gz4/42P/vfAKNcw=="></script>
 
 
 

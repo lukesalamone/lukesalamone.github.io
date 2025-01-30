@@ -4,7 +4,8 @@
     <title>Blog on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/blog/</link>
     <description>Recent content in Blog on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://lukesalamone.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://lukesalamone.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

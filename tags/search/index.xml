@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>search on Luke Salamone&#39;s Blog</title>
+    <title>Search on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/search/</link>
-    <description>Recent content in search on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 17 Dec 2022 16:53:47 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/search/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Search on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 17 Dec 2022 16:53:47 -0800</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/search/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Paper Summary: Dual-Encoders in Ranking</title>
       <link>https://lukesalamone.github.io/posts/dual-encoders-ranking/</link>
       <pubDate>Sat, 17 Dec 2022 16:53:47 -0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/dual-encoders-ranking/</guid>
-      <description>In Defense of Dual-Encoders for Neural Ranking by Menon et. al. discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&amp;rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.
-Background Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://proceedings.mlr.press/v162/menon22a/menon22a.pdf&#34;&gt;In Defense of Dual-Encoders for Neural Ranking by Menon et. al.&lt;/a&gt; discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&amp;rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.&lt;/p&gt;&#xA;&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches. An example of a bag-of-words approach might simply be to count the number of similar words between the query and each document, and return the document with the highest number of similar words. There are word-stuffing issues with this idea, but the larger issue is that a bag-of-words strategy can&amp;rsquo;t account for synonyms. If I search for &lt;em&gt;bad guy&lt;/em&gt; I will never find &lt;em&gt;villain&lt;/em&gt; without some additional logic to account for this. A neural network implicitly understands the relationship between words, and avoids the fragile logic of simple word counts.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Rolling My Own Blog Search</title>
       <link>https://lukesalamone.github.io/posts/rolling-my-own-blog-search/</link>
       <pubDate>Wed, 09 Nov 2022 02:42:51 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/rolling-my-own-blog-search/</guid>
-      <description>I&amp;rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&amp;rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:
- The search needs to be fast, useful, and aesthetically pleasing. Search in the browser. Standing up a server is a lot of extra work. It&amp;rsquo;s also overkill since I only have about 30 articles so far.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&amp;rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;The search needs to be fast, useful, and aesthetically pleasing.&lt;/li&gt;&#xA;&lt;li&gt;Search in the browser. Standing up a server is a lot of extra work. It&amp;rsquo;s also overkill since I only have about 30 articles so far.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;semantic-search&#34;&gt;Semantic search&lt;/h2&gt;&#xA;&lt;p&gt;I did some experiments with small neural networks deployed using ONNX but ultimately they didn&amp;rsquo;t seem to be a good fit for this blog. The search experience was not quite as snappy as I&amp;rsquo;d have liked it to be, and while I was able to get the model under 10MB, it still added a good amount of bloat to the page size. Further, it wasn&amp;rsquo;t clear to me that the search results were significantly better, and in some cases they were worse. In any case, the advantages were not enough to justify the added page size.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

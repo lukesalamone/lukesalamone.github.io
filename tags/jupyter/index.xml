@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>jupyter on Luke Salamone&#39;s Blog</title>
+    <title>Jupyter on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/jupyter/</link>
-    <description>Recent content in jupyter on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 07 Sep 2021 09:10:56 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Jupyter on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 07 Sep 2021 09:10:56 -0500</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Connect Jupyter to Remote</title>
       <link>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</link>
       <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</guid>
-      <description>Here&amp;rsquo;s how to connect to a remote Jupyter notebook.
-Create an ssh tunnel to your remote machine:
-ssh -L 8080:localhost:8080 user@12.34.56.78 # or use a .pem file to connect to ec2 ssh -L 8080:localhost:8080 -i &amp;quot;aws.pem&amp;quot; ec2-user@ec2-12-34-56-78.compute-1.amazonaws.com  Start Jupyter on that machine in headless mode:
-jupyter notebook --no-browser --port=8080  Use a browser to open one of the urls that Jupyter presents:
-http://localhost:8080/?token=xyz</description>
+      <description>&lt;p&gt;Here&amp;rsquo;s how to connect to a remote Jupyter notebook.&lt;/p&gt;&#xA;&lt;p&gt;Create an ssh tunnel to your remote machine:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ssh -L 8080:localhost:8080 user@12.34.56.78&#xA;&#xA;# or use a .pem file to connect to ec2&#xA;ssh -L 8080:localhost:8080 -i &amp;quot;aws.pem&amp;quot; ec2-user@ec2-12-34-56-78.compute-1.amazonaws.com&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Start Jupyter on that machine in headless mode:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;jupyter notebook --no-browser --port=8080&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Use a browser to open one of the urls that Jupyter presents:&lt;br&gt;&#xA;http://localhost:8080/?token=xyz&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

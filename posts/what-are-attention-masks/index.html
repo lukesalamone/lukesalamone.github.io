@@ -51,29 +51,41 @@
 
 
 
-<meta itemprop="name" content="What Are Attention Masks?">
-<meta itemprop="description" content="TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &ldquo;attention_mask&rdquo; tensor to identify which tokens are padding.
- Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad."><meta itemprop="datePublished" content="2021-06-15T19:09:36-05:00" />
-<meta itemprop="dateModified" content="2021-06-15T19:09:36-05:00" />
-<meta itemprop="wordCount" content="828"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="nlp,python,transformers,gpt2,bert,pytorch,huggingface," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="What Are Attention Masks?"/>
-<meta name="twitter:description" content="TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &ldquo;attention_mask&rdquo; tensor to identify which tokens are padding.
- Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad."/>
+  <meta itemprop="name" content="What Are Attention Masks?">
+  <meta itemprop="description" content="TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the “attention_mask” tensor to identify which tokens are padding.
+Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)">
+  <meta itemprop="datePublished" content="2021-06-15T19:09:36-05:00">
+  <meta itemprop="dateModified" content="2021-06-15T19:09:36-05:00">
+  <meta itemprop="wordCount" content="828">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Nlp,Python,Transformers,Gpt2,Bert,Pytorch,Huggingface">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="What Are Attention Masks?">
+  <meta name="twitter:description" content="TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the “attention_mask” tensor to identify which tokens are padding.
+Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)">
 
 
 
-    <meta property="og:title" content="What Are Attention Masks?" />
-<meta property="og:description" content="TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &ldquo;attention_mask&rdquo; tensor to identify which tokens are padding.
- Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/what-are-attention-masks/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-06-15T19:09:36-05:00" />
-<meta property="article:modified_time" content="2021-06-15T19:09:36-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/what-are-attention-masks/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="What Are Attention Masks?">
+  <meta property="og:description" content="TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the “attention_mask” tensor to identify which tokens are padding.
+Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-06-15T19:09:36-05:00">
+    <meta property="article:modified_time" content="2021-06-15T19:09:36-05:00">
+    <meta property="article:tag" content="Nlp">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Transformers">
+    <meta property="article:tag" content="Gpt2">
+    <meta property="article:tag" content="Bert">
+    <meta property="article:tag" content="Pytorch">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -143,9 +155,9 @@
       <div class="post-content">
         <p>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &ldquo;attention_mask&rdquo; tensor to identify which tokens are padding.</p>
 <figure><img src="../../img/attention_mask.png"
-         alt="Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)"/><figcaption>
-            <p>Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)</p>
-        </figcaption>
+    alt="Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)"><figcaption>
+      <p>Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)</p>
+    </figcaption>
 </figure>
 
 <p>If you want to perform inference with transformers one sequence at a time, you can ignore attention masks. The &ldquo;slow way&rdquo; will be sufficient for your needs.</p>
@@ -187,84 +199,84 @@ tensor([[1,2], [3]])   # error!
 </code></pre>
 <p>When we tokenize an input, it it will be turned into a tensor containing sequence of integers, each corresponding to an item in the transformer&rsquo;s vocabulary. Here is an example tokenization in GPT-2:</p>
 <table>
-<thead>
-<tr>
-<th>String</th>
-<th>Token ID</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>It</td>
-<td>1026</td>
-</tr>
-<tr>
-<td>will</td>
-<td>481</td>
-</tr>
-<tr>
-<td>rain</td>
-<td>6290</td>
-</tr>
-<tr>
-<td>in</td>
-<td>287</td>
-</tr>
-<tr>
-<td>the</td>
-<td>262</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>String</th>
+          <th>Token ID</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>It</td>
+          <td>1026</td>
+      </tr>
+      <tr>
+          <td>will</td>
+          <td>481</td>
+      </tr>
+      <tr>
+          <td>rain</td>
+          <td>6290</td>
+      </tr>
+      <tr>
+          <td>in</td>
+          <td>287</td>
+      </tr>
+      <tr>
+          <td>the</td>
+          <td>262</td>
+      </tr>
+  </tbody>
 </table>
 <p>Suppose we wanted to include a second sequence in our input:</p>
 <table>
-<thead>
-<tr>
-<th>String</th>
-<th>Token ID</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>My</td>
-<td>3666</td>
-</tr>
-<tr>
-<td>dog</td>
-<td>3290</td>
-</tr>
-<tr>
-<td>is</td>
-<td>318</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>String</th>
+          <th>Token ID</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>My</td>
+          <td>3666</td>
+      </tr>
+      <tr>
+          <td>dog</td>
+          <td>3290</td>
+      </tr>
+      <tr>
+          <td>is</td>
+          <td>318</td>
+      </tr>
+  </tbody>
 </table>
 <p>Because these two sequences have different lengths, we can&rsquo;t just combine them in one tensor. Instead, we have to <em>pad</em> the shorter sequences with dummy tokens so that each sequence is the same length. And because we want the model to continue to add to the right side of our sequence, we will pad the left side of shorter sequences.</p>
 <table>
-<thead>
-<tr>
-<th>String</th>
-<th>Token ID</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;pad&gt;</code></td>
-<td>50256</td>
-</tr>
-<tr>
-<td>My</td>
-<td>3666</td>
-</tr>
-<tr>
-<td>dog</td>
-<td>3290</td>
-</tr>
-<tr>
-<td>is</td>
-<td>318</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>String</th>
+          <th>Token ID</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>&lt;pad&gt;</code></td>
+          <td>50256</td>
+      </tr>
+      <tr>
+          <td>My</td>
+          <td>3666</td>
+      </tr>
+      <tr>
+          <td>dog</td>
+          <td>3290</td>
+      </tr>
+      <tr>
+          <td>is</td>
+          <td>318</td>
+      </tr>
+  </tbody>
 </table>
 <p>This is where the attention mask comes in. The attention mask simply shows the transformer which tokens are padding, placing 0s in the positions of padding tokens and 1s in the positions of actual tokens. Now that we understand that, let&rsquo;s look at the code line by line.</p>
 <pre><code class="language-python">tokenizer.padding_side = &quot;left&quot;
@@ -409,7 +421,7 @@ tensor([[1,2], [3]])   # error!
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.e5fbf64306713fe8df1194a658201f5e861815365f67b3c6fc9094ed28d21c92aeaff20b7f4c12c25ba7efabe31291ffd1074e33cd60cf8ff8d8ffef7c028d73.js" integrity="sha512-5fv2QwZxP&#43;jfEZSmWCAfXoYYFTZfZ7PG/JCU7SjSHJKur/ILf0wSwlun76vjEpH/0QdOM81gz4/42P/vfAKNcw=="></script>
 
 
 

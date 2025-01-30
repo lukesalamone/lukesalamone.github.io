@@ -12,7 +12,7 @@
 <link rel="canonical" href="https://lukesalamone.github.io/posts/self-attention/" />
 
 <meta property="og:title" content="How does a Transformer Work?"/>
-<meta property="og:image" content="https://lukesalamone.github.io/img/covers/transformer-cover.png"/>
+<meta property="og:image" content="https://lukesalamone.github.io//img/covers/transformer-cover.png"/>
 <meta property="og:description" content="Check out this interactive demo to learn how the transformer and self-attention work!"/>
 
 <script>
@@ -51,32 +51,40 @@
 
 
 
-<meta itemprop="name" content="A Few Notes on the Transformer">
-<meta itemprop="description" content="A self-attention block depicted as a neural network.
-  In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.
-What is attention? At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren&rsquo;t."><meta itemprop="datePublished" content="2022-11-16T15:24:15-05:00" />
-<meta itemprop="dateModified" content="2022-11-16T15:24:15-05:00" />
-<meta itemprop="wordCount" content="716"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="transformer,attention," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="A Few Notes on the Transformer"/>
-<meta name="twitter:description" content="A self-attention block depicted as a neural network.
-  In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.
-What is attention? At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren&rsquo;t."/>
+  <meta itemprop="name" content="A Few Notes on the Transformer">
+  <meta itemprop="description" content="A self-attention block depicted as a neural network.
+In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.
+What is attention? At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren’t. In language models, attention is used as a way for the model to learn which portions of a sentence are relevant to each word.">
+  <meta itemprop="datePublished" content="2022-11-16T15:24:15-05:00">
+  <meta itemprop="dateModified" content="2022-11-16T15:24:15-05:00">
+  <meta itemprop="wordCount" content="716">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Transformer,Attention">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="A Few Notes on the Transformer">
+  <meta name="twitter:description" content="A self-attention block depicted as a neural network.
+In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.
+What is attention? At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren’t. In language models, attention is used as a way for the model to learn which portions of a sentence are relevant to each word.">
 
 
 
-    <meta property="og:title" content="A Few Notes on the Transformer" />
-<meta property="og:description" content="A self-attention block depicted as a neural network.
-  In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.
-What is attention? At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren&rsquo;t." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/self-attention/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-11-16T15:24:15-05:00" />
-<meta property="article:modified_time" content="2022-11-16T15:24:15-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/self-attention/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="A Few Notes on the Transformer">
+  <meta property="og:description" content="A self-attention block depicted as a neural network.
+In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.
+What is attention? At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren’t. In language models, attention is used as a way for the model to learn which portions of a sentence are relevant to each word.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-11-16T15:24:15-05:00">
+    <meta property="article:modified_time" content="2022-11-16T15:24:15-05:00">
+    <meta property="article:tag" content="Transformer">
+    <meta property="article:tag" content="Attention">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -145,9 +153,9 @@ What is attention? At a high level, attention is a mechanism for neural networks
 
       <div class="post-content">
         <figure><img src="../../img/self-attention.png"
-         alt="A self-attention block depicted as a neural network."/><figcaption>
-            <p>A self-attention block depicted as a neural network.</p>
-        </figcaption>
+    alt="A self-attention block depicted as a neural network."><figcaption>
+      <p>A self-attention block depicted as a neural network.</p>
+    </figcaption>
 </figure>
 
 <p>In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in <a href="https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf">Attention is All You Need</a> by Vaswani et al.</p>
@@ -168,26 +176,26 @@ What is attention? At a high level, attention is a mechanism for neural networks
 <script src="../../js/attention_demo.js"></script>
 <h2 id="how-does-self-attention-work">How does self-attention work?</h2>
 <p><figure><img src="../../img/scaled-dot-prod-attention.png"
-         alt="The Vaswani paper describes scaled dot product attention, which involves normalizing by the square root of the input dimension."/><figcaption>
-            <p>The Vaswani paper describes scaled dot product attention, which involves normalizing by the square root of the input dimension.</p>
-        </figcaption>
+    alt="The Vaswani paper describes scaled dot product attention, which involves normalizing by the square root of the input dimension."><figcaption>
+      <p>The Vaswani paper describes scaled dot product attention, which involves normalizing by the square root of the input dimension.</p>
+    </figcaption>
 </figure>
 
 This is the part where Vaswani delves into a database analogy with <strong>keys</strong>, <strong>queries</strong>, and <strong>values</strong>. Most online resources try to salvage this analogy. Personally, I always found this a bit confusing. What you need to know is that keys, values, and queries correspond to 3 matrices M<sub>k</sub>, M<sub>q</sub>, and M<sub>v</sub>, which are used in a dot product with the original input vectors.</p>
 <p>In linear algebra terms this means multiplying the 1xd input vector by a matrix of size dxd. In neural network terms, this means passing the input vector through a full-connected layer. After M<sub>k</sub> and M<sub>q</sub> are multiplied, they are normalized by the square root of d<sub>k</sub>, a constant representing the dimension of the input vector.</p>
 <h2 id="can-we-attend-to-multiple-parts-of-a-sentence">Can we attend to multiple parts of a sentence?</h2>
 <figure><img src="../../img/multi_head_attention.png"
-         alt="Multi-headed attention means performing attention n times in parallel inside of an encoder block."/><figcaption>
-            <p>Multi-headed attention means performing attention n times in parallel inside of an encoder block.</p>
-        </figcaption>
+    alt="Multi-headed attention means performing attention n times in parallel inside of an encoder block."><figcaption>
+      <p>Multi-headed attention means performing attention n times in parallel inside of an encoder block.</p>
+    </figcaption>
 </figure>
 
 <p>Yes, that is called multi-headed attention. Its architecture is very similar, using  additional M<sub>k</sub>, M<sub>q</sub>, and M<sub>v</sub> matrices for each additional &ldquo;attention head&rdquo;. In the Vaswani paper they used 8 heads.</p>
 <h2 id="how-do-transformers-compare-with-other-architectures-eg-rnncnn">How do transformers compare with other architectures (e.g. RNN/CNN)?</h2>
 <figure><img src="../../img/attention_performance.png"
-         alt="When the input sequence length n is lower than the input dimensionality d, self-attention is faster than recurrent neural networks. Self-attention is also easily parallelizable."/><figcaption>
-            <p>When the input sequence length n is lower than the input dimensionality d, self-attention is faster than recurrent neural networks. Self-attention is also easily parallelizable.</p>
-        </figcaption>
+    alt="When the input sequence length n is lower than the input dimensionality d, self-attention is faster than recurrent neural networks. Self-attention is also easily parallelizable."><figcaption>
+      <p>When the input sequence length n is lower than the input dimensionality d, self-attention is faster than recurrent neural networks. Self-attention is also easily parallelizable.</p>
+    </figcaption>
 </figure>
 
 <p>Generally speaking, RNNs are able to memorize but not parallelize, and CNNs are able to parallelize but not memorize. Transformers are able to do both.</p>
@@ -308,7 +316,7 @@ This is the part where Vaswani delves into a database analogy with <strong>keys<
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.e5fbf64306713fe8df1194a658201f5e861815365f67b3c6fc9094ed28d21c92aeaff20b7f4c12c25ba7efabe31291ffd1074e33cd60cf8ff8d8ffef7c028d73.js" integrity="sha512-5fv2QwZxP&#43;jfEZSmWCAfXoYYFTZfZ7PG/JCU7SjSHJKur/ILf0wSwlun76vjEpH/0QdOM81gz4/42P/vfAKNcw=="></script>
 
 
 

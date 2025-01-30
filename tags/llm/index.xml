@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>llm on Luke Salamone&#39;s Blog</title>
+    <title>Llm on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/llm/</link>
-    <description>Recent content in llm on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 28 Jan 2025 08:35:55 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Llm on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 28 Jan 2025 08:35:55 -0800</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/llm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Notes on Deepseek R1</title>
       <link>https://lukesalamone.github.io/posts/notes-on-deepseek-r1/</link>
       <pubDate>Tue, 28 Jan 2025 08:35:55 -0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/notes-on-deepseek-r1/</guid>
-      <description>DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many decoder-based models in the past which simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before the final answer is given. According to the researchers, its performance is on par with OpenAI&amp;rsquo;s O1 model.
-Terminology First, I will briefly describe some terminology related to training techniques:
-  Supervised fine-tuning (SFT) is a process which uses input/output pairs to directly fine-tune a model.</description>
+      <description>&lt;p&gt;DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many decoder-based models in the past which simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before the final answer is given. According to the researchers, its performance is on par with OpenAI&amp;rsquo;s O1 model.&lt;/p&gt;&#xA;&lt;h2 id=&#34;terminology&#34;&gt;Terminology&lt;/h2&gt;&#xA;&lt;p&gt;First, I will briefly describe some terminology related to training techniques:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Supervised fine-tuning (SFT)&lt;/strong&gt; is a process which uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>What are Sparse Autoencoders?</title>
       <link>https://lukesalamone.github.io/posts/sparse-autoencoder/</link>
       <pubDate>Thu, 06 Jun 2024 16:30:27 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/sparse-autoencoder/</guid>
-      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i TLDR: A sparse autoencoder is just a regular autoencoder that encourages sparsity with an L1 penalty or KL divergence loss rather than using a low-dimensional bottleneck.</description>
+      <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    // Fix &lt;code&gt; tags after MathJax finishes running. This is a&#xA;    // hack to overcome a shortcoming of Markdown. Discussion at&#xA;    // https://github.com/mojombo/jekyll/issues/199&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;&lt;strong&gt;TLDR: A sparse autoencoder is just a regular autoencoder that encourages sparsity with an L1 penalty or KL divergence loss rather than using a low-dimensional bottleneck.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -51,26 +51,34 @@
 
 
 
-<meta itemprop="name" content="What are Sparse Autoencoders?">
-<meta itemprop="description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i TLDR: A sparse autoencoder is just a regular autoencoder that encourages sparsity with an L1 penalty or KL divergence loss rather than using a low-dimensional bottleneck."><meta itemprop="datePublished" content="2024-06-06T16:30:27-07:00" />
-<meta itemprop="dateModified" content="2024-06-06T16:30:27-07:00" />
-<meta itemprop="wordCount" content="395"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="deep-learning,llm," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="What are Sparse Autoencoders?"/>
-<meta name="twitter:description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i TLDR: A sparse autoencoder is just a regular autoencoder that encourages sparsity with an L1 penalty or KL divergence loss rather than using a low-dimensional bottleneck."/>
+  <meta itemprop="name" content="What are Sparse Autoencoders?">
+  <meta itemprop="description" content="TLDR: A sparse autoencoder is just a regular autoencoder that encourages sparsity with an L1 penalty or KL divergence loss rather than using a low-dimensional bottleneck.">
+  <meta itemprop="datePublished" content="2024-06-06T16:30:27-07:00">
+  <meta itemprop="dateModified" content="2024-06-06T16:30:27-07:00">
+  <meta itemprop="wordCount" content="330">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Deep-Learning,Llm">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="What are Sparse Autoencoders?">
+  <meta name="twitter:description" content="TLDR: A sparse autoencoder is just a regular autoencoder that encourages sparsity with an L1 penalty or KL divergence loss rather than using a low-dimensional bottleneck.">
 
 
 
-    <meta property="og:title" content="What are Sparse Autoencoders?" />
-<meta property="og:description" content="MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i TLDR: A sparse autoencoder is just a regular autoencoder that encourages sparsity with an L1 penalty or KL divergence loss rather than using a low-dimensional bottleneck." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/sparse-autoencoder/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-06-06T16:30:27-07:00" />
-<meta property="article:modified_time" content="2024-06-06T16:30:27-07:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/sparse-autoencoder/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="What are Sparse Autoencoders?">
+  <meta property="og:description" content="TLDR: A sparse autoencoder is just a regular autoencoder that encourages sparsity with an L1 penalty or KL divergence loss rather than using a low-dimensional bottleneck.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-06-06T16:30:27-07:00">
+    <meta property="article:modified_time" content="2024-06-06T16:30:27-07:00">
+    <meta property="article:tag" content="Deep-Learning">
+    <meta property="article:tag" content="Llm">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -172,7 +180,7 @@ MathJax.Hub.Config({
 <p>If not, I&rsquo;ll try to break it down.</p>
 <h2 id="what-is-an-autoencoder">What is an autoencoder?</h2>
 <p>An autoencoder is a machine learning architecture which contains two functions: an <code>encoder</code> and a <code>decoder</code>. The <code>encoder</code> learns to create an efficient representation of the input, similar to lossy file compression. The <code>decoder</code> learns to reconstruct the original input from the efficient representation.</p>
-<p>I have a couple of other pretty good explanations on this. In the first post, I described <a href="../../posts/build-an-autoencoder">how to build an autoencoder</a>. Later, I discussed their potential <a href="../../posts/learning-the-haystack#autoencoders">applications in vector retrieval</a>.</p>
+<p>I have a couple of other pretty good explanations on this. In the first post, I described <a href="../../posts/build-an-autoencoder/">how to build an autoencoder</a>. Later, I discussed their potential <a href="../../posts/learning-the-haystack/#autoencoders">applications in vector retrieval</a>.</p>
 <h2 id="what-is-sparsity">What is sparsity?</h2>
 <p>Sparsity just means that most of the values in a vector are zero.</p>
 <h2 id="what-is-an-l1-penalty">What is an L1 penalty?</h2>
@@ -236,7 +244,7 @@ $$
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        395 Words
+        330 Words
       </p>
 
       <p>
@@ -313,7 +321,7 @@ $$
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.e5fbf64306713fe8df1194a658201f5e861815365f67b3c6fc9094ed28d21c92aeaff20b7f4c12c25ba7efabe31291ffd1074e33cd60cf8ff8d8ffef7c028d73.js" integrity="sha512-5fv2QwZxP&#43;jfEZSmWCAfXoYYFTZfZ7PG/JCU7SjSHJKur/ILf0wSwlun76vjEpH/0QdOM81gz4/42P/vfAKNcw=="></script>
 
 
 

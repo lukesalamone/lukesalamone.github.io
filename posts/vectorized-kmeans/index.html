@@ -12,7 +12,7 @@
 <link rel="canonical" href="https://lukesalamone.github.io/posts/vectorized-kmeans/" />
 
 <meta property="og:title" content="Vectorized K-means clustering"/>
-<meta property="og:image" content="https://lukesalamone.github.io/img/covers/kmeans_cover.png"/>
+<meta property="og:image" content="https://lukesalamone.github.io//img/covers/kmeans_cover.png"/>
 <meta property="og:description" content="Check out this interactive K-means clustering demo and learn how to speed it up 21x!"/>
 
 <script>
@@ -51,35 +51,44 @@
 
 
 
-<meta itemprop="name" content="Vectorized K-Means Clustering">
-<meta itemprop="description" content="K-means clustering (previous discussion) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. The points may represent physical locations, or embeddings in high-dimensional vector space.
+
+  <meta itemprop="name" content="Vectorized K-Means Clustering">
+  <meta itemprop="description" content="K-means clustering (previous discussion) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. The points may represent physical locations, or embeddings in high-dimensional vector space.
 🌟Check out the demo (in two dimensions) below. Centroids are colored white.🌟
-  start   Note that the points are changing color only, not moving.
-General algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i."><meta itemprop="datePublished" content="2024-02-04T23:39:29-07:00" />
-<meta itemprop="dateModified" content="2024-02-04T23:39:29-07:00" />
-<meta itemprop="wordCount" content="1236"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="machine-learning,numpy,performance," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
+start Note that the points are changing color only, not moving.
+General algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.e. when no points change cluster):">
+  <meta itemprop="datePublished" content="2024-02-04T23:39:29-07:00">
+  <meta itemprop="dateModified" content="2024-02-04T23:39:29-07:00">
+  <meta itemprop="wordCount" content="1085">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Machine-Learning,Numpy,Performance">
 
-<meta name="twitter:title" content="Vectorized K-Means Clustering"/>
-<meta name="twitter:description" content="K-means clustering (previous discussion) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. The points may represent physical locations, or embeddings in high-dimensional vector space.
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="Vectorized K-Means Clustering">
+  <meta name="twitter:description" content="K-means clustering (previous discussion) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. The points may represent physical locations, or embeddings in high-dimensional vector space.
 🌟Check out the demo (in two dimensions) below. Centroids are colored white.🌟
-  start   Note that the points are changing color only, not moving.
-General algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i."/>
+start Note that the points are changing color only, not moving.
+General algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.e. when no points change cluster):">
 
 
 
-    <meta property="og:title" content="Vectorized K-Means Clustering" />
-<meta property="og:description" content="K-means clustering (previous discussion) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. The points may represent physical locations, or embeddings in high-dimensional vector space.
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/vectorized-kmeans/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="Vectorized K-Means Clustering">
+  <meta property="og:description" content="K-means clustering (previous discussion) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. The points may represent physical locations, or embeddings in high-dimensional vector space.
 🌟Check out the demo (in two dimensions) below. Centroids are colored white.🌟
-  start   Note that the points are changing color only, not moving.
-General algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/vectorized-kmeans/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-02-04T23:39:29-07:00" />
-<meta property="article:modified_time" content="2024-02-04T23:39:29-07:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+start Note that the points are changing color only, not moving.
+General algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.e. when no points change cluster):">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-02-04T23:39:29-07:00">
+    <meta property="article:modified_time" content="2024-02-04T23:39:29-07:00">
+    <meta property="article:tag" content="Machine-Learning">
+    <meta property="article:tag" content="Numpy">
+    <meta property="article:tag" content="Performance">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -147,7 +156,7 @@ General algorithm The basic K-means algorithm is fairly simple and has two steps
       
 
       <div class="post-content">
-        <p>K-means clustering (<a href="../../posts/kmeans-clustering">previous discussion</a>) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. The points may represent physical locations, or embeddings in high-dimensional vector space.</p>
+        <p>K-means clustering (<a href="../../posts/kmeans-clustering/">previous discussion</a>) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. The points may represent physical locations, or embeddings in high-dimensional vector space.</p>
 <p>🌟Check out the demo (in two dimensions) below. Centroids are colored white.🌟</p>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 <script src="../../js/kmeans_demo.js"></script>
@@ -360,9 +369,7 @@ while True:
             document.getElementById('groupedBarChart'),
             config
         );
-</script><blockquote>
-</blockquote>
-
+</script>
       </div>
     </article>
 
@@ -389,7 +396,7 @@ while True:
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1236 Words
+        1085 Words
       </p>
 
       <p>
@@ -466,7 +473,7 @@ while True:
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.e5fbf64306713fe8df1194a658201f5e861815365f67b3c6fc9094ed28d21c92aeaff20b7f4c12c25ba7efabe31291ffd1074e33cd60cf8ff8d8ffef7c028d73.js" integrity="sha512-5fv2QwZxP&#43;jfEZSmWCAfXoYYFTZfZ7PG/JCU7SjSHJKur/ILf0wSwlun76vjEpH/0QdOM81gz4/42P/vfAKNcw=="></script>
 
 
 

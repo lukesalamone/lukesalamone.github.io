@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>webdev on Luke Salamone&#39;s Blog</title>
+    <title>Webdev on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/webdev/</link>
-    <description>Recent content in webdev on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 09 May 2021 15:06:11 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/webdev/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Webdev on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 09 May 2021 15:06:11 -0500</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/webdev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python: Serve an HTML File</title>
       <link>https://lukesalamone.github.io/posts/python-serve-html/</link>
       <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/python-serve-html/</guid>
-      <description>If you want to serve some HTML with python run
-python -m http.server 8000  Then navigate to http://localhost:8000.
-This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.</description>
+      <description>&lt;p&gt;If you want to serve some HTML with python run&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;python -m http.server 8000&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Then navigate to &lt;a href=&#34;http://localhost:8000/&#34;&gt;http://localhost:8000&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

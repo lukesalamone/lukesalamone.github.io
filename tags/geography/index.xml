@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>geography on Luke Salamone&#39;s Blog</title>
+    <title>Geography on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/geography/</link>
-    <description>Recent content in geography on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 23 Nov 2022 10:07:36 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/geography/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Geography on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 23 Nov 2022 10:07:36 -0800</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/geography/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Other End of the Earth</title>
       <link>https://lukesalamone.github.io/posts/earth-antipodes/</link>
       <pubDate>Wed, 23 Nov 2022 10:07:36 -0800</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/earth-antipodes/</guid>
-      <description>White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.
-  If you want to fly across the Pacific Ocean, you&amp;rsquo;ll have to board an airplane and fly around 12 hours. It&amp;rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &amp;ldquo;Digging to China&amp;rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.</description>
+      <description>&lt;figure&gt;&lt;img src=&#34;../../img/antipode_land.png&#34;&#xA;    alt=&#34;White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.&lt;/p&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;If you want to fly across the Pacific Ocean, you&amp;rsquo;ll have to board an airplane and fly around 12 hours. It&amp;rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &amp;ldquo;Digging to China&amp;rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>rust on Luke Salamone&#39;s Blog</title>
+    <title>Rust on Luke Salamone&#39;s Blog</title>
     <link>https://lukesalamone.github.io/tags/rust/</link>
-    <description>Recent content in rust on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 18 Jun 2024 16:21:35 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Rust on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 18 Jun 2024 16:21:35 -0700</lastBuildDate>
+    <atom:link href="https://lukesalamone.github.io/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Create Rust Python Bindings</title>
       <link>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</link>
       <pubDate>Tue, 18 Jun 2024 16:21:35 -0700</pubDate>
-      
       <guid>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</guid>
-      <description>Rust is super fast. Python is super flexible. Porting slow python code to rust can make your life a lot easier, and it&amp;rsquo;s not too difficult to set up.
-I will demonstrate rust bindings for summing the integers in a large text file containing a billion digits that looks like
-6,9,8,3,0,1,8,4,9,7,6,3,4,2,6,0,0,5,1,1, . . . ,4,5,9,3,3,2,8,3  General steps  install rust and maturin set up boilerplate add your function compile and import  Install Rust and Maturin curl --proto &#39;=https&#39; --tlsv1.</description>
+      <description>&lt;p&gt;Rust is super fast. Python is super flexible. Porting slow python code to rust can make your life a lot easier, and it&amp;rsquo;s not too difficult to set up.&lt;/p&gt;&#xA;&lt;p&gt;I will demonstrate rust bindings for summing the integers in a large text file containing a billion digits that looks like&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;6,9,8,3,0,1,8,4,9,7,6,3,4,2,6,0,0,5,1,1, . . . ,4,5,9,3,3,2,8,3&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;general-steps&#34;&gt;General steps&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;../../posts/how-to-create-rust-python-bindings/#install-rust-and-maturin&#34;&gt;install rust and maturin&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;../../posts/how-to-create-rust-python-bindings/#set-up-boilerplate&#34;&gt;set up boilerplate&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;../../posts/how-to-create-rust-python-bindings/#add-your-function&#34;&gt;add your function&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;../../posts/how-to-create-rust-python-bindings/#compile-and-import&#34;&gt;compile and import&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;install-rust-and-maturin&#34;&gt;Install Rust and Maturin&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl --proto &#39;=https&#39; --tlsv1.2 -sSf https://sh.rustup.rs | sh&#xA;pip install maturin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;See also &lt;a href=&#34;https://www.rust-lang.org/tools/install&#34;&gt;install rust&lt;/a&gt; and &lt;a href=&#34;https://www.maturin.rs/installation&#34;&gt;install maturin&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

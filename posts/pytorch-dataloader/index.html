@@ -51,32 +51,41 @@
 
 
 
-<meta itemprop="name" content="How to Create a Custom Pytorch Dataloader">
-<meta itemprop="description" content="First, create a custom dataset class.
-from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx]  Next, create a custom dataloader where we specify the batch size.
-features, labels = load_data() # features &amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)  Finally, iterate over the dataloader during training."><meta itemprop="datePublished" content="2022-04-28T18:22:07-05:00" />
-<meta itemprop="dateModified" content="2022-04-28T18:22:07-05:00" />
-<meta itemprop="wordCount" content="97"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="pytorch,machine-learning,python," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
 
-<meta name="twitter:title" content="How to Create a Custom Pytorch Dataloader"/>
-<meta name="twitter:description" content="First, create a custom dataset class.
-from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx]  Next, create a custom dataloader where we specify the batch size.
-features, labels = load_data() # features &amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)  Finally, iterate over the dataloader during training."/>
+  <meta itemprop="name" content="How to Create a Custom Pytorch Dataloader">
+  <meta itemprop="description" content="First, create a custom dataset class.
+from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx] Next, create a custom dataloader where we specify the batch size.
+features, labels = load_data() # features &amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True) Finally, iterate over the dataloader during training.">
+  <meta itemprop="datePublished" content="2022-04-28T18:22:07-05:00">
+  <meta itemprop="dateModified" content="2022-04-28T18:22:07-05:00">
+  <meta itemprop="wordCount" content="97">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Pytorch,Machine-Learning,Python">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="How to Create a Custom Pytorch Dataloader">
+  <meta name="twitter:description" content="First, create a custom dataset class.
+from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx] Next, create a custom dataloader where we specify the batch size.
+features, labels = load_data() # features &amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True) Finally, iterate over the dataloader during training.">
 
 
 
-    <meta property="og:title" content="How to Create a Custom Pytorch Dataloader" />
-<meta property="og:description" content="First, create a custom dataset class.
-from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx]  Next, create a custom dataloader where we specify the batch size.
-features, labels = load_data() # features &amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)  Finally, iterate over the dataloader during training." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/pytorch-dataloader/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-04-28T18:22:07-05:00" />
-<meta property="article:modified_time" content="2022-04-28T18:22:07-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/pytorch-dataloader/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="How to Create a Custom Pytorch Dataloader">
+  <meta property="og:description" content="First, create a custom dataset class.
+from torch.utils.data import Dataset, DataLoader class CustomDataset(Dataset): def __init__(self, features, labels): assert len(features) == len(labels) self.features = features self.labels = labels def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.labels[idx] Next, create a custom dataloader where we specify the batch size.
+features, labels = load_data() # features &amp; labels must have equal lengths # e.g. features = [[1,2,3],[4,5,6]] # labels = [7,8] dataset = CustomDataset(features, labels) dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True) Finally, iterate over the dataloader during training.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-04-28T18:22:07-05:00">
+    <meta property="article:modified_time" content="2022-04-28T18:22:07-05:00">
+    <meta property="article:tag" content="Pytorch">
+    <meta property="article:tag" content="Machine-Learning">
+    <meta property="article:tag" content="Python">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -281,7 +290,7 @@ dataloader = DataLoader(dataset,
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.e5fbf64306713fe8df1194a658201f5e861815365f67b3c6fc9094ed28d21c92aeaff20b7f4c12c25ba7efabe31291ffd1074e33cd60cf8ff8d8ffef7c028d73.js" integrity="sha512-5fv2QwZxP&#43;jfEZSmWCAfXoYYFTZfZ7PG/JCU7SjSHJKur/ILf0wSwlun76vjEpH/0QdOM81gz4/42P/vfAKNcw=="></script>
 
 
 

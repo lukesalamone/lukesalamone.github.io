@@ -12,7 +12,7 @@
 <link rel="canonical" href="https://lukesalamone.github.io/posts/bert-vs-gpt2/" />
 
 <meta property="og:title" content="BERT vs GPT-2: Which is better?"/>
-<meta property="og:image" content="https://lukesalamone.github.io/img/covers/gpt2_vs_bert.png"/>
+<meta property="og:image" content="https://lukesalamone.github.io//img/covers/gpt2_vs_bert.png"/>
 <meta property="og:description" content="GPT-2 and BERT in a head to head...which one will come out on top?"/>
 
 <script>
@@ -51,32 +51,41 @@
 
 
 
-<meta itemprop="name" content="BERT vs GPT-2 Performance">
-<meta itemprop="description" content="There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.
+
+  <meta itemprop="name" content="BERT vs GPT-2 Performance">
+  <meta itemprop="description" content="There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.
 The code used in this experiment can be found on my Github
-BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task)."><meta itemprop="datePublished" content="2021-06-21T01:04:42-05:00" />
-<meta itemprop="dateModified" content="2021-06-21T01:04:42-05:00" />
-<meta itemprop="wordCount" content="570"><meta itemprop="image" content="https://lukesalamone.github.io"/>
-<meta itemprop="keywords" content="nlp,bert,gpt2," />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lukesalamone.github.io"/>
+BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task). During pretraining, 15% of tokens are hidden from the model, and it is trained to predict the masked tokens. As a result, I was able to evaluate its ability to correctly predict a masked token at a random position in a fixed-size input.">
+  <meta itemprop="datePublished" content="2021-06-21T01:04:42-05:00">
+  <meta itemprop="dateModified" content="2021-06-21T01:04:42-05:00">
+  <meta itemprop="wordCount" content="570">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Nlp,Bert,Gpt2">
 
-<meta name="twitter:title" content="BERT vs GPT-2 Performance"/>
-<meta name="twitter:description" content="There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="BERT vs GPT-2 Performance">
+  <meta name="twitter:description" content="There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.
 The code used in this experiment can be found on my Github
-BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task)."/>
+BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task). During pretraining, 15% of tokens are hidden from the model, and it is trained to predict the masked tokens. As a result, I was able to evaluate its ability to correctly predict a masked token at a random position in a fixed-size input.">
 
 
 
-    <meta property="og:title" content="BERT vs GPT-2 Performance" />
-<meta property="og:description" content="There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/bert-vs-gpt2/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="BERT vs GPT-2 Performance">
+  <meta property="og:description" content="There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.
 The code used in this experiment can be found on my Github
-BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task)." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lukesalamone.github.io/posts/bert-vs-gpt2/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-06-21T01:04:42-05:00" />
-<meta property="article:modified_time" content="2021-06-21T01:04:42-05:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
-
+BERT The Devlin et al. model was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the cloze task). During pretraining, 15% of tokens are hidden from the model, and it is trained to predict the masked tokens. As a result, I was able to evaluate its ability to correctly predict a masked token at a random position in a fixed-size input.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-06-21T01:04:42-05:00">
+    <meta property="article:modified_time" content="2021-06-21T01:04:42-05:00">
+    <meta property="article:tag" content="Nlp">
+    <meta property="article:tag" content="Bert">
+    <meta property="article:tag" content="Gpt2">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
 
 
 
@@ -150,60 +159,60 @@ BERT The Devlin et al. model was released in November 2018. It is a transformer-
 <p>The <a href="https://arxiv.org/pdf/1810.04805.pdf">Devlin et al. model</a> was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the <em>cloze</em> task). During pretraining, 15% of tokens are hidden from the model, and it is trained to predict the masked tokens. As a result, I was able to evaluate its ability to correctly predict a masked token at a random position in a fixed-size input.</p>
 <p>I looked at the following varieties of BERT:</p>
 <table>
-<thead>
-<tr>
-<th>Model</th>
-<th># Parameters</th>
-<th>Compare to</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bert-base-uncased</td>
-<td>110 million</td>
-<td>gpt2</td>
-</tr>
-<tr>
-<td>bert-base-cased</td>
-<td>109 million</td>
-<td>gpt2</td>
-</tr>
-<tr>
-<td>bert-large-uncased</td>
-<td>336 million</td>
-<td>gpt2-medium</td>
-</tr>
-<tr>
-<td>bert-large-cased</td>
-<td>335 million</td>
-<td>gpt2-medium</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Model</th>
+          <th># Parameters</th>
+          <th>Compare to</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>bert-base-uncased</td>
+          <td>110 million</td>
+          <td>gpt2</td>
+      </tr>
+      <tr>
+          <td>bert-base-cased</td>
+          <td>109 million</td>
+          <td>gpt2</td>
+      </tr>
+      <tr>
+          <td>bert-large-uncased</td>
+          <td>336 million</td>
+          <td>gpt2-medium</td>
+      </tr>
+      <tr>
+          <td>bert-large-cased</td>
+          <td>335 million</td>
+          <td>gpt2-medium</td>
+      </tr>
+  </tbody>
 </table>
 <p>This table also includes corresponding GPT-2 models which have a similar number of parameters. <a href="https://huggingface.co/transformers/pretrained_models.html">Source</a></p>
 <h2 id="gpt-2">GPT-2</h2>
 <p>The <a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">Radford et al. model</a> hit the scene in February of 2019. Like BERT it is a transformer-based  model, and comes in various sizes ranging from 117M parameters up to 1.5B parameters (gpt2-xl). Because GPT-2 is an autoregressive model, experiments with this family of models perform one token of generation following input context, comparing with the target token for accuracy measurement.</p>
 <p>Here we will be evaluating two flavors of this model:</p>
 <table>
-<thead>
-<tr>
-<th>Model</th>
-<th># Parameters</th>
-<th>Compare to</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>gpt2</td>
-<td>117 million</td>
-<td>bert-base</td>
-</tr>
-<tr>
-<td>gpt2-medium</td>
-<td>345 million</td>
-<td>bert-large</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Model</th>
+          <th># Parameters</th>
+          <th>Compare to</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>gpt2</td>
+          <td>117 million</td>
+          <td>bert-base</td>
+      </tr>
+      <tr>
+          <td>gpt2-medium</td>
+          <td>345 million</td>
+          <td>bert-large</td>
+      </tr>
+  </tbody>
 </table>
 <p>This table also includes corresponding BERT models which have a similar number of parameters. <a href="https://huggingface.co/transformers/pretrained_models.html">Source</a></p>
 <h2 id="wikitext-token-prediction">Wikitext Token prediction</h2>
@@ -323,7 +332,7 @@ BERT The Devlin et al. model was released in November 2018. It is a transformer-
 
 
 
-<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+<script type="text/javascript" src="../../bundle.min.e5fbf64306713fe8df1194a658201f5e861815365f67b3c6fc9094ed28d21c92aeaff20b7f4c12c25ba7efabe31291ffd1074e33cd60cf8ff8d8ffef7c028d73.js" integrity="sha512-5fv2QwZxP&#43;jfEZSmWCAfXoYYFTZfZ7PG/JCU7SjSHJKur/ILf0wSwlun76vjEpH/0QdOM81gz4/42P/vfAKNcw=="></script>
 
 
 
