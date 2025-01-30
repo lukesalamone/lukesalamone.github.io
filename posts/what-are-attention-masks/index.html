@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", nlp, python, transformers, gpt2, bert, pytorch, huggingface" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/what-are-attention-masks/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -132,23 +141,16 @@
       
 
       <div class="post-content">
-        
-
-<p>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &ldquo;attention_mask&rdquo; tensor to identify which tokens are padding.</p>
-
+        <p>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &ldquo;attention_mask&rdquo; tensor to identify which tokens are padding.</p>
 <figure><img src="../../img/attention_mask.png"
          alt="Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)"/><figcaption>
             <p>Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)</p>
         </figcaption>
 </figure>
 
-
 <p>If you want to perform inference with transformers one sequence at a time, you can ignore attention masks. The &ldquo;slow way&rdquo; will be sufficient for your needs.</p>
-
 <h2 id="the-slow-way">The slow way</h2>
-
 <p>We can perform inference with GPT-2 using sequences one at a time, but it&rsquo;s slow:</p>
-
 <pre><code class="language-python">from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
@@ -160,13 +162,9 @@ prediction = gpt2.generate(**context, max_length=10)
 tokenizer.decode(prediction[0])
 # prints 'It will rain in the morning, and the rain'
 </code></pre>
-
 <p>It&rsquo;s way faster to batch the inputs, which means adding their token vectors to the context and performing inference only once.</p>
-
 <h2 id="the-un-slow-way">The un-slow way</h2>
-
 <p>The cool way to perform inference on many samples is with batching. It&rsquo;s much faster but it&rsquo;s also slightly more complicated.</p>
-
 <pre><code class="language-python">tokenizer.padding_side = &quot;left&quot;
 tokenizer.pad_token = tokenizer.eos_token
 
@@ -180,19 +178,14 @@ output_sequences = gpt2.generate(**inputs)
 for seq in output_sequences:
     print(tokenizer.decode(seq))
 </code></pre>
-
 <p>What&rsquo;s happening here? And what does this have to do with attention masks? First let&rsquo;s explain padding, then take a look at the code line by line.</p>
-
 <p>We feed tokens into transformer-based language models like GPT-2 and BERT for inference as <a href="https://pytorch.org/docs/stable/tensors.html">tensors</a>. A tensor is like a python list but with a few extra features and restrictions. Specifically, for a tensor of dimension 2+, all vectors in that dimension need to be the same length. For example,</p>
-
 <pre><code class="language-python">from torch import tensor
 
 tensor([[1,2], [3,4]])  # ok
 tensor([[1,2], [3]])   # error!
 </code></pre>
-
 <p>When we tokenize an input, it it will be turned into a tensor containing sequence of integers, each corresponding to an item in the transformer&rsquo;s vocabulary. Here is an example tokenization in GPT-2:</p>
-
 <table>
 <thead>
 <tr>
@@ -200,37 +193,30 @@ tensor([[1,2], [3]])   # error!
 <th>Token ID</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>It</td>
 <td>1026</td>
 </tr>
-
 <tr>
 <td>will</td>
 <td>481</td>
 </tr>
-
 <tr>
 <td>rain</td>
 <td>6290</td>
 </tr>
-
 <tr>
 <td>in</td>
 <td>287</td>
 </tr>
-
 <tr>
 <td>the</td>
 <td>262</td>
 </tr>
 </tbody>
 </table>
-
 <p>Suppose we wanted to include a second sequence in our input:</p>
-
 <table>
 <thead>
 <tr>
@@ -238,27 +224,22 @@ tensor([[1,2], [3]])   # error!
 <th>Token ID</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>My</td>
 <td>3666</td>
 </tr>
-
 <tr>
 <td>dog</td>
 <td>3290</td>
 </tr>
-
 <tr>
 <td>is</td>
 <td>318</td>
 </tr>
 </tbody>
 </table>
-
 <p>Because these two sequences have different lengths, we can&rsquo;t just combine them in one tensor. Instead, we have to <em>pad</em> the shorter sequences with dummy tokens so that each sequence is the same length. And because we want the model to continue to add to the right side of our sequence, we will pad the left side of shorter sequences.</p>
-
 <table>
 <thead>
 <tr>
@@ -266,54 +247,40 @@ tensor([[1,2], [3]])   # error!
 <th>Token ID</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>&lt;pad&gt;</code></td>
 <td>50256</td>
 </tr>
-
 <tr>
 <td>My</td>
 <td>3666</td>
 </tr>
-
 <tr>
 <td>dog</td>
 <td>3290</td>
 </tr>
-
 <tr>
 <td>is</td>
 <td>318</td>
 </tr>
 </tbody>
 </table>
-
 <p>This is where the attention mask comes in. The attention mask simply shows the transformer which tokens are padding, placing 0s in the positions of padding tokens and 1s in the positions of actual tokens. Now that we understand that, let&rsquo;s look at the code line by line.</p>
-
 <pre><code class="language-python">tokenizer.padding_side = &quot;left&quot;
 </code></pre>
-
 <p>This line tells the tokenizer to begin padding from the left (default is right) because the logits of the rightmost token will be used to predict future tokens.</p>
-
 <pre><code class="language-python">tokenizer.pad_token = tokenizer.eos_token
 </code></pre>
-
 <p>This line specifies which token we will use for padding. It doesn&rsquo;t matter which one you choose, but here we&rsquo;re choosing the &ldquo;end of sequence&rdquo; token.</p>
-
 <pre><code class="language-python">sentences = [&quot;It will rain in the&quot;,
             &quot;I want to eat a big bowl of&quot;,
             &quot;My dog is&quot;]
 </code></pre>
-
 <p>These three sequences all have different lengths when tokenized, so should be a good test of our padding method.</p>
-
 <pre><code class="language-python">inputs = tokenizer(sentences, return_tensors=&quot;pt&quot;, padding=True)
 </code></pre>
-
 <p>Now we tokenize. We&rsquo;re passing in the sentences from above, telling the tokenizer to use PyTorch tensors (rather than Tensorflow), and telling the tokenizer to add padding for us. We can print <code>inputs</code> here to confirm that, yes, tokenization is working as we thought:</p>
-
 <pre><code class="language-python">{'input_ids': tensor([
     [50256, 50256, 50256,  1026,   481,  6290,   287,   262],
     [   40,   765,   284,  4483,   257,  1263,  9396,   286],
@@ -325,18 +292,12 @@ tensor([[1,2], [3]])   # error!
     [0, 0, 0, 0, 0, 1, 1, 1]
   ])}
 </code></pre>
-
 <p>As you can see, the first and third sequence include padding at the beginning, and the <code>attention_mask</code> parameter marks the position of this padding.</p>
-
 <p>Now let&rsquo;s actually pass this input into the model to generate new text:</p>
-
 <pre><code class="language-python">output_sequences = gpt2.generate(**inputs)
 </code></pre>
-
 <p>If you&rsquo;re unfamiliar with <code>**kwargs</code> syntax for function calls, this passes in the <code>inputs</code> dict as named parameters, using the keys as the parameter names and the values as the corresponding argument values. <a href="https://docs.python.org/3/tutorial/controlflow.html#keyword-arguments">Check the docs for more info</a>.</p>
-
 <p>Finally, we just need to loop through each of the generated sequences and print out the result in human readable form, using the <code>decode()</code> function to convert token IDs to strings.</p>
-
 <pre><code class="language-python">for seq in output_sequences:
     print(tokenizer.decode(seq))
 </code></pre>
@@ -382,7 +343,7 @@ tensor([[1,2], [3]])   # error!
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-06-15 17:09
+          2021-06-16 08:09
         
 
         
@@ -420,8 +381,6 @@ tensor([[1,2], [3]])   # error!
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -436,7 +395,7 @@ tensor([[1,2], [3]])   # error!
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

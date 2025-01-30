@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", ai, paper-summary" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/evolutionary-antenna-design/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -71,7 +80,7 @@ Typically, antennas are designed and built by hand by domain experts. This is a 
 
 
 
-    <meta property="article:published_time" content="2023-04-17 19:46:25 -0700 PDT" />
+    <meta property="article:published_time" content="2023-04-17 19:46:25 -0700 -0700" />
 
 
 
@@ -133,17 +142,11 @@ Typically, antennas are designed and built by hand by domain experts. This is a 
 
       <div class="post-content">
         <p><strong>This is a summary of <a href="https://www.researchgate.net/profile/Al-Globus/publication/228909002_Automated_Antenna_Design_with_Evolutionary_Algorithms/links/547375300cf216f8cfaff65a/Automated-Antenna-Design-with-Evolutionary-Algorithms.pdf">Automated Antenna Design with Evolutionary Algorithms</a>, a 2006 paper by Hornby et al. As large language models become more and more synonymous with &ldquo;AI&rdquo;, it is interesting to see how researchers solved problems in the past.</strong></p>
-
 <p>Typically, antennas are designed and built by hand by domain experts. This is a very time-consuming process, however, so researchers have been investigating evolutionary algorithms since the 1990s. Inspired by natural evolution, an evolutionary algorithm is based on small, random changes and an evaluation metric. In this paper, the authors describe the use of an evolutionary algorithm to design an antenna for a small satellite weighing only 25 kilograms called ST5.</p>
-
 <p>The researchers then describe the technical specifications which the antenna would need to satisfy. The antenna needed to weigh under 165 grams and have a height and diameter of around 15 centimeters.</p>
-
 <p>In representing the antenna, the researchers used a tree structure, with each node capable of representing one of several operations: forward, rotate-x, rotate-y, and rotate-z. The “forward” operation adds a length of wire with a given radius. The “rotate-x” operation rotates the current state about the x-axis. The “rotate-y” and “rotate-z” operations do the same for the y and z-axes.</p>
-
 <p>The researchers used a fitness function which was the product of VSWR, a gain_error term and a  gain_smoothness term. The gain_error term is similar to the least squares error function. The gain_smoothness term describes how uniform the gain pattern was, since the satellite would be spinning. All three of these factors were multiplied together to calculate an overall fitness score against which all candidate antennas were measured.</p>
-
 <p>Due to a change in the orbit of the satellite, the specifications for the antenna were updated and the researchers needed to modify their evolutionary algorithm. This was completed within one month. The evolved antenna consumed less power, took less time to build, was less complex, and performed better than traditionally designed antennas. Since the satellite had 2 antennas, the researchers measured the combined performance. The evolved antennas were 93% efficient while the designed antennas were only 38% efficient. Additionally, the evolved antennas were much faster to design and fabricate.</p>
-
 <p>The researchers then designed another antenna for NASA’s TDRS-C satellite. This design used an evolutionary algorithm in combination with a stochastic hill-climbing algorithm. They used a loss function which attended to the standing wave ratio and gain at several frequencies relevant to the satellite. In performing the evolutionary algorithm, 150 algorithm processes were run for 50,000 iterations after randomizing many parameters. After this first stage, the best antenna from the previous 150 was optimized using stochastic hill climbing with random mutations. From this second stage, the 23 best antennas were selected and run through another stochastic hill climbing step for 100,000 iterations. Of the 23 finalists, one of the evolved antennas exceeded the project specifications and was optimized further using more accurate software.</p>
 
       </div>
@@ -182,7 +185,7 @@ Typically, antennas are designed and built by hand by domain experts. This is a 
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2023-04-17 19:46
+          2023-04-18 10:46
         
 
         
@@ -220,8 +223,6 @@ Typically, antennas are designed and built by hand by domain experts. This is a 
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -236,7 +237,7 @@ Typically, antennas are designed and built by hand by domain experts. This is a 
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

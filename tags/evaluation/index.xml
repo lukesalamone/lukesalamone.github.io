@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>evaluation on Luke Salamone&#39;s Blog</title>
+    <link>https://lukesalamone.github.io/tags/evaluation/</link>
+    <description>Recent content in evaluation on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Sep 2023 20:47:30 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/evaluation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What is a blunder in chess?</title>
+      <link>https://lukesalamone.github.io/posts/chess-blunders/</link>
+      <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/chess-blunders/</guid>
+      <description>What is a blunder in chess? The tension between the qualitative and quantitative answers to this question is at the heart of different approaches towards chess, and more broadly, how quantitative metrics may lack context, but qualitative metrics lack precision.
+Qualitative answer There are many qualitative answers to this question, especially when comparing &amp;ldquo;blunders&amp;rdquo; and &amp;ldquo;mistakes&amp;rdquo;:
+ &amp;ldquo;a move that negatively affects their position in a significant way&amp;rdquo; ~ chess.com &amp;ldquo;severely worsens the player&amp;rsquo;s situation by allowing a loss of material, checkmate, or anything similar&amp;rdquo; ~ Wikipedia &amp;ldquo;Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.</description>
+    </item>
+    
+  </channel>
+</rss>

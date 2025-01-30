@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", pytorch, machine-learning, python" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/pytorch-dataloader/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -136,7 +145,6 @@ features, labels = load_data() # features &amp; labels must have equal lengths #
 
       <div class="post-content">
         <p>First, create a custom dataset class.</p>
-
 <pre><code class="language-python">from torch.utils.data import Dataset, DataLoader
 
 class CustomDataset(Dataset):
@@ -152,9 +160,7 @@ class CustomDataset(Dataset):
   def __getitem__(self, idx):
     return self.features[idx], self.labels[idx]
 </code></pre>
-
 <p>Next, create a custom dataloader where we specify the batch size.</p>
-
 <pre><code class="language-python">features, labels = load_data()
 
 # features &amp; labels must have equal lengths
@@ -166,9 +172,7 @@ dataloader = DataLoader(dataset,
                         batch_size=batch_size,
                         shuffle=True)
 </code></pre>
-
 <p>Finally, iterate over the dataloader during training.</p>
-
 <pre><code class="language-python">for epoch in range(num_epochs):
   for x, y in train_dataloader:
     # do stuff
@@ -211,7 +215,7 @@ dataloader = DataLoader(dataset,
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2022-04-28 16:22
+          2022-04-29 07:22
         
 
         
@@ -249,8 +253,6 @@ dataloader = DataLoader(dataset,
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -265,7 +267,7 @@ dataloader = DataLoader(dataset,
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

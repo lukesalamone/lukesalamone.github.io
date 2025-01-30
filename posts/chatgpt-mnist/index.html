@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", chatgpt, computer-vision" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/chatgpt-mnist/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -71,7 +80,7 @@ This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a d
 
 
 
-    <meta property="article:published_time" content="2023-07-30 22:45:57 -0700 PDT" />
+    <meta property="article:published_time" content="2023-07-30 22:45:57 -0700 -0700" />
 
 
 
@@ -132,38 +141,22 @@ This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a d
       
 
       <div class="post-content">
-        
-
-<p><strong>TLDR: No. No it cannot.</strong></p>
-
+        <p><strong>TLDR: No. No it cannot.</strong></p>
 <p>This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a decoder-only model. It shouldn&rsquo;t be able to perform an image recognition task. But then again, a decoder-only model wouldn&rsquo;t have been my first choice for translation or summarization either. In my experience, ChatGPT has created translations which are at least as coherent and idiomatic as Google Translate, if not more so.</p>
-
 <p>So I thought, why not give it a shot?</p>
-
 <h1 id="process">Process</h1>
-
 <p><a href="https://pytorch.org/vision/main/generated/torchvision.datasets.MNIST.html#torchvision.datasets.MNIST">MNIST</a> is a computer vision dataset containing thousands of handwritten digits along with their actual labels. Images are represented as 28x28 tensors where each element of the tensor represents a intensity pixel intensity between 0 and 1. Traditionally this is formulated into a classification problem, with the goal of choosing the correct class out of the 10.</p>
-
 <p>To simplify the input, I flattened the tensor and translated the pixel intensity values to the range 0-10. This allowed me to use fewer tokens at the expense of some of the gradations between light and dark.</p>
-
 <p>I gathered 10 random examples from each of the 10 classes (100 total images) and fed them into <code>gpt-3.5-turbo</code> with the following prompt:</p>
-
 <blockquote>
 <p>The following is a flattened representation of an image of a handwritten digit. The image was 28x28 but has been flattened to 1x784. Each number represents a pixel intensity from 0-10. Please tell me which digit the following pixel list represents:</p>
 </blockquote>
-
 <p>Followed by the list of 784 pixel intensities.</p>
-
 <h1 id="results">Results</h1>
-
-<p>ChatGPT scored <sup>11</sup>&frasl;<sub>100</sub>. Barely better than guessing. A summary of the sessions can be found at <a href="https://gist.github.com/lukesalamone/744272ef00e56afb6cab56cdc70a593a">this gist</a>. A visual summary is below, with the blue signifying correct guesses.</p>
-
+<p>ChatGPT scored 11/100. Barely better than guessing. A summary of the sessions can be found at <a href="https://gist.github.com/lukesalamone/744272ef00e56afb6cab56cdc70a593a">this gist</a>. A visual summary is below, with the blue signifying correct guesses.</p>
 <p><em>Note: although the image shows the digits sorted, they were prompted in random order.</em></p>
-
-<p><img src="../../img/chatgpt_mnist.png" alt="chatgpt performance on 100 handwritten digits" /></p>
-
+<p><img src="../../img/chatgpt_mnist.png" alt="chatgpt performance on 100 handwritten digits"></p>
 <p>It is interesting that only the 0s and the 7s were correctly identified. Let&rsquo;s take a look at the distribution of ChatGPT&rsquo;s guesses.</p>
-
 <table>
 <thead>
 <tr>
@@ -171,61 +164,50 @@ This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a d
 <th>Count</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>0</td>
 <td>85</td>
 </tr>
-
 <tr>
 <td>1</td>
 <td>0</td>
 </tr>
-
 <tr>
 <td>2</td>
 <td>3</td>
 </tr>
-
 <tr>
 <td>3</td>
 <td>1</td>
 </tr>
-
 <tr>
 <td>4</td>
 <td>1</td>
 </tr>
-
 <tr>
 <td>5</td>
 <td>4</td>
 </tr>
-
 <tr>
 <td>6</td>
 <td>1</td>
 </tr>
-
 <tr>
 <td>7</td>
 <td>5</td>
 </tr>
-
 <tr>
 <td>8</td>
 <td>0</td>
 </tr>
-
 <tr>
 <td>9</td>
 <td>0</td>
 </tr>
 </tbody>
 </table>
-
-<p>Oh. It got <sup>8</sup>&frasl;<sub>10</sub> zeros correct because it guessed zero 85% of the time.</p>
+<p>Oh. It got 8/10 zeros correct because it guessed zero 85% of the time.</p>
 
       </div>
     </article>
@@ -263,7 +245,7 @@ This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a d
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2023-07-30 22:45
+          2023-07-31 13:45
         
 
         
@@ -301,8 +283,6 @@ This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a d
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -317,7 +297,7 @@ This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a d
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

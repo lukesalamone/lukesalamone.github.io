@@ -6,7 +6,6 @@
     <description>Recent content in ai on Luke Salamone&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Mon, 17 Apr 2023 19:46:25 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Paper Summary: Antenna Design with Evolutionary Algorithms</title>
@@ -34,7 +33,7 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
       <pubDate>Sat, 08 Oct 2022 15:17:36 -0700</pubDate>
       
       <guid>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</guid>
-      <description>This is part 2 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
+      <description>This is part 2 of a paper I wrote for Ken Forbus&#39; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
 In the previous post I discussed the history of chess engines and why they don&amp;rsquo;t &amp;ldquo;think&amp;rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it.</description>
     </item>
     
@@ -44,7 +43,7 @@ In the previous post I discussed the history of chess engines and why they don&a
       <pubDate>Fri, 07 Oct 2022 20:17:21 -0700</pubDate>
       
       <guid>https://lukesalamone.github.io/posts/chess-engine-history/</guid>
-      <description>This is part 1 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 2 here.
+      <description>This is part 1 of a paper I wrote for Ken Forbus&#39; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 2 here.
 Computers that play chess, otherwise known as chess engines, have existed since at least the late 1940s. Because the game was said to require the perfect combination of planning, strategy, psychology, and calculation, chess was once thought to be an activity directly correlated with intelligence, and that only a truly intelligent computer should be able to defeat humans.</description>
     </item>
     

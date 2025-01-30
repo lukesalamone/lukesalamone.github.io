@@ -6,7 +6,6 @@
     <description>Recent content in quick-reference on Luke Salamone&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Tue, 07 Sep 2021 09:10:56 -0500</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/quick-reference/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Connect Jupyter to Remote</title>
@@ -91,7 +90,7 @@ name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s
       
       <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
       <description>Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.</description>
+Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.7.5 # use python 3.</description>
     </item>
     
   </channel>

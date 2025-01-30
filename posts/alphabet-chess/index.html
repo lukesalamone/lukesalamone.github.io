@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", chess, game-theory, statistics" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/alphabet-chess/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -132,26 +141,15 @@ Chess has been played in different forms since the seventh century, and in its m
       
 
       <div class="post-content">
-        
-
-<p><strong><em>TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.</em></strong></p>
-
+        <p><em><strong>TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.</strong></em></p>
 <p>Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.</p>
-
 <h2 id="the-egg-opening">The EGG Opening</h2>
-
 <p>I was inspired the other day after watching a <a href="https://www.youtube.com/watch?v=J6G3cP991Yc">video</a> by Eric Rosen called &ldquo;Quadruple Egg&rdquo;. Chess boards are usually notated from left to right with the letters A through H. (These columns are called &ldquo;files&rdquo;.) The &ldquo;egg&rdquo; opening, therefore, involves moving the E pawn, then the G pawn twice, spelling the word &ldquo;egg&rdquo;. It&rsquo;s an extremely unconventional opening, but how bad is it compared with unrestricted openings?</p>
-
-<h2 id="what-are-the-best-i-e-least-bad-alphabetic-openings">What are the best (i.e. least bad) alphabetic openings?</h2>
-
+<h2 id="what-are-the-best-ie-least-bad-alphabetic-openings">What are the best (i.e. least bad) alphabetic openings?</h2>
 <p>We can call the Egg Opening one version of an alphabetical chess opening: an opening where the piece moved must start on a file corresponding to the next letter in a given word. In this definition, the pieces don&rsquo;t have to be pawns.</p>
-
 <p>This raises an interesting question: what are the best and worst alphabetical openings? Under engine evaluation, they will all be losing, because the opponent is not limited in which piece they can move. However, as we will see, some are much worse than others.</p>
-
 <h3 id="four-letters">Four letters</h3>
-
 <p>English doesn&rsquo;t have an official dictionary, so I chose <a href="https://gist.github.com/paulcc/3799331">this list</a> of four letter words. From there, we need to eliminate all words with letters after H. This leaves us with <a href="https://gist.github.com/lukesalamone/eab96ddde6eb326b8e339c41f5f52bda">37 words</a>. Don&rsquo;t ask me what they all mean:</p>
-
 <pre><code>abbe, abed, aced, ache, aged, agha,
 baba, babe, bach, bade, bead, beef,
 cafe, cage, ceca, cede, chad, chef,
@@ -161,47 +159,35 @@ face, fade, feed,
 gaff, gaga, gage, geed, ghee,
 head, heed
 </code></pre>
-
 <p>A simple way of measuring how bad each of these is would be to evaluate them against Stockfish to see how badly we&rsquo;re losing after playing these moves. In this simulation, we play as white each time.</p>
-
-<p><img src="../../img/alpha_chess_disadvantage_depth_20.png" alt="depth 20" /></p>
-
+<p><img src="../../img/alpha_chess_disadvantage_depth_20.png" alt="depth 20"></p>
 <p>This measurement approach has a problem, though: Stockfish is assuming that white can make any move, and playing black&rsquo;s moves accordingly. In reality, white&rsquo;s moves are extremely restricted. If black knew about this restriction, he would be much more aggressive.</p>
-
 <p>Further, if black were to discover which word white is playing, he could punish white. And even if black doesn&rsquo;t know exactly which word white is playing, black could eliminate moves which definitely can&rsquo;t form English words. For example, if white&rsquo;s first move is H, the next move will definitely be E.</p>
-
 <h2 id="alphabetical-chess">Alphabetical Chess</h2>
-
 <p>What if both players were required to play their first four moves from dictionary words? And what if those words were pre-assigned but secret to each other? For example, if each player drew a card from a deck. In this game, if a player is unable to make a move with a piece of the correct letter, they lose.</p>
-
 <p>There are a few interesting features of this chess variant:</p>
-
 <ol>
 <li>Your starting word will have a big impact on how the game will turn out.</li>
 <li>Figuring out your opponent&rsquo;s word will give you a big advantage.</li>
 <li>Checks and other attacks can be devastating. You may not be able to respond to the attack, and checks may end the game immediately.</li>
 </ol>
-
 <p>In that case, it isn&rsquo;t necessarily true that the best and worst words from above will still be the best and worst when pitted against another randomly chosen word. It&rsquo;s a rock-paper-scissors situation: depending on which word A you happen to get, there is another word B which best counters your word, and another word C which your word best counters.</p>
-
-<p><img src="../../img/alpha_chess_heatmap.png" alt="alphabet chess heatmap" /></p>
-
+<p><img src="../../img/alpha_chess_heatmap.png" alt="alphabet chess heatmap"></p>
 <p>Here the y-axis shows the word which was played with the white pieces, and the x-axis shows the word played with black.</p>
-
 <h2 id="cool-things-about-alphabet-chess">Cool Things About Alphabet Chess</h2>
-
 <p>There are a few interesting benefits to this variant:</p>
-
 <ol>
-<li><p>Handicaps are quite easily built in. The longer your secret word is, the more restricted your play is and the more of a handicap you will have.</p></li>
-
-<li><p>An element of gamesmanship and imperfect information. Players can win on the board with good moves, but also &ldquo;off-board&rdquo; by figuring out their opponent&rsquo;s secret word.</p></li>
-
-<li><p>Prevents good players from using memorized openings.</p></li>
+<li>
+<p>Handicaps are quite easily built in. The longer your secret word is, the more restricted your play is and the more of a handicap you will have.</p>
+</li>
+<li>
+<p>An element of gamesmanship and imperfect information. Players can win on the board with good moves, but also &ldquo;off-board&rdquo; by figuring out their opponent&rsquo;s secret word.</p>
+</li>
+<li>
+<p>Prevents good players from using memorized openings.</p>
+</li>
 </ol>
-
 <h2 id="play-alphabet-chess">Play Alphabet Chess</h2>
-
 <p>If you&rsquo;d like to try it out with a friend and a chessboard, here&rsquo;s an online tool that&rsquo;ll pick a random word: <a href="https://alphachess.surge.sh">https://alphachess.surge.sh</a></p>
 
       </div>
@@ -241,7 +227,7 @@ head, heed
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2022-06-10 21:56
+          2022-06-11 12:56
         
 
         
@@ -279,8 +265,6 @@ head, heed
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -295,7 +279,7 @@ head, heed
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

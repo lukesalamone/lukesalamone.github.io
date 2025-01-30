@@ -6,8 +6,28 @@
     <description>Recent content in chess on Luke Salamone&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 26 Nov 2022 20:25:13 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/chess/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Jun 2024 19:38:39 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/chess/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Most Ramified Chess Position of 2023</title>
+      <link>https://lukesalamone.github.io/posts/most-ramified-chess-position-2023/</link>
+      <pubDate>Thu, 13 Jun 2024 19:38:39 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/most-ramified-chess-position-2023/</guid>
+      <description>I spent some time considering words to describe a chess position with many legal moves. &amp;ldquo;Complex&amp;rdquo; doesn&amp;rsquo;t quite capture the situation since we would usually describe a complex position as one with many tactical interations. Ramified seems to make the most sense, as it describes &amp;ldquo;branching out&amp;rdquo;.
+The opening position in chess has 20 legal moves. From there, the number of legal moves in a position tends to increase as pieces move towards the center of the board, before decreasing as the number of pieces on the board drops in the endgame.</description>
+    </item>
+    
+    <item>
+      <title>What is a blunder in chess?</title>
+      <link>https://lukesalamone.github.io/posts/chess-blunders/</link>
+      <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/chess-blunders/</guid>
+      <description>What is a blunder in chess? The tension between the qualitative and quantitative answers to this question is at the heart of different approaches towards chess, and more broadly, how quantitative metrics may lack context, but qualitative metrics lack precision.
+Qualitative answer There are many qualitative answers to this question, especially when comparing &amp;ldquo;blunders&amp;rdquo; and &amp;ldquo;mistakes&amp;rdquo;:
+ &amp;ldquo;a move that negatively affects their position in a significant way&amp;rdquo; ~ chess.com &amp;ldquo;severely worsens the player&amp;rsquo;s situation by allowing a loss of material, checkmate, or anything similar&amp;rdquo; ~ Wikipedia &amp;ldquo;Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.</description>
+    </item>
+    
     <item>
       <title>My Favorite Antimaia Games</title>
       <link>https://lukesalamone.github.io/posts/best-antimaia-games/</link>
@@ -24,7 +44,7 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
       <pubDate>Sat, 08 Oct 2022 15:17:36 -0700</pubDate>
       
       <guid>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</guid>
-      <description>This is part 2 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
+      <description>This is part 2 of a paper I wrote for Ken Forbus&#39; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
 In the previous post I discussed the history of chess engines and why they don&amp;rsquo;t &amp;ldquo;think&amp;rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it.</description>
     </item>
     
@@ -34,7 +54,7 @@ In the previous post I discussed the history of chess engines and why they don&a
       <pubDate>Fri, 07 Oct 2022 20:17:21 -0700</pubDate>
       
       <guid>https://lukesalamone.github.io/posts/chess-engine-history/</guid>
-      <description>This is part 1 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 2 here.
+      <description>This is part 1 of a paper I wrote for Ken Forbus&#39; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 2 here.
 Computers that play chess, otherwise known as chess engines, have existed since at least the late 1940s. Because the game was said to require the perfect combination of planning, strategy, psychology, and calculation, chess was once thought to be an activity directly correlated with intelligence, and that only a truly intelligent computer should be able to defeat humans.</description>
     </item>
     

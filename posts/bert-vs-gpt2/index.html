@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", nlp, bert, gpt2" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/bert-vs-gpt2/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content="https://lukesalamone.github.io/img/covers/gpt2_vs_bert.png"/>
 <meta property="og:description" content="GPT-2 and BERT in a head to head...which one will come out on top?"/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -135,18 +144,11 @@ BERT The Devlin et al. model was released in November 2018. It is a transformer-
       
 
       <div class="post-content">
-        
-
-<p>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.</p>
-
+        <p>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.</p>
 <p><a href="https://github.com/lukesalamone/gpt2-vs-bert">The code used in this experiment can be found on my Github</a></p>
-
 <h2 id="bert">BERT</h2>
-
 <p>The <a href="https://arxiv.org/pdf/1810.04805.pdf">Devlin et al. model</a> was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the <em>cloze</em> task). During pretraining, 15% of tokens are hidden from the model, and it is trained to predict the masked tokens. As a result, I was able to evaluate its ability to correctly predict a masked token at a random position in a fixed-size input.</p>
-
 <p>I looked at the following varieties of BERT:</p>
-
 <table>
 <thead>
 <tr>
@@ -155,26 +157,22 @@ BERT The Devlin et al. model was released in November 2018. It is a transformer-
 <th>Compare to</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>bert-base-uncased</td>
 <td>110 million</td>
 <td>gpt2</td>
 </tr>
-
 <tr>
 <td>bert-base-cased</td>
 <td>109 million</td>
 <td>gpt2</td>
 </tr>
-
 <tr>
 <td>bert-large-uncased</td>
 <td>336 million</td>
 <td>gpt2-medium</td>
 </tr>
-
 <tr>
 <td>bert-large-cased</td>
 <td>335 million</td>
@@ -182,15 +180,10 @@ BERT The Devlin et al. model was released in November 2018. It is a transformer-
 </tr>
 </tbody>
 </table>
-
 <p>This table also includes corresponding GPT-2 models which have a similar number of parameters. <a href="https://huggingface.co/transformers/pretrained_models.html">Source</a></p>
-
 <h2 id="gpt-2">GPT-2</h2>
-
 <p>The <a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">Radford et al. model</a> hit the scene in February of 2019. Like BERT it is a transformer-based  model, and comes in various sizes ranging from 117M parameters up to 1.5B parameters (gpt2-xl). Because GPT-2 is an autoregressive model, experiments with this family of models perform one token of generation following input context, comparing with the target token for accuracy measurement.</p>
-
 <p>Here we will be evaluating two flavors of this model:</p>
-
 <table>
 <thead>
 <tr>
@@ -199,14 +192,12 @@ BERT The Devlin et al. model was released in November 2018. It is a transformer-
 <th>Compare to</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>gpt2</td>
 <td>117 million</td>
 <td>bert-base</td>
 </tr>
-
 <tr>
 <td>gpt2-medium</td>
 <td>345 million</td>
@@ -214,30 +205,19 @@ BERT The Devlin et al. model was released in November 2018. It is a transformer-
 </tr>
 </tbody>
 </table>
-
 <p>This table also includes corresponding BERT models which have a similar number of parameters. <a href="https://huggingface.co/transformers/pretrained_models.html">Source</a></p>
-
 <h2 id="wikitext-token-prediction">Wikitext Token prediction</h2>
-
 <p>To evaluate the models, I sampled 10,000 random sequences from <a href="https://paperswithcode.com/dataset/wikitext-2">Wikitext-2</a>.</p>
-
 <p><strong>For BERT</strong>, a random sequence of 100 tokens is selected. Then, for each sequence, a random position within that sequence is selected and masked. BERT will be required to predict this token, so accuracy is measured as the percentage of the time which its masked token is predicted correctly.</p>
-
 <p><strong>For GPT-2</strong>, a random sequence of 100 tokens is selected. Then, for each sequence, a random position within that sequence is selected. Because GPT-2 is autoregressive, it cannot attend to tokens on the right, so the sequence is truncated at the selected position. The sequence is then padded appropriately to maintain a fixed sequence length of 100.</p>
-
 <p>Below we can see the performance of all 6 models on these tasks. The data has been smoothed by bucketing into groups of 5 positions at once (i.e. positions 0-4, 5-9, etc). You can see that performance of GPT-2 continues to rise as it is given additional context, while BERT models are relatively stable after being given around 5 tokens of context. Interestingly, BERT performance drops off quite steeply over the last 5-10 token positions.</p>
-
-<p><script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.0/dist/chart.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.0/dist/chart.min.js" type="text/javascript"></script>
 <script src="../../js/bert-vs-gpt2.js"></script>
 <script src="../../js/util.js"></script>
-<div id="graph1"><canvas></canvas></div></p>
-
+<div id="graph1"><canvas></canvas></div>
 <p>When we zoom in on the final 10 positions, things start to get interesting. Both varieties of GPT-2 actually beat out all varieties of BERT at the final position.</p>
-
 <div id="graph2"><canvas></canvas></div>
-
 <h2 id="conclusion">Conclusion</h2>
-
 <p>BERT and GPT-2 perform quite differently on the token prediction task depending on the position of the token being predicted. For a fixed sequence length of 100 tokens, BERT performs best when the masked token is between positions 5 and 95, while GPT-2 tends to continually improve as context length increases. Interestingly, when the final token in the sequence is to be predicted, BERT&rsquo;s performance falls off dramatically, while GPT-2 performance remains stable.</p>
 
       </div>
@@ -277,7 +257,7 @@ BERT The Devlin et al. model was released in November 2018. It is a transformer-
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-06-20 23:04
+          2021-06-21 14:04
         
 
         
@@ -315,8 +295,6 @@ BERT The Devlin et al. model was released in November 2018. It is a transformer-
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -331,7 +309,7 @@ BERT The Devlin et al. model was released in November 2018. It is a transformer-
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

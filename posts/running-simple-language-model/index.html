@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", nlp" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/running-simple-language-model/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -132,12 +141,8 @@ Let&rsquo;s work backwards from where we&rsquo;re trying to get to. When you&rsq
       
 
       <div class="post-content">
-        
-
-<p>This article will show how to run a simple language model, KenLM. It&rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.</p>
-
+        <p>This article will show how to run a simple language model, KenLM. It&rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.</p>
 <p>Let&rsquo;s work backwards from where we&rsquo;re trying to get to. When you&rsquo;ve finished, you should be able to run the following script:</p>
-
 <pre><code class="language-python">import kenlm
 
 path = 'path/to/model.arpa'
@@ -146,29 +151,19 @@ lm = kenlm.LanguageModel(path)
 sentence = &quot;I am not superstitious but I am a little stitious&quot;
 print(model.score(sentence))
 </code></pre>
-
 <p>The first step will be to build KenLM. Then, we will build the ARPA file which KenLM uses to evaluate.</p>
-
 <h2 id="building-kenlm">Building KenLM</h2>
-
 <p>First, clone this repository:</p>
-
 <p><code>git clone git@github.com:kpu/kenlm.git</code></p>
-
 <p>Now we need to build the KenLM toolkit. Run the following to build:</p>
-
 <pre><code>mkdir -p build
 cd build
 cmake ..
 make -j 4
 </code></pre>
-
 <p>Now we just need to provide the model with a <code>.arpa</code> ngram language model file. So let&rsquo;s get one.</p>
-
 <h2 id="building-an-ngram-language-model-from-wikitext-2">Building an ngram language model from Wikitext-2</h2>
-
 <p>First, let&rsquo;s clone a repository which will build an ARPA file. This repository builds the ngram file from <a href="https://paperswithcode.com/dataset/wikitext-2">Wikitext-2</a>, a common dataset used in natural language processing.</p>
-
 <pre><code>git clone git@github.com:daandouwe/ngram-lm.git
 cd ngram-lm
 mkdir data
@@ -176,13 +171,9 @@ mkdir data
 mkdir arpa
 ./main.py --order 3 --interpolate --save-arpa --name wiki-interpolate
 </code></pre>
-
 <p>Once that has finished, you&rsquo;ll have new <code>.arpa</code> in the <code>arpa</code> directory you created. This script took the longest to run on my machine. Be patient, your computer is busy reading all of Wikipedia.</p>
-
 <h2 id="all-together-now">All Together Now</h2>
-
 <p>Now we&rsquo;re finally ready to evaluate a sentence with the language model.</p>
-
 <pre><code class="language-python">import kenlm
 
 path = 'path/to/model.arpa'
@@ -191,16 +182,12 @@ lm = kenlm.LanguageModel(path)
 sentence = &quot;I am not superstitious but I am a little stitious&quot;
 print(model.score(sentence))
 </code></pre>
-
 <p>Which prints something like</p>
-
 <pre><code>----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
 ****************************************************************************************************
 -24.47921371459961
 </code></pre>
-
 <p>Now if you&rsquo;re interested in a bit more information about what&rsquo;s going on, you can add this bit at the bottom:</p>
-
 <pre><code class="language-python">words = ['&lt;s&gt;'] + sentence.split() + ['&lt;/s&gt;']
 for i, (prob, length, oov) in enumerate(lm.full_scores(sentence)):
   print(f'{prob} {length}: {&quot; &quot;.join(words[i+2-length:i+2])}')
@@ -211,9 +198,7 @@ for w in words:
   if not w in lm:
     print(f'&quot;{w}&quot; is an OOV')
 </code></pre>
-
 <p>Which adds this to your output:</p>
-
 <pre><code>-3.1138248443603516 2: &lt;s&gt; I
 -1.1560251712799072 3: &lt;s&gt; I am
 -1.1645264625549316 3: I am not
@@ -228,9 +213,7 @@ for w in words:
 -2.8593297004699707 2: stitious &lt;/s&gt;
 &quot;stitious&quot; is an OOV
 </code></pre>
-
 <p>To the left of each term is the log (base 10) probability of each term occurring. For the first term, <code>&lt;s&gt; I</code> means start of sentence followed by &ldquo;I&rdquo;, which the model has assigned a log probability of -3.11. That&rsquo;s around 0.00078. You might think it&rsquo;s strange that a sentence beginning with &ldquo;I&rdquo; is so unlikely but we are using Wikitext-2. Wikitext-2 is Wikipedia articles. Not a lot of sentences on Wikipedia begin with &ldquo;I&rdquo;.</p>
-
 <p>Notice that &ldquo;stitious&rdquo; is an OOV (out of vocabulary) term here. Clearly the language model doesn&rsquo;t appreciate humor. We&rsquo;ll have to tackle that next time.</p>
 
       </div>
@@ -268,7 +251,7 @@ for w in words:
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-04-16 19:08
+          2021-04-17 10:08
         
 
         
@@ -306,8 +289,6 @@ for w in words:
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -322,7 +303,7 @@ for w in words:
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

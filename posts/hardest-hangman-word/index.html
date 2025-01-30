@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", statistics, monte-carlo, python, javascript" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/hardest-hangman-word/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -46,7 +55,7 @@
 <meta itemprop="description" content="It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.
 If you&rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people."><meta itemprop="datePublished" content="2020-07-21T17:34:05&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-21T17:34:05&#43;08:00" />
-<meta itemprop="wordCount" content="1158"><meta itemprop="image" content="https://lukesalamone.github.io"/>
+<meta itemprop="wordCount" content="1192"><meta itemprop="image" content="https://lukesalamone.github.io"/>
 <meta itemprop="keywords" content="statistics,monte-carlo,python,javascript," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://lukesalamone.github.io"/>
@@ -71,7 +80,7 @@ If you&rsquo;re not familiar with the rules of hangman, it is a guessing game pl
 
 
 
-    <meta property="article:published_time" content="2020-07-21 17:34:05 &#43;0800 &#43;0800" />
+    <meta property="article:published_time" content="2020-07-21 17:34:05 &#43;0800 CST" />
 
 
 
@@ -131,35 +140,19 @@ If you&rsquo;re not familiar with the rules of hangman, it is a guessing game pl
         <hr />
         <aside id="toc">
           <div class="toc-title">Table of Contents</div>
-          <nav id="TableOfContents">
-<ul>
-<li><a href="#an-algorithmic-approach">An algorithmic approach</a></li>
-<li><a href="#live-experiment">Live experiment</a></li>
-<li><a href="#preliminary-results">Preliminary results</a></li>
-<li><a href="#previous-research">Previous research</a></li>
-<li><a href="#future-research">Future research</a></li>
-</ul>
-</nav>
+          <nav id="TableOfContents"></nav>
         </aside>
         <hr />
 
       
 
       <div class="post-content">
-        
-
-<p><img src="https://i.imgur.com/p33HisS.png" alt="Example hangman game" /></p>
-
+        <p><img src="https://i.imgur.com/p33HisS.png" alt="Example hangman game"></p>
 <p>It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.</p>
-
 <p>If you&rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people. Player A chooses a secret word, and tells player B the length of the secret word. Player B guesses letters which she thinks might be in the word. If she chooses a correct letter, player A reveals the locations of <em>each instance</em> of the guessed letter. However, if player B guesses an incorrect letter, this counts as a &ldquo;strike&rdquo; against her. After an agreed-upon number of strikes, player B loses.</p>
-
 <h1 id="an-algorithmic-approach">An algorithmic approach</h1>
-
 <p>A few years ago, I created a &ldquo;hangman solver&rdquo; for the popular paper and pencil game. This game assessed each game analytically, to determine a list of possible words given the clues available. The algorithm works as follows: at the beginning of the game, we know the length of the secret word, which narrows our dictionary considerably. Then, for each letter in the alphabet, count the number of words available which contain that letter.</p>
-
 <p>Suppose our dictionary consisted of a random list of 50 four-letter words as follows:</p>
-
 <pre><code class="language-javascript">[&quot;pull&quot;, &quot;dipt&quot;, &quot;dorp&quot;, &quot;poky&quot;, &quot;jism&quot;, &quot;cues&quot;, &quot;hood&quot;, &quot;drag&quot;,
 &quot;inky&quot;, &quot;mhos&quot;, &quot;kerf&quot;, &quot;jess&quot;, &quot;mete&quot;, &quot;lues&quot;, &quot;wipe&quot;, &quot;kane&quot;,
 &quot;tiro&quot;, &quot;keys&quot;, &quot;jape&quot;, &quot;lime&quot;, &quot;sees&quot;, &quot;sass&quot;, &quot;demo&quot;, &quot;ilia&quot;,
@@ -168,9 +161,7 @@ If you&rsquo;re not familiar with the rules of hangman, it is a guessing game pl
 &quot;mile&quot;, &quot;dodo&quot;, &quot;litu&quot;, &quot;scup&quot;, &quot;colt&quot;, &quot;soma&quot;, &quot;seat&quot;, &quot;dewy&quot;,
 &quot;pits&quot;, &quot;mojo&quot;]
 </code></pre>
-
 <p>This would result in letter counts as follows:</p>
-
 <table>
 <thead>
 <tr>
@@ -178,154 +169,120 @@ If you&rsquo;re not familiar with the rules of hangman, it is a guessing game pl
 <th>count</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>a</td>
 <td>16</td>
 </tr>
-
 <tr>
 <td>b</td>
 <td>7</td>
 </tr>
-
 <tr>
 <td>c</td>
 <td>15</td>
 </tr>
-
 <tr>
 <td>d</td>
 <td>5</td>
 </tr>
-
 <tr>
 <td>e</td>
 <td>26</td>
 </tr>
-
 <tr>
 <td>f</td>
 <td>1</td>
 </tr>
-
 <tr>
 <td>g</td>
 <td>5</td>
 </tr>
-
 <tr>
 <td>h</td>
 <td>3</td>
 </tr>
-
 <tr>
 <td>i</td>
 <td>10</td>
 </tr>
-
 <tr>
 <td>j</td>
 <td>1</td>
 </tr>
-
 <tr>
 <td>k</td>
 <td>6</td>
 </tr>
-
 <tr>
 <td>l</td>
 <td>14</td>
 </tr>
-
 <tr>
 <td>m</td>
 <td>6</td>
 </tr>
-
 <tr>
 <td>n</td>
 <td>6</td>
 </tr>
-
 <tr>
 <td>o</td>
 <td>14</td>
 </tr>
-
 <tr>
 <td>p</td>
 <td>7</td>
 </tr>
-
 <tr>
 <td>r</td>
 <td>8</td>
 </tr>
-
 <tr>
 <td>s</td>
 <td>15</td>
 </tr>
-
 <tr>
 <td>t</td>
 <td>13</td>
 </tr>
-
 <tr>
 <td>u</td>
 <td>4</td>
 </tr>
-
 <tr>
 <td>w</td>
 <td>1</td>
 </tr>
-
 <tr>
 <td>x</td>
 <td>1</td>
 </tr>
-
 <tr>
 <td>y</td>
 <td>4</td>
 </tr>
 </tbody>
 </table>
-
 <p>In this case, the letter E is found in 26 words, the most of any letter. Therefore our algorithm should pick E since it is the safest guess. Once we guess a letter correctly, this gives important positional information which can filter the word list even further.</p>
-
 <p>This process is repeated, each time picking the most likely letter, given the constraints we know. If we know some of the letters in the secret word, we can eliminate any words that don&rsquo;t have those letters in those positions. If we have guessed a letter incorrectly, we know that letter isn&rsquo;t in the secret word and can eliminate all words which have that letter. You can see a python implementation of this algorithm <a href="https://gist.github.com/lukesalamone/a815cda5e427b28db78e0caafdbbc0f3#file-hangman_solver-py">here</a>.</p>
-
 <p>For this experiment I used the <a href="http://www.blogmybrain.com/words-with-friends-cheat/words.txt">Zynga dictionary</a>, the same dictionary used in the game Words With Friends. The dictionary contains 173,000 words. It does not include any proper nouns or profanities.</p>
-
 <h1 id="live-experiment">Live experiment</h1>
-
 <p>Below you can experiment with this algorithm among 4 letter words. Enter a secret word, and the steps used to uncover the secret word will be displayed below. (Need inspiration? Try comparing <em>jazz</em> to <em>rock</em> or <em>blue</em> to <em>grey</em>.)</p>
-
 <div id="demo1" style="margin:20px;background:#ddd;padding:20px;font-family:monospace">
     <script src="../../js/hangman-demo1.js"></script>
-
-    <div style="width:100%; text-align:center">
-        <input placeholder="enter 4 letter word"></input>
-        <button class="play">play word</button>
-        <button class="reset">reset</button>
-    </div>
-    <div class="output" style="margin: 20px 0"></div>
+<pre><code>&lt;div style=&quot;width:100%; text-align:center&quot;&gt;
+    &lt;input placeholder=&quot;enter 4 letter word&quot;&gt;&lt;/input&gt;
+    &lt;button class=&quot;play&quot;&gt;play word&lt;/button&gt;
+    &lt;button class=&quot;reset&quot;&gt;reset&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class=&quot;output&quot; style=&quot;margin: 20px 0&quot;&gt;&lt;/div&gt;
+</code></pre>
 </div>
-
 <p>Notice how some words have much higher difficulty than others? This is due to the fact that some words have many &ldquo;siblings&rdquo; which differ by only one letter. For example the pattern &ldquo;.ays&rdquo; could match the letters c, d, f, h, j, k, l, n, or r. Knowing the last 3 letters gives us no indication of which of these nine letters it will be.</p>
-
 <p>One apparent shortcoming of the above calculation is that it assumes that letters with equal probability will be picked in alphabetical order, and therefore letters last in the alphabet will be picked last. Although this has the benefit of creating a deterministic algorithm which will always return the same result for the same word, in real life we don&rsquo;t know in which order people will pick letters. In actuality the words <em>days</em>, <em>jays</em> and <em>rays</em> have equal difficulty each is equally likely to be the secret word.</p>
-
 <h1 id="preliminary-results">Preliminary results</h1>
-
 <p>With this preliminary caveat in mind, we can still calculate the difficulty of every word in the dictionary. If we assume that in a situation where multiple letters are equally probable, our opponent will break the tie using alphabetical ordering, which hangman words are the hardest to guess? Here are the top 17:</p>
-
 <table>
 <thead>
 <tr>
@@ -333,129 +290,102 @@ If you&rsquo;re not familiar with the rules of hangman, it is a guessing game pl
 <th>difficulty</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>zill</td>
 <td>19</td>
 </tr>
-
 <tr>
 <td>zills</td>
 <td>18</td>
 </tr>
-
 <tr>
 <td>yill</td>
 <td>18</td>
 </tr>
-
 <tr>
 <td>zin</td>
 <td>17</td>
 </tr>
-
 <tr>
 <td>zax</td>
 <td>17</td>
 </tr>
-
 <tr>
 <td>yills</td>
 <td>17</td>
 </tr>
-
 <tr>
 <td>will</td>
 <td>17</td>
 </tr>
-
 <tr>
 <td>vox</td>
 <td>17</td>
 </tr>
-
 <tr>
 <td>mem</td>
 <td>17</td>
 </tr>
-
 <tr>
 <td>zins</td>
 <td>16</td>
 </tr>
-
 <tr>
 <td>yuck</td>
 <td>16</td>
 </tr>
-
 <tr>
 <td>yin</td>
 <td>16</td>
 </tr>
-
 <tr>
 <td>wills</td>
 <td>16</td>
 </tr>
-
 <tr>
 <td>vill</td>
 <td>16</td>
 </tr>
-
 <tr>
 <td>oak</td>
 <td>16</td>
 </tr>
-
 <tr>
 <td>jazz</td>
 <td>16</td>
 </tr>
-
 <tr>
 <td>foy</td>
 <td>16</td>
 </tr>
-
 <tr>
 <td>(27 more)</td>
 <td>15</td>
 </tr>
 </tbody>
 </table>
-
 <h1 id="previous-research">Previous research</h1>
-
 <p>I should note that <a href="https://web.archive.org/web/20100815092214/http://blog.wolfram.com/2010/08/13/25-best-hangman-words/">previous research by Jon McLoone in 2010</a> has explored the same topic, although he used slightly different methodology and a smaller 90,000 word dictionary. His algorithm was not deterministic, and so does not always pick the most frequent letter available. Instead, his algorithm picks a letter with a probability proportional to the frequency with which it occurs in candidate words. For example, if we refer to the letter frequencies of the 50 word 4-letter dictionary above, <em>j</em> appears in just 1 word, while <em>e</em> appears in 26 of them. In this case, since the sum of the numbers in the frequency table is 188, McLoone&rsquo;s algorithm would pick <em>z</em> in 1 out of every 188 first guesses, and <em>e</em> in 26 of them.  Although it might seem that this strategy is not optimal, it does avoid the deterministic results shown above.</p>
-
 <p>Additionally, McLoone chose to remain faithful to the logic of the hangman game, opting to end the games after a given number of mistakes, and recording the probability that a given word was not discovered after the game ended. So an 8-game means that the game was ended after 8 mistakes, and a 13-game after 13 mistakes. Using this methodology, he found the hardest hangman words were as follows:</p>
-
-<p><img src="https://i.imgur.com/N5ginNw.gif" alt="Jon McLoone results" /></p>
-
+<p><img src="https://i.imgur.com/N5ginNw.gif" alt="Jon McLoone results"></p>
 <h1 id="future-research">Future research</h1>
-
 <p>Now, I think that we can improve upon our results a bit. Rather than calculating difficulty deterministically, we can instead randomize the ordering which letters will be picked in. This should dramatically reduce some of the outliers from above, bringing &ldquo;rays&rdquo; down from a difficulty of 14 to something more reasonable.</p>
-
 <p>Such a stochastic calculation will require simulating millions of games. For my 173,000 word dictionary, simply simulating 10 games would involve 1.7 million games. Fortunately, this operation is highly parallelizable. It should be possible to split the dictionary into 100 or even 1000 pieces and derive the results for each piece simultaneously.</p>
-
 <p>A simulation of this algorithm is shown below, with a graph of the average number of mistakes the new randomized algorithm incurs before discovering your secret word. The simulation is set up to play 500 rounds of games, and the final average is displayed at the top.</p>
-
 <div id="demo2" style="margin:20px;background:#ddd;padding:20px;font-family:monospace">
     <script src="../../js/chart.min.js"></script>
     <script src="../../js/hangman-demo2.js"></script>
-
-    <div style="width:100%; text-align:center">
-        <input placeholder="enter 4 letter word"></input>
-        <button class="play">play word</button>
-        <button class="reset">reset</button>
-    </div>
-    <div class="messages"><span></span></div>
-    <div class="canvas-holder" style="display:none;width:500px;height:500px">
-        <canvas></canvas>
-    </div>
+<pre><code>&lt;div style=&quot;width:100%; text-align:center&quot;&gt;
+    &lt;input placeholder=&quot;enter 4 letter word&quot;&gt;&lt;/input&gt;
+    &lt;button class=&quot;play&quot;&gt;play word&lt;/button&gt;
+    &lt;button class=&quot;reset&quot;&gt;reset&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class=&quot;messages&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;canvas-holder&quot; style=&quot;display:none;width:500px;height:500px&quot;&gt;
+    &lt;canvas&gt;&lt;/canvas&gt;
+&lt;/div&gt;
+</code></pre>
 </div>
 
       </div>
@@ -485,7 +415,7 @@ If you&rsquo;re not familiar with the rules of hangman, it is a guessing game pl
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1158 Words
+        1192 Words
       </p>
 
       <p>
@@ -496,7 +426,7 @@ If you&rsquo;re not familiar with the rules of hangman, it is a guessing game pl
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2020-07-21 02:34
+          2020-07-21 17:34
         
 
         
@@ -515,9 +445,9 @@ If you&rsquo;re not familiar with the rules of hangman, it is a guessing game pl
         <div class="pagination__buttons">
           
             <span class="button previous">
-              <a href="https://lukesalamone.github.io/posts/managing-python-environments/">
+              <a href="https://lukesalamone.github.io/posts/kmeans-clustering/">
                 <span class="button__icon">←</span>
-                <span class="button__text">Managing Python Environments</span>
+                <span class="button__text">How does K-means clustering work?</span>
               </a>
             </span>
           
@@ -534,8 +464,6 @@ If you&rsquo;re not familiar with the rules of hangman, it is a guessing game pl
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -550,7 +478,7 @@ If you&rsquo;re not familiar with the rules of hangman, it is a guessing game pl
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

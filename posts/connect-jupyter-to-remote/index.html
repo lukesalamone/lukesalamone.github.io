@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", python, jupyter, quick-reference" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/connect-jupyter-to-remote/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -142,22 +151,17 @@ http://localhost:8080/?token=xyz" />
 
       <div class="post-content">
         <p>Here&rsquo;s how to connect to a remote Jupyter notebook.</p>
-
 <p>Create an ssh tunnel to your remote machine:</p>
-
 <pre><code>ssh -L 8080:localhost:8080 user@12.34.56.78
 
 # or use a .pem file to connect to ec2
 ssh -L 8080:localhost:8080 -i &quot;aws.pem&quot; ec2-user@ec2-12-34-56-78.compute-1.amazonaws.com
 </code></pre>
-
 <p>Start Jupyter on that machine in headless mode:</p>
-
 <pre><code>jupyter notebook --no-browser --port=8080
 </code></pre>
-
-<p>Use a browser to open one of the urls that Jupyter presents:<br />
-<a href="http://localhost:8080/?token=xyz">http://localhost:8080/?token=xyz</a></p>
+<p>Use a browser to open one of the urls that Jupyter presents:<br>
+http://localhost:8080/?token=xyz</p>
 
       </div>
     </article>
@@ -196,7 +200,7 @@ ssh -L 8080:localhost:8080 -i &quot;aws.pem&quot; ec2-user@ec2-12-34-56-78.compu
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-09-07 07:10
+          2021-09-07 22:10
         
 
         
@@ -234,8 +238,6 @@ ssh -L 8080:localhost:8080 -i &quot;aws.pem&quot; ec2-user@ec2-12-34-56-78.compu
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -250,7 +252,7 @@ ssh -L 8080:localhost:8080 -i &quot;aws.pem&quot; ec2-user@ec2-12-34-56-78.compu
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

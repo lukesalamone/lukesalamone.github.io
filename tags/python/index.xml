@@ -6,8 +6,30 @@
     <description>Recent content in python on Luke Salamone&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 23 Nov 2022 10:07:36 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Jul 2024 14:48:27 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Custom PyTorch Collate Function</title>
+      <link>https://lukesalamone.github.io/posts/custom-pytorch-collate/</link>
+      <pubDate>Fri, 12 Jul 2024 14:48:27 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/custom-pytorch-collate/</guid>
+      <description>If your Dataset class looks something like
+class MyDataset(Dataset): # ... boilerplate ... def __getitem__(self, idx): item = self.data[idx] return item[&#39;anchor&#39;], item[&#39;positive&#39;], item[&#39;negative&#39;]  your collate function should be
+def collate_fn(data): anchors, pos, neg = zip(*data) anchors = tokenizer(anchors, return_tensors=&amp;quot;pt&amp;quot;, padding=True) pos = tokenizer(pos, return_tensors=&amp;quot;pt&amp;quot;, padding=True) neg = tokenizer(neg, return_tensors=&amp;quot;pt&amp;quot;, padding=True) return anchors, pos, neg  and you can use it like
+dataset = MyDataset() dataloader = DataLoader(dataset, batch_size=4, shuffle=True, pin_memory=True, collate_fn=collate_fn) for anchors, positives, negatives in dataloader: anchors = anchors.</description>
+    </item>
+    
+    <item>
+      <title>How to Create Rust Python Bindings</title>
+      <link>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</link>
+      <pubDate>Tue, 18 Jun 2024 16:21:35 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</guid>
+      <description>Rust is super fast. Python is super flexible. Porting slow python code to rust can make your life a lot easier, and it&amp;rsquo;s not too difficult to set up.
+I will demonstrate rust bindings for summing the integers in a large text file containing a billion digits that looks like
+6,9,8,3,0,1,8,4,9,7,6,3,4,2,6,0,0,5,1,1, . . . ,4,5,9,3,3,2,8,3  General steps  install rust and maturin set up boilerplate add your function compile and import  Install Rust and Maturin curl --proto &#39;=https&#39; --tlsv1.</description>
+    </item>
+    
     <item>
       <title>The Other End of the Earth</title>
       <link>https://lukesalamone.github.io/posts/earth-antipodes/</link>
@@ -101,7 +123,7 @@ name = &#39;Luke&#39; food = &#39;pizza&#39; # old style &amp;quot;My name is %s
       
       <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
       <description>Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.</description>
+Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.7.5 # use python 3.</description>
     </item>
     
     <item>

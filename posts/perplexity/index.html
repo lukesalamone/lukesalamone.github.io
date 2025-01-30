@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", nlp, statistics" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/perplexity/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -132,10 +141,7 @@ In natural language processing, perplexity is the most common metric used to mea
       
 
       <div class="post-content">
-        
-
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   tex2jax: {
@@ -153,7 +159,6 @@ MathJax.Hub.Config({
   }
 });
 </script>
-
 <script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
     var all = MathJax.Hub.getAllJax(), i;
@@ -162,31 +167,20 @@ MathJax.Hub.Config({
     }
 });
 </script>
-
 <p><strong>TLDR: NLP metric ranging from 1 to infinity. Lower is better.</strong></p>
-
 <p>In natural language processing, perplexity is the most common metric used to measure the performance of a language model. To calculate perplexity, we use the following formula:</p>
-
 <p style="text-align: center; font-size: 1.5em">
 $ perplexity = e^z $
 </p>
-
 <p style="text-align:center">where</p>
-
 <p style="text-align: center; font-size: 1.5em">
 $ z = -{1 \over N} \sum_{i=0}^N ln(P_{n}) $
 </p>
-
 <p>Typically we use base <code>e</code> when calculating perplexity, but this is not required. Any base will do, so sometimes the formula will use base 2 or base 10, along with logarithms to the corresponding base.</p>
-
 <h2 id="example">Example</h2>
-
 <p>Imagine that we have a language model which generates the following sequence of tokens:</p>
-
 <p><code>&lt;start&gt;</code> <code>jack</code> <code>and</code> <code>jill</code> <code>went</code> <code>up</code> <code>the</code> <code>hill</code></p>
-
 <p>And suppose that the conditional probabilities for each of the tokens are as follows:</p>
-
 <table>
 <thead>
 <tr>
@@ -194,52 +188,42 @@ $ z = -{1 \over N} \sum_{i=0}^N ln(P_{n}) $
 <th>probability</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>&lt;start&gt;</code></td>
 <td>15%</td>
 </tr>
-
 <tr>
 <td><code>jack</code></td>
 <td>5%</td>
 </tr>
-
 <tr>
 <td><code>and</code></td>
 <td>12%</td>
 </tr>
-
 <tr>
 <td><code>jill</code></td>
 <td>18%</td>
 </tr>
-
 <tr>
 <td><code>went</code></td>
 <td>25%</td>
 </tr>
-
 <tr>
 <td><code>up</code></td>
 <td>40%</td>
 </tr>
-
 <tr>
 <td><code>the</code></td>
 <td>33%</td>
 </tr>
-
 <tr>
 <td><code>hill</code></td>
 <td>50%</td>
 </tr>
 </tbody>
 </table>
-
 <p>For the purposes of calculating perplexity it doesn&rsquo;t matter how the sequence was generated. It may be using an n-gram model or an LSTM or a transformer. All that matters is the probabilities the model assigns to each of the tokens. To calculate perplexity, we calculate the logarithm of each of the values above:</p>
-
 <table>
 <thead>
 <tr>
@@ -248,50 +232,42 @@ $ z = -{1 \over N} \sum_{i=0}^N ln(P_{n}) $
 <th>ln(P)</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>&lt;start&gt;</code></td>
 <td>15%</td>
 <td>-1.897</td>
 </tr>
-
 <tr>
 <td><code>jack</code></td>
 <td>5%</td>
 <td>-2.996</td>
 </tr>
-
 <tr>
 <td><code>and</code></td>
 <td>12%</td>
 <td>-2.120</td>
 </tr>
-
 <tr>
 <td><code>jill</code></td>
 <td>18%</td>
 <td>-1.715</td>
 </tr>
-
 <tr>
 <td><code>went</code></td>
 <td>25%</td>
 <td>-1.386</td>
 </tr>
-
 <tr>
 <td><code>up</code></td>
 <td>40%</td>
 <td>-0.916</td>
 </tr>
-
 <tr>
 <td><code>the</code></td>
 <td>33%</td>
 <td>-1.109</td>
 </tr>
-
 <tr>
 <td><code>hill</code></td>
 <td>50%</td>
@@ -299,13 +275,10 @@ $ z = -{1 \over N} \sum_{i=0}^N ln(P_{n}) $
 </tr>
 </tbody>
 </table>
-
 <p>Summing the logs, we get -12.832. Since there are 8 tokens, we divide -12.832 by 8 to get -1.604. Negating that allows us to calculate the final perplexity:</p>
-
 <p style="text-align: center; font-size: 1.5em">
 $ perplexity = e^{1.604} = 4.973 $
 </p>
-
 <p>Therefore the perplexity of this sequence is about 4.973.</p>
 
       </div>
@@ -344,7 +317,7 @@ $ perplexity = e^{1.604} = 4.973 $
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-04-01 10:14
+          2021-04-02 01:14
         
 
         
@@ -382,8 +355,6 @@ $ perplexity = e^{1.604} = 4.973 $
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -398,7 +369,7 @@ $ perplexity = e^{1.604} = 4.973 $
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

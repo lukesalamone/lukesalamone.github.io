@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>reinforcement-learning on Luke Salamone&#39;s Blog</title>
+    <link>https://lukesalamone.github.io/tags/reinforcement-learning/</link>
+    <description>Recent content in reinforcement-learning on Luke Salamone&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 28 Jan 2025 08:35:55 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/tags/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Notes on Deepseek R1</title>
+      <link>https://lukesalamone.github.io/posts/notes-on-deepseek-r1/</link>
+      <pubDate>Tue, 28 Jan 2025 08:35:55 -0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/notes-on-deepseek-r1/</guid>
+      <description>DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many decoder-based models in the past which simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before the final answer is given. According to the researchers, its performance is on par with OpenAI&amp;rsquo;s O1 model.
+Terminology First, I will briefly describe some terminology related to training techniques:
+  Supervised fine-tuning (SFT) is a process which uses input/output pairs to directly fine-tune a model.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,8 +6,135 @@
     <description>Recent content on Luke Salamone&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 23 Aug 2023 23:34:38 -0700</lastBuildDate><atom:link href="https://lukesalamone.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 28 Jan 2025 08:35:55 -0800</lastBuildDate><atom:link href="https://lukesalamone.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Notes on Deepseek R1</title>
+      <link>https://lukesalamone.github.io/posts/notes-on-deepseek-r1/</link>
+      <pubDate>Tue, 28 Jan 2025 08:35:55 -0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/notes-on-deepseek-r1/</guid>
+      <description>DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many decoder-based models in the past which simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before the final answer is given. According to the researchers, its performance is on par with OpenAI&amp;rsquo;s O1 model.
+Terminology First, I will briefly describe some terminology related to training techniques:
+  Supervised fine-tuning (SFT) is a process which uses input/output pairs to directly fine-tune a model.</description>
+    </item>
+    
+    <item>
+      <title>Space Is Really Big</title>
+      <link>https://lukesalamone.github.io/posts/space-is-really-big/</link>
+      <pubDate>Mon, 29 Jul 2024 12:16:49 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/space-is-really-big/</guid>
+      <description>More than 30 earths could fit between the earth and the moon.
+  Our elementary school models of the solar system really undersell how big space is. The problem is, space is too big and human brains are bad at exponentials. Logarithmic charts like this one are technically accurate, but my brain has a hard time contextualizing it.
+To get an idea of how big space really is, let&amp;rsquo;s imagine that the earth is one millimeter wide.</description>
+    </item>
+    
+    <item>
+      <title>Custom PyTorch Collate Function</title>
+      <link>https://lukesalamone.github.io/posts/custom-pytorch-collate/</link>
+      <pubDate>Fri, 12 Jul 2024 14:48:27 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/custom-pytorch-collate/</guid>
+      <description>If your Dataset class looks something like
+class MyDataset(Dataset): # ... boilerplate ... def __getitem__(self, idx): item = self.data[idx] return item[&#39;anchor&#39;], item[&#39;positive&#39;], item[&#39;negative&#39;]  your collate function should be
+def collate_fn(data): anchors, pos, neg = zip(*data) anchors = tokenizer(anchors, return_tensors=&amp;quot;pt&amp;quot;, padding=True) pos = tokenizer(pos, return_tensors=&amp;quot;pt&amp;quot;, padding=True) neg = tokenizer(neg, return_tensors=&amp;quot;pt&amp;quot;, padding=True) return anchors, pos, neg  and you can use it like
+dataset = MyDataset() dataloader = DataLoader(dataset, batch_size=4, shuffle=True, pin_memory=True, collate_fn=collate_fn) for anchors, positives, negatives in dataloader: anchors = anchors.</description>
+    </item>
+    
+    <item>
+      <title>Very Large Datasets in PyTorch</title>
+      <link>https://lukesalamone.github.io/posts/very-large-datasets/</link>
+      <pubDate>Thu, 27 Jun 2024 18:40:06 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/very-large-datasets/</guid>
+      <description>In God we trust. All others must bring data. ~ W. Edwards Deming
+ Datasets that fit in memory For simple machine learning problems, your PyTorch dataset class probably looks something like this:
+class SimpleDataset(Dataset): def __init__(self, features, targets): self.features = [] for feature in features: self.features.append(self._feature_transform(feature)) self.targets = targets def _feature_transform(self, feature): # Optional feature transformation function which # converts each feature into its input representation # for the model.</description>
+    </item>
+    
+    <item>
+      <title>How to Create Rust Python Bindings</title>
+      <link>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</link>
+      <pubDate>Tue, 18 Jun 2024 16:21:35 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</guid>
+      <description>Rust is super fast. Python is super flexible. Porting slow python code to rust can make your life a lot easier, and it&amp;rsquo;s not too difficult to set up.
+I will demonstrate rust bindings for summing the integers in a large text file containing a billion digits that looks like
+6,9,8,3,0,1,8,4,9,7,6,3,4,2,6,0,0,5,1,1, . . . ,4,5,9,3,3,2,8,3  General steps  install rust and maturin set up boilerplate add your function compile and import  Install Rust and Maturin curl --proto &#39;=https&#39; --tlsv1.</description>
+    </item>
+    
+    <item>
+      <title>The Most Ramified Chess Position of 2023</title>
+      <link>https://lukesalamone.github.io/posts/most-ramified-chess-position-2023/</link>
+      <pubDate>Thu, 13 Jun 2024 19:38:39 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/most-ramified-chess-position-2023/</guid>
+      <description>I spent some time considering words to describe a chess position with many legal moves. &amp;ldquo;Complex&amp;rdquo; doesn&amp;rsquo;t quite capture the situation since we would usually describe a complex position as one with many tactical interations. Ramified seems to make the most sense, as it describes &amp;ldquo;branching out&amp;rdquo;.
+The opening position in chess has 20 legal moves. From there, the number of legal moves in a position tends to increase as pieces move towards the center of the board, before decreasing as the number of pieces on the board drops in the endgame.</description>
+    </item>
+    
+    <item>
+      <title>What are Sparse Autoencoders?</title>
+      <link>https://lukesalamone.github.io/posts/sparse-autoencoder/</link>
+      <pubDate>Thu, 06 Jun 2024 16:30:27 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/sparse-autoencoder/</guid>
+      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i TLDR: A sparse autoencoder is just a regular autoencoder that encourages sparsity with an L1 penalty or KL divergence loss rather than using a low-dimensional bottleneck.</description>
+    </item>
+    
+    <item>
+      <title>How does HNSW work?</title>
+      <link>https://lukesalamone.github.io/posts/how-does-hnsw-work/</link>
+      <pubDate>Mon, 20 May 2024 13:38:01 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/how-does-hnsw-work/</guid>
+      <description>Suppose we have a vector database with a billion items in it (the haystack). And suppose we are looking for K vectors, the needles which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing 1-distance(x,y).) And also suppose that we&amp;rsquo;d like to do this quickly.
+Naive and semi-naive approaches One approach might be to compare every vector and take the argmax. In that case, for vectors of length D our runtime will be 1 billion x D.</description>
+    </item>
+    
+    <item>
+      <title>Learning the Haystack</title>
+      <link>https://lukesalamone.github.io/posts/learning-the-haystack/</link>
+      <pubDate>Wed, 27 Mar 2024 18:19:54 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/learning-the-haystack/</guid>
+      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.</description>
+    </item>
+    
+    <item>
+      <title>Vectorized K-Means Clustering</title>
+      <link>https://lukesalamone.github.io/posts/vectorized-kmeans/</link>
+      <pubDate>Sun, 04 Feb 2024 23:39:29 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/vectorized-kmeans/</guid>
+      <description>K-means clustering (previous discussion) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. The points may represent physical locations, or embeddings in high-dimensional vector space.
+🌟Check out the demo (in two dimensions) below. Centroids are colored white.🌟
+  start   Note that the points are changing color only, not moving.
+General algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.</description>
+    </item>
+    
+    <item>
+      <title>Summary: Deep &amp; Cross Net v2</title>
+      <link>https://lukesalamone.github.io/posts/deep-cross-net-v2/</link>
+      <pubDate>Mon, 02 Oct 2023 12:39:18 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/deep-cross-net-v2/</guid>
+      <description>Paper link: https://arxiv.org/pdf/2008.13535
+Learning to rank is an important problem in many machine-learning products such as search, recommendation, and advertising. Originally, many machine learning systems used simple logistic regression models, but it quickly became apparent that combining two or more features together was even better. This is called feature crossing.
+A lot of research and engineering work has gone into learning useful feature crosses. The fundamental problem is that although higher-order feature crosses can be more informative, they are also more sparse, and the number of high order features grows exponentially.</description>
+    </item>
+    
+    <item>
+      <title>What is a blunder in chess?</title>
+      <link>https://lukesalamone.github.io/posts/chess-blunders/</link>
+      <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/chess-blunders/</guid>
+      <description>What is a blunder in chess? The tension between the qualitative and quantitative answers to this question is at the heart of different approaches towards chess, and more broadly, how quantitative metrics may lack context, but qualitative metrics lack precision.
+Qualitative answer There are many qualitative answers to this question, especially when comparing &amp;ldquo;blunders&amp;rdquo; and &amp;ldquo;mistakes&amp;rdquo;:
+ &amp;ldquo;a move that negatively affects their position in a significant way&amp;rdquo; ~ chess.com &amp;ldquo;severely worsens the player&amp;rsquo;s situation by allowing a loss of material, checkmate, or anything similar&amp;rdquo; ~ Wikipedia &amp;ldquo;Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.</description>
+    </item>
+    
     <item>
       <title>A 3D Game of Life</title>
       <link>https://lukesalamone.github.io/posts/game-of-life-3d/</link>
@@ -95,7 +222,7 @@ What is attention? At a high level, attention is a mechanism for neural networks
       <pubDate>Sat, 08 Oct 2022 15:17:36 -0700</pubDate>
       
       <guid>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</guid>
-      <description>This is part 2 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
+      <description>This is part 2 of a paper I wrote for Ken Forbus&#39; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
 In the previous post I discussed the history of chess engines and why they don&amp;rsquo;t &amp;ldquo;think&amp;rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it.</description>
     </item>
     
@@ -105,7 +232,7 @@ In the previous post I discussed the history of chess engines and why they don&a
       <pubDate>Fri, 07 Oct 2022 20:17:21 -0700</pubDate>
       
       <guid>https://lukesalamone.github.io/posts/chess-engine-history/</guid>
-      <description>This is part 1 of a paper I wrote for Ken Forbus&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 2 here.
+      <description>This is part 1 of a paper I wrote for Ken Forbus&#39; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 2 here.
 Computers that play chess, otherwise known as chess engines, have existed since at least the late 1940s. Because the game was said to require the perfect combination of planning, strategy, psychology, and calculation, chess was once thought to be an activity directly correlated with intelligence, and that only a truly intelligent computer should be able to defeat humans.</description>
     </item>
     
@@ -355,7 +482,18 @@ Motivation Imagine you have hundreds of unlabeled sound effects on your computer
       
       <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
       <description>Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.</description>
+Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.7.5 # use python 3.</description>
+    </item>
+    
+    <item>
+      <title>How does K-means clustering work?</title>
+      <link>https://lukesalamone.github.io/posts/kmeans-clustering/</link>
+      <pubDate>Wed, 07 Oct 2020 17:39:22 -0700</pubDate>
+      
+      <guid>https://lukesalamone.github.io/posts/kmeans-clustering/</guid>
+      <description>K-means clustering (not to be confused with K-nearest neighbors) is an unsupervised learning algorithm used for grouping similar points together into clusters.
+  start   Algorithm The basic K-means algorithm is fairly simple and has two steps, repeated until convergence:
+ assign points to cluster corresponding to closest centroid update centroid locations to the mean of all points assigned to the associated cluster  The algorithm converges when the centroids stop moving, i.</description>
     </item>
     
     <item>
@@ -374,7 +512,7 @@ If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing gam
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
       
       <guid>https://lukesalamone.github.io/posts/monte-carlo/</guid>
-      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { // Fix  tags after MathJax finishes running. This is a // hack to overcome a shortcoming of Markdown. Discussion at // https://github.com/mojombo/jekyll/issues/199 var all = MathJax.Hub.getAllJax(), i; for(i = 0; i A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to.</description>
+      <description>MathJax.Hub.Config({ tex2jax: { inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]], processEscapes: true, processEnvironments: true, skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;], TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; }, extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;] } } });  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i = 0; i A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.</description>
     </item>
     
     <item>

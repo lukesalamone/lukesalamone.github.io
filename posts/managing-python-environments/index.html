@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", python, quick-reference, javascript, minimax" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/managing-python-environments/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,16 +39,21 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
 <meta itemprop="name" content="Managing Python Environments">
 <meta itemprop="description" content="Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3."><meta itemprop="datePublished" content="2020-10-24T17:45:41-05:00" />
+Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.7.5 # use python 3."><meta itemprop="datePublished" content="2020-10-24T17:45:41-05:00" />
 <meta itemprop="dateModified" content="2020-10-24T17:45:41-05:00" />
 <meta itemprop="wordCount" content="89"><meta itemprop="image" content="https://lukesalamone.github.io"/>
 <meta itemprop="keywords" content="python,quick-reference,javascript,minimax," />
@@ -53,13 +62,13 @@ Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv ins
 
 <meta name="twitter:title" content="Managing Python Environments"/>
 <meta name="twitter:description" content="Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3."/>
+Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.7.5 # use python 3."/>
 
 
 
     <meta property="og:title" content="Managing Python Environments" />
 <meta property="og:description" content="Need to switch between python versions often? Use pyenv.
-Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3." />
+Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv install location which pyenv  Install another python version # see a list of available python versions pyenv install --list # check installed python versions pyenv versions # installs python 3.7.5 pyenv install 3.7.5  Switch python versions # use python 3.7.5 everywhere on your machine pyenv global 3.7.5 # use python 3." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lukesalamone.github.io/posts/managing-python-environments/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-10-24T17:45:41-05:00" />
@@ -132,21 +141,15 @@ Installing pyenv # install pyenv curl https://pyenv.run | bash # check pyenv ins
       
 
       <div class="post-content">
-        
-
-<p>Need to switch between python versions often? Use <a href="https://github.com/pyenv/pyenv"><code>pyenv</code></a>.</p>
-
+        <p>Need to switch between python versions often? Use <a href="https://github.com/pyenv/pyenv"><code>pyenv</code></a>.</p>
 <h3 id="installing-pyenv">Installing pyenv</h3>
-
 <pre><code class="language-bash"># install pyenv
 curl https://pyenv.run | bash
 
 # check pyenv install location
 which pyenv
 </code></pre>
-
 <h3 id="install-another-python-version">Install another python version</h3>
-
 <pre><code class="language-bash"># see a list of available python versions
 pyenv install --list
 
@@ -156,9 +159,7 @@ pyenv versions
 # installs python 3.7.5
 pyenv install 3.7.5
 </code></pre>
-
 <h3 id="switch-python-versions">Switch python versions</h3>
-
 <pre><code class="language-bash"># use python 3.7.5 everywhere on your machine
 pyenv global 3.7.5
 
@@ -207,7 +208,7 @@ pyenv shell 3.7.5
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2020-10-24 15:45
+          2020-10-25 06:45
         
 
         
@@ -235,8 +236,8 @@ pyenv shell 3.7.5
 
           
             <span class="button next">
-              <a href="https://lukesalamone.github.io/posts/hardest-hangman-word/">
-                <span class="button__text">What is the Hardest Hangman Word?</span>
+              <a href="https://lukesalamone.github.io/posts/kmeans-clustering/">
+                <span class="button__text">How does K-means clustering work?</span>
                 <span class="button__icon">→</span>
               </a>
             </span>
@@ -245,8 +246,6 @@ pyenv shell 3.7.5
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -261,7 +260,7 @@ pyenv shell 3.7.5
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

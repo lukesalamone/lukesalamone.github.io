@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", computer-vision" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/how-does-convolution-work/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content="https://lukesalamone.github.io/img/covers/cnn-cover.png"/>
 <meta property="og:description" content="Check out this interactive demo of a convolutional neural network to get a better idea of how they work!"/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -132,19 +141,14 @@
       
 
       <div class="post-content">
-        
-
-<p>Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!</p>
-
-<p><script src="../../js/util.js"></script>
+        <p>Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!</p>
+<script src="../../js/util.js"></script>
 <script src="../../js/convolution-demo.js"></script>
-<link rel="stylesheet" href="../../css/convolution-demo.css" /></p>
-
+<link rel="stylesheet" href="../../css/convolution-demo.css" />
 <div id="input-output">
   <div id="input-grid"></div>
   <div id="output-grid"></div>
 </div>
-
 <div id="controls">
   <table>
     <tr id="number">
@@ -178,34 +182,22 @@
     </tr>
   </table>
 </div>
-
 <p>You can use the settings above to control the hyperparameters of the convolutional layer.</p>
-
 <p>As you&rsquo;ve probably figured out, the left side shows the input, a 20x20 handwritten digit, and the right side shows the output as it is being drawn. A convolutional layer will pass a filter over the input, selecting only a small group of pixels at a time.</p>
-
 <p>Not shown: once the filter selects a window of pixels, it will compute a dot product with the pixel values and its own weights. In this demo the filter weights are assumed to be 1 for simplicity.</p>
-
 <h2 id="more-on-the-hyperparameters">More on the hyperparameters</h2>
-
 <p>Sometimes the settings will result in an invalid convolution. This happens if the kernel extends beyond the activation map. We can write a python function to check whether it will be valid:</p>
-
 <pre><code class="language-python">def valid_convolution(input_size, kernel_size, padding, stride):
   if (input_size + 2*padding - kernel_size) % stride == 0:
     return True
   else:
     return False
 </code></pre>
-
 <h3 id="padding">Padding</h3>
-
 <p>Increasing the padding will add extra pixels, typically zeros, around the edges of the input. This is done in order to ensure that the layer parameters will be valid. Additionally, it causes pixels which would have been on the edges to be more to the middle of the activation map.</p>
-
 <h3 id="kernel-size">Kernel Size</h3>
-
 <p>This refers to the &ldquo;sliding window&rdquo; which passes over the input. Choosing a larger kernel tends to increase the &ldquo;smudging&rdquo; which happens in the output, while a smaller kernel preserves more information for deeper layers. Sometimes kernel size is referred to as filter size.</p>
-
 <h3 id="stride">Stride</h3>
-
 <p>Stride refers to the distance the sliding window will move between steps. A stride of 1 moves the window one pixel to the right, while a stride of 2 moves the window 2 pixels. A larger stride can reduce output layer size at the expense of granularity.</p>
 
       </div>
@@ -243,7 +235,7 @@
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-06-14 19:05
+          2021-06-15 10:05
         
 
         
@@ -281,8 +273,6 @@
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -297,7 +287,7 @@
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

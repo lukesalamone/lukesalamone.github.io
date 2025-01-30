@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", statistics" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/what-is-marginalization/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -133,7 +142,6 @@
 
       <div class="post-content">
         <p>In machine learning and statistics, marginalization simply means summing over a set of independent variables. For example, suppose an avid tennis player kept track of the number of days he played tennis over a period of time as well as the weather on that day:</p>
-
 <style>
   .blue {
     background-color:#09f1;
@@ -142,7 +150,6 @@
     background-color:#80808012;
   }
 </style>
-
 <table style="width:100%">
   <tr style="font-weight:bold">
     <th></th>
@@ -159,7 +166,7 @@
     <th>totals</th>
   </tr>
   <tr>
-    <td rowspan="2" style="font-weight:bold; text-align:right">play?</td>
+  	<td rowspan="2" style="font-weight:bold; text-align:right">play?</td>
     <td style="text-align:right">yes</td>
     <td class="blue">70</td>
     <td class="blue">25</td>
@@ -167,25 +174,22 @@
     <td class="gray" style="font-weight:bold">96</td>
   </tr>
   <tr style="background-color: inherit;">
-    <td style="text-align:right">no</td>
-    <td class="blue">70</td>
+  	<td style="text-align:right">no</td>
+  	<td class="blue">70</td>
     <td class="blue">5</td>
     <td class="blue">9</td>
     <td class="gray" style="font-weight:bold">84</td>
   </tr>
   <tr style="font-weight:bold">
-    <td colspan="2" style="text-align:right">totals</td>
-    <td class="gray">140</td>
+  	<td colspan="2" style="text-align:right">totals</td>
+  	<td class="gray">140</td>
     <td class="gray">30</td>
     <td class="gray">10</td>
     <td class="gray">180</td>
   </tr>
 </table>
-
 <p>(<em>In this table we&rsquo;re keeping track of the number of days. If you want probabilities, divide each value in the table by 180. But I think whole numbers are easier to think about so I&rsquo;m keeping them.</em>)</p>
-
-<p>To marginalize one of the variables, we just sum one of the variables. For example, to marginalize the weather, we would sum each of the rows to find that <sup>96</sup>&frasl;<sub>180</sub>=53% of the time tennis was played, and 47% of the time tennis was not played. Likewise, to marginalize the boolean variable of whether tennis was played, we just sum the columns: no matter whether tennis was played on that day, how many days was it sunny? 140.</p>
-
+<p>To marginalize one of the variables, we just sum one of the variables. For example, to marginalize the weather, we would sum each of the rows to find that 96/180=53% of the time tennis was played, and 47% of the time tennis was not played. Likewise, to marginalize the boolean variable of whether tennis was played, we just sum the columns: no matter whether tennis was played on that day, how many days was it sunny? 140.</p>
 <p>Another way of saying this is the marginal distribution of sunny weather is the first column (containing 70 and 70). The marginal distribution of playing tennis is the first row (containing 70, 25, and 1).</p>
 
       </div>
@@ -223,7 +227,7 @@
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-07-07 12:23
+          2021-07-08 03:23
         
 
         
@@ -261,8 +265,6 @@
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -277,7 +279,7 @@
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

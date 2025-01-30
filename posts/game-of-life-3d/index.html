@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", simulation, javascript" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/game-of-life-3d/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -71,7 +80,7 @@ This variant of the Game of Life uses three overlapping channels, so instead of 
 
 
 
-    <meta property="article:published_time" content="2023-08-23 23:34:38 -0700 PDT" />
+    <meta property="article:published_time" content="2023-08-23 23:34:38 -0700 -0700" />
 
 
 
@@ -133,24 +142,17 @@ This variant of the Game of Life uses three overlapping channels, so instead of 
 
       <div class="post-content">
         <p><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway&rsquo;s Game of Life</a> is a simulation developed in 1970 describing a grid of binary cells and transition rules for each cell which depend on the state of the cell&rsquo;s neighbors. It&rsquo;s capable of creating some pretty cool patterns.</p>
-
 <p>This variant of the Game of Life uses three overlapping channels, so instead of just one simulation, there are three simultaneous simulations. I visualize these in the three color channels, red, green and blue. Two or more channels active on the same cell are represented with <a href="https://en.wikipedia.org/wiki/Additive_color">additive color mixing</a>.</p>
-
 <p>These additional channels enable additional interaction between channels, which is pretty neat. I&rsquo;ve added a rule which revives a dead cell if the sum of its active neighbors from other channels is 9. One nice result of this inter-channel interaction is that stagnant colors can be reactivated by other colors that pass by.</p>
-
 <p>Finding parameters that don&rsquo;t cause the simulation to blow up or die out is a bit of a trial and error. I made an empirical choice which results in a lively &ldquo;pond&rdquo; after the chaotic initial state. I&rsquo;m sure there are other nice combinations as well.</p>
-
 <p>Other variants I experimented with briefly were to include more than three channels and to consider more complex relationships between the channels. However these ran slower and/or were harder to balance between chaotic and desolate tendencies.</p>
-
 <div id="game-of-life-controls">
   <button class="start">start game</button>
   <button class="pause" style="display:none">pause game</button>
 </div>
-
 <div id="game-of-life-container"></div>
-
-<p><script src="../../js/game_of_life.js"></script>
-<link rel="stylesheet" href="../../css/game-of-life.css" /></p>
+<script src="../../js/game_of_life.js"></script>
+<link rel="stylesheet" href="../../css/game-of-life.css" />
 
       </div>
     </article>
@@ -188,7 +190,7 @@ This variant of the Game of Life uses three overlapping channels, so instead of 
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2023-08-23 23:34
+          2023-08-24 14:34
         
 
         
@@ -206,6 +208,13 @@ This variant of the Game of Life uses three overlapping channels, so instead of 
 
         <div class="pagination__buttons">
           
+            <span class="button previous">
+              <a href="https://lukesalamone.github.io/posts/chess-blunders/">
+                <span class="button__icon">←</span>
+                <span class="button__text">What is a blunder in chess?</span>
+              </a>
+            </span>
+          
 
           
             <span class="button next">
@@ -219,8 +228,6 @@ This variant of the Game of Life uses three overlapping channels, so instead of 
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -235,7 +242,7 @@ This variant of the Game of Life uses three overlapping channels, so instead of 
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

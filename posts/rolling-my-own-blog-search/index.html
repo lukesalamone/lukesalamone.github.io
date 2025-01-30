@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", search, nlp" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/rolling-my-own-blog-search/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -132,45 +141,27 @@
       
 
       <div class="post-content">
-        
-
-<p>I&rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:</p>
-
+        <p>I&rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:</p>
 <ol>
 <li>The search needs to be fast, useful, and aesthetically pleasing.</li>
 <li>Search in the browser. Standing up a server is a lot of extra work. It&rsquo;s also overkill since I only have about 30 articles so far.</li>
 </ol>
-
 <h2 id="semantic-search">Semantic search</h2>
-
 <p>I did some experiments with small neural networks deployed using ONNX but ultimately they didn&rsquo;t seem to be a good fit for this blog. The search experience was not quite as snappy as I&rsquo;d have liked it to be, and while I was able to get the model under 10MB, it still added a good amount of bloat to the page size. Further, it wasn&rsquo;t clear to me that the search results were significantly better, and in some cases they were worse. In any case, the advantages were not enough to justify the added page size.</p>
-
 <p>I did learn a lot with this experiment which probably deserves a blog post of its own at some point. I might revisit semantic matching at a later point as well.</p>
-
 <h2 id="bm25">BM25</h2>
-
 <p>Rather than loading a neural network, I decided instead to index the text of my blog and use <a href="https://en.wikipedia.org/wiki/Okapi_BM25">BM25</a> to rank documents.</p>
-
 <p>One difficulty in this was finding the actual algorithm which didn&rsquo;t include a ton of extra code. I was only interested in the function itself, not all of the extra boilerplate code floating around. In the end I broke down and rewrote it myself.</p>
-
 <h2 id="tokenizing-text">Tokenizing Text</h2>
-
 <p>BM25 works by scoring document tokens against query tokens. Documents with more relevant tokens should be scored higher than those with fewer relevant tokens.</p>
-
 <p>This raises the question of how to convert a query string into a group of tokens. Initially, I simply split by word. That is,</p>
-
 <pre><code>&quot;hello my friend&quot; =&gt; ['hello', 'my', 'friend']
 </code></pre>
-
 <p>Although this works pretty well, it has the downside that different forms of a word will be missed. For example &ldquo;friends&rdquo; will not match with &ldquo;friend&rdquo;. To solve this problem, I decided to use fixed token sizes of three characters instead:</p>
-
 <pre><code>&quot;hello my friend&quot; =&gt; ['hel', 'ell', 'llo', 'lo#', '#my', 'my#', '#fr', 'fri', 'rie', 'ien', 'end']
 </code></pre>
-
 <p>In this way &ldquo;friend&rdquo; will be tokenized very similarly to &ldquo;friends&rdquo;, so the penalty for mismatches between forms of words will be minimized. Subjectively, I felt that this yielded a much more fluid and versatile ranking as well.</p>
-
 <h2 id="multi-factor-scoring">Multi-factor scoring</h2>
-
 <p>My blog posts have title, body, and tags. I could simply concatenate them all together and score the combined string, and it would work pretty well. But this seems to throw away the fact that the title and tags may have more concentrated information than the article body does. They deserve to be weighted differently. I decided to weight the title/body/tags components as 30/50/20 in the final ranking.</p>
 
       </div>
@@ -209,7 +200,7 @@
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2022-11-09 01:42
+          2022-11-09 17:42
         
 
         
@@ -247,8 +238,6 @@
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -263,7 +252,7 @@
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

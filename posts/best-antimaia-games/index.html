@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="keywords" content=", chess, ai, game-theory" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://lukesalamone.github.io/posts/best-antimaia-games/" />
@@ -14,12 +15,15 @@
 <meta property="og:image" content=""/>
 <meta property="og:description" content=""/>
 
-
 <script>
-  fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
 </script>
 
-
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
 
 
     <title>
@@ -35,10 +39,15 @@
 
 
 
-<link rel="stylesheet" href="../../main.664d1df93a1a25c7c8d09147fb0b5e685b4ebe309ab122277733d326beea3022.css">
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
 
 
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
 
 
@@ -71,7 +80,7 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
 
 
 
-    <meta property="article:published_time" content="2022-11-26 20:25:13 -0800 PST" />
+    <meta property="article:published_time" content="2022-11-26 20:25:13 -0800 -0800" />
 
 
 
@@ -132,12 +141,8 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
       
 
       <div class="post-content">
-        
-
-<p>This is a follow up to <a href="../../posts/suboptimal-minimax">When Suboptimal Minimax is Better</a>. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.</p>
-
+        <p>This is a follow up to <a href="../../posts/suboptimal-minimax">When Suboptimal Minimax is Better</a>. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.</p>
 <p>The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player. Antimaia 1900 is specifically designed to counter Maia 1900.</p>
-
 <table>
 <thead>
 <tr>
@@ -148,7 +153,6 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
 <th>Average half moves per game</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Antimaia 1900</td>
@@ -157,7 +161,6 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
 <td>100%</td>
 <td>37</td>
 </tr>
-
 <tr>
 <td>Maia 1900</td>
 <td>Antimaia 1900</td>
@@ -165,7 +168,6 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
 <td>0%</td>
 <td>43</td>
 </tr>
-
 <tr>
 <td>Maia 1900</td>
 <td>Stockfish @10</td>
@@ -173,7 +175,6 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
 <td>0%</td>
 <td>67</td>
 </tr>
-
 <tr>
 <td>Stockfish @10</td>
 <td>Maia 1900</td>
@@ -183,62 +184,65 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
 </tr>
 </tbody>
 </table>
-
 <ul>
-<li>Maia 1900 uses Maia Chess weights trained on games from players rated near 1900.<br /></li>
-<li>Antimaia 1900 uses Maia 1900 weights and Stockfish @10.<br /></li>
-<li>Stockfish @10 is Stockfish 14.1 evaluated at depth 10.<br /></li>
+<li>Maia 1900 uses Maia Chess weights trained on games from players rated near 1900.</li>
+<li>Antimaia 1900 uses Maia 1900 weights and Stockfish @10.</li>
+<li>Stockfish @10 is Stockfish 14.1 evaluated at depth 10.</li>
 </ul>
-
 <p>As you can see, Antimaia finishes its games much more quickly (12-16 moves faster!). This demonstrates that Antimaia is exploiting weaknesses in Maia&rsquo;s policy as measured by Stockfish, and playing high risk/high reward moves which usually pay off.</p>
-
 <h2 id="selected-games">Selected Games</h2>
-
 <p>I had to keep reminding myself that even though these games look ridiculous, Maia plays poorly because Antimaia is finding moves where Maia is most likely to mess up.</p>
-
 <h3 id="antimaia-vs-maia">Antimaia vs Maia</h3>
-
 <ul>
-<li><p><a href="https://lichess.org/cRCrl2yO">Game 15</a>: Smothered mate comes out of nowhere.
-<img src="https://lichess1.org/game/export/gif/white/cRCrl2yO.gif" alt="gif" /></p></li>
-
-<li><p><a href="https://lichess.org/CIJn9rD0">Game 24</a>: Antimaia lays a poison pawn trap then waits patiently for 2 moves before Maia falls for it, blundering a queen.
-<img src="https://lichess1.org/game/export/gif/white/CIJn9rD0.gif" alt="gif" /></p></li>
-
-<li><p><a href="https://lichess.org/EySDK7IP">Game 32</a>: The shortest game. Another nice checkmate delivered by the knight.
-<img src="https://lichess1.org/game/export/gif/white/EySDK7IP.gif" alt="gif" /></p></li>
-
-<li><p><a href="https://lichess.org/kkRE06DB">Game 59</a>: Maia blunders a piece and then falls for Antimaia&rsquo;s poison rook to get checkmated.
-<img src="https://lichess1.org/game/export/gif/white/kkRE06DB.gif" alt="gif" /></p></li>
-
-<li><p><a href="https://lichess.org/qTJg2D26">Game 75</a>: Promoting to a knight not because it&rsquo;s the best move, but because it doesn&rsquo;t matter.
-<img src="https://lichess1.org/game/export/gif/white/qTJg2D26.gif" alt="gif" /></p></li>
-
-<li><p><a href="https://lichess.org/ERFLY3Wa">Game 88</a>: Antimaia makes the crazy move Bh7 but Maia blunders into checkmate by taking with the knight.
-<img src="https://lichess1.org/game/export/gif/white/ERFLY3Wa.gif" alt="gif" /></p></li>
+<li>
+<p><a href="https://lichess.org/cRCrl2yO">Game 15</a>: Smothered mate comes out of nowhere.
+<img src="https://lichess1.org/game/export/gif/white/cRCrl2yO.gif" alt="gif"></p>
+</li>
+<li>
+<p><a href="https://lichess.org/CIJn9rD0">Game 24</a>: Antimaia lays a poison pawn trap then waits patiently for 2 moves before Maia falls for it, blundering a queen.
+<img src="https://lichess1.org/game/export/gif/white/CIJn9rD0.gif" alt="gif"></p>
+</li>
+<li>
+<p><a href="https://lichess.org/EySDK7IP">Game 32</a>: The shortest game. Another nice checkmate delivered by the knight.
+<img src="https://lichess1.org/game/export/gif/white/EySDK7IP.gif" alt="gif"></p>
+</li>
+<li>
+<p><a href="https://lichess.org/kkRE06DB">Game 59</a>: Maia blunders a piece and then falls for Antimaia&rsquo;s poison rook to get checkmated.
+<img src="https://lichess1.org/game/export/gif/white/kkRE06DB.gif" alt="gif"></p>
+</li>
+<li>
+<p><a href="https://lichess.org/qTJg2D26">Game 75</a>: Promoting to a knight not because it&rsquo;s the best move, but because it doesn&rsquo;t matter.
+<img src="https://lichess1.org/game/export/gif/white/qTJg2D26.gif" alt="gif"></p>
+</li>
+<li>
+<p><a href="https://lichess.org/ERFLY3Wa">Game 88</a>: Antimaia makes the crazy move Bh7 but Maia blunders into checkmate by taking with the knight.
+<img src="https://lichess1.org/game/export/gif/white/ERFLY3Wa.gif" alt="gif"></p>
+</li>
 </ul>
-
 <h3 id="maia-vs-antimaia">Maia vs. Antimaia</h3>
-
 <ul>
-<li><p><a href="https://lichess.org/aCUt0XbV">Game 2</a>: Queen takes e3 is objectively a horrible move but Antimaia gambles correctly that Maia won&rsquo;t know how to respond.
-<img src="https://lichess1.org/game/export/gif/black/aCUt0XbV.gif" alt="gif" /></p></li>
-
-<li><p><a href="https://lichess.org/pgPCKq4E">Game 7</a>: Antimaia baits Maia into blundering a queen and mate in 3.
-<img src="https://lichess1.org/game/export/gif/black/pgPCKq4E.gif" alt="gif" /></p></li>
-
-<li><p><a href="https://lichess.org/DyBQrLwo">Game 51</a>: Antimaia tricks Maia with a poison pawn.
-<img src="https://lichess1.org/game/export/gif/black/DyBQrLwo.gif" alt="gif" /></p></li>
-
-<li><p><a href="https://lichess.org/25aF17bv">Game 59</a>: Maia manages to lose in 5 moves.
-<img src="https://lichess1.org/game/export/gif/black/25aF17bv.gif" alt="gif" /></p></li>
-
-<li><p><a href="https://lichess.org/my88HT0H">Game 69</a>: Antimaia swindles a queen.
-<img src="https://lichess1.org/game/export/gif/black/my88HT0H.gif" alt="gif" /></p></li>
+<li>
+<p><a href="https://lichess.org/aCUt0XbV">Game 2</a>: Queen takes e3 is objectively a horrible move but Antimaia gambles correctly that Maia won&rsquo;t know how to respond.
+<img src="https://lichess1.org/game/export/gif/black/aCUt0XbV.gif" alt="gif"></p>
+</li>
+<li>
+<p><a href="https://lichess.org/pgPCKq4E">Game 7</a>: Antimaia baits Maia into blundering a queen and mate in 3.
+<img src="https://lichess1.org/game/export/gif/black/pgPCKq4E.gif" alt="gif"></p>
+</li>
+<li>
+<p><a href="https://lichess.org/DyBQrLwo">Game 51</a>: Antimaia tricks Maia with a poison pawn.
+<img src="https://lichess1.org/game/export/gif/black/DyBQrLwo.gif" alt="gif"></p>
+</li>
+<li>
+<p><a href="https://lichess.org/25aF17bv">Game 59</a>: Maia manages to lose in 5 moves.
+<img src="https://lichess1.org/game/export/gif/black/25aF17bv.gif" alt="gif"></p>
+</li>
+<li>
+<p><a href="https://lichess.org/my88HT0H">Game 69</a>: Antimaia swindles a queen.
+<img src="https://lichess1.org/game/export/gif/black/my88HT0H.gif" alt="gif"></p>
+</li>
 </ul>
-
 <h2 id="the-rest-of-the-games">The rest of the games</h2>
-
 <p>I added the rest of the games to github: <a href="https://github.com/lukesalamone/antimaia_games">https://github.com/lukesalamone/antimaia_games</a></p>
 
       </div>
@@ -278,7 +282,7 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2022-11-26 20:25
+          2022-11-27 12:25
         
 
         
@@ -316,8 +320,6 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
       </div>
     
 
-
-    
   </main>
   <div id="shadow-search" class="posts">
     <div class="posts-group">
@@ -332,7 +334,7 @@ The TLDR on opponent modeling is that if we have a pretty good idea of what the 
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2023</span>
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>

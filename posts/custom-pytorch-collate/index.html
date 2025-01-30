@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="keywords" content=", pytorch, machine-learning, python" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/custom-pytorch-collate/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+<script>
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
+</script>
+
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
+
+
+    <title>
+        
+            Custom PyTorch Collate Function :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+<meta itemprop="name" content="Custom PyTorch Collate Function">
+<meta itemprop="description" content="If your Dataset class looks something like
+class MyDataset(Dataset): # ... boilerplate ... def __getitem__(self, idx): item = self.data[idx] return item[&#39;anchor&#39;], item[&#39;positive&#39;], item[&#39;negative&#39;]  your collate function should be
+def collate_fn(data): anchors, pos, neg = zip(*data) anchors = tokenizer(anchors, return_tensors=&quot;pt&quot;, padding=True) pos = tokenizer(pos, return_tensors=&quot;pt&quot;, padding=True) neg = tokenizer(neg, return_tensors=&quot;pt&quot;, padding=True) return anchors, pos, neg  and you can use it like
+dataset = MyDataset() dataloader = DataLoader(dataset, batch_size=4, shuffle=True, pin_memory=True, collate_fn=collate_fn) for anchors, positives, negatives in dataloader: anchors = anchors."><meta itemprop="datePublished" content="2024-07-12T14:48:27-07:00" />
+<meta itemprop="dateModified" content="2024-07-12T14:48:27-07:00" />
+<meta itemprop="wordCount" content="395"><meta itemprop="image" content="https://lukesalamone.github.io"/>
+<meta itemprop="keywords" content="pytorch,machine-learning,python," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lukesalamone.github.io"/>
+
+<meta name="twitter:title" content="Custom PyTorch Collate Function"/>
+<meta name="twitter:description" content="If your Dataset class looks something like
+class MyDataset(Dataset): # ... boilerplate ... def __getitem__(self, idx): item = self.data[idx] return item[&#39;anchor&#39;], item[&#39;positive&#39;], item[&#39;negative&#39;]  your collate function should be
+def collate_fn(data): anchors, pos, neg = zip(*data) anchors = tokenizer(anchors, return_tensors=&quot;pt&quot;, padding=True) pos = tokenizer(pos, return_tensors=&quot;pt&quot;, padding=True) neg = tokenizer(neg, return_tensors=&quot;pt&quot;, padding=True) return anchors, pos, neg  and you can use it like
+dataset = MyDataset() dataloader = DataLoader(dataset, batch_size=4, shuffle=True, pin_memory=True, collate_fn=collate_fn) for anchors, positives, negatives in dataloader: anchors = anchors."/>
+
+
+
+    <meta property="og:title" content="Custom PyTorch Collate Function" />
+<meta property="og:description" content="If your Dataset class looks something like
+class MyDataset(Dataset): # ... boilerplate ... def __getitem__(self, idx): item = self.data[idx] return item[&#39;anchor&#39;], item[&#39;positive&#39;], item[&#39;negative&#39;]  your collate function should be
+def collate_fn(data): anchors, pos, neg = zip(*data) anchors = tokenizer(anchors, return_tensors=&quot;pt&quot;, padding=True) pos = tokenizer(pos, return_tensors=&quot;pt&quot;, padding=True) neg = tokenizer(neg, return_tensors=&quot;pt&quot;, padding=True) return anchors, pos, neg  and you can use it like
+dataset = MyDataset() dataloader = DataLoader(dataset, batch_size=4, shuffle=True, pin_memory=True, collate_fn=collate_fn) for anchors, positives, negatives in dataloader: anchors = anchors." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lukesalamone.github.io/posts/custom-pytorch-collate/" /><meta property="og:image" content="https://lukesalamone.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-07-12T14:48:27-07:00" />
+<meta property="article:modified_time" content="2024-07-12T14:48:27-07:00" /><meta property="og:site_name" content="Luke Salamone&#39;s Blog" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2024-07-12 14:48:27 -0700 -0700" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="Search here" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        2 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/custom-pytorch-collate/">Custom PyTorch Collate Function</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <p>If your <code>Dataset</code> class looks something like</p>
+<pre><code class="language-python">class MyDataset(Dataset):
+  
+  # ... boilerplate ...
+
+  def __getitem__(self, idx):
+    item = self.data[idx]
+    return item['anchor'], item['positive'], item['negative']
+</code></pre>
+<p>your collate function should be</p>
+<pre><code class="language-python">def collate_fn(data):
+    anchors, pos, neg = zip(*data)
+    anchors = tokenizer(anchors, return_tensors=&quot;pt&quot;, padding=True)
+    pos = tokenizer(pos, return_tensors=&quot;pt&quot;, padding=True)
+    neg = tokenizer(neg, return_tensors=&quot;pt&quot;, padding=True)
+    return anchors, pos, neg
+</code></pre>
+<p>and you can use it like</p>
+<pre><code class="language-python">dataset = MyDataset()
+dataloader = DataLoader(dataset, 
+                        batch_size=4, 
+                        shuffle=True,
+                        pin_memory=True,
+                        collate_fn=collate_fn)
+
+for anchors, positives, negatives in dataloader:
+  anchors = anchors.to(device)
+  positives = positives.to(device)
+  negatives = negatives.to(device)
+  
+  # do more stuff
+</code></pre>
+<h2 id="how-does-the-collate_fn-work">How does the collate_fn work?</h2>
+<figure><img src="../../img/torch_collate_fn.png"
+         alt="The PyTorch collate function accepts a list of results from calls to the dataset getitem function and combines their components into tensors for convenient training."/><figcaption>
+            <p>The PyTorch collate function accepts a list of results from calls to the dataset <strong>getitem</strong> function and combines their components into tensors for convenient training.</p>
+        </figcaption>
+</figure>
+
+<p>Under the hood, your DataLoader is making multiple calls to <code>dataset.__getitem__()</code>, one for each item in <code>batch_size</code>. Usually it is smart enough to know how to combine them into a tensor for training (here is the <a href="https://pytorch.org/docs/stable/_modules/torch/utils/data/_utils/collate.html#default_collate">default collate function</a>), but sometimes you need custom logic.</p>
+<p>Technically you don&rsquo;t need a collate function. You could collate within the training loop. But besides cluttering up your training loop, you won&rsquo;t be able to take advantage of multithreaded processing (<code>num_workers &gt; 1</code>), so your collation logic will block your training code.</p>
+<h2 id="what-about-pin_memory">What about pin_memory?</h2>
+<p>The <code>pin_memory</code> parameter specifies whether we should create the tensors in pinned RAM or not. This avoids some additional overhead when copying data to the GPU.</p>
+<p>A common misconception is that this is pinning the GPU VRAM. Actually, this pins the RAM, <em>not</em> the VRAM.</p>
+<p>If we check the <a href="https://developer.nvidia.com/blog/how-optimize-data-transfers-cuda-cc/">Nvidia technical blog</a> they give the following four recommendations (summarized):</p>
+<ul>
+<li>Minimize back and forth data transfers between RAM and GPU. Even if code is no faster on the GPU, it may be worth executing there to avoid the round-trip transfer cost, which is relatively slow.</li>
+<li><strong>Use page-locked (&ldquo;pinned&rdquo;) memory when possible.</strong> By default, your machine uses pageable memory which means the physical address of RAM can change. When transferring data to the GPU, CUDA first needs to copy it to a fixed &ldquo;pinned&rdquo; address to be copied over. In your DataLoader, if you specify <code>pin_memory=True</code>, the tensors will automatically be created in pinned memory, avoiding the pageable memory -&gt; pinned memory copy.</li>
+<li>Combine multiple small transfers into a large transfer to avoid overhead.</li>
+<li>Data transfers can be executed asynchronously. In PyTorch that looks like <code>tensor.to(device, non_blocking=False)</code>.</li>
+</ul>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/pytorch/">pytorch</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/machine-learning/">machine-learning</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/python/">python</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        395 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2024-07-13 05:48
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://lukesalamone.github.io/posts/space-is-really-big/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Space Is Really Big</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/very-large-datasets/">
+                <span class="button__text">Very Large Datasets in PyTorch</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+  </main>
+  <div id="shadow-search" class="posts">
+    <div class="posts-group">
+      <div class="post-year">2022</div>
+      <ul class="posts-list"></ul>
+    </div>
+  </div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.626fd415e8fddeafd14df0a1058f68337fd72a8f3fbd12c147201060dd75546363ef58141782bf2aa0eb7da700988d098c55d96d315f05de6627e89d35b681f0.js" integrity="sha512-Ym/UFej93q/RTfChBY9oM3/XKo8/vRLBRyAQYN11VGNj71gUF4K/KqDrfacAmI0JjFXZbTFfBd5mJ&#43;idNbaB8A=="></script>
+
+
+
+    </body>
+</html>
