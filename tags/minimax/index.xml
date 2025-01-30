@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Minimax on Luke Salamone&#39;s Blog</title>
-    <link>https://lukesalamone.github.io/tags/minimax/</link>
+    <link>http://localhost:1313/tags/minimax/</link>
     <description>Recent content in Minimax on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 24 Oct 2020 17:45:41 -0500</lastBuildDate>
-    <atom:link href="https://lukesalamone.github.io/tags/minimax/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/minimax/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Managing Python Environments</title>
-      <link>https://lukesalamone.github.io/posts/managing-python-environments/</link>
+      <link>http://localhost:1313/posts/managing-python-environments/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
-      <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
+      <guid>http://localhost:1313/posts/managing-python-environments/</guid>
       <description>&lt;p&gt;Need to switch between python versions often? Use &lt;a href=&#34;https://github.com/pyenv/pyenv&#34;&gt;&lt;code&gt;pyenv&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;installing-pyenv&#34;&gt;Installing pyenv&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# install pyenv&#xA;curl https://pyenv.run | bash&#xA;&#xA;# check pyenv install location&#xA;which pyenv&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;install-another-python-version&#34;&gt;Install another python version&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# see a list of available python versions&#xA;pyenv install --list&#xA;&#xA;# check installed python versions&#xA;pyenv versions&#xA;&#xA;# installs python 3.7.5&#xA;pyenv install 3.7.5&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;switch-python-versions&#34;&gt;Switch python versions&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# use python 3.7.5 everywhere on your machine&#xA;pyenv global 3.7.5&#xA;&#xA;# use python 3.7.5 in current directory&#xA;pyenv local 3.7.5&#xA;&#xA;# use python 3.7.5 in current shell session&#xA;pyenv shell 3.7.5&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>Creating an AI for Gomoku</title>
-      <link>https://lukesalamone.github.io/posts/gomoku2049/</link>
+      <link>http://localhost:1313/posts/gomoku2049/</link>
       <pubDate>Tue, 19 May 2020 14:28:57 +0800</pubDate>
-      <guid>https://lukesalamone.github.io/posts/gomoku2049/</guid>
+      <guid>http://localhost:1313/posts/gomoku2049/</guid>
       <description>&lt;p&gt;Gomoku is a strategy game similar to tic tac toe, but played on a larger board and with the goal of getting 5 in a row rather than 3. Since the game has perfect information and has simple rules, I thought it would be a fun exercise in creating a game AI.&#xA;In February 2020 I decided to code up Gomoku2049. The game is a demonstration of MiniMax, which is an algorithm for finding the move which minimizes the opponent’s best moves. This article is an overview of the game’s technical highlights.&lt;/p&gt;</description>
     </item>
   </channel>

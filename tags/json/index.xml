@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Json on Luke Salamone&#39;s Blog</title>
-    <link>https://lukesalamone.github.io/tags/json/</link>
+    <link>http://localhost:1313/tags/json/</link>
     <description>Recent content in Json on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 07 Mar 2021 14:05:27 -0600</lastBuildDate>
-    <atom:link href="https://lukesalamone.github.io/tags/json/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/json/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python: Read &amp; Write Json</title>
-      <link>https://lukesalamone.github.io/posts/read-write-json/</link>
+      <link>http://localhost:1313/posts/read-write-json/</link>
       <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
-      <guid>https://lukesalamone.github.io/posts/read-write-json/</guid>
+      <guid>http://localhost:1313/posts/read-write-json/</guid>
       <description>&lt;p&gt;Often it is useful to save python data to json files. The following code will demonstrate how that can be done.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;God bless JSON!&amp;rdquo; ~ a soon to be famous programmer&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import json&#xA;&#xA;data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}&#xA;filename = &#39;awesome_data.json&#39;&#xA;&#xA;# write data to file&#xA;with open(filename, &#39;w&#39;) as f:&#xA;  json.dump(data, f)&#xA;&#xA;&#xA;# read json from file&#xA;with open(filename, &#39;r&#39;) as f:&#xA;  data = json.load(f)&#xA;&#xA;&#xA;print(data)&#xA;# prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
   </channel>

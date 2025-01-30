@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Javascript on Luke Salamone&#39;s Blog</title>
-    <link>https://lukesalamone.github.io/tags/javascript/</link>
+    <link>http://localhost:1313/tags/javascript/</link>
     <description>Recent content in Javascript on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 23 Aug 2023 23:34:38 -0700</lastBuildDate>
-    <atom:link href="https://lukesalamone.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A 3D Game of Life</title>
-      <link>https://lukesalamone.github.io/posts/game-of-life-3d/</link>
+      <link>http://localhost:1313/posts/game-of-life-3d/</link>
       <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
-      <guid>https://lukesalamone.github.io/posts/game-of-life-3d/</guid>
+      <guid>http://localhost:1313/posts/game-of-life-3d/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life&#34;&gt;Conway&amp;rsquo;s Game of Life&lt;/a&gt; is a simulation developed in 1970 describing a grid of binary cells and transition rules for each cell which depend on the state of the cell&amp;rsquo;s neighbors. It&amp;rsquo;s capable of creating some pretty cool patterns.&lt;/p&gt;&#xA;&lt;p&gt;This variant of the Game of Life uses three overlapping channels, so instead of just one simulation, there are three simultaneous simulations. I visualize these in the three color channels, red, green and blue. Two or more channels active on the same cell are represented with &lt;a href=&#34;https://en.wikipedia.org/wiki/Additive_color&#34;&gt;additive color mixing&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Managing Python Environments</title>
-      <link>https://lukesalamone.github.io/posts/managing-python-environments/</link>
+      <link>http://localhost:1313/posts/managing-python-environments/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
-      <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
+      <guid>http://localhost:1313/posts/managing-python-environments/</guid>
       <description>&lt;p&gt;Need to switch between python versions often? Use &lt;a href=&#34;https://github.com/pyenv/pyenv&#34;&gt;&lt;code&gt;pyenv&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;installing-pyenv&#34;&gt;Installing pyenv&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# install pyenv&#xA;curl https://pyenv.run | bash&#xA;&#xA;# check pyenv install location&#xA;which pyenv&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;install-another-python-version&#34;&gt;Install another python version&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# see a list of available python versions&#xA;pyenv install --list&#xA;&#xA;# check installed python versions&#xA;pyenv versions&#xA;&#xA;# installs python 3.7.5&#xA;pyenv install 3.7.5&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;switch-python-versions&#34;&gt;Switch python versions&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# use python 3.7.5 everywhere on your machine&#xA;pyenv global 3.7.5&#xA;&#xA;# use python 3.7.5 in current directory&#xA;pyenv local 3.7.5&#xA;&#xA;# use python 3.7.5 in current shell session&#xA;pyenv shell 3.7.5&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>What is the Hardest Hangman Word?</title>
-      <link>https://lukesalamone.github.io/posts/hardest-hangman-word/</link>
+      <link>http://localhost:1313/posts/hardest-hangman-word/</link>
       <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
-      <guid>https://lukesalamone.github.io/posts/hardest-hangman-word/</guid>
+      <guid>http://localhost:1313/posts/hardest-hangman-word/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/p33HisS.png&#34; alt=&#34;Example hangman game&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people. Player A chooses a secret word, and tells player B the length of the secret word. Player B guesses letters which she thinks might be in the word. If she chooses a correct letter, player A reveals the locations of &lt;em&gt;each instance&lt;/em&gt; of the guessed letter. However, if player B guesses an incorrect letter, this counts as a &amp;ldquo;strike&amp;rdquo; against her. After an agreed-upon number of strikes, player B loses.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Estimating Pi with a Monte Carlo Simulation</title>
-      <link>https://lukesalamone.github.io/posts/monte-carlo/</link>
+      <link>http://localhost:1313/posts/monte-carlo/</link>
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
-      <guid>https://lukesalamone.github.io/posts/monte-carlo/</guid>
+      <guid>http://localhost:1313/posts/monte-carlo/</guid>
       <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Creating an AI for Gomoku</title>
-      <link>https://lukesalamone.github.io/posts/gomoku2049/</link>
+      <link>http://localhost:1313/posts/gomoku2049/</link>
       <pubDate>Tue, 19 May 2020 14:28:57 +0800</pubDate>
-      <guid>https://lukesalamone.github.io/posts/gomoku2049/</guid>
+      <guid>http://localhost:1313/posts/gomoku2049/</guid>
       <description>&lt;p&gt;Gomoku is a strategy game similar to tic tac toe, but played on a larger board and with the goal of getting 5 in a row rather than 3. Since the game has perfect information and has simple rules, I thought it would be a fun exercise in creating a game AI.&#xA;In February 2020 I decided to code up Gomoku2049. The game is a demonstration of MiniMax, which is an algorithm for finding the move which minimizes the opponent’s best moves. This article is an overview of the game’s technical highlights.&lt;/p&gt;</description>
     </item>
   </channel>

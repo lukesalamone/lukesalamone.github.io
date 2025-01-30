@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tar on Luke Salamone&#39;s Blog</title>
-    <link>https://lukesalamone.github.io/tags/tar/</link>
+    <link>http://localhost:1313/tags/tar/</link>
     <description>Recent content in Tar on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 30 Mar 2022 20:05:26 -0500</lastBuildDate>
-    <atom:link href="https://lukesalamone.github.io/tags/tar/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/tar/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Zip and Unzip a tar.gz File</title>
-      <link>https://lukesalamone.github.io/posts/how-to-tar-untar-file/</link>
+      <link>http://localhost:1313/posts/how-to-tar-untar-file/</link>
       <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
-      <guid>https://lukesalamone.github.io/posts/how-to-tar-untar-file/</guid>
+      <guid>http://localhost:1313/posts/how-to-tar-untar-file/</guid>
       <description>&lt;p&gt;If you want to extract a tar archive&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;tar -xf archive.tar.gz&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;If you want to compress a directory&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;tar -czvf archive.tar.gz /path/to/directory&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;That&amp;rsquo;s all.&lt;/p&gt;</description>
     </item>
   </channel>

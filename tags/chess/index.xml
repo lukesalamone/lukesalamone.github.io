@@ -2,59 +2,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chess on Luke Salamone&#39;s Blog</title>
-    <link>https://lukesalamone.github.io/tags/chess/</link>
+    <link>http://localhost:1313/tags/chess/</link>
     <description>Recent content in Chess on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 13 Jun 2024 19:38:39 -0700</lastBuildDate>
-    <atom:link href="https://lukesalamone.github.io/tags/chess/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/chess/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Most Ramified Chess Position of 2023</title>
-      <link>https://lukesalamone.github.io/posts/most-ramified-chess-position-2023/</link>
+      <link>http://localhost:1313/posts/most-ramified-chess-position-2023/</link>
       <pubDate>Thu, 13 Jun 2024 19:38:39 -0700</pubDate>
-      <guid>https://lukesalamone.github.io/posts/most-ramified-chess-position-2023/</guid>
+      <guid>http://localhost:1313/posts/most-ramified-chess-position-2023/</guid>
       <description>&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js&#34;&gt;&lt;/script&gt;&#xA;&lt;p&gt;&lt;strong&gt;I spent some time considering words to describe a chess position with many legal moves. &amp;ldquo;Complex&amp;rdquo; doesn&amp;rsquo;t quite capture the situation since we would usually describe a complex position as one with many tactical interations. &lt;a href=&#34;https://en.wikipedia.org/wiki/Ramification_%28botany%29&#34;&gt;Ramified&lt;/a&gt; seems to make the most sense, as it describes &amp;ldquo;branching out&amp;rdquo;.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;The opening position in chess has 20 legal moves. From there, the number of legal moves in a position tends to increase as pieces move towards the center of the board, before decreasing as the number of pieces on the board drops in the endgame.&lt;/p&gt;</description>
     </item>
     <item>
       <title>What is a blunder in chess?</title>
-      <link>https://lukesalamone.github.io/posts/chess-blunders/</link>
+      <link>http://localhost:1313/posts/chess-blunders/</link>
       <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
-      <guid>https://lukesalamone.github.io/posts/chess-blunders/</guid>
+      <guid>http://localhost:1313/posts/chess-blunders/</guid>
       <description>&lt;p&gt;What is a blunder in chess? The tension between the qualitative and quantitative answers to this question is at the heart of different approaches towards chess, and more broadly, how quantitative metrics may lack context, but qualitative metrics lack precision.&lt;/p&gt;&#xA;&lt;h2 id=&#34;qualitative-answer&#34;&gt;Qualitative answer&lt;/h2&gt;&#xA;&lt;p&gt;There are many qualitative answers to this question, especially when comparing &amp;ldquo;blunders&amp;rdquo; and &amp;ldquo;mistakes&amp;rdquo;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&amp;ldquo;a move that negatively affects their position in a significant way&amp;rdquo; ~ &lt;a href=&#34;https://www.chess.com/terms/chess-blunder&#34;&gt;chess.com&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&amp;ldquo;severely worsens the player&amp;rsquo;s situation by allowing a loss of material, checkmate, or anything similar&amp;rdquo; ~ &lt;a href=&#34;https://en.wikipedia.org/wiki/Blunder_%28chess%29&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&amp;ldquo;Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.&amp;rdquo; ~ &lt;a href=&#34;https://www.reddit.com/r/chess/comments/1iiqyb/what_distinguishes_the_difference_between_a/&#34;&gt;r/chess&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;An issue with these qualitative answers is that while their words may be correct, smart people may still disagree with their applicability at the margins. For a suboptimal move to have a &amp;ldquo;significant&amp;rdquo; negative effect, it requires that the opponent notices and takes advantage of it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>My Favorite Antimaia Games</title>
-      <link>https://lukesalamone.github.io/posts/best-antimaia-games/</link>
+      <link>http://localhost:1313/posts/best-antimaia-games/</link>
       <pubDate>Sat, 26 Nov 2022 20:25:13 -0800</pubDate>
-      <guid>https://lukesalamone.github.io/posts/best-antimaia-games/</guid>
+      <guid>http://localhost:1313/posts/best-antimaia-games/</guid>
       <description>&lt;p&gt;This is a follow up to &lt;a href=&#34;../../posts/suboptimal-minimax/&#34;&gt;When Suboptimal Minimax is Better&lt;/a&gt;. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.&lt;/p&gt;&#xA;&lt;p&gt;The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&amp;rsquo;t objectively &amp;ldquo;optimal&amp;rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player. Antimaia 1900 is specifically designed to counter Maia 1900.&lt;/p&gt;</description>
     </item>
     <item>
       <title>A new type of chess tournament</title>
-      <link>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</link>
+      <link>http://localhost:1313/posts/qualitative-analysis-chess/</link>
       <pubDate>Sat, 08 Oct 2022 15:17:36 -0700</pubDate>
-      <guid>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</guid>
+      <guid>http://localhost:1313/posts/qualitative-analysis-chess/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;This is part 2 of a paper I wrote for &lt;a href=&#34;https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/forbus-ken.html&#34;&gt;Ken Forbus&lt;/a&gt;&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper &lt;a href=&#34;../../files/anthropomorphic-chess-evaluation-via-qualitative-analysis.pdf&#34;&gt;here&lt;/a&gt; and part 1 &lt;a href=&#34;../../posts/chess-engine-history/&#34;&gt;here&lt;/a&gt;.&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;In the previous post I discussed the history of chess engines and why they don&amp;rsquo;t &amp;ldquo;think&amp;rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it. At the time, though, the goal was to beat human grandmasters by any means necessary, a great engineering feat that the field had been working on for decades.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Chess Engine&#39;s Final Horizon</title>
-      <link>https://lukesalamone.github.io/posts/chess-engine-history/</link>
+      <link>http://localhost:1313/posts/chess-engine-history/</link>
       <pubDate>Fri, 07 Oct 2022 20:17:21 -0700</pubDate>
-      <guid>https://lukesalamone.github.io/posts/chess-engine-history/</guid>
+      <guid>http://localhost:1313/posts/chess-engine-history/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;This is part 1 of a paper I wrote for &lt;a href=&#34;https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/forbus-ken.html&#34;&gt;Ken Forbus&lt;/a&gt;&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper &lt;a href=&#34;../../files/anthropomorphic-chess-evaluation-via-qualitative-analysis.pdf&#34;&gt;here&lt;/a&gt; and part 2 &lt;a href=&#34;../../posts/qualitative-analysis-chess/&#34;&gt;here&lt;/a&gt;.&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Computers that play chess, otherwise known as chess engines, have existed &lt;a href=&#34;https://www.youtube.com/watch?v=wrxdWkjmhKg&#34;&gt;since at least the late 1940s&lt;/a&gt;. Because the game was said to require the perfect combination of planning, strategy, psychology, and calculation, chess was once thought to be an activity directly correlated with intelligence, and that only a truly intelligent computer should be able to defeat humans. However, as a recent chess.com &lt;a href=&#34;https://drive.google.com/file/d/11IokKgTVSXdpYEzAuyViIleSZ_2wl0ag/view&#34;&gt;report&lt;/a&gt; explains, computers are now far stronger than humans:&lt;/p&gt;</description>
     </item>
     <item>
       <title>When Suboptimal Minimax is Better</title>
-      <link>https://lukesalamone.github.io/posts/suboptimal-minimax/</link>
+      <link>http://localhost:1313/posts/suboptimal-minimax/</link>
       <pubDate>Sat, 02 Jul 2022 16:24:10 -0500</pubDate>
-      <guid>https://lukesalamone.github.io/posts/suboptimal-minimax/</guid>
+      <guid>http://localhost:1313/posts/suboptimal-minimax/</guid>
       <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&amp;rsquo;t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn&amp;rsquo;t objectively the best move. &lt;a href=&#34;https://www.youtube.com/watch?v=XsdefZRavj4&#34;&gt;Don&amp;rsquo;t play the game, play the man.&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Alphabet Chess</title>
-      <link>https://lukesalamone.github.io/posts/alphabet-chess/</link>
+      <link>http://localhost:1313/posts/alphabet-chess/</link>
       <pubDate>Fri, 10 Jun 2022 23:56:14 -0500</pubDate>
-      <guid>https://lukesalamone.github.io/posts/alphabet-chess/</guid>
+      <guid>http://localhost:1313/posts/alphabet-chess/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.&lt;/p&gt;</description>
     </item>
   </channel>

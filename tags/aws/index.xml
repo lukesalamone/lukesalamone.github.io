@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Aws on Luke Salamone&#39;s Blog</title>
-    <link>https://lukesalamone.github.io/tags/aws/</link>
+    <link>http://localhost:1313/tags/aws/</link>
     <description>Recent content in Aws on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 10 Mar 2021 03:03:53 -0600</lastBuildDate>
-    <atom:link href="https://lukesalamone.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/aws/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>S3 Bucket Url</title>
-      <link>https://lukesalamone.github.io/posts/s3-bucket-url/</link>
+      <link>http://localhost:1313/posts/s3-bucket-url/</link>
       <pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
-      <guid>https://lukesalamone.github.io/posts/s3-bucket-url/</guid>
+      <guid>http://localhost:1313/posts/s3-bucket-url/</guid>
       <description>&lt;p&gt;Assuming your bucket is publicly accessible, the url of your S3 bucket will be&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;http://[bucket-name].s3-website-[region].amazonaws.com&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;http://mybucket.s3-website-us-east-1.amazonaws.com&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
   </channel>

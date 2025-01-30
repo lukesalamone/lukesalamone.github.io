@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Explainability on Luke Salamone&#39;s Blog</title>
-    <link>https://lukesalamone.github.io/tags/explainability/</link>
+    <link>http://localhost:1313/tags/explainability/</link>
     <description>Recent content in Explainability on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 25 Sep 2023 20:47:30 -0800</lastBuildDate>
-    <atom:link href="https://lukesalamone.github.io/tags/explainability/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/explainability/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What is a blunder in chess?</title>
-      <link>https://lukesalamone.github.io/posts/chess-blunders/</link>
+      <link>http://localhost:1313/posts/chess-blunders/</link>
       <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
-      <guid>https://lukesalamone.github.io/posts/chess-blunders/</guid>
+      <guid>http://localhost:1313/posts/chess-blunders/</guid>
       <description>&lt;p&gt;What is a blunder in chess? The tension between the qualitative and quantitative answers to this question is at the heart of different approaches towards chess, and more broadly, how quantitative metrics may lack context, but qualitative metrics lack precision.&lt;/p&gt;&#xA;&lt;h2 id=&#34;qualitative-answer&#34;&gt;Qualitative answer&lt;/h2&gt;&#xA;&lt;p&gt;There are many qualitative answers to this question, especially when comparing &amp;ldquo;blunders&amp;rdquo; and &amp;ldquo;mistakes&amp;rdquo;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&amp;ldquo;a move that negatively affects their position in a significant way&amp;rdquo; ~ &lt;a href=&#34;https://www.chess.com/terms/chess-blunder&#34;&gt;chess.com&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&amp;ldquo;severely worsens the player&amp;rsquo;s situation by allowing a loss of material, checkmate, or anything similar&amp;rdquo; ~ &lt;a href=&#34;https://en.wikipedia.org/wiki/Blunder_%28chess%29&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&amp;ldquo;Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.&amp;rdquo; ~ &lt;a href=&#34;https://www.reddit.com/r/chess/comments/1iiqyb/what_distinguishes_the_difference_between_a/&#34;&gt;r/chess&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;An issue with these qualitative answers is that while their words may be correct, smart people may still disagree with their applicability at the margins. For a suboptimal move to have a &amp;ldquo;significant&amp;rdquo; negative effect, it requires that the opponent notices and takes advantage of it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Chess Engine&#39;s Final Horizon</title>
-      <link>https://lukesalamone.github.io/posts/chess-engine-history/</link>
+      <link>http://localhost:1313/posts/chess-engine-history/</link>
       <pubDate>Fri, 07 Oct 2022 20:17:21 -0700</pubDate>
-      <guid>https://lukesalamone.github.io/posts/chess-engine-history/</guid>
+      <guid>http://localhost:1313/posts/chess-engine-history/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;This is part 1 of a paper I wrote for &lt;a href=&#34;https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/forbus-ken.html&#34;&gt;Ken Forbus&lt;/a&gt;&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper &lt;a href=&#34;../../files/anthropomorphic-chess-evaluation-via-qualitative-analysis.pdf&#34;&gt;here&lt;/a&gt; and part 2 &lt;a href=&#34;../../posts/qualitative-analysis-chess/&#34;&gt;here&lt;/a&gt;.&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Computers that play chess, otherwise known as chess engines, have existed &lt;a href=&#34;https://www.youtube.com/watch?v=wrxdWkjmhKg&#34;&gt;since at least the late 1940s&lt;/a&gt;. Because the game was said to require the perfect combination of planning, strategy, psychology, and calculation, chess was once thought to be an activity directly correlated with intelligence, and that only a truly intelligent computer should be able to defeat humans. However, as a recent chess.com &lt;a href=&#34;https://drive.google.com/file/d/11IokKgTVSXdpYEzAuyViIleSZ_2wl0ag/view&#34;&gt;report&lt;/a&gt; explains, computers are now far stronger than humans:&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bert on Luke Salamone&#39;s Blog</title>
-    <link>https://lukesalamone.github.io/tags/bert/</link>
+    <link>http://localhost:1313/tags/bert/</link>
     <description>Recent content in Bert on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 21 Jun 2021 01:04:42 -0500</lastBuildDate>
-    <atom:link href="https://lukesalamone.github.io/tags/bert/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/bert/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>BERT vs GPT-2 Performance</title>
-      <link>https://lukesalamone.github.io/posts/bert-vs-gpt2/</link>
+      <link>http://localhost:1313/posts/bert-vs-gpt2/</link>
       <pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
-      <guid>https://lukesalamone.github.io/posts/bert-vs-gpt2/</guid>
+      <guid>http://localhost:1313/posts/bert-vs-gpt2/</guid>
       <description>&lt;p&gt;There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/lukesalamone/gpt2-vs-bert&#34;&gt;The code used in this experiment can be found on my Github&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;bert&#34;&gt;BERT&lt;/h2&gt;&#xA;&lt;p&gt;The &lt;a href=&#34;https://arxiv.org/pdf/1810.04805.pdf&#34;&gt;Devlin et al. model&lt;/a&gt; was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the &lt;em&gt;cloze&lt;/em&gt; task). During pretraining, 15% of tokens are hidden from the model, and it is trained to predict the masked tokens. As a result, I was able to evaluate its ability to correctly predict a masked token at a random position in a fixed-size input.&lt;/p&gt;</description>
     </item>
     <item>
       <title>What Are Attention Masks?</title>
-      <link>https://lukesalamone.github.io/posts/what-are-attention-masks/</link>
+      <link>http://localhost:1313/posts/what-are-attention-masks/</link>
       <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
-      <guid>https://lukesalamone.github.io/posts/what-are-attention-masks/</guid>
+      <guid>http://localhost:1313/posts/what-are-attention-masks/</guid>
       <description>&lt;p&gt;TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;../../img/attention_mask.png&#34;&#xA;    alt=&#34;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)&lt;/p&gt;</description>
     </item>
   </channel>

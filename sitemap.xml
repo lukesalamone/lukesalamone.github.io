@@ -2,338 +2,338 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://lukesalamone.github.io/tags/fine-tuning/</loc>
+    <loc>http://localhost:1313/tags/fine-tuning/</loc>
     <lastmod>2025-01-28T08:35:55-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/llm/</loc>
+    <loc>http://localhost:1313/tags/llm/</loc>
     <lastmod>2025-01-28T08:35:55-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2025-01-28T08:35:55-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/notes-on-deepseek-r1/</loc>
+    <loc>http://localhost:1313/posts/notes-on-deepseek-r1/</loc>
     <lastmod>2025-01-28T08:35:55-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2025-01-28T08:35:55-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/reinforcement-learning/</loc>
+    <loc>http://localhost:1313/tags/reinforcement-learning/</loc>
     <lastmod>2025-01-28T08:35:55-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-01-28T08:35:55-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/space/</loc>
+    <loc>http://localhost:1313/tags/space/</loc>
     <lastmod>2024-07-29T12:16:49-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/space-is-really-big/</loc>
+    <loc>http://localhost:1313/posts/space-is-really-big/</loc>
     <lastmod>2024-07-29T12:16:49-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/custom-pytorch-collate/</loc>
+    <loc>http://localhost:1313/posts/custom-pytorch-collate/</loc>
     <lastmod>2024-07-12T14:48:27-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/machine-learning/</loc>
+    <loc>http://localhost:1313/tags/machine-learning/</loc>
     <lastmod>2024-07-12T14:48:27-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/python/</loc>
+    <loc>http://localhost:1313/tags/python/</loc>
     <lastmod>2024-07-12T14:48:27-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/pytorch/</loc>
+    <loc>http://localhost:1313/tags/pytorch/</loc>
     <lastmod>2024-07-12T14:48:27-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/very-large-datasets/</loc>
+    <loc>http://localhost:1313/posts/very-large-datasets/</loc>
     <lastmod>2024-06-27T18:40:06-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</loc>
+    <loc>http://localhost:1313/posts/how-to-create-rust-python-bindings/</loc>
     <lastmod>2024-06-18T16:21:35-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/rust/</loc>
+    <loc>http://localhost:1313/tags/rust/</loc>
     <lastmod>2024-06-18T16:21:35-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/chess/</loc>
+    <loc>http://localhost:1313/tags/chess/</loc>
     <lastmod>2024-06-13T19:38:39-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/data/</loc>
+    <loc>http://localhost:1313/tags/data/</loc>
     <lastmod>2024-06-13T19:38:39-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/most-ramified-chess-position-2023/</loc>
+    <loc>http://localhost:1313/posts/most-ramified-chess-position-2023/</loc>
     <lastmod>2024-06-13T19:38:39-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/deep-learning/</loc>
+    <loc>http://localhost:1313/tags/deep-learning/</loc>
     <lastmod>2024-06-06T16:30:27-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/sparse-autoencoder/</loc>
+    <loc>http://localhost:1313/posts/sparse-autoencoder/</loc>
     <lastmod>2024-06-06T16:30:27-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/how-does-hnsw-work/</loc>
+    <loc>http://localhost:1313/posts/how-does-hnsw-work/</loc>
     <lastmod>2024-05-20T13:38:01-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/retrieval/</loc>
+    <loc>http://localhost:1313/tags/retrieval/</loc>
     <lastmod>2024-05-20T13:38:01-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/vectors/</loc>
+    <loc>http://localhost:1313/tags/vectors/</loc>
     <lastmod>2024-05-20T13:38:01-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/learning-the-haystack/</loc>
+    <loc>http://localhost:1313/posts/learning-the-haystack/</loc>
     <lastmod>2024-03-27T18:19:54-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/loss/</loc>
+    <loc>http://localhost:1313/tags/loss/</loc>
     <lastmod>2024-03-27T18:19:54-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/vector/</loc>
+    <loc>http://localhost:1313/tags/vector/</loc>
     <lastmod>2024-03-27T18:19:54-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/numpy/</loc>
+    <loc>http://localhost:1313/tags/numpy/</loc>
     <lastmod>2024-02-04T23:39:29-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/performance/</loc>
+    <loc>http://localhost:1313/tags/performance/</loc>
     <lastmod>2024-02-04T23:39:29-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/vectorized-kmeans/</loc>
+    <loc>http://localhost:1313/posts/vectorized-kmeans/</loc>
     <lastmod>2024-02-04T23:39:29-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/ctr/</loc>
+    <loc>http://localhost:1313/tags/ctr/</loc>
     <lastmod>2023-10-02T12:39:18-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/deep-cross-net-v2/</loc>
+    <loc>http://localhost:1313/posts/deep-cross-net-v2/</loc>
     <lastmod>2023-10-02T12:39:18-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/evaluation/</loc>
+    <loc>http://localhost:1313/tags/evaluation/</loc>
     <lastmod>2023-09-25T20:47:30-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/explainability/</loc>
+    <loc>http://localhost:1313/tags/explainability/</loc>
     <lastmod>2023-09-25T20:47:30-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/statistics/</loc>
+    <loc>http://localhost:1313/tags/statistics/</loc>
     <lastmod>2023-09-25T20:47:30-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/chess-blunders/</loc>
+    <loc>http://localhost:1313/posts/chess-blunders/</loc>
     <lastmod>2023-09-25T20:47:30-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/game-of-life-3d/</loc>
+    <loc>http://localhost:1313/posts/game-of-life-3d/</loc>
     <lastmod>2023-08-23T23:34:38-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/javascript/</loc>
+    <loc>http://localhost:1313/tags/javascript/</loc>
     <lastmod>2023-08-23T23:34:38-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/simulation/</loc>
+    <loc>http://localhost:1313/tags/simulation/</loc>
     <lastmod>2023-08-23T23:34:38-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/chatgpt-mnist/</loc>
+    <loc>http://localhost:1313/posts/chatgpt-mnist/</loc>
     <lastmod>2023-07-30T22:45:57-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/chatgpt/</loc>
+    <loc>http://localhost:1313/tags/chatgpt/</loc>
     <lastmod>2023-07-30T22:45:57-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/computer-vision/</loc>
+    <loc>http://localhost:1313/tags/computer-vision/</loc>
     <lastmod>2023-07-30T22:45:57-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/ai/</loc>
+    <loc>http://localhost:1313/tags/ai/</loc>
     <lastmod>2023-04-17T19:46:25-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/evolutionary-antenna-design/</loc>
+    <loc>http://localhost:1313/posts/evolutionary-antenna-design/</loc>
     <lastmod>2023-04-17T19:46:25-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/paper-summary/</loc>
+    <loc>http://localhost:1313/tags/paper-summary/</loc>
     <lastmod>2023-04-17T19:46:25-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/dual-encoders-ranking/</loc>
+    <loc>http://localhost:1313/posts/dual-encoders-ranking/</loc>
     <lastmod>2022-12-17T16:53:47-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/search/</loc>
+    <loc>http://localhost:1313/tags/search/</loc>
     <lastmod>2022-12-17T16:53:47-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/game-theory/</loc>
+    <loc>http://localhost:1313/tags/game-theory/</loc>
     <lastmod>2022-11-26T20:25:13-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/best-antimaia-games/</loc>
+    <loc>http://localhost:1313/posts/best-antimaia-games/</loc>
     <lastmod>2022-11-26T20:25:13-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/geography/</loc>
+    <loc>http://localhost:1313/tags/geography/</loc>
     <lastmod>2022-11-23T10:07:36-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/earth-antipodes/</loc>
+    <loc>http://localhost:1313/posts/earth-antipodes/</loc>
     <lastmod>2022-11-23T10:07:36-08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/self-attention/</loc>
+    <loc>http://localhost:1313/posts/self-attention/</loc>
     <lastmod>2022-11-16T15:24:15-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/attention/</loc>
+    <loc>http://localhost:1313/tags/attention/</loc>
     <lastmod>2022-11-16T15:24:15-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/transformer/</loc>
+    <loc>http://localhost:1313/tags/transformer/</loc>
     <lastmod>2022-11-16T15:24:15-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/nlp/</loc>
+    <loc>http://localhost:1313/tags/nlp/</loc>
     <lastmod>2022-11-09T02:42:51-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/rolling-my-own-blog-search/</loc>
+    <loc>http://localhost:1313/posts/rolling-my-own-blog-search/</loc>
     <lastmod>2022-11-09T02:42:51-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</loc>
+    <loc>http://localhost:1313/posts/qualitative-analysis-chess/</loc>
     <lastmod>2022-10-08T15:17:36-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/qualitative-reasoning/</loc>
+    <loc>http://localhost:1313/tags/qualitative-reasoning/</loc>
     <lastmod>2022-10-08T15:17:36-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/chess-engine-history/</loc>
+    <loc>http://localhost:1313/posts/chess-engine-history/</loc>
     <lastmod>2022-10-07T20:17:21-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/suboptimal-minimax/</loc>
+    <loc>http://localhost:1313/posts/suboptimal-minimax/</loc>
     <lastmod>2022-07-02T16:24:10-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/alphabet-chess/</loc>
+    <loc>http://localhost:1313/posts/alphabet-chess/</loc>
     <lastmod>2022-06-10T23:56:14-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/knowledge-graph-construction/</loc>
+    <loc>http://localhost:1313/posts/knowledge-graph-construction/</loc>
     <lastmod>2022-05-17T17:47:25+07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/pytorch-dataloader/</loc>
+    <loc>http://localhost:1313/posts/pytorch-dataloader/</loc>
     <lastmod>2022-04-28T18:22:07-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/archive/</loc>
+    <loc>http://localhost:1313/tags/archive/</loc>
     <lastmod>2022-03-30T20:05:26-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/compress/</loc>
+    <loc>http://localhost:1313/tags/compress/</loc>
     <lastmod>2022-03-30T20:05:26-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/how-to-tar-untar-file/</loc>
+    <loc>http://localhost:1313/posts/how-to-tar-untar-file/</loc>
     <lastmod>2022-03-30T20:05:26-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/tar/</loc>
+    <loc>http://localhost:1313/tags/tar/</loc>
     <lastmod>2022-03-30T20:05:26-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/uncompress/</loc>
+    <loc>http://localhost:1313/tags/uncompress/</loc>
     <lastmod>2022-03-30T20:05:26-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/untar/</loc>
+    <loc>http://localhost:1313/tags/untar/</loc>
     <lastmod>2022-03-30T20:05:26-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/gpt2/</loc>
+    <loc>http://localhost:1313/tags/gpt2/</loc>
     <lastmod>2021-09-19T20:13:09-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/grover-paper-summary/</loc>
+    <loc>http://localhost:1313/posts/grover-paper-summary/</loc>
     <lastmod>2021-09-19T20:13:09-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</loc>
+    <loc>http://localhost:1313/posts/connect-jupyter-to-remote/</loc>
     <lastmod>2021-09-07T09:10:56-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/jupyter/</loc>
+    <loc>http://localhost:1313/tags/jupyter/</loc>
     <lastmod>2021-09-07T09:10:56-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/quick-reference/</loc>
+    <loc>http://localhost:1313/tags/quick-reference/</loc>
     <lastmod>2021-09-07T09:10:56-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/what-is-marginalization/</loc>
+    <loc>http://localhost:1313/posts/what-is-marginalization/</loc>
     <lastmod>2021-07-07T14:23:12-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/connect-to-colab/</loc>
+    <loc>http://localhost:1313/posts/connect-to-colab/</loc>
     <lastmod>2021-06-30T22:58:18-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/bert/</loc>
+    <loc>http://localhost:1313/tags/bert/</loc>
     <lastmod>2021-06-21T01:04:42-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/bert-vs-gpt2/</loc>
+    <loc>http://localhost:1313/posts/bert-vs-gpt2/</loc>
     <lastmod>2021-06-21T01:04:42-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/gpt2-tokenization/</loc>
+    <loc>http://localhost:1313/posts/gpt2-tokenization/</loc>
     <lastmod>2021-06-17T19:30:48-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/huggingface/</loc>
+    <loc>http://localhost:1313/tags/huggingface/</loc>
     <lastmod>2021-06-15T19:09:36-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/transformers/</loc>
+    <loc>http://localhost:1313/tags/transformers/</loc>
     <lastmod>2021-06-15T19:09:36-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/what-are-attention-masks/</loc>
+    <loc>http://localhost:1313/posts/what-are-attention-masks/</loc>
     <lastmod>2021-06-15T19:09:36-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/how-does-convolution-work/</loc>
+    <loc>http://localhost:1313/posts/how-does-convolution-work/</loc>
     <lastmod>2021-06-14T21:05:06-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/python-serve-html/</loc>
+    <loc>http://localhost:1313/posts/python-serve-html/</loc>
     <lastmod>2021-05-09T15:06:11-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/webdev/</loc>
+    <loc>http://localhost:1313/tags/webdev/</loc>
     <lastmod>2021-05-09T15:06:11-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/running-simple-language-model/</loc>
+    <loc>http://localhost:1313/posts/running-simple-language-model/</loc>
     <lastmod>2021-04-16T21:08:53-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/what-is-temperature/</loc>
+    <loc>http://localhost:1313/posts/what-is-temperature/</loc>
     <lastmod>2021-04-02T00:50:38-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/perplexity/</loc>
+    <loc>http://localhost:1313/posts/perplexity/</loc>
     <lastmod>2021-04-01T12:14:49-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/aws/</loc>
+    <loc>http://localhost:1313/tags/aws/</loc>
     <lastmod>2021-03-10T03:03:53-06:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/s3-bucket-url/</loc>
+    <loc>http://localhost:1313/posts/s3-bucket-url/</loc>
     <lastmod>2021-03-10T03:03:53-06:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/why-how-to/</loc>
+    <loc>http://localhost:1313/posts/why-how-to/</loc>
     <lastmod>2021-03-07T14:44:37-06:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/json/</loc>
+    <loc>http://localhost:1313/tags/json/</loc>
     <lastmod>2021-03-07T14:05:27-06:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/read-write-json/</loc>
+    <loc>http://localhost:1313/posts/read-write-json/</loc>
     <lastmod>2021-03-07T14:05:27-06:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/build-an-autoencoder/</loc>
+    <loc>http://localhost:1313/posts/build-an-autoencoder/</loc>
     <lastmod>2021-03-07T01:31:51-06:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/neural-networks/</loc>
+    <loc>http://localhost:1313/tags/neural-networks/</loc>
     <lastmod>2021-03-07T01:31:51-06:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/stock-trading/</loc>
+    <loc>http://localhost:1313/tags/stock-trading/</loc>
     <lastmod>2021-03-07T01:31:51-06:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/python-format-string/</loc>
+    <loc>http://localhost:1313/posts/python-format-string/</loc>
     <lastmod>2021-02-24T21:22:42-06:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/audio/</loc>
+    <loc>http://localhost:1313/tags/audio/</loc>
     <lastmod>2020-12-17T11:22:43-06:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/siamese-nn-video/</loc>
+    <loc>http://localhost:1313/posts/siamese-nn-video/</loc>
     <lastmod>2020-12-17T11:22:43-06:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/siamese-neural-network/</loc>
+    <loc>http://localhost:1313/tags/siamese-neural-network/</loc>
     <lastmod>2020-12-17T11:22:43-06:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/video/</loc>
+    <loc>http://localhost:1313/tags/video/</loc>
     <lastmod>2020-12-17T11:22:43-06:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/managing-python-environments/</loc>
+    <loc>http://localhost:1313/posts/managing-python-environments/</loc>
     <lastmod>2020-10-24T17:45:41-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/minimax/</loc>
+    <loc>http://localhost:1313/tags/minimax/</loc>
     <lastmod>2020-10-24T17:45:41-05:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/clustering/</loc>
+    <loc>http://localhost:1313/tags/clustering/</loc>
     <lastmod>2020-10-07T17:39:22-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/kmeans-clustering/</loc>
+    <loc>http://localhost:1313/posts/kmeans-clustering/</loc>
     <lastmod>2020-10-07T17:39:22-07:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/monte-carlo/</loc>
+    <loc>http://localhost:1313/tags/monte-carlo/</loc>
     <lastmod>2020-07-21T17:34:05+08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/hardest-hangman-word/</loc>
+    <loc>http://localhost:1313/posts/hardest-hangman-word/</loc>
     <lastmod>2020-07-21T17:34:05+08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/monte-carlo/</loc>
+    <loc>http://localhost:1313/posts/monte-carlo/</loc>
     <lastmod>2020-07-09T15:40:14+08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/tags/geometry/</loc>
+    <loc>http://localhost:1313/tags/geometry/</loc>
     <lastmod>2020-07-09T15:40:14+08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/posts/gomoku2049/</loc>
+    <loc>http://localhost:1313/posts/gomoku2049/</loc>
     <lastmod>2020-05-19T14:28:57+08:00</lastmod>
   </url><url>
-    <loc>https://lukesalamone.github.io/blog/</loc>
+    <loc>http://localhost:1313/blog/</loc>
   </url><url>
-    <loc>https://lukesalamone.github.io/series/</loc>
+    <loc>http://localhost:1313/series/</loc>
   </url>
 </urlset>

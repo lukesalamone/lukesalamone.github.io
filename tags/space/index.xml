@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Space on Luke Salamone&#39;s Blog</title>
-    <link>https://lukesalamone.github.io/tags/space/</link>
+    <link>http://localhost:1313/tags/space/</link>
     <description>Recent content in Space on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 29 Jul 2024 12:16:49 -0700</lastBuildDate>
-    <atom:link href="https://lukesalamone.github.io/tags/space/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/space/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Space Is Really Big</title>
-      <link>https://lukesalamone.github.io/posts/space-is-really-big/</link>
+      <link>http://localhost:1313/posts/space-is-really-big/</link>
       <pubDate>Mon, 29 Jul 2024 12:16:49 -0700</pubDate>
-      <guid>https://lukesalamone.github.io/posts/space-is-really-big/</guid>
+      <guid>http://localhost:1313/posts/space-is-really-big/</guid>
       <description>&lt;figure&gt;&lt;img src=&#34;../../img/earth_moon.png&#34;&#xA;    alt=&#34;More than 30 earths could fit between the earth and the moon.&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;More than 30 earths could fit between the earth and the moon.&lt;/p&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;Our &lt;a href=&#34;https://science.nasa.gov/wp-content/uploads/2023/07/pia06890-our-solar-system-banner-1920x640-1.jpg&#34;&gt;elementary school models&lt;/a&gt; of the solar system really undersell how big space is. The problem is, space is too big and human brains are bad at exponentials. Logarithmic charts like &lt;a href=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Interstellar_medium_annotated.jpg/1920px-Interstellar_medium_annotated.jpg&#34;&gt;this one&lt;/a&gt; are technically accurate, but my brain has a hard time contextualizing it.&lt;/p&gt;&#xA;&lt;p&gt;To get an idea of how big space really is, let&amp;rsquo;s imagine that the earth is one millimeter wide. At that scale:&lt;/p&gt;</description>
     </item>
   </channel>
