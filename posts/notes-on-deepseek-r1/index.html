@@ -58,7 +58,7 @@ Terminology First, I will briefly describe some terminology related to training 
 Supervised fine-tuning (SFT) is a process which uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.">
   <meta itemprop="datePublished" content="2025-01-28T08:35:55-08:00">
   <meta itemprop="dateModified" content="2025-01-28T08:35:55-08:00">
-  <meta itemprop="wordCount" content="828">
+  <meta itemprop="wordCount" content="1022">
   <meta itemprop="image" content="https://lukesalamone.github.io/">
   <meta itemprop="keywords" content="Llm,Reinforcement-Learning,Fine-Tuning">
 
@@ -139,7 +139,7 @@ Supervised fine-tuning (SFT) is a process which uses input/output pairs to direc
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
-        4 minutes
+        5 minutes
 
         
       </p>
@@ -231,6 +231,26 @@ Supervised fine-tuning (SFT) is a process which uses input/output pairs to direc
 </ol>
 <h2 id="further-distillation">Further Distillation</h2>
 <p>Using the 800k inputs from step 3 above, the researchers generated outputs from R1. They then performed supervised fine-tuning on Qwen (1.5B, 7B, 14B, 32B) and Llama (8B and 70B).</p>
+<h2 id="discussion">Discussion</h2>
+<ul>
+<li>In their experiments, the researchers performed large-scale RL training on Qwen-32B-Base and compared with a 32B model distilled from DeepSeek R1-Zero, which was also trained using RL only. The distilled model performed significantly better.
+<ul>
+<li>This demonstrates that distillation performs significantly better than large-scale RL training from scratch.</li>
+<li>This also means that RL by itself cannot surpass larger models.</li>
+</ul>
+</li>
+<li>The researchers also tried using a Process Reward Model (PRM). However, identifying fine-grained reasoning steps proved difficult to implement in practice, is susceptible to reward hacking, and complicates the overall training pipeline.
+<ul>
+<li>The researchers do note that PRM may be useful for reranking top-N responses from the model or assisting in guided search.</li>
+</ul>
+</li>
+<li>Intuitively, Monte Carlo Tree Search (MCTS) seemed like a promising route for improving reasoning. MCTS involves learning a model to search a tree of possibilities, such as a game tree in chess or go.
+<ul>
+<li>Unlike in turn-based games where there are a discrete set of possible actions, reasoning problems have a continuous search space.</li>
+<li>Additionally, MCTS depends on an accurate value model for exploring the tree, so a poor value model will hurt performance. MCTS may be useful at inference time, however.</li>
+</ul>
+</li>
+</ul>
 
       </div>
     </article>
@@ -258,7 +278,7 @@ Supervised fine-tuning (SFT) is a process which uses input/output pairs to direc
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        828 Words
+        1022 Words
       </p>
 
       <p>
