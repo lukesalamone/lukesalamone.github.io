@@ -53,30 +53,30 @@
 
 
   <meta itemprop="name" content="Notes on Deepseek R1">
-  <meta itemprop="description" content="DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many decoder-based models in the past which simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before the final answer is given. According to the researchers, its performance is on par with OpenAI’s O1 model.
+  <meta itemprop="description" content="DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many past decoder-based models that simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before producing a final answer. DeepSeek researchers report that its reasoning performance is on par with OpenAI’s O1 model.
 Terminology First, I will briefly describe some terminology related to training techniques:
-Supervised fine-tuning (SFT) is a process which uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.">
+Supervised fine-tuning (SFT) is a process that uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.">
   <meta itemprop="datePublished" content="2025-01-28T08:35:55-08:00">
   <meta itemprop="dateModified" content="2025-01-28T08:35:55-08:00">
-  <meta itemprop="wordCount" content="1022">
+  <meta itemprop="wordCount" content="1024">
   <meta itemprop="image" content="https://lukesalamone.github.io/">
   <meta itemprop="keywords" content="Llm,Reinforcement-Learning,Fine-Tuning">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://lukesalamone.github.io/">
   <meta name="twitter:title" content="Notes on Deepseek R1">
-  <meta name="twitter:description" content="DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many decoder-based models in the past which simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before the final answer is given. According to the researchers, its performance is on par with OpenAI’s O1 model.
+  <meta name="twitter:description" content="DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many past decoder-based models that simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before producing a final answer. DeepSeek researchers report that its reasoning performance is on par with OpenAI’s O1 model.
 Terminology First, I will briefly describe some terminology related to training techniques:
-Supervised fine-tuning (SFT) is a process which uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.">
+Supervised fine-tuning (SFT) is a process that uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.">
 
 
 
     <meta property="og:url" content="https://lukesalamone.github.io/posts/notes-on-deepseek-r1/">
   <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
   <meta property="og:title" content="Notes on Deepseek R1">
-  <meta property="og:description" content="DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many decoder-based models in the past which simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before the final answer is given. According to the researchers, its performance is on par with OpenAI’s O1 model.
+  <meta property="og:description" content="DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many past decoder-based models that simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before producing a final answer. DeepSeek researchers report that its reasoning performance is on par with OpenAI’s O1 model.
 Terminology First, I will briefly describe some terminology related to training techniques:
-Supervised fine-tuning (SFT) is a process which uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.">
+Supervised fine-tuning (SFT) is a process that uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -153,24 +153,24 @@ Supervised fine-tuning (SFT) is a process which uses input/output pairs to direc
       
 
       <div class="post-content">
-        <p>DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many decoder-based models in the past which simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before the final answer is given. According to the researchers, its performance is on par with OpenAI&rsquo;s O1 model.</p>
+        <p>DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many past decoder-based models that simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before producing a final answer. DeepSeek researchers report that its reasoning performance is on par with OpenAI’s O1 model.</p>
 <h2 id="terminology">Terminology</h2>
 <p>First, I will briefly describe some terminology related to training techniques:</p>
 <ul>
 <li>
-<p><strong>Supervised fine-tuning (SFT)</strong> is a process which uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.</p>
+<p><strong>Supervised fine-tuning (SFT)</strong> is a process that uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.</p>
 </li>
 <li>
-<p><strong>Preference fine-tuning</strong> involves training a model using preferences between different outputs for the same input. Usually these preferences are human-generated. Relative quality assessments are easier for humans to make, but are still a valuable training signal.</p>
+<p><strong>Preference fine-tuning</strong> involves training a model using preferences between different outputs for the same input. Usually these preferences are human-generated. Relative quality assessments are easier for humans to make and still provide a valuable training signal.</p>
 </li>
 <li>
 <p><strong>Rejection sampling fine-tuning (RFT)</strong> is a method for generating synthetic training data. First, a model produces k diverse candidate completions for a prompt using temperature sampling. Next, a reward model ranks or selects the best completions for training data.</p>
 <ul>
-<li>In the simplest version, this technique simply generates k <code>(reasoning, answer)</code> pairs for each prompt using a nonzero temperature (e.g. 0.7) and filters out incorrect answers. <a href="https://arxiv.org/pdf/2308.01825">Paper</a></li>
+<li>In the simplest version, this technique generates k <code>(reasoning, answer)</code> pairs for each prompt using a nonzero temperature (e.g. 0.7) and filters out incorrect answers. <a href="https://arxiv.org/pdf/2308.01825">Paper</a></li>
 </ul>
 </li>
 <li>
-<p><strong>Large scale reinforcement learning (RL)</strong>, as DeepSeek refers to it, is a training method which which assigns synthetic labels to a response based on easily-verified outcomes from reasoning problems such as correctness and formatting.</p>
+<p><strong>Large scale reinforcement learning (RL)</strong>, as DeepSeek refers to it, is a training method which assigns synthetic labels to a response based on easily-verified outcomes from reasoning problems such as correctness and formatting.</p>
 <ul>
 <li>This is in contrast to a supervised learning approach, which would typically enforce strict token-level matching.</li>
 </ul>
@@ -179,10 +179,10 @@ Supervised fine-tuning (SFT) is a process which uses input/output pairs to direc
 <p>Here are a few terms related to model architecture:</p>
 <ul>
 <li>
-<p><strong>Mixture of Experts (MoE)</strong> is an architecture which uses a &ldquo;router&rdquo; to select from a pool of candidate &ldquo;expert&rdquo; networks.</p>
+<p><strong>Mixture of Experts (MoE)</strong> is an architecture that uses a &ldquo;router&rdquo; to select from a pool of candidate &ldquo;expert&rdquo; networks.</p>
 <ul>
-<li>In a typical decoder transformer such as GPT-2 is simply a tall stack of decoder blocks, where 100% of the weights are activated for each token. In this paradigm, making the model bigger either means making bigger blocks or a taller stack of them, which both increase inference costs.</li>
-<li>However, replacing simple decoder blocks with MoE blocks allows models to include more parameters without significantly increasing inference costs, since only a fraction of experts are active at any one time.</li>
+<li>In a typical decoder transformer, such as GPT-2, consists of a tall stack of decoder blocks, where 100% of the weights are activated for each token. In this paradigm, making the model bigger either means making bigger blocks or a taller stack of them, which both increase inference costs.</li>
+<li>However, replacing standard decoder blocks with MoE blocks allows models to incorporate more parameters without significantly increasing inference costs, as only a fraction of experts are active at any one time.</li>
 </ul>
 </li>
 <li>
@@ -190,7 +190,7 @@ Supervised fine-tuning (SFT) is a process which uses input/output pairs to direc
 </li>
 </ul>
 <h2 id="paper-links">Paper links</h2>
-<p>The release of R1 follows other papers from DeepSeek which go into extensive depth regarding many of the primatives discussed above. They&rsquo;re worth a read:</p>
+<p>The release of R1 follows other DeepSeek papers that explore many of the primitives discussed above in extensive depth. They&rsquo;re worth a read:</p>
 <ul>
 <li>
 <p><a href="https://arxiv.org/pdf/2405.04434">DeepSeek-V2</a> introduces Multi-head Latent Attention (MLA) and several Mixture of Experts (MoE) optimizations to improve load balancing at the device level and expert level.</p>
@@ -206,13 +206,13 @@ Supervised fine-tuning (SFT) is a process which uses input/output pairs to direc
 </li>
 </ul>
 <h2 id="how-deepseek-r1-zero-was-trained">How DeepSeek R1-Zero was trained</h2>
-<p>The researchers apply RL directly to the base model (DeepSeek v3) without any cold start data to generate DeepSeek R1-Zero. However, the researchers note poor formatting/readability and the mixing multiple languages in the reasoning outputs.</p>
+<p>The researchers apply RL directly to the base model (DeepSeek v3) without any cold start data to generate DeepSeek R1-Zero. However, the researchers noted issues with poor formatting and readability, as well as the mixing of multiple languages in the reasoning outputs.</p>
 <p>In the training process, the researchers reused the Group Relative Policy Optimization (GRPO) algorithm which they introduced in <a href="https://arxiv.org/pdf/2402.03300">their DeepSeekMath paper</a>. This algorithm requires less computational overhead since it does not require a critic, and is stable as it measures output performance relative to the group. Responses received rewards based on accuracy and correct formatting.</p>
-<p>R1-Zero was required to adhere to the format <code>&lt;think&gt;&lt;/think&gt;&lt;answer&gt;&lt;/answer&gt;</code> when responding.</p>
+<p>R1-Zero was required to adhere to the format <code>&lt;think&gt;&lt;/think&gt;&lt;answer&gt;&lt;/answer&gt;</code> when generating responses.</p>
 <h2 id="how-deepseek-r1-was-trained">How DeepSeek R1 was trained</h2>
 <p>To address the usability issues in R1 Zero, the researchers expanded on R1 Zero with a four step process:</p>
 <ol>
-<li>Supervised fine-tuning with a small number of R1-Zero outputs, cleaned by human annotators</li>
+<li>Supervised fine-tuning using a small set of R1-Zero outputs, cleaned by human annotators.</li>
 <li>Large scale RL, in the same way as R1 Zero. The language mixing issue returned, but the researchers mitigated it with a language consistency reward during training. This reward did result in a slight drop in performance, however.</li>
 <li>Supervised fine-tuning data collected via rejection sampling. These prompts cover both reasoning and non-reasoning domains.
 <ul>
@@ -220,34 +220,32 @@ Supervised fine-tuning (SFT) is a process which uses input/output pairs to direc
 <li>For non-reasoning domains (200k samples) like writing, factual QA, translation, etc. the researchers reused techniques from DeepSeek v3: synthetic responses cleaned up with human annotators.</li>
 </ul>
 </li>
-<li>Further RL refinement for &ldquo;helpfullness and harmlessness&rdquo;:
+<li>Further RL refinement for &ldquo;helpfulness and harmlessness&rdquo;:
 <ul>
-<li>For reasoning tasks, the researchers used rule-based rewards, as in R1-Zero.</li>
+<li>For reasoning tasks, the researchers applied rule-based rewards, as in R1-Zero.</li>
 <li>For non-reasoning tasks, the researchers used reward models to capture preferences.</li>
-<li>To optimize helpfulness, only the final summary was evaluated.</li>
-<li>To optimize harmlessness, both the reasoning tokens and final summary were evaluated.</li>
+<li>To optimize helpfulness, only the final summary was evaluated, whereas to optimize harmlessness, both the reasoning tokens and the final summary were assessed.</li>
 </ul>
 </li>
 </ol>
 <h2 id="further-distillation">Further Distillation</h2>
-<p>Using the 800k inputs from step 3 above, the researchers generated outputs from R1. They then performed supervised fine-tuning on Qwen (1.5B, 7B, 14B, 32B) and Llama (8B and 70B).</p>
+<p>Using the 800k inputs from step 3 above, the researchers generated outputs from R1. They then applied supervised fine-tuning to Qwen (1.5B, 7B, 14B, 32B) and Llama (8B and 70B).</p>
 <h2 id="discussion">Discussion</h2>
 <ul>
 <li>In their experiments, the researchers performed large-scale RL training on Qwen-32B-Base and compared with a 32B model distilled from DeepSeek R1-Zero, which was also trained using RL only. The distilled model performed significantly better.
 <ul>
-<li>This demonstrates that distillation performs significantly better than large-scale RL training from scratch.</li>
-<li>This also means that RL by itself cannot surpass larger models.</li>
+<li>This demonstrates that distillation outperforms large-scale RL training from scratch and suggests that RL alone cannot surpass larger models.</li>
 </ul>
 </li>
-<li>The researchers also tried using a Process Reward Model (PRM). However, identifying fine-grained reasoning steps proved difficult to implement in practice, is susceptible to reward hacking, and complicates the overall training pipeline.
+<li>The researchers also experimented with a Process Reward Model (PRM). However, identifying fine-grained reasoning steps was challenging in practice. Additionally, the PRM itself was prone to reward hacking, and thus complicated the overall training pipeline.
 <ul>
 <li>The researchers do note that PRM may be useful for reranking top-N responses from the model or assisting in guided search.</li>
 </ul>
 </li>
 <li>Intuitively, Monte Carlo Tree Search (MCTS) seemed like a promising route for improving reasoning. MCTS involves learning a model to search a tree of possibilities, such as a game tree in chess or go.
 <ul>
-<li>Unlike in turn-based games where there are a discrete set of possible actions, reasoning problems have a continuous search space.</li>
-<li>Additionally, MCTS depends on an accurate value model for exploring the tree, so a poor value model will hurt performance. MCTS may be useful at inference time, however.</li>
+<li>Unlike turn-based games, which have a discrete set of possible actions, reasoning problems exist in a continuous search space.</li>
+<li>Additionally, because MCTS relies on an accurate value model for tree exploration, a poor value model will degrade training performance. However, MCTS may still be useful at inference time.</li>
 </ul>
 </li>
 </ul>
@@ -278,7 +276,7 @@ Supervised fine-tuning (SFT) is a process which uses input/output pairs to direc
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1022 Words
+        1024 Words
       </p>
 
       <p>
