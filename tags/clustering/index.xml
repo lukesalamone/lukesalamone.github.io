@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Clustering on Luke Salamone&#39;s Blog</title>
-    <link>http://localhost:1313/tags/clustering/</link>
+    <link>https://lukesalamone.github.io/tags/clustering/</link>
     <description>Recent content in Clustering on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 07 Oct 2020 17:39:22 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/clustering/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lukesalamone.github.io/tags/clustering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How does K-means clustering work?</title>
-      <link>http://localhost:1313/posts/kmeans-clustering/</link>
+      <link>https://lukesalamone.github.io/posts/kmeans-clustering/</link>
       <pubDate>Wed, 07 Oct 2020 17:39:22 -0700</pubDate>
-      <guid>http://localhost:1313/posts/kmeans-clustering/</guid>
+      <guid>https://lukesalamone.github.io/posts/kmeans-clustering/</guid>
       <description>&lt;p&gt;K-means clustering (not to be confused with K-nearest neighbors) is an unsupervised learning algorithm used for grouping similar points together into clusters.&lt;/p&gt;&#xA;&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js&#34;&gt;&lt;/script&gt;&#xA;&lt;script src=&#34;../../js/kmeans_demo.js&#34;&gt;&lt;/script&gt;&#xA;&lt;div id=&#39;demo&#39;&gt;&#xA;&lt;button&gt;start&lt;/button&gt;&#xA;&lt;canvas id=&#34;myChart&#34; style=&#34;background-color: #0000&#34;&gt;&lt;/canvas&gt;&#xA;&lt;/div&gt;&#xA;&lt;h2 id=&#34;algorithm&#34;&gt;Algorithm&lt;/h2&gt;&#xA;&lt;p&gt;The basic K-means algorithm is fairly simple and has two steps, repeated until convergence:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;assign points to cluster corresponding to closest centroid&lt;/li&gt;&#xA;&lt;li&gt;update centroid locations to the mean of all points assigned to the associated cluster&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;The algorithm converges when the centroids stop moving, i.e. no points can be switched between clusters to a closer centroid.&lt;/p&gt;</description>
     </item>
   </channel>

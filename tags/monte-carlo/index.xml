@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Monte-Carlo on Luke Salamone&#39;s Blog</title>
-    <link>http://localhost:1313/tags/monte-carlo/</link>
+    <link>https://lukesalamone.github.io/tags/monte-carlo/</link>
     <description>Recent content in Monte-Carlo on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 21 Jul 2020 17:34:05 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lukesalamone.github.io/tags/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What is the Hardest Hangman Word?</title>
-      <link>http://localhost:1313/posts/hardest-hangman-word/</link>
+      <link>https://lukesalamone.github.io/posts/hardest-hangman-word/</link>
       <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
-      <guid>http://localhost:1313/posts/hardest-hangman-word/</guid>
+      <guid>https://lukesalamone.github.io/posts/hardest-hangman-word/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/p33HisS.png&#34; alt=&#34;Example hangman game&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people. Player A chooses a secret word, and tells player B the length of the secret word. Player B guesses letters which she thinks might be in the word. If she chooses a correct letter, player A reveals the locations of &lt;em&gt;each instance&lt;/em&gt; of the guessed letter. However, if player B guesses an incorrect letter, this counts as a &amp;ldquo;strike&amp;rdquo; against her. After an agreed-upon number of strikes, player B loses.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Estimating Pi with a Monte Carlo Simulation</title>
-      <link>http://localhost:1313/posts/monte-carlo/</link>
+      <link>https://lukesalamone.github.io/posts/monte-carlo/</link>
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
-      <guid>http://localhost:1313/posts/monte-carlo/</guid>
+      <guid>https://lukesalamone.github.io/posts/monte-carlo/</guid>
       <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.&lt;/p&gt;</description>
     </item>
   </channel>

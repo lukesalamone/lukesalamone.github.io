@@ -2,409 +2,409 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Luke Salamone&#39;s Blog</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://lukesalamone.github.io/tags/</link>
     <description>Recent content in Tags on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 28 Jan 2025 08:35:55 -0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lukesalamone.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Fine-Tuning</title>
-      <link>http://localhost:1313/tags/fine-tuning/</link>
+      <link>https://lukesalamone.github.io/tags/fine-tuning/</link>
       <pubDate>Tue, 28 Jan 2025 08:35:55 -0800</pubDate>
-      <guid>http://localhost:1313/tags/fine-tuning/</guid>
+      <guid>https://lukesalamone.github.io/tags/fine-tuning/</guid>
       <description></description>
     </item>
     <item>
       <title>Llm</title>
-      <link>http://localhost:1313/tags/llm/</link>
+      <link>https://lukesalamone.github.io/tags/llm/</link>
       <pubDate>Tue, 28 Jan 2025 08:35:55 -0800</pubDate>
-      <guid>http://localhost:1313/tags/llm/</guid>
+      <guid>https://lukesalamone.github.io/tags/llm/</guid>
       <description></description>
     </item>
     <item>
       <title>Reinforcement-Learning</title>
-      <link>http://localhost:1313/tags/reinforcement-learning/</link>
+      <link>https://lukesalamone.github.io/tags/reinforcement-learning/</link>
       <pubDate>Tue, 28 Jan 2025 08:35:55 -0800</pubDate>
-      <guid>http://localhost:1313/tags/reinforcement-learning/</guid>
+      <guid>https://lukesalamone.github.io/tags/reinforcement-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Space</title>
-      <link>http://localhost:1313/tags/space/</link>
+      <link>https://lukesalamone.github.io/tags/space/</link>
       <pubDate>Mon, 29 Jul 2024 12:16:49 -0700</pubDate>
-      <guid>http://localhost:1313/tags/space/</guid>
+      <guid>https://lukesalamone.github.io/tags/space/</guid>
       <description></description>
     </item>
     <item>
       <title>Machine-Learning</title>
-      <link>http://localhost:1313/tags/machine-learning/</link>
+      <link>https://lukesalamone.github.io/tags/machine-learning/</link>
       <pubDate>Fri, 12 Jul 2024 14:48:27 -0700</pubDate>
-      <guid>http://localhost:1313/tags/machine-learning/</guid>
+      <guid>https://lukesalamone.github.io/tags/machine-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>http://localhost:1313/tags/python/</link>
+      <link>https://lukesalamone.github.io/tags/python/</link>
       <pubDate>Fri, 12 Jul 2024 14:48:27 -0700</pubDate>
-      <guid>http://localhost:1313/tags/python/</guid>
+      <guid>https://lukesalamone.github.io/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Pytorch</title>
-      <link>http://localhost:1313/tags/pytorch/</link>
+      <link>https://lukesalamone.github.io/tags/pytorch/</link>
       <pubDate>Fri, 12 Jul 2024 14:48:27 -0700</pubDate>
-      <guid>http://localhost:1313/tags/pytorch/</guid>
+      <guid>https://lukesalamone.github.io/tags/pytorch/</guid>
       <description></description>
     </item>
     <item>
       <title>Rust</title>
-      <link>http://localhost:1313/tags/rust/</link>
+      <link>https://lukesalamone.github.io/tags/rust/</link>
       <pubDate>Tue, 18 Jun 2024 16:21:35 -0700</pubDate>
-      <guid>http://localhost:1313/tags/rust/</guid>
+      <guid>https://lukesalamone.github.io/tags/rust/</guid>
       <description></description>
     </item>
     <item>
       <title>Chess</title>
-      <link>http://localhost:1313/tags/chess/</link>
+      <link>https://lukesalamone.github.io/tags/chess/</link>
       <pubDate>Thu, 13 Jun 2024 19:38:39 -0700</pubDate>
-      <guid>http://localhost:1313/tags/chess/</guid>
+      <guid>https://lukesalamone.github.io/tags/chess/</guid>
       <description></description>
     </item>
     <item>
       <title>Data</title>
-      <link>http://localhost:1313/tags/data/</link>
+      <link>https://lukesalamone.github.io/tags/data/</link>
       <pubDate>Thu, 13 Jun 2024 19:38:39 -0700</pubDate>
-      <guid>http://localhost:1313/tags/data/</guid>
+      <guid>https://lukesalamone.github.io/tags/data/</guid>
       <description></description>
     </item>
     <item>
       <title>Deep-Learning</title>
-      <link>http://localhost:1313/tags/deep-learning/</link>
+      <link>https://lukesalamone.github.io/tags/deep-learning/</link>
       <pubDate>Thu, 06 Jun 2024 16:30:27 -0700</pubDate>
-      <guid>http://localhost:1313/tags/deep-learning/</guid>
+      <guid>https://lukesalamone.github.io/tags/deep-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Retrieval</title>
-      <link>http://localhost:1313/tags/retrieval/</link>
+      <link>https://lukesalamone.github.io/tags/retrieval/</link>
       <pubDate>Mon, 20 May 2024 13:38:01 -0700</pubDate>
-      <guid>http://localhost:1313/tags/retrieval/</guid>
+      <guid>https://lukesalamone.github.io/tags/retrieval/</guid>
       <description></description>
     </item>
     <item>
       <title>Vectors</title>
-      <link>http://localhost:1313/tags/vectors/</link>
+      <link>https://lukesalamone.github.io/tags/vectors/</link>
       <pubDate>Mon, 20 May 2024 13:38:01 -0700</pubDate>
-      <guid>http://localhost:1313/tags/vectors/</guid>
+      <guid>https://lukesalamone.github.io/tags/vectors/</guid>
       <description></description>
     </item>
     <item>
       <title>Loss</title>
-      <link>http://localhost:1313/tags/loss/</link>
+      <link>https://lukesalamone.github.io/tags/loss/</link>
       <pubDate>Wed, 27 Mar 2024 18:19:54 -0700</pubDate>
-      <guid>http://localhost:1313/tags/loss/</guid>
+      <guid>https://lukesalamone.github.io/tags/loss/</guid>
       <description></description>
     </item>
     <item>
       <title>Vector</title>
-      <link>http://localhost:1313/tags/vector/</link>
+      <link>https://lukesalamone.github.io/tags/vector/</link>
       <pubDate>Wed, 27 Mar 2024 18:19:54 -0700</pubDate>
-      <guid>http://localhost:1313/tags/vector/</guid>
+      <guid>https://lukesalamone.github.io/tags/vector/</guid>
       <description></description>
     </item>
     <item>
       <title>Numpy</title>
-      <link>http://localhost:1313/tags/numpy/</link>
+      <link>https://lukesalamone.github.io/tags/numpy/</link>
       <pubDate>Sun, 04 Feb 2024 23:39:29 -0700</pubDate>
-      <guid>http://localhost:1313/tags/numpy/</guid>
+      <guid>https://lukesalamone.github.io/tags/numpy/</guid>
       <description></description>
     </item>
     <item>
       <title>Performance</title>
-      <link>http://localhost:1313/tags/performance/</link>
+      <link>https://lukesalamone.github.io/tags/performance/</link>
       <pubDate>Sun, 04 Feb 2024 23:39:29 -0700</pubDate>
-      <guid>http://localhost:1313/tags/performance/</guid>
+      <guid>https://lukesalamone.github.io/tags/performance/</guid>
       <description></description>
     </item>
     <item>
       <title>Ctr</title>
-      <link>http://localhost:1313/tags/ctr/</link>
+      <link>https://lukesalamone.github.io/tags/ctr/</link>
       <pubDate>Mon, 02 Oct 2023 12:39:18 -0700</pubDate>
-      <guid>http://localhost:1313/tags/ctr/</guid>
+      <guid>https://lukesalamone.github.io/tags/ctr/</guid>
       <description></description>
     </item>
     <item>
       <title>Evaluation</title>
-      <link>http://localhost:1313/tags/evaluation/</link>
+      <link>https://lukesalamone.github.io/tags/evaluation/</link>
       <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
-      <guid>http://localhost:1313/tags/evaluation/</guid>
+      <guid>https://lukesalamone.github.io/tags/evaluation/</guid>
       <description></description>
     </item>
     <item>
       <title>Explainability</title>
-      <link>http://localhost:1313/tags/explainability/</link>
+      <link>https://lukesalamone.github.io/tags/explainability/</link>
       <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
-      <guid>http://localhost:1313/tags/explainability/</guid>
+      <guid>https://lukesalamone.github.io/tags/explainability/</guid>
       <description></description>
     </item>
     <item>
       <title>Statistics</title>
-      <link>http://localhost:1313/tags/statistics/</link>
+      <link>https://lukesalamone.github.io/tags/statistics/</link>
       <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
-      <guid>http://localhost:1313/tags/statistics/</guid>
+      <guid>https://lukesalamone.github.io/tags/statistics/</guid>
       <description></description>
     </item>
     <item>
       <title>Javascript</title>
-      <link>http://localhost:1313/tags/javascript/</link>
+      <link>https://lukesalamone.github.io/tags/javascript/</link>
       <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
-      <guid>http://localhost:1313/tags/javascript/</guid>
+      <guid>https://lukesalamone.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     <item>
       <title>Simulation</title>
-      <link>http://localhost:1313/tags/simulation/</link>
+      <link>https://lukesalamone.github.io/tags/simulation/</link>
       <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
-      <guid>http://localhost:1313/tags/simulation/</guid>
+      <guid>https://lukesalamone.github.io/tags/simulation/</guid>
       <description></description>
     </item>
     <item>
       <title>Chatgpt</title>
-      <link>http://localhost:1313/tags/chatgpt/</link>
+      <link>https://lukesalamone.github.io/tags/chatgpt/</link>
       <pubDate>Sun, 30 Jul 2023 22:45:57 -0700</pubDate>
-      <guid>http://localhost:1313/tags/chatgpt/</guid>
+      <guid>https://lukesalamone.github.io/tags/chatgpt/</guid>
       <description></description>
     </item>
     <item>
       <title>Computer-Vision</title>
-      <link>http://localhost:1313/tags/computer-vision/</link>
+      <link>https://lukesalamone.github.io/tags/computer-vision/</link>
       <pubDate>Sun, 30 Jul 2023 22:45:57 -0700</pubDate>
-      <guid>http://localhost:1313/tags/computer-vision/</guid>
+      <guid>https://lukesalamone.github.io/tags/computer-vision/</guid>
       <description></description>
     </item>
     <item>
       <title>Ai</title>
-      <link>http://localhost:1313/tags/ai/</link>
+      <link>https://lukesalamone.github.io/tags/ai/</link>
       <pubDate>Mon, 17 Apr 2023 19:46:25 -0700</pubDate>
-      <guid>http://localhost:1313/tags/ai/</guid>
+      <guid>https://lukesalamone.github.io/tags/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Paper-Summary</title>
-      <link>http://localhost:1313/tags/paper-summary/</link>
+      <link>https://lukesalamone.github.io/tags/paper-summary/</link>
       <pubDate>Mon, 17 Apr 2023 19:46:25 -0700</pubDate>
-      <guid>http://localhost:1313/tags/paper-summary/</guid>
+      <guid>https://lukesalamone.github.io/tags/paper-summary/</guid>
       <description></description>
     </item>
     <item>
       <title>Search</title>
-      <link>http://localhost:1313/tags/search/</link>
+      <link>https://lukesalamone.github.io/tags/search/</link>
       <pubDate>Sat, 17 Dec 2022 16:53:47 -0800</pubDate>
-      <guid>http://localhost:1313/tags/search/</guid>
+      <guid>https://lukesalamone.github.io/tags/search/</guid>
       <description></description>
     </item>
     <item>
       <title>Game-Theory</title>
-      <link>http://localhost:1313/tags/game-theory/</link>
+      <link>https://lukesalamone.github.io/tags/game-theory/</link>
       <pubDate>Sat, 26 Nov 2022 20:25:13 -0800</pubDate>
-      <guid>http://localhost:1313/tags/game-theory/</guid>
+      <guid>https://lukesalamone.github.io/tags/game-theory/</guid>
       <description></description>
     </item>
     <item>
       <title>Geography</title>
-      <link>http://localhost:1313/tags/geography/</link>
+      <link>https://lukesalamone.github.io/tags/geography/</link>
       <pubDate>Wed, 23 Nov 2022 10:07:36 -0800</pubDate>
-      <guid>http://localhost:1313/tags/geography/</guid>
+      <guid>https://lukesalamone.github.io/tags/geography/</guid>
       <description></description>
     </item>
     <item>
       <title>Attention</title>
-      <link>http://localhost:1313/tags/attention/</link>
+      <link>https://lukesalamone.github.io/tags/attention/</link>
       <pubDate>Wed, 16 Nov 2022 15:24:15 -0500</pubDate>
-      <guid>http://localhost:1313/tags/attention/</guid>
+      <guid>https://lukesalamone.github.io/tags/attention/</guid>
       <description></description>
     </item>
     <item>
       <title>Transformer</title>
-      <link>http://localhost:1313/tags/transformer/</link>
+      <link>https://lukesalamone.github.io/tags/transformer/</link>
       <pubDate>Wed, 16 Nov 2022 15:24:15 -0500</pubDate>
-      <guid>http://localhost:1313/tags/transformer/</guid>
+      <guid>https://lukesalamone.github.io/tags/transformer/</guid>
       <description></description>
     </item>
     <item>
       <title>Nlp</title>
-      <link>http://localhost:1313/tags/nlp/</link>
+      <link>https://lukesalamone.github.io/tags/nlp/</link>
       <pubDate>Wed, 09 Nov 2022 02:42:51 -0700</pubDate>
-      <guid>http://localhost:1313/tags/nlp/</guid>
+      <guid>https://lukesalamone.github.io/tags/nlp/</guid>
       <description></description>
     </item>
     <item>
       <title>Qualitative-Reasoning</title>
-      <link>http://localhost:1313/tags/qualitative-reasoning/</link>
+      <link>https://lukesalamone.github.io/tags/qualitative-reasoning/</link>
       <pubDate>Sat, 08 Oct 2022 15:17:36 -0700</pubDate>
-      <guid>http://localhost:1313/tags/qualitative-reasoning/</guid>
+      <guid>https://lukesalamone.github.io/tags/qualitative-reasoning/</guid>
       <description></description>
     </item>
     <item>
       <title>Archive</title>
-      <link>http://localhost:1313/tags/archive/</link>
+      <link>https://lukesalamone.github.io/tags/archive/</link>
       <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
-      <guid>http://localhost:1313/tags/archive/</guid>
+      <guid>https://lukesalamone.github.io/tags/archive/</guid>
       <description></description>
     </item>
     <item>
       <title>Compress</title>
-      <link>http://localhost:1313/tags/compress/</link>
+      <link>https://lukesalamone.github.io/tags/compress/</link>
       <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
-      <guid>http://localhost:1313/tags/compress/</guid>
+      <guid>https://lukesalamone.github.io/tags/compress/</guid>
       <description></description>
     </item>
     <item>
       <title>Tar</title>
-      <link>http://localhost:1313/tags/tar/</link>
+      <link>https://lukesalamone.github.io/tags/tar/</link>
       <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
-      <guid>http://localhost:1313/tags/tar/</guid>
+      <guid>https://lukesalamone.github.io/tags/tar/</guid>
       <description></description>
     </item>
     <item>
       <title>Uncompress</title>
-      <link>http://localhost:1313/tags/uncompress/</link>
+      <link>https://lukesalamone.github.io/tags/uncompress/</link>
       <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
-      <guid>http://localhost:1313/tags/uncompress/</guid>
+      <guid>https://lukesalamone.github.io/tags/uncompress/</guid>
       <description></description>
     </item>
     <item>
       <title>Untar</title>
-      <link>http://localhost:1313/tags/untar/</link>
+      <link>https://lukesalamone.github.io/tags/untar/</link>
       <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
-      <guid>http://localhost:1313/tags/untar/</guid>
+      <guid>https://lukesalamone.github.io/tags/untar/</guid>
       <description></description>
     </item>
     <item>
       <title>Gpt2</title>
-      <link>http://localhost:1313/tags/gpt2/</link>
+      <link>https://lukesalamone.github.io/tags/gpt2/</link>
       <pubDate>Sun, 19 Sep 2021 20:13:09 -0500</pubDate>
-      <guid>http://localhost:1313/tags/gpt2/</guid>
+      <guid>https://lukesalamone.github.io/tags/gpt2/</guid>
       <description></description>
     </item>
     <item>
       <title>Jupyter</title>
-      <link>http://localhost:1313/tags/jupyter/</link>
+      <link>https://lukesalamone.github.io/tags/jupyter/</link>
       <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
-      <guid>http://localhost:1313/tags/jupyter/</guid>
+      <guid>https://lukesalamone.github.io/tags/jupyter/</guid>
       <description></description>
     </item>
     <item>
       <title>Quick-Reference</title>
-      <link>http://localhost:1313/tags/quick-reference/</link>
+      <link>https://lukesalamone.github.io/tags/quick-reference/</link>
       <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
-      <guid>http://localhost:1313/tags/quick-reference/</guid>
+      <guid>https://lukesalamone.github.io/tags/quick-reference/</guid>
       <description></description>
     </item>
     <item>
       <title>Bert</title>
-      <link>http://localhost:1313/tags/bert/</link>
+      <link>https://lukesalamone.github.io/tags/bert/</link>
       <pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
-      <guid>http://localhost:1313/tags/bert/</guid>
+      <guid>https://lukesalamone.github.io/tags/bert/</guid>
       <description></description>
     </item>
     <item>
       <title>Huggingface</title>
-      <link>http://localhost:1313/tags/huggingface/</link>
+      <link>https://lukesalamone.github.io/tags/huggingface/</link>
       <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
-      <guid>http://localhost:1313/tags/huggingface/</guid>
+      <guid>https://lukesalamone.github.io/tags/huggingface/</guid>
       <description></description>
     </item>
     <item>
       <title>Transformers</title>
-      <link>http://localhost:1313/tags/transformers/</link>
+      <link>https://lukesalamone.github.io/tags/transformers/</link>
       <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
-      <guid>http://localhost:1313/tags/transformers/</guid>
+      <guid>https://lukesalamone.github.io/tags/transformers/</guid>
       <description></description>
     </item>
     <item>
       <title>Webdev</title>
-      <link>http://localhost:1313/tags/webdev/</link>
+      <link>https://lukesalamone.github.io/tags/webdev/</link>
       <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
-      <guid>http://localhost:1313/tags/webdev/</guid>
+      <guid>https://lukesalamone.github.io/tags/webdev/</guid>
       <description></description>
     </item>
     <item>
       <title>Aws</title>
-      <link>http://localhost:1313/tags/aws/</link>
+      <link>https://lukesalamone.github.io/tags/aws/</link>
       <pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
-      <guid>http://localhost:1313/tags/aws/</guid>
+      <guid>https://lukesalamone.github.io/tags/aws/</guid>
       <description></description>
     </item>
     <item>
       <title>Json</title>
-      <link>http://localhost:1313/tags/json/</link>
+      <link>https://lukesalamone.github.io/tags/json/</link>
       <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
-      <guid>http://localhost:1313/tags/json/</guid>
+      <guid>https://lukesalamone.github.io/tags/json/</guid>
       <description></description>
     </item>
     <item>
       <title>Neural-Networks</title>
-      <link>http://localhost:1313/tags/neural-networks/</link>
+      <link>https://lukesalamone.github.io/tags/neural-networks/</link>
       <pubDate>Sun, 07 Mar 2021 01:31:51 -0600</pubDate>
-      <guid>http://localhost:1313/tags/neural-networks/</guid>
+      <guid>https://lukesalamone.github.io/tags/neural-networks/</guid>
       <description></description>
     </item>
     <item>
       <title>Stock-Trading</title>
-      <link>http://localhost:1313/tags/stock-trading/</link>
+      <link>https://lukesalamone.github.io/tags/stock-trading/</link>
       <pubDate>Sun, 07 Mar 2021 01:31:51 -0600</pubDate>
-      <guid>http://localhost:1313/tags/stock-trading/</guid>
+      <guid>https://lukesalamone.github.io/tags/stock-trading/</guid>
       <description></description>
     </item>
     <item>
       <title>Audio</title>
-      <link>http://localhost:1313/tags/audio/</link>
+      <link>https://lukesalamone.github.io/tags/audio/</link>
       <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
-      <guid>http://localhost:1313/tags/audio/</guid>
+      <guid>https://lukesalamone.github.io/tags/audio/</guid>
       <description></description>
     </item>
     <item>
       <title>Siamese-Neural-Network</title>
-      <link>http://localhost:1313/tags/siamese-neural-network/</link>
+      <link>https://lukesalamone.github.io/tags/siamese-neural-network/</link>
       <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
-      <guid>http://localhost:1313/tags/siamese-neural-network/</guid>
+      <guid>https://lukesalamone.github.io/tags/siamese-neural-network/</guid>
       <description></description>
     </item>
     <item>
       <title>Video</title>
-      <link>http://localhost:1313/tags/video/</link>
+      <link>https://lukesalamone.github.io/tags/video/</link>
       <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
-      <guid>http://localhost:1313/tags/video/</guid>
+      <guid>https://lukesalamone.github.io/tags/video/</guid>
       <description></description>
     </item>
     <item>
       <title>Minimax</title>
-      <link>http://localhost:1313/tags/minimax/</link>
+      <link>https://lukesalamone.github.io/tags/minimax/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
-      <guid>http://localhost:1313/tags/minimax/</guid>
+      <guid>https://lukesalamone.github.io/tags/minimax/</guid>
       <description></description>
     </item>
     <item>
       <title>Clustering</title>
-      <link>http://localhost:1313/tags/clustering/</link>
+      <link>https://lukesalamone.github.io/tags/clustering/</link>
       <pubDate>Wed, 07 Oct 2020 17:39:22 -0700</pubDate>
-      <guid>http://localhost:1313/tags/clustering/</guid>
+      <guid>https://lukesalamone.github.io/tags/clustering/</guid>
       <description></description>
     </item>
     <item>
       <title>Monte-Carlo</title>
-      <link>http://localhost:1313/tags/monte-carlo/</link>
+      <link>https://lukesalamone.github.io/tags/monte-carlo/</link>
       <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
-      <guid>http://localhost:1313/tags/monte-carlo/</guid>
+      <guid>https://lukesalamone.github.io/tags/monte-carlo/</guid>
       <description></description>
     </item>
     <item>
       <title>Geometry</title>
-      <link>http://localhost:1313/tags/geometry/</link>
+      <link>https://lukesalamone.github.io/tags/geometry/</link>
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
-      <guid>http://localhost:1313/tags/geometry/</guid>
+      <guid>https://lukesalamone.github.io/tags/geometry/</guid>
       <description></description>
     </item>
   </channel>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chatgpt on Luke Salamone&#39;s Blog</title>
-    <link>http://localhost:1313/tags/chatgpt/</link>
+    <link>https://lukesalamone.github.io/tags/chatgpt/</link>
     <description>Recent content in Chatgpt on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 30 Jul 2023 22:45:57 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/chatgpt/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lukesalamone.github.io/tags/chatgpt/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Can ChatGPT Recognize Handwritten Digits?</title>
-      <link>http://localhost:1313/posts/chatgpt-mnist/</link>
+      <link>https://lukesalamone.github.io/posts/chatgpt-mnist/</link>
       <pubDate>Sun, 30 Jul 2023 22:45:57 -0700</pubDate>
-      <guid>http://localhost:1313/posts/chatgpt-mnist/</guid>
+      <guid>https://lukesalamone.github.io/posts/chatgpt-mnist/</guid>
       <description>&lt;p&gt;&lt;strong&gt;TLDR: No. No it cannot.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a decoder-only model. It shouldn&amp;rsquo;t be able to perform an image recognition task. But then again, a decoder-only model wouldn&amp;rsquo;t have been my first choice for translation or summarization either. In my experience, ChatGPT has created translations which are at least as coherent and idiomatic as Google Translate, if not more so.&lt;/p&gt;</description>
     </item>
   </channel>

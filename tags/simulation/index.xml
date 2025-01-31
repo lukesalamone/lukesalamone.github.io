@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Simulation on Luke Salamone&#39;s Blog</title>
-    <link>http://localhost:1313/tags/simulation/</link>
+    <link>https://lukesalamone.github.io/tags/simulation/</link>
     <description>Recent content in Simulation on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 23 Aug 2023 23:34:38 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lukesalamone.github.io/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A 3D Game of Life</title>
-      <link>http://localhost:1313/posts/game-of-life-3d/</link>
+      <link>https://lukesalamone.github.io/posts/game-of-life-3d/</link>
       <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
-      <guid>http://localhost:1313/posts/game-of-life-3d/</guid>
+      <guid>https://lukesalamone.github.io/posts/game-of-life-3d/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life&#34;&gt;Conway&amp;rsquo;s Game of Life&lt;/a&gt; is a simulation developed in 1970 describing a grid of binary cells and transition rules for each cell which depend on the state of the cell&amp;rsquo;s neighbors. It&amp;rsquo;s capable of creating some pretty cool patterns.&lt;/p&gt;&#xA;&lt;p&gt;This variant of the Game of Life uses three overlapping channels, so instead of just one simulation, there are three simultaneous simulations. I visualize these in the three color channels, red, green and blue. Two or more channels active on the same cell are represented with &lt;a href=&#34;https://en.wikipedia.org/wiki/Additive_color&#34;&gt;additive color mixing&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
   </channel>

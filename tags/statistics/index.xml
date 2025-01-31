@@ -2,52 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Statistics on Luke Salamone&#39;s Blog</title>
-    <link>http://localhost:1313/tags/statistics/</link>
+    <link>https://lukesalamone.github.io/tags/statistics/</link>
     <description>Recent content in Statistics on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 25 Sep 2023 20:47:30 -0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lukesalamone.github.io/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What is a blunder in chess?</title>
-      <link>http://localhost:1313/posts/chess-blunders/</link>
+      <link>https://lukesalamone.github.io/posts/chess-blunders/</link>
       <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
-      <guid>http://localhost:1313/posts/chess-blunders/</guid>
+      <guid>https://lukesalamone.github.io/posts/chess-blunders/</guid>
       <description>&lt;p&gt;What is a blunder in chess? The tension between the qualitative and quantitative answers to this question is at the heart of different approaches towards chess, and more broadly, how quantitative metrics may lack context, but qualitative metrics lack precision.&lt;/p&gt;&#xA;&lt;h2 id=&#34;qualitative-answer&#34;&gt;Qualitative answer&lt;/h2&gt;&#xA;&lt;p&gt;There are many qualitative answers to this question, especially when comparing &amp;ldquo;blunders&amp;rdquo; and &amp;ldquo;mistakes&amp;rdquo;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&amp;ldquo;a move that negatively affects their position in a significant way&amp;rdquo; ~ &lt;a href=&#34;https://www.chess.com/terms/chess-blunder&#34;&gt;chess.com&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&amp;ldquo;severely worsens the player&amp;rsquo;s situation by allowing a loss of material, checkmate, or anything similar&amp;rdquo; ~ &lt;a href=&#34;https://en.wikipedia.org/wiki/Blunder_%28chess%29&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&amp;ldquo;Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.&amp;rdquo; ~ &lt;a href=&#34;https://www.reddit.com/r/chess/comments/1iiqyb/what_distinguishes_the_difference_between_a/&#34;&gt;r/chess&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;An issue with these qualitative answers is that while their words may be correct, smart people may still disagree with their applicability at the margins. For a suboptimal move to have a &amp;ldquo;significant&amp;rdquo; negative effect, it requires that the opponent notices and takes advantage of it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Alphabet Chess</title>
-      <link>http://localhost:1313/posts/alphabet-chess/</link>
+      <link>https://lukesalamone.github.io/posts/alphabet-chess/</link>
       <pubDate>Fri, 10 Jun 2022 23:56:14 -0500</pubDate>
-      <guid>http://localhost:1313/posts/alphabet-chess/</guid>
+      <guid>https://lukesalamone.github.io/posts/alphabet-chess/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.&lt;/p&gt;</description>
     </item>
     <item>
       <title>What is Marginalization?</title>
-      <link>http://localhost:1313/posts/what-is-marginalization/</link>
+      <link>https://lukesalamone.github.io/posts/what-is-marginalization/</link>
       <pubDate>Wed, 07 Jul 2021 14:23:12 -0500</pubDate>
-      <guid>http://localhost:1313/posts/what-is-marginalization/</guid>
+      <guid>https://lukesalamone.github.io/posts/what-is-marginalization/</guid>
       <description>&lt;p&gt;In machine learning and statistics, marginalization simply means summing over a set of independent variables. For example, suppose an avid tennis player kept track of the number of days he played tennis over a period of time as well as the weather on that day:&lt;/p&gt;&#xA;&lt;style&gt;&#xA;  .blue {&#xA;    background-color:#09f1;&#xA;  }&#xA;  .gray {&#xA;    background-color:#80808012;&#xA;  }&#xA;&lt;/style&gt;&#xA;&lt;table style=&#34;width:100%&#34;&gt;&#xA;  &lt;tr style=&#34;font-weight:bold&#34;&gt;&#xA;    &lt;th&gt;&lt;/th&gt;&#xA;    &lt;th&gt;&lt;/th&gt;&#xA;    &lt;th colspan=&#34;3&#34; style=&#34;text-align:center&#34;&gt;weather&lt;/th&gt;&#xA;    &lt;th&gt;&lt;/th&gt;&#xA;  &lt;/tr&gt;&#xA;  &lt;tr style=&#34;font-weight:bold; text-align:center; background-color: inherit&#34;&gt;&#xA;    &lt;td&gt;&lt;/td&gt;&#xA;    &lt;th&gt;&lt;/th&gt;&#xA;    &lt;td&gt;sunny&lt;/td&gt;&#xA;    &lt;td&gt;cloudy&lt;/td&gt;&#xA;    &lt;td&gt;rainy&lt;/td&gt;&#xA;    &lt;th&gt;totals&lt;/th&gt;&#xA;  &lt;/tr&gt;&#xA;  &lt;tr&gt;&#xA;  &#x9;&lt;td rowspan=&#34;2&#34; style=&#34;font-weight:bold; text-align:right&#34;&gt;play?&lt;/td&gt;&#xA;    &lt;td style=&#34;text-align:right&#34;&gt;yes&lt;/td&gt;&#xA;    &lt;td class=&#34;blue&#34;&gt;70&lt;/td&gt;&#xA;    &lt;td class=&#34;blue&#34;&gt;25&lt;/td&gt;&#xA;    &lt;td class=&#34;blue&#34;&gt;1&lt;/td&gt;&#xA;    &lt;td class=&#34;gray&#34; style=&#34;font-weight:bold&#34;&gt;96&lt;/td&gt;&#xA;  &lt;/tr&gt;&#xA;  &lt;tr style=&#34;background-color: inherit;&#34;&gt;&#xA;  &#x9;&lt;td style=&#34;text-align:right&#34;&gt;no&lt;/td&gt;&#xA;  &#x9;&lt;td class=&#34;blue&#34;&gt;70&lt;/td&gt;&#xA;    &lt;td class=&#34;blue&#34;&gt;5&lt;/td&gt;&#xA;    &lt;td class=&#34;blue&#34;&gt;9&lt;/td&gt;&#xA;    &lt;td class=&#34;gray&#34; style=&#34;font-weight:bold&#34;&gt;84&lt;/td&gt;&#xA;  &lt;/tr&gt;&#xA;  &lt;tr style=&#34;font-weight:bold&#34;&gt;&#xA;  &#x9;&lt;td colspan=&#34;2&#34; style=&#34;text-align:right&#34;&gt;totals&lt;/td&gt;&#xA;  &#x9;&lt;td class=&#34;gray&#34;&gt;140&lt;/td&gt;&#xA;    &lt;td class=&#34;gray&#34;&gt;30&lt;/td&gt;&#xA;    &lt;td class=&#34;gray&#34;&gt;10&lt;/td&gt;&#xA;    &lt;td class=&#34;gray&#34;&gt;180&lt;/td&gt;&#xA;  &lt;/tr&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;(&lt;em&gt;In this table we&amp;rsquo;re keeping track of the number of days. If you want probabilities, divide each value in the table by 180. But I think whole numbers are easier to think about so I&amp;rsquo;m keeping them.&lt;/em&gt;)&lt;/p&gt;</description>
     </item>
     <item>
       <title>What is Perplexity?</title>
-      <link>http://localhost:1313/posts/perplexity/</link>
+      <link>https://lukesalamone.github.io/posts/perplexity/</link>
       <pubDate>Thu, 01 Apr 2021 12:14:49 -0500</pubDate>
-      <guid>http://localhost:1313/posts/perplexity/</guid>
+      <guid>https://lukesalamone.github.io/posts/perplexity/</guid>
       <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;&lt;strong&gt;TLDR: NLP metric ranging from 1 to infinity. Lower is better.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;In natural language processing, perplexity is the most common metric used to measure the performance of a language model. To calculate perplexity, we use the following formula:&lt;/p&gt;</description>
     </item>
     <item>
       <title>What is the Hardest Hangman Word?</title>
-      <link>http://localhost:1313/posts/hardest-hangman-word/</link>
+      <link>https://lukesalamone.github.io/posts/hardest-hangman-word/</link>
       <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
-      <guid>http://localhost:1313/posts/hardest-hangman-word/</guid>
+      <guid>https://lukesalamone.github.io/posts/hardest-hangman-word/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/p33HisS.png&#34; alt=&#34;Example hangman game&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people. Player A chooses a secret word, and tells player B the length of the secret word. Player B guesses letters which she thinks might be in the word. If she chooses a correct letter, player A reveals the locations of &lt;em&gt;each instance&lt;/em&gt; of the guessed letter. However, if player B guesses an incorrect letter, this counts as a &amp;ldquo;strike&amp;rdquo; against her. After an agreed-upon number of strikes, player B loses.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Estimating Pi with a Monte Carlo Simulation</title>
-      <link>http://localhost:1313/posts/monte-carlo/</link>
+      <link>https://lukesalamone.github.io/posts/monte-carlo/</link>
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
-      <guid>http://localhost:1313/posts/monte-carlo/</guid>
+      <guid>https://lukesalamone.github.io/posts/monte-carlo/</guid>
       <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Quick-Reference on Luke Salamone&#39;s Blog</title>
-    <link>http://localhost:1313/tags/quick-reference/</link>
+    <link>https://lukesalamone.github.io/tags/quick-reference/</link>
     <description>Recent content in Quick-Reference on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 07 Sep 2021 09:10:56 -0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/quick-reference/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lukesalamone.github.io/tags/quick-reference/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Connect Jupyter to Remote</title>
-      <link>http://localhost:1313/posts/connect-jupyter-to-remote/</link>
+      <link>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</link>
       <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
-      <guid>http://localhost:1313/posts/connect-jupyter-to-remote/</guid>
+      <guid>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</guid>
       <description>&lt;p&gt;Here&amp;rsquo;s how to connect to a remote Jupyter notebook.&lt;/p&gt;&#xA;&lt;p&gt;Create an ssh tunnel to your remote machine:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ssh -L 8080:localhost:8080 user@12.34.56.78&#xA;&#xA;# or use a .pem file to connect to ec2&#xA;ssh -L 8080:localhost:8080 -i &amp;quot;aws.pem&amp;quot; ec2-user@ec2-12-34-56-78.compute-1.amazonaws.com&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Start Jupyter on that machine in headless mode:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;jupyter notebook --no-browser --port=8080&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Use a browser to open one of the urls that Jupyter presents:&lt;br&gt;&#xA;http://localhost:8080/?token=xyz&lt;/p&gt;</description>
     </item>
     <item>
       <title>Colab: Connect to Google Drive</title>
-      <link>http://localhost:1313/posts/connect-to-colab/</link>
+      <link>https://lukesalamone.github.io/posts/connect-to-colab/</link>
       <pubDate>Wed, 30 Jun 2021 22:58:18 -0500</pubDate>
-      <guid>http://localhost:1313/posts/connect-to-colab/</guid>
+      <guid>https://lukesalamone.github.io/posts/connect-to-colab/</guid>
       <description>&lt;p&gt;Here&amp;rsquo;s how to connect your Google Colab notebook to your Drive directory:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from google.colab import drive&#xA;drive.mount(&#39;/content/gdrive&#39;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Follow the prompts from there. That is all.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Python: Serve an HTML File</title>
-      <link>http://localhost:1313/posts/python-serve-html/</link>
+      <link>https://lukesalamone.github.io/posts/python-serve-html/</link>
       <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
-      <guid>http://localhost:1313/posts/python-serve-html/</guid>
+      <guid>https://lukesalamone.github.io/posts/python-serve-html/</guid>
       <description>&lt;p&gt;If you want to serve some HTML with python run&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;python -m http.server 8000&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Then navigate to &lt;a href=&#34;http://localhost:8000/&#34;&gt;http://localhost:8000&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.&lt;/p&gt;</description>
     </item>
     <item>
       <title>S3 Bucket Url</title>
-      <link>http://localhost:1313/posts/s3-bucket-url/</link>
+      <link>https://lukesalamone.github.io/posts/s3-bucket-url/</link>
       <pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
-      <guid>http://localhost:1313/posts/s3-bucket-url/</guid>
+      <guid>https://lukesalamone.github.io/posts/s3-bucket-url/</guid>
       <description>&lt;p&gt;Assuming your bucket is publicly accessible, the url of your S3 bucket will be&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;http://[bucket-name].s3-website-[region].amazonaws.com&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;http://mybucket.s3-website-us-east-1.amazonaws.com&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>About My Quick Reference Articles</title>
-      <link>http://localhost:1313/posts/why-how-to/</link>
+      <link>https://lukesalamone.github.io/posts/why-how-to/</link>
       <pubDate>Sun, 07 Mar 2021 14:44:37 -0600</pubDate>
-      <guid>http://localhost:1313/posts/why-how-to/</guid>
+      <guid>https://lukesalamone.github.io/posts/why-how-to/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve created a few quick-reference articles and it might not be clear why. There are a few reasons:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;These articles are mainly a reference for me. I find myself searching the same things over and over, looking for the purple link, scrolling through the article, then copy &amp;amp; pasting code. I&amp;rsquo;d rather not go through the hassle. These articles aim to solve that problem.&lt;/li&gt;&#xA;&lt;li&gt;I aim to keep the answers &lt;a href=&#34;https://en.wikipedia.org/wiki/Above_the_fold#In_web_design&#34;&gt;above the fold&lt;/a&gt;. I don&amp;rsquo;t want to have to scroll down to find the answer. I almost never read the surrounding prose when I am in &amp;ldquo;coding mode&amp;rdquo;.&lt;/li&gt;&#xA;&lt;li&gt;I don&amp;rsquo;t have ads or popups on my blog. I will never ask people to sign up for a newsletter or login to read more. I also don&amp;rsquo;t use pictures unless there&amp;rsquo;s a good reason. &lt;a href=&#34;https://www.google.com/search?q=ai&amp;#43;thinking&amp;#43;robot&amp;#43;stock&amp;#43;photo&amp;amp;tbm=isch&#34;&gt;The &amp;ldquo;thinking AI robot stock photo&amp;rdquo; industry is definitely a bubble.&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;Writing these things out explicitly helps me to remember them. Paradoxically, this may make these how-to pages less useful to me, but maybe someone else will find them useful.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;These quick reference articles don&amp;rsquo;t explain much because I don&amp;rsquo;t need an explanation of what is going on. I just need a chunk of working code. There are other websites which have far more comprehensive guides covering how to do things. They cover all of the fundamentals of how things are done. But I don&amp;rsquo;t need that, I just want a 30 second reference with a working chunk of code.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Python: Read &amp; Write Json</title>
-      <link>http://localhost:1313/posts/read-write-json/</link>
+      <link>https://lukesalamone.github.io/posts/read-write-json/</link>
       <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
-      <guid>http://localhost:1313/posts/read-write-json/</guid>
+      <guid>https://lukesalamone.github.io/posts/read-write-json/</guid>
       <description>&lt;p&gt;Often it is useful to save python data to json files. The following code will demonstrate how that can be done.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;God bless JSON!&amp;rdquo; ~ a soon to be famous programmer&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import json&#xA;&#xA;data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}&#xA;filename = &#39;awesome_data.json&#39;&#xA;&#xA;# write data to file&#xA;with open(filename, &#39;w&#39;) as f:&#xA;  json.dump(data, f)&#xA;&#xA;&#xA;# read json from file&#xA;with open(filename, &#39;r&#39;) as f:&#xA;  data = json.load(f)&#xA;&#xA;&#xA;print(data)&#xA;# prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>Python: Formatting a string</title>
-      <link>http://localhost:1313/posts/python-format-string/</link>
+      <link>https://lukesalamone.github.io/posts/python-format-string/</link>
       <pubDate>Wed, 24 Feb 2021 21:22:42 -0600</pubDate>
-      <guid>http://localhost:1313/posts/python-format-string/</guid>
+      <guid>https://lukesalamone.github.io/posts/python-format-string/</guid>
       <description>&lt;p&gt;There are three main ways to format strings in python:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;name = &#39;Luke&#39;&#xA;food = &#39;pizza&#39;&#xA;&#xA;# old style&#xA;&amp;quot;My name is %s and I like %s.&amp;quot; % (name, food)&#xA;&#xA;# str.format()&#xA;&amp;quot;My name is {0} and I like {1}.&amp;quot;.format(name, food)&#xA;&#xA;# f-strings&#xA;f&amp;quot;My name is {name} and I like {food}.&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>Managing Python Environments</title>
-      <link>http://localhost:1313/posts/managing-python-environments/</link>
+      <link>https://lukesalamone.github.io/posts/managing-python-environments/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
-      <guid>http://localhost:1313/posts/managing-python-environments/</guid>
+      <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
       <description>&lt;p&gt;Need to switch between python versions often? Use &lt;a href=&#34;https://github.com/pyenv/pyenv&#34;&gt;&lt;code&gt;pyenv&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;installing-pyenv&#34;&gt;Installing pyenv&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# install pyenv&#xA;curl https://pyenv.run | bash&#xA;&#xA;# check pyenv install location&#xA;which pyenv&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;install-another-python-version&#34;&gt;Install another python version&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# see a list of available python versions&#xA;pyenv install --list&#xA;&#xA;# check installed python versions&#xA;pyenv versions&#xA;&#xA;# installs python 3.7.5&#xA;pyenv install 3.7.5&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;switch-python-versions&#34;&gt;Switch python versions&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# use python 3.7.5 everywhere on your machine&#xA;pyenv global 3.7.5&#xA;&#xA;# use python 3.7.5 in current directory&#xA;pyenv local 3.7.5&#xA;&#xA;# use python 3.7.5 in current shell session&#xA;pyenv shell 3.7.5&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
   </channel>

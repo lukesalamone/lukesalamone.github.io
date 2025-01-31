@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Siamese-Neural-Network on Luke Salamone&#39;s Blog</title>
-    <link>http://localhost:1313/tags/siamese-neural-network/</link>
+    <link>https://lukesalamone.github.io/tags/siamese-neural-network/</link>
     <description>Recent content in Siamese-Neural-Network on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 17 Dec 2020 11:22:43 -0600</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/siamese-neural-network/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lukesalamone.github.io/tags/siamese-neural-network/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Siamese Neural Networks (Video)</title>
-      <link>http://localhost:1313/posts/siamese-nn-video/</link>
+      <link>https://lukesalamone.github.io/posts/siamese-nn-video/</link>
       <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
-      <guid>http://localhost:1313/posts/siamese-nn-video/</guid>
+      <guid>https://lukesalamone.github.io/posts/siamese-nn-video/</guid>
       <description>&lt;div style=&#34;text-align:center&#34;&gt;&#xA;  &lt;iframe src=&#34;https://player.vimeo.com/video/491725663&#34; width=&#34;640&#34; height=&#34;360&#34; frameborder=&#34;0&#34; allow=&#34;autoplay; fullscreen&#34; allowfullscreen&gt;&lt;/iframe&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&lt;em&gt;The following is a transcript of the above video&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;In this paper, the authors present a novel neural network architecture to enable audio search via sounds humans are able to make, for example humming and whistling. This is an important capability when searching through audio for a specific sound.&lt;/p&gt;&#xA;&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;&#xA;&lt;p&gt;Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one. It could be very tedious to listen to every single one until you can find the right sound. Even if the sounds do have some kind of word labels, it could be hard to pinpoint exactly which words to search for. A lot of sounds don’t exactly lend themselves to text descriptors, so finding the right sound can be difficult with a text search.&lt;/p&gt;</description>
     </item>
   </channel>

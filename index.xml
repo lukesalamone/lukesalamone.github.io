@@ -2,360 +2,360 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Luke Salamone&#39;s Blog</title>
-    <link>http://localhost:1313/</link>
+    <link>https://lukesalamone.github.io/</link>
     <description>Recent content on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 28 Jan 2025 08:35:55 -0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lukesalamone.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Notes on Deepseek R1</title>
-      <link>http://localhost:1313/posts/notes-on-deepseek-r1/</link>
+      <link>https://lukesalamone.github.io/posts/notes-on-deepseek-r1/</link>
       <pubDate>Tue, 28 Jan 2025 08:35:55 -0800</pubDate>
-      <guid>http://localhost:1313/posts/notes-on-deepseek-r1/</guid>
+      <guid>https://lukesalamone.github.io/posts/notes-on-deepseek-r1/</guid>
       <description>&lt;p&gt;DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many decoder-based models in the past which simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before the final answer is given. According to the researchers, its performance is on par with OpenAI&amp;rsquo;s O1 model.&lt;/p&gt;&#xA;&lt;h2 id=&#34;terminology&#34;&gt;Terminology&lt;/h2&gt;&#xA;&lt;p&gt;First, I will briefly describe some terminology related to training techniques:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Supervised fine-tuning (SFT)&lt;/strong&gt; is a process which uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Space Is Really Big</title>
-      <link>http://localhost:1313/posts/space-is-really-big/</link>
+      <link>https://lukesalamone.github.io/posts/space-is-really-big/</link>
       <pubDate>Mon, 29 Jul 2024 12:16:49 -0700</pubDate>
-      <guid>http://localhost:1313/posts/space-is-really-big/</guid>
+      <guid>https://lukesalamone.github.io/posts/space-is-really-big/</guid>
       <description>&lt;figure&gt;&lt;img src=&#34;./img/earth_moon.png&#34;&#xA;    alt=&#34;More than 30 earths could fit between the earth and the moon.&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;More than 30 earths could fit between the earth and the moon.&lt;/p&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;Our &lt;a href=&#34;https://science.nasa.gov/wp-content/uploads/2023/07/pia06890-our-solar-system-banner-1920x640-1.jpg&#34;&gt;elementary school models&lt;/a&gt; of the solar system really undersell how big space is. The problem is, space is too big and human brains are bad at exponentials. Logarithmic charts like &lt;a href=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Interstellar_medium_annotated.jpg/1920px-Interstellar_medium_annotated.jpg&#34;&gt;this one&lt;/a&gt; are technically accurate, but my brain has a hard time contextualizing it.&lt;/p&gt;&#xA;&lt;p&gt;To get an idea of how big space really is, let&amp;rsquo;s imagine that the earth is one millimeter wide. At that scale:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Custom PyTorch Collate Function</title>
-      <link>http://localhost:1313/posts/custom-pytorch-collate/</link>
+      <link>https://lukesalamone.github.io/posts/custom-pytorch-collate/</link>
       <pubDate>Fri, 12 Jul 2024 14:48:27 -0700</pubDate>
-      <guid>http://localhost:1313/posts/custom-pytorch-collate/</guid>
+      <guid>https://lukesalamone.github.io/posts/custom-pytorch-collate/</guid>
       <description>&lt;p&gt;If your &lt;code&gt;Dataset&lt;/code&gt; class looks something like&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class MyDataset(Dataset):&#xA;  &#xA;  # ... boilerplate ...&#xA;&#xA;  def __getitem__(self, idx):&#xA;    item = self.data[idx]&#xA;    return item[&#39;anchor&#39;], item[&#39;positive&#39;], item[&#39;negative&#39;]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;your collate function should be&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def collate_fn(data):&#xA;    anchors, pos, neg = zip(*data)&#xA;    anchors = tokenizer(anchors, return_tensors=&amp;quot;pt&amp;quot;, padding=True)&#xA;    pos = tokenizer(pos, return_tensors=&amp;quot;pt&amp;quot;, padding=True)&#xA;    neg = tokenizer(neg, return_tensors=&amp;quot;pt&amp;quot;, padding=True)&#xA;    return anchors, pos, neg&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;and you can use it like&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;dataset = MyDataset()&#xA;dataloader = DataLoader(dataset, &#xA;                        batch_size=4, &#xA;                        shuffle=True,&#xA;                        pin_memory=True,&#xA;                        collate_fn=collate_fn)&#xA;&#xA;for anchors, positives, negatives in dataloader:&#xA;  anchors = anchors.to(device)&#xA;  positives = positives.to(device)&#xA;  negatives = negatives.to(device)&#xA;  &#xA;  # do more stuff&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;how-does-the-collate_fn-work&#34;&gt;How does the collate_fn work?&lt;/h2&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;./img/torch_collate_fn.png&#34;&#xA;    alt=&#34;The PyTorch collate function accepts a list of results from calls to the dataset getitem function and combines their components into tensors for convenient training.&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;The PyTorch collate function accepts a list of results from calls to the dataset &lt;strong&gt;getitem&lt;/strong&gt; function and combines their components into tensors for convenient training.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Very Large Datasets in PyTorch</title>
-      <link>http://localhost:1313/posts/very-large-datasets/</link>
+      <link>https://lukesalamone.github.io/posts/very-large-datasets/</link>
       <pubDate>Thu, 27 Jun 2024 18:40:06 -0700</pubDate>
-      <guid>http://localhost:1313/posts/very-large-datasets/</guid>
+      <guid>https://lukesalamone.github.io/posts/very-large-datasets/</guid>
       <description>&lt;blockquote&gt;&#xA;&lt;p&gt;In God we trust. All others must bring data. ~ W. Edwards Deming&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;datasets-that-fit-in-memory&#34;&gt;Datasets that fit in memory&lt;/h2&gt;&#xA;&lt;p&gt;For simple machine learning problems, your PyTorch dataset class probably looks something like this:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class SimpleDataset(Dataset):&#xA;    def __init__(self, features, targets):&#xA;        self.features = []&#xA;        for feature in features:&#xA;            self.features.append(self._feature_transform(feature))&#xA;        self.targets = targets&#xA;&#xA;    def _feature_transform(self, feature):&#xA;        # Optional feature transformation function which &#xA;        # converts each feature into its input representation &#xA;        # for the model. This might be an expensive operation, &#xA;        # so its best to do now rather than during training.&#xA;        return some_transformation_fn(feature)&#xA;&#xA;    def __len__(self):&#xA;        return len(self.features)&#xA;&#xA;    def __getitem__(self, idx):&#xA;        return self.features[idx], self.targets[idx]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;With this method, we basically load all of the data into RAM at once, which is perfectly fine for small datasets. But sooner or later you&amp;rsquo;re going to run into a machine learning problem with a large dataset. What do I mean by this? I mean a dataset which can&amp;rsquo;t easily fit into RAM/VRAM.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How to Create Rust Python Bindings</title>
-      <link>http://localhost:1313/posts/how-to-create-rust-python-bindings/</link>
+      <link>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</link>
       <pubDate>Tue, 18 Jun 2024 16:21:35 -0700</pubDate>
-      <guid>http://localhost:1313/posts/how-to-create-rust-python-bindings/</guid>
+      <guid>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</guid>
       <description>&lt;p&gt;Rust is super fast. Python is super flexible. Porting slow python code to rust can make your life a lot easier, and it&amp;rsquo;s not too difficult to set up.&lt;/p&gt;&#xA;&lt;p&gt;I will demonstrate rust bindings for summing the integers in a large text file containing a billion digits that looks like&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;6,9,8,3,0,1,8,4,9,7,6,3,4,2,6,0,0,5,1,1, . . . ,4,5,9,3,3,2,8,3&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;general-steps&#34;&gt;General steps&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;./posts/how-to-create-rust-python-bindings/#install-rust-and-maturin&#34;&gt;install rust and maturin&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;./posts/how-to-create-rust-python-bindings/#set-up-boilerplate&#34;&gt;set up boilerplate&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;./posts/how-to-create-rust-python-bindings/#add-your-function&#34;&gt;add your function&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;./posts/how-to-create-rust-python-bindings/#compile-and-import&#34;&gt;compile and import&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;install-rust-and-maturin&#34;&gt;Install Rust and Maturin&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl --proto &#39;=https&#39; --tlsv1.2 -sSf https://sh.rustup.rs | sh&#xA;pip install maturin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;See also &lt;a href=&#34;https://www.rust-lang.org/tools/install&#34;&gt;install rust&lt;/a&gt; and &lt;a href=&#34;https://www.maturin.rs/installation&#34;&gt;install maturin&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Most Ramified Chess Position of 2023</title>
-      <link>http://localhost:1313/posts/most-ramified-chess-position-2023/</link>
+      <link>https://lukesalamone.github.io/posts/most-ramified-chess-position-2023/</link>
       <pubDate>Thu, 13 Jun 2024 19:38:39 -0700</pubDate>
-      <guid>http://localhost:1313/posts/most-ramified-chess-position-2023/</guid>
+      <guid>https://lukesalamone.github.io/posts/most-ramified-chess-position-2023/</guid>
       <description>&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js&#34;&gt;&lt;/script&gt;&#xA;&lt;p&gt;&lt;strong&gt;I spent some time considering words to describe a chess position with many legal moves. &amp;ldquo;Complex&amp;rdquo; doesn&amp;rsquo;t quite capture the situation since we would usually describe a complex position as one with many tactical interations. &lt;a href=&#34;https://en.wikipedia.org/wiki/Ramification_%28botany%29&#34;&gt;Ramified&lt;/a&gt; seems to make the most sense, as it describes &amp;ldquo;branching out&amp;rdquo;.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;The opening position in chess has 20 legal moves. From there, the number of legal moves in a position tends to increase as pieces move towards the center of the board, before decreasing as the number of pieces on the board drops in the endgame.&lt;/p&gt;</description>
     </item>
     <item>
       <title>What are Sparse Autoencoders?</title>
-      <link>http://localhost:1313/posts/sparse-autoencoder/</link>
+      <link>https://lukesalamone.github.io/posts/sparse-autoencoder/</link>
       <pubDate>Thu, 06 Jun 2024 16:30:27 -0700</pubDate>
-      <guid>http://localhost:1313/posts/sparse-autoencoder/</guid>
+      <guid>https://lukesalamone.github.io/posts/sparse-autoencoder/</guid>
       <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    // Fix &lt;code&gt; tags after MathJax finishes running. This is a&#xA;    // hack to overcome a shortcoming of Markdown. Discussion at&#xA;    // https://github.com/mojombo/jekyll/issues/199&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;&lt;strong&gt;TLDR: A sparse autoencoder is just a regular autoencoder that encourages sparsity with an L1 penalty or KL divergence loss rather than using a low-dimensional bottleneck.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>How does HNSW work?</title>
-      <link>http://localhost:1313/posts/how-does-hnsw-work/</link>
+      <link>https://lukesalamone.github.io/posts/how-does-hnsw-work/</link>
       <pubDate>Mon, 20 May 2024 13:38:01 -0700</pubDate>
-      <guid>http://localhost:1313/posts/how-does-hnsw-work/</guid>
+      <guid>https://lukesalamone.github.io/posts/how-does-hnsw-work/</guid>
       <description>&lt;p&gt;Suppose we have a vector database with a billion items in it (the &lt;em&gt;haystack&lt;/em&gt;). And suppose we are looking for K vectors, the &lt;em&gt;needles&lt;/em&gt; which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing &lt;code&gt;1-distance(x,y)&lt;/code&gt;.) And also suppose that we&amp;rsquo;d like to do this quickly.&lt;/p&gt;&#xA;&lt;h2 id=&#34;naive-and-semi-naive-approaches&#34;&gt;Naive and semi-naive approaches&lt;/h2&gt;&#xA;&lt;p&gt;One approach might be to compare every vector and take the argmax. In that case, for vectors of length D our runtime will be &lt;code&gt;1 billion x D&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Learning the Haystack</title>
-      <link>http://localhost:1313/posts/learning-the-haystack/</link>
+      <link>https://lukesalamone.github.io/posts/learning-the-haystack/</link>
       <pubDate>Wed, 27 Mar 2024 18:19:54 -0700</pubDate>
-      <guid>http://localhost:1313/posts/learning-the-haystack/</guid>
+      <guid>https://lukesalamone.github.io/posts/learning-the-haystack/</guid>
       <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    // Fix &lt;code&gt; tags after MathJax finishes running. This is a&#xA;    // hack to overcome a shortcoming of Markdown. Discussion at&#xA;    // https://github.com/mojombo/jekyll/issues/199&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vectorized K-Means Clustering</title>
-      <link>http://localhost:1313/posts/vectorized-kmeans/</link>
+      <link>https://lukesalamone.github.io/posts/vectorized-kmeans/</link>
       <pubDate>Sun, 04 Feb 2024 23:39:29 -0700</pubDate>
-      <guid>http://localhost:1313/posts/vectorized-kmeans/</guid>
+      <guid>https://lukesalamone.github.io/posts/vectorized-kmeans/</guid>
       <description>&lt;p&gt;K-means clustering (&lt;a href=&#34;./posts/kmeans-clustering/&#34;&gt;previous discussion&lt;/a&gt;) is an unsupervised learning algorithm which assigns points to one of K different clusters based on the distance of that point to a centroid. The points may represent physical locations, or embeddings in high-dimensional vector space.&lt;/p&gt;&#xA;&lt;p&gt;🌟Check out the demo (in two dimensions) below. Centroids are colored white.🌟&lt;/p&gt;&#xA;&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js&#34;&gt;&lt;/script&gt;&#xA;&lt;script src=&#34;./js/kmeans_demo.js&#34;&gt;&lt;/script&gt;&#xA;&lt;div id=&#39;demo&#39;&gt;&#xA;&lt;button style=&#34;border:1px solid #09f&#34;&gt;start&lt;/button&gt;&#xA;&lt;canvas id=&#34;myChart&#34; style=&#34;background-color: #0000&#34; width=&#34;500px&#34; height=&#34;500px&#34;&gt;&lt;/canvas&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;Note that the points are changing color only, not moving.&lt;/p&gt;&#xA;&lt;h2 id=&#34;general-algorithm&#34;&gt;General algorithm&lt;/h2&gt;&#xA;&lt;p&gt;The basic K-means algorithm is fairly simple and has two steps, repeated until convergence (i.e. when no points change cluster):&lt;/p&gt;</description>
     </item>
     <item>
       <title>Summary: Deep &amp; Cross Net v2</title>
-      <link>http://localhost:1313/posts/deep-cross-net-v2/</link>
+      <link>https://lukesalamone.github.io/posts/deep-cross-net-v2/</link>
       <pubDate>Mon, 02 Oct 2023 12:39:18 -0700</pubDate>
-      <guid>http://localhost:1313/posts/deep-cross-net-v2/</guid>
+      <guid>https://lukesalamone.github.io/posts/deep-cross-net-v2/</guid>
       <description>&lt;p&gt;Paper link: &lt;a href=&#34;https://arxiv.org/pdf/2008.13535&#34;&gt;https://arxiv.org/pdf/2008.13535&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Learning to rank is an important problem in many machine-learning products such as search, recommendation, and advertising. Originally, many machine learning systems used simple logistic regression models, but it quickly became apparent that combining two or more features together was &lt;a href=&#34;https://www.ismll.uni-hildesheim.de/pub/pdfs/Rendle2010FM.pdf&#34;&gt;even better&lt;/a&gt;. This is called feature crossing.&lt;/p&gt;&#xA;&lt;p&gt;A lot of research and engineering work has gone into learning useful feature crosses. The fundamental problem is that although higher-order feature crosses can be more informative, they are also more sparse, and the number of high order features grows exponentially. Some attempts to address this have been:&lt;/p&gt;</description>
     </item>
     <item>
       <title>What is a blunder in chess?</title>
-      <link>http://localhost:1313/posts/chess-blunders/</link>
+      <link>https://lukesalamone.github.io/posts/chess-blunders/</link>
       <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
-      <guid>http://localhost:1313/posts/chess-blunders/</guid>
+      <guid>https://lukesalamone.github.io/posts/chess-blunders/</guid>
       <description>&lt;p&gt;What is a blunder in chess? The tension between the qualitative and quantitative answers to this question is at the heart of different approaches towards chess, and more broadly, how quantitative metrics may lack context, but qualitative metrics lack precision.&lt;/p&gt;&#xA;&lt;h2 id=&#34;qualitative-answer&#34;&gt;Qualitative answer&lt;/h2&gt;&#xA;&lt;p&gt;There are many qualitative answers to this question, especially when comparing &amp;ldquo;blunders&amp;rdquo; and &amp;ldquo;mistakes&amp;rdquo;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&amp;ldquo;a move that negatively affects their position in a significant way&amp;rdquo; ~ &lt;a href=&#34;https://www.chess.com/terms/chess-blunder&#34;&gt;chess.com&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&amp;ldquo;severely worsens the player&amp;rsquo;s situation by allowing a loss of material, checkmate, or anything similar&amp;rdquo; ~ &lt;a href=&#34;https://en.wikipedia.org/wiki/Blunder_%28chess%29&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&amp;ldquo;Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.&amp;rdquo; ~ &lt;a href=&#34;https://www.reddit.com/r/chess/comments/1iiqyb/what_distinguishes_the_difference_between_a/&#34;&gt;r/chess&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;An issue with these qualitative answers is that while their words may be correct, smart people may still disagree with their applicability at the margins. For a suboptimal move to have a &amp;ldquo;significant&amp;rdquo; negative effect, it requires that the opponent notices and takes advantage of it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>A 3D Game of Life</title>
-      <link>http://localhost:1313/posts/game-of-life-3d/</link>
+      <link>https://lukesalamone.github.io/posts/game-of-life-3d/</link>
       <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
-      <guid>http://localhost:1313/posts/game-of-life-3d/</guid>
+      <guid>https://lukesalamone.github.io/posts/game-of-life-3d/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life&#34;&gt;Conway&amp;rsquo;s Game of Life&lt;/a&gt; is a simulation developed in 1970 describing a grid of binary cells and transition rules for each cell which depend on the state of the cell&amp;rsquo;s neighbors. It&amp;rsquo;s capable of creating some pretty cool patterns.&lt;/p&gt;&#xA;&lt;p&gt;This variant of the Game of Life uses three overlapping channels, so instead of just one simulation, there are three simultaneous simulations. I visualize these in the three color channels, red, green and blue. Two or more channels active on the same cell are represented with &lt;a href=&#34;https://en.wikipedia.org/wiki/Additive_color&#34;&gt;additive color mixing&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Can ChatGPT Recognize Handwritten Digits?</title>
-      <link>http://localhost:1313/posts/chatgpt-mnist/</link>
+      <link>https://lukesalamone.github.io/posts/chatgpt-mnist/</link>
       <pubDate>Sun, 30 Jul 2023 22:45:57 -0700</pubDate>
-      <guid>http://localhost:1313/posts/chatgpt-mnist/</guid>
+      <guid>https://lukesalamone.github.io/posts/chatgpt-mnist/</guid>
       <description>&lt;p&gt;&lt;strong&gt;TLDR: No. No it cannot.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a decoder-only model. It shouldn&amp;rsquo;t be able to perform an image recognition task. But then again, a decoder-only model wouldn&amp;rsquo;t have been my first choice for translation or summarization either. In my experience, ChatGPT has created translations which are at least as coherent and idiomatic as Google Translate, if not more so.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Paper Summary: Antenna Design with Evolutionary Algorithms</title>
-      <link>http://localhost:1313/posts/evolutionary-antenna-design/</link>
+      <link>https://lukesalamone.github.io/posts/evolutionary-antenna-design/</link>
       <pubDate>Mon, 17 Apr 2023 19:46:25 -0700</pubDate>
-      <guid>http://localhost:1313/posts/evolutionary-antenna-design/</guid>
+      <guid>https://lukesalamone.github.io/posts/evolutionary-antenna-design/</guid>
       <description>&lt;p&gt;&lt;strong&gt;This is a summary of &lt;a href=&#34;https://www.researchgate.net/profile/Al-Globus/publication/228909002_Automated_Antenna_Design_with_Evolutionary_Algorithms/links/547375300cf216f8cfaff65a/Automated-Antenna-Design-with-Evolutionary-Algorithms.pdf&#34;&gt;Automated Antenna Design with Evolutionary Algorithms&lt;/a&gt;, a 2006 paper by Hornby et al. As large language models become more and more synonymous with &amp;ldquo;AI&amp;rdquo;, it is interesting to see how researchers solved problems in the past.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Typically, antennas are designed and built by hand by domain experts. This is a very time-consuming process, however, so researchers have been investigating evolutionary algorithms since the 1990s. Inspired by natural evolution, an evolutionary algorithm is based on small, random changes and an evaluation metric. In this paper, the authors describe the use of an evolutionary algorithm to design an antenna for a small satellite weighing only 25 kilograms called ST5.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Paper Summary: Dual-Encoders in Ranking</title>
-      <link>http://localhost:1313/posts/dual-encoders-ranking/</link>
+      <link>https://lukesalamone.github.io/posts/dual-encoders-ranking/</link>
       <pubDate>Sat, 17 Dec 2022 16:53:47 -0800</pubDate>
-      <guid>http://localhost:1313/posts/dual-encoders-ranking/</guid>
+      <guid>https://lukesalamone.github.io/posts/dual-encoders-ranking/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://proceedings.mlr.press/v162/menon22a/menon22a.pdf&#34;&gt;In Defense of Dual-Encoders for Neural Ranking by Menon et. al.&lt;/a&gt; discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&amp;rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.&lt;/p&gt;&#xA;&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches. An example of a bag-of-words approach might simply be to count the number of similar words between the query and each document, and return the document with the highest number of similar words. There are word-stuffing issues with this idea, but the larger issue is that a bag-of-words strategy can&amp;rsquo;t account for synonyms. If I search for &lt;em&gt;bad guy&lt;/em&gt; I will never find &lt;em&gt;villain&lt;/em&gt; without some additional logic to account for this. A neural network implicitly understands the relationship between words, and avoids the fragile logic of simple word counts.&lt;/p&gt;</description>
     </item>
     <item>
       <title>My Favorite Antimaia Games</title>
-      <link>http://localhost:1313/posts/best-antimaia-games/</link>
+      <link>https://lukesalamone.github.io/posts/best-antimaia-games/</link>
       <pubDate>Sat, 26 Nov 2022 20:25:13 -0800</pubDate>
-      <guid>http://localhost:1313/posts/best-antimaia-games/</guid>
+      <guid>https://lukesalamone.github.io/posts/best-antimaia-games/</guid>
       <description>&lt;p&gt;This is a follow up to &lt;a href=&#34;./posts/suboptimal-minimax/&#34;&gt;When Suboptimal Minimax is Better&lt;/a&gt;. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.&lt;/p&gt;&#xA;&lt;p&gt;The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&amp;rsquo;t objectively &amp;ldquo;optimal&amp;rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player. Antimaia 1900 is specifically designed to counter Maia 1900.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Other End of the Earth</title>
-      <link>http://localhost:1313/posts/earth-antipodes/</link>
+      <link>https://lukesalamone.github.io/posts/earth-antipodes/</link>
       <pubDate>Wed, 23 Nov 2022 10:07:36 -0800</pubDate>
-      <guid>http://localhost:1313/posts/earth-antipodes/</guid>
+      <guid>https://lukesalamone.github.io/posts/earth-antipodes/</guid>
       <description>&lt;figure&gt;&lt;img src=&#34;./img/antipode_land.png&#34;&#xA;    alt=&#34;White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.&lt;/p&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;If you want to fly across the Pacific Ocean, you&amp;rsquo;ll have to board an airplane and fly around 12 hours. It&amp;rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &amp;ldquo;Digging to China&amp;rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.&lt;/p&gt;</description>
     </item>
     <item>
       <title>A Few Notes on the Transformer</title>
-      <link>http://localhost:1313/posts/self-attention/</link>
+      <link>https://lukesalamone.github.io/posts/self-attention/</link>
       <pubDate>Wed, 16 Nov 2022 15:24:15 -0500</pubDate>
-      <guid>http://localhost:1313/posts/self-attention/</guid>
+      <guid>https://lukesalamone.github.io/posts/self-attention/</guid>
       <description>&lt;figure&gt;&lt;img src=&#34;./img/self-attention.png&#34;&#xA;    alt=&#34;A self-attention block depicted as a neural network.&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;A self-attention block depicted as a neural network.&lt;/p&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in &lt;a href=&#34;https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf&#34;&gt;Attention is All You Need&lt;/a&gt; by Vaswani et al.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-attention&#34;&gt;What is attention?&lt;/h2&gt;&#xA;&lt;p&gt;At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren&amp;rsquo;t. In language models, attention is used as a way for the model to learn which portions of a sentence are relevant to each word.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Rolling My Own Blog Search</title>
-      <link>http://localhost:1313/posts/rolling-my-own-blog-search/</link>
+      <link>https://lukesalamone.github.io/posts/rolling-my-own-blog-search/</link>
       <pubDate>Wed, 09 Nov 2022 02:42:51 -0700</pubDate>
-      <guid>http://localhost:1313/posts/rolling-my-own-blog-search/</guid>
+      <guid>https://lukesalamone.github.io/posts/rolling-my-own-blog-search/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&amp;rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;The search needs to be fast, useful, and aesthetically pleasing.&lt;/li&gt;&#xA;&lt;li&gt;Search in the browser. Standing up a server is a lot of extra work. It&amp;rsquo;s also overkill since I only have about 30 articles so far.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;semantic-search&#34;&gt;Semantic search&lt;/h2&gt;&#xA;&lt;p&gt;I did some experiments with small neural networks deployed using ONNX but ultimately they didn&amp;rsquo;t seem to be a good fit for this blog. The search experience was not quite as snappy as I&amp;rsquo;d have liked it to be, and while I was able to get the model under 10MB, it still added a good amount of bloat to the page size. Further, it wasn&amp;rsquo;t clear to me that the search results were significantly better, and in some cases they were worse. In any case, the advantages were not enough to justify the added page size.&lt;/p&gt;</description>
     </item>
     <item>
       <title>A new type of chess tournament</title>
-      <link>http://localhost:1313/posts/qualitative-analysis-chess/</link>
+      <link>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</link>
       <pubDate>Sat, 08 Oct 2022 15:17:36 -0700</pubDate>
-      <guid>http://localhost:1313/posts/qualitative-analysis-chess/</guid>
+      <guid>https://lukesalamone.github.io/posts/qualitative-analysis-chess/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;This is part 2 of a paper I wrote for &lt;a href=&#34;https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/forbus-ken.html&#34;&gt;Ken Forbus&lt;/a&gt;&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper &lt;a href=&#34;./files/anthropomorphic-chess-evaluation-via-qualitative-analysis.pdf&#34;&gt;here&lt;/a&gt; and part 1 &lt;a href=&#34;./posts/chess-engine-history/&#34;&gt;here&lt;/a&gt;.&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;In the previous post I discussed the history of chess engines and why they don&amp;rsquo;t &amp;ldquo;think&amp;rdquo; like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it. At the time, though, the goal was to beat human grandmasters by any means necessary, a great engineering feat that the field had been working on for decades.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Chess Engine&#39;s Final Horizon</title>
-      <link>http://localhost:1313/posts/chess-engine-history/</link>
+      <link>https://lukesalamone.github.io/posts/chess-engine-history/</link>
       <pubDate>Fri, 07 Oct 2022 20:17:21 -0700</pubDate>
-      <guid>http://localhost:1313/posts/chess-engine-history/</guid>
+      <guid>https://lukesalamone.github.io/posts/chess-engine-history/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;This is part 1 of a paper I wrote for &lt;a href=&#34;https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/forbus-ken.html&#34;&gt;Ken Forbus&lt;/a&gt;&amp;rsquo; Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper &lt;a href=&#34;./files/anthropomorphic-chess-evaluation-via-qualitative-analysis.pdf&#34;&gt;here&lt;/a&gt; and part 2 &lt;a href=&#34;./posts/qualitative-analysis-chess/&#34;&gt;here&lt;/a&gt;.&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Computers that play chess, otherwise known as chess engines, have existed &lt;a href=&#34;https://www.youtube.com/watch?v=wrxdWkjmhKg&#34;&gt;since at least the late 1940s&lt;/a&gt;. Because the game was said to require the perfect combination of planning, strategy, psychology, and calculation, chess was once thought to be an activity directly correlated with intelligence, and that only a truly intelligent computer should be able to defeat humans. However, as a recent chess.com &lt;a href=&#34;https://drive.google.com/file/d/11IokKgTVSXdpYEzAuyViIleSZ_2wl0ag/view&#34;&gt;report&lt;/a&gt; explains, computers are now far stronger than humans:&lt;/p&gt;</description>
     </item>
     <item>
       <title>When Suboptimal Minimax is Better</title>
-      <link>http://localhost:1313/posts/suboptimal-minimax/</link>
+      <link>https://lukesalamone.github.io/posts/suboptimal-minimax/</link>
       <pubDate>Sat, 02 Jul 2022 16:24:10 -0500</pubDate>
-      <guid>http://localhost:1313/posts/suboptimal-minimax/</guid>
+      <guid>https://lukesalamone.github.io/posts/suboptimal-minimax/</guid>
       <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&amp;rsquo;t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn&amp;rsquo;t objectively the best move. &lt;a href=&#34;https://www.youtube.com/watch?v=XsdefZRavj4&#34;&gt;Don&amp;rsquo;t play the game, play the man.&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Alphabet Chess</title>
-      <link>http://localhost:1313/posts/alphabet-chess/</link>
+      <link>https://lukesalamone.github.io/posts/alphabet-chess/</link>
       <pubDate>Fri, 10 Jun 2022 23:56:14 -0500</pubDate>
-      <guid>http://localhost:1313/posts/alphabet-chess/</guid>
+      <guid>https://lukesalamone.github.io/posts/alphabet-chess/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;TLDR: Alphabet chess is a chess variant that allows handicapping by mixing in a bit of poker into the beginning of the game. Moves must be played according to a secret word at the beginning of the game.&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Chess has been played in different forms since the seventh century, and in its modern form since the nineteenth century. Opening theory, i.e. the study of the best moves to begin the game with, has been developing since then.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Paper Summary: COMET (Knowledge Graph Construction)</title>
-      <link>http://localhost:1313/posts/knowledge-graph-construction/</link>
+      <link>https://lukesalamone.github.io/posts/knowledge-graph-construction/</link>
       <pubDate>Tue, 17 May 2022 17:47:25 +0700</pubDate>
-      <guid>http://localhost:1313/posts/knowledge-graph-construction/</guid>
+      <guid>https://lukesalamone.github.io/posts/knowledge-graph-construction/</guid>
       <description>&lt;figure&gt;&lt;img src=&#34;./img/comet_knowledge_generation.png&#34;&#xA;    alt=&#34;Selected {subject, relation, object} tuples generated by COMET&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;Selected {subject, relation, object} tuples generated by COMET&lt;/p&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;Paper link: &lt;a href=&#34;https://arxiv.org/abs/1906.05317&#34;&gt;https://arxiv.org/abs/1906.05317&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;This paper describes COMET, a method of generating knowledge bases automatically. Previous work largely focused on encyclopedic knowledge, which has well-defined relationships. This paper, however, focuses on commonsense knowledge. In this paper the authors introduce a “commonsense transformer” which trains on a knowledge base consisting of tuples and a pre-trained language model. Their trained model generates new nodes in the knowledge graph and completes phrases based on edges in the existing graph.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How to Create a Custom Pytorch Dataloader</title>
-      <link>http://localhost:1313/posts/pytorch-dataloader/</link>
+      <link>https://lukesalamone.github.io/posts/pytorch-dataloader/</link>
       <pubDate>Thu, 28 Apr 2022 18:22:07 -0500</pubDate>
-      <guid>http://localhost:1313/posts/pytorch-dataloader/</guid>
+      <guid>https://lukesalamone.github.io/posts/pytorch-dataloader/</guid>
       <description>&lt;p&gt;First, create a custom dataset class.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from torch.utils.data import Dataset, DataLoader&#xA;&#xA;class CustomDataset(Dataset):&#xA;  def __init__(self, features, labels):&#xA;&#xA;    assert len(features) == len(labels)&#xA;    self.features = features&#xA;    self.labels = labels&#xA;&#xA;  def __len__(self):&#xA;    return len(self.features)&#xA;&#xA;  def __getitem__(self, idx):&#xA;    return self.features[idx], self.labels[idx]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Next, create a custom dataloader where we specify the batch size.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;features, labels = load_data()&#xA;&#xA;# features &amp;amp; labels must have equal lengths&#xA;# e.g. features = [[1,2,3],[4,5,6]]&#xA;#      labels = [7,8]&#xA;&#xA;dataset = CustomDataset(features, labels)&#xA;dataloader = DataLoader(dataset,&#xA;                        batch_size=batch_size,&#xA;                        shuffle=True)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Finally, iterate over the dataloader during training.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How to Zip and Unzip a tar.gz File</title>
-      <link>http://localhost:1313/posts/how-to-tar-untar-file/</link>
+      <link>https://lukesalamone.github.io/posts/how-to-tar-untar-file/</link>
       <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
-      <guid>http://localhost:1313/posts/how-to-tar-untar-file/</guid>
+      <guid>https://lukesalamone.github.io/posts/how-to-tar-untar-file/</guid>
       <description>&lt;p&gt;If you want to extract a tar archive&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;tar -xf archive.tar.gz&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;If you want to compress a directory&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;tar -czvf archive.tar.gz /path/to/directory&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;That&amp;rsquo;s all.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Paper Summary: Defending Against Neural Fake News</title>
-      <link>http://localhost:1313/posts/grover-paper-summary/</link>
+      <link>https://lukesalamone.github.io/posts/grover-paper-summary/</link>
       <pubDate>Sun, 19 Sep 2021 20:13:09 -0500</pubDate>
-      <guid>http://localhost:1313/posts/grover-paper-summary/</guid>
+      <guid>https://lukesalamone.github.io/posts/grover-paper-summary/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/1905.12616&#34;&gt;&lt;em&gt;Defending Against Neural Fake News&lt;/em&gt;&lt;/a&gt; by Zellers et al. presents a model for controllable text generation called Grover. This model can be used to create highly believable computer-generated news articles. The authors present this paper as a method of detecting and preventing the spread of fake news. They claim their model is 92% accurate at detecting fake news stories, partially due to artifacts that generators include in the generated text.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Connect Jupyter to Remote</title>
-      <link>http://localhost:1313/posts/connect-jupyter-to-remote/</link>
+      <link>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</link>
       <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
-      <guid>http://localhost:1313/posts/connect-jupyter-to-remote/</guid>
+      <guid>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</guid>
       <description>&lt;p&gt;Here&amp;rsquo;s how to connect to a remote Jupyter notebook.&lt;/p&gt;&#xA;&lt;p&gt;Create an ssh tunnel to your remote machine:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ssh -L 8080:localhost:8080 user@12.34.56.78&#xA;&#xA;# or use a .pem file to connect to ec2&#xA;ssh -L 8080:localhost:8080 -i &amp;quot;aws.pem&amp;quot; ec2-user@ec2-12-34-56-78.compute-1.amazonaws.com&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Start Jupyter on that machine in headless mode:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;jupyter notebook --no-browser --port=8080&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Use a browser to open one of the urls that Jupyter presents:&lt;br&gt;&#xA;http://localhost:8080/?token=xyz&lt;/p&gt;</description>
     </item>
     <item>
       <title>What is Marginalization?</title>
-      <link>http://localhost:1313/posts/what-is-marginalization/</link>
+      <link>https://lukesalamone.github.io/posts/what-is-marginalization/</link>
       <pubDate>Wed, 07 Jul 2021 14:23:12 -0500</pubDate>
-      <guid>http://localhost:1313/posts/what-is-marginalization/</guid>
+      <guid>https://lukesalamone.github.io/posts/what-is-marginalization/</guid>
       <description>&lt;p&gt;In machine learning and statistics, marginalization simply means summing over a set of independent variables. For example, suppose an avid tennis player kept track of the number of days he played tennis over a period of time as well as the weather on that day:&lt;/p&gt;&#xA;&lt;style&gt;&#xA;  .blue {&#xA;    background-color:#09f1;&#xA;  }&#xA;  .gray {&#xA;    background-color:#80808012;&#xA;  }&#xA;&lt;/style&gt;&#xA;&lt;table style=&#34;width:100%&#34;&gt;&#xA;  &lt;tr style=&#34;font-weight:bold&#34;&gt;&#xA;    &lt;th&gt;&lt;/th&gt;&#xA;    &lt;th&gt;&lt;/th&gt;&#xA;    &lt;th colspan=&#34;3&#34; style=&#34;text-align:center&#34;&gt;weather&lt;/th&gt;&#xA;    &lt;th&gt;&lt;/th&gt;&#xA;  &lt;/tr&gt;&#xA;  &lt;tr style=&#34;font-weight:bold; text-align:center; background-color: inherit&#34;&gt;&#xA;    &lt;td&gt;&lt;/td&gt;&#xA;    &lt;th&gt;&lt;/th&gt;&#xA;    &lt;td&gt;sunny&lt;/td&gt;&#xA;    &lt;td&gt;cloudy&lt;/td&gt;&#xA;    &lt;td&gt;rainy&lt;/td&gt;&#xA;    &lt;th&gt;totals&lt;/th&gt;&#xA;  &lt;/tr&gt;&#xA;  &lt;tr&gt;&#xA;  &#x9;&lt;td rowspan=&#34;2&#34; style=&#34;font-weight:bold; text-align:right&#34;&gt;play?&lt;/td&gt;&#xA;    &lt;td style=&#34;text-align:right&#34;&gt;yes&lt;/td&gt;&#xA;    &lt;td class=&#34;blue&#34;&gt;70&lt;/td&gt;&#xA;    &lt;td class=&#34;blue&#34;&gt;25&lt;/td&gt;&#xA;    &lt;td class=&#34;blue&#34;&gt;1&lt;/td&gt;&#xA;    &lt;td class=&#34;gray&#34; style=&#34;font-weight:bold&#34;&gt;96&lt;/td&gt;&#xA;  &lt;/tr&gt;&#xA;  &lt;tr style=&#34;background-color: inherit;&#34;&gt;&#xA;  &#x9;&lt;td style=&#34;text-align:right&#34;&gt;no&lt;/td&gt;&#xA;  &#x9;&lt;td class=&#34;blue&#34;&gt;70&lt;/td&gt;&#xA;    &lt;td class=&#34;blue&#34;&gt;5&lt;/td&gt;&#xA;    &lt;td class=&#34;blue&#34;&gt;9&lt;/td&gt;&#xA;    &lt;td class=&#34;gray&#34; style=&#34;font-weight:bold&#34;&gt;84&lt;/td&gt;&#xA;  &lt;/tr&gt;&#xA;  &lt;tr style=&#34;font-weight:bold&#34;&gt;&#xA;  &#x9;&lt;td colspan=&#34;2&#34; style=&#34;text-align:right&#34;&gt;totals&lt;/td&gt;&#xA;  &#x9;&lt;td class=&#34;gray&#34;&gt;140&lt;/td&gt;&#xA;    &lt;td class=&#34;gray&#34;&gt;30&lt;/td&gt;&#xA;    &lt;td class=&#34;gray&#34;&gt;10&lt;/td&gt;&#xA;    &lt;td class=&#34;gray&#34;&gt;180&lt;/td&gt;&#xA;  &lt;/tr&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;(&lt;em&gt;In this table we&amp;rsquo;re keeping track of the number of days. If you want probabilities, divide each value in the table by 180. But I think whole numbers are easier to think about so I&amp;rsquo;m keeping them.&lt;/em&gt;)&lt;/p&gt;</description>
     </item>
     <item>
       <title>Colab: Connect to Google Drive</title>
-      <link>http://localhost:1313/posts/connect-to-colab/</link>
+      <link>https://lukesalamone.github.io/posts/connect-to-colab/</link>
       <pubDate>Wed, 30 Jun 2021 22:58:18 -0500</pubDate>
-      <guid>http://localhost:1313/posts/connect-to-colab/</guid>
+      <guid>https://lukesalamone.github.io/posts/connect-to-colab/</guid>
       <description>&lt;p&gt;Here&amp;rsquo;s how to connect your Google Colab notebook to your Drive directory:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from google.colab import drive&#xA;drive.mount(&#39;/content/gdrive&#39;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Follow the prompts from there. That is all.&lt;/p&gt;</description>
     </item>
     <item>
       <title>BERT vs GPT-2 Performance</title>
-      <link>http://localhost:1313/posts/bert-vs-gpt2/</link>
+      <link>https://lukesalamone.github.io/posts/bert-vs-gpt2/</link>
       <pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
-      <guid>http://localhost:1313/posts/bert-vs-gpt2/</guid>
+      <guid>https://lukesalamone.github.io/posts/bert-vs-gpt2/</guid>
       <description>&lt;p&gt;There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/lukesalamone/gpt2-vs-bert&#34;&gt;The code used in this experiment can be found on my Github&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;bert&#34;&gt;BERT&lt;/h2&gt;&#xA;&lt;p&gt;The &lt;a href=&#34;https://arxiv.org/pdf/1810.04805.pdf&#34;&gt;Devlin et al. model&lt;/a&gt; was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the &lt;em&gt;cloze&lt;/em&gt; task). During pretraining, 15% of tokens are hidden from the model, and it is trained to predict the masked tokens. As a result, I was able to evaluate its ability to correctly predict a masked token at a random position in a fixed-size input.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How does GPT-2 Tokenize Text?</title>
-      <link>http://localhost:1313/posts/gpt2-tokenization/</link>
+      <link>https://lukesalamone.github.io/posts/gpt2-tokenization/</link>
       <pubDate>Thu, 17 Jun 2021 19:30:48 -0500</pubDate>
-      <guid>http://localhost:1313/posts/gpt2-tokenization/</guid>
+      <guid>https://lukesalamone.github.io/posts/gpt2-tokenization/</guid>
       <description>&lt;p&gt;Let&amp;rsquo;s explore how GPT-2 tokenizes text.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-tokenization&#34;&gt;What is tokenization?&lt;/h2&gt;&#xA;&lt;p&gt;It&amp;rsquo;s important to understand that GPT-2 doesn&amp;rsquo;t work with strings directly. Instead, it needs to tokenize the input string, which is essentially a process for converting the string into a list of numbers, or &amp;ldquo;tokens&amp;rdquo;. It is these tokens which are passed into the model during training or for inference. As a concrete example, let&amp;rsquo;s look at a few sample sentences:&lt;/p&gt;</description>
     </item>
     <item>
       <title>What Are Attention Masks?</title>
-      <link>http://localhost:1313/posts/what-are-attention-masks/</link>
+      <link>https://lukesalamone.github.io/posts/what-are-attention-masks/</link>
       <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
-      <guid>http://localhost:1313/posts/what-are-attention-masks/</guid>
+      <guid>https://lukesalamone.github.io/posts/what-are-attention-masks/</guid>
       <description>&lt;p&gt;TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;./img/attention_mask.png&#34;&#xA;    alt=&#34;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)&lt;/p&gt;</description>
     </item>
     <item>
       <title>How Does Convolution Work?</title>
-      <link>http://localhost:1313/posts/how-does-convolution-work/</link>
+      <link>https://lukesalamone.github.io/posts/how-does-convolution-work/</link>
       <pubDate>Mon, 14 Jun 2021 21:05:06 -0500</pubDate>
-      <guid>http://localhost:1313/posts/how-does-convolution-work/</guid>
+      <guid>https://lukesalamone.github.io/posts/how-does-convolution-work/</guid>
       <description>&lt;p&gt;Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&amp;rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!&lt;/p&gt;&#xA;&lt;script src=&#34;./js/util.js&#34;&gt;&lt;/script&gt;&#xA;&lt;script src=&#34;./js/convolution-demo.js&#34;&gt;&lt;/script&gt;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;./css/convolution-demo.css&#34; /&gt;&#xA;&lt;div id=&#34;input-output&#34;&gt;&#xA;  &lt;div id=&#34;input-grid&#34;&gt;&lt;/div&gt;&#xA;  &lt;div id=&#34;output-grid&#34;&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div id=&#34;controls&#34;&gt;&#xA;  &lt;table&gt;&#xA;    &lt;tr id=&#34;number&#34;&gt;&#xA;      &lt;td&gt;number:&lt;/td&gt;&#xA;      &lt;td&gt;&#xA;        &lt;select&gt;&#xA;          &lt;option value=&#34;four&#34;&gt;four&lt;/option&gt;&#xA;          &lt;option value=&#34;three&#34;&gt;three&lt;/option&gt;&#xA;          &lt;option value=&#34;eight&#34;&gt;eight&lt;/option&gt;&#xA;        &lt;/select&gt;&#xA;      &lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr id=&#34;padding&#34;&gt;&#xA;      &lt;td&gt;padding: &lt;span class=&#34;val&#34;&gt;&lt;/span&gt;&lt;/td&gt;&#xA;      &lt;td&gt;&lt;input type=&#34;range&#34; min=&#34;0&#34; max=&#34;2&#34; value=&#34;0&#34;&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr id=&#34;kernelsize&#34;&gt;&#xA;      &lt;td&gt;kernel size: &lt;span class=&#34;val&#34;&gt;&lt;/span&gt;&lt;/td&gt;&#xA;      &lt;td&gt;&lt;input type=&#34;range&#34; min=&#34;1&#34; max=&#34;4&#34; value=&#34;2&#34;&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr id=&#34;stride&#34;&gt;&#xA;      &lt;td&gt;stride: &lt;span class=&#34;val&#34;&gt;&lt;/span&gt;&lt;/td&gt;&#xA;      &lt;td&gt;&lt;input type=&#34;range&#34; min=&#34;1&#34; max=&#34;3&#34; value=&#34;1&#34;&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr id=&#34;speed&#34;&gt;&#xA;      &lt;td&gt;speed: &lt;span class=&#34;val&#34;&gt;&lt;/span&gt;&lt;/td&gt;&#xA;      &lt;td&gt;&lt;input type=&#34;range&#34; min=&#34;1&#34; max=&#34;5&#34; value=&#34;3&#34;&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr id=&#34;errors&#34; style=&#34;display:none&#34;&gt;&#xA;      &lt;td colspan=&#34;2&#34;&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;You can use the settings above to control the hyperparameters of the convolutional layer.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Python: Serve an HTML File</title>
-      <link>http://localhost:1313/posts/python-serve-html/</link>
+      <link>https://lukesalamone.github.io/posts/python-serve-html/</link>
       <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
-      <guid>http://localhost:1313/posts/python-serve-html/</guid>
+      <guid>https://lukesalamone.github.io/posts/python-serve-html/</guid>
       <description>&lt;p&gt;If you want to serve some HTML with python run&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;python -m http.server 8000&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Then navigate to &lt;a href=&#34;http://localhost:8000/&#34;&gt;http://localhost:8000&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How to Train and Run a Simple Language Model</title>
-      <link>http://localhost:1313/posts/running-simple-language-model/</link>
+      <link>https://lukesalamone.github.io/posts/running-simple-language-model/</link>
       <pubDate>Fri, 16 Apr 2021 21:08:53 -0500</pubDate>
-      <guid>http://localhost:1313/posts/running-simple-language-model/</guid>
+      <guid>https://lukesalamone.github.io/posts/running-simple-language-model/</guid>
       <description>&lt;p&gt;This article will show how to run a simple language model, KenLM. It&amp;rsquo;s not as powerful as transformer-based models like BERT or GPT-3, but depending on what you&amp;rsquo;re trying to accomplish it may be more than enough. This tutorial should take you about 15 minutes, including the time to run the scripts.&lt;/p&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s work backwards from where we&amp;rsquo;re trying to get to. When you&amp;rsquo;ve finished, you should be able to run the following script:&lt;/p&gt;</description>
     </item>
     <item>
       <title>What is Temperature in NLP?🐭</title>
-      <link>http://localhost:1313/posts/what-is-temperature/</link>
+      <link>https://lukesalamone.github.io/posts/what-is-temperature/</link>
       <pubDate>Fri, 02 Apr 2021 00:50:38 -0500</pubDate>
-      <guid>http://localhost:1313/posts/what-is-temperature/</guid>
+      <guid>https://lukesalamone.github.io/posts/what-is-temperature/</guid>
       <description>&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    // Fix &lt;code&gt; tags after MathJax finishes running. This is a&#xA;    // hack to overcome a shortcoming of Markdown. Discussion at&#xA;    // https://github.com/mojombo/jekyll/issues/199&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;Temperature is a parameter used in natural language processing models to increase or decrease the &amp;ldquo;confidence&amp;rdquo; a model has in its most likely response.&lt;/p&gt;</description>
     </item>
     <item>
       <title>What is Perplexity?</title>
-      <link>http://localhost:1313/posts/perplexity/</link>
+      <link>https://lukesalamone.github.io/posts/perplexity/</link>
       <pubDate>Thu, 01 Apr 2021 12:14:49 -0500</pubDate>
-      <guid>http://localhost:1313/posts/perplexity/</guid>
+      <guid>https://lukesalamone.github.io/posts/perplexity/</guid>
       <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;&lt;strong&gt;TLDR: NLP metric ranging from 1 to infinity. Lower is better.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;In natural language processing, perplexity is the most common metric used to measure the performance of a language model. To calculate perplexity, we use the following formula:&lt;/p&gt;</description>
     </item>
     <item>
       <title>S3 Bucket Url</title>
-      <link>http://localhost:1313/posts/s3-bucket-url/</link>
+      <link>https://lukesalamone.github.io/posts/s3-bucket-url/</link>
       <pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
-      <guid>http://localhost:1313/posts/s3-bucket-url/</guid>
+      <guid>https://lukesalamone.github.io/posts/s3-bucket-url/</guid>
       <description>&lt;p&gt;Assuming your bucket is publicly accessible, the url of your S3 bucket will be&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;http://[bucket-name].s3-website-[region].amazonaws.com&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;http://mybucket.s3-website-us-east-1.amazonaws.com&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>About My Quick Reference Articles</title>
-      <link>http://localhost:1313/posts/why-how-to/</link>
+      <link>https://lukesalamone.github.io/posts/why-how-to/</link>
       <pubDate>Sun, 07 Mar 2021 14:44:37 -0600</pubDate>
-      <guid>http://localhost:1313/posts/why-how-to/</guid>
+      <guid>https://lukesalamone.github.io/posts/why-how-to/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve created a few quick-reference articles and it might not be clear why. There are a few reasons:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;These articles are mainly a reference for me. I find myself searching the same things over and over, looking for the purple link, scrolling through the article, then copy &amp;amp; pasting code. I&amp;rsquo;d rather not go through the hassle. These articles aim to solve that problem.&lt;/li&gt;&#xA;&lt;li&gt;I aim to keep the answers &lt;a href=&#34;https://en.wikipedia.org/wiki/Above_the_fold#In_web_design&#34;&gt;above the fold&lt;/a&gt;. I don&amp;rsquo;t want to have to scroll down to find the answer. I almost never read the surrounding prose when I am in &amp;ldquo;coding mode&amp;rdquo;.&lt;/li&gt;&#xA;&lt;li&gt;I don&amp;rsquo;t have ads or popups on my blog. I will never ask people to sign up for a newsletter or login to read more. I also don&amp;rsquo;t use pictures unless there&amp;rsquo;s a good reason. &lt;a href=&#34;https://www.google.com/search?q=ai&amp;#43;thinking&amp;#43;robot&amp;#43;stock&amp;#43;photo&amp;amp;tbm=isch&#34;&gt;The &amp;ldquo;thinking AI robot stock photo&amp;rdquo; industry is definitely a bubble.&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;Writing these things out explicitly helps me to remember them. Paradoxically, this may make these how-to pages less useful to me, but maybe someone else will find them useful.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;These quick reference articles don&amp;rsquo;t explain much because I don&amp;rsquo;t need an explanation of what is going on. I just need a chunk of working code. There are other websites which have far more comprehensive guides covering how to do things. They cover all of the fundamentals of how things are done. But I don&amp;rsquo;t need that, I just want a 30 second reference with a working chunk of code.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Python: Read &amp; Write Json</title>
-      <link>http://localhost:1313/posts/read-write-json/</link>
+      <link>https://lukesalamone.github.io/posts/read-write-json/</link>
       <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
-      <guid>http://localhost:1313/posts/read-write-json/</guid>
+      <guid>https://lukesalamone.github.io/posts/read-write-json/</guid>
       <description>&lt;p&gt;Often it is useful to save python data to json files. The following code will demonstrate how that can be done.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;God bless JSON!&amp;rdquo; ~ a soon to be famous programmer&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import json&#xA;&#xA;data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}&#xA;filename = &#39;awesome_data.json&#39;&#xA;&#xA;# write data to file&#xA;with open(filename, &#39;w&#39;) as f:&#xA;  json.dump(data, f)&#xA;&#xA;&#xA;# read json from file&#xA;with open(filename, &#39;r&#39;) as f:&#xA;  data = json.load(f)&#xA;&#xA;&#xA;print(data)&#xA;# prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>Autoencoding Stock Prices</title>
-      <link>http://localhost:1313/posts/build-an-autoencoder/</link>
+      <link>https://lukesalamone.github.io/posts/build-an-autoencoder/</link>
       <pubDate>Sun, 07 Mar 2021 01:31:51 -0600</pubDate>
-      <guid>http://localhost:1313/posts/build-an-autoencoder/</guid>
+      <guid>https://lukesalamone.github.io/posts/build-an-autoencoder/</guid>
       <description>&lt;figure&gt;&lt;img src=&#34;./img/autoencoder.png&#34;&#xA;    alt=&#34;Autoencoding stock prices as found in Heaton et al., 2016&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;Autoencoding stock prices as found in Heaton et al., 2016&lt;/p&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms &lt;a href=&#34;https://arxiv.org/pdf/1602.06561.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Once we&amp;rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index. This can be useful for finding deeper insights into an index, and doesn&amp;rsquo;t require a priori knowledge of the index price or the weighting of its components. Note, this is only one metric which one could use to determine how well one member of the group follows the group overall. Another might be &lt;a href=&#34;https://en.wikipedia.org/wiki/Pearson_correlation_coefficient&#34;&gt;Pearson Correlation&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Python: Formatting a string</title>
-      <link>http://localhost:1313/posts/python-format-string/</link>
+      <link>https://lukesalamone.github.io/posts/python-format-string/</link>
       <pubDate>Wed, 24 Feb 2021 21:22:42 -0600</pubDate>
-      <guid>http://localhost:1313/posts/python-format-string/</guid>
+      <guid>https://lukesalamone.github.io/posts/python-format-string/</guid>
       <description>&lt;p&gt;There are three main ways to format strings in python:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;name = &#39;Luke&#39;&#xA;food = &#39;pizza&#39;&#xA;&#xA;# old style&#xA;&amp;quot;My name is %s and I like %s.&amp;quot; % (name, food)&#xA;&#xA;# str.format()&#xA;&amp;quot;My name is {0} and I like {1}.&amp;quot;.format(name, food)&#xA;&#xA;# f-strings&#xA;f&amp;quot;My name is {name} and I like {food}.&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>Siamese Neural Networks (Video)</title>
-      <link>http://localhost:1313/posts/siamese-nn-video/</link>
+      <link>https://lukesalamone.github.io/posts/siamese-nn-video/</link>
       <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
-      <guid>http://localhost:1313/posts/siamese-nn-video/</guid>
+      <guid>https://lukesalamone.github.io/posts/siamese-nn-video/</guid>
       <description>&lt;div style=&#34;text-align:center&#34;&gt;&#xA;  &lt;iframe src=&#34;https://player.vimeo.com/video/491725663&#34; width=&#34;640&#34; height=&#34;360&#34; frameborder=&#34;0&#34; allow=&#34;autoplay; fullscreen&#34; allowfullscreen&gt;&lt;/iframe&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&lt;em&gt;The following is a transcript of the above video&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;In this paper, the authors present a novel neural network architecture to enable audio search via sounds humans are able to make, for example humming and whistling. This is an important capability when searching through audio for a specific sound.&lt;/p&gt;&#xA;&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;&#xA;&lt;p&gt;Imagine you have hundreds of unlabeled sound effects on your computer, and you are looking for a specific one. It could be very tedious to listen to every single one until you can find the right sound. Even if the sounds do have some kind of word labels, it could be hard to pinpoint exactly which words to search for. A lot of sounds don’t exactly lend themselves to text descriptors, so finding the right sound can be difficult with a text search.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Managing Python Environments</title>
-      <link>http://localhost:1313/posts/managing-python-environments/</link>
+      <link>https://lukesalamone.github.io/posts/managing-python-environments/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
-      <guid>http://localhost:1313/posts/managing-python-environments/</guid>
+      <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
       <description>&lt;p&gt;Need to switch between python versions often? Use &lt;a href=&#34;https://github.com/pyenv/pyenv&#34;&gt;&lt;code&gt;pyenv&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;installing-pyenv&#34;&gt;Installing pyenv&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# install pyenv&#xA;curl https://pyenv.run | bash&#xA;&#xA;# check pyenv install location&#xA;which pyenv&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;install-another-python-version&#34;&gt;Install another python version&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# see a list of available python versions&#xA;pyenv install --list&#xA;&#xA;# check installed python versions&#xA;pyenv versions&#xA;&#xA;# installs python 3.7.5&#xA;pyenv install 3.7.5&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;switch-python-versions&#34;&gt;Switch python versions&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# use python 3.7.5 everywhere on your machine&#xA;pyenv global 3.7.5&#xA;&#xA;# use python 3.7.5 in current directory&#xA;pyenv local 3.7.5&#xA;&#xA;# use python 3.7.5 in current shell session&#xA;pyenv shell 3.7.5&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>How does K-means clustering work?</title>
-      <link>http://localhost:1313/posts/kmeans-clustering/</link>
+      <link>https://lukesalamone.github.io/posts/kmeans-clustering/</link>
       <pubDate>Wed, 07 Oct 2020 17:39:22 -0700</pubDate>
-      <guid>http://localhost:1313/posts/kmeans-clustering/</guid>
+      <guid>https://lukesalamone.github.io/posts/kmeans-clustering/</guid>
       <description>&lt;p&gt;K-means clustering (not to be confused with K-nearest neighbors) is an unsupervised learning algorithm used for grouping similar points together into clusters.&lt;/p&gt;&#xA;&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js&#34;&gt;&lt;/script&gt;&#xA;&lt;script src=&#34;./js/kmeans_demo.js&#34;&gt;&lt;/script&gt;&#xA;&lt;div id=&#39;demo&#39;&gt;&#xA;&lt;button&gt;start&lt;/button&gt;&#xA;&lt;canvas id=&#34;myChart&#34; style=&#34;background-color: #0000&#34;&gt;&lt;/canvas&gt;&#xA;&lt;/div&gt;&#xA;&lt;h2 id=&#34;algorithm&#34;&gt;Algorithm&lt;/h2&gt;&#xA;&lt;p&gt;The basic K-means algorithm is fairly simple and has two steps, repeated until convergence:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;assign points to cluster corresponding to closest centroid&lt;/li&gt;&#xA;&lt;li&gt;update centroid locations to the mean of all points assigned to the associated cluster&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;The algorithm converges when the centroids stop moving, i.e. no points can be switched between clusters to a closer centroid.&lt;/p&gt;</description>
     </item>
     <item>
       <title>What is the Hardest Hangman Word?</title>
-      <link>http://localhost:1313/posts/hardest-hangman-word/</link>
+      <link>https://lukesalamone.github.io/posts/hardest-hangman-word/</link>
       <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
-      <guid>http://localhost:1313/posts/hardest-hangman-word/</guid>
+      <guid>https://lukesalamone.github.io/posts/hardest-hangman-word/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/p33HisS.png&#34; alt=&#34;Example hangman game&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people. Player A chooses a secret word, and tells player B the length of the secret word. Player B guesses letters which she thinks might be in the word. If she chooses a correct letter, player A reveals the locations of &lt;em&gt;each instance&lt;/em&gt; of the guessed letter. However, if player B guesses an incorrect letter, this counts as a &amp;ldquo;strike&amp;rdquo; against her. After an agreed-upon number of strikes, player B loses.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Estimating Pi with a Monte Carlo Simulation</title>
-      <link>http://localhost:1313/posts/monte-carlo/</link>
+      <link>https://lukesalamone.github.io/posts/monte-carlo/</link>
       <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
-      <guid>http://localhost:1313/posts/monte-carlo/</guid>
+      <guid>https://lukesalamone.github.io/posts/monte-carlo/</guid>
       <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;A Monte Carlo simulation is a method of estimating events or quantities which are difficult or computationally infeasible to derive a closed-form solution to. The value of the mathematical constant Pi is a good example of this: although it is possible to calculate the exact value of Pi, a good estimate is easily demonstrated with just a few lines of code.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Creating an AI for Gomoku</title>
-      <link>http://localhost:1313/posts/gomoku2049/</link>
+      <link>https://lukesalamone.github.io/posts/gomoku2049/</link>
       <pubDate>Tue, 19 May 2020 14:28:57 +0800</pubDate>
-      <guid>http://localhost:1313/posts/gomoku2049/</guid>
+      <guid>https://lukesalamone.github.io/posts/gomoku2049/</guid>
       <description>&lt;p&gt;Gomoku is a strategy game similar to tic tac toe, but played on a larger board and with the goal of getting 5 in a row rather than 3. Since the game has perfect information and has simple rules, I thought it would be a fun exercise in creating a game AI.&#xA;In February 2020 I decided to code up Gomoku2049. The game is a demonstration of MiniMax, which is an algorithm for finding the move which minimizes the opponent’s best moves. This article is an overview of the game’s technical highlights.&lt;/p&gt;</description>
     </item>
   </channel>

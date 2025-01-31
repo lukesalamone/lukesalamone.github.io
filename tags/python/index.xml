@@ -2,94 +2,94 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Luke Salamone&#39;s Blog</title>
-    <link>http://localhost:1313/tags/python/</link>
+    <link>https://lukesalamone.github.io/tags/python/</link>
     <description>Recent content in Python on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Fri, 12 Jul 2024 14:48:27 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lukesalamone.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Custom PyTorch Collate Function</title>
-      <link>http://localhost:1313/posts/custom-pytorch-collate/</link>
+      <link>https://lukesalamone.github.io/posts/custom-pytorch-collate/</link>
       <pubDate>Fri, 12 Jul 2024 14:48:27 -0700</pubDate>
-      <guid>http://localhost:1313/posts/custom-pytorch-collate/</guid>
+      <guid>https://lukesalamone.github.io/posts/custom-pytorch-collate/</guid>
       <description>&lt;p&gt;If your &lt;code&gt;Dataset&lt;/code&gt; class looks something like&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class MyDataset(Dataset):&#xA;  &#xA;  # ... boilerplate ...&#xA;&#xA;  def __getitem__(self, idx):&#xA;    item = self.data[idx]&#xA;    return item[&#39;anchor&#39;], item[&#39;positive&#39;], item[&#39;negative&#39;]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;your collate function should be&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def collate_fn(data):&#xA;    anchors, pos, neg = zip(*data)&#xA;    anchors = tokenizer(anchors, return_tensors=&amp;quot;pt&amp;quot;, padding=True)&#xA;    pos = tokenizer(pos, return_tensors=&amp;quot;pt&amp;quot;, padding=True)&#xA;    neg = tokenizer(neg, return_tensors=&amp;quot;pt&amp;quot;, padding=True)&#xA;    return anchors, pos, neg&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;and you can use it like&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;dataset = MyDataset()&#xA;dataloader = DataLoader(dataset, &#xA;                        batch_size=4, &#xA;                        shuffle=True,&#xA;                        pin_memory=True,&#xA;                        collate_fn=collate_fn)&#xA;&#xA;for anchors, positives, negatives in dataloader:&#xA;  anchors = anchors.to(device)&#xA;  positives = positives.to(device)&#xA;  negatives = negatives.to(device)&#xA;  &#xA;  # do more stuff&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;how-does-the-collate_fn-work&#34;&gt;How does the collate_fn work?&lt;/h2&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;../../img/torch_collate_fn.png&#34;&#xA;    alt=&#34;The PyTorch collate function accepts a list of results from calls to the dataset getitem function and combines their components into tensors for convenient training.&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;The PyTorch collate function accepts a list of results from calls to the dataset &lt;strong&gt;getitem&lt;/strong&gt; function and combines their components into tensors for convenient training.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How to Create Rust Python Bindings</title>
-      <link>http://localhost:1313/posts/how-to-create-rust-python-bindings/</link>
+      <link>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</link>
       <pubDate>Tue, 18 Jun 2024 16:21:35 -0700</pubDate>
-      <guid>http://localhost:1313/posts/how-to-create-rust-python-bindings/</guid>
+      <guid>https://lukesalamone.github.io/posts/how-to-create-rust-python-bindings/</guid>
       <description>&lt;p&gt;Rust is super fast. Python is super flexible. Porting slow python code to rust can make your life a lot easier, and it&amp;rsquo;s not too difficult to set up.&lt;/p&gt;&#xA;&lt;p&gt;I will demonstrate rust bindings for summing the integers in a large text file containing a billion digits that looks like&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;6,9,8,3,0,1,8,4,9,7,6,3,4,2,6,0,0,5,1,1, . . . ,4,5,9,3,3,2,8,3&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;general-steps&#34;&gt;General steps&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;../../posts/how-to-create-rust-python-bindings/#install-rust-and-maturin&#34;&gt;install rust and maturin&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;../../posts/how-to-create-rust-python-bindings/#set-up-boilerplate&#34;&gt;set up boilerplate&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;../../posts/how-to-create-rust-python-bindings/#add-your-function&#34;&gt;add your function&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;../../posts/how-to-create-rust-python-bindings/#compile-and-import&#34;&gt;compile and import&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;install-rust-and-maturin&#34;&gt;Install Rust and Maturin&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl --proto &#39;=https&#39; --tlsv1.2 -sSf https://sh.rustup.rs | sh&#xA;pip install maturin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;See also &lt;a href=&#34;https://www.rust-lang.org/tools/install&#34;&gt;install rust&lt;/a&gt; and &lt;a href=&#34;https://www.maturin.rs/installation&#34;&gt;install maturin&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Other End of the Earth</title>
-      <link>http://localhost:1313/posts/earth-antipodes/</link>
+      <link>https://lukesalamone.github.io/posts/earth-antipodes/</link>
       <pubDate>Wed, 23 Nov 2022 10:07:36 -0800</pubDate>
-      <guid>http://localhost:1313/posts/earth-antipodes/</guid>
+      <guid>https://lukesalamone.github.io/posts/earth-antipodes/</guid>
       <description>&lt;figure&gt;&lt;img src=&#34;../../img/antipode_land.png&#34;&#xA;    alt=&#34;White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.&lt;/p&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;If you want to fly across the Pacific Ocean, you&amp;rsquo;ll have to board an airplane and fly around 12 hours. It&amp;rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &amp;ldquo;Digging to China&amp;rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How to Create a Custom Pytorch Dataloader</title>
-      <link>http://localhost:1313/posts/pytorch-dataloader/</link>
+      <link>https://lukesalamone.github.io/posts/pytorch-dataloader/</link>
       <pubDate>Thu, 28 Apr 2022 18:22:07 -0500</pubDate>
-      <guid>http://localhost:1313/posts/pytorch-dataloader/</guid>
+      <guid>https://lukesalamone.github.io/posts/pytorch-dataloader/</guid>
       <description>&lt;p&gt;First, create a custom dataset class.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from torch.utils.data import Dataset, DataLoader&#xA;&#xA;class CustomDataset(Dataset):&#xA;  def __init__(self, features, labels):&#xA;&#xA;    assert len(features) == len(labels)&#xA;    self.features = features&#xA;    self.labels = labels&#xA;&#xA;  def __len__(self):&#xA;    return len(self.features)&#xA;&#xA;  def __getitem__(self, idx):&#xA;    return self.features[idx], self.labels[idx]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Next, create a custom dataloader where we specify the batch size.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;features, labels = load_data()&#xA;&#xA;# features &amp;amp; labels must have equal lengths&#xA;# e.g. features = [[1,2,3],[4,5,6]]&#xA;#      labels = [7,8]&#xA;&#xA;dataset = CustomDataset(features, labels)&#xA;dataloader = DataLoader(dataset,&#xA;                        batch_size=batch_size,&#xA;                        shuffle=True)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Finally, iterate over the dataloader during training.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Connect Jupyter to Remote</title>
-      <link>http://localhost:1313/posts/connect-jupyter-to-remote/</link>
+      <link>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</link>
       <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
-      <guid>http://localhost:1313/posts/connect-jupyter-to-remote/</guid>
+      <guid>https://lukesalamone.github.io/posts/connect-jupyter-to-remote/</guid>
       <description>&lt;p&gt;Here&amp;rsquo;s how to connect to a remote Jupyter notebook.&lt;/p&gt;&#xA;&lt;p&gt;Create an ssh tunnel to your remote machine:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ssh -L 8080:localhost:8080 user@12.34.56.78&#xA;&#xA;# or use a .pem file to connect to ec2&#xA;ssh -L 8080:localhost:8080 -i &amp;quot;aws.pem&amp;quot; ec2-user@ec2-12-34-56-78.compute-1.amazonaws.com&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Start Jupyter on that machine in headless mode:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;jupyter notebook --no-browser --port=8080&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Use a browser to open one of the urls that Jupyter presents:&lt;br&gt;&#xA;http://localhost:8080/?token=xyz&lt;/p&gt;</description>
     </item>
     <item>
       <title>Colab: Connect to Google Drive</title>
-      <link>http://localhost:1313/posts/connect-to-colab/</link>
+      <link>https://lukesalamone.github.io/posts/connect-to-colab/</link>
       <pubDate>Wed, 30 Jun 2021 22:58:18 -0500</pubDate>
-      <guid>http://localhost:1313/posts/connect-to-colab/</guid>
+      <guid>https://lukesalamone.github.io/posts/connect-to-colab/</guid>
       <description>&lt;p&gt;Here&amp;rsquo;s how to connect your Google Colab notebook to your Drive directory:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from google.colab import drive&#xA;drive.mount(&#39;/content/gdrive&#39;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Follow the prompts from there. That is all.&lt;/p&gt;</description>
     </item>
     <item>
       <title>What Are Attention Masks?</title>
-      <link>http://localhost:1313/posts/what-are-attention-masks/</link>
+      <link>https://lukesalamone.github.io/posts/what-are-attention-masks/</link>
       <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
-      <guid>http://localhost:1313/posts/what-are-attention-masks/</guid>
+      <guid>https://lukesalamone.github.io/posts/what-are-attention-masks/</guid>
       <description>&lt;p&gt;TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;../../img/attention_mask.png&#34;&#xA;    alt=&#34;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)&lt;/p&gt;</description>
     </item>
     <item>
       <title>Python: Serve an HTML File</title>
-      <link>http://localhost:1313/posts/python-serve-html/</link>
+      <link>https://lukesalamone.github.io/posts/python-serve-html/</link>
       <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
-      <guid>http://localhost:1313/posts/python-serve-html/</guid>
+      <guid>https://lukesalamone.github.io/posts/python-serve-html/</guid>
       <description>&lt;p&gt;If you want to serve some HTML with python run&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;python -m http.server 8000&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Then navigate to &lt;a href=&#34;http://localhost:8000/&#34;&gt;http://localhost:8000&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This is not meant for production environments but will get you around CORS restrictions that would come from simply opening a local file in your browser.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Python: Read &amp; Write Json</title>
-      <link>http://localhost:1313/posts/read-write-json/</link>
+      <link>https://lukesalamone.github.io/posts/read-write-json/</link>
       <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
-      <guid>http://localhost:1313/posts/read-write-json/</guid>
+      <guid>https://lukesalamone.github.io/posts/read-write-json/</guid>
       <description>&lt;p&gt;Often it is useful to save python data to json files. The following code will demonstrate how that can be done.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;God bless JSON!&amp;rdquo; ~ a soon to be famous programmer&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import json&#xA;&#xA;data = {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}&#xA;filename = &#39;awesome_data.json&#39;&#xA;&#xA;# write data to file&#xA;with open(filename, &#39;w&#39;) as f:&#xA;  json.dump(data, f)&#xA;&#xA;&#xA;# read json from file&#xA;with open(filename, &#39;r&#39;) as f:&#xA;  data = json.load(f)&#xA;&#xA;&#xA;print(data)&#xA;# prints {&#39;a&#39;: 1, &#39;b&#39;:&#39;hello&#39;, &#39;c&#39;:False}&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>Python: Formatting a string</title>
-      <link>http://localhost:1313/posts/python-format-string/</link>
+      <link>https://lukesalamone.github.io/posts/python-format-string/</link>
       <pubDate>Wed, 24 Feb 2021 21:22:42 -0600</pubDate>
-      <guid>http://localhost:1313/posts/python-format-string/</guid>
+      <guid>https://lukesalamone.github.io/posts/python-format-string/</guid>
       <description>&lt;p&gt;There are three main ways to format strings in python:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;name = &#39;Luke&#39;&#xA;food = &#39;pizza&#39;&#xA;&#xA;# old style&#xA;&amp;quot;My name is %s and I like %s.&amp;quot; % (name, food)&#xA;&#xA;# str.format()&#xA;&amp;quot;My name is {0} and I like {1}.&amp;quot;.format(name, food)&#xA;&#xA;# f-strings&#xA;f&amp;quot;My name is {name} and I like {food}.&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>Managing Python Environments</title>
-      <link>http://localhost:1313/posts/managing-python-environments/</link>
+      <link>https://lukesalamone.github.io/posts/managing-python-environments/</link>
       <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
-      <guid>http://localhost:1313/posts/managing-python-environments/</guid>
+      <guid>https://lukesalamone.github.io/posts/managing-python-environments/</guid>
       <description>&lt;p&gt;Need to switch between python versions often? Use &lt;a href=&#34;https://github.com/pyenv/pyenv&#34;&gt;&lt;code&gt;pyenv&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;installing-pyenv&#34;&gt;Installing pyenv&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# install pyenv&#xA;curl https://pyenv.run | bash&#xA;&#xA;# check pyenv install location&#xA;which pyenv&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;install-another-python-version&#34;&gt;Install another python version&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# see a list of available python versions&#xA;pyenv install --list&#xA;&#xA;# check installed python versions&#xA;pyenv versions&#xA;&#xA;# installs python 3.7.5&#xA;pyenv install 3.7.5&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;switch-python-versions&#34;&gt;Switch python versions&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# use python 3.7.5 everywhere on your machine&#xA;pyenv global 3.7.5&#xA;&#xA;# use python 3.7.5 in current directory&#xA;pyenv local 3.7.5&#xA;&#xA;# use python 3.7.5 in current shell session&#xA;pyenv shell 3.7.5&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>What is the Hardest Hangman Word?</title>
-      <link>http://localhost:1313/posts/hardest-hangman-word/</link>
+      <link>https://lukesalamone.github.io/posts/hardest-hangman-word/</link>
       <pubDate>Tue, 21 Jul 2020 17:34:05 +0800</pubDate>
-      <guid>http://localhost:1313/posts/hardest-hangman-word/</guid>
+      <guid>https://lukesalamone.github.io/posts/hardest-hangman-word/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/p33HisS.png&#34; alt=&#34;Example hangman game&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;It seems like a simple enough question. Which word should you choose so that it takes your opponent the most guesses to discover it? Should you choose a long word to use up your opponent&amp;rsquo;s guesses? Or perhaps a short word with obscure letters? In this document I look into this question. But first, a bit of background.&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re not familiar with the rules of hangman, it is a guessing game played between two people. Player A chooses a secret word, and tells player B the length of the secret word. Player B guesses letters which she thinks might be in the word. If she chooses a correct letter, player A reveals the locations of &lt;em&gt;each instance&lt;/em&gt; of the guessed letter. However, if player B guesses an incorrect letter, this counts as a &amp;ldquo;strike&amp;rdquo; against her. After an agreed-upon number of strikes, player B loses.&lt;/p&gt;</description>
     </item>
   </channel>

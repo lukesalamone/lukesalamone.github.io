@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vector on Luke Salamone&#39;s Blog</title>
-    <link>http://localhost:1313/tags/vector/</link>
+    <link>https://lukesalamone.github.io/tags/vector/</link>
     <description>Recent content in Vector on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 27 Mar 2024 18:19:54 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/vector/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lukesalamone.github.io/tags/vector/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Learning the Haystack</title>
-      <link>http://localhost:1313/posts/learning-the-haystack/</link>
+      <link>https://lukesalamone.github.io/posts/learning-the-haystack/</link>
       <pubDate>Wed, 27 Mar 2024 18:19:54 -0700</pubDate>
-      <guid>http://localhost:1313/posts/learning-the-haystack/</guid>
+      <guid>https://lukesalamone.github.io/posts/learning-the-haystack/</guid>
       <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    // Fix &lt;code&gt; tags after MathJax finishes running. This is a&#xA;    // hack to overcome a shortcoming of Markdown. Discussion at&#xA;    // https://github.com/mojombo/jekyll/issues/199&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.&lt;/p&gt;</description>
     </item>
   </channel>

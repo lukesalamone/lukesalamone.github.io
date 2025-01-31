@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Paper-Summary on Luke Salamone&#39;s Blog</title>
-    <link>http://localhost:1313/tags/paper-summary/</link>
+    <link>https://lukesalamone.github.io/tags/paper-summary/</link>
     <description>Recent content in Paper-Summary on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 17 Apr 2023 19:46:25 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/paper-summary/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lukesalamone.github.io/tags/paper-summary/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Paper Summary: Antenna Design with Evolutionary Algorithms</title>
-      <link>http://localhost:1313/posts/evolutionary-antenna-design/</link>
+      <link>https://lukesalamone.github.io/posts/evolutionary-antenna-design/</link>
       <pubDate>Mon, 17 Apr 2023 19:46:25 -0700</pubDate>
-      <guid>http://localhost:1313/posts/evolutionary-antenna-design/</guid>
+      <guid>https://lukesalamone.github.io/posts/evolutionary-antenna-design/</guid>
       <description>&lt;p&gt;&lt;strong&gt;This is a summary of &lt;a href=&#34;https://www.researchgate.net/profile/Al-Globus/publication/228909002_Automated_Antenna_Design_with_Evolutionary_Algorithms/links/547375300cf216f8cfaff65a/Automated-Antenna-Design-with-Evolutionary-Algorithms.pdf&#34;&gt;Automated Antenna Design with Evolutionary Algorithms&lt;/a&gt;, a 2006 paper by Hornby et al. As large language models become more and more synonymous with &amp;ldquo;AI&amp;rdquo;, it is interesting to see how researchers solved problems in the past.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Typically, antennas are designed and built by hand by domain experts. This is a very time-consuming process, however, so researchers have been investigating evolutionary algorithms since the 1990s. Inspired by natural evolution, an evolutionary algorithm is based on small, random changes and an evaluation metric. In this paper, the authors describe the use of an evolutionary algorithm to design an antenna for a small satellite weighing only 25 kilograms called ST5.&lt;/p&gt;</description>
     </item>
   </channel>

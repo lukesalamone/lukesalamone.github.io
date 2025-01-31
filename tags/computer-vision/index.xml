@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Computer-Vision on Luke Salamone&#39;s Blog</title>
-    <link>http://localhost:1313/tags/computer-vision/</link>
+    <link>https://lukesalamone.github.io/tags/computer-vision/</link>
     <description>Recent content in Computer-Vision on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 30 Jul 2023 22:45:57 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/computer-vision/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lukesalamone.github.io/tags/computer-vision/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Can ChatGPT Recognize Handwritten Digits?</title>
-      <link>http://localhost:1313/posts/chatgpt-mnist/</link>
+      <link>https://lukesalamone.github.io/posts/chatgpt-mnist/</link>
       <pubDate>Sun, 30 Jul 2023 22:45:57 -0700</pubDate>
-      <guid>http://localhost:1313/posts/chatgpt-mnist/</guid>
+      <guid>https://lukesalamone.github.io/posts/chatgpt-mnist/</guid>
       <description>&lt;p&gt;&lt;strong&gt;TLDR: No. No it cannot.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a decoder-only model. It shouldn&amp;rsquo;t be able to perform an image recognition task. But then again, a decoder-only model wouldn&amp;rsquo;t have been my first choice for translation or summarization either. In my experience, ChatGPT has created translations which are at least as coherent and idiomatic as Google Translate, if not more so.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How Does Convolution Work?</title>
-      <link>http://localhost:1313/posts/how-does-convolution-work/</link>
+      <link>https://lukesalamone.github.io/posts/how-does-convolution-work/</link>
       <pubDate>Mon, 14 Jun 2021 21:05:06 -0500</pubDate>
-      <guid>http://localhost:1313/posts/how-does-convolution-work/</guid>
+      <guid>https://lukesalamone.github.io/posts/how-does-convolution-work/</guid>
       <description>&lt;p&gt;Convolutional neural networks have had breakthrough success in image recognition, natural language processing, and even board games like Chess and Go. But what&amp;rsquo;s really going on during convolution? Well, I think the easiest way to explain is with an interactive demo. Feel free to play around with the parameters below to see for yourself!&lt;/p&gt;&#xA;&lt;script src=&#34;../../js/util.js&#34;&gt;&lt;/script&gt;&#xA;&lt;script src=&#34;../../js/convolution-demo.js&#34;&gt;&lt;/script&gt;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;../../css/convolution-demo.css&#34; /&gt;&#xA;&lt;div id=&#34;input-output&#34;&gt;&#xA;  &lt;div id=&#34;input-grid&#34;&gt;&lt;/div&gt;&#xA;  &lt;div id=&#34;output-grid&#34;&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div id=&#34;controls&#34;&gt;&#xA;  &lt;table&gt;&#xA;    &lt;tr id=&#34;number&#34;&gt;&#xA;      &lt;td&gt;number:&lt;/td&gt;&#xA;      &lt;td&gt;&#xA;        &lt;select&gt;&#xA;          &lt;option value=&#34;four&#34;&gt;four&lt;/option&gt;&#xA;          &lt;option value=&#34;three&#34;&gt;three&lt;/option&gt;&#xA;          &lt;option value=&#34;eight&#34;&gt;eight&lt;/option&gt;&#xA;        &lt;/select&gt;&#xA;      &lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr id=&#34;padding&#34;&gt;&#xA;      &lt;td&gt;padding: &lt;span class=&#34;val&#34;&gt;&lt;/span&gt;&lt;/td&gt;&#xA;      &lt;td&gt;&lt;input type=&#34;range&#34; min=&#34;0&#34; max=&#34;2&#34; value=&#34;0&#34;&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr id=&#34;kernelsize&#34;&gt;&#xA;      &lt;td&gt;kernel size: &lt;span class=&#34;val&#34;&gt;&lt;/span&gt;&lt;/td&gt;&#xA;      &lt;td&gt;&lt;input type=&#34;range&#34; min=&#34;1&#34; max=&#34;4&#34; value=&#34;2&#34;&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr id=&#34;stride&#34;&gt;&#xA;      &lt;td&gt;stride: &lt;span class=&#34;val&#34;&gt;&lt;/span&gt;&lt;/td&gt;&#xA;      &lt;td&gt;&lt;input type=&#34;range&#34; min=&#34;1&#34; max=&#34;3&#34; value=&#34;1&#34;&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr id=&#34;speed&#34;&gt;&#xA;      &lt;td&gt;speed: &lt;span class=&#34;val&#34;&gt;&lt;/span&gt;&lt;/td&gt;&#xA;      &lt;td&gt;&lt;input type=&#34;range&#34; min=&#34;1&#34; max=&#34;5&#34; value=&#34;3&#34;&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr id=&#34;errors&#34; style=&#34;display:none&#34;&gt;&#xA;      &lt;td colspan=&#34;2&#34;&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;You can use the settings above to control the hyperparameters of the convolutional layer.&lt;/p&gt;</description>
     </item>
   </channel>
