@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+
+    
+
+<meta name="author" content="Luke Salamone">
+<meta name="keywords" content=", graph-theory, search" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/beam-search-graph-pruning/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+<script>
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
+</script>
+
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
+
+
+    <title>
+        
+            Aesthetic Graph Pruning :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+  <meta itemprop="name" content="Aesthetic Graph Pruning">
+  <meta itemprop="description" content="The other day I found Alan Pike’s blog post from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Closing cities is an important mechanic in the game, because as a sort of “battle royale” mechanic it prevents players from hiding in the corner of the map indefinitely.">
+  <meta itemprop="datePublished" content="2026-02-19T20:27:24-08:00">
+  <meta itemprop="dateModified" content="2026-02-19T20:27:24-08:00">
+  <meta itemprop="wordCount" content="720">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Graph-Theory,Search">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="Aesthetic Graph Pruning">
+  <meta name="twitter:description" content="The other day I found Alan Pike’s blog post from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Closing cities is an important mechanic in the game, because as a sort of “battle royale” mechanic it prevents players from hiding in the corner of the map indefinitely.">
+
+
+
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/beam-search-graph-pruning/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="Aesthetic Graph Pruning">
+  <meta property="og:description" content="The other day I found Alan Pike’s blog post from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Closing cities is an important mechanic in the game, because as a sort of “battle royale” mechanic it prevents players from hiding in the corner of the map indefinitely.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-19T20:27:24-08:00">
+    <meta property="article:modified_time" content="2026-02-19T20:27:24-08:00">
+    <meta property="article:tag" content="Graph-Theory">
+    <meta property="article:tag" content="Search">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2026-02-19 20:27:24 -0800 PST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="Search here" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        4 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/beam-search-graph-pruning/">Aesthetic Graph Pruning</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <link rel="stylesheet" href="../../css/graph-pruning-demo.css" />
+<style>
+  #mapContainer1, #mapContainer2 {
+    color: #000;
+  }
+  #mapContainer1 button, #mapContainer2 button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #3a2c1a;
+    color: #fef7e5;
+    cursor: pointer;
+  }
+  .prune-textarea {
+    min-width: 280px;
+    width: min(520px, 100%);
+    min-height: 160px;
+    font-family: inherit;
+    resize: vertical;
+  }
+  .helper {
+    font-size: 12px;
+    color: #6b5a3a;
+  }
+  .message {
+    font-size: 12px;
+    color: #3a2c1a;
+  }
+</style>
+<p>The other day I found <a href="https://allenpike.com/2022/how-to-close-a-city/">Alan Pike&rsquo;s blog post</a> from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Closing cities is an important mechanic in the game, because as a sort of &ldquo;battle royale&rdquo; mechanic it prevents players from hiding in the corner of the map indefinitely.</p>
+<p>We can model the map as an undirected graph, where cities are vertices and travel routes are edges. Removing a city means deleting a vertex and its corresponding edges.</p>
+<p>Closing cities without considering the resulting map can be suboptimal or unplayable. The post names two specific issues: disconnected graphs and path graphs (long lines of cities). A disconnected graph can result in a situation where the players can no longer interact. A path graph results in a map which isn&rsquo;t very fun since the single path severely limits the strategies players can use.</p>
+<p>So if we are going to remove a city, we should do so in a way which avoids these two problems.</p>
+<figure><img src="../../img/graph_pruning_options.png"
+    alt="With the four nodes a, b, c, and d, there are four pruning options. However, option 1 results in a disconnected graph, and options 3 and 4 result in suboptional path graphs."><figcaption>
+      <p>With the four nodes a, b, c, and d, there are four pruning options. However, option 1 results in a disconnected graph, and options 3 and 4 result in suboptional path graphs.</p>
+    </figcaption>
+</figure>
+
+<h2 id="avoiding-disconnected-graphs">Avoiding disconnected graphs</h2>
+<p>This one is simple enough. We just need to pick a city and perform a breadth-first search to ensure that every other remaining city is reachable from it. Since the map starts as a connected graph, we can always find a city to remove where the remaining graph is connected. I&rsquo;m sure there is a proof of that somewhere.</p>
+<h2 id="avoiding-path-graphs">Avoiding path graphs</h2>
+<p>This one is fuzzier because intuitively this seems to be the case of <em>better</em> and <em>worse</em> graphs, rather than the previous case. So if we can come up with some metric for &ldquo;better&rdquo;, we can search for the &ldquo;best&rdquo; option and select it.</p>
+<p>Intuitively, the reason that path graphs aren&rsquo;t great is because as a hidden information game, the strategy of Two Spies relies on the fact that the opponent could be in multiple places at once, but path graphs remove that mystery.</p>
+<p>We can quantify this by counting the number of steps it takes for every node to reach every other node. (For simplicity, we don&rsquo;t have to count reverse paths. We don&rsquo;t need to count A -&gt; B and B -&gt; A separately.) It turns out this measurement is called the <a href="https://en.wikipedia.org/wiki/Wiener_index">Wiener number</a>.</p>
+<figure><img src="../../img/wiener_distances.png"
+    alt="The graph on the left has a total distance of three, while the graph on the right (a path graph) has a total distance of four."><figcaption>
+      <p>The graph on the left has a total distance of three, while the graph on the right (a path graph) has a total distance of four.</p>
+    </figcaption>
+</figure>
+
+<h2 id="greedy-pruning">Greedy pruning</h2>
+<p>Since removing different cities results in maps with different Wiener numbers, it makes sense to 1) reject prunings that would result in disconnected graphs, and 2) select the pruning with the lowest Wiener number.</p>
+<p>Unfortunately, this approach results in suboptimal graphs later on: the search process is discovering local minima rather than global minima. We can see on a large map of European cities (larger than used in the game) that although the pruning seems reasonable at first, we end up with a ring of cities at the end that can&rsquo;t be pruned without resulting in a path graph. Not ideal.</p>
+<!-- ![greedy pruning by lowest wiener number](/img/greedy_pruning.gif) -->
+<div id="mapContainer1"></div>
+<h2 id="beam-search">Beam search</h2>
+<p>Rather than greedily removing the city which results in a graph with the lowest Wiener number, we should allow the pruning process to look ahead, rejecting prunings which inevitably result in bad final graphs. While an exhaustive search of the pruning combinations could be computationally infeasble for large graphs, that is likely not necessary.</p>
+<p>To do this, we can borrow the idea of Beam Search from language model decoding, where rather than greedily selecting one token at a time, we consider several options at the same time. In this case, rather than selecting tokens to decode, we are selecting cities to remove, and the beam is the sequence of cities which are removed. We score beams based on the average Wiener number of each of the graphs in the beam. This penalizes graphs which start with lower Wiener numbers but end with higher numbers than the alternative pruning sequences.</p>
+<p>And this works pretty well! We can see that the search algorithm avoided the trap of removing cities which would have resulted in a cycle, and instead prunes to a final, optimal triangle.</p>
+<div id="mapContainer2"></div>
+<!-- ![greedy pruning by lowest wiener number](/img/beam_search_pruning.gif) -->
+<script src="../../js/graph_pruning.js"></script>
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/graph-theory/">graph-theory</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/search/">search</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        720 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2026-02-19 20:27
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/notes-on-deepseek-r1/">
+                <span class="button__text">Notes on Deepseek R1</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+  </main>
+  <div id="shadow-search" class="posts">
+    <div class="posts-group">
+      <div class="post-year">2022</div>
+      <ul class="posts-list"></ul>
+    </div>
+  </div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2026 Luke Salamone</span>&nbsp;|&nbsp;
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.a034cec899e27f579e64fa9d8570500df0d2a6f6fd98e853b96dddca5140309f943fbcbe760b87c9e2598969ed2bb51bc6470ed3db861ba77619d8e1ecff66ca.js" integrity="sha512-oDTOyJnif1eeZPqdhXBQDfDSpvb9mOhTuW3dylFAMJ&#43;UP7y&#43;dguHyeJZiWntK7UbxkcO09uGG6d2Gdjh7P9myg=="></script>
+
+
+
+    </body>
+</html>
