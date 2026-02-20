@@ -1,0 +1,168 @@
+{
+  "cities": [
+    {"name": "London", "region": "west", "lat": 51.5072, "lng": -0.1275},
+    {"name": "Paris", "region": "west", "lat": 48.8567, "lng": 2.3522, "closeOrder": 24},
+    {"name": "Brussels", "region": "west", "lat": 50.8467, "lng": 4.3525, "closeOrder": 11},
+    {"name": "Amsterdam", "region": "west", "lat": 52.3728, "lng": 4.8936, "closeOrder": 12},
+    {"name": "Madrid", "region": "west", "lat": 40.4169, "lng": -3.7033, "closeOrder": 3},
+    {"name": "Lisbon", "region": "west", "lat": 38.7122, "lng": -9.134, "closeOrder": 0},
+    {"name": "Dublin", "region": "west", "lat": 53.3497, "lng": -6.2603, "closeOrder": 1},
+    {"name": "Copenhagen", "region": "west", "lat": 55.6805, "lng": 12.5615},
+
+    {"name": "Berlin", "region": "central", "lat": 52.52, "lng": 13.405, "closeOrder": 20},
+    {"name": "Frankfurt", "region": "central", "lat": 50.1106, "lng": 8.6822, "closeOrder": 19},
+    {"name": "Munich", "region": "central", "lat": 48.1375, "lng": 11.575, "closeOrder": 16},
+    {"name": "Vienna", "region": "central", "lat": 48.2083, "lng": 16.3725, "closeOrder": 21},
+
+    {"name": "Zurich", "region": "neutral", "lat": 47.3744, "lng": 8.5411, "closeOrder": 9},
+    {"name": "Geneva", "region": "neutral", "lat": 46.2017, "lng": 6.1469, "closeOrder": 13},
+
+    {"name": "Warsaw", "region": "east", "lat": 52.23, "lng": 21.0111, "closeOrder": 22},
+    {"name": "Budapest", "region": "east", "lat": 47.4983, "lng": 19.0408, "closeOrder": 15},
+    {"name": "Prague", "region": "east", "lat": 50.0875, "lng": 14.4214, "closeOrder": 17},
+    {"name": "Bucharest", "region": "east", "lat": 44.4325, "lng": 26.1039},
+    {"name": "Sofia", "region": "east", "lat": 42.6979, "lng": 23.3217, "closeOrder": 7},
+    {"name": "Belgrade", "region": "east", "lat": 44.8178, "lng": 20.4569, "closeOrder": 8},
+    {"name": "Kyiv", "region": "east", "lat": 50.45, "lng": 30.5233, "closeOrder": 14},
+    {"name": "Moscow", "region": "east", "lat": 55.7506, "lng": 37.6175, "closeOrder": 23},
+
+    {"name": "Rome", "region": "south", "lat": 42.4931, "lng": 14.4828, "closeOrder": 18},
+    {"name": "Venice", "region": "south", "lat": 45.4397, "lng": 12.3319},
+    {"name": "Athens", "region": "south", "lat": 37.9842, "lng": 23.7281, "closeOrder": 10},
+    {"name": "Istanbul", "region": "south", "lat": 41.0136, "lng": 28.955},
+    {"name": "Ankara", "region": "south", "lat": 39.93, "lng": 32.85, "closeOrder": 6},
+    {"name": "Naples", "region": "south", "lat": 40.8358, "lng": 14.2486, "closeOrder": 4},
+
+    {"name": "Stockholm", "region": "north", "lat": 59.3275, "lng": 18.0547, "closeOrder": 5},
+    {"name": "Helsinki", "region": "north", "lat": 60.1708, "lng": 24.9375, "closeOrder": 2}
+  ],
+  "edges": [
+    {"from": "London", "to": "Dublin"},
+    {"from": "London", "to": "Paris"},
+    {"from": "London", "to": "Brussels"},
+
+    {"from": "Dublin", "to": "Lisbon"},
+
+    {"from": "Lisbon", "to": "Madrid"},
+    {"from": "Madrid", "to": "Paris"},
+    {"from": "Madrid", "to": "Naples"},
+
+    {"from": "Paris", "to": "Brussels"},
+    {"from": "Paris", "to": "Geneva"},
+    {"from": "Paris", "to": "Zurich"},
+
+    {"from": "Brussels", "to": "Amsterdam"},
+    {"from": "Amsterdam", "to": "Copenhagen"},
+    {"from": "Amsterdam", "to": "Frankfurt"},
+
+    {"from": "Copenhagen", "to": "Berlin"},
+    {"from": "Copenhagen", "to": "Stockholm"},
+    {"from": "Frankfurt", "to": "Berlin"},
+    {"from": "Frankfurt", "to": "Munich"},
+    {"from": "Frankfurt", "to": "Zurich"},
+
+    {"from": "Munich", "to": "Vienna"},
+    {"from": "Munich", "to": "Zurich"},
+
+    {"from": "Vienna", "to": "Prague"},
+    {"from": "Vienna", "to": "Budapest"},
+    {"from": "Vienna", "to": "Venice"},
+
+    {"from": "Prague", "to": "Berlin"},
+    {"from": "Prague", "to": "Warsaw"},
+    {"from": "Geneva", "to": "Zurich"},
+    {"from": "Geneva", "to": "Venice"},
+    {"from": "Berlin", "to": "Warsaw"},
+    {"from": "Warsaw", "to": "Budapest"},
+    {"from": "Warsaw", "to": "Kyiv"},
+    {"from": "Warsaw", "to": "Moscow"},
+
+    {"from": "Budapest", "to": "Belgrade"},
+    {"from": "Budapest", "to": "Bucharest"},
+
+    {"from": "Belgrade", "to": "Sofia"},
+    {"from": "Belgrade", "to": "Athens"},
+
+    {"from": "Bucharest", "to": "Sofia"},
+    {"from": "Bucharest", "to": "Kyiv"},
+
+    {"from": "Kyiv", "to": "Moscow"},
+    {"from": "Venice", "to": "Rome"},
+    {"from": "Rome", "to": "Naples"},
+    {"from": "Rome", "to": "Athens"},
+
+    {"from": "Athens", "to": "Istanbul"},
+    {"from": "Istanbul", "to": "Ankara"},
+    {"from": "Ankara", "to": "Kyiv"},
+
+    {"from": "Naples", "to": "Athens"},
+    {"from": "Stockholm", "to": "Helsinki"},
+    {"from": "Helsinki", "to": "Moscow"}
+  ],
+  "maps": [
+    {
+      "id": "full",
+      "name": "Full",
+      "closed": []
+    },
+    {
+      "id": "small",
+      "name": "Small",
+      "closeOrder": [
+        "Paris",
+        "Geneva",
+        "Budapest",
+        "Warsaw",
+        "Prague",
+        "Vienna",
+        "Berlin",
+        "Munich",
+        "Frankfurt",
+        "Zurich"
+      ],
+      "closed": [
+        "London",
+        "Brussels",
+        "Amsterdam",
+        "Madrid",
+        "Lisbon",
+        "Dublin",
+        "Copenhagen",
+        "Bucharest",
+        "Sofia",
+        "Belgrade",
+        "Kyiv",
+        "Moscow",
+        "Rome",
+        "Venice",
+        "Athens",
+        "Istanbul",
+        "Ankara",
+        "Naples",
+        "Stockholm",
+        "Helsinki"
+      ]
+    },
+    {
+      "id": "medium",
+      "name": "Medium",
+      "closed": [
+        "Lisbon",
+        "Dublin",
+        "Stockholm",
+        "Helsinki",
+
+        "Geneva",
+        "Ankara",
+        "Copenhagen",
+        "Madrid",
+        "Bucharest",
+        "Istanbul",
+        "Sofia",
+        "Kyiv",
+        "Moscow",
+        "Naples"
+      ]
+    }
+  ]
+}

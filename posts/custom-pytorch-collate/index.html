@@ -4,7 +4,13 @@
         <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="">
+
+
+
+
+    
+
+<meta name="author" content="Luke Salamone">
 <meta name="keywords" content=", pytorch, machine-learning, python" />
 <meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
 <meta name="robots" content="noodp" />
@@ -80,7 +86,7 @@ dataset = MyDataset() dataloader = DataLoader(dataset, batch_size=4, shuffle=Tru
 class MyDataset(Dataset): # ... boilerplate ... def __getitem__(self, idx): item = self.data[idx] return item[&#39;anchor&#39;], item[&#39;positive&#39;], item[&#39;negative&#39;] your collate function should be
 def collate_fn(data): anchors, pos, neg = zip(*data) anchors = tokenizer(anchors, return_tensors=&#34;pt&#34;, padding=True) pos = tokenizer(pos, return_tensors=&#34;pt&#34;, padding=True) neg = tokenizer(neg, return_tensors=&#34;pt&#34;, padding=True) return anchors, pos, neg and you can use it like
 dataset = MyDataset() dataloader = DataLoader(dataset, batch_size=4, shuffle=True, pin_memory=True, collate_fn=collate_fn) for anchors, positives, negatives in dataloader: anchors = anchors.to(device) positives = positives.to(device) negatives = negatives.to(device) # do more stuff How does the collate_fn work? The PyTorch collate function accepts a list of results from calls to the dataset getitem function and combines their components into tensors for convenient training.">
-  <meta property="og:locale" content="en">
+  <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-07-12T14:48:27-07:00">
@@ -95,7 +101,7 @@ dataset = MyDataset() dataloader = DataLoader(dataset, batch_size=4, shuffle=Tru
 
 
 
-    <meta property="article:published_time" content="2024-07-12 14:48:27 -0700 -0700" />
+    <meta property="article:published_time" content="2024-07-12 14:48:27 -0700 PDT" />
 
 
 
@@ -245,7 +251,7 @@ for anchors, positives, negatives in dataloader:
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2024-07-13 05:48
+          2024-07-12 14:48
         
 
         
@@ -297,7 +303,7 @@ for anchors, positives, negatives in dataloader:
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2025 Luke Salamone</span>&nbsp;|&nbsp;
+            <span>&copy; 2026 Luke Salamone</span>&nbsp;|&nbsp;
             <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
         </div>
     </div>
@@ -311,7 +317,7 @@ for anchors, positives, negatives in dataloader:
 
 
 
-<script type="text/javascript" src="../../bundle.min.e5fbf64306713fe8df1194a658201f5e861815365f67b3c6fc9094ed28d21c92aeaff20b7f4c12c25ba7efabe31291ffd1074e33cd60cf8ff8d8ffef7c028d73.js" integrity="sha512-5fv2QwZxP&#43;jfEZSmWCAfXoYYFTZfZ7PG/JCU7SjSHJKur/ILf0wSwlun76vjEpH/0QdOM81gz4/42P/vfAKNcw=="></script>
+<script type="text/javascript" src="../../bundle.min.a034cec899e27f579e64fa9d8570500df0d2a6f6fd98e853b96dddca5140309f943fbcbe760b87c9e2598969ed2bb51bc6470ed3db861ba77619d8e1ecff66ca.js" integrity="sha512-oDTOyJnif1eeZPqdhXBQDfDSpvb9mOhTuW3dylFAMJ&#43;UP7y&#43;dguHyeJZiWntK7UbxkcO09uGG6d2Gdjh7P9myg=="></script>
 
 
 
