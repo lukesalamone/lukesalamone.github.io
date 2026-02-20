@@ -82,11 +82,11 @@
 </style>
 <p>The other day I found <a href="https://allenpike.com/2022/how-to-close-a-city/">Alan Pike&rsquo;s blog post</a> from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Closing cities is an important mechanic in the game, because as a sort of &ldquo;battle royale&rdquo; mechanic it prevents players from hiding in the corner of the map indefinitely.</p>
 <p>Ultimately, finding a formal solution to city closing wasn&rsquo;t necessary, but it&rsquo;s worth giving it a shot anyways. We can model the map as an undirected graph, where cities are vertices and travel routes are edges. Removing a city means deleting a vertex and its corresponding edges.</p>
-<p>Closing cities without considering the resulting map can be suboptimal or unplayable. The post names two specific issues: disconnected graphs and path graphs (long lines of cities). A disconnected graph can result in a situation where the players can no longer interact. A path graph results in a map which isn&rsquo;t very fun since the single path severely limits the strategies players can use.</p>
+<p>Closing cities without considering the resulting map can be suboptimal or unplayable. His post named two specific issues: disconnected graphs and path graphs (long lines of cities). A disconnected graph can result in a situation where the players can no longer interact. A path graph results in a map which isn&rsquo;t very fun since the single path severely limits the strategies players can use.</p>
 <p>So if we are going to remove a city, we should do so in a way which avoids these two problems.</p>
 <figure><img src="/img/graph_pruning_options.png"
-    alt="With the four nodes a, b, c, and d, there are four pruning options. However, option 1 results in a disconnected graph, and options 3 and 4 result in suboptional path graphs."><figcaption>
-      <p>With the four nodes a, b, c, and d, there are four pruning options. However, option 1 results in a disconnected graph, and options 3 and 4 result in suboptional path graphs.</p>
+    alt="With the four nodes a, b, c, and d, there are four pruning options. However, option 1 results in a disconnected graph, and options 3 and 4 result in suboptional path graphs. Option 2 is the only one which maintains a connected, non-path graph."><figcaption>
+      <p>With the four nodes a, b, c, and d, there are four pruning options. However, option 1 results in a disconnected graph, and options 3 and 4 result in suboptional path graphs. Option 2 is the only one which maintains a connected, non-path graph.</p>
     </figcaption>
 </figure>
 
@@ -95,7 +95,7 @@
 <h2 id="avoiding-path-graphs">Avoiding path graphs</h2>
 <p>This one is fuzzier because intuitively this seems to be the case of <em>better</em> and <em>worse</em> graphs, rather than the previous case. So if we can come up with some metric for &ldquo;better&rdquo;, we can search for the &ldquo;best&rdquo; option and select it.</p>
 <p>Intuitively, the reason that path graphs aren&rsquo;t great is because as a hidden information game, the strategy of Two Spies relies on the fact that the opponent could be in multiple places at once, but path graphs reduce strategic possibility space and hidden state uncertainty.</p>
-<p>We can quantify this by counting the number of steps it takes for every node to reach every other node. (For simplicity, we don&rsquo;t have to count reverse paths. We don&rsquo;t need to count A -&gt; B and B -&gt; A separately.) It turns out this measurement is called the <a href="https://en.wikipedia.org/wiki/Wiener_index">Wiener number</a>. Graphs with lower Wiener numbers are more optimal for the purposes of this game.</p>
+<p>We can quantify this by counting the number of steps it takes for every node to reach every other node. (For simplicity, we don&rsquo;t have to count reverse paths. We don&rsquo;t need to count A -&gt; B and B -&gt; A separately.) It turns out this measurement is called the <a href="https://en.wikipedia.org/wiki/Wiener_index">Wiener number</a>, the sum of the shortest paths between all nodes. Graphs with lower Wiener numbers are more optimal for the purposes of this game.</p>
 <figure><img src="/img/wiener_distances.png"
     alt="The graph on the left has a total distance of three, while the graph on the right (a path graph) has a total distance of four."><figcaption>
       <p>The graph on the left has a total distance of three, while the graph on the right (a path graph) has a total distance of four.</p>
@@ -108,7 +108,7 @@
 <div id="mapContainer1"></div>
 <h2 id="beam-search">Beam search</h2>
 <p>Rather than greedily removing the city which results in a graph with the lowest Wiener number, we should allow the pruning process to look ahead, rejecting prunings which inevitably result in bad final graphs. While an exhaustive search of the pruning combinations could be computationally infeasble for large graphs, that is likely not necessary.</p>
-<p>To do this, we can borrow the idea of Beam Search from natural language processing. Rather than greedily selecting one token at a time, we consider several options at the same time. In this case, rather than selecting tokens to decode, we are selecting cities to remove, and the beam is the sequence of cities which are removed. We score beams based on the average Wiener number of each of the graphs in the beam. This penalizes graphs which start with lower Wiener numbers but end with higher numbers than the alternative pruning sequences.</p>
+<p>To do this, we can borrow the idea of Beam Search, a classic AI search technique used heavily in natural language processing. Rather than greedily selecting one token at a time, we consider several options at the same time. In this case, rather than selecting tokens to decode, we are selecting cities to remove, and the beam is the sequence of cities which are removed. We score beams based on the average Wiener number of each of the graphs in the beam. This penalizes graphs which start with lower Wiener numbers but end with higher numbers than the alternative pruning sequences.</p>
 <p>And as it turns out, pruning beams containing disconnected graphs and using a beam width of 10 works pretty well! We can see that the search algorithm avoided the trap of removing cities which would have resulted in a cycle, and instead prunes to a final, optimal triangle.</p>
 <div id="mapContainer2"></div>
 <script src="/js/graph_pruning.js"></script>
