@@ -62,7 +62,7 @@
   <meta itemprop="description" content="The other day I found Alan Pike’s blog post from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Closing cities is an important mechanic in the game, because as a sort of “battle royale” mechanic it prevents players from hiding in the corner of the map indefinitely.">
   <meta itemprop="datePublished" content="2026-02-19T20:27:24-08:00">
   <meta itemprop="dateModified" content="2026-02-19T20:27:24-08:00">
-  <meta itemprop="wordCount" content="837">
+  <meta itemprop="wordCount" content="950">
   <meta itemprop="image" content="https://lukesalamone.github.io/">
   <meta itemprop="keywords" content="Graph-Theory,Search">
 
@@ -138,7 +138,7 @@
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
-        4 minutes
+        5 minutes
 
         
       </p>
@@ -213,6 +213,14 @@
 <p>And as it turns out, pruning beams containing disconnected graphs and using a beam width of 10 works pretty well! We can see that the search algorithm avoided the trap of removing cities which would have resulted in a cycle, and instead prunes to a final, optimal triangle.</p>
 <div id="mapContainer2"></div>
 <script src="../../js/graph_pruning.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.0/dist/chart.min.js" type="text/javascript"></script>
+<script src="../../js/graph_pruning_chart.js"></script>
+<script src="../../js/util.js"></script>
+<p>At the beginning of the pruning process, greedy and beam search behave almost identically. Both reduce the Wiener number smoothly as high-degree cities are removed around the edges.</p>
+<p>The difference begins to appear when around half of the cities have been removed. Greedy pruning begins making locally optimal choices that restrict future structure. Beam search, by choosing the best removal sequences, avoids those locally optimal traps. Beam search ultimately results in a denser core.</p>
+<div id="graph1"><canvas></canvas></div>
+<p>The green line below shows the advantage of beam search over greedy at each step (i.e. Δ Wiener number). The moments where greedy pruning has an an advantage are the direct result of beam search optimizing long-term cumulative advantage.</p>
+<div id="graph2"><canvas></canvas></div>
 <p>The lesson here is that aesthetic contraints can sometimes be tackled using math, and sometimes &ldquo;old school&rdquo; techniques like Beam Search can come in handy in unexpected places, even outside of NLP contexts.</p>
 
       </div>
@@ -240,7 +248,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        837 Words
+        950 Words
       </p>
 
       <p>

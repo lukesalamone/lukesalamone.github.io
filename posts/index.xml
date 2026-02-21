@@ -112,6 +112,14 @@
 <p>And as it turns out, pruning beams containing disconnected graphs and using a beam width of 10 works pretty well! We can see that the search algorithm avoided the trap of removing cities which would have resulted in a cycle, and instead prunes to a final, optimal triangle.</p>
 <div id="mapContainer2"></div>
 <script src="/js/graph_pruning.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.0/dist/chart.min.js" type="text/javascript"></script>
+<script src="/js/graph_pruning_chart.js"></script>
+<script src="/js/util.js"></script>
+<p>At the beginning of the pruning process, greedy and beam search behave almost identically. Both reduce the Wiener number smoothly as high-degree cities are removed around the edges.</p>
+<p>The difference begins to appear when around half of the cities have been removed. Greedy pruning begins making locally optimal choices that restrict future structure. Beam search, by choosing the best removal sequences, avoids those locally optimal traps. Beam search ultimately results in a denser core.</p>
+<div id="graph1"><canvas></canvas></div>
+<p>The green line below shows the advantage of beam search over greedy at each step (i.e. Δ Wiener number). The moments where greedy pruning has an an advantage are the direct result of beam search optimizing long-term cumulative advantage.</p>
+<div id="graph2"><canvas></canvas></div>
 <p>The lesson here is that aesthetic contraints can sometimes be tackled using math, and sometimes &ldquo;old school&rdquo; techniques like Beam Search can come in handy in unexpected places, even outside of NLP contexts.</p>
 ]]></content>
         </item>

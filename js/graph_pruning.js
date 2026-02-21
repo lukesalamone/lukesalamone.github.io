@@ -4,13 +4,9 @@ const container2 = document.getElementById("mapContainer2");
 function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
   Object.entries(attrs).forEach(([key, value]) => {
-    if (key === "class") {
-      node.className = value;
-    } else if (key === "text") {
-      node.textContent = value;
-    } else {
-      node.setAttribute(key, value);
-    }
+    if (key === "class") node.className = value;
+    else if (key === "text") node.textContent = value;
+    else node.setAttribute(key, value);
   });
   children.forEach((child) => node.appendChild(child));
   return node;
@@ -33,6 +29,7 @@ function buildMapPanel(label) {
   const statRemoved = el("span", { class: "stat-value", text: "0" });
   const statRemaining = el("span", { class: "stat-value", text: "0" });
   const statNext = el("span", { class: "stat-value", text: "-" });
+  const statWiener = el("span", { class: "stat-value", text: "-" }); // NEW
 
   const stats = el("div", { class: "row stats" }, [
     el("div", { class: "stat" }, [
@@ -51,6 +48,10 @@ function buildMapPanel(label) {
       el("span", { class: "stat-label", text: "Next" }),
       statNext,
     ]),
+    el("div", { class: "stat" }, [
+      el("span", { class: "stat-label", text: "Wiener number" }),
+      statWiener,
+    ]),
   ]);
 
   const panel = el("section", { class: "map-panel" }, [title, mapWrap, controls, stats]);
@@ -61,7 +62,13 @@ function buildMapPanel(label) {
     next,
     reset,
     message,
-    stats: { total: statTotal, removed: statRemoved, remaining: statRemaining, next: statNext },
+    stats: {
+      total: statTotal,
+      removed: statRemoved,
+      remaining: statRemaining,
+      next: statNext,
+      wiener: statWiener, // NEW
+    },
   };
 }
 
@@ -87,6 +94,7 @@ const statTotalA = panelA.stats.total;
 const statRemovedA = panelA.stats.removed;
 const statRemainingA = panelA.stats.remaining;
 const statNextA = panelA.stats.next;
+const statWienerA = panelA.stats.wiener; // NEW
 
 const prevB = panelB.prev;
 const nextB = panelB.next;
@@ -96,76 +104,41 @@ const statTotalB = panelB.stats.total;
 const statRemovedB = panelB.stats.removed;
 const statRemainingB = panelB.stats.remaining;
 const statNextB = panelB.stats.next;
+const statWienerB = panelB.stats.wiener; // NEW
 
 let landData = null;
 let cities = [];
 let edges = [];
 let nameToIndex = new Map();
 
+/**
+ * Fill these with your 31-value arrays:
+ * index 0 => Wiener when graph has 30 nodes
+ * index 1 => Wiener when graph has 29 nodes
+ * ...
+ * index 30 => Wiener when graph has 0 nodes
+ */
+let WIENER_A = [
+  1463, 1338, 1217, 1112, 1017, 928, 829, 751, 678, 610, 546, 476, 427, 
+  364, 306, 267, 226, 187, 153, 128, 97, 74, 57, 38, 24, 15, 10, 4, 1, 0, 0
+];
+let WIENER_B = [
+  1463, 1338, 1217, 1120, 1011, 915, 829, 755, 675, 600, 534, 484, 417, 
+  358, 306, 268, 223, 185, 147, 115, 89, 69, 50, 35, 25, 14, 8, 3, 1, 0, 0
+];
+
 const ORDER_A = [
-  "dublin",
-  "lisbon",
-  "london",
-  "sofia",
-  "helsinki",
-  "stockholm",
-  "moscow",
-  "bucharest",
-  "copenhagen",
-  "brussels",
-  "amsterdam",
-  "ankara",
-  "kyiv",
-  "istanbul",
-  "warsaw",
-  "berlin",
-  "prague",
-  "frankfurt",
-  "belgrade",
-  "budapest",
-  "athens",
-  "naples",
-  "madrid",
-  "rome",
-  "paris",
-  "zurich",
-  "geneva",
-  "munich",
-  "vienna",
-  "venice",
+  "dublin", "lisbon", "london", "sofia", "helsinki", "stockholm", "moscow", "bucharest", 
+  "copenhagen", "brussels", "amsterdam", "ankara", "kyiv", "istanbul", "warsaw", "berlin", 
+  "prague", "frankfurt", "belgrade", "budapest", "athens", "naples", "madrid", "rome", "paris", 
+  "zurich", "geneva", "munich", "vienna", "venice"
 ];
 
 const ORDER_B = [
-  "dublin",
-  "lisbon",
-  "helsinki",
-  "stockholm",
-  "london",
-  "sofia",
-  "brussels",
-  "amsterdam",
-  "copenhagen",
-  "moscow",
-  "ankara",
-  "istanbul",
-  "kyiv",
-  "bucharest",
-  "madrid",
-  "naples",
-  "athens",
-  "belgrade",
-  "rome",
-  "paris",
-  "geneva",
-  "venice",
-  "zurich",
-  "frankfurt",
-  "munich",
-  "vienna",
-  "budapest",
-  "warsaw",
-  "prague",
-  "berlin",
+  "dublin", "lisbon", "helsinki", "stockholm", "london", "sofia", "brussels", "amsterdam", 
+  "copenhagen", "moscow", "ankara", "istanbul", "kyiv", "bucharest", "madrid", "naples", "athens", 
+  "belgrade", "rome", "paris", "geneva", "venice", "zurich", "frankfurt", "munich", "vienna", 
+  "budapest", "warsaw", "prague", "berlin"
 ];
 
 function normalizeName(name) {
@@ -241,11 +214,21 @@ function renderMap(mapEl, removed) {
   });
 }
 
-function updateStats(statTotal, statRemoved, statRemaining, statNext, state) {
+function wienerAt(state, wienerList) {
+  if (!Array.isArray(wienerList)) return null;
+  const idx = state.index; // 0 removed => 30 nodes, 1 removed => 29 nodes, ..., 30 removed => 0 nodes
+  const v = wienerList[idx];
+  return v === undefined || v === null ? null : v;
+}
+
+function updateStats(statTotal, statRemoved, statRemaining, statNext, statWiener, state, wienerList) {
   statTotal.textContent = cities.length;
   statRemoved.textContent = state.removed.size;
   statRemaining.textContent = Math.max(state.order.length - state.index, 0);
   statNext.textContent = state.order[state.index] || "-";
+
+  const wv = wienerAt(state, wienerList);
+  statWiener.textContent = wv === null ? "-" : String(wv);
 }
 
 function buildState(orderRaw) {
@@ -259,30 +242,20 @@ function buildState(orderRaw) {
       missing.push(name);
       return;
     }
-    if (seen.has(key)) {
-      return;
-    }
+    if (seen.has(key)) return;
     seen.add(key);
     normalized.push(cities[idx].name);
   });
-  return {
-    order: normalized,
-    missing,
-    index: 0,
-    removed: new Set(),
-  };
+  return { order: normalized, missing, index: 0, removed: new Set() };
 }
 
-function renderState(state, mapEl, messageEl, stats) {
+function renderState(state, mapEl, messageEl, stats, wienerList) {
   renderMap(mapEl, state.removed);
-  updateStats(stats.total, stats.removed, stats.remaining, stats.next, state);
-  if (state.missing.length) {
-    setMessage(messageEl, `Unknown: ${state.missing.join(", ")}`, true);
-  } else if (state.index >= state.order.length) {
-    setMessage(messageEl, "Done.");
-  } else {
-    setMessage(messageEl, "");
-  }
+  updateStats(stats.total, stats.removed, stats.remaining, stats.next, stats.wiener, state, wienerList);
+
+  if (state.missing.length) setMessage(messageEl, `Unknown: ${state.missing.join(", ")}`, true);
+  else if (state.index >= state.order.length) setMessage(messageEl, "Done.");
+  else setMessage(messageEl, "");
 }
 
 function stepForward(state) {
@@ -306,81 +279,60 @@ async function loadData() {
     fetch("/data/cities.json"),
     fetch("/data/europe_land.json"),
   ]);
-  if (!citiesRes.ok || !landRes.ok) {
-    throw new Error("Failed to load map assets.");
-  }
+  if (!citiesRes.ok || !landRes.ok) throw new Error("Failed to load map assets.");
+
   const raw = await citiesRes.json();
   landData = await landRes.json();
+
   const rawCities = raw.cities || [];
   cities = computeCoords(rawCities, landData?.bounds);
   nameToIndex = new Map(cities.map((c, i) => [normalizeName(c.name), i]));
+
   edges = (raw.edges || [])
-    .map((edge) => {
-      const from = nameToIndex.get(normalizeName(edge.from));
-      const to = nameToIndex.get(normalizeName(edge.to));
-      return [from, to];
-    })
+    .map((edge) => [nameToIndex.get(normalizeName(edge.from)), nameToIndex.get(normalizeName(edge.to))])
     .filter(([from, to]) => from !== undefined && to !== undefined);
 
   const stateA = buildState(ORDER_A);
   const stateB = buildState(ORDER_B);
 
-  const statsA = {
-    total: statTotalA,
-    removed: statRemovedA,
-    remaining: statRemainingA,
-    next: statNextA,
-  };
-  const statsB = {
-    total: statTotalB,
-    removed: statRemovedB,
-    remaining: statRemainingB,
-    next: statNextB,
-  };
+  const statsA = { total: statTotalA, removed: statRemovedA, remaining: statRemainingA, next: statNextA, wiener: statWienerA };
+  const statsB = { total: statTotalB, removed: statRemovedB, remaining: statRemainingB, next: statNextB, wiener: statWienerB };
 
-  renderState(stateA, mapElA, messageA, statsA);
-  renderState(stateB, mapElB, messageB, statsB);
+  renderState(stateA, mapElA, messageA, statsA, WIENER_A);
+  renderState(stateB, mapElB, messageB, statsB, WIENER_B);
 
   nextA.addEventListener("click", () => {
-    if (stepForward(stateA)) {
-      setMessage(messageA, `Removed ${stateA.order[stateA.index - 1]}.`);
-    }
-    renderState(stateA, mapElA, messageA, statsA);
+    if (stepForward(stateA)) setMessage(messageA, `Removed ${stateA.order[stateA.index - 1]}.`);
+    renderState(stateA, mapElA, messageA, statsA, WIENER_A);
   });
 
   prevA.addEventListener("click", () => {
-    if (stepBack(stateA)) {
-      setMessage(messageA, `Restored ${stateA.order[stateA.index]}.`);
-    }
-    renderState(stateA, mapElA, messageA, statsA);
+    if (stepBack(stateA)) setMessage(messageA, `Restored ${stateA.order[stateA.index]}.`);
+    renderState(stateA, mapElA, messageA, statsA, WIENER_A);
   });
 
   resetA.addEventListener("click", () => {
     stateA.index = 0;
     stateA.removed = new Set();
     setMessage(messageA, "Reset.");
-    renderState(stateA, mapElA, messageA, statsA);
+    renderState(stateA, mapElA, messageA, statsA, WIENER_A);
   });
 
   nextB.addEventListener("click", () => {
-    if (stepForward(stateB)) {
-      setMessage(messageB, `Removed ${stateB.order[stateB.index - 1]}.`);
-    }
-    renderState(stateB, mapElB, messageB, statsB);
+    if (stepForward(stateB)) setMessage(messageB, `Removed ${stateB.order[stateB.index - 1]}.`);
+    renderState(stateB, mapElB, messageB, statsB, WIENER_B);
   });
 
   prevB.addEventListener("click", () => {
-    if (stepBack(stateB)) {
-      setMessage(messageB, `Restored ${stateB.order[stateB.index]}.`);
-    }
-    renderState(stateB, mapElB, messageB, statsB);
+    if (stepBack(stateB)) setMessage(messageB, `Restored ${stateB.order[stateB.index]}.`);
+    renderState(stateB, mapElB, messageB, statsB, WIENER_B);
   });
 
   resetB.addEventListener("click", () => {
     stateB.index = 0;
     stateB.removed = new Set();
     setMessage(messageB, "Reset.");
-    renderState(stateB, mapElB, messageB, statsB);
+    renderState(stateB, mapElB, messageB, statsB, WIENER_B);
   });
 }
 
