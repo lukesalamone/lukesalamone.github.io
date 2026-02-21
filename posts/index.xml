@@ -50,7 +50,7 @@
     color: #3a2c1a;
   }
 &lt;/style&gt;
-&lt;p&gt;The other day I found &lt;a href=&#34;https://allenpike.com/2022/how-to-close-a-city/&#34;&gt;Alan Pike&amp;rsquo;s blog post&lt;/a&gt; from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Ultimately, finding a formal solution to city closing wasn&amp;rsquo;t necessary for the game, but it&amp;rsquo;s worth giving it a shot anyways.&lt;/p&gt;</description>
+&lt;p&gt;The other day I found &lt;a href=&#34;https://allenpike.com/2022/how-to-close-a-city/&#34;&gt;Alan Pike&amp;rsquo;s blog post&lt;/a&gt; from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Ultimately, finding a formal solution to city closing wasn&amp;rsquo;t necessary for the game, but it&amp;rsquo;s worth giving it a shot anyways since pruning by hand isn&amp;rsquo;t always convenient.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<link rel="stylesheet" href="/css/graph-pruning-demo.css" />
 <style>
   #mapContainer1, #mapContainer2 {
@@ -80,7 +80,7 @@
     color: #3a2c1a;
   }
 </style>
-<p>The other day I found <a href="https://allenpike.com/2022/how-to-close-a-city/">Alan Pike&rsquo;s blog post</a> from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Ultimately, finding a formal solution to city closing wasn&rsquo;t necessary for the game, but it&rsquo;s worth giving it a shot anyways.</p>
+<p>The other day I found <a href="https://allenpike.com/2022/how-to-close-a-city/">Alan Pike&rsquo;s blog post</a> from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Ultimately, finding a formal solution to city closing wasn&rsquo;t necessary for the game, but it&rsquo;s worth giving it a shot anyways since pruning by hand isn&rsquo;t always convenient.</p>
 <p>Closing cities is an important mechanic in the game, because as a sort of &ldquo;battle royale&rdquo; mechanic it prevents players from hiding in the corner of the map indefinitely. We can model the map as an undirected graph, where cities are vertices and travel routes are edges. Removing a city means deleting a vertex and its corresponding edges.</p>
 <p>Closing cities without considering the resulting map can be suboptimal or unplayable. His post named two specific issues: disconnected graphs and path graphs (i.e. long lines of cities). A disconnected graph can result in a situation where the players can no longer interact. A path graph results in a map which isn&rsquo;t very fun since the single path severely limits the strategies players can use.</p>
 <p>The difficulty is that removing a city permanently changes the topology of the map. A choice might seem reasonable at one point but causes issues down the line. So picking the correct sequence of removals is important in maintaining a playable map.</p>
