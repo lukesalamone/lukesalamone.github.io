@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+
+    
+
+<meta name="author" content="Luke Salamone">
+<meta name="keywords" content=", machine-learning, math, clustering, python" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/gmm-practical-guide/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+<script>
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
+</script>
+
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
+
+
+    <title>
+        
+            A Practical Guide to Gaussian Mixture Models :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+  <meta itemprop="name" content="A Practical Guide to Gaussian Mixture Models">
+  <meta itemprop="description" content="Are you studying machine learning and want to know more about Gaussian Mixture Models? You’ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.">
+  <meta itemprop="datePublished" content="2020-10-24T18:10:29-05:00">
+  <meta itemprop="dateModified" content="2020-10-24T18:10:29-05:00">
+  <meta itemprop="wordCount" content="1105">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Machine-Learning,Math,Clustering,Python">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="A Practical Guide to Gaussian Mixture Models">
+  <meta name="twitter:description" content="Are you studying machine learning and want to know more about Gaussian Mixture Models? You’ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.">
+
+
+
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/gmm-practical-guide/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="A Practical Guide to Gaussian Mixture Models">
+  <meta property="og:description" content="Are you studying machine learning and want to know more about Gaussian Mixture Models? You’ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-10-24T18:10:29-05:00">
+    <meta property="article:modified_time" content="2020-10-24T18:10:29-05:00">
+    <meta property="article:tag" content="Machine-Learning">
+    <meta property="article:tag" content="Math">
+    <meta property="article:tag" content="Clustering">
+    <meta property="article:tag" content="Python">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-10-24 18:10:29 -0500 -0500" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="Search here" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        6 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/gmm-practical-guide/">A Practical Guide to Gaussian Mixture Models</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      },
+      extensions: ["AMSmath.js", "AMSsymbols.js"]
+    }
+  }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<p>Are you studying machine learning and want to know more about Gaussian Mixture Models? You&rsquo;ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.</p>
+<h1 id="overview">Overview</h1>
+<p>Gaussian Mixture Models are used to group data points into different clusters. In this way, it is similar to K-means clustering, where each cluster is specified by a point at its center. In a way, GMMs are a generalization of K-means, where we relax the assumption that the clusters are circular (or spherical, or n-dimensional sphere, depending on how many dimensions your features have). Gaussians are specified by three parameters. Just like how the K-means algorithm seeks a point which best &ldquo;fits&rdquo; your data points, the GMM algorithm will seek a gaussian which best fits them.</p>
+<p>Any GMM model you will be implementing will probably have a <code>fit</code> and a <code>predict</code> method. The goal of the <code>fit</code> method is to find a number of gaussians to cluster your data points. The <code>predict</code> method takes a new point (or a list of new points) and predicts which gaussian is closest to it. So you may have a skeleton class like so:</p>
+<pre><code class="language-python">class GMM():
+    def __init__(self, n_clusters, covariance_type):
+      pass
+
+    def fit(self, features):
+      pass
+
+    def predict(self, features):
+      pass
+</code></pre>
+<h1 id="the-fit-method">The fit() method</h1>
+<p>This method has two major sub-parts: the <em>expectation step</em>, and the <em>Maximization step</em>. These two parts will be run inside of an update loop which typically terminates after a set number of iterations or the algorithm has stopped improving.</p>
+<p>I personally find that examples are the best way to understand many concepts, so in this article I will use a dataset with 4 features, each of the features having 3 dimensions:</p>
+<table>
+  <thead>
+      <tr>
+          <th>feature</th>
+          <th>d<sub>0</sub></th>
+          <th>d<sub>1</sub></th>
+          <th>d<sub>2</sub></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x<sub>0</sub></td>
+          <td>x<sub>00</sub></td>
+          <td>x<sub>01</sub></td>
+          <td>x<sub>02</sub></td>
+      </tr>
+      <tr>
+          <td>x<sub>1</sub></td>
+          <td>x<sub>10</sub></td>
+          <td>x<sub>11</sub></td>
+          <td>x<sub>12</sub></td>
+      </tr>
+      <tr>
+          <td>x<sub>2</sub></td>
+          <td>x<sub>20</sub></td>
+          <td>x<sub>21</sub></td>
+          <td>x<sub>22</sub></td>
+      </tr>
+      <tr>
+          <td>x<sub>3</sub></td>
+          <td>x<sub>30</sub></td>
+          <td>x<sub>31</sub></td>
+          <td>x<sub>32</sub></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="expectation-step">Expectation Step</h2>
+<p>The purpose of this step is to calculate for each of our features, the probability of that feature belonging to cluster k. In this example we have 4 clusters and 4 data points. So we need to fill in the following table:</p>
+<table>
+  <thead>
+      <tr>
+          <th>feature</th>
+          <th>k<sub>0</sub></th>
+          <th>k<sub>1</sub></th>
+          <th>k<sub>2</sub></th>
+          <th>k<sub>3</sub></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x<sub>0</sub></td>
+          <td>γ<sub>00</sub></td>
+          <td>γ<sub>01</sub></td>
+          <td>γ<sub>02</sub></td>
+          <td>γ<sub>03</sub></td>
+      </tr>
+      <tr>
+          <td>x<sub>1</sub></td>
+          <td>γ<sub>10</sub></td>
+          <td>γ<sub>11</sub></td>
+          <td>γ<sub>12</sub></td>
+          <td>γ<sub>13</sub></td>
+      </tr>
+      <tr>
+          <td>x<sub>2</sub></td>
+          <td>γ<sub>20</sub></td>
+          <td>γ<sub>21</sub></td>
+          <td>γ<sub>22</sub></td>
+          <td>γ<sub>23</sub></td>
+      </tr>
+      <tr>
+          <td>x<sub>3</sub></td>
+          <td>γ<sub>30</sub></td>
+          <td>γ<sub>31</sub></td>
+          <td>γ<sub>32</sub></td>
+          <td>γ<sub>33</sub></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="maximization-step">Maximization Step</h2>
+<p>In this step we need to update three variables for each of the clusters: the weight, the mean, and the diagonal covariance. In this article I will use w<sub>j</sub> to represent the weight of the j<sup>th</sup> gaussian, μ<sub>j</sub> to represent the j<sup>th</sup> mean, and σ<sub>j</sub> to represent the j<sup>th</sup> variance.</p>
+<h3 id="calculating-wj">Calculating w<sub>j</sub></h3>
+<p>The first variable will be r<sub>j</sub>, which is the sum of gammas corresponding to a given cluster k<sub>j</sub>. In other words,</p>
+<p style="text-align: center; font-size: 1.5em">
+$ r_{j} = \sum_{i=0}^3 γ_{ij} $
+</p>
+<p>Basically, r<sub>j</sub> is the sum of the gammas in the j<sup>th</sup> column. We will use this r<sub>j</sub> to calculate a w<sub>j</sub> for each cluster, the &ldquo;mixing weight&rdquo; of the gaussian. Divide by the number of features (in this case 4):</p>
+<p style="text-align: center; font-size: 1.5em">
+$ w_{j} = {r_{j} \over 4} $
+</p>
+<h3 id="calculating-μj">Calculating μ<sub>j</sub></h3>
+<p>Next we calculate the means μ<sub>j</sub> of the gaussians i.e. the point in n-dimensional space over which the (n+1)-dimensional bell curve is centered. Because in our example each feature x<sub>i</sub> contains 3 dimensions (x<sub>0</sub> = [d<sub>00</sub>, d<sub>01</sub>, d<sub>02</sub>]), the means will also need to have 3 dimensions each.</p>
+<p>μ<sub>j</sub> is calculated as follows:</p>
+<p style="font-size: 1.5em">
+$$ μ_{j} = {1 \over r_{j} } \sum_{i=0}^3 γ_{ji} x_{i} $$
+</p>
+<p>Let&rsquo;s work through the first μ. For simplicity we will multiply by r<sub>j</sub> for now. For the first mean μ<sub>0</sub>:</p>
+<p style="font-size: 1.5em">
+$$ r_j μ_0 = γ_{00} x_{0} + γ_{01} x_{1} + γ_{02} x_{2} + γ_{03} x_{3} $$
+</p>
+<p style="font-size: 1.5em">
+$$ = γ_{00} \begin{bmatrix}
+d_{00} \\
+d_{01} \\
+d_{02}
+\end{bmatrix} +
+γ_{01}
+\begin{bmatrix}
+d_{10} \\
+d_{11} \\
+d_{12}
+\end{bmatrix} +
+γ_{02}
+\begin{bmatrix}
+d_{20} \\
+d_{21} \\
+d_{22}
+\end{bmatrix} +
+γ_{03}
+\begin{bmatrix}
+d_{30} \\
+d_{31} \\
+d_{32}
+\end{bmatrix}$$
+</p>
+<p>So we are essentially multiplying the gammas associated with a gaussian by all of the features we have. This matrix multiplication can be rolled up into</p>
+<p style="font-size: 1.5em">
+$$ = \begin{bmatrix}
+d_{00} & d_{10} & d_{20} & d_{30} \\
+d_{01} & d_{11} & d_{21} & d_{31} \\
+d_{02} & d_{12} & d_{22} & d_{32}
+\end{bmatrix}
+\begin{bmatrix}
+γ_{00} \\
+γ_{01} \\
+γ_{02} \\
+γ_{03} \\
+\end{bmatrix}
+= \begin{bmatrix}
+μ_{00} \\
+μ_{01} \\
+μ_{02}
+\end{bmatrix}
+$$
+</p>
+<p>Don&rsquo;t forget to divide by r<sub>j</sub> again! It makes sense that each μ should have 3 dimensions, since our features also each have 3 dimensions.</p>
+<h3 id="calculating-σj">Calculating σ<sub>j</sub></h3>
+<p>Technically this is σ<sup>2</sup> if you&rsquo;re here from statistics, but since we never take the square root it doesn&rsquo;t matter for our purposes.</p>
+<h3 id="all-together-now-e-step-with-code">All together now. E step with code.</h3>
+<p>The full equation for the expectation step is</p>
+<p style="font-size: 1.5em">
+$$
+\gamma_{ij}
+=
+\frac{
+w_j \, \mathcal{N}\!\left(x_i \mid \mu_j, \Sigma_j\right)
+}{
+\sum_{k=0}^{K-1}
+w_k \, \mathcal{N}\!\left(x_i \mid \mu_k, \Sigma_k\right)
+}
+$$
+</p>
+<p>Alright, enough math. As fun as it is for you to read, it&rsquo;s even more fun to write in markdown.</p>
+<p>All of the math above for calculating w, μ and σ can be written succinctly in python. Here I am using <a href="https://numpy.org/">numpy</a> to take advantage of some pretty slick matrix operations they have available.</p>
+<pre><code class="language-python">&quot;&quot;&quot;
+Fit GMM to the given data using self.n_clusters number of gaussians.
+Features may be multi-dimensional.
+
+Args:
+  features: numpy array containing inputs of size
+    (n_samples, n_dimensions)
+  expectations: numpy array containing gammas from E step. Size is
+    (n_features, n_clusters)
+Returns:
+  means: updated means
+  covariances: updated covariances
+  mixing_weights: updated mixing weights
+&quot;&quot;&quot;
+
+def maximization_step(self, features, expectations):
+  # initialize lists to hold our parameters
+  mixing_weights, means, covariances = [], [], []
+
+  for cluster in range(self.n_clusters):
+    # gammas will hold a column from the expectations matrix
+    gammas = expectations[:,cluster]
+
+    # r is just the sum of a column
+    r = np.sum(gammas)
+
+    # calculate mixing weight
+    w = r / len(features)
+    mixing_weights.append(w)
+
+    # calculate means
+    # the @ symbol is a slick shortcut for matrix multiplication
+    mu = (gammas @ features) / r
+    means.append(mu)
+
+    # calculate covariances
+    diff_sq = (features-mu) ** 2
+    cov = (gammas @ diff_sq) / r
+    covariances.append(cov)
+
+  return means, covariances, mixing_weights
+</code></pre>
+<h1 id="the-predict-step">The predict() step</h1>
+<p>Once the model is trained, we have learned:</p>
+<ul>
+<li>Mixing weights w<sub>j</sub></li>
+<li>Means μ<sub>j</sub></li>
+<li>Covariances Σ<sub>j</sub></li>
+</ul>
+<p>To classify a new data point <code>x</code> we compute its responsibilities using the same formula from the E-step:</p>
+<p style="font-size: 1.5em">
+$$
+\gamma_j(x)
+=
+\frac{
+w_j \, \mathcal{N}\!\left(x \mid \mu_j, \Sigma_j\right)
+}{
+\sum_{k=0}^{K-1}
+w_k \, \mathcal{N}\!\left(x \mid \mu_k, \Sigma_k\right)
+}
+$$
+</p>
+<p>This yields a probability distribution over all clusters. If we only want the most likely cluster,</p>
+<p style="font-size: 1.5em">
+$$
+\text{cluster}(x) = \arg\max_{j} \, \gamma_j(x)
+$$
+</p>
+<pre><code class="language-python">def predict_probs(self, features):
+    gamma, _ = self._e_step(features)
+    return gamma
+
+def predict(self, features):
+    return np.argmax(self.predict_probs(features), axis=1)
+</code></pre>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/machine-learning/">machine-learning</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/math/">math</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/clustering/">clustering</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/python/">python</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1105 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2020-10-24 16:10
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://lukesalamone.github.io/posts/siamese-nn-video/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Siamese Neural Networks (Video)</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/managing-python-environments/">
+                <span class="button__text">Managing Python Environments</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+  </main>
+  <div id="shadow-search" class="posts">
+    <div class="posts-group">
+      <div class="post-year">2022</div>
+      <ul class="posts-list"></ul>
+    </div>
+  </div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2026 Luke Salamone</span>&nbsp;|&nbsp;
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.a034cec899e27f579e64fa9d8570500df0d2a6f6fd98e853b96dddca5140309f943fbcbe760b87c9e2598969ed2bb51bc6470ed3db861ba77619d8e1ecff66ca.js" integrity="sha512-oDTOyJnif1eeZPqdhXBQDfDSpvb9mOhTuW3dylFAMJ&#43;UP7y&#43;dguHyeJZiWntK7UbxkcO09uGG6d2Gdjh7P9myg=="></script>
+
+
+
+    </body>
+</html>

@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Clustering on Luke Salamone&#39;s Blog</title>
-    <link>https://lukesalamone.github.io/tags/clustering/</link>
-    <description>Recent content in Clustering on Luke Salamone&#39;s Blog</description>
+    <title>Math on Luke Salamone&#39;s Blog</title>
+    <link>https://lukesalamone.github.io/tags/math/</link>
+    <description>Recent content in Math on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 24 Oct 2020 18:10:29 -0500</lastBuildDate>
-    <atom:link href="https://lukesalamone.github.io/tags/clustering/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lukesalamone.github.io/tags/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A Practical Guide to Gaussian Mixture Models</title>
       <link>https://lukesalamone.github.io/posts/gmm-practical-guide/</link>
       <pubDate>Sat, 24 Oct 2020 18:10:29 -0500</pubDate>
       <guid>https://lukesalamone.github.io/posts/gmm-practical-guide/</guid>
       <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    // Fix &lt;code&gt; tags after MathJax finishes running. This is a&#xA;    // hack to overcome a shortcoming of Markdown. Discussion at&#xA;    // https://github.com/mojombo/jekyll/issues/199&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;Are you studying machine learning and want to know more about Gaussian Mixture Models? You&amp;rsquo;ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>How does K-means clustering work?</title>
-      <link>https://lukesalamone.github.io/posts/kmeans-clustering/</link>
-      <pubDate>Wed, 07 Oct 2020 17:39:22 -0700</pubDate>
-      <guid>https://lukesalamone.github.io/posts/kmeans-clustering/</guid>
-      <description>&lt;p&gt;K-means clustering (not to be confused with K-nearest neighbors) is an unsupervised learning algorithm used for grouping similar points together into clusters.&lt;/p&gt;&#xA;&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js&#34;&gt;&lt;/script&gt;&#xA;&lt;script src=&#34;../../js/kmeans_demo.js&#34;&gt;&lt;/script&gt;&#xA;&lt;div id=&#39;demo&#39;&gt;&#xA;&lt;button&gt;start&lt;/button&gt;&#xA;&lt;canvas id=&#34;myChart&#34; style=&#34;background-color: #0000&#34;&gt;&lt;/canvas&gt;&#xA;&lt;/div&gt;&#xA;&lt;h2 id=&#34;algorithm&#34;&gt;Algorithm&lt;/h2&gt;&#xA;&lt;p&gt;The basic K-means algorithm is fairly simple and has two steps, repeated until convergence:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;assign points to cluster corresponding to closest centroid&lt;/li&gt;&#xA;&lt;li&gt;update centroid locations to the mean of all points assigned to the associated cluster&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;The algorithm converges when the centroids stop moving, i.e. no points can be switched between clusters to a closer centroid.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

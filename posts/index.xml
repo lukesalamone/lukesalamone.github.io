@@ -4146,6 +4146,330 @@ Each sound in the dataset has 10 corresponding human vocal imitations. In the tr
         </item>
         
         <item>
+            <title>A Practical Guide to Gaussian Mixture Models</title>
+            <link>https://lukesalamone.github.io/posts/gmm-practical-guide/</link>
+            <pubDate>Sat, 24 Oct 2020 18:10:29 -0500</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/gmm-practical-guide/</guid>
+            <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/x-mathjax-config&#34;&gt;
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],
+    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],
+    TeX: {
+      equationNumbers: {
+        autoNumber: &#34;AMS&#34;
+      },
+      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]
+    }
+  }
+});
+&lt;/script&gt;
+&lt;script type=&#34;text/x-mathjax-config&#34;&gt;
+  MathJax.Hub.Queue(function() {
+    // Fix &lt;code&gt; tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i &lt; all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;
+    }
+});
+&lt;/script&gt;
+&lt;p&gt;Are you studying machine learning and want to know more about Gaussian Mixture Models? You&amp;rsquo;ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      },
+      extensions: ["AMSmath.js", "AMSsymbols.js"]
+    }
+  }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<p>Are you studying machine learning and want to know more about Gaussian Mixture Models? You&rsquo;ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.</p>
+<h1 id="overview">Overview</h1>
+<p>Gaussian Mixture Models are used to group data points into different clusters. In this way, it is similar to K-means clustering, where each cluster is specified by a point at its center. In a way, GMMs are a generalization of K-means, where we relax the assumption that the clusters are circular (or spherical, or n-dimensional sphere, depending on how many dimensions your features have). Gaussians are specified by three parameters. Just like how the K-means algorithm seeks a point which best &ldquo;fits&rdquo; your data points, the GMM algorithm will seek a gaussian which best fits them.</p>
+<p>Any GMM model you will be implementing will probably have a <code>fit</code> and a <code>predict</code> method. The goal of the <code>fit</code> method is to find a number of gaussians to cluster your data points. The <code>predict</code> method takes a new point (or a list of new points) and predicts which gaussian is closest to it. So you may have a skeleton class like so:</p>
+<pre><code class="language-python">class GMM():
+    def __init__(self, n_clusters, covariance_type):
+      pass
+
+    def fit(self, features):
+      pass
+
+    def predict(self, features):
+      pass
+</code></pre>
+<h1 id="the-fit-method">The fit() method</h1>
+<p>This method has two major sub-parts: the <em>expectation step</em>, and the <em>Maximization step</em>. These two parts will be run inside of an update loop which typically terminates after a set number of iterations or the algorithm has stopped improving.</p>
+<p>I personally find that examples are the best way to understand many concepts, so in this article I will use a dataset with 4 features, each of the features having 3 dimensions:</p>
+<table>
+  <thead>
+      <tr>
+          <th>feature</th>
+          <th>d<sub>0</sub></th>
+          <th>d<sub>1</sub></th>
+          <th>d<sub>2</sub></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x<sub>0</sub></td>
+          <td>x<sub>00</sub></td>
+          <td>x<sub>01</sub></td>
+          <td>x<sub>02</sub></td>
+      </tr>
+      <tr>
+          <td>x<sub>1</sub></td>
+          <td>x<sub>10</sub></td>
+          <td>x<sub>11</sub></td>
+          <td>x<sub>12</sub></td>
+      </tr>
+      <tr>
+          <td>x<sub>2</sub></td>
+          <td>x<sub>20</sub></td>
+          <td>x<sub>21</sub></td>
+          <td>x<sub>22</sub></td>
+      </tr>
+      <tr>
+          <td>x<sub>3</sub></td>
+          <td>x<sub>30</sub></td>
+          <td>x<sub>31</sub></td>
+          <td>x<sub>32</sub></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="expectation-step">Expectation Step</h2>
+<p>The purpose of this step is to calculate for each of our features, the probability of that feature belonging to cluster k. In this example we have 4 clusters and 4 data points. So we need to fill in the following table:</p>
+<table>
+  <thead>
+      <tr>
+          <th>feature</th>
+          <th>k<sub>0</sub></th>
+          <th>k<sub>1</sub></th>
+          <th>k<sub>2</sub></th>
+          <th>k<sub>3</sub></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x<sub>0</sub></td>
+          <td>γ<sub>00</sub></td>
+          <td>γ<sub>01</sub></td>
+          <td>γ<sub>02</sub></td>
+          <td>γ<sub>03</sub></td>
+      </tr>
+      <tr>
+          <td>x<sub>1</sub></td>
+          <td>γ<sub>10</sub></td>
+          <td>γ<sub>11</sub></td>
+          <td>γ<sub>12</sub></td>
+          <td>γ<sub>13</sub></td>
+      </tr>
+      <tr>
+          <td>x<sub>2</sub></td>
+          <td>γ<sub>20</sub></td>
+          <td>γ<sub>21</sub></td>
+          <td>γ<sub>22</sub></td>
+          <td>γ<sub>23</sub></td>
+      </tr>
+      <tr>
+          <td>x<sub>3</sub></td>
+          <td>γ<sub>30</sub></td>
+          <td>γ<sub>31</sub></td>
+          <td>γ<sub>32</sub></td>
+          <td>γ<sub>33</sub></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="maximization-step">Maximization Step</h2>
+<p>In this step we need to update three variables for each of the clusters: the weight, the mean, and the diagonal covariance. In this article I will use w<sub>j</sub> to represent the weight of the j<sup>th</sup> gaussian, μ<sub>j</sub> to represent the j<sup>th</sup> mean, and σ<sub>j</sub> to represent the j<sup>th</sup> variance.</p>
+<h3 id="calculating-wj">Calculating w<sub>j</sub></h3>
+<p>The first variable will be r<sub>j</sub>, which is the sum of gammas corresponding to a given cluster k<sub>j</sub>. In other words,</p>
+<p style="text-align: center; font-size: 1.5em">
+$ r_{j} = \sum_{i=0}^3 γ_{ij} $
+</p>
+<p>Basically, r<sub>j</sub> is the sum of the gammas in the j<sup>th</sup> column. We will use this r<sub>j</sub> to calculate a w<sub>j</sub> for each cluster, the &ldquo;mixing weight&rdquo; of the gaussian. Divide by the number of features (in this case 4):</p>
+<p style="text-align: center; font-size: 1.5em">
+$ w_{j} = {r_{j} \over 4} $
+</p>
+<h3 id="calculating-μj">Calculating μ<sub>j</sub></h3>
+<p>Next we calculate the means μ<sub>j</sub> of the gaussians i.e. the point in n-dimensional space over which the (n+1)-dimensional bell curve is centered. Because in our example each feature x<sub>i</sub> contains 3 dimensions (x<sub>0</sub> = [d<sub>00</sub>, d<sub>01</sub>, d<sub>02</sub>]), the means will also need to have 3 dimensions each.</p>
+<p>μ<sub>j</sub> is calculated as follows:</p>
+<p style="font-size: 1.5em">
+$$ μ_{j} = {1 \over r_{j} } \sum_{i=0}^3 γ_{ji} x_{i} $$
+</p>
+<p>Let&rsquo;s work through the first μ. For simplicity we will multiply by r<sub>j</sub> for now. For the first mean μ<sub>0</sub>:</p>
+<p style="font-size: 1.5em">
+$$ r_j μ_0 = γ_{00} x_{0} + γ_{01} x_{1} + γ_{02} x_{2} + γ_{03} x_{3} $$
+</p>
+<p style="font-size: 1.5em">
+$$ = γ_{00} \begin{bmatrix}
+d_{00} \\
+d_{01} \\
+d_{02}
+\end{bmatrix} +
+γ_{01}
+\begin{bmatrix}
+d_{10} \\
+d_{11} \\
+d_{12}
+\end{bmatrix} +
+γ_{02}
+\begin{bmatrix}
+d_{20} \\
+d_{21} \\
+d_{22}
+\end{bmatrix} +
+γ_{03}
+\begin{bmatrix}
+d_{30} \\
+d_{31} \\
+d_{32}
+\end{bmatrix}$$
+</p>
+<p>So we are essentially multiplying the gammas associated with a gaussian by all of the features we have. This matrix multiplication can be rolled up into</p>
+<p style="font-size: 1.5em">
+$$ = \begin{bmatrix}
+d_{00} & d_{10} & d_{20} & d_{30} \\
+d_{01} & d_{11} & d_{21} & d_{31} \\
+d_{02} & d_{12} & d_{22} & d_{32}
+\end{bmatrix}
+\begin{bmatrix}
+γ_{00} \\
+γ_{01} \\
+γ_{02} \\
+γ_{03} \\
+\end{bmatrix}
+= \begin{bmatrix}
+μ_{00} \\
+μ_{01} \\
+μ_{02}
+\end{bmatrix}
+$$
+</p>
+<p>Don&rsquo;t forget to divide by r<sub>j</sub> again! It makes sense that each μ should have 3 dimensions, since our features also each have 3 dimensions.</p>
+<h3 id="calculating-σj">Calculating σ<sub>j</sub></h3>
+<p>Technically this is σ<sup>2</sup> if you&rsquo;re here from statistics, but since we never take the square root it doesn&rsquo;t matter for our purposes.</p>
+<h3 id="all-together-now-e-step-with-code">All together now. E step with code.</h3>
+<p>The full equation for the expectation step is</p>
+<p style="font-size: 1.5em">
+$$
+\gamma_{ij}
+=
+\frac{
+w_j \, \mathcal{N}\!\left(x_i \mid \mu_j, \Sigma_j\right)
+}{
+\sum_{k=0}^{K-1}
+w_k \, \mathcal{N}\!\left(x_i \mid \mu_k, \Sigma_k\right)
+}
+$$
+</p>
+<p>Alright, enough math. As fun as it is for you to read, it&rsquo;s even more fun to write in markdown.</p>
+<p>All of the math above for calculating w, μ and σ can be written succinctly in python. Here I am using <a href="https://numpy.org/">numpy</a> to take advantage of some pretty slick matrix operations they have available.</p>
+<pre><code class="language-python">&quot;&quot;&quot;
+Fit GMM to the given data using self.n_clusters number of gaussians.
+Features may be multi-dimensional.
+
+Args:
+  features: numpy array containing inputs of size
+    (n_samples, n_dimensions)
+  expectations: numpy array containing gammas from E step. Size is
+    (n_features, n_clusters)
+Returns:
+  means: updated means
+  covariances: updated covariances
+  mixing_weights: updated mixing weights
+&quot;&quot;&quot;
+
+def maximization_step(self, features, expectations):
+  # initialize lists to hold our parameters
+  mixing_weights, means, covariances = [], [], []
+
+  for cluster in range(self.n_clusters):
+    # gammas will hold a column from the expectations matrix
+    gammas = expectations[:,cluster]
+
+    # r is just the sum of a column
+    r = np.sum(gammas)
+
+    # calculate mixing weight
+    w = r / len(features)
+    mixing_weights.append(w)
+
+    # calculate means
+    # the @ symbol is a slick shortcut for matrix multiplication
+    mu = (gammas @ features) / r
+    means.append(mu)
+
+    # calculate covariances
+    diff_sq = (features-mu) ** 2
+    cov = (gammas @ diff_sq) / r
+    covariances.append(cov)
+
+  return means, covariances, mixing_weights
+</code></pre>
+<h1 id="the-predict-step">The predict() step</h1>
+<p>Once the model is trained, we have learned:</p>
+<ul>
+<li>Mixing weights w<sub>j</sub></li>
+<li>Means μ<sub>j</sub></li>
+<li>Covariances Σ<sub>j</sub></li>
+</ul>
+<p>To classify a new data point <code>x</code> we compute its responsibilities using the same formula from the E-step:</p>
+<p style="font-size: 1.5em">
+$$
+\gamma_j(x)
+=
+\frac{
+w_j \, \mathcal{N}\!\left(x \mid \mu_j, \Sigma_j\right)
+}{
+\sum_{k=0}^{K-1}
+w_k \, \mathcal{N}\!\left(x \mid \mu_k, \Sigma_k\right)
+}
+$$
+</p>
+<p>This yields a probability distribution over all clusters. If we only want the most likely cluster,</p>
+<p style="font-size: 1.5em">
+$$
+\text{cluster}(x) = \arg\max_{j} \, \gamma_j(x)
+$$
+</p>
+<pre><code class="language-python">def predict_probs(self, features):
+    gamma, _ = self._e_step(features)
+    return gamma
+
+def predict(self, features):
+    return np.argmax(self.predict_probs(features), axis=1)
+</code></pre>
+]]></content>
+        </item>
+        
+        <item>
             <title>Managing Python Environments</title>
             <link>https://lukesalamone.github.io/posts/managing-python-environments/</link>
             <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
