@@ -4180,6 +4180,7 @@ MathJax.Hub.Config({
     }
 });
 &lt;/script&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;../css/gmm-practical-guide-demo.css&#34; /&gt;
 &lt;p&gt;Are you studying machine learning and want to know more about Gaussian Mixture Models? You&amp;rsquo;ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <script type="text/x-mathjax-config">
@@ -4210,7 +4211,50 @@ MathJax.Hub.Config({
     }
 });
 </script>
+<link rel="stylesheet" href="/css/gmm-practical-guide-demo.css" />
 <p>Are you studying machine learning and want to know more about Gaussian Mixture Models? You&rsquo;ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.</p>
+<div class="gmm-demo" id="gmm-demo">
+  <svg class="gmm-demo-chart" viewBox="0 0 600 200" preserveAspectRatio="none">
+    <line class="gmm-demo-axis" x1="0" y1="176" x2="600" y2="176"></line>
+    <path class="gmm-area gmm-area--green"></path>
+    <path class="gmm-area gmm-area--blue"></path>
+    <path class="gmm-area gmm-area--purple"></path>
+    <path class="gmm-curve gmm-curve--green"></path>
+    <path class="gmm-curve gmm-curve--blue"></path>
+    <path class="gmm-curve gmm-curve--purple"></path>
+    <line class="gmm-demo-guide" x1="0" y1="0" x2="0" y2="170"></line>
+    <g id="gmm-demo-chevron" class="gmm-demo-chevron">
+      <path d="M -8 0 L 0 -10 L 8 0 Z"></path>
+    </g>
+  </svg>
+  <div class="gmm-demo-side">
+    <label class="gmm-demo-slider">
+      <span>Position</span>
+      <input id="gmm-demo-slider" type="range" min="0" max="10" step="0.01" value="5" />
+    </label>
+    <div class="gmm-demo-probs">
+      <div class="gmm-demo-prob">
+        <div class="gmm-demo-bar">
+          <div class="gmm-demo-bar-fill gmm-demo-bar-fill--green" data-prob="0"></div>
+          <span class="gmm-demo-bar-text" data-prob-label="0">0%</span>
+        </div>
+      </div>
+      <div class="gmm-demo-prob">
+        <div class="gmm-demo-bar">
+          <div class="gmm-demo-bar-fill gmm-demo-bar-fill--blue" data-prob="1"></div>
+          <span class="gmm-demo-bar-text" data-prob-label="1">0%</span>
+        </div>
+      </div>
+      <div class="gmm-demo-prob">
+        <div class="gmm-demo-bar">
+          <div class="gmm-demo-bar-fill gmm-demo-bar-fill--purple" data-prob="2"></div>
+          <span class="gmm-demo-bar-text" data-prob-label="2">0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/gmm-practical-guide-demo.js"></script>
 <h1 id="overview">Overview</h1>
 <p>Gaussian Mixture Models are used to group data points into different clusters. In this way, it is similar to K-means clustering, where each cluster is specified by a point at its center. In a way, GMMs are a generalization of K-means, where we relax the assumption that the clusters are circular (or spherical, or n-dimensional sphere, depending on how many dimensions your features have). Gaussians are specified by three parameters. Just like how the K-means algorithm seeks a point which best &ldquo;fits&rdquo; your data points, the GMM algorithm will seek a gaussian which best fits them.</p>
 <p>Any GMM model you will be implementing will probably have a <code>fit</code> and a <code>predict</code> method. The goal of the <code>fit</code> method is to find a number of gaussians to cluster your data points. The <code>predict</code> method takes a new point (or a list of new points) and predicts which gaussian is closest to it. So you may have a skeleton class like so:</p>

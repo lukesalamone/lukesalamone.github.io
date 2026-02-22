@@ -1,0 +1,151 @@
+.gmm-demo {
+  margin: 24px 0;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0f111680;
+  color: #dfe3f0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 16px;
+  align-items: start;
+}
+
+.gmm-demo-chart {
+  width: 100%;
+  height: 220px;
+  display: block;
+}
+
+.gmm-demo-axis {
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 2;
+}
+
+.gmm-curve {
+  fill: none;
+  stroke-width: 3;
+}
+
+.gmm-area {
+  opacity: 0.3;
+}
+
+.gmm-area--green {
+  fill: #55ef53;
+}
+
+.gmm-area--blue {
+  fill: #3b6ef5;
+}
+
+.gmm-area--purple {
+  fill: #c800cf;
+}
+
+.gmm-curve--green {
+  stroke: #55ef53;
+}
+
+.gmm-curve--blue {
+  stroke: #3b6ef5;
+}
+
+.gmm-curve--purple {
+  stroke: #c800cf;
+}
+
+.gmm-demo-chevron path {
+  stroke: #ffffff;
+  stroke-width: 1;
+  fill: #ffffff;
+}
+
+.gmm-demo-guide {
+  stroke: rgba(255, 255, 255, 0.6);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.gmm-demo-side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gmm-demo-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #a9a9b3;
+}
+
+.gmm-demo-slider input[type="range"] {
+  width: 100%;
+  accent-color: #ffffff;
+}
+
+.gmm-demo-probs {
+  display: grid;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.gmm-demo-prob {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gmm-demo-label {
+  min-width: 52px;
+}
+
+.gmm-demo-bar {
+  flex: 1;
+  height: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.gmm-demo-bar-fill {
+  height: 100%;
+  width: 0%;
+  box-sizing: border-box;
+}
+
+.gmm-demo-bar-fill--green {
+  background: #55ef5380;
+  /* border: 1px solid #55ef53; */
+}
+
+.gmm-demo-bar-fill--blue {
+  background: #3b6ef580;
+  /* border: 1px solid #3b6ef5; */
+}
+
+.gmm-demo-bar-fill--purple {
+  background: #c800cf80;
+  /* border: 1px solid #c800cf; */
+}
+
+.gmm-demo-bar-text {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  line-height: 1;
+  color: #ffffff;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .gmm-demo {
+    grid-template-columns: 1fr;
+  }
+}
