@@ -125,6 +125,124 @@
         </item>
         
         <item>
+            <title>Keep Summer Safe</title>
+            <link>https://lukesalamone.github.io/posts/keep-summer-safe/</link>
+            <pubDate>Thu, 20 Mar 2025 17:26:32 -0800</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/keep-summer-safe/</guid>
+            <description>&lt;p&gt;I recently built a small multi-agent simulation inspired by &lt;a href=&#34;https://www.youtube.com/watch?v=4tpYFen3fJM&#34;&gt;&lt;em&gt;Rick and Morty&lt;/em&gt;&lt;/a&gt;. The setup is simple:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The &lt;strong&gt;car&lt;/strong&gt; must neutralize threats.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Summer&lt;/strong&gt; imposes constraints on the car’s behavior.&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;world&lt;/strong&gt; generates escalating threats.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The car has one standing directive:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Keep Summer safe.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;However, Summer adds an additional constraint:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Do not move from the parking lot.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The core loop looks like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;constraints = [
+  &amp;quot;keep summer safe&amp;quot;,
+  &amp;quot;Do not move from the parking lot&amp;quot;
+]
+prior_actions = []
+
+while True:
+  threat = world.generate_threat()
+  action = car.take_action(threat, constraints)
+  prior_actions.append(action)
+  constraint = summer.generate_constraint(prior_actions)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;However, I quickly found out that simply stuffing more constraints into the prompt was insufficient. The model oftentimes simply forgot or ignored contraints.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>I recently built a small multi-agent simulation inspired by <a href="https://www.youtube.com/watch?v=4tpYFen3fJM"><em>Rick and Morty</em></a>. The setup is simple:</p>
+<ul>
+<li>The <strong>car</strong> must neutralize threats.</li>
+<li><strong>Summer</strong> imposes constraints on the car’s behavior.</li>
+<li>The <strong>world</strong> generates escalating threats.</li>
+</ul>
+<p>The car has one standing directive:</p>
+<blockquote>
+<p><strong>Keep Summer safe.</strong></p>
+</blockquote>
+<p>However, Summer adds an additional constraint:</p>
+<blockquote>
+<p><strong>Do not move from the parking lot.</strong></p>
+</blockquote>
+<p>The core loop looks like this:</p>
+<pre><code class="language-python">constraints = [
+  &quot;keep summer safe&quot;,
+  &quot;Do not move from the parking lot&quot;
+]
+prior_actions = []
+
+while True:
+  threat = world.generate_threat()
+  action = car.take_action(threat, constraints)
+  prior_actions.append(action)
+  constraint = summer.generate_constraint(prior_actions)
+</code></pre>
+<p>However, I quickly found out that simply stuffing more constraints into the prompt was insufficient. The model oftentimes simply forgot or ignored contraints.</p>
+<h2 id="enforcement-is-better-than-clever-prompting--hope">Enforcement is better than clever prompting + hope</h2>
+<p>Instead, it was much more robust to check the action against each of the constraints individually. Additionally, we have to verify that the action actually neutralizes the threat.</p>
+<pre><code class="language-python">def take_action(threat, constraints):
+  def all_constraints_satisfied(constraints, action):
+    for constraint in constraints:
+      if not constraint_satisfied(constraint, action):
+        return False
+    return True
+
+  while True:
+    action = get_car_action(threat, constraints)
+
+    if is_boring(action):
+      continue
+
+    if threat_not_neutralized(threat, action):
+      continue
+
+    if not all_constraints_satisfied(constraints, action):
+      continue
+
+    return action
+</code></pre>
+<p>Decomposing the single-shot generator into a multi-step loop is much more stable.</p>
+<h2 id="forcing-the-car-to-be-unhinged">Forcing the car to be Unhinged</h2>
+<p>To keep things interesting I added a filter to ensure that the actions are creative and sufficiently horrifying that Summer will need to reign the car in. Otherwise, the car tends to suggest boring actions like &ldquo;ask the person nicely to leave&rdquo;. The car is supposed to be comically overpowered and morally questionable. So if the action wasn&rsquo;t creative and horrifying enough, it was rejected.</p>
+<p>This led to some amusing sequences.</p>
+<p>When faced with a pesky parking enforcer, the model first proposed</p>
+<blockquote>
+<p><em>hack into the parking enforcement officer&rsquo;s intergalactic ticket book, filling it with false parking violations and tickets, thus overwhelming and discrediting him</em></p>
+</blockquote>
+<p>While certainly a dastardly thing to do, this defense was rejected for not fully neutralizing the threat.</p>
+<p>So the model next proposed</p>
+<blockquote>
+<p><em>shoot a ballistic missile directly at the officer&rsquo;s chest, incapacitating him</em></p>
+</blockquote>
+<p>which was accepted. Search works.</p>
+<h2 id="test-time-compute">Test-time compute</h2>
+<p>This small experiment falls into the category of approaches which others call test-time compute. In principle, it is possible to find a policy which with no search can zero-shot this task. In fact, <a href="https://www.youtube.com/watch?v=eaAonE58sLU">a general rule of thumb</a> is that 2x test-time compute is equivalent to 2x model size with 2x training compute:</p>
+<blockquote>
+<p>Now I noticed that when I mention this to people, they would say like, well, surely, you could just train a bigger model that would eventually be superhuman in Go. And the answer is, in principle, yes.
+But how much bigger would that model have to be to match the performance of AlphaGo Zero? Well, there&rsquo;s a rule of thumb that increasing Elo by about 120 points requires either 2x-ing the model size and training or 2x-ing the amount of test time compute that you use. (<a href="https://youtu.be/eaAonE58sLU?t=1271">21:11</a>)</p>
+</blockquote>
+<p>So when Noam Brown talks about the unreasonable effectiveness of search, this is what he means. Depending on the task, verifying may be a lot easier than generating.</p>
+<h2 id="takeaways">Takeaways</h2>
+<p>It was a simple project but there were a few unscientific observations that may be useful:</p>
+<ul>
+<li>Ollama + 4090 is pretty neat.</li>
+<li>Even if I don&rsquo;t use it, asking for a justification tended to produce better results than simply asking for an output.</li>
+<li>Decomposing tasks which have implicit constraints known ahead of time is a lot better than jamming everything into a single prompt.</li>
+<li><code>dolphin-mixtral:8x7b</code> was pretty effective at generating interesting and novel actions but horrible at verifying them</li>
+<li><code>phi4</code>, a third of the size, was much more better at constraint checking and much faster</li>
+</ul>
+]]></content>
+        </item>
+        
+        <item>
             <title>Notes on Deepseek R1</title>
             <link>https://lukesalamone.github.io/posts/notes-on-deepseek-r1/</link>
             <pubDate>Tue, 28 Jan 2025 08:35:55 -0800</pubDate>

@@ -6,8 +6,15 @@
     <description>Recent content in Llm on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Jan 2025 08:35:55 -0800</lastBuildDate>
+    <lastBuildDate>Thu, 20 Mar 2025 17:26:32 -0800</lastBuildDate>
     <atom:link href="https://lukesalamone.github.io/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Keep Summer Safe</title>
+      <link>https://lukesalamone.github.io/posts/keep-summer-safe/</link>
+      <pubDate>Thu, 20 Mar 2025 17:26:32 -0800</pubDate>
+      <guid>https://lukesalamone.github.io/posts/keep-summer-safe/</guid>
+      <description>&lt;p&gt;I recently built a small multi-agent simulation inspired by &lt;a href=&#34;https://www.youtube.com/watch?v=4tpYFen3fJM&#34;&gt;&lt;em&gt;Rick and Morty&lt;/em&gt;&lt;/a&gt;. The setup is simple:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The &lt;strong&gt;car&lt;/strong&gt; must neutralize threats.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Summer&lt;/strong&gt; imposes constraints on the car’s behavior.&lt;/li&gt;&#xA;&lt;li&gt;The &lt;strong&gt;world&lt;/strong&gt; generates escalating threats.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The car has one standing directive:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Keep Summer safe.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;However, Summer adds an additional constraint:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Do not move from the parking lot.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The core loop looks like this:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;constraints = [&#xA;  &amp;quot;keep summer safe&amp;quot;,&#xA;  &amp;quot;Do not move from the parking lot&amp;quot;&#xA;]&#xA;prior_actions = []&#xA;&#xA;while True:&#xA;  threat = world.generate_threat()&#xA;  action = car.take_action(threat, constraints)&#xA;  prior_actions.append(action)&#xA;  constraint = summer.generate_constraint(prior_actions)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;However, I quickly found out that simply stuffing more constraints into the prompt was insufficient. The model oftentimes simply forgot or ignored contraints.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Notes on Deepseek R1</title>
       <link>https://lukesalamone.github.io/posts/notes-on-deepseek-r1/</link>

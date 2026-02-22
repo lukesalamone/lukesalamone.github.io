@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+
+    
+
+<meta name="author" content="Luke Salamone">
+<meta name="keywords" content=", llm, search" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/keep-summer-safe/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+<script>
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
+</script>
+
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
+
+
+    <title>
+        
+            Keep Summer Safe :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+  <meta itemprop="name" content="Keep Summer Safe">
+  <meta itemprop="description" content="I recently built a small multi-agent simulation inspired by Rick and Morty. The setup is simple:
+The car must neutralize threats. Summer imposes constraints on the car’s behavior. The world generates escalating threats. The car has one standing directive:
+Keep Summer safe.
+However, Summer adds an additional constraint:
+Do not move from the parking lot.
+The core loop looks like this:
+constraints = [ &#34;keep summer safe&#34;, &#34;Do not move from the parking lot&#34; ] prior_actions = [] while True: threat = world.generate_threat() action = car.take_action(threat, constraints) prior_actions.append(action) constraint = summer.generate_constraint(prior_actions) However, I quickly found out that simply stuffing more constraints into the prompt was insufficient. The model oftentimes simply forgot or ignored contraints.">
+  <meta itemprop="datePublished" content="2025-03-20T17:26:32-08:00">
+  <meta itemprop="dateModified" content="2025-03-20T17:26:32-08:00">
+  <meta itemprop="wordCount" content="614">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Llm,Search">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="Keep Summer Safe">
+  <meta name="twitter:description" content="I recently built a small multi-agent simulation inspired by Rick and Morty. The setup is simple:
+The car must neutralize threats. Summer imposes constraints on the car’s behavior. The world generates escalating threats. The car has one standing directive:
+Keep Summer safe.
+However, Summer adds an additional constraint:
+Do not move from the parking lot.
+The core loop looks like this:
+constraints = [ &#34;keep summer safe&#34;, &#34;Do not move from the parking lot&#34; ] prior_actions = [] while True: threat = world.generate_threat() action = car.take_action(threat, constraints) prior_actions.append(action) constraint = summer.generate_constraint(prior_actions) However, I quickly found out that simply stuffing more constraints into the prompt was insufficient. The model oftentimes simply forgot or ignored contraints.">
+
+
+
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/keep-summer-safe/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="Keep Summer Safe">
+  <meta property="og:description" content="I recently built a small multi-agent simulation inspired by Rick and Morty. The setup is simple:
+The car must neutralize threats. Summer imposes constraints on the car’s behavior. The world generates escalating threats. The car has one standing directive:
+Keep Summer safe.
+However, Summer adds an additional constraint:
+Do not move from the parking lot.
+The core loop looks like this:
+constraints = [ &#34;keep summer safe&#34;, &#34;Do not move from the parking lot&#34; ] prior_actions = [] while True: threat = world.generate_threat() action = car.take_action(threat, constraints) prior_actions.append(action) constraint = summer.generate_constraint(prior_actions) However, I quickly found out that simply stuffing more constraints into the prompt was insufficient. The model oftentimes simply forgot or ignored contraints.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-03-20T17:26:32-08:00">
+    <meta property="article:modified_time" content="2025-03-20T17:26:32-08:00">
+    <meta property="article:tag" content="Llm">
+    <meta property="article:tag" content="Search">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2025-03-20 17:26:32 -0800 -0800" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="Search here" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        3 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/keep-summer-safe/">Keep Summer Safe</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <p>I recently built a small multi-agent simulation inspired by <a href="https://www.youtube.com/watch?v=4tpYFen3fJM"><em>Rick and Morty</em></a>. The setup is simple:</p>
+<ul>
+<li>The <strong>car</strong> must neutralize threats.</li>
+<li><strong>Summer</strong> imposes constraints on the car’s behavior.</li>
+<li>The <strong>world</strong> generates escalating threats.</li>
+</ul>
+<p>The car has one standing directive:</p>
+<blockquote>
+<p><strong>Keep Summer safe.</strong></p>
+</blockquote>
+<p>However, Summer adds an additional constraint:</p>
+<blockquote>
+<p><strong>Do not move from the parking lot.</strong></p>
+</blockquote>
+<p>The core loop looks like this:</p>
+<pre><code class="language-python">constraints = [
+  &quot;keep summer safe&quot;,
+  &quot;Do not move from the parking lot&quot;
+]
+prior_actions = []
+
+while True:
+  threat = world.generate_threat()
+  action = car.take_action(threat, constraints)
+  prior_actions.append(action)
+  constraint = summer.generate_constraint(prior_actions)
+</code></pre>
+<p>However, I quickly found out that simply stuffing more constraints into the prompt was insufficient. The model oftentimes simply forgot or ignored contraints.</p>
+<h2 id="enforcement-is-better-than-clever-prompting--hope">Enforcement is better than clever prompting + hope</h2>
+<p>Instead, it was much more robust to check the action against each of the constraints individually. Additionally, we have to verify that the action actually neutralizes the threat.</p>
+<pre><code class="language-python">def take_action(threat, constraints):
+  def all_constraints_satisfied(constraints, action):
+    for constraint in constraints:
+      if not constraint_satisfied(constraint, action):
+        return False
+    return True
+
+  while True:
+    action = get_car_action(threat, constraints)
+
+    if is_boring(action):
+      continue
+
+    if threat_not_neutralized(threat, action):
+      continue
+
+    if not all_constraints_satisfied(constraints, action):
+      continue
+
+    return action
+</code></pre>
+<p>Decomposing the single-shot generator into a multi-step loop is much more stable.</p>
+<h2 id="forcing-the-car-to-be-unhinged">Forcing the car to be Unhinged</h2>
+<p>To keep things interesting I added a filter to ensure that the actions are creative and sufficiently horrifying that Summer will need to reign the car in. Otherwise, the car tends to suggest boring actions like &ldquo;ask the person nicely to leave&rdquo;. The car is supposed to be comically overpowered and morally questionable. So if the action wasn&rsquo;t creative and horrifying enough, it was rejected.</p>
+<p>This led to some amusing sequences.</p>
+<p>When faced with a pesky parking enforcer, the model first proposed</p>
+<blockquote>
+<p><em>hack into the parking enforcement officer&rsquo;s intergalactic ticket book, filling it with false parking violations and tickets, thus overwhelming and discrediting him</em></p>
+</blockquote>
+<p>While certainly a dastardly thing to do, this defense was rejected for not fully neutralizing the threat.</p>
+<p>So the model next proposed</p>
+<blockquote>
+<p><em>shoot a ballistic missile directly at the officer&rsquo;s chest, incapacitating him</em></p>
+</blockquote>
+<p>which was accepted. Search works.</p>
+<h2 id="test-time-compute">Test-time compute</h2>
+<p>This small experiment falls into the category of approaches which others call test-time compute. In principle, it is possible to find a policy which with no search can zero-shot this task. In fact, <a href="https://www.youtube.com/watch?v=eaAonE58sLU">a general rule of thumb</a> is that 2x test-time compute is equivalent to 2x model size with 2x training compute:</p>
+<blockquote>
+<p>Now I noticed that when I mention this to people, they would say like, well, surely, you could just train a bigger model that would eventually be superhuman in Go. And the answer is, in principle, yes.
+But how much bigger would that model have to be to match the performance of AlphaGo Zero? Well, there&rsquo;s a rule of thumb that increasing Elo by about 120 points requires either 2x-ing the model size and training or 2x-ing the amount of test time compute that you use. (<a href="https://youtu.be/eaAonE58sLU?t=1271">21:11</a>)</p>
+</blockquote>
+<p>So when Noam Brown talks about the unreasonable effectiveness of search, this is what he means. Depending on the task, verifying may be a lot easier than generating.</p>
+<h2 id="takeaways">Takeaways</h2>
+<p>It was a simple project but there were a few unscientific observations that may be useful:</p>
+<ul>
+<li>Ollama + 4090 is pretty neat.</li>
+<li>Even if I don&rsquo;t use it, asking for a justification tended to produce better results than simply asking for an output.</li>
+<li>Decomposing tasks which have implicit constraints known ahead of time is a lot better than jamming everything into a single prompt.</li>
+<li><code>dolphin-mixtral:8x7b</code> was pretty effective at generating interesting and novel actions but horrible at verifying them</li>
+<li><code>phi4</code>, a third of the size, was much more better at constraint checking and much faster</li>
+</ul>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/llm/">llm</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/search/">search</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        614 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2025-03-20 18:26
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://lukesalamone.github.io/posts/beam-search-graph-pruning/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Graph Topology and Battle Royale Mechanics</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/notes-on-deepseek-r1/">
+                <span class="button__text">Notes on Deepseek R1</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+  </main>
+  <div id="shadow-search" class="posts">
+    <div class="posts-group">
+      <div class="post-year">2022</div>
+      <ul class="posts-list"></ul>
+    </div>
+  </div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2026 Luke Salamone</span>&nbsp;|&nbsp;
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.a034cec899e27f579e64fa9d8570500df0d2a6f6fd98e853b96dddca5140309f943fbcbe760b87c9e2598969ed2bb51bc6470ed3db861ba77619d8e1ecff66ca.js" integrity="sha512-oDTOyJnif1eeZPqdhXBQDfDSpvb9mOhTuW3dylFAMJ&#43;UP7y&#43;dguHyeJZiWntK7UbxkcO09uGG6d2Gdjh7P9myg=="></script>
+
+
+
+    </body>
+</html>
