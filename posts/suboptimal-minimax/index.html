@@ -62,7 +62,7 @@
   <meta itemprop="description" content="Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn’t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn’t objectively the best move. Don’t play the game, play the man.">
   <meta itemprop="datePublished" content="2022-07-02T16:24:10-05:00">
   <meta itemprop="dateModified" content="2022-07-02T16:24:10-05:00">
-  <meta itemprop="wordCount" content="926">
+  <meta itemprop="wordCount" content="1000">
   <meta itemprop="image" content="https://lukesalamone.github.io/">
   <meta itemprop="keywords" content="Chess,Ai,Game-Theory">
 
@@ -274,7 +274,54 @@ $ \begin{bmatrix} 0.9 \\ 0.05 \\ 0.03 \\ 0.02 \end{bmatrix}
 <p>A further question is what to do once checkmate is inevitable. That is, what should the algorithm do once it will definitely win? One option is to continue to sample from the distribution, continuing to play the move which maximizes winning chances. At the beginning, this was my intuition. Unfortunately, this leads to many draws by repetition.</p>
 <p>Instead, once the game is in a forced-win situation (&ldquo;mate in N moves&rdquo;) the algorithm will stop sampling from the distribution and simply play the moves which lead to checkmate. While this will inevitably lead to a win, it changes the character of the algorithm somewhat. Therefore, I have limited the lookahead to checkmates in the immediate next few moves (specifically, mate in 5 or fewer moves). Since the original goal was to create an algorithm which is used for training, this seems reasonable.</p>
 <h2 id="games">Games</h2>
+<table>
+  <thead>
+      <tr>
+          <th>White</th>
+          <th>Black</th>
+          <th>Games</th>
+          <th>White win %</th>
+          <th>Average half moves per game</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Antimaia 1900</td>
+          <td>Maia 1900</td>
+          <td>100</td>
+          <td>100%</td>
+          <td>37</td>
+      </tr>
+      <tr>
+          <td>Maia 1900</td>
+          <td>Antimaia 1900</td>
+          <td>100</td>
+          <td>0%</td>
+          <td>43</td>
+      </tr>
+      <tr>
+          <td>Maia 1900</td>
+          <td>Stockfish @10</td>
+          <td>100</td>
+          <td>0%</td>
+          <td>67</td>
+      </tr>
+      <tr>
+          <td>Stockfish @10</td>
+          <td>Maia 1900</td>
+          <td>100</td>
+          <td>100%</td>
+          <td>70</td>
+      </tr>
+  </tbody>
+</table>
 <p>I simulated 400 matches testing this opponent modeling approach, which I wrote about <a href="../../posts/best-antimaia-games/">here</a>.</p>
+<p>Key findings:</p>
+<ul>
+<li>Both Antimaia and Stockfish@10 beat Maia 100% of the time</li>
+<li>Antimaia finishes its games much more quickly (12-16 moves faster!)</li>
+<li>Antimaia is exploiting weaknesses in Maia&rsquo;s policy by playing high risk/high reward moves</li>
+</ul>
 
       </div>
     </article>
@@ -302,7 +349,7 @@ $ \begin{bmatrix} 0.9 \\ 0.05 \\ 0.03 \\ 0.02 \end{bmatrix}
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        926 Words
+        1000 Words
       </p>
 
       <p>
