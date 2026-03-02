@@ -13,10 +13,10 @@
       <link>https://lukesalamone.github.io/posts/best-antimaia-games/</link>
       <pubDate>Sat, 26 Nov 2022 20:25:13 -0800</pubDate>
       <guid>https://lukesalamone.github.io/posts/best-antimaia-games/</guid>
-      <description>&lt;p&gt;This is a follow up to &lt;a href=&#34;../../posts/winning-faster-than-stockfish/&#34;&gt;Winning 2x Faster Than Stockfish&lt;/a&gt;. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.&lt;/p&gt;&#xA;&lt;p&gt;The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&amp;rsquo;t objectively &amp;ldquo;optimal&amp;rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player. Antimaia 1900 is specifically designed to counter Maia 1900.&lt;/p&gt;</description>
+      <description>&lt;p&gt;This is a follow up to &lt;a href=&#34;../../posts/winning-faster-than-stockfish/&#34;&gt;Opponent Modeling Wins 2× Faster Than Stockfish&lt;/a&gt;. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.&lt;/p&gt;&#xA;&lt;p&gt;The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&amp;rsquo;t objectively &amp;ldquo;optimal&amp;rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player. Antimaia 1900 is specifically designed to counter Maia 1900.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>How to Win 2x faster than Stockfish</title>
+      <title>Opponent Modeling Wins 2× Faster Than Stockfish</title>
       <link>https://lukesalamone.github.io/posts/winning-faster-than-stockfish/</link>
       <pubDate>Sat, 02 Jul 2022 16:24:10 -0500</pubDate>
       <guid>https://lukesalamone.github.io/posts/winning-faster-than-stockfish/</guid>
