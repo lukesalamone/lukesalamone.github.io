@@ -59,24 +59,24 @@
 
 
   <meta itemprop="name" content="How to Win 2x faster than Stockfish">
-  <meta itemprop="description" content="Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn’t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn’t objectively the best move. Don’t play the game, play the man.">
+  <meta itemprop="description" content="TLDR: Using opponent modeling we can win 2x faster than Stockfish by playing high risk, high reward moves that Stockfish will avoid.">
   <meta itemprop="datePublished" content="2022-07-02T16:24:10-05:00">
   <meta itemprop="dateModified" content="2022-07-02T16:24:10-05:00">
-  <meta itemprop="wordCount" content="1000">
+  <meta itemprop="wordCount" content="1022">
   <meta itemprop="image" content="https://lukesalamone.github.io/">
   <meta itemprop="keywords" content="Chess,Ai,Game-Theory">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://lukesalamone.github.io/">
   <meta name="twitter:title" content="How to Win 2x faster than Stockfish">
-  <meta name="twitter:description" content="Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn’t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn’t objectively the best move. Don’t play the game, play the man.">
+  <meta name="twitter:description" content="TLDR: Using opponent modeling we can win 2x faster than Stockfish by playing high risk, high reward moves that Stockfish will avoid.">
 
 
 
     <meta property="og:url" content="https://lukesalamone.github.io/posts/winning-faster-than-stockfish/">
   <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
   <meta property="og:title" content="How to Win 2x faster than Stockfish">
-  <meta property="og:description" content="Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn’t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn’t objectively the best move. Don’t play the game, play the man.">
+  <meta property="og:description" content="TLDR: Using opponent modeling we can win 2x faster than Stockfish by playing high risk, high reward moves that Stockfish will avoid.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -179,6 +179,7 @@ MathJax.Hub.Config({
     }
 });
 </script>
+<p><strong>TLDR: Using opponent modeling we can win 2x faster than Stockfish by playing high risk, high reward moves that Stockfish will avoid.</strong></p>
 <p>Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&rsquo;t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn&rsquo;t objectively the best move. <a href="https://www.youtube.com/watch?v=XsdefZRavj4">Don&rsquo;t play the game, play the man.</a></p>
 <p>For the purposes of this problem let&rsquo;s assume it is a chess algorithm but this concept can be generalized to any algorithm which can use minimax. Anyone who has played a game against another person understands the idea of &ldquo;downloading&rdquo; your opponent: playing against a person enough that you feel like you know what they will do. <a href="https://www.youtube.com/watch?v=42LatV92k1s">Hikaru Nakamura does</a>.</p>
 <p>It seems like this type of player would have many possible applications, including training for specific skill levels and even trainers personalized to an individual&rsquo;s playing style.</p>
@@ -349,7 +350,7 @@ $ \begin{bmatrix} 0.9 \\ 0.05 \\ 0.03 \\ 0.02 \end{bmatrix}
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1000 Words
+        1022 Words
       </p>
 
       <p>

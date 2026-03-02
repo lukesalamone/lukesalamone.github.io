@@ -2422,7 +2422,7 @@ MathJax.Hub.Config({
     }
 });
 &lt;/script&gt;
-&lt;p&gt;Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&amp;rsquo;t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn&amp;rsquo;t objectively the best move. &lt;a href=&#34;https://www.youtube.com/watch?v=XsdefZRavj4&#34;&gt;Don&amp;rsquo;t play the game, play the man.&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;strong&gt;TLDR: Using opponent modeling we can win 2x faster than Stockfish by playing high risk, high reward moves that Stockfish will avoid.&lt;/strong&gt;&lt;/p&gt;</description>
             <content type="html"><![CDATA[<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -2449,6 +2449,7 @@ MathJax.Hub.Config({
     }
 });
 </script>
+<p><strong>TLDR: Using opponent modeling we can win 2x faster than Stockfish by playing high risk, high reward moves that Stockfish will avoid.</strong></p>
 <p>Minimax solves for optimal opponent play, minimizing the best move an opponent could make. But what if we knew the opponent wouldn&rsquo;t make the best move? What if we knew what the opponent would do ahead of time? In that case, we could beat them faster by playing moves which take advantage of this fact, even if our move isn&rsquo;t objectively the best move. <a href="https://www.youtube.com/watch?v=XsdefZRavj4">Don&rsquo;t play the game, play the man.</a></p>
 <p>For the purposes of this problem let&rsquo;s assume it is a chess algorithm but this concept can be generalized to any algorithm which can use minimax. Anyone who has played a game against another person understands the idea of &ldquo;downloading&rdquo; your opponent: playing against a person enough that you feel like you know what they will do. <a href="https://www.youtube.com/watch?v=42LatV92k1s">Hikaru Nakamura does</a>.</p>
 <p>It seems like this type of player would have many possible applications, including training for specific skill levels and even trainers personalized to an individual&rsquo;s playing style.</p>
