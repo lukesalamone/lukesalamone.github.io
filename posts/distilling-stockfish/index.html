@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+
+    
+
+<meta name="author" content="Luke Salamone">
+<meta name="keywords" content=", chess, neural-networks" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/distilling-stockfish/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+<script>
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
+</script>
+
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
+
+
+    <title>
+        
+            Distilling Stockfish with One Billion Positions :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+  <meta itemprop="name" content="Distilling Stockfish with One Billion Positions">
+  <meta itemprop="description" content="TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. The dataset is released as the Gigafish dataset on Huggingface.
+Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.
+Stockfish is currently the strongest chess engine in the world. It works by using a small neural network millions of times per position. One interesting question we could ask is whether we could replace search depth with a more accurate value function. In 2024, researchers at DeepMind attempted to answer this question. Critically, this approach did not hold search depth constant, and although they had 15 billion action-value pairs, they only had around 530 million state-value estimates.">
+  <meta itemprop="datePublished" content="2026-03-06T20:25:56-08:00">
+  <meta itemprop="dateModified" content="2026-03-06T20:25:56-08:00">
+  <meta itemprop="wordCount" content="794">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Chess,Neural-Networks">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="Distilling Stockfish with One Billion Positions">
+  <meta name="twitter:description" content="TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. The dataset is released as the Gigafish dataset on Huggingface.
+Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.
+Stockfish is currently the strongest chess engine in the world. It works by using a small neural network millions of times per position. One interesting question we could ask is whether we could replace search depth with a more accurate value function. In 2024, researchers at DeepMind attempted to answer this question. Critically, this approach did not hold search depth constant, and although they had 15 billion action-value pairs, they only had around 530 million state-value estimates.">
+
+
+
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/distilling-stockfish/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="Distilling Stockfish with One Billion Positions">
+  <meta property="og:description" content="TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. The dataset is released as the Gigafish dataset on Huggingface.
+Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.
+Stockfish is currently the strongest chess engine in the world. It works by using a small neural network millions of times per position. One interesting question we could ask is whether we could replace search depth with a more accurate value function. In 2024, researchers at DeepMind attempted to answer this question. Critically, this approach did not hold search depth constant, and although they had 15 billion action-value pairs, they only had around 530 million state-value estimates.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-06T20:25:56-08:00">
+    <meta property="article:modified_time" content="2026-03-06T20:25:56-08:00">
+    <meta property="article:tag" content="Chess">
+    <meta property="article:tag" content="Neural-Networks">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2026-03-06 20:25:56 -0800 PST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="Search here" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        4 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/distilling-stockfish/">Distilling Stockfish with One Billion Positions</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <p><strong>TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. The dataset is released as the <a href="https://huggingface.co/datasets/lukesalamone/gigafish-3.8b-d10">Gigafish dataset on Huggingface</a>.</strong></p>
+<figure><img src="../../img/distill_stockfish_loss_curve.png"
+    alt="Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume."><figcaption>
+      <p>Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.</p>
+    </figcaption>
+</figure>
+
+<p>Stockfish is currently the strongest chess engine in the world. It works by using a small neural network millions of times per position. One interesting question we could ask is whether we could replace search depth with a more accurate value function. <a href="https://arxiv.org/pdf/2402.04494v1">In 2024, researchers at DeepMind attempted to answer this question</a>. Critically, this approach did not hold search depth constant, and although they had 15 billion action-value pairs, they only had around 530 million state-value estimates.</p>
+<p>I wanted to take another look at this problem, building a large state-value dataset with a fixed search depth and experimenting with different model architectures.</p>
+<h2 id="transformers-arent-always-best">Transformers aren&rsquo;t always best</h2>
+<p>I trained variants from three main categories of architectures: pure Vision Transformer, pure ResNet, and a hybrid with ResNet blocks followed by Transformer blocks. Based on the test runs I did on around 30 million positions each, the hybrid architecture outperforms the pure ResNet and pure Transformer architectures.</p>
+<p>From the loss curves, we can see that ResNet benefits from its inductive biases about the chess board and so the loss on the pure ResNet model quickly drops. However, it fails to learn the more nuanced whole-board relationships that are necessary for an accurate evaluation, so learning stalls.</p>
+<p>The vision transformer on the other hand is not able to benefit from the inductive biases provided by convolutions. It effectively needs to learn what a 2D grid is from scratch.</p>
+<p>The hybrid approach gets us the best of both worlds. ResNet blocks quickly learn spatial patterns and feed them into the Transformer blocks. As a result, loss keeps falling. This is also part of why transformers are so famously data-hungry: they can keep cranking through enormous datasets.</p>
+<h3 id="input-format">Input format</h3>
+<p>The input format for the models were all the same:</p>
+<ul>
+<li>6 8x8 bitboards for the pieces of the side to moves</li>
+<li>6 8x8 bitboards for the pieces of the opponent</li>
+<li>6 &ldquo;meta&rdquo; planes encoding things like castling rights and fullmove counter</li>
+</ul>
+<h3 id="loss-function-used">Loss function used</h3>
+<p>The training task is to predict the evaluation from the perspective of the player to move. (In other words, if the current player is winning, the predicted % should be &gt;50%.) The model has 103 output logits. The first 101 buckets map to win probabilities of 0% to 100%. The last two buckets handle forced mate.</p>
+<p>There were two components to the loss: a <strong>cross-entropy component (CE)</strong> which penalizes prediction mass outside of the correct bucket, and an <strong>ordinal component (ORD)</strong> which penalizes predictions far away from the correct bucket. The two losses were combined as a weighted sum.</p>
+<h2 id="results">Results</h2>
+<p>The training began with total loss over 7.0 at the start. By the end of training the CE loss settled at 2.49 and the ORD term at 0.29, resulting in a total training loss of roughly 2.64. On a held-out validation set of ~50,000 positions the model achieved a validation loss of 2.648.</p>
+<p>Other metrics tell a clearer story. <strong>Directional accuracy, whether the model correctly predicts which side is winning, reached 92.97%</strong>. In other words, given an arbitrary position, the model agrees with Stockfish on which side is winning roughly 19 out of 20 cases, which is fairly impressive considering the number of unclear positions in the dataset.</p>
+<p>For positions where there is not a forced checkmate, the model&rsquo;s predicted win probability was off by about 4–5 percentage points on average. Converting those win probabilities back to Stockfish centipawns gives a <strong>centipawn MAE of 64 cp</strong> on positions that span the full range from nearly lost to nearly won.</p>
+<p>Due to compute constraints, I decided to cap training at 1 billion positions. But based on the loss curves, there is still a great deal of performance left on the table.</p>
+<h2 id="building-the-gigafish-dataset">Building the Gigafish Dataset</h2>
+<p>This dataset was constructed from the <a href="https://database.lichess.org/">Lichess Open Database</a> using positions from 37 months of games. I first extracted the fen positions from each of the games using a multithreaded rust script.</p>
+<p>Next, I deduplicated the fens, since many of the positions are overrepresented in the dataset. I did this with a poor-man&rsquo;s map-reduce on disk: hash each fen and append it to a file corresponding to the first 12 bits of the hash. This results in 4096 individual files, which were small enough to deduplicate individually using a hash set in RAM.</p>
+<p>Finally, I annotated each remaining fen with Stockfish at depth 10. While this is an embarrassingly parallel task, even distributing across 24 cores took more than a day of compute time.</p>
+<!-- ## Future questions
+
+- How much does depth matter? This is only a depth 10 dataset. Could we achieve the same performance on fewer data points if those data points had better labels?
+- How much does evaluation accuracy improve with depth. What is the MSE of depths 10, 15, 20 etc if we assume depth 30 is the true value?
+- Are certain positions inherently inaccurate at low depth? Can we predict that? -->
+<!-- It works based on the minimax algorithm, which is effectively a breadth-first search of the game tree, with some pruning. Since it's not possible to reach all leaf nodes in most positions, we need a value function to estimate how good a position is. 
+
+What makes a good evaluation function? Well, a perfect evaluation function could take any game state (piece positions, en passant, repetition counter, half/full move counter, etc.) and return *whether it is possible for white to win if black plays perfectly* (+∞), *whether it is possible for black to win if white plays perfectly* (-∞) or *neither player can win if their opponent plays perfectly* (0). However a perfect evaluation would require searching the complete game tree, which is usually computationally infeasible. So we're stuck with approximations.
+
+Historically, Stockfish's value function used hand-crafted rules but was replaced by a neural network called NNUE. The purpose of the value function and NNUE are to approximate or "distill" the result of what we would get if we ran minimax through the whole game tree. -->
+<!-- 
+In this paper the authors outline a supervised learning approach to creating a chess engine which performs no tree search during game play.
+
+But why would you want to do this? Well, there are a few reasons.
+
+When creating a chess engine, you'll need a couple of things. First, you'll need a general search algorithm, which will decide how you explore the game tree efficiently, because the first thing you'll find is that unlike a game like tic-tac-toe, the game tree of chess can't be searched exhaustively. Minimax, minimax with alpha-beta pruning, negamax, Monte-Carlo tree search, and [PUCT](https://lczero.org/dev/wiki/technical-explanation-of-leela-chess-zero/) are a few common game tree search algorithms. For algorithms like minimax which usually don't reach terminal (win or draw) nodes in the game tree, we still need a way to evaluate non-terminal leaf nodes. And this is where the magic happens.
+
+-->
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/chess/">chess</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/neural-networks/">neural-networks</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        794 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2026-03-06 20:25
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/beam-search-graph-pruning/">
+                <span class="button__text">Graph Topology and Battle Royale Mechanics</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+  </main>
+  <div id="shadow-search" class="posts">
+    <div class="posts-group">
+      <div class="post-year">2022</div>
+      <ul class="posts-list"></ul>
+    </div>
+  </div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2026 Luke Salamone</span>&nbsp;|&nbsp;
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.a034cec899e27f579e64fa9d8570500df0d2a6f6fd98e853b96dddca5140309f943fbcbe760b87c9e2598969ed2bb51bc6470ed3db861ba77619d8e1ecff66ca.js" integrity="sha512-oDTOyJnif1eeZPqdhXBQDfDSpvb9mOhTuW3dylFAMJ&#43;UP7y&#43;dguHyeJZiWntK7UbxkcO09uGG6d2Gdjh7P9myg=="></script>
+
+
+
+    </body>
+</html>
