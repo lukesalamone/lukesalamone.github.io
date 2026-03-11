@@ -21,15 +21,11 @@
             <pubDate>Fri, 06 Mar 2026 20:25:56 -0800</pubDate>
             
             <guid>https://lukesalamone.github.io/posts/distilling-stockfish/</guid>
-            <description>&lt;p&gt;&lt;strong&gt;TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. The dataset is released as the &lt;a href=&#34;https://huggingface.co/datasets/lukesalamone/gigafish-3.8b-d10&#34;&gt;Gigafish dataset on Huggingface&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+            <description>&lt;p&gt;&lt;strong&gt;TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. To my knowledge, this is the largest open state-value chess dataset released. The dataset is released as the &lt;a href=&#34;https://huggingface.co/datasets/lukesalamone/gigafish-3.8b-d10&#34;&gt;Gigafish dataset on Huggingface&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;../img/distill_stockfish_loss_curve.png&#34;
     alt=&#34;Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.&#34;&gt;&lt;figcaption&gt;
-      &lt;p&gt;Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.&lt;/p&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;Stockfish is currently the strongest chess engine in the world. It works by using a small neural network millions of times per position. One interesting question we could ask is whether we could replace search depth with a more accurate value function. In 2024, researchers at DeepMind &lt;a href=&#34;https://arxiv.org/pdf/2402.04494v1&#34;&gt;attempted&lt;/a&gt; to answer this question. Critically, this approach did not hold search depth constant, and although they had 15 billion action-value pairs, they only had around 530 million state-value estimates.&lt;/p&gt;</description>
-            <content type="html"><![CDATA[<p><strong>TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. The dataset is released as the <a href="https://huggingface.co/datasets/lukesalamone/gigafish-3.8b-d10">Gigafish dataset on Huggingface</a>.</strong></p>
+      &lt;p&gt;Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p><strong>TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. To my knowledge, this is the largest open state-value chess dataset released. The dataset is released as the <a href="https://huggingface.co/datasets/lukesalamone/gigafish-3.8b-d10">Gigafish dataset on Huggingface</a>.</strong></p>
 <figure><img src="/img/distill_stockfish_loss_curve.png"
     alt="Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume."><figcaption>
       <p>Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.</p>
@@ -38,11 +34,23 @@
 
 <p>Stockfish is currently the strongest chess engine in the world. It works by using a small neural network millions of times per position. One interesting question we could ask is whether we could replace search depth with a more accurate value function. In 2024, researchers at DeepMind <a href="https://arxiv.org/pdf/2402.04494v1">attempted</a> to answer this question. Critically, this approach did not hold search depth constant, and although they had 15 billion action-value pairs, they only had around 530 million state-value estimates.</p>
 <p>I wanted to take another look at this problem, building a large state-value dataset with a fixed search depth and experimenting with different model architectures.</p>
-<h2 id="transformers-arent-always-best">Transformers aren&rsquo;t always best</h2>
-<p>I trained variants from three main categories of architectures: pure Vision Transformer, pure ResNet, and a hybrid with ResNet blocks followed by Transformer blocks. Based on the test runs I did on around 30 million positions each, the hybrid architecture outperforms the pure ResNet and pure Transformer architectures.</p>
-<p>From the loss curves, we can see that ResNet benefits from its inductive biases about the chess board and so the loss on the pure ResNet model quickly drops. However, it fails to learn the more nuanced whole-board relationships that are necessary for an accurate evaluation, so learning stalls.</p>
-<p>The vision transformer on the other hand is not able to benefit from the inductive biases provided by convolutions. It effectively needs to learn what a 2D grid is from scratch.</p>
-<p>The hybrid approach gets us the best of both worlds. ResNet blocks quickly learn spatial patterns and feed them into the Transformer blocks. As a result, loss keeps falling. This is also part of why transformers are so famously data-hungry: they can keep cranking through enormous datasets.</p>
+<h2 id="attention-isnt-all-you-need">Attention isn&rsquo;t all you need</h2>
+<p>I trained variants from three main categories of architectures: pure Vision Transformer, pure ResNet, and a hybrid with ResNet blocks followed by Transformer blocks.</p>
+<p>I performed pilot runs to narrow down to the best architecture for this task. The first pilot run trained a 40M param variant, and it became clear early on that the Hybrid and ResNet architectures were significantly better than the pure vision transformer. Compared to the ResNet and the Hybrid, the vision transformer is not able to benefit from the inductive biases provided by convolutions. It effectively needs to learn what a 2D grid is from scratch./</p>
+<figure><img src="/img/distill_40M_comparison.png"
+    alt="On the first pilot run, the vision transformer was clearly worse than the ResNet and the Hybrid."><figcaption>
+      <p>On the first pilot run, the vision transformer was clearly worse than the ResNet and the Hybrid.</p>
+    </figcaption>
+</figure>
+
+<p>I then performed a scaled up 80M param pilot run to compare the pure ResNet with the Hybrid. From the loss curves, we can see that ResNet benefits from its inductive biases about the chess board and so the loss on the pure ResNet model quickly drops. However, it struggles to learn the more nuanced whole-board relationships that are necessary for an accurate evaluation and learns more slowly.</p>
+<p>The hybrid approach gets us the best of both worlds. ResNet blocks quickly learn spatial patterns and feed them into the Transformer blocks. This is also part of why transformers are so famously data-hungry: they can keep cranking through enormous datasets.</p>
+<figure><img src="/img/distill_80M_comparison.png"
+    alt="From the second pilot run we can see the Hybrid approach benefitting from inductive biases provided by convolutions as well as the global reasoning from attention blocks."><figcaption>
+      <p>From the second pilot run we can see the Hybrid approach benefitting from inductive biases provided by convolutions as well as the global reasoning from attention blocks.</p>
+    </figcaption>
+</figure>
+
 <h3 id="input-format">Input format</h3>
 <p>The input format for the models were all the same:</p>
 <ul>
@@ -53,15 +61,18 @@
 <h3 id="loss-function-used">Loss function used</h3>
 <p>The training task is to predict the evaluation from the perspective of the player to move. (In other words, if the current player is winning, the predicted % should be &gt;50%.) The model has 103 output logits. The first 101 buckets map to win probabilities of 0% to 100%. The last two buckets handle forced mate.</p>
 <p>There were two components to the loss: a <strong>cross-entropy component (CE)</strong> which penalizes prediction mass outside of the correct bucket, and an <strong>ordinal component (ORD)</strong> which penalizes predictions far away from the correct bucket. The two losses were combined as a weighted sum.</p>
+<h3 id="training-details">Training details</h3>
+<p>The final hybrid architecture is a 79M parameter model with 6 ResNet blocks feeding into 16 Transformer blocks. It was trained with AdamW with a learning rate of 1e-4 with around 20M samples of warmup and a batch size of 1024.</p>
 <h2 id="results">Results</h2>
-<p>The training began with total loss over 7.0 at the start. By the end of training the CE loss settled at 2.49 and the ORD term at 0.29, resulting in a total training loss of roughly 2.64. On a held-out validation set of ~50,000 positions the model achieved a validation loss of 2.648.</p>
+<p>The training began with total loss over 7.0 at the start. By the end of training the CE loss settled at 2.49 and the ORD term at 0.29, resulting in a total training loss of roughly 2.64. On a held-out validation set of ~50k positions the model achieved a validation loss of 2.648.</p>
 <p>Other metrics tell a clearer story. <strong>Directional accuracy, whether the model correctly predicts which side is winning, reached 92.97%</strong>. In other words, given an arbitrary position, the model agrees with Stockfish on which side is winning roughly 19 out of 20 cases, which is fairly impressive considering the number of unclear positions in the dataset.</p>
 <p>For positions where there is not a forced checkmate, the model&rsquo;s predicted win probability was off by about 4–5 percentage points on average. Converting those win probabilities back to Stockfish centipawns gives a <strong>centipawn MAE of 64 cp</strong> on positions that span the full range from nearly lost to nearly won.</p>
-<p>Due to compute constraints, I decided to cap training at 1 billion positions. But based on the loss curves, there is still a great deal of performance left on the table.</p>
+<p>Due to compute constraints, I decided to cap training at 1 billion positions, which took around three days. But based on the loss curves, there is still a great deal of performance left on the table.</p>
 <h2 id="building-the-gigafish-dataset">Building the Gigafish Dataset</h2>
 <p>This dataset was constructed from the <a href="https://database.lichess.org/">Lichess Open Database</a> using positions from 37 months of games. I first extracted the fen positions from each of the games using a multithreaded rust script.</p>
 <p>Next, I deduplicated the fens, since many of the positions are overrepresented in the dataset. I did this with a poor-man&rsquo;s map-reduce on disk: hash each fen and append it to a file corresponding to the first 12 bits of the hash. This results in 4096 individual files, which were small enough to deduplicate individually using a hash set in RAM.</p>
 <p>Finally, I annotated each remaining fen with Stockfish at depth 10. While this is an embarrassingly parallel task, even distributing across 24 cores took more than a day of compute time.</p>
+<p>To my knowledge, this is the largest open <code>(position, eval)</code> chess dataset. The ChessBench dataset has more data points, however those are state-action-value (position + move + eval) and were not calculated at a fixed search depth.</p>
 <!-- ## Future questions
 
 - How much does depth matter? This is only a depth 10 dataset. Could we achieve the same performance on fewer data points if those data points had better labels?
