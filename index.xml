@@ -6,8 +6,15 @@
     <description>Recent content on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Mar 2026 20:25:56 -0800</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2026 20:14:56 -0700</lastBuildDate>
     <atom:link href="https://lukesalamone.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Autoresearch</title>
+      <link>https://lukesalamone.github.io/posts/autoresearch/</link>
+      <pubDate>Wed, 11 Mar 2026 20:14:56 -0700</pubDate>
+      <guid>https://lukesalamone.github.io/posts/autoresearch/</guid>
+      <description>&lt;figure&gt;&lt;img src=&#34;./img/autoresearch_progress.png&#34;&#xA;    alt=&#34;Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.&lt;/p&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;I saw Andrej Karpathy&amp;rsquo;s &lt;a href=&#34;https://github.com/karpathy/autoresearch&#34;&gt;Autoresearch&lt;/a&gt; results the other day and decided to give it a shot on a relatively difficult task: distilling a retrieval/reranking model into a much smaller 10MB model. The model was trained on MS MARCO v1.1 and SQuAD (~169K pairs total) and evaluated on MRR@10.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Distilling Stockfish with One Billion Positions</title>
       <link>https://lukesalamone.github.io/posts/distilling-stockfish/</link>

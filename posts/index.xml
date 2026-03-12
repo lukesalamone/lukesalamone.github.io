@@ -12,8 +12,53 @@
         <description>Recent content in Posts on Luke Salamone&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 06 Mar 2026 20:25:56 -0800</lastBuildDate>
+        <lastBuildDate>Wed, 11 Mar 2026 20:14:56 -0700</lastBuildDate>
         <atom:link href="https://lukesalamone.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Autoresearch</title>
+            <link>https://lukesalamone.github.io/posts/autoresearch/</link>
+            <pubDate>Wed, 11 Mar 2026 20:14:56 -0700</pubDate>
+            
+            <guid>https://lukesalamone.github.io/posts/autoresearch/</guid>
+            <description>&lt;figure&gt;&lt;img src=&#34;../img/autoresearch_progress.png&#34;
+    alt=&#34;Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.&lt;/p&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;I saw Andrej Karpathy&amp;rsquo;s &lt;a href=&#34;https://github.com/karpathy/autoresearch&#34;&gt;Autoresearch&lt;/a&gt; results the other day and decided to give it a shot on a relatively difficult task: distilling a retrieval/reranking model into a much smaller 10MB model. The model was trained on MS MARCO v1.1 and SQuAD (~169K pairs total) and evaluated on MRR@10.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<figure><img src="/img/autoresearch_progress.png"
+    alt="Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task."><figcaption>
+      <p>Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.</p>
+    </figcaption>
+</figure>
+
+<p>I saw Andrej Karpathy&rsquo;s <a href="https://github.com/karpathy/autoresearch">Autoresearch</a> results the other day and decided to give it a shot on a relatively difficult task: distilling a retrieval/reranking model into a much smaller 10MB model. The model was trained on MS MARCO v1.1 and SQuAD (~169K pairs total) and evaluated on MRR@10.</p>
+<h2 id="setup">Setup</h2>
+<p>I opted for a fully local setup. Claude Code might have been better, but I wanted to control the costs of this experiment. Instead, I went with <code>qwen3-coder:30b</code> as the &ldquo;researcher&rdquo; and used the following scheduling loop:</p>
+<ol>
+<li>Researcher checks prior experiment progress and proposes of 55 minutes of experiments, writing them into a todo log.</li>
+</ol>
+<ul>
+<li>Experiments can have variable duration. It is up to the researcher to allocate time.</li>
+<li>The researcher can also update <code>train.py</code> to accomodate new experiments.</li>
+<li>There is a 5 minute time limit for the researcher, but I never hit it in practice.</li>
+</ul>
+<ol start="2">
+<li>Scheduler reads from todo log. Each experiment must have a duration, which is a pencils-down hard cutoff time</li>
+<li>Scheduler runs experiments from the todo log, recording results to results.txt</li>
+<li>Go back to step 1</li>
+</ol>
+<h2 id="results">Results</h2>
+<p>Although the researcher was able to find promising results, most of the things it proposed were pretty basic hyperparameter optimizations. While these are important,</p>
+<ul>
+<li>I was really hoping for more novelty and creativity, but it only updated <code>train.py</code> one time, to implement <code>MarginMSELoss</code>.</li>
+<li>If it is just going to optimize hyperparameters, Bayesian Optimization is a much faster and more effective ways to do that.</li>
+</ul>
+<p>That said, the researcher isn&rsquo;t just doing a random walk of the problem space. There is a clear pattern of improvement even among the failed experiments.</p>
+]]></content>
+        </item>
         
         <item>
             <title>Distilling Stockfish with One Billion Positions</title>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+
+    
+
+<meta name="author" content="Luke Salamone">
+<meta name="keywords" content=", llm, agents, distillation" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://lukesalamone.github.io/posts/autoresearch/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+<script>
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
+</script>
+
+<script data-goatcounter="https://qw6ut244wbxe3rf2bvu5.goatcounter.com/count" async src="../../js/count.js"></script>
+
+
+    <title>
+        
+            Autoresearch :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+  <meta itemprop="name" content="Autoresearch">
+  <meta itemprop="description" content="Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.
+I saw Andrej Karpathy’s Autoresearch results the other day and decided to give it a shot on a relatively difficult task: distilling a retrieval/reranking model into a much smaller 10MB model. The model was trained on MS MARCO v1.1 and SQuAD (~169K pairs total) and evaluated on MRR@10.">
+  <meta itemprop="datePublished" content="2026-03-11T20:14:56-07:00">
+  <meta itemprop="dateModified" content="2026-03-11T20:14:56-07:00">
+  <meta itemprop="wordCount" content="287">
+  <meta itemprop="image" content="https://lukesalamone.github.io/">
+  <meta itemprop="keywords" content="Llm,Agents,Distillation">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lukesalamone.github.io/">
+  <meta name="twitter:title" content="Autoresearch">
+  <meta name="twitter:description" content="Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.
+I saw Andrej Karpathy’s Autoresearch results the other day and decided to give it a shot on a relatively difficult task: distilling a retrieval/reranking model into a much smaller 10MB model. The model was trained on MS MARCO v1.1 and SQuAD (~169K pairs total) and evaluated on MRR@10.">
+
+
+
+    <meta property="og:url" content="https://lukesalamone.github.io/posts/autoresearch/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="Autoresearch">
+  <meta property="og:description" content="Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.
+I saw Andrej Karpathy’s Autoresearch results the other day and decided to give it a shot on a relatively difficult task: distilling a retrieval/reranking model into a much smaller 10MB model. The model was trained on MS MARCO v1.1 and SQuAD (~169K pairs total) and evaluated on MRR@10.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-11T20:14:56-07:00">
+    <meta property="article:modified_time" content="2026-03-11T20:14:56-07:00">
+    <meta property="article:tag" content="Llm">
+    <meta property="article:tag" content="Agents">
+    <meta property="article:tag" content="Distillation">
+    <meta property="og:image" content="https://lukesalamone.github.io/">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2026-03-11 20:14:56 -0700 PDT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="Search here" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        2 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://lukesalamone.github.io/posts/autoresearch/">Autoresearch</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <figure><img src="../../img/autoresearch_progress.png"
+    alt="Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task."><figcaption>
+      <p>Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.</p>
+    </figcaption>
+</figure>
+
+<p>I saw Andrej Karpathy&rsquo;s <a href="https://github.com/karpathy/autoresearch">Autoresearch</a> results the other day and decided to give it a shot on a relatively difficult task: distilling a retrieval/reranking model into a much smaller 10MB model. The model was trained on MS MARCO v1.1 and SQuAD (~169K pairs total) and evaluated on MRR@10.</p>
+<h2 id="setup">Setup</h2>
+<p>I opted for a fully local setup. Claude Code might have been better, but I wanted to control the costs of this experiment. Instead, I went with <code>qwen3-coder:30b</code> as the &ldquo;researcher&rdquo; and used the following scheduling loop:</p>
+<ol>
+<li>Researcher checks prior experiment progress and proposes of 55 minutes of experiments, writing them into a todo log.</li>
+</ol>
+<ul>
+<li>Experiments can have variable duration. It is up to the researcher to allocate time.</li>
+<li>The researcher can also update <code>train.py</code> to accomodate new experiments.</li>
+<li>There is a 5 minute time limit for the researcher, but I never hit it in practice.</li>
+</ul>
+<ol start="2">
+<li>Scheduler reads from todo log. Each experiment must have a duration, which is a pencils-down hard cutoff time</li>
+<li>Scheduler runs experiments from the todo log, recording results to results.txt</li>
+<li>Go back to step 1</li>
+</ol>
+<h2 id="results">Results</h2>
+<p>Although the researcher was able to find promising results, most of the things it proposed were pretty basic hyperparameter optimizations. While these are important,</p>
+<ul>
+<li>I was really hoping for more novelty and creativity, but it only updated <code>train.py</code> one time, to implement <code>MarginMSELoss</code>.</li>
+<li>If it is just going to optimize hyperparameters, Bayesian Optimization is a much faster and more effective ways to do that.</li>
+</ul>
+<p>That said, the researcher isn&rsquo;t just doing a random walk of the problem space. There is a clear pattern of improvement even among the failed experiments.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/llm/">llm</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/agents/">agents</a></span>
+        <span class="tag"><a href="https://lukesalamone.github.io/tags/distillation/">distillation</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        287 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2026-03-11 20:14
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+
+          
+            <span class="button next">
+              <a href="https://lukesalamone.github.io/posts/distilling-stockfish/">
+                <span class="button__text">Distilling Stockfish with One Billion Positions</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+  </main>
+  <div id="shadow-search" class="posts">
+    <div class="posts-group">
+      <div class="post-year">2022</div>
+      <ul class="posts-list"></ul>
+    </div>
+  </div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2026 Luke Salamone</span>&nbsp;|&nbsp;
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.a034cec899e27f579e64fa9d8570500df0d2a6f6fd98e853b96dddca5140309f943fbcbe760b87c9e2598969ed2bb51bc6470ed3db861ba77619d8e1ecff66ca.js" integrity="sha512-oDTOyJnif1eeZPqdhXBQDfDSpvb9mOhTuW3dylFAMJ&#43;UP7y&#43;dguHyeJZiWntK7UbxkcO09uGG6d2Gdjh7P9myg=="></script>
+
+
+
+    </body>
+</html>
