@@ -30,6 +30,13 @@
       <description>&lt;link rel=&#34;stylesheet&#34; href=&#34;./css/graph-pruning-demo.css&#34; /&gt;&#xA;&lt;style&gt;&#xA;  #mapContainer1, #mapContainer2 {&#xA;    color: #000;&#xA;  }&#xA;  #mapContainer1 button, #mapContainer2 button {&#xA;    padding: 10px 14px;&#xA;    border: none;&#xA;    border-radius: 8px;&#xA;    background: #3a2c1a;&#xA;    color: #fef7e5;&#xA;    cursor: pointer;&#xA;  }&#xA;  .prune-textarea {&#xA;    min-width: 280px;&#xA;    width: min(520px, 100%);&#xA;    min-height: 160px;&#xA;    font-family: inherit;&#xA;    resize: vertical;&#xA;  }&#xA;  .helper {&#xA;    font-size: 12px;&#xA;    color: #6b5a3a;&#xA;  }&#xA;  .message {&#xA;    font-size: 12px;&#xA;    color: #3a2c1a;&#xA;  }&#xA;&lt;/style&gt;&#xA;&lt;p&gt;The other day I found &lt;a href=&#34;https://allenpike.com/2022/how-to-close-a-city/&#34;&gt;Alan Pike&amp;rsquo;s blog post&lt;/a&gt; from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Ultimately, finding a formal solution to city closing wasn&amp;rsquo;t necessary for the game, but it&amp;rsquo;s worth giving it a shot anyways since pruning by hand isn&amp;rsquo;t always convenient.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Optimal Ask</title>
+      <link>https://blog.lukesalamone.com/posts/optimal-ask/</link>
+      <pubDate>Tue, 16 Sep 2025 18:02:23 -0700</pubDate>
+      <guid>https://blog.lukesalamone.com/posts/optimal-ask/</guid>
+      <description>&lt;p&gt;Let&amp;rsquo;s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.&lt;/p&gt;&#xA;&lt;p&gt;The maximum price that people will pay is normally distributed around $100, with a standard deviation of $5. In other words, about 34% have a max price between $95 and $100, another 34% have a max price between $100 and $105, and the rest have max prices above or below those ranges.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Keep Summer Safe</title>
       <link>https://blog.lukesalamone.com/posts/keep-summer-safe/</link>
       <pubDate>Thu, 20 Mar 2025 17:26:32 -0800</pubDate>

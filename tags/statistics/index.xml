@@ -6,8 +6,15 @@
     <description>Recent content in Statistics on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Sep 2023 20:47:30 -0800</lastBuildDate>
+    <lastBuildDate>Tue, 16 Sep 2025 18:02:23 -0700</lastBuildDate>
     <atom:link href="https://blog.lukesalamone.com/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Optimal Ask</title>
+      <link>https://blog.lukesalamone.com/posts/optimal-ask/</link>
+      <pubDate>Tue, 16 Sep 2025 18:02:23 -0700</pubDate>
+      <guid>https://blog.lukesalamone.com/posts/optimal-ask/</guid>
+      <description>&lt;p&gt;Let&amp;rsquo;s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.&lt;/p&gt;&#xA;&lt;p&gt;The maximum price that people will pay is normally distributed around $100, with a standard deviation of $5. In other words, about 34% have a max price between $95 and $100, another 34% have a max price between $100 and $105, and the rest have max prices above or below those ranges.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>What is a blunder in chess?</title>
       <link>https://blog.lukesalamone.com/posts/chess-blunders/</link>

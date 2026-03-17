@@ -249,6 +249,51 @@ When creating a chess engine, you'll need a couple of things. First, you'll need
         </item>
         
         <item>
+            <title>Optimal Ask</title>
+            <link>https://blog.lukesalamone.com/posts/optimal-ask/</link>
+            <pubDate>Tue, 16 Sep 2025 18:02:23 -0700</pubDate>
+            
+            <guid>https://blog.lukesalamone.com/posts/optimal-ask/</guid>
+            <description>&lt;p&gt;Let&amp;rsquo;s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.&lt;/p&gt;
+&lt;p&gt;The maximum price that people will pay is normally distributed around $100, with a standard deviation of $5. In other words, about 34% have a max price between $95 and $100, another 34% have a max price between $100 and $105, and the rest have max prices above or below those ranges.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>Let&rsquo;s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.</p>
+<p>The maximum price that people will pay is normally distributed around $100, with a standard deviation of $5. In other words, about 34% have a max price between $95 and $100, another 34% have a max price between $100 and $105, and the rest have max prices above or below those ranges.</p>
+<p><strong>The question is, what&rsquo;s the best price to ask?</strong></p>
+<figure><img src="/img/optimal_ask_bids.png"
+    alt="Chart of the distribution of the maximum amounts that customers are willing to pay. If you ask more than the customer is willing to pay, they won&rsquo;t buy. If you ask less, you will make the sale but you could be leaving money on the table."><figcaption>
+      <p>Chart of the distribution of the maximum amounts that customers are willing to pay. If you ask more than the customer is willing to pay, they won&rsquo;t buy. If you ask less, you will make the sale but you could be leaving money on the table.</p>
+    </figcaption>
+</figure>
+
+<p>This is a good gut check. If you set the price lower, you sell more widgets but make less money. If you ask higher, you sell fewer widgets but each sale makes more money.</p>
+<h2 id="figuring-it-out">Figuring it out</h2>
+<p>We can use the cumulative distribution function (CDF) to calculate <em>for a given price P, what portion of people have a price lower than P?</em> For instance, at $0.01, basically nobody has a lower max price. So the CDF of 0.01 is 0, which means 1 - CDF(0.01) = 1 and 100% of customers will pay $0.01. Therefore you can make $0.01 per customer.</p>
+<p>The CDF of 100 is 0.5, so at $100, half of everyone has a lower max price. Since 50% of customers remain, you can make $50/customer.</p>
+<p>Since we know how to calculate the expected revenue per customer for any particular price, we just need to iterate over all reasonable prices and pick the best one.</p>
+<pre><code class="language-python">import numpy as np
+from scipy.stats import norm
+
+sales = {}
+
+# calculate to a thousandth of a cent
+prices = np.arange(0, 120, 0.001)
+for price in prices:
+    excluded_pct = norm.cdf(price, loc=100, scale=5)
+    remaining_pct = 1 - excluded_pct
+    sales[price] = price * remaining_pct
+
+# 90.013
+best_price = max(sales, key=sales.get)
+</code></pre>
+<h2 id="the-answer">The answer</h2>
+<p>The answer is $90.01. This was highly counterintuitive for me, since this is $10 lower than the mean price customers would be willing to pay.</p>
+<figure><img src="/img/optimal_ask_revenue.png">
+</figure>
+
+]]></content>
+        </item>
+        
+        <item>
             <title>Keep Summer Safe</title>
             <link>https://blog.lukesalamone.com/posts/keep-summer-safe/</link>
             <pubDate>Thu, 20 Mar 2025 17:26:32 -0800</pubDate>

@@ -41,6 +41,18 @@
     <loc>https://blog.lukesalamone.com/tags/search/</loc>
     <lastmod>2026-02-19T20:27:24-08:00</lastmod>
   </url><url>
+    <loc>https://blog.lukesalamone.com/tags/monte-carlo/</loc>
+    <lastmod>2025-09-16T18:02:23-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/posts/optimal-ask/</loc>
+    <lastmod>2025-09-16T18:02:23-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/tags/python/</loc>
+    <lastmod>2025-09-16T18:02:23-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/tags/statistics/</loc>
+    <lastmod>2025-09-16T18:02:23-07:00</lastmod>
+  </url><url>
     <loc>https://blog.lukesalamone.com/posts/keep-summer-safe/</loc>
     <lastmod>2025-03-20T17:26:32-08:00</lastmod>
   </url><url>
@@ -63,9 +75,6 @@
     <lastmod>2024-07-12T14:48:27-07:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/tags/machine-learning/</loc>
-    <lastmod>2024-07-12T14:48:27-07:00</lastmod>
-  </url><url>
-    <loc>https://blog.lukesalamone.com/tags/python/</loc>
     <lastmod>2024-07-12T14:48:27-07:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/tags/pytorch/</loc>
@@ -129,9 +138,6 @@
     <lastmod>2023-09-25T20:47:30-08:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/tags/explainability/</loc>
-    <lastmod>2023-09-25T20:47:30-08:00</lastmod>
-  </url><url>
-    <loc>https://blog.lukesalamone.com/tags/statistics/</loc>
     <lastmod>2023-09-25T20:47:30-08:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/posts/chess-blunders/</loc>
@@ -343,9 +349,6 @@
   </url><url>
     <loc>https://blog.lukesalamone.com/posts/kmeans-clustering/</loc>
     <lastmod>2020-10-07T17:39:22-07:00</lastmod>
-  </url><url>
-    <loc>https://blog.lukesalamone.com/tags/monte-carlo/</loc>
-    <lastmod>2020-07-21T17:34:05+08:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/posts/hardest-hangman-word/</loc>
     <lastmod>2020-07-21T17:34:05+08:00</lastmod>

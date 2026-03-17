@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+
+    
+
+<meta name="author" content="Luke Salamone">
+<meta name="keywords" content=", monte-carlo, statistics, python" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://blog.lukesalamone.com/posts/optimal-ask/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+<script>
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
+</script>
+
+<script data-goatcounter="https://api.lukesalamone.com/count" async src="../../js/count.js"></script>
+
+
+    <title>
+        
+            Optimal Ask :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+  <meta itemprop="name" content="Optimal Ask">
+  <meta itemprop="description" content="Let’s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.
+The maximum price that people will pay is normally distributed around $100, with a standard deviation of $5. In other words, about 34% have a max price between $95 and $100, another 34% have a max price between $100 and $105, and the rest have max prices above or below those ranges.">
+  <meta itemprop="datePublished" content="2025-09-16T18:02:23-07:00">
+  <meta itemprop="dateModified" content="2025-09-16T18:02:23-07:00">
+  <meta itemprop="wordCount" content="384">
+  <meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
+  <meta itemprop="keywords" content="Monte-Carlo,Statistics,Python">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
+  <meta name="twitter:title" content="Optimal Ask">
+  <meta name="twitter:description" content="Let’s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.
+The maximum price that people will pay is normally distributed around $100, with a standard deviation of $5. In other words, about 34% have a max price between $95 and $100, another 34% have a max price between $100 and $105, and the rest have max prices above or below those ranges.">
+
+
+
+    <meta property="og:url" content="https://blog.lukesalamone.com/posts/optimal-ask/">
+  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+  <meta property="og:title" content="Optimal Ask">
+  <meta property="og:description" content="Let’s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.
+The maximum price that people will pay is normally distributed around $100, with a standard deviation of $5. In other words, about 34% have a max price between $95 and $100, another 34% have a max price between $100 and $105, and the rest have max prices above or below those ranges.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-16T18:02:23-07:00">
+    <meta property="article:modified_time" content="2025-09-16T18:02:23-07:00">
+    <meta property="article:tag" content="Monte-Carlo">
+    <meta property="article:tag" content="Statistics">
+    <meta property="article:tag" content="Python">
+    <meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2025-09-16 18:02:23 -0700 PDT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="Search here" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        2 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://blog.lukesalamone.com/posts/optimal-ask/">Optimal Ask</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <p>Let&rsquo;s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.</p>
+<p>The maximum price that people will pay is normally distributed around $100, with a standard deviation of $5. In other words, about 34% have a max price between $95 and $100, another 34% have a max price between $100 and $105, and the rest have max prices above or below those ranges.</p>
+<p><strong>The question is, what&rsquo;s the best price to ask?</strong></p>
+<figure><img src="../../img/optimal_ask_bids.png"
+    alt="Chart of the distribution of the maximum amounts that customers are willing to pay. If you ask more than the customer is willing to pay, they won&rsquo;t buy. If you ask less, you will make the sale but you could be leaving money on the table."><figcaption>
+      <p>Chart of the distribution of the maximum amounts that customers are willing to pay. If you ask more than the customer is willing to pay, they won&rsquo;t buy. If you ask less, you will make the sale but you could be leaving money on the table.</p>
+    </figcaption>
+</figure>
+
+<p>This is a good gut check. If you set the price lower, you sell more widgets but make less money. If you ask higher, you sell fewer widgets but each sale makes more money.</p>
+<h2 id="figuring-it-out">Figuring it out</h2>
+<p>We can use the cumulative distribution function (CDF) to calculate <em>for a given price P, what portion of people have a price lower than P?</em> For instance, at $0.01, basically nobody has a lower max price. So the CDF of 0.01 is 0, which means 1 - CDF(0.01) = 1 and 100% of customers will pay $0.01. Therefore you can make $0.01 per customer.</p>
+<p>The CDF of 100 is 0.5, so at $100, half of everyone has a lower max price. Since 50% of customers remain, you can make $50/customer.</p>
+<p>Since we know how to calculate the expected revenue per customer for any particular price, we just need to iterate over all reasonable prices and pick the best one.</p>
+<pre><code class="language-python">import numpy as np
+from scipy.stats import norm
+
+sales = {}
+
+# calculate to a thousandth of a cent
+prices = np.arange(0, 120, 0.001)
+for price in prices:
+    excluded_pct = norm.cdf(price, loc=100, scale=5)
+    remaining_pct = 1 - excluded_pct
+    sales[price] = price * remaining_pct
+
+# 90.013
+best_price = max(sales, key=sales.get)
+</code></pre>
+<h2 id="the-answer">The answer</h2>
+<p>The answer is $90.01. This was highly counterintuitive for me, since this is $10 lower than the mean price customers would be willing to pay.</p>
+<figure><img src="../../img/optimal_ask_revenue.png">
+</figure>
+
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://blog.lukesalamone.com/tags/monte-carlo/">monte-carlo</a></span>
+        <span class="tag"><a href="https://blog.lukesalamone.com/tags/statistics/">statistics</a></span>
+        <span class="tag"><a href="https://blog.lukesalamone.com/tags/python/">python</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        384 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2025-09-16 18:02
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://blog.lukesalamone.com/posts/beam-search-graph-pruning/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Graph Topology and Battle Royale Mechanics</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://blog.lukesalamone.com/posts/keep-summer-safe/">
+                <span class="button__text">Keep Summer Safe</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+  </main>
+  <div id="shadow-search" class="posts">
+    <div class="posts-group">
+      <div class="post-year">2022</div>
+      <ul class="posts-list"></ul>
+    </div>
+  </div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2026 Luke Salamone</span>&nbsp;|&nbsp;
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.a034cec899e27f579e64fa9d8570500df0d2a6f6fd98e853b96dddca5140309f943fbcbe760b87c9e2598969ed2bb51bc6470ed3db861ba77619d8e1ecff66ca.js" integrity="sha512-oDTOyJnif1eeZPqdhXBQDfDSpvb9mOhTuW3dylFAMJ&#43;UP7y&#43;dguHyeJZiWntK7UbxkcO09uGG6d2Gdjh7P9myg=="></script>
+
+
+
+    </body>
+</html>
