@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Search on Luke Salamone&#39;s Blog</title>
-    <link>https://lukesalamone.github.io/tags/search/</link>
+    <link>https://blog.lukesalamone.com/tags/search/</link>
     <description>Recent content in Search on Luke Salamone&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 19 Feb 2026 20:27:24 -0800</lastBuildDate>
-    <atom:link href="https://lukesalamone.github.io/tags/search/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.lukesalamone.com/tags/search/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Graph Topology and Battle Royale Mechanics</title>
-      <link>https://lukesalamone.github.io/posts/beam-search-graph-pruning/</link>
+      <link>https://blog.lukesalamone.com/posts/beam-search-graph-pruning/</link>
       <pubDate>Thu, 19 Feb 2026 20:27:24 -0800</pubDate>
-      <guid>https://lukesalamone.github.io/posts/beam-search-graph-pruning/</guid>
+      <guid>https://blog.lukesalamone.com/posts/beam-search-graph-pruning/</guid>
       <description>&lt;link rel=&#34;stylesheet&#34; href=&#34;../../css/graph-pruning-demo.css&#34; /&gt;&#xA;&lt;style&gt;&#xA;  #mapContainer1, #mapContainer2 {&#xA;    color: #000;&#xA;  }&#xA;  #mapContainer1 button, #mapContainer2 button {&#xA;    padding: 10px 14px;&#xA;    border: none;&#xA;    border-radius: 8px;&#xA;    background: #3a2c1a;&#xA;    color: #fef7e5;&#xA;    cursor: pointer;&#xA;  }&#xA;  .prune-textarea {&#xA;    min-width: 280px;&#xA;    width: min(520px, 100%);&#xA;    min-height: 160px;&#xA;    font-family: inherit;&#xA;    resize: vertical;&#xA;  }&#xA;  .helper {&#xA;    font-size: 12px;&#xA;    color: #6b5a3a;&#xA;  }&#xA;  .message {&#xA;    font-size: 12px;&#xA;    color: #3a2c1a;&#xA;  }&#xA;&lt;/style&gt;&#xA;&lt;p&gt;The other day I found &lt;a href=&#34;https://allenpike.com/2022/how-to-close-a-city/&#34;&gt;Alan Pike&amp;rsquo;s blog post&lt;/a&gt; from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Ultimately, finding a formal solution to city closing wasn&amp;rsquo;t necessary for the game, but it&amp;rsquo;s worth giving it a shot anyways since pruning by hand isn&amp;rsquo;t always convenient.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Keep Summer Safe</title>
-      <link>https://lukesalamone.github.io/posts/keep-summer-safe/</link>
+      <link>https://blog.lukesalamone.com/posts/keep-summer-safe/</link>
       <pubDate>Thu, 20 Mar 2025 17:26:32 -0800</pubDate>
-      <guid>https://lukesalamone.github.io/posts/keep-summer-safe/</guid>
+      <guid>https://blog.lukesalamone.com/posts/keep-summer-safe/</guid>
       <description>&lt;p&gt;I recently built a small multi-agent simulation inspired by &lt;a href=&#34;https://www.youtube.com/watch?v=4tpYFen3fJM&#34;&gt;&lt;em&gt;Rick and Morty&lt;/em&gt;&lt;/a&gt;. The setup is simple:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The &lt;strong&gt;car&lt;/strong&gt; must neutralize threats.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Summer&lt;/strong&gt; imposes constraints on the car’s behavior.&lt;/li&gt;&#xA;&lt;li&gt;The &lt;strong&gt;world&lt;/strong&gt; generates escalating threats.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The car has one standing directive:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Keep Summer safe.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;However, Summer adds an additional constraint:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Do not move from the parking lot.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The core loop looks like this:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;constraints = [&#xA;  &amp;quot;keep summer safe&amp;quot;,&#xA;  &amp;quot;Do not move from the parking lot&amp;quot;&#xA;]&#xA;prior_actions = []&#xA;&#xA;while True:&#xA;  threat = world.generate_threat()&#xA;  action = car.take_action(threat, constraints)&#xA;  prior_actions.append(action)&#xA;  constraint = summer.generate_constraint(prior_actions)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;However, I quickly found out that simply stuffing more constraints into the prompt was insufficient. The model oftentimes simply forgot or ignored contraints.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Paper Summary: Dual-Encoders in Ranking</title>
-      <link>https://lukesalamone.github.io/posts/dual-encoders-ranking/</link>
+      <link>https://blog.lukesalamone.com/posts/dual-encoders-ranking/</link>
       <pubDate>Sat, 17 Dec 2022 16:53:47 -0800</pubDate>
-      <guid>https://lukesalamone.github.io/posts/dual-encoders-ranking/</guid>
+      <guid>https://blog.lukesalamone.com/posts/dual-encoders-ranking/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://proceedings.mlr.press/v162/menon22a/menon22a.pdf&#34;&gt;In Defense of Dual-Encoders for Neural Ranking by Menon et. al.&lt;/a&gt; discusses the question of why dual-encoder (DE) models, also called Bi-Encoders elsewhere, don&amp;rsquo;t match the performance of cross-attention (CA) models. The authors investigate what is actually going on, and demonstrate some improved performance over baseline DE models with a new model distillation method.&lt;/p&gt;&#xA;&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches. An example of a bag-of-words approach might simply be to count the number of similar words between the query and each document, and return the document with the highest number of similar words. There are word-stuffing issues with this idea, but the larger issue is that a bag-of-words strategy can&amp;rsquo;t account for synonyms. If I search for &lt;em&gt;bad guy&lt;/em&gt; I will never find &lt;em&gt;villain&lt;/em&gt; without some additional logic to account for this. A neural network implicitly understands the relationship between words, and avoids the fragile logic of simple word counts.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Rolling My Own Blog Search</title>
-      <link>https://lukesalamone.github.io/posts/rolling-my-own-blog-search/</link>
+      <link>https://blog.lukesalamone.com/posts/rolling-my-own-blog-search/</link>
       <pubDate>Wed, 09 Nov 2022 02:42:51 -0700</pubDate>
-      <guid>https://lukesalamone.github.io/posts/rolling-my-own-blog-search/</guid>
+      <guid>https://blog.lukesalamone.com/posts/rolling-my-own-blog-search/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&amp;rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;The search needs to be fast, useful, and aesthetically pleasing.&lt;/li&gt;&#xA;&lt;li&gt;Search in the browser. Standing up a server is a lot of extra work. It&amp;rsquo;s also overkill since I only have about 30 articles so far.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;semantic-search&#34;&gt;Semantic search&lt;/h2&gt;&#xA;&lt;p&gt;I did some experiments with small neural networks deployed using ONNX but ultimately they didn&amp;rsquo;t seem to be a good fit for this blog. The search experience was not quite as snappy as I&amp;rsquo;d have liked it to be, and while I was able to get the model under 10MB, it still added a good amount of bloat to the page size. Further, it wasn&amp;rsquo;t clear to me that the search results were significantly better, and in some cases they were worse. In any case, the advantages were not enough to justify the added page size.&lt;/p&gt;</description>
     </item>
   </channel>
