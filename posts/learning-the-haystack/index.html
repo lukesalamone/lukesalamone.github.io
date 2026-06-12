@@ -58,33 +58,33 @@
 
 
 
-  <meta itemprop="name" content="Learning the Haystack">
-  <meta itemprop="description" content="Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.">
-  <meta itemprop="datePublished" content="2024-03-27T18:19:54-07:00">
-  <meta itemprop="dateModified" content="2024-03-27T18:19:54-07:00">
-  <meta itemprop="wordCount" content="1083">
-  <meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta itemprop="keywords" content="Vector,Loss">
+	<meta itemprop="name" content="Learning the Haystack">
+	<meta itemprop="description" content="Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.">
+	<meta itemprop="datePublished" content="2024-03-27T18:19:54-07:00">
+	<meta itemprop="dateModified" content="2024-03-27T18:19:54-07:00">
+	<meta itemprop="wordCount" content="1083">
+	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta itemprop="keywords" content="Vector,Loss">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta name="twitter:title" content="Learning the Haystack">
-  <meta name="twitter:description" content="Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta name="twitter:title" content="Learning the Haystack">
+	<meta name="twitter:description" content="Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.">
 
 
 
     <meta property="og:url" content="https://blog.lukesalamone.com/posts/learning-the-haystack/">
-  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
-  <meta property="og:title" content="Learning the Haystack">
-  <meta property="og:description" content="Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-03-27T18:19:54-07:00">
-    <meta property="article:modified_time" content="2024-03-27T18:19:54-07:00">
-    <meta property="article:tag" content="Vector">
-    <meta property="article:tag" content="Loss">
-    <meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+	<meta property="og:title" content="Learning the Haystack">
+	<meta property="og:description" content="Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2024-03-27T18:19:54-07:00">
+		<meta property="article:modified_time" content="2024-03-27T18:19:54-07:00">
+		<meta property="article:tag" content="Vector">
+		<meta property="article:tag" content="Loss">
+		<meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
 
 
 
@@ -190,9 +190,9 @@ MathJax.Hub.Config({
 <p>Below is an overview of three of the main training regimes I have used for creating embeddings. For more information and in-depth examples, I highly recommend the loss overview page of the <a href="https://sbert.net/docs/sentence_transformer/loss_overview.html">Sentence Transformers</a> library. Generally speaking, there are three categories of methods: unsupervised methods, contrastive learning methods (positive/negative labels), and regression methods (floating-point labels).</p>
 <h2 id="autoencoders">Autoencoders</h2>
 <figure><img src="../../img/mona_lisa_autoencoder.png"
-    alt="An autoencoder uses a bottleneck to reduce the dimensionality of the input."><figcaption>
-      <p>An autoencoder uses a bottleneck to reduce the dimensionality of the input.</p>
-    </figcaption>
+			alt="An autoencoder uses a bottleneck to reduce the dimensionality of the input."><figcaption>
+			<p>An autoencoder uses a bottleneck to reduce the dimensionality of the input.</p>
+		</figcaption>
 </figure>
 
 <p>One approach for vectorizing a document, image, or other blob of information is to simply <a href="../../posts/build-an-autoencoder/">use an autoencoder</a>. An autoencoder is a function which learns a lossy compression function. It can be considered an unsupervised method since each item is its own label.</p>
@@ -248,9 +248,9 @@ $$
 </p>
 <p>In other words, we enforce that the distance between the anchor and the negative sample is greater than the distance between the anchor and the positive sample <em>plus</em> some margin. For cosine similarity, what this would look like is that your vectors appear as points on the perimeter of a high-dimensional clock face (i.e. the surface of an N-dimensional hypersphere). Positive samples grow closer to the anchor while the negative samples are pushed away. The higher the margin, the closer positive samples will be pushed together.</p>
 <figure><img src="../../img/contrastive_learning.png"
-    alt="Learning to differentiate Bangarang and Clair de lune. Triplet loss pushes positive examples closer to the anchor and negatives farther away. Some say Claude DeBussy was the Skrillex of 1890."><figcaption>
-      <p>Learning to differentiate Bangarang and Clair de lune. Triplet loss pushes positive examples closer to the anchor and negatives farther away. Some say Claude DeBussy was the Skrillex of 1890.</p>
-    </figcaption>
+			alt="Learning to differentiate Bangarang and Clair de lune. Triplet loss pushes positive examples closer to the anchor and negatives farther away. Some say Claude DeBussy was the Skrillex of 1890."><figcaption>
+			<p>Learning to differentiate Bangarang and Clair de lune. Triplet loss pushes positive examples closer to the anchor and negatives farther away. Some say Claude DeBussy was the Skrillex of 1890.</p>
+		</figcaption>
 </figure>
 
 <h2 id="contrastive-learning-contrastive-loss">Contrastive learning: Contrastive loss</h2>

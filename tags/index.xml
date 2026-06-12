@@ -1,439 +1,451 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tags on Luke Salamone&#39;s Blog</title>
-    <link>https://blog.lukesalamone.com/tags/</link>
-    <description>Recent content in Tags on Luke Salamone&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 11 Mar 2026 20:14:56 -0700</lastBuildDate>
-    <atom:link href="https://blog.lukesalamone.com/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Agents</title>
-      <link>https://blog.lukesalamone.com/tags/agents/</link>
-      <pubDate>Wed, 11 Mar 2026 20:14:56 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/agents/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Distillation</title>
-      <link>https://blog.lukesalamone.com/tags/distillation/</link>
-      <pubDate>Wed, 11 Mar 2026 20:14:56 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/distillation/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Llm</title>
-      <link>https://blog.lukesalamone.com/tags/llm/</link>
-      <pubDate>Wed, 11 Mar 2026 20:14:56 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/llm/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Chess</title>
-      <link>https://blog.lukesalamone.com/tags/chess/</link>
-      <pubDate>Fri, 06 Mar 2026 20:25:56 -0800</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/chess/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Neural-Networks</title>
-      <link>https://blog.lukesalamone.com/tags/neural-networks/</link>
-      <pubDate>Fri, 06 Mar 2026 20:25:56 -0800</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/neural-networks/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Graph-Theory</title>
-      <link>https://blog.lukesalamone.com/tags/graph-theory/</link>
-      <pubDate>Thu, 19 Feb 2026 20:27:24 -0800</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/graph-theory/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Search</title>
-      <link>https://blog.lukesalamone.com/tags/search/</link>
-      <pubDate>Thu, 19 Feb 2026 20:27:24 -0800</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/search/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Monte-Carlo</title>
-      <link>https://blog.lukesalamone.com/tags/monte-carlo/</link>
-      <pubDate>Tue, 16 Sep 2025 18:02:23 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/monte-carlo/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Python</title>
-      <link>https://blog.lukesalamone.com/tags/python/</link>
-      <pubDate>Tue, 16 Sep 2025 18:02:23 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/python/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Statistics</title>
-      <link>https://blog.lukesalamone.com/tags/statistics/</link>
-      <pubDate>Tue, 16 Sep 2025 18:02:23 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/statistics/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Fine-Tuning</title>
-      <link>https://blog.lukesalamone.com/tags/fine-tuning/</link>
-      <pubDate>Tue, 28 Jan 2025 08:35:55 -0800</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/fine-tuning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Reinforcement-Learning</title>
-      <link>https://blog.lukesalamone.com/tags/reinforcement-learning/</link>
-      <pubDate>Tue, 28 Jan 2025 08:35:55 -0800</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/reinforcement-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Space</title>
-      <link>https://blog.lukesalamone.com/tags/space/</link>
-      <pubDate>Mon, 29 Jul 2024 12:16:49 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/space/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Machine-Learning</title>
-      <link>https://blog.lukesalamone.com/tags/machine-learning/</link>
-      <pubDate>Fri, 12 Jul 2024 14:48:27 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/machine-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Pytorch</title>
-      <link>https://blog.lukesalamone.com/tags/pytorch/</link>
-      <pubDate>Fri, 12 Jul 2024 14:48:27 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/pytorch/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Rust</title>
-      <link>https://blog.lukesalamone.com/tags/rust/</link>
-      <pubDate>Tue, 18 Jun 2024 16:21:35 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/rust/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Data</title>
-      <link>https://blog.lukesalamone.com/tags/data/</link>
-      <pubDate>Thu, 13 Jun 2024 19:38:39 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/data/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Deep-Learning</title>
-      <link>https://blog.lukesalamone.com/tags/deep-learning/</link>
-      <pubDate>Thu, 06 Jun 2024 16:30:27 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/deep-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Retrieval</title>
-      <link>https://blog.lukesalamone.com/tags/retrieval/</link>
-      <pubDate>Mon, 20 May 2024 13:38:01 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/retrieval/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Vectors</title>
-      <link>https://blog.lukesalamone.com/tags/vectors/</link>
-      <pubDate>Mon, 20 May 2024 13:38:01 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/vectors/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Loss</title>
-      <link>https://blog.lukesalamone.com/tags/loss/</link>
-      <pubDate>Wed, 27 Mar 2024 18:19:54 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/loss/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Vector</title>
-      <link>https://blog.lukesalamone.com/tags/vector/</link>
-      <pubDate>Wed, 27 Mar 2024 18:19:54 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/vector/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Numpy</title>
-      <link>https://blog.lukesalamone.com/tags/numpy/</link>
-      <pubDate>Sun, 04 Feb 2024 23:39:29 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/numpy/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Performance</title>
-      <link>https://blog.lukesalamone.com/tags/performance/</link>
-      <pubDate>Sun, 04 Feb 2024 23:39:29 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/performance/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ctr</title>
-      <link>https://blog.lukesalamone.com/tags/ctr/</link>
-      <pubDate>Mon, 02 Oct 2023 12:39:18 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/ctr/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Evaluation</title>
-      <link>https://blog.lukesalamone.com/tags/evaluation/</link>
-      <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/evaluation/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Explainability</title>
-      <link>https://blog.lukesalamone.com/tags/explainability/</link>
-      <pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/explainability/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Javascript</title>
-      <link>https://blog.lukesalamone.com/tags/javascript/</link>
-      <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/javascript/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Simulation</title>
-      <link>https://blog.lukesalamone.com/tags/simulation/</link>
-      <pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/simulation/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Chatgpt</title>
-      <link>https://blog.lukesalamone.com/tags/chatgpt/</link>
-      <pubDate>Sun, 30 Jul 2023 22:45:57 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/chatgpt/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Computer-Vision</title>
-      <link>https://blog.lukesalamone.com/tags/computer-vision/</link>
-      <pubDate>Sun, 30 Jul 2023 22:45:57 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/computer-vision/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ai</title>
-      <link>https://blog.lukesalamone.com/tags/ai/</link>
-      <pubDate>Mon, 17 Apr 2023 19:46:25 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/ai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Paper-Summary</title>
-      <link>https://blog.lukesalamone.com/tags/paper-summary/</link>
-      <pubDate>Mon, 17 Apr 2023 19:46:25 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/paper-summary/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Game-Theory</title>
-      <link>https://blog.lukesalamone.com/tags/game-theory/</link>
-      <pubDate>Sat, 26 Nov 2022 20:25:13 -0800</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/game-theory/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Geography</title>
-      <link>https://blog.lukesalamone.com/tags/geography/</link>
-      <pubDate>Wed, 23 Nov 2022 10:07:36 -0800</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/geography/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Attention</title>
-      <link>https://blog.lukesalamone.com/tags/attention/</link>
-      <pubDate>Wed, 16 Nov 2022 15:24:15 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/attention/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Transformer</title>
-      <link>https://blog.lukesalamone.com/tags/transformer/</link>
-      <pubDate>Wed, 16 Nov 2022 15:24:15 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/transformer/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Nlp</title>
-      <link>https://blog.lukesalamone.com/tags/nlp/</link>
-      <pubDate>Wed, 09 Nov 2022 02:42:51 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/nlp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Qualitative-Reasoning</title>
-      <link>https://blog.lukesalamone.com/tags/qualitative-reasoning/</link>
-      <pubDate>Sat, 08 Oct 2022 15:17:36 -0700</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/qualitative-reasoning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Archive</title>
-      <link>https://blog.lukesalamone.com/tags/archive/</link>
-      <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/archive/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Compress</title>
-      <link>https://blog.lukesalamone.com/tags/compress/</link>
-      <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/compress/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tar</title>
-      <link>https://blog.lukesalamone.com/tags/tar/</link>
-      <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/tar/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Uncompress</title>
-      <link>https://blog.lukesalamone.com/tags/uncompress/</link>
-      <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/uncompress/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Untar</title>
-      <link>https://blog.lukesalamone.com/tags/untar/</link>
-      <pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/untar/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Gpt2</title>
-      <link>https://blog.lukesalamone.com/tags/gpt2/</link>
-      <pubDate>Sun, 19 Sep 2021 20:13:09 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/gpt2/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Jupyter</title>
-      <link>https://blog.lukesalamone.com/tags/jupyter/</link>
-      <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/jupyter/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Quick-Reference</title>
-      <link>https://blog.lukesalamone.com/tags/quick-reference/</link>
-      <pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/quick-reference/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Bert</title>
-      <link>https://blog.lukesalamone.com/tags/bert/</link>
-      <pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/bert/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Huggingface</title>
-      <link>https://blog.lukesalamone.com/tags/huggingface/</link>
-      <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/huggingface/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Transformers</title>
-      <link>https://blog.lukesalamone.com/tags/transformers/</link>
-      <pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/transformers/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Webdev</title>
-      <link>https://blog.lukesalamone.com/tags/webdev/</link>
-      <pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/webdev/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Aws</title>
-      <link>https://blog.lukesalamone.com/tags/aws/</link>
-      <pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/aws/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Json</title>
-      <link>https://blog.lukesalamone.com/tags/json/</link>
-      <pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/json/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Stock-Trading</title>
-      <link>https://blog.lukesalamone.com/tags/stock-trading/</link>
-      <pubDate>Sun, 07 Mar 2021 01:31:51 -0600</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/stock-trading/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Audio</title>
-      <link>https://blog.lukesalamone.com/tags/audio/</link>
-      <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/audio/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Siamese-Neural-Network</title>
-      <link>https://blog.lukesalamone.com/tags/siamese-neural-network/</link>
-      <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/siamese-neural-network/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Video</title>
-      <link>https://blog.lukesalamone.com/tags/video/</link>
-      <pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/video/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Clustering</title>
-      <link>https://blog.lukesalamone.com/tags/clustering/</link>
-      <pubDate>Sat, 24 Oct 2020 18:10:29 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/clustering/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Math</title>
-      <link>https://blog.lukesalamone.com/tags/math/</link>
-      <pubDate>Sat, 24 Oct 2020 18:10:29 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/math/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Minimax</title>
-      <link>https://blog.lukesalamone.com/tags/minimax/</link>
-      <pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/minimax/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Geometry</title>
-      <link>https://blog.lukesalamone.com/tags/geometry/</link>
-      <pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
-      <guid>https://blog.lukesalamone.com/tags/geometry/</guid>
-      <description></description>
-    </item>
-  </channel>
+	<channel>
+		<title>Tags on Luke Salamone&#39;s Blog</title>
+		<link>https://blog.lukesalamone.com/tags/</link>
+		<description>Recent content in Tags on Luke Salamone&#39;s Blog</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 05 Apr 2026 19:25:25 -0700</lastBuildDate>
+		
+			<atom:link href="https://blog.lukesalamone.com/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Machine-Learning</title>
+				<link>https://blog.lukesalamone.com/tags/machine-learning/</link>
+				<pubDate>Sun, 05 Apr 2026 19:25:25 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/machine-learning/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Model</title>
+				<link>https://blog.lukesalamone.com/tags/model/</link>
+				<pubDate>Sun, 05 Apr 2026 19:25:25 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/model/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Reinforcement-Learning</title>
+				<link>https://blog.lukesalamone.com/tags/reinforcement-learning/</link>
+				<pubDate>Sun, 05 Apr 2026 19:25:25 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/reinforcement-learning/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Agents</title>
+				<link>https://blog.lukesalamone.com/tags/agents/</link>
+				<pubDate>Wed, 11 Mar 2026 20:14:56 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/agents/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Distillation</title>
+				<link>https://blog.lukesalamone.com/tags/distillation/</link>
+				<pubDate>Wed, 11 Mar 2026 20:14:56 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/distillation/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Llm</title>
+				<link>https://blog.lukesalamone.com/tags/llm/</link>
+				<pubDate>Wed, 11 Mar 2026 20:14:56 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/llm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Chess</title>
+				<link>https://blog.lukesalamone.com/tags/chess/</link>
+				<pubDate>Fri, 06 Mar 2026 20:25:56 -0800</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/chess/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Neural-Networks</title>
+				<link>https://blog.lukesalamone.com/tags/neural-networks/</link>
+				<pubDate>Fri, 06 Mar 2026 20:25:56 -0800</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/neural-networks/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Graph-Theory</title>
+				<link>https://blog.lukesalamone.com/tags/graph-theory/</link>
+				<pubDate>Thu, 19 Feb 2026 20:27:24 -0800</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/graph-theory/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Search</title>
+				<link>https://blog.lukesalamone.com/tags/search/</link>
+				<pubDate>Thu, 19 Feb 2026 20:27:24 -0800</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/search/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Monte-Carlo</title>
+				<link>https://blog.lukesalamone.com/tags/monte-carlo/</link>
+				<pubDate>Tue, 16 Sep 2025 18:02:23 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/monte-carlo/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Python</title>
+				<link>https://blog.lukesalamone.com/tags/python/</link>
+				<pubDate>Tue, 16 Sep 2025 18:02:23 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/python/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Statistics</title>
+				<link>https://blog.lukesalamone.com/tags/statistics/</link>
+				<pubDate>Tue, 16 Sep 2025 18:02:23 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/statistics/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Fine-Tuning</title>
+				<link>https://blog.lukesalamone.com/tags/fine-tuning/</link>
+				<pubDate>Tue, 28 Jan 2025 08:35:55 -0800</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/fine-tuning/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Space</title>
+				<link>https://blog.lukesalamone.com/tags/space/</link>
+				<pubDate>Mon, 29 Jul 2024 12:16:49 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/space/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Pytorch</title>
+				<link>https://blog.lukesalamone.com/tags/pytorch/</link>
+				<pubDate>Fri, 12 Jul 2024 14:48:27 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/pytorch/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Rust</title>
+				<link>https://blog.lukesalamone.com/tags/rust/</link>
+				<pubDate>Tue, 18 Jun 2024 16:21:35 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/rust/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Data</title>
+				<link>https://blog.lukesalamone.com/tags/data/</link>
+				<pubDate>Thu, 13 Jun 2024 19:38:39 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/data/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Deep-Learning</title>
+				<link>https://blog.lukesalamone.com/tags/deep-learning/</link>
+				<pubDate>Thu, 06 Jun 2024 16:30:27 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/deep-learning/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Retrieval</title>
+				<link>https://blog.lukesalamone.com/tags/retrieval/</link>
+				<pubDate>Mon, 20 May 2024 13:38:01 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/retrieval/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Vectors</title>
+				<link>https://blog.lukesalamone.com/tags/vectors/</link>
+				<pubDate>Mon, 20 May 2024 13:38:01 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/vectors/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Loss</title>
+				<link>https://blog.lukesalamone.com/tags/loss/</link>
+				<pubDate>Wed, 27 Mar 2024 18:19:54 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/loss/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Vector</title>
+				<link>https://blog.lukesalamone.com/tags/vector/</link>
+				<pubDate>Wed, 27 Mar 2024 18:19:54 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/vector/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Numpy</title>
+				<link>https://blog.lukesalamone.com/tags/numpy/</link>
+				<pubDate>Sun, 04 Feb 2024 23:39:29 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/numpy/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Performance</title>
+				<link>https://blog.lukesalamone.com/tags/performance/</link>
+				<pubDate>Sun, 04 Feb 2024 23:39:29 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/performance/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Ctr</title>
+				<link>https://blog.lukesalamone.com/tags/ctr/</link>
+				<pubDate>Mon, 02 Oct 2023 12:39:18 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/ctr/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Evaluation</title>
+				<link>https://blog.lukesalamone.com/tags/evaluation/</link>
+				<pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/evaluation/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Explainability</title>
+				<link>https://blog.lukesalamone.com/tags/explainability/</link>
+				<pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/explainability/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Javascript</title>
+				<link>https://blog.lukesalamone.com/tags/javascript/</link>
+				<pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/javascript/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Simulation</title>
+				<link>https://blog.lukesalamone.com/tags/simulation/</link>
+				<pubDate>Wed, 23 Aug 2023 23:34:38 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/simulation/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Chatgpt</title>
+				<link>https://blog.lukesalamone.com/tags/chatgpt/</link>
+				<pubDate>Sun, 30 Jul 2023 22:45:57 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/chatgpt/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Computer-Vision</title>
+				<link>https://blog.lukesalamone.com/tags/computer-vision/</link>
+				<pubDate>Sun, 30 Jul 2023 22:45:57 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/computer-vision/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Ai</title>
+				<link>https://blog.lukesalamone.com/tags/ai/</link>
+				<pubDate>Mon, 17 Apr 2023 19:46:25 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/ai/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Paper-Summary</title>
+				<link>https://blog.lukesalamone.com/tags/paper-summary/</link>
+				<pubDate>Mon, 17 Apr 2023 19:46:25 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/paper-summary/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Game-Theory</title>
+				<link>https://blog.lukesalamone.com/tags/game-theory/</link>
+				<pubDate>Sat, 26 Nov 2022 20:25:13 -0800</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/game-theory/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Geography</title>
+				<link>https://blog.lukesalamone.com/tags/geography/</link>
+				<pubDate>Wed, 23 Nov 2022 10:07:36 -0800</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/geography/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Attention</title>
+				<link>https://blog.lukesalamone.com/tags/attention/</link>
+				<pubDate>Wed, 16 Nov 2022 15:24:15 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/attention/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Transformer</title>
+				<link>https://blog.lukesalamone.com/tags/transformer/</link>
+				<pubDate>Wed, 16 Nov 2022 15:24:15 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/transformer/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Nlp</title>
+				<link>https://blog.lukesalamone.com/tags/nlp/</link>
+				<pubDate>Wed, 09 Nov 2022 02:42:51 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/nlp/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Qualitative-Reasoning</title>
+				<link>https://blog.lukesalamone.com/tags/qualitative-reasoning/</link>
+				<pubDate>Sat, 08 Oct 2022 15:17:36 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/qualitative-reasoning/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Archive</title>
+				<link>https://blog.lukesalamone.com/tags/archive/</link>
+				<pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/archive/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Compress</title>
+				<link>https://blog.lukesalamone.com/tags/compress/</link>
+				<pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/compress/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Tar</title>
+				<link>https://blog.lukesalamone.com/tags/tar/</link>
+				<pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/tar/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Uncompress</title>
+				<link>https://blog.lukesalamone.com/tags/uncompress/</link>
+				<pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/uncompress/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Untar</title>
+				<link>https://blog.lukesalamone.com/tags/untar/</link>
+				<pubDate>Wed, 30 Mar 2022 20:05:26 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/untar/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Gpt2</title>
+				<link>https://blog.lukesalamone.com/tags/gpt2/</link>
+				<pubDate>Sun, 19 Sep 2021 20:13:09 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/gpt2/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Jupyter</title>
+				<link>https://blog.lukesalamone.com/tags/jupyter/</link>
+				<pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/jupyter/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Quick-Reference</title>
+				<link>https://blog.lukesalamone.com/tags/quick-reference/</link>
+				<pubDate>Tue, 07 Sep 2021 09:10:56 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/quick-reference/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Bert</title>
+				<link>https://blog.lukesalamone.com/tags/bert/</link>
+				<pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/bert/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Huggingface</title>
+				<link>https://blog.lukesalamone.com/tags/huggingface/</link>
+				<pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/huggingface/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Transformers</title>
+				<link>https://blog.lukesalamone.com/tags/transformers/</link>
+				<pubDate>Tue, 15 Jun 2021 19:09:36 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/transformers/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Webdev</title>
+				<link>https://blog.lukesalamone.com/tags/webdev/</link>
+				<pubDate>Sun, 09 May 2021 15:06:11 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/webdev/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Aws</title>
+				<link>https://blog.lukesalamone.com/tags/aws/</link>
+				<pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/aws/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Json</title>
+				<link>https://blog.lukesalamone.com/tags/json/</link>
+				<pubDate>Sun, 07 Mar 2021 14:05:27 -0600</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/json/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Stock-Trading</title>
+				<link>https://blog.lukesalamone.com/tags/stock-trading/</link>
+				<pubDate>Sun, 07 Mar 2021 01:31:51 -0600</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/stock-trading/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Audio</title>
+				<link>https://blog.lukesalamone.com/tags/audio/</link>
+				<pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/audio/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Siamese-Neural-Network</title>
+				<link>https://blog.lukesalamone.com/tags/siamese-neural-network/</link>
+				<pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/siamese-neural-network/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Video</title>
+				<link>https://blog.lukesalamone.com/tags/video/</link>
+				<pubDate>Thu, 17 Dec 2020 11:22:43 -0600</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/video/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Clustering</title>
+				<link>https://blog.lukesalamone.com/tags/clustering/</link>
+				<pubDate>Sat, 24 Oct 2020 18:10:29 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/clustering/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Math</title>
+				<link>https://blog.lukesalamone.com/tags/math/</link>
+				<pubDate>Sat, 24 Oct 2020 18:10:29 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/math/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Minimax</title>
+				<link>https://blog.lukesalamone.com/tags/minimax/</link>
+				<pubDate>Sat, 24 Oct 2020 17:45:41 -0500</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/minimax/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Geometry</title>
+				<link>https://blog.lukesalamone.com/tags/geometry/</link>
+				<pubDate>Thu, 09 Jul 2020 15:40:14 +0800</pubDate>
+				<guid>https://blog.lukesalamone.com/tags/geometry/</guid>
+				<description></description>
+			</item>
+	</channel>
 </rss>

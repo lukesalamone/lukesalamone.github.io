@@ -12,8 +12,63 @@
         <description>Recent content in Posts on Luke Salamone&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 11 Mar 2026 20:14:56 -0700</lastBuildDate>
+        <lastBuildDate>Sun, 05 Apr 2026 19:25:25 -0700</lastBuildDate>
         <atom:link href="https://blog.lukesalamone.com/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Model is an Overloaded Term</title>
+            <link>https://blog.lukesalamone.com/posts/model-is-overloaded/</link>
+            <pubDate>Sun, 05 Apr 2026 19:25:25 -0700</pubDate>
+            
+            <guid>https://blog.lukesalamone.com/posts/model-is-overloaded/</guid>
+            <description>&lt;p&gt;There are a lot of meanings of the term &amp;ldquo;model&amp;rdquo; in machine learning and machine learning-adjacent fields. Depending on the context, &amp;ldquo;model&amp;rdquo; can mean:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;a general architecture/configuration for weights of a specific model&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;e.g. &amp;ldquo;We embedded texts using a BERT model&amp;rdquo; might mean DistillBERT, RoBERTa, ModernBERT etc which all differ from the architecture in &lt;a href=&#34;https://arxiv.org/pdf/1810.04805&#34;&gt;the original 2018 BERT paper&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;a specific set of weights which are the result of a training process&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>There are a lot of meanings of the term &ldquo;model&rdquo; in machine learning and machine learning-adjacent fields. Depending on the context, &ldquo;model&rdquo; can mean:</p>
+<ol>
+<li>
+<p>a general architecture/configuration for weights of a specific model</p>
+<ul>
+<li>e.g. &ldquo;We embedded texts using a BERT model&rdquo; might mean DistillBERT, RoBERTa, ModernBERT etc which all differ from the architecture in <a href="https://arxiv.org/pdf/1810.04805">the original 2018 BERT paper</a>.</li>
+</ul>
+</li>
+<li>
+<p>a specific set of weights which are the result of a training process</p>
+<ul>
+<li>e.g. &ldquo;You can download the model from HuggingFace&rdquo;</li>
+<li>Confusingly, <a href="https://github.com/huggingface/parler-tts/issues/175">models can be versioned</a> to fix bugs so the same model (by definition #1) can actually be different models (by definition #2).</li>
+</ul>
+</li>
+<li>
+<p>a product and the system around that product, which isn&rsquo;t quite #2 because it likely includes additional systems like guardrails and rate limiting. And the specific weights used might change without the end-user knowing, such as with additional fine-tuning.</p>
+<ul>
+<li>e.g. &ldquo;Our newest Claude model is the most powerful yet&rdquo;</li>
+</ul>
+</li>
+<li>
+<p>in reinforcement learning, a &ldquo;model&rdquo; is simply the understanding of how the world works, i.e. the &ldquo;world model&rdquo;.</p>
+<ul>
+<li>This leads to the confusing situation of &ldquo;model-free&rdquo; systems which still include neural networks, but simply don&rsquo;t act based on any information about what effects their actions will have on the world.</li>
+<li>For example, AlphaZero is not a model-free algorithm because it uses Monte Carlo Tree Search, and each node in that tree is the result an action taken in a simulated world. It&rsquo;s not learning from scratch what the resulting chessboard if it moves a piece.</li>
+</ul>
+</li>
+<li>
+<p>since it&rsquo;s also possible to &ldquo;model&rdquo; a complex process with a simpler one, a &ldquo;model&rdquo; might be some heuristic or simpler algorithm which is implied to be imperfect.</p>
+<ul>
+<li>This is the original etymology behind language &ldquo;modeling&rdquo; since early models were simple bigrams and trigrams.</li>
+<li>This is also the connotation of climate models, economic models, and models of the spread of disease.</li>
+</ul>
+</li>
+</ol>
+]]></content>
+        </item>
         
         <item>
             <title>Autoresearch</title>
@@ -22,16 +77,16 @@
             
             <guid>https://blog.lukesalamone.com/posts/autoresearch/</guid>
             <description>&lt;figure&gt;&lt;img src=&#34;../img/autoresearch_progress.png&#34;
-    alt=&#34;Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.&#34;&gt;&lt;figcaption&gt;
-      &lt;p&gt;Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.&lt;/p&gt;
-    &lt;/figcaption&gt;
+			alt=&#34;Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.&#34;&gt;&lt;figcaption&gt;
+			&lt;p&gt;Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.&lt;/p&gt;
+		&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;I saw Andrej Karpathy&amp;rsquo;s &lt;a href=&#34;https://github.com/karpathy/autoresearch&#34;&gt;Autoresearch&lt;/a&gt; results the other day and decided to give it a shot on a relatively difficult task: distilling a retrieval/reranking model into a much smaller 10MB model. The model was trained on MS MARCO v1.1 and SQuAD (~169K pairs total) and evaluated on MRR@10.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<figure><img src="/img/autoresearch_progress.png"
-    alt="Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task."><figcaption>
-      <p>Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.</p>
-    </figcaption>
+			alt="Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task."><figcaption>
+			<p>Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.</p>
+		</figcaption>
 </figure>
 
 <p>I saw Andrej Karpathy&rsquo;s <a href="https://github.com/karpathy/autoresearch">Autoresearch</a> results the other day and decided to give it a shot on a relatively difficult task: distilling a retrieval/reranking model into a much smaller 10MB model. The model was trained on MS MARCO v1.1 and SQuAD (~169K pairs total) and evaluated on MRR@10.</p>
@@ -68,13 +123,13 @@
             <guid>https://blog.lukesalamone.com/posts/distilling-stockfish/</guid>
             <description>&lt;p&gt;&lt;strong&gt;TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. To my knowledge, this is the largest open state-value chess dataset released. The dataset is released as the &lt;a href=&#34;https://huggingface.co/datasets/lukesalamone/gigafish-3.8b-d10&#34;&gt;Gigafish dataset on Huggingface&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;../img/distill_stockfish_loss_curve.png&#34;
-    alt=&#34;Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.&#34;&gt;&lt;figcaption&gt;
-      &lt;p&gt;Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.&lt;/p&gt;</description>
+			alt=&#34;Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.&#34;&gt;&lt;figcaption&gt;
+			&lt;p&gt;Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<p><strong>TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. To my knowledge, this is the largest open state-value chess dataset released. The dataset is released as the <a href="https://huggingface.co/datasets/lukesalamone/gigafish-3.8b-d10">Gigafish dataset on Huggingface</a>.</strong></p>
 <figure><img src="/img/distill_stockfish_loss_curve.png"
-    alt="Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume."><figcaption>
-      <p>Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.</p>
-    </figcaption>
+			alt="Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume."><figcaption>
+			<p>Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.</p>
+		</figcaption>
 </figure>
 
 <p>Stockfish is currently the strongest chess engine in the world. It works by using a small neural network millions of times per position. One interesting question we could ask is whether we could replace search depth with a more accurate value function. In 2024, researchers at DeepMind <a href="https://arxiv.org/pdf/2402.04494v1">attempted</a> to answer this question. Critically, this approach did not hold search depth constant, and although they had 15 billion action-value pairs, they only had around 530 million state-value estimates.</p>
@@ -83,17 +138,17 @@
 <p>I trained variants from three main categories of architectures: pure Vision Transformer, pure ResNet, and a hybrid with ResNet blocks followed by Transformer blocks.</p>
 <p>I performed pilot runs to narrow down to the best architecture for this task. The first pilot run trained a 40M param variant, and it became clear early on that the Hybrid and ResNet architectures were significantly better than the pure vision transformer. Compared to the ResNet and the Hybrid, the vision transformer is not able to benefit from the inductive biases provided by convolutions. It effectively needs to learn what a 2D grid is from scratch./</p>
 <figure><img src="/img/distill_40M_comparison.png"
-    alt="On the first pilot run, the vision transformer was clearly worse than the ResNet and the Hybrid."><figcaption>
-      <p>On the first pilot run, the vision transformer was clearly worse than the ResNet and the Hybrid.</p>
-    </figcaption>
+			alt="On the first pilot run, the vision transformer was clearly worse than the ResNet and the Hybrid."><figcaption>
+			<p>On the first pilot run, the vision transformer was clearly worse than the ResNet and the Hybrid.</p>
+		</figcaption>
 </figure>
 
 <p>I then performed a scaled up 80M param pilot run to compare the pure ResNet with the Hybrid. From the loss curves, we can see that ResNet benefits from its inductive biases about the chess board and so the loss on the pure ResNet model quickly drops. However, it struggles to learn the more nuanced whole-board relationships that are necessary for an accurate evaluation and learns more slowly.</p>
 <p>The hybrid approach gets us the best of both worlds. ResNet blocks quickly learn spatial patterns and feed them into the Transformer blocks. This is also part of why transformers are so famously data-hungry: they can keep cranking through enormous datasets.</p>
 <figure><img src="/img/distill_80M_comparison.png"
-    alt="From the second pilot run we can see the Hybrid approach benefitting from inductive biases provided by convolutions as well as the global reasoning from attention blocks."><figcaption>
-      <p>From the second pilot run we can see the Hybrid approach benefitting from inductive biases provided by convolutions as well as the global reasoning from attention blocks.</p>
-    </figcaption>
+			alt="From the second pilot run we can see the Hybrid approach benefitting from inductive biases provided by convolutions as well as the global reasoning from attention blocks."><figcaption>
+			<p>From the second pilot run we can see the Hybrid approach benefitting from inductive biases provided by convolutions as well as the global reasoning from attention blocks.</p>
+		</figcaption>
 </figure>
 
 <h3 id="input-format">Input format</h3>
@@ -209,9 +264,9 @@ When creating a chess engine, you'll need a couple of things. First, you'll need
 <p>Closing cities without considering the resulting map can be suboptimal or unplayable. His post named two specific issues: disconnected graphs and path graphs (i.e. long lines of cities). A disconnected graph can result in a situation where the players can no longer interact. A path graph results in a map which isn&rsquo;t very fun since the single path severely limits the strategies players can use.</p>
 <p>The difficulty is that removing a city permanently changes the topology of the map. A choice might seem reasonable at one point but causes issues down the line. So picking the correct sequence of removals is important in maintaining a playable map.</p>
 <figure><img src="/img/graph_pruning_options.png"
-    alt="With the four nodes a, b, c, and d, there are four pruning options. However, option 1 results in a disconnected graph, and options 3 and 4 result in suboptional path graphs. Option 2 is the only one which maintains a connected, non-path graph."><figcaption>
-      <p>With the four nodes a, b, c, and d, there are four pruning options. However, option 1 results in a disconnected graph, and options 3 and 4 result in suboptional path graphs. Option 2 is the only one which maintains a connected, non-path graph.</p>
-    </figcaption>
+			alt="With the four nodes a, b, c, and d, there are four pruning options. However, option 1 results in a disconnected graph, and options 3 and 4 result in suboptional path graphs. Option 2 is the only one which maintains a connected, non-path graph."><figcaption>
+			<p>With the four nodes a, b, c, and d, there are four pruning options. However, option 1 results in a disconnected graph, and options 3 and 4 result in suboptional path graphs. Option 2 is the only one which maintains a connected, non-path graph.</p>
+		</figcaption>
 </figure>
 
 <h2 id="avoiding-disconnected-graphs">Avoiding disconnected graphs</h2>
@@ -221,9 +276,9 @@ When creating a chess engine, you'll need a couple of things. First, you'll need
 <p>Intuitively, the reason that path graphs aren&rsquo;t great is because as a hidden information game, the strategy of Two Spies relies on the fact that the opponent could be in multiple places at once, but path graphs reduce strategic possibility space and hidden state uncertainty.</p>
 <p>We can quantify this by counting the number of steps it takes for every node to reach every other node. (For simplicity, we don&rsquo;t have to count reverse paths. We don&rsquo;t need to count A -&gt; B and B -&gt; A separately.) It turns out this measurement is called the <a href="https://en.wikipedia.org/wiki/Wiener_index">Wiener number</a>, the sum of the shortest paths between all nodes. Graphs with lower Wiener numbers are more optimal for the purposes of this game.</p>
 <figure><img src="/img/wiener_distances.png"
-    alt="The graph on the left has a total distance of three, while the graph on the right (a path graph) has a total distance of four."><figcaption>
-      <p>The graph on the left has a total distance of three, while the graph on the right (a path graph) has a total distance of four.</p>
-    </figcaption>
+			alt="The graph on the left has a total distance of three, while the graph on the right (a path graph) has a total distance of four."><figcaption>
+			<p>The graph on the left has a total distance of three, while the graph on the right (a path graph) has a total distance of four.</p>
+		</figcaption>
 </figure>
 
 <h2 id="greedy-pruning">Greedy pruning</h2>
@@ -260,9 +315,9 @@ When creating a chess engine, you'll need a couple of things. First, you'll need
 <p>The maximum price that people will pay is normally distributed around $100, with a standard deviation of $5. In other words, about 34% have a max price between $95 and $100, another 34% have a max price between $100 and $105, and the rest have max prices above or below those ranges.</p>
 <p><strong>The question is, what&rsquo;s the best price to ask?</strong></p>
 <figure><img src="/img/optimal_ask_bids.png"
-    alt="Chart of the distribution of the maximum amounts that customers are willing to pay. If you ask more than the customer is willing to pay, they won&rsquo;t buy. If you ask less, you will make the sale but you could be leaving money on the table."><figcaption>
-      <p>Chart of the distribution of the maximum amounts that customers are willing to pay. If you ask more than the customer is willing to pay, they won&rsquo;t buy. If you ask less, you will make the sale but you could be leaving money on the table.</p>
-    </figcaption>
+			alt="Chart of the distribution of the maximum amounts that customers are willing to pay. If you ask more than the customer is willing to pay, they won&rsquo;t buy. If you ask less, you will make the sale but you could be leaving money on the table."><figcaption>
+			<p>Chart of the distribution of the maximum amounts that customers are willing to pay. If you ask more than the customer is willing to pay, they won&rsquo;t buy. If you ask less, you will make the sale but you could be leaving money on the table.</p>
+		</figcaption>
 </figure>
 
 <p>This is a good gut check. If you set the price lower, you sell more widgets but make less money. If you ask higher, you sell fewer widgets but each sale makes more money.</p>
@@ -511,17 +566,17 @@ But how much bigger would that model have to be to match the performance of Alph
             
             <guid>https://blog.lukesalamone.com/posts/space-is-really-big/</guid>
             <description>&lt;figure&gt;&lt;img src=&#34;../img/earth_moon.png&#34;
-    alt=&#34;More than 30 earths could fit between the earth and the moon.&#34;&gt;&lt;figcaption&gt;
-      &lt;p&gt;More than 30 earths could fit between the earth and the moon.&lt;/p&gt;
-    &lt;/figcaption&gt;
+			alt=&#34;More than 30 earths could fit between the earth and the moon.&#34;&gt;&lt;figcaption&gt;
+			&lt;p&gt;More than 30 earths could fit between the earth and the moon.&lt;/p&gt;
+		&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;Our &lt;a href=&#34;https://science.nasa.gov/wp-content/uploads/2023/07/pia06890-our-solar-system-banner-1920x640-1.jpg&#34;&gt;elementary school models&lt;/a&gt; of the solar system really undersell how big space is. The problem is, space is too big and human brains are bad at exponentials. Logarithmic charts like &lt;a href=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Interstellar_medium_annotated.jpg/1920px-Interstellar_medium_annotated.jpg&#34;&gt;this one&lt;/a&gt; are technically accurate, but my brain has a hard time contextualizing it.&lt;/p&gt;
 &lt;p&gt;To get an idea of how big space really is, let&amp;rsquo;s imagine that the earth is one millimeter wide. At that scale:&lt;/p&gt;</description>
             <content type="html"><![CDATA[<figure><img src="/img/earth_moon.png"
-    alt="More than 30 earths could fit between the earth and the moon."><figcaption>
-      <p>More than 30 earths could fit between the earth and the moon.</p>
-    </figcaption>
+			alt="More than 30 earths could fit between the earth and the moon."><figcaption>
+			<p>More than 30 earths could fit between the earth and the moon.</p>
+		</figcaption>
 </figure>
 
 <p>Our <a href="https://science.nasa.gov/wp-content/uploads/2023/07/pia06890-our-solar-system-banner-1920x640-1.jpg">elementary school models</a> of the solar system really undersell how big space is. The problem is, space is too big and human brains are bad at exponentials. Logarithmic charts like <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Interstellar_medium_annotated.jpg/1920px-Interstellar_medium_annotated.jpg">this one</a> are technically accurate, but my brain has a hard time contextualizing it.</p>
@@ -586,8 +641,8 @@ for anchors, positives, negatives in dataloader:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;how-does-the-collate_fn-work&#34;&gt;How does the collate_fn work?&lt;/h2&gt;
 &lt;figure&gt;&lt;img src=&#34;../img/torch_collate_fn.png&#34;
-    alt=&#34;The PyTorch collate function accepts a list of results from calls to the dataset getitem function and combines their components into tensors for convenient training.&#34;&gt;&lt;figcaption&gt;
-      &lt;p&gt;The PyTorch collate function accepts a list of results from calls to the dataset &lt;strong&gt;getitem&lt;/strong&gt; function and combines their components into tensors for convenient training.&lt;/p&gt;</description>
+			alt=&#34;The PyTorch collate function accepts a list of results from calls to the dataset getitem function and combines their components into tensors for convenient training.&#34;&gt;&lt;figcaption&gt;
+			&lt;p&gt;The PyTorch collate function accepts a list of results from calls to the dataset &lt;strong&gt;getitem&lt;/strong&gt; function and combines their components into tensors for convenient training.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<p>If your <code>Dataset</code> class looks something like</p>
 <pre><code class="language-python">class MyDataset(Dataset):
   
@@ -622,9 +677,9 @@ for anchors, positives, negatives in dataloader:
 </code></pre>
 <h2 id="how-does-the-collate_fn-work">How does the collate_fn work?</h2>
 <figure><img src="/img/torch_collate_fn.png"
-    alt="The PyTorch collate function accepts a list of results from calls to the dataset getitem function and combines their components into tensors for convenient training."><figcaption>
-      <p>The PyTorch collate function accepts a list of results from calls to the dataset <strong>getitem</strong> function and combines their components into tensors for convenient training.</p>
-    </figcaption>
+			alt="The PyTorch collate function accepts a list of results from calls to the dataset getitem function and combines their components into tensors for convenient training."><figcaption>
+			<p>The PyTorch collate function accepts a list of results from calls to the dataset <strong>getitem</strong> function and combines their components into tensors for convenient training.</p>
+		</figcaption>
 </figure>
 
 <p>Under the hood, your DataLoader is making multiple calls to <code>dataset.__getitem__()</code>, one for each item in <code>batch_size</code>. Usually it is smart enough to know how to combine them into a tensor for training (here is the <a href="https://pytorch.org/docs/stable/_modules/torch/utils/data/_utils/collate.html#default_collate">default collate function</a>), but sometimes you need custom logic.</p>
@@ -942,9 +997,9 @@ cool_rust_bindings.sum_file('large_file.csv')
 <p>The colors represent the percentiles, since at every slice along the x-axis there is actually a distribution of positions and associated legal moves. Interestingly, we can see that for the 10th percentile the bottom really falls out after 40 moves or so, with positions so constrained that there are only a handful of legal moves. These likely represent positions where the king is in check.</p>
 <h2 id="100-move-positions-are-rare">100+ move positions are rare</h2>
 <figure><img src="/img/pgn_processing.gif"
-    alt="Each line represents the chess position in a chunk of 5000 games with the most legal moves."><figcaption>
-      <p>Each line represents the chess position in a chunk of 5000 games with the most legal moves.</p>
-    </figcaption>
+			alt="Each line represents the chess position in a chunk of 5000 games with the most legal moves."><figcaption>
+			<p>Each line represents the chess position in a chunk of 5000 games with the most legal moves.</p>
+		</figcaption>
 </figure>
 
 <p>To parse the games, I wrote a multithreaded rust script with python bindings to process chunks of 5000 games at a time. Within a chunk of games, it was pretty typical for the maximum number of legal moves in any position in any game in the chunk to be between 70 and 100.</p>
@@ -1268,9 +1323,9 @@ $$
 <p>Suppose you have 1,000 friends and you&rsquo;d like to know which five of them live closest to a landmark like the Golden Gate Bridge. You don’t have everyone&rsquo;s exact address, but each friend keeps a list of their close friends&rsquo; addresses. You might start with a friend who lives in the US. From there, you check their friends to find who lives closest to the target, and then search among their friends for someone even closer. By using a hierarchical approach, you don&rsquo;t need to search through everyone, just those likely to be closest.</p>
 <p>In the analogy, the Golden Gate Bridge is the &ldquo;needle&rdquo; and the friends are the &ldquo;haystack&rdquo;. This is a pretty efficient method, but of course it is possible to miss a node if their friend wasn&rsquo;t linked to an earlier friend.</p>
 <figure><img src="/img/hnsw.png"
-    alt="HNSW uses a multi-layered graph for efficient nearest neighbor search."><figcaption>
-      <p>HNSW uses a multi-layered graph for efficient nearest neighbor search.</p>
-    </figcaption>
+			alt="HNSW uses a multi-layered graph for efficient nearest neighbor search."><figcaption>
+			<p>HNSW uses a multi-layered graph for efficient nearest neighbor search.</p>
+		</figcaption>
 </figure>
 
 <h3 id="searching">Searching</h3>
@@ -1362,9 +1417,9 @@ MathJax.Hub.Config({
 <p>Below is an overview of three of the main training regimes I have used for creating embeddings. For more information and in-depth examples, I highly recommend the loss overview page of the <a href="https://sbert.net/docs/sentence_transformer/loss_overview.html">Sentence Transformers</a> library. Generally speaking, there are three categories of methods: unsupervised methods, contrastive learning methods (positive/negative labels), and regression methods (floating-point labels).</p>
 <h2 id="autoencoders">Autoencoders</h2>
 <figure><img src="/img/mona_lisa_autoencoder.png"
-    alt="An autoencoder uses a bottleneck to reduce the dimensionality of the input."><figcaption>
-      <p>An autoencoder uses a bottleneck to reduce the dimensionality of the input.</p>
-    </figcaption>
+			alt="An autoencoder uses a bottleneck to reduce the dimensionality of the input."><figcaption>
+			<p>An autoencoder uses a bottleneck to reduce the dimensionality of the input.</p>
+		</figcaption>
 </figure>
 
 <p>One approach for vectorizing a document, image, or other blob of information is to simply <a href="/posts/build-an-autoencoder/">use an autoencoder</a>. An autoencoder is a function which learns a lossy compression function. It can be considered an unsupervised method since each item is its own label.</p>
@@ -1420,9 +1475,9 @@ $$
 </p>
 <p>In other words, we enforce that the distance between the anchor and the negative sample is greater than the distance between the anchor and the positive sample <em>plus</em> some margin. For cosine similarity, what this would look like is that your vectors appear as points on the perimeter of a high-dimensional clock face (i.e. the surface of an N-dimensional hypersphere). Positive samples grow closer to the anchor while the negative samples are pushed away. The higher the margin, the closer positive samples will be pushed together.</p>
 <figure><img src="/img/contrastive_learning.png"
-    alt="Learning to differentiate Bangarang and Clair de lune. Triplet loss pushes positive examples closer to the anchor and negatives farther away. Some say Claude DeBussy was the Skrillex of 1890."><figcaption>
-      <p>Learning to differentiate Bangarang and Clair de lune. Triplet loss pushes positive examples closer to the anchor and negatives farther away. Some say Claude DeBussy was the Skrillex of 1890.</p>
-    </figcaption>
+			alt="Learning to differentiate Bangarang and Clair de lune. Triplet loss pushes positive examples closer to the anchor and negatives farther away. Some say Claude DeBussy was the Skrillex of 1890."><figcaption>
+			<p>Learning to differentiate Bangarang and Clair de lune. Triplet loss pushes positive examples closer to the anchor and negatives farther away. Some say Claude DeBussy was the Skrillex of 1890.</p>
+		</figcaption>
 </figure>
 
 <h2 id="contrastive-learning-contrastive-loss">Contrastive learning: Contrastive loss</h2>
@@ -1705,49 +1760,49 @@ while True:
 <p>Learning to rank is an important problem in many machine-learning products such as search, recommendation, and advertising. Originally, many machine learning systems used simple logistic regression models, but it quickly became apparent that combining two or more features together was <a href="https://www.ismll.uni-hildesheim.de/pub/pdfs/Rendle2010FM.pdf">even better</a>. This is called feature crossing.</p>
 <p>A lot of research and engineering work has gone into learning useful feature crosses. The fundamental problem is that although higher-order feature crosses can be more informative, they are also more sparse, and the number of high order features grows exponentially. Some attempts to address this have been:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Architecture</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><a href="https://arxiv.org/pdf/1606.07792">Wide &amp; Deep network</a></td>
-          <td>Contains a wide linear model to capture feature interactions and a deep neural net (DNN) to capture nonlinear relationships.</td>
-      </tr>
-      <tr>
-          <td><a href="https://arxiv.org/pdf/1703.04247">DeepFM</a></td>
-          <td>Combines a FM component to capture second-order feature interactions and a DNN to capture higher-order interactions.</td>
-      </tr>
-      <tr>
-          <td><a href="https://arxiv.org/pdf/1803.05170">xDeepFM</a></td>
-          <td>Extends DeepFM by adding a compressed interaction network to model high-order vector-wise feature interactions.</td>
-      </tr>
-      <tr>
-          <td><a href="https://arxiv.org/pdf/1906.00091">DLRM</a></td>
-          <td>Uses a DNN for dense features, an embedding lookup for sparse features, dot product interaction layers, and a final DNN.</td>
-      </tr>
-      <tr>
-          <td><a href="https://arxiv.org/pdf/1611.00144">PNN</a></td>
-          <td>Uses a product layer to explicitly model pairwise feature interactions, followed by a neural net.</td>
-      </tr>
-      <tr>
-          <td><a href="https://arxiv.org/pdf/1810.11921">AutoInt</a></td>
-          <td>Uses multi-head self-attention to model feature interactions, followed by a DNN.</td>
-      </tr>
-      <tr>
-          <td><a href="https://arxiv.org/pdf/1708.05123">DCN</a></td>
-          <td>Explicitly applies feature crosses with a Cross network, followed by a DNN.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Architecture</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><a href="https://arxiv.org/pdf/1606.07792">Wide &amp; Deep network</a></td>
+					<td>Contains a wide linear model to capture feature interactions and a deep neural net (DNN) to capture nonlinear relationships.</td>
+			</tr>
+			<tr>
+					<td><a href="https://arxiv.org/pdf/1703.04247">DeepFM</a></td>
+					<td>Combines a FM component to capture second-order feature interactions and a DNN to capture higher-order interactions.</td>
+			</tr>
+			<tr>
+					<td><a href="https://arxiv.org/pdf/1803.05170">xDeepFM</a></td>
+					<td>Extends DeepFM by adding a compressed interaction network to model high-order vector-wise feature interactions.</td>
+			</tr>
+			<tr>
+					<td><a href="https://arxiv.org/pdf/1906.00091">DLRM</a></td>
+					<td>Uses a DNN for dense features, an embedding lookup for sparse features, dot product interaction layers, and a final DNN.</td>
+			</tr>
+			<tr>
+					<td><a href="https://arxiv.org/pdf/1611.00144">PNN</a></td>
+					<td>Uses a product layer to explicitly model pairwise feature interactions, followed by a neural net.</td>
+			</tr>
+			<tr>
+					<td><a href="https://arxiv.org/pdf/1810.11921">AutoInt</a></td>
+					<td>Uses multi-head self-attention to model feature interactions, followed by a DNN.</td>
+			</tr>
+			<tr>
+					<td><a href="https://arxiv.org/pdf/1708.05123">DCN</a></td>
+					<td>Explicitly applies feature crosses with a Cross network, followed by a DNN.</td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="dcnv2">DCNv2</h2>
 <p>DCNv2 improves on the original DCN architecture in a few important ways. First, it uses a more expressive feature cross formula. Second, it introduces matrix factorization to dramatically reduce the required number of parameters in the model. Finally, the authors also introduce a gated mixture of experts setup to take advantage of the parameter savings.</p>
 <figure><img src="/img/dcn_archs.png"
-    alt="DCNv2 can be implemented with a stacked (i.e. serial) architecture or a parallel architecture."><figcaption>
-      <p>DCNv2 can be implemented with a stacked (i.e. serial) architecture or a parallel architecture.</p>
-    </figcaption>
+			alt="DCNv2 can be implemented with a stacked (i.e. serial) architecture or a parallel architecture."><figcaption>
+			<p>DCNv2 can be implemented with a stacked (i.e. serial) architecture or a parallel architecture.</p>
+		</figcaption>
 </figure>
 
 <h3 id="embedding-layer">Embedding layer</h3>
@@ -1817,9 +1872,9 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
 <h2 id="mixture-of-low-rank-experts">Mixture of low-rank experts</h2>
 <p>The parameter savings from using low-rank approximations of the weight matrices can be reinvested into additional parameters. In particular, if we have a gating function <code>G(x)</code> we can use it to decide between a group of &ldquo;experts&rdquo; which are themselves low-rank Cross networks.</p>
 <figure><img src="/img/mixture_of_experts_dcn.png"
-    alt="A mixture of experts consists of a gating function and an expert function. The gating function determines the weight of the expert function."><figcaption>
-      <p>A mixture of experts consists of a gating function and an expert function. The gating function determines the weight of the expert function.</p>
-    </figcaption>
+			alt="A mixture of experts consists of a gating function and an expert function. The gating function determines the weight of the expert function."><figcaption>
+			<p>A mixture of experts consists of a gating function and an expert function. The gating function determines the weight of the expert function.</p>
+		</figcaption>
 </figure>
 
 <p>Note that setting <code>G(x)=1</code> and <code>K=1</code> reduces the mixture of experts to the original low-rank DCN architecture.</p>
@@ -1830,9 +1885,9 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
 <h2 id="results-on-synthetic-datasets">Results on synthetic datasets</h2>
 <p>To better understand how the DCN, DCNv2 and DNN are able to model cross interactions, the authors created synthetic functions for the various architectures to learn. They created three classes of functions with increasing difficulty to learn.</p>
 <figure><img src="/img/synthetic_functions_dcn.png"
-    alt="Synthetic functions of increasing difficulty to be learned by DCN, DCNv2 and DNN."><figcaption>
-      <p>Synthetic functions of increasing difficulty to be learned by DCN, DCNv2 and DNN.</p>
-    </figcaption>
+			alt="Synthetic functions of increasing difficulty to be learned by DCN, DCNv2 and DNN."><figcaption>
+			<p>Synthetic functions of increasing difficulty to be learned by DCN, DCNv2 and DNN.</p>
+		</figcaption>
 </figure>
 
 <p>Note that the third equation can be modeled by a single cross operation.</p>
@@ -1938,54 +1993,54 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
 <p><img src="/img/chatgpt_mnist.png" alt="chatgpt performance on 100 handwritten digits"></p>
 <p>It is interesting that only the 0s and the 7s were correctly identified. Let&rsquo;s take a look at the distribution of ChatGPT&rsquo;s guesses.</p>
 <table>
-  <thead>
-      <tr>
-          <th>Guess</th>
-          <th>Count</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>0</td>
-          <td>85</td>
-      </tr>
-      <tr>
-          <td>1</td>
-          <td>0</td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td>3</td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>5</td>
-          <td>4</td>
-      </tr>
-      <tr>
-          <td>6</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>7</td>
-          <td>5</td>
-      </tr>
-      <tr>
-          <td>8</td>
-          <td>0</td>
-      </tr>
-      <tr>
-          <td>9</td>
-          <td>0</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Guess</th>
+					<th>Count</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>85</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>4</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>9</td>
+					<td>0</td>
+			</tr>
+	</tbody>
 </table>
 <p>Oh. It got 8/10 zeros correct because it guessed zero 85% of the time.</p>
 ]]></content>
@@ -2023,9 +2078,9 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
 <p>Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches. An example of a bag-of-words approach might simply be to count the number of similar words between the query and each document, and return the document with the highest number of similar words. There are word-stuffing issues with this idea, but the larger issue is that a bag-of-words strategy can&rsquo;t account for synonyms. If I search for <em>bad guy</em> I will never find <em>villain</em> without some additional logic to account for this. A neural network implicitly understands the relationship between words, and avoids the fragile logic of simple word counts.</p>
 <p>The idea of a neural encoding approach is pretty simple. For each document in your corpus, pass the query a document into a function which will return a similarity score between 0 and 1. Then, just sort the documents by that score. There are two main architectures for doing this: dual-encoders and cross-attention models.</p>
 <figure><img src="/img/dual_vs_cross_encoder.png"
-    alt="Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models."><figcaption>
-      <p>Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models.</p>
-    </figcaption>
+			alt="Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models."><figcaption>
+			<p>Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models.</p>
+		</figcaption>
 </figure>
 
 <p>The great thing about DE models is that document embeddings can be computed ahead of time. When users enter a query, only that query embedding needs to be calculated, and then compared with the embeddings already calculated for each of the documents. It&rsquo;s a lot faster. So much faster, in fact, that CA is generally not used for initial retrieval, only for reranking afterwards.</p>
@@ -2033,9 +2088,9 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
 <h2 id="the-problem">The Problem</h2>
 <p>It&rsquo;s unclear whether the shortcomings of DEs are due to the DE model&rsquo;s capacity or because of its training procedure. DEs may be overfitting.</p>
 <figure><img src="/img/dual_encoder_overfitting.png"
-    alt="DE models can match CA model training performance but are often lower during evaluation."><figcaption>
-      <p>DE models can match CA model training performance but are often lower during evaluation.</p>
-    </figcaption>
+			alt="DE models can match CA model training performance but are often lower during evaluation."><figcaption>
+			<p>DE models can match CA model training performance but are often lower during evaluation.</p>
+		</figcaption>
 </figure>
 
 <p>Dual encoders can also be improved by distillation, of which there are two kinds:</p>
@@ -2044,16 +2099,16 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
 <li>Probability matching. Try to match the softmax probabilities between teacher and student.</li>
 </ol>
 <figure><img src="/img/de_ca_margins.png"
-    alt="CA models have better separation between positive and negative examples, strongly predicting negative examples. DE models have more overlap between positive and negative predictions. Normalizing the margins between positive and negative predictions (higher is better), CA models clearly have better performance. The distilled model is slightly better than the DE model."><figcaption>
-      <p>CA models have better separation between positive and negative examples, strongly predicting negative examples. DE models have more overlap between positive and negative predictions. Normalizing the margins between positive and negative predictions (higher is better), CA models clearly have better performance. The distilled model is slightly better than the DE model.</p>
-    </figcaption>
+			alt="CA models have better separation between positive and negative examples, strongly predicting negative examples. DE models have more overlap between positive and negative predictions. Normalizing the margins between positive and negative predictions (higher is better), CA models clearly have better performance. The distilled model is slightly better than the DE model."><figcaption>
+			<p>CA models have better separation between positive and negative examples, strongly predicting negative examples. DE models have more overlap between positive and negative predictions. Normalizing the margins between positive and negative predictions (higher is better), CA models clearly have better performance. The distilled model is slightly better than the DE model.</p>
+		</figcaption>
 </figure>
 
 <p>Part of the cause of this discrepancy may be the fact that DE models have noisier updates. DE models may have difficulty modeling negative scores since updating their weights on positive (q, d+) pairs can inadvertently increase scores for negative (q, d-) pairs. Dropout also doesn&rsquo;t seem to mitigate overfitting.</p>
 <figure><img src="/img/de_ca_score_evolution.png"
-    alt="The evolution of scores for five positive and five negative documents for a fixed query. Scores from the CA model separate much more smoothly than in the DE model."><figcaption>
-      <p>The evolution of scores for five positive and five negative documents for a fixed query. Scores from the CA model separate much more smoothly than in the DE model.</p>
-    </figcaption>
+			alt="The evolution of scores for five positive and five negative documents for a fixed query. Scores from the CA model separate much more smoothly than in the DE model."><figcaption>
+			<p>The evolution of scores for five positive and five negative documents for a fixed query. Scores from the CA model separate much more smoothly than in the DE model.</p>
+		</figcaption>
 </figure>
 
 <h2 id="solutions">Solutions</h2>
@@ -2070,9 +2125,9 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
 <p>M3SE can be seen as an extension of Margin MSE loss where instead of matching logits it matches raw scores. It can also be seen as a smooth approximation of softmax cross-entropy loss. The authors also highlight parallels between M3SE and RankDistil.</p>
 <h2 id="results">Results</h2>
 <figure><img src="/img/m3se_results.png"
-    alt="Apart from TREC, M3SE distillation appears to nearly close the gap with cross-attention models. Distilled models are 6-layer BERT models with embedding size 768."><figcaption>
-      <p>Apart from TREC, M3SE distillation appears to nearly close the gap with cross-attention models. Distilled models are 6-layer BERT models with embedding size 768.</p>
-    </figcaption>
+			alt="Apart from TREC, M3SE distillation appears to nearly close the gap with cross-attention models. Distilled models are 6-layer BERT models with embedding size 768."><figcaption>
+			<p>Apart from TREC, M3SE distillation appears to nearly close the gap with cross-attention models. Distilled models are 6-layer BERT models with embedding size 768.</p>
+		</figcaption>
 </figure>
 
 ]]></content>
@@ -2089,45 +2144,45 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
             <content type="html"><![CDATA[<p>This is a follow up to <a href="/posts/winning-faster-than-stockfish/">Opponent Modeling Wins 2× Faster Than Stockfish</a>. After running 400 simulations, I can conclusively say that opponent modeling is pretty cool.</p>
 <p>The TLDR on opponent modeling is that if we have a pretty good idea of what the opponent might do, we can beat them faster by playing moves which aren&rsquo;t objectively &ldquo;optimal&rdquo; as far as minimax is concerned. Here, Maia 1900 is a model of a relatively high-level chess player. Antimaia 1900 is specifically designed to counter Maia 1900.</p>
 <table>
-  <thead>
-      <tr>
-          <th>White</th>
-          <th>Black</th>
-          <th>Games</th>
-          <th>White win %</th>
-          <th>Average half moves per game</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Antimaia 1900</td>
-          <td>Maia 1900</td>
-          <td>100</td>
-          <td>100%</td>
-          <td>37</td>
-      </tr>
-      <tr>
-          <td>Maia 1900</td>
-          <td>Antimaia 1900</td>
-          <td>100</td>
-          <td>0%</td>
-          <td>43</td>
-      </tr>
-      <tr>
-          <td>Maia 1900</td>
-          <td>Stockfish @10</td>
-          <td>100</td>
-          <td>0%</td>
-          <td>67</td>
-      </tr>
-      <tr>
-          <td>Stockfish @10</td>
-          <td>Maia 1900</td>
-          <td>100</td>
-          <td>100%</td>
-          <td>70</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>White</th>
+					<th>Black</th>
+					<th>Games</th>
+					<th>White win %</th>
+					<th>Average half moves per game</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Antimaia 1900</td>
+					<td>Maia 1900</td>
+					<td>100</td>
+					<td>100%</td>
+					<td>37</td>
+			</tr>
+			<tr>
+					<td>Maia 1900</td>
+					<td>Antimaia 1900</td>
+					<td>100</td>
+					<td>0%</td>
+					<td>43</td>
+			</tr>
+			<tr>
+					<td>Maia 1900</td>
+					<td>Stockfish @10</td>
+					<td>100</td>
+					<td>0%</td>
+					<td>67</td>
+			</tr>
+			<tr>
+					<td>Stockfish @10</td>
+					<td>Maia 1900</td>
+					<td>100</td>
+					<td>100%</td>
+					<td>70</td>
+			</tr>
+	</tbody>
 </table>
 <ul>
 <li>Maia 1900 uses Maia Chess weights trained on games from players rated near 1900.</li>
@@ -2199,16 +2254,16 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
             
             <guid>https://blog.lukesalamone.com/posts/earth-antipodes/</guid>
             <description>&lt;figure&gt;&lt;img src=&#34;../img/antipode_land.png&#34;
-    alt=&#34;White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.&#34;&gt;&lt;figcaption&gt;
-      &lt;p&gt;White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.&lt;/p&gt;
-    &lt;/figcaption&gt;
+			alt=&#34;White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.&#34;&gt;&lt;figcaption&gt;
+			&lt;p&gt;White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.&lt;/p&gt;
+		&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;If you want to fly across the Pacific Ocean, you&amp;rsquo;ll have to board an airplane and fly around 12 hours. It&amp;rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &amp;ldquo;Digging to China&amp;rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<figure><img src="/img/antipode_land.png"
-    alt="White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&rsquo;s surface."><figcaption>
-      <p>White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&rsquo;s surface.</p>
-    </figcaption>
+			alt="White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&rsquo;s surface."><figcaption>
+			<p>White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&rsquo;s surface.</p>
+		</figcaption>
 </figure>
 
 <p>If you want to fly across the Pacific Ocean, you&rsquo;ll have to board an airplane and fly around 12 hours. It&rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &ldquo;Digging to China&rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.</p>
@@ -2253,40 +2308,40 @@ def x2lon(x):
 <h2 id="antipodal-cities">Antipodal Cities</h2>
 <p>If we look at <a href="https://en.wikipedia.org/wiki/List_of_largest_cities">a list of the world&rsquo;s largest cities</a>, which of them have antipodes on land? In the top 20, only four cities do.</p>
 <table>
-  <thead>
-      <tr>
-          <th>city</th>
-          <th>population (millions)</th>
-          <th>lat, lon</th>
-          <th>antipode country</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Shanghai🇨🇳</td>
-          <td>25.5</td>
-          <td>31.2, 121.5</td>
-          <td>Argentina🇦🇷</td>
-      </tr>
-      <tr>
-          <td>Beijing🇨🇳</td>
-          <td>19.6</td>
-          <td>39.9, 116.4</td>
-          <td>Argentina🇦🇷</td>
-      </tr>
-      <tr>
-          <td>Manila🇵🇭</td>
-          <td>13.5</td>
-          <td>14.6, 121.0</td>
-          <td>Brazil🇧🇷</td>
-      </tr>
-      <tr>
-          <td>Tianjin🇨🇳</td>
-          <td>13.2</td>
-          <td>39.1, 117.2</td>
-          <td>Argentina🇦🇷</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>city</th>
+					<th>population (millions)</th>
+					<th>lat, lon</th>
+					<th>antipode country</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Shanghai🇨🇳</td>
+					<td>25.5</td>
+					<td>31.2, 121.5</td>
+					<td>Argentina🇦🇷</td>
+			</tr>
+			<tr>
+					<td>Beijing🇨🇳</td>
+					<td>19.6</td>
+					<td>39.9, 116.4</td>
+					<td>Argentina🇦🇷</td>
+			</tr>
+			<tr>
+					<td>Manila🇵🇭</td>
+					<td>13.5</td>
+					<td>14.6, 121.0</td>
+					<td>Brazil🇧🇷</td>
+			</tr>
+			<tr>
+					<td>Tianjin🇨🇳</td>
+					<td>13.2</td>
+					<td>39.1, 117.2</td>
+					<td>Argentina🇦🇷</td>
+			</tr>
+	</tbody>
 </table>
 ]]></content>
         </item>
@@ -2298,18 +2353,18 @@ def x2lon(x):
             
             <guid>https://blog.lukesalamone.com/posts/self-attention/</guid>
             <description>&lt;figure&gt;&lt;img src=&#34;../img/self-attention.png&#34;
-    alt=&#34;A self-attention block depicted as a neural network.&#34;&gt;&lt;figcaption&gt;
-      &lt;p&gt;A self-attention block depicted as a neural network.&lt;/p&gt;
-    &lt;/figcaption&gt;
+			alt=&#34;A self-attention block depicted as a neural network.&#34;&gt;&lt;figcaption&gt;
+			&lt;p&gt;A self-attention block depicted as a neural network.&lt;/p&gt;
+		&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in &lt;a href=&#34;https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf&#34;&gt;Attention is All You Need&lt;/a&gt; by Vaswani et al.&lt;/p&gt;
 &lt;h2 id=&#34;what-is-attention&#34;&gt;What is attention?&lt;/h2&gt;
 &lt;p&gt;At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren&amp;rsquo;t. In language models, attention is used as a way for the model to learn which portions of a sentence are relevant to each word.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<figure><img src="/img/self-attention.png"
-    alt="A self-attention block depicted as a neural network."><figcaption>
-      <p>A self-attention block depicted as a neural network.</p>
-    </figcaption>
+			alt="A self-attention block depicted as a neural network."><figcaption>
+			<p>A self-attention block depicted as a neural network.</p>
+		</figcaption>
 </figure>
 
 <p>In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in <a href="https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf">Attention is All You Need</a> by Vaswani et al.</p>
@@ -2330,26 +2385,26 @@ def x2lon(x):
 <script src="/js/attention_demo.js"></script>
 <h2 id="how-does-self-attention-work">How does self-attention work?</h2>
 <p><figure><img src="/img/scaled-dot-prod-attention.png"
-    alt="The Vaswani paper describes scaled dot product attention, which involves normalizing by the square root of the input dimension."><figcaption>
-      <p>The Vaswani paper describes scaled dot product attention, which involves normalizing by the square root of the input dimension.</p>
-    </figcaption>
+			alt="The Vaswani paper describes scaled dot product attention, which involves normalizing by the square root of the input dimension."><figcaption>
+			<p>The Vaswani paper describes scaled dot product attention, which involves normalizing by the square root of the input dimension.</p>
+		</figcaption>
 </figure>
 
 This is the part where Vaswani delves into a database analogy with <strong>keys</strong>, <strong>queries</strong>, and <strong>values</strong>. Most online resources try to salvage this analogy. Personally, I always found this a bit confusing. What you need to know is that keys, values, and queries correspond to 3 matrices M<sub>k</sub>, M<sub>q</sub>, and M<sub>v</sub>, which are used in a dot product with the original input vectors.</p>
 <p>In linear algebra terms this means multiplying the 1xd input vector by a matrix of size dxd. In neural network terms, this means passing the input vector through a full-connected layer. After M<sub>k</sub> and M<sub>q</sub> are multiplied, they are normalized by the square root of d<sub>k</sub>, a constant representing the dimension of the input vector.</p>
 <h2 id="can-we-attend-to-multiple-parts-of-a-sentence">Can we attend to multiple parts of a sentence?</h2>
 <figure><img src="/img/multi_head_attention.png"
-    alt="Multi-headed attention means performing attention n times in parallel inside of an encoder block."><figcaption>
-      <p>Multi-headed attention means performing attention n times in parallel inside of an encoder block.</p>
-    </figcaption>
+			alt="Multi-headed attention means performing attention n times in parallel inside of an encoder block."><figcaption>
+			<p>Multi-headed attention means performing attention n times in parallel inside of an encoder block.</p>
+		</figcaption>
 </figure>
 
 <p>Yes, that is called multi-headed attention. Its architecture is very similar, using  additional M<sub>k</sub>, M<sub>q</sub>, and M<sub>v</sub> matrices for each additional &ldquo;attention head&rdquo;. In the Vaswani paper they used 8 heads.</p>
 <h2 id="how-do-transformers-compare-with-other-architectures-eg-rnncnn">How do transformers compare with other architectures (e.g. RNN/CNN)?</h2>
 <figure><img src="/img/attention_performance.png"
-    alt="When the input sequence length n is lower than the input dimensionality d, self-attention is faster than recurrent neural networks. Self-attention is also easily parallelizable."><figcaption>
-      <p>When the input sequence length n is lower than the input dimensionality d, self-attention is faster than recurrent neural networks. Self-attention is also easily parallelizable.</p>
-    </figcaption>
+			alt="When the input sequence length n is lower than the input dimensionality d, self-attention is faster than recurrent neural networks. Self-attention is also easily parallelizable."><figcaption>
+			<p>When the input sequence length n is lower than the input dimensionality d, self-attention is faster than recurrent neural networks. Self-attention is also easily parallelizable.</p>
+		</figcaption>
 </figure>
 
 <p>Generally speaking, RNNs are able to memorize but not parallelize, and CNNs are able to parallelize but not memorize. Transformers are able to do both.</p>
@@ -2424,9 +2479,9 @@ This is the part where Vaswani delves into a database analogy with <strong>keys<
 <p>Qualitatively, there are many aspects to a chess game that may be captured. Let&rsquo;s take a look at the way a grandmaster analyzes a position. It will become quite apparent that at the highest levels, the qualitative aspects of position analysis dominate over quantitative aspects (i.e. the number and value of each piece).</p>
 <p>In the selected lecture, Grandmaster Varuzhan Akobian details a game he played previously. At a key moment of the game, Akobian sacrificed his rook for a key pawn in the center of the board. The resulting position is reproduced for convenience in Figure 1.</p>
 <figure><img src="/img/human_analysis_fig4.png"
-    alt="Figure 1. Quantitative analysis would posit that black is winning due to his extra rook for white’s knight and pawn. However, qualitative analysis provides a more complete picture of black’s predicament."><figcaption>
-      <p>Figure 1. Quantitative analysis would posit that black is winning due to his extra rook for white’s knight and pawn. However, qualitative analysis provides a more complete picture of black’s predicament.</p>
-    </figcaption>
+			alt="Figure 1. Quantitative analysis would posit that black is winning due to his extra rook for white’s knight and pawn. However, qualitative analysis provides a more complete picture of black’s predicament."><figcaption>
+			<p>Figure 1. Quantitative analysis would posit that black is winning due to his extra rook for white’s knight and pawn. However, qualitative analysis provides a more complete picture of black’s predicament.</p>
+		</figcaption>
 </figure>
 
 <p><a href="https://youtu.be/h80Mu4N6oYI?t=1515">His analysis starts at 25:15 in the video</a>:</p>
@@ -2460,9 +2515,9 @@ This is the part where Vaswani delves into a database analogy with <strong>keys<
 <p>Qualitative spatial calculi may also be used to construct more psychologically plausible models of chess positions than simply noting which pieces occupy which squares, seeking to emulate the models suggested by Chase and Simon. Chess pieces have intricate relationships which can be captured, and which change whenever a piece moves to another square. Importantly, however, not all relationships are affected by the movement of a single chess piece, suggesting that performance gains may be realized by recomputing only those relationships which have changed.</p>
 <p>It is likely that low-level piece relationships may give rise to higher level relationships and tactics. For example, the concept of “capturing the defender” arises from the concept of attacking a piece A which defends B, which works when pieces A and B are attacked by pieces C and D of opposing colors. And in the case of Figure 2 below, a defender may be “deflected” to win the piece it is defending. Defensive relationships may be thought of in a chain or directed graph, with each piece defending another and the safety of a piece being considered in relation to its connection to a defensive group.</p>
 <figure><img src="/img/human_analysis_fig5.png"
-    alt="Figure 2. White to move. From this image, many basic piece relationships are apparent with only 8 pieces left on the board. Importantly, the black king is defending the black queen. The black queen is also being attacked by the white queen, and is attacking the white queen. White’s queen is undefended, a state sometimes referred to as hanging. These relationships reveal the opportunity for a tactic. White can simultaneously move his rook to attack black’s king (danger levels) and take advantage of the defensive connection between the black king and queen with the move rook to b8. This forces black to move his king, removing the defense of his queen. In this position, black’s queen can be freely captured by white’s queen. Due to the mobility advantages of a queen over a rook, this is a favorable move sequence for white."><figcaption>
-      <p>Figure 2. White to move. From this image, many basic piece relationships are apparent with only 8 pieces left on the board. Importantly, the black king is defending the black queen. The black queen is also being attacked by the white queen, and is attacking the white queen. White’s queen is undefended, a state sometimes referred to as hanging. These relationships reveal the opportunity for a tactic. White can simultaneously move his rook to attack black’s king (danger levels) and take advantage of the defensive connection between the black king and queen with the move rook to b8. This forces black to move his king, removing the defense of his queen. In this position, black’s queen can be freely captured by white’s queen. Due to the mobility advantages of a queen over a rook, this is a favorable move sequence for white.</p>
-    </figcaption>
+			alt="Figure 2. White to move. From this image, many basic piece relationships are apparent with only 8 pieces left on the board. Importantly, the black king is defending the black queen. The black queen is also being attacked by the white queen, and is attacking the white queen. White’s queen is undefended, a state sometimes referred to as hanging. These relationships reveal the opportunity for a tactic. White can simultaneously move his rook to attack black’s king (danger levels) and take advantage of the defensive connection between the black king and queen with the move rook to b8. This forces black to move his king, removing the defense of his queen. In this position, black’s queen can be freely captured by white’s queen. Due to the mobility advantages of a queen over a rook, this is a favorable move sequence for white."><figcaption>
+			<p>Figure 2. White to move. From this image, many basic piece relationships are apparent with only 8 pieces left on the board. Importantly, the black king is defending the black queen. The black queen is also being attacked by the white queen, and is attacking the white queen. White’s queen is undefended, a state sometimes referred to as hanging. These relationships reveal the opportunity for a tactic. White can simultaneously move his rook to attack black’s king (danger levels) and take advantage of the defensive connection between the black king and queen with the move rook to b8. This forces black to move his king, removing the defense of his queen. In this position, black’s queen can be freely captured by white’s queen. Due to the mobility advantages of a queen over a rook, this is a favorable move sequence for white.</p>
+		</figcaption>
 </figure>
 
 <h2 id="applications-of-a-qualitative-chess-engine">Applications of a qualitative chess engine</h2>
@@ -2508,17 +2563,17 @@ This is the part where Vaswani delves into a database analogy with <strong>keys<
 <p>Minimax is often augmented with “alpha-beta pruning” to reduce the number of positions which will be evaluated. This effectively cuts the <a href="https://imgur.com/wRZINqS">computational complexity exponent in half</a> by removing from consideration those branches which cannot affect the final result.</p>
 <p>Other challenges in minimax evaluation exist as well. In particular, a phenomenon dubbed the “Horizon Effect” is a peculiar failure mode of minimax searches. The Horizon Effect was <a href="https://drive.google.com/file/d/1XHhMQUgZHhD8Be7Klrl7_RMHQm8B9Zlc/view">first described</a> by grandmaster and computer scientist Hans Berliner in 1975. His illustration of the problem (his Figure 1.3) is reproduced in Figure 1. Algorithms that do not account for the Horizon Effect will try to “push” bad outcomes of their search beyond their search horizon, instead opting to make hopeless moves which only serve to delay the inevitable. As humans we intuitively understand this illusion.</p>
 <figure><img src="/img/human_analysis_fig1.png"
-    alt="Figure 1. White to move. Here, white’s bishop on a4 is doomed, attacked by black’s pawn on b5. White could delay the inevitable by moving his bishop to b3, but then black simply seals the bishop’s fate with pawn to c4. In that position, white does not have time to save his bishop, and it will be captured no matter what on the next move by the pawn on c4. Due to the Horizon Effect, at a limited depth white will not recognize this and will play hopeless moves like pawn from e4 to e5, temporarily attacking the knight but easily parried by capturing with the pawn on d6. This phenomenon is deemed the “Horizon Effect” because by pushing negative outcomes beyond the “horizon” of calculation depth, the engine is able to trick itself into believing that the problem doesn’t exist. A true case of “see no evil”."><figcaption>
-      <p>Figure 1. White to move. Here, white’s bishop on a4 is doomed, attacked by black’s pawn on b5. White could delay the inevitable by moving his bishop to b3, but then black simply seals the bishop’s fate with pawn to c4. In that position, white does not have time to save his bishop, and it will be captured no matter what on the next move by the pawn on c4. Due to the Horizon Effect, at a limited depth white will not recognize this and will play hopeless moves like pawn from e4 to e5, temporarily attacking the knight but easily parried by capturing with the pawn on d6. This phenomenon is deemed the “Horizon Effect” because by pushing negative outcomes beyond the “horizon” of calculation depth, the engine is able to trick itself into believing that the problem doesn’t exist. A true case of “see no evil”.</p>
-    </figcaption>
+			alt="Figure 1. White to move. Here, white’s bishop on a4 is doomed, attacked by black’s pawn on b5. White could delay the inevitable by moving his bishop to b3, but then black simply seals the bishop’s fate with pawn to c4. In that position, white does not have time to save his bishop, and it will be captured no matter what on the next move by the pawn on c4. Due to the Horizon Effect, at a limited depth white will not recognize this and will play hopeless moves like pawn from e4 to e5, temporarily attacking the knight but easily parried by capturing with the pawn on d6. This phenomenon is deemed the “Horizon Effect” because by pushing negative outcomes beyond the “horizon” of calculation depth, the engine is able to trick itself into believing that the problem doesn’t exist. A true case of “see no evil”."><figcaption>
+			<p>Figure 1. White to move. Here, white’s bishop on a4 is doomed, attacked by black’s pawn on b5. White could delay the inevitable by moving his bishop to b3, but then black simply seals the bishop’s fate with pawn to c4. In that position, white does not have time to save his bishop, and it will be captured no matter what on the next move by the pawn on c4. Due to the Horizon Effect, at a limited depth white will not recognize this and will play hopeless moves like pawn from e4 to e5, temporarily attacking the knight but easily parried by capturing with the pawn on d6. This phenomenon is deemed the “Horizon Effect” because by pushing negative outcomes beyond the “horizon” of calculation depth, the engine is able to trick itself into believing that the problem doesn’t exist. A true case of “see no evil”.</p>
+		</figcaption>
 </figure>
 
 <h2 id="branching-factor">Branching Factor</h2>
 <p>In any given position, there may be many possible moves. By some estimates, chess has an average branching factor of around 30, with other estimates putting the number around 40. It isn’t easy to find a concrete value for the branching factor of chess. One source claims (without citation) that the branching factor may be <a href="https://courses.csail.mit.edu/6.034f/ai3/rest.pdf">up to 40</a> (see pg. 117). However, a more recent statistical <a href="https://chess.stackexchange.com/a/24325">analysis</a> of 2.5 million chess games put the real number closer to 31.</p>
 <figure><img src="/img/avg_moves_available.png"
-    alt="The branching factor depends on the stage of the game; middle games have far more available moves than end games. Because not all games are the same length, shorter games will tend to have higher average branching factors than longer ones. Barnes&rsquo; graphic is reproduced above."><figcaption>
-      <p>The branching factor depends on the stage of the game; middle games have far more available moves than end games. Because not all games are the same length, shorter games will tend to have higher average branching factors than longer ones. Barnes&rsquo; graphic is reproduced above.</p>
-    </figcaption>
+			alt="The branching factor depends on the stage of the game; middle games have far more available moves than end games. Because not all games are the same length, shorter games will tend to have higher average branching factors than longer ones. Barnes&rsquo; graphic is reproduced above."><figcaption>
+			<p>The branching factor depends on the stage of the game; middle games have far more available moves than end games. Because not all games are the same length, shorter games will tend to have higher average branching factors than longer ones. Barnes&rsquo; graphic is reproduced above.</p>
+		</figcaption>
 </figure>
 
 <p>In any case, it is possible to dramatically reduce the branching factor by employing “selective search”, which means excluding nodes from recursive tree search altogether. Reducing the number of possible moves that will be explored in any given position promises dramatic computational speedups, allowing the tree to be searched deeper at the expense of width. Given the slow speeds (by contemporary standards) of early computers, the allure of such a technique should be clear. It is also a more psychologically plausible way of playing, since most players quickly rule out ridiculous seeming moves and focus on the most promising ones.</p>
@@ -2526,18 +2581,18 @@ This is the part where Vaswani delves into a database analogy with <strong>keys<
 <p>An early attempt to narrow the search tree was proposed by Berliner, who in 1975 devised CAPS-II which utilized a tree search algorithm with five total “reference levels” including ALPHA and BETA. His paper also was cognizant of the work of Chase and Simon from two years prior, recognizing the need for a bottom-up board representation. Unfortunately, his board representation was largely geometrical and included little in the way of qualitative relationships between pieces. Nevertheless, the resulting program was able to solve tactical puzzles in a quite impressive manner for the time.</p>
 <p>Another example of the use of such a narrowed search tree is <a href="https://drive.google.com/file/d/1I54sVUe4Ybkln5hy5_MlZBnmrZBqbj2l/view?usp=sharing">PARADISE (PAttern Recognition Applied to DIrecting SEarch)</a>. This system used a knowledge base containing 200 “production rules” to match board patterns and determine the best move at any time. An example production rule is shown in Figure 2.</p>
 <figure><img src="/img/human_analysis_fig2.png"
-    alt="Figure 2. A sample production rule from the PARADISE knowledge base. This production rule detects and acts upon opponent’s trapped pieces. A trapped piece is identified as a non-pawn defensive piece which cannot move to another square without being captured and is not already attacked. Finally, the production rule describes the threat of this action (winning the piece) and how likely it is to succeed."><figcaption>
-      <p>Figure 2. A sample production rule from the PARADISE knowledge base. This production rule detects and acts upon opponent’s trapped pieces. A trapped piece is identified as a non-pawn defensive piece which cannot move to another square without being captured and is not already attacked. Finally, the production rule describes the threat of this action (winning the piece) and how likely it is to succeed.</p>
-    </figcaption>
+			alt="Figure 2. A sample production rule from the PARADISE knowledge base. This production rule detects and acts upon opponent’s trapped pieces. A trapped piece is identified as a non-pawn defensive piece which cannot move to another square without being captured and is not already attacked. Finally, the production rule describes the threat of this action (winning the piece) and how likely it is to succeed."><figcaption>
+			<p>Figure 2. A sample production rule from the PARADISE knowledge base. This production rule detects and acts upon opponent’s trapped pieces. A trapped piece is identified as a non-pawn defensive piece which cannot move to another square without being captured and is not already attacked. Finally, the production rule describes the threat of this action (winning the piece) and how likely it is to succeed.</p>
+		</figcaption>
 </figure>
 
 <p>Because the tree search was narrower, the system was able to search to higher depths. Still, because of hardware limitations of the time, PARADISE was extremely slow, generating only 109 nodes in 20 minutes of search time. (Current chess engines evaluate millions of nodes per second.)</p>
 <p>PARADISE executes static analysis on a position using its many production rules with the ultimate goal of creating and executing a plan. Matched production rules post concepts to the database in addition to information about the intentions of the concept and its likelihood of success.</p>
 <p>The program is then able to use this information to form a plan, which is a set of actions for the side to move, along with corresponding plans for each defensive alternative. Because there may be many potential alternatives at each move, this plan includes many branches.</p>
 <figure><img src="/img/human_analysis_fig3.png"
-    alt="Figure 3. White to move, PARADISE has produced a plan which involves checking the black king by moving the knight to g5, then checking the black king by moving the rook to d7. Depending on black’s next move white will then try to either capture the queen on d4 or the rook on d7."><figcaption>
-      <p>Figure 3. White to move, PARADISE has produced a plan which involves checking the black king by moving the knight to g5, then checking the black king by moving the rook to d7. Depending on black’s next move white will then try to either capture the queen on d4 or the rook on d7.</p>
-    </figcaption>
+			alt="Figure 3. White to move, PARADISE has produced a plan which involves checking the black king by moving the knight to g5, then checking the black king by moving the rook to d7. Depending on black’s next move white will then try to either capture the queen on d4 or the rook on d7."><figcaption>
+			<p>Figure 3. White to move, PARADISE has produced a plan which involves checking the black king by moving the knight to g5, then checking the black king by moving the rook to d7. Depending on black’s next move white will then try to either capture the queen on d4 or the rook on d7.</p>
+		</figcaption>
 </figure>
 
 <p>An example of such a plan is reproduced in Figure 3 above. (An interesting sidebar about this position is that based upon Stockfish analysis, this position results in inescapable checkmate for black within 15 moves. That is, even with optimal play, black will be checkmated in 15 or fewer moves. The winning sequence begins with white moving his queen to e5, exploiting the pin on the f6 pawn from the f1 rook.)</p>
@@ -2545,9 +2600,9 @@ This is the part where Vaswani delves into a database analogy with <strong>keys<
 <h1 id="modern-chess-engines">Modern Chess Engines</h1>
 <p>Stockfish is currently the #1 ranked chess engine in the world. Stockfish is open-source and performs a “full width” search on the game tree. Leaf nodes are evaluated using either a classical, hand-crafted evaluation heuristic, or more recently, a neural network evaluator called NNUE. The classical evaluation function uses a set of around 30 factors weighted empirically using a dedicated testing framework called Fishtest. Altogether, the project has <a href="https://github.com/official-stockfish/Stockfish">around 200 contributors</a>. Optimized for speed, Stockfish can evaluate around <a href="https://chessify.me/blog/nps-what-are-the-nodes-per-second-in-chess-engine-analysis">millions of nodes per second</a> on a typical 4-core computer.</p>
 <figure><img src="/img/stockfish_starting_pos.png"
-    alt="Stockfish analyzing the starting position on my laptop at around 1 million nodes per second."><figcaption>
-      <p>Stockfish analyzing the starting position on my laptop at around 1 million nodes per second.</p>
-    </figcaption>
+			alt="Stockfish analyzing the starting position on my laptop at around 1 million nodes per second."><figcaption>
+			<p>Stockfish analyzing the starting position on my laptop at around 1 million nodes per second.</p>
+		</figcaption>
 </figure>
 
 <p>Neural networks may also be used more directly. <a href="https://lczero.org/dev/wiki/technical-explanation-of-leela-chess-zero/">Leela Chess Zero</a>, also known as Lc0 is another open-source chess engine, modeled after DeepMind’s AlphaZero chess engine. Lc0 uses Predictor + Upper Confidence Bound tree search (PUCT) to search its game tree. Leela evaluates new nodes by iteratively choosing moves from a probability distribution until it reaches an unexplored node. At that point, Leela&rsquo;s neural network estimates the node&rsquo;s value and propagates that value back up the tree. PUCT is very similar to Monte Carlo Tree Search, but with game “rollouts” replaced by neural network evaluations.</p>
@@ -2635,35 +2690,35 @@ $ e_i(m_i) = p_L(M_{i+1}) \cdot r(M_{i+1}) $
 <p>Let&rsquo;s use an example. Suppose that at some stage in the game the algorithm must choose between 2 possible moves. For simplicity, the opponent will have 4 possible replies after each of the two possible moves. After the algorithm makes the the first possible move, the probabilities look like this:</p>
 <h3 id="opponent-move-distribution-at-position-1">Opponent move distribution at position 1</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Opponent Move</th>
-          <th>Probability of play</th>
-          <th>Resulting position evaluation</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1</td>
-          <td>0.6</td>
-          <td>5</td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td>0.3</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td>0.1</td>
-          <td>0.5</td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td>0.1</td>
-          <td>-1</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Opponent Move</th>
+					<th>Probability of play</th>
+					<th>Resulting position evaluation</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>0.6</td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>0.3</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>0.1</td>
+					<td>0.5</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>0.1</td>
+					<td>-1</td>
+			</tr>
+	</tbody>
 </table>
 <p style="text-align: center; font-size: 1.5em">
 $ \begin{bmatrix} 0.6 \\ 0.3 \\ 0.1 \\ 0.1 \end{bmatrix}
@@ -2672,35 +2727,35 @@ $ \begin{bmatrix} 0.6 \\ 0.3 \\ 0.1 \\ 0.1 \end{bmatrix}
 <h3 id="opponent-move-distribution-at-position-2">Opponent move distribution at position 2</h3>
 <p>And after the second possible move, the opponent move distribution looks like this:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Opponent Move</th>
-          <th>Probability of play</th>
-          <th>Resulting position evaluation</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1</td>
-          <td>0.9</td>
-          <td>4</td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td>0.05</td>
-          <td>0.5</td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td>0.03</td>
-          <td>0</td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td>0.02</td>
-          <td>-2</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Opponent Move</th>
+					<th>Probability of play</th>
+					<th>Resulting position evaluation</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>0.9</td>
+					<td>4</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>0.05</td>
+					<td>0.5</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>0.03</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>0.02</td>
+					<td>-2</td>
+			</tr>
+	</tbody>
 </table>
 <p style="text-align: center; font-size: 1.5em">
 $ \begin{bmatrix} 0.9 \\ 0.05 \\ 0.03 \\ 0.02 \end{bmatrix}
@@ -2715,45 +2770,45 @@ $ \begin{bmatrix} 0.9 \\ 0.05 \\ 0.03 \\ 0.02 \end{bmatrix}
 <p>Instead, once the game is in a forced-win situation (&ldquo;mate in N moves&rdquo;) the algorithm will stop sampling from the distribution and simply play the moves which lead to checkmate. While this will inevitably lead to a win, it changes the character of the algorithm somewhat. Therefore, I have limited the lookahead to checkmates in the immediate next few moves (specifically, mate in 5 or fewer moves). Since the original goal was to create an algorithm which is used for training, this seems reasonable.</p>
 <h2 id="games">Games</h2>
 <table>
-  <thead>
-      <tr>
-          <th>White</th>
-          <th>Black</th>
-          <th>Games</th>
-          <th>White win %</th>
-          <th>Average half moves per game</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Antimaia 1900</td>
-          <td>Maia 1900</td>
-          <td>100</td>
-          <td>100%</td>
-          <td>37</td>
-      </tr>
-      <tr>
-          <td>Maia 1900</td>
-          <td>Antimaia 1900</td>
-          <td>100</td>
-          <td>0%</td>
-          <td>43</td>
-      </tr>
-      <tr>
-          <td>Maia 1900</td>
-          <td>Stockfish @10</td>
-          <td>100</td>
-          <td>0%</td>
-          <td>67</td>
-      </tr>
-      <tr>
-          <td>Stockfish @10</td>
-          <td>Maia 1900</td>
-          <td>100</td>
-          <td>100%</td>
-          <td>70</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>White</th>
+					<th>Black</th>
+					<th>Games</th>
+					<th>White win %</th>
+					<th>Average half moves per game</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Antimaia 1900</td>
+					<td>Maia 1900</td>
+					<td>100</td>
+					<td>100%</td>
+					<td>37</td>
+			</tr>
+			<tr>
+					<td>Maia 1900</td>
+					<td>Antimaia 1900</td>
+					<td>100</td>
+					<td>0%</td>
+					<td>43</td>
+			</tr>
+			<tr>
+					<td>Maia 1900</td>
+					<td>Stockfish @10</td>
+					<td>100</td>
+					<td>0%</td>
+					<td>67</td>
+			</tr>
+			<tr>
+					<td>Stockfish @10</td>
+					<td>Maia 1900</td>
+					<td>100</td>
+					<td>100%</td>
+					<td>70</td>
+			</tr>
+	</tbody>
 </table>
 <p>I simulated 400 matches testing this opponent modeling approach, which I wrote about <a href="/posts/best-antimaia-games/">here</a>.</p>
 <p>Key findings:</p>
@@ -2831,17 +2886,17 @@ head, heed
             
             <guid>https://blog.lukesalamone.com/posts/knowledge-graph-construction/</guid>
             <description>&lt;figure&gt;&lt;img src=&#34;../img/comet_knowledge_generation.png&#34;
-    alt=&#34;Selected {subject, relation, object} tuples generated by COMET&#34;&gt;&lt;figcaption&gt;
-      &lt;p&gt;Selected {subject, relation, object} tuples generated by COMET&lt;/p&gt;
-    &lt;/figcaption&gt;
+			alt=&#34;Selected {subject, relation, object} tuples generated by COMET&#34;&gt;&lt;figcaption&gt;
+			&lt;p&gt;Selected {subject, relation, object} tuples generated by COMET&lt;/p&gt;
+		&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;Paper link: &lt;a href=&#34;https://arxiv.org/abs/1906.05317&#34;&gt;https://arxiv.org/abs/1906.05317&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This paper describes COMET, a method of generating knowledge bases automatically. Previous work largely focused on encyclopedic knowledge, which has well-defined relationships. This paper, however, focuses on commonsense knowledge. In this paper the authors introduce a “commonsense transformer” which trains on a knowledge base consisting of tuples and a pre-trained language model. Their trained model generates new nodes in the knowledge graph and completes phrases based on edges in the existing graph.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<figure><img src="/img/comet_knowledge_generation.png"
-    alt="Selected {subject, relation, object} tuples generated by COMET"><figcaption>
-      <p>Selected {subject, relation, object} tuples generated by COMET</p>
-    </figcaption>
+			alt="Selected {subject, relation, object} tuples generated by COMET"><figcaption>
+			<p>Selected {subject, relation, object} tuples generated by COMET</p>
+		</figcaption>
 </figure>
 
 <p>Paper link: <a href="https://arxiv.org/abs/1906.05317">https://arxiv.org/abs/1906.05317</a></p>
@@ -2964,24 +3019,24 @@ dataloader = DataLoader(dataset,
 </ul>
 <p>Current generative models are fairly good at creating realistic-looking text, but largely lack the ability to be controlled via tunable parameters. In contrast, Grover models news stories as distributions like (<em>domain</em>, <em>date</em>, <em>authors</em>, <em>headline</em>, <em>body</em>) to be sampled from. Adversaries specify domain, date, and headline, and the generator creates the body and author as well as a more appropriate headline.</p>
 <figure><img src="/img/grover-prob-distribution.png"
-    alt="Grover samples from a joint distribution of the parts of a news article."><figcaption>
-      <p>Grover samples from a joint distribution of the parts of a news article.</p>
-    </figcaption>
+			alt="Grover samples from a joint distribution of the parts of a news article."><figcaption>
+			<p>Grover samples from a joint distribution of the parts of a news article.</p>
+		</figcaption>
 </figure>
 
 <p>Grover is built using a transformer architecture similar to BERT and GPT. Depending on the model size, the number of parameters varies from similar to GPT to on par with GPT-2. The authors use the RealNews corpus, resulting in 120 gigabytes of total file size. Training took 2 weeks on 256 TPU v3 cores.</p>
 <figure><img src="/img/grover-vs-human.png"
-    alt="Grover is actually better at writing synthetic articles than humans are according to authors."><figcaption>
-      <p>Grover is actually better at writing synthetic articles than humans are according to authors.</p>
-    </figcaption>
+			alt="Grover is actually better at writing synthetic articles than humans are according to authors."><figcaption>
+			<p>Grover is actually better at writing synthetic articles than humans are according to authors.</p>
+		</figcaption>
 </figure>
 
 <p>The results of the authors&rsquo; subjective experiments show that humans have a hard time identifying Grover-written propaganda. Using Mechanical Turk, articles were rated according to stylistic consistency, content sensibility, and overall trustworthiness. Grover, on the other hand, turns out to be a fairly good discriminator.</p>
 <p>The authors also tested GPT2, BERT, and FastText on the task of classifying news as human or synthetic. The researchers set up the experiment in an unpaired setting (give a human/synthetic classification for a single article) and a paired setting (determine which is the human and which is the synthetic between 2 articles). Unsurprisingly, the paired setting was far easier. Also unsurprisingly, the larger models perform better at discriminating when paired with smaller generators.</p>
 <figure><img src="/img/grover-discrimination-results.png"
-    alt="For generators of the same size, discrimination accuracy was around 90-91%."><figcaption>
-      <p>For generators of the same size, discrimination accuracy was around 90-91%.</p>
-    </figcaption>
+			alt="For generators of the same size, discrimination accuracy was around 90-91%."><figcaption>
+			<p>For generators of the same size, discrimination accuracy was around 90-91%.</p>
+		</figcaption>
 </figure>
 
 <p>When comparing generator/discriminator pairs with the same numbers of parameters, classification accuracy was around 90-92%.
@@ -3164,60 +3219,60 @@ drive.mount('/content/gdrive')
 <p>The <a href="https://arxiv.org/pdf/1810.04805.pdf">Devlin et al. model</a> was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the <em>cloze</em> task). During pretraining, 15% of tokens are hidden from the model, and it is trained to predict the masked tokens. As a result, I was able to evaluate its ability to correctly predict a masked token at a random position in a fixed-size input.</p>
 <p>I looked at the following varieties of BERT:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Model</th>
-          <th># Parameters</th>
-          <th>Compare to</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>bert-base-uncased</td>
-          <td>110 million</td>
-          <td>gpt2</td>
-      </tr>
-      <tr>
-          <td>bert-base-cased</td>
-          <td>109 million</td>
-          <td>gpt2</td>
-      </tr>
-      <tr>
-          <td>bert-large-uncased</td>
-          <td>336 million</td>
-          <td>gpt2-medium</td>
-      </tr>
-      <tr>
-          <td>bert-large-cased</td>
-          <td>335 million</td>
-          <td>gpt2-medium</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Model</th>
+					<th># Parameters</th>
+					<th>Compare to</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>bert-base-uncased</td>
+					<td>110 million</td>
+					<td>gpt2</td>
+			</tr>
+			<tr>
+					<td>bert-base-cased</td>
+					<td>109 million</td>
+					<td>gpt2</td>
+			</tr>
+			<tr>
+					<td>bert-large-uncased</td>
+					<td>336 million</td>
+					<td>gpt2-medium</td>
+			</tr>
+			<tr>
+					<td>bert-large-cased</td>
+					<td>335 million</td>
+					<td>gpt2-medium</td>
+			</tr>
+	</tbody>
 </table>
 <p>This table also includes corresponding GPT-2 models which have a similar number of parameters. <a href="https://huggingface.co/transformers/pretrained_models.html">Source</a></p>
 <h2 id="gpt-2">GPT-2</h2>
 <p>The <a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">Radford et al. model</a> hit the scene in February of 2019. Like BERT it is a transformer-based  model, and comes in various sizes ranging from 117M parameters up to 1.5B parameters (gpt2-xl). Because GPT-2 is an autoregressive model, experiments with this family of models perform one token of generation following input context, comparing with the target token for accuracy measurement.</p>
 <p>Here we will be evaluating two flavors of this model:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Model</th>
-          <th># Parameters</th>
-          <th>Compare to</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>gpt2</td>
-          <td>117 million</td>
-          <td>bert-base</td>
-      </tr>
-      <tr>
-          <td>gpt2-medium</td>
-          <td>345 million</td>
-          <td>bert-large</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Model</th>
+					<th># Parameters</th>
+					<th>Compare to</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>gpt2</td>
+					<td>117 million</td>
+					<td>bert-base</td>
+			</tr>
+			<tr>
+					<td>gpt2-medium</td>
+					<td>345 million</td>
+					<td>bert-large</td>
+			</tr>
+	</tbody>
 </table>
 <p>This table also includes corresponding BERT models which have a similar number of parameters. <a href="https://huggingface.co/transformers/pretrained_models.html">Source</a></p>
 <h2 id="wikitext-token-prediction">Wikitext Token prediction</h2>
@@ -3303,38 +3358,38 @@ len(nltk_words)
 <h2 id="testing-gpt-2-tokens">Testing GPT-2 tokens</h2>
 <p>So of the tokens which GPT-2 uses, how many are English words? We can break this down metric by the dictionary used.</p>
 <table>
-  <thead>
-      <tr>
-          <th>Dictionary</th>
-          <th>% Words</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>English370k †</td>
-          <td>72.92%</td>
-      </tr>
-      <tr>
-          <td>English370k</td>
-          <td>72.59%</td>
-      </tr>
-      <tr>
-          <td>Enchant †</td>
-          <td>60.48%</td>
-      </tr>
-      <tr>
-          <td>Enchant</td>
-          <td>60.17%</td>
-      </tr>
-      <tr>
-          <td>NLTK words †</td>
-          <td>57.07%</td>
-      </tr>
-      <tr>
-          <td>NLTK words</td>
-          <td>48.27%</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Dictionary</th>
+					<th>% Words</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>English370k †</td>
+					<td>72.92%</td>
+			</tr>
+			<tr>
+					<td>English370k</td>
+					<td>72.59%</td>
+			</tr>
+			<tr>
+					<td>Enchant †</td>
+					<td>60.48%</td>
+			</tr>
+			<tr>
+					<td>Enchant</td>
+					<td>60.17%</td>
+			</tr>
+			<tr>
+					<td>NLTK words †</td>
+					<td>57.07%</td>
+			</tr>
+			<tr>
+					<td>NLTK words</td>
+					<td>48.27%</td>
+			</tr>
+	</tbody>
 </table>
 <p><em>† indicates words were lemmatized</em></p>
 <p>So the English370k word list seems to capture the most tokens from the three dictionaries. Also note the mild impact of lemmatization: although it may bump some of the percentages up a bit, it&rsquo;s not enough for one dictionary to outperform another.</p>
@@ -3345,54 +3400,54 @@ len(nltk_words)
 <p>Other tokens are clearly vestiges of the scraping process which was used to gather text which GPT-2 trained on. Tokens like &ldquo;rawdownloadcloneembedreportprint&rdquo;, &ldquo;buyableinstoreandonline&rdquo;, &ldquo;randomredditorwithno&rdquo;, and &ldquo;itemthumbnailimage&rdquo; contain next to zero semantic value and the vocabulary space would probably have been better served with more meaningful tokens.</p>
 <p>The following are the longest non-dictionary tokens found in GPT-2&rsquo;s vocabulary:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Token ID</th>
-          <th>String</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>39177</td>
-          <td>ItemThumbnailImage</td>
-      </tr>
-      <tr>
-          <td>30210</td>
-          <td>guiActiveUnfocused</td>
-      </tr>
-      <tr>
-          <td>39755</td>
-          <td>isSpecialOrderable</td>
-      </tr>
-      <tr>
-          <td>31576</td>
-          <td>externalActionCode</td>
-      </tr>
-      <tr>
-          <td>39753</td>
-          <td>quickShipAvailable</td>
-      </tr>
-      <tr>
-          <td>39757</td>
-          <td>channelAvailability</td>
-      </tr>
-      <tr>
-          <td>36174</td>
-          <td>RandomRedditorWithNo</td>
-      </tr>
-      <tr>
-          <td>30899</td>
-          <td>cloneembedreportprint</td>
-      </tr>
-      <tr>
-          <td>40242</td>
-          <td>BuyableInstoreAndOnline</td>
-      </tr>
-      <tr>
-          <td>30906</td>
-          <td>rawdownloadcloneembedreportprint</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Token ID</th>
+					<th>String</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>39177</td>
+					<td>ItemThumbnailImage</td>
+			</tr>
+			<tr>
+					<td>30210</td>
+					<td>guiActiveUnfocused</td>
+			</tr>
+			<tr>
+					<td>39755</td>
+					<td>isSpecialOrderable</td>
+			</tr>
+			<tr>
+					<td>31576</td>
+					<td>externalActionCode</td>
+			</tr>
+			<tr>
+					<td>39753</td>
+					<td>quickShipAvailable</td>
+			</tr>
+			<tr>
+					<td>39757</td>
+					<td>channelAvailability</td>
+			</tr>
+			<tr>
+					<td>36174</td>
+					<td>RandomRedditorWithNo</td>
+			</tr>
+			<tr>
+					<td>30899</td>
+					<td>cloneembedreportprint</td>
+			</tr>
+			<tr>
+					<td>40242</td>
+					<td>BuyableInstoreAndOnline</td>
+			</tr>
+			<tr>
+					<td>30906</td>
+					<td>rawdownloadcloneembedreportprint</td>
+			</tr>
+	</tbody>
 </table>
 <p>We may also be able to measure performance of GPT-2 on certain tasks based on how many of the tokens were dictionary words. It might be true, for example, that sentences with higher proportions of dictionary word tokens would perform better on sentence completion tasks.</p>
 <script src="/js/chart.min.js" type="text/javascript"></script>
@@ -3408,13 +3463,13 @@ len(nltk_words)
             <guid>https://blog.lukesalamone.com/posts/what-are-attention-masks/</guid>
             <description>&lt;p&gt;TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &amp;ldquo;attention_mask&amp;rdquo; tensor to identify which tokens are padding.&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;../img/attention_mask.png&#34;
-    alt=&#34;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)&#34;&gt;&lt;figcaption&gt;
-      &lt;p&gt;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)&lt;/p&gt;</description>
+			alt=&#34;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)&#34;&gt;&lt;figcaption&gt;
+			&lt;p&gt;Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)&lt;/p&gt;</description>
             <content type="html"><![CDATA[<p>TLDR: Attention masks allow us to send a batch into the transformer even when the examples in the batch have varying lengths. We do this by padding all sequences to the same length, then using the &ldquo;attention_mask&rdquo; tensor to identify which tokens are padding.</p>
 <figure><img src="/img/attention_mask.png"
-    alt="Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)"><figcaption>
-      <p>Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)</p>
-    </figcaption>
+			alt="Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)"><figcaption>
+			<p>Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)</p>
+		</figcaption>
 </figure>
 
 <p>If you want to perform inference with transformers one sequence at a time, you can ignore attention masks. The &ldquo;slow way&rdquo; will be sufficient for your needs.</p>
@@ -3456,84 +3511,84 @@ tensor([[1,2], [3]])   # error!
 </code></pre>
 <p>When we tokenize an input, it it will be turned into a tensor containing sequence of integers, each corresponding to an item in the transformer&rsquo;s vocabulary. Here is an example tokenization in GPT-2:</p>
 <table>
-  <thead>
-      <tr>
-          <th>String</th>
-          <th>Token ID</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>It</td>
-          <td>1026</td>
-      </tr>
-      <tr>
-          <td>will</td>
-          <td>481</td>
-      </tr>
-      <tr>
-          <td>rain</td>
-          <td>6290</td>
-      </tr>
-      <tr>
-          <td>in</td>
-          <td>287</td>
-      </tr>
-      <tr>
-          <td>the</td>
-          <td>262</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>String</th>
+					<th>Token ID</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>It</td>
+					<td>1026</td>
+			</tr>
+			<tr>
+					<td>will</td>
+					<td>481</td>
+			</tr>
+			<tr>
+					<td>rain</td>
+					<td>6290</td>
+			</tr>
+			<tr>
+					<td>in</td>
+					<td>287</td>
+			</tr>
+			<tr>
+					<td>the</td>
+					<td>262</td>
+			</tr>
+	</tbody>
 </table>
 <p>Suppose we wanted to include a second sequence in our input:</p>
 <table>
-  <thead>
-      <tr>
-          <th>String</th>
-          <th>Token ID</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>My</td>
-          <td>3666</td>
-      </tr>
-      <tr>
-          <td>dog</td>
-          <td>3290</td>
-      </tr>
-      <tr>
-          <td>is</td>
-          <td>318</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>String</th>
+					<th>Token ID</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>My</td>
+					<td>3666</td>
+			</tr>
+			<tr>
+					<td>dog</td>
+					<td>3290</td>
+			</tr>
+			<tr>
+					<td>is</td>
+					<td>318</td>
+			</tr>
+	</tbody>
 </table>
 <p>Because these two sequences have different lengths, we can&rsquo;t just combine them in one tensor. Instead, we have to <em>pad</em> the shorter sequences with dummy tokens so that each sequence is the same length. And because we want the model to continue to add to the right side of our sequence, we will pad the left side of shorter sequences.</p>
 <table>
-  <thead>
-      <tr>
-          <th>String</th>
-          <th>Token ID</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>&lt;pad&gt;</code></td>
-          <td>50256</td>
-      </tr>
-      <tr>
-          <td>My</td>
-          <td>3666</td>
-      </tr>
-      <tr>
-          <td>dog</td>
-          <td>3290</td>
-      </tr>
-      <tr>
-          <td>is</td>
-          <td>318</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>String</th>
+					<th>Token ID</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>&lt;pad&gt;</code></td>
+					<td>50256</td>
+			</tr>
+			<tr>
+					<td>My</td>
+					<td>3666</td>
+			</tr>
+			<tr>
+					<td>dog</td>
+					<td>3290</td>
+			</tr>
+			<tr>
+					<td>is</td>
+					<td>318</td>
+			</tr>
+	</tbody>
 </table>
 <p>This is where the attention mask comes in. The attention mask simply shows the transformer which tokens are padding, placing 0s in the positions of padding tokens and 1s in the positions of actual tokens. Now that we understand that, let&rsquo;s look at the code line by line.</p>
 <pre><code class="language-python">tokenizer.padding_side = &quot;left&quot;
@@ -3861,46 +3916,46 @@ MathJax.Hub.Config({
 <h2 id="whats-going-on">What&rsquo;s going on?</h2>
 <p>Suppose we have a language model which predicts the last word in the sentence &ldquo;The mouse ate the _____&rdquo;. Given the previous words in the sentence and its prior training, our language model will try to fill in the blank with a reasonable final token. Suppose those raw outputs are as follows:</p>
 <table>
-  <thead>
-      <tr>
-          <th>token</th>
-          <th>logit</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>cat</td>
-          <td>3</td>
-      </tr>
-      <tr>
-          <td>cheese</td>
-          <td>70</td>
-      </tr>
-      <tr>
-          <td>pizza</td>
-          <td>40</td>
-      </tr>
-      <tr>
-          <td>cookie</td>
-          <td>65</td>
-      </tr>
-      <tr>
-          <td>fondue</td>
-          <td>55</td>
-      </tr>
-      <tr>
-          <td>banana</td>
-          <td>10</td>
-      </tr>
-      <tr>
-          <td>baguette</td>
-          <td>15</td>
-      </tr>
-      <tr>
-          <td>cake</td>
-          <td>12</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>token</th>
+					<th>logit</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>cat</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td>cheese</td>
+					<td>70</td>
+			</tr>
+			<tr>
+					<td>pizza</td>
+					<td>40</td>
+			</tr>
+			<tr>
+					<td>cookie</td>
+					<td>65</td>
+			</tr>
+			<tr>
+					<td>fondue</td>
+					<td>55</td>
+			</tr>
+			<tr>
+					<td>banana</td>
+					<td>10</td>
+			</tr>
+			<tr>
+					<td>baguette</td>
+					<td>15</td>
+			</tr>
+			<tr>
+					<td>cake</td>
+					<td>12</td>
+			</tr>
+	</tbody>
 </table>
 <p>These outputs make sense. A mouse probably eats cheese, but <a href="https://en.wikipedia.org/wiki/If_You_Give_a_Mouse_a_Cookie">mice are also known to eat cookies</a>. A mouse probably wouldn&rsquo;t eat a baguette unless it was <a href="https://imgur.com/a/484AEO3">a French mouse</a>.</p>
 <p>Since these are the raw outputs of the model, they won&rsquo;t sum to 100. To normalize these values, we typically use <a href="https://en.wikipedia.org/wiki/Softmax_function">softmax</a>:</p>
@@ -3991,98 +4046,98 @@ $ z = -{1 \over N} \sum_{i=0}^N ln(P_{n}) $
 <p><code>&lt;start&gt;</code> <code>jack</code> <code>and</code> <code>jill</code> <code>went</code> <code>up</code> <code>the</code> <code>hill</code></p>
 <p>And suppose that the conditional probabilities for each of the tokens are as follows:</p>
 <table>
-  <thead>
-      <tr>
-          <th>token</th>
-          <th>probability</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>&lt;start&gt;</code></td>
-          <td>15%</td>
-      </tr>
-      <tr>
-          <td><code>jack</code></td>
-          <td>5%</td>
-      </tr>
-      <tr>
-          <td><code>and</code></td>
-          <td>12%</td>
-      </tr>
-      <tr>
-          <td><code>jill</code></td>
-          <td>18%</td>
-      </tr>
-      <tr>
-          <td><code>went</code></td>
-          <td>25%</td>
-      </tr>
-      <tr>
-          <td><code>up</code></td>
-          <td>40%</td>
-      </tr>
-      <tr>
-          <td><code>the</code></td>
-          <td>33%</td>
-      </tr>
-      <tr>
-          <td><code>hill</code></td>
-          <td>50%</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>token</th>
+					<th>probability</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>&lt;start&gt;</code></td>
+					<td>15%</td>
+			</tr>
+			<tr>
+					<td><code>jack</code></td>
+					<td>5%</td>
+			</tr>
+			<tr>
+					<td><code>and</code></td>
+					<td>12%</td>
+			</tr>
+			<tr>
+					<td><code>jill</code></td>
+					<td>18%</td>
+			</tr>
+			<tr>
+					<td><code>went</code></td>
+					<td>25%</td>
+			</tr>
+			<tr>
+					<td><code>up</code></td>
+					<td>40%</td>
+			</tr>
+			<tr>
+					<td><code>the</code></td>
+					<td>33%</td>
+			</tr>
+			<tr>
+					<td><code>hill</code></td>
+					<td>50%</td>
+			</tr>
+	</tbody>
 </table>
 <p>For the purposes of calculating perplexity it doesn&rsquo;t matter how the sequence was generated. It may be using an n-gram model or an LSTM or a transformer. All that matters is the probabilities the model assigns to each of the tokens. To calculate perplexity, we calculate the logarithm of each of the values above:</p>
 <table>
-  <thead>
-      <tr>
-          <th>token</th>
-          <th>P</th>
-          <th>ln(P)</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>&lt;start&gt;</code></td>
-          <td>15%</td>
-          <td>-1.897</td>
-      </tr>
-      <tr>
-          <td><code>jack</code></td>
-          <td>5%</td>
-          <td>-2.996</td>
-      </tr>
-      <tr>
-          <td><code>and</code></td>
-          <td>12%</td>
-          <td>-2.120</td>
-      </tr>
-      <tr>
-          <td><code>jill</code></td>
-          <td>18%</td>
-          <td>-1.715</td>
-      </tr>
-      <tr>
-          <td><code>went</code></td>
-          <td>25%</td>
-          <td>-1.386</td>
-      </tr>
-      <tr>
-          <td><code>up</code></td>
-          <td>40%</td>
-          <td>-0.916</td>
-      </tr>
-      <tr>
-          <td><code>the</code></td>
-          <td>33%</td>
-          <td>-1.109</td>
-      </tr>
-      <tr>
-          <td><code>hill</code></td>
-          <td>50%</td>
-          <td>-0.693</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>token</th>
+					<th>P</th>
+					<th>ln(P)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>&lt;start&gt;</code></td>
+					<td>15%</td>
+					<td>-1.897</td>
+			</tr>
+			<tr>
+					<td><code>jack</code></td>
+					<td>5%</td>
+					<td>-2.996</td>
+			</tr>
+			<tr>
+					<td><code>and</code></td>
+					<td>12%</td>
+					<td>-2.120</td>
+			</tr>
+			<tr>
+					<td><code>jill</code></td>
+					<td>18%</td>
+					<td>-1.715</td>
+			</tr>
+			<tr>
+					<td><code>went</code></td>
+					<td>25%</td>
+					<td>-1.386</td>
+			</tr>
+			<tr>
+					<td><code>up</code></td>
+					<td>40%</td>
+					<td>-0.916</td>
+			</tr>
+			<tr>
+					<td><code>the</code></td>
+					<td>33%</td>
+					<td>-1.109</td>
+			</tr>
+			<tr>
+					<td><code>hill</code></td>
+					<td>50%</td>
+					<td>-0.693</td>
+			</tr>
+	</tbody>
 </table>
 <p>Summing the logs, we get -12.832. Since there are 8 tokens, we divide -12.832 by 8 to get -1.604. Negating that allows us to calculate the final perplexity:</p>
 <p style="text-align: center; font-size: 1.5em">
@@ -4198,17 +4253,17 @@ print(data)
             
             <guid>https://blog.lukesalamone.com/posts/build-an-autoencoder/</guid>
             <description>&lt;figure&gt;&lt;img src=&#34;../img/autoencoder.png&#34;
-    alt=&#34;Autoencoding stock prices as found in Heaton et al., 2016&#34;&gt;&lt;figcaption&gt;
-      &lt;p&gt;Autoencoding stock prices as found in Heaton et al., 2016&lt;/p&gt;
-    &lt;/figcaption&gt;
+			alt=&#34;Autoencoding stock prices as found in Heaton et al., 2016&#34;&gt;&lt;figcaption&gt;
+			&lt;p&gt;Autoencoding stock prices as found in Heaton et al., 2016&lt;/p&gt;
+		&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms &lt;a href=&#34;https://arxiv.org/pdf/1602.06561.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Once we&amp;rsquo;ve trained the autoencoder, we can use it to measure how well each component follows the other members of the index. This can be useful for finding deeper insights into an index, and doesn&amp;rsquo;t require a priori knowledge of the index price or the weighting of its components. Note, this is only one metric which one could use to determine how well one member of the group follows the group overall. Another might be &lt;a href=&#34;https://en.wikipedia.org/wiki/Pearson_correlation_coefficient&#34;&gt;Pearson Correlation&lt;/a&gt;.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<figure><img src="/img/autoencoder.png"
-    alt="Autoencoding stock prices as found in Heaton et al., 2016"><figcaption>
-      <p>Autoencoding stock prices as found in Heaton et al., 2016</p>
-    </figcaption>
+			alt="Autoencoding stock prices as found in Heaton et al., 2016"><figcaption>
+			<p>Autoencoding stock prices as found in Heaton et al., 2016</p>
+		</figcaption>
 </figure>
 
 <p>So you want to build an autoencoder? Great! This article will demonstrate how to build an autoencoder and use it to measure stock prices against an index. This technique is described in more technical terms <a href="https://arxiv.org/pdf/1602.06561.pdf">here</a>.</p>
@@ -4489,83 +4544,83 @@ MathJax.Hub.Config({
 <p>This method has two major sub-parts: the <em>expectation step</em>, and the <em>Maximization step</em>. These two parts will be run inside of an update loop which typically terminates after a set number of iterations or the algorithm has stopped improving.</p>
 <p>I personally find that examples are the best way to understand many concepts, so in this article I will use a dataset with 4 features, each of the features having 3 dimensions:</p>
 <table>
-  <thead>
-      <tr>
-          <th>feature</th>
-          <th>d<sub>0</sub></th>
-          <th>d<sub>1</sub></th>
-          <th>d<sub>2</sub></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>x<sub>0</sub></td>
-          <td>x<sub>00</sub></td>
-          <td>x<sub>01</sub></td>
-          <td>x<sub>02</sub></td>
-      </tr>
-      <tr>
-          <td>x<sub>1</sub></td>
-          <td>x<sub>10</sub></td>
-          <td>x<sub>11</sub></td>
-          <td>x<sub>12</sub></td>
-      </tr>
-      <tr>
-          <td>x<sub>2</sub></td>
-          <td>x<sub>20</sub></td>
-          <td>x<sub>21</sub></td>
-          <td>x<sub>22</sub></td>
-      </tr>
-      <tr>
-          <td>x<sub>3</sub></td>
-          <td>x<sub>30</sub></td>
-          <td>x<sub>31</sub></td>
-          <td>x<sub>32</sub></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>feature</th>
+					<th>d<sub>0</sub></th>
+					<th>d<sub>1</sub></th>
+					<th>d<sub>2</sub></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>x<sub>0</sub></td>
+					<td>x<sub>00</sub></td>
+					<td>x<sub>01</sub></td>
+					<td>x<sub>02</sub></td>
+			</tr>
+			<tr>
+					<td>x<sub>1</sub></td>
+					<td>x<sub>10</sub></td>
+					<td>x<sub>11</sub></td>
+					<td>x<sub>12</sub></td>
+			</tr>
+			<tr>
+					<td>x<sub>2</sub></td>
+					<td>x<sub>20</sub></td>
+					<td>x<sub>21</sub></td>
+					<td>x<sub>22</sub></td>
+			</tr>
+			<tr>
+					<td>x<sub>3</sub></td>
+					<td>x<sub>30</sub></td>
+					<td>x<sub>31</sub></td>
+					<td>x<sub>32</sub></td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="expectation-step">Expectation Step</h2>
 <p>The purpose of this step is to calculate for each of our features, the probability of that feature belonging to cluster k. In this example we have 4 clusters and 4 data points. So we need to fill in the following table:</p>
 <table>
-  <thead>
-      <tr>
-          <th>feature</th>
-          <th>k<sub>0</sub></th>
-          <th>k<sub>1</sub></th>
-          <th>k<sub>2</sub></th>
-          <th>k<sub>3</sub></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>x<sub>0</sub></td>
-          <td>γ<sub>00</sub></td>
-          <td>γ<sub>01</sub></td>
-          <td>γ<sub>02</sub></td>
-          <td>γ<sub>03</sub></td>
-      </tr>
-      <tr>
-          <td>x<sub>1</sub></td>
-          <td>γ<sub>10</sub></td>
-          <td>γ<sub>11</sub></td>
-          <td>γ<sub>12</sub></td>
-          <td>γ<sub>13</sub></td>
-      </tr>
-      <tr>
-          <td>x<sub>2</sub></td>
-          <td>γ<sub>20</sub></td>
-          <td>γ<sub>21</sub></td>
-          <td>γ<sub>22</sub></td>
-          <td>γ<sub>23</sub></td>
-      </tr>
-      <tr>
-          <td>x<sub>3</sub></td>
-          <td>γ<sub>30</sub></td>
-          <td>γ<sub>31</sub></td>
-          <td>γ<sub>32</sub></td>
-          <td>γ<sub>33</sub></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>feature</th>
+					<th>k<sub>0</sub></th>
+					<th>k<sub>1</sub></th>
+					<th>k<sub>2</sub></th>
+					<th>k<sub>3</sub></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>x<sub>0</sub></td>
+					<td>γ<sub>00</sub></td>
+					<td>γ<sub>01</sub></td>
+					<td>γ<sub>02</sub></td>
+					<td>γ<sub>03</sub></td>
+			</tr>
+			<tr>
+					<td>x<sub>1</sub></td>
+					<td>γ<sub>10</sub></td>
+					<td>γ<sub>11</sub></td>
+					<td>γ<sub>12</sub></td>
+					<td>γ<sub>13</sub></td>
+			</tr>
+			<tr>
+					<td>x<sub>2</sub></td>
+					<td>γ<sub>20</sub></td>
+					<td>γ<sub>21</sub></td>
+					<td>γ<sub>22</sub></td>
+					<td>γ<sub>23</sub></td>
+			</tr>
+			<tr>
+					<td>x<sub>3</sub></td>
+					<td>γ<sub>30</sub></td>
+					<td>γ<sub>31</sub></td>
+					<td>γ<sub>32</sub></td>
+					<td>γ<sub>33</sub></td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="maximization-step">Maximization Step</h2>
 <p>In this step we need to update three variables for each of the clusters: the weight, the mean, and the diagonal covariance. In this article I will use w<sub>j</sub> to represent the weight of the j<sup>th</sup> gaussian, μ<sub>j</sub> to represent the j<sup>th</sup> mean, and σ<sub>j</sub> to represent the j<sup>th</sup> variance.</p>
@@ -4876,106 +4931,106 @@ pyenv shell 3.7.5
 </code></pre>
 <p>This would result in letter counts as follows:</p>
 <table>
-  <thead>
-      <tr>
-          <th>letter</th>
-          <th>count</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>a</td>
-          <td>16</td>
-      </tr>
-      <tr>
-          <td>b</td>
-          <td>7</td>
-      </tr>
-      <tr>
-          <td>c</td>
-          <td>15</td>
-      </tr>
-      <tr>
-          <td>d</td>
-          <td>5</td>
-      </tr>
-      <tr>
-          <td>e</td>
-          <td>26</td>
-      </tr>
-      <tr>
-          <td>f</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>g</td>
-          <td>5</td>
-      </tr>
-      <tr>
-          <td>h</td>
-          <td>3</td>
-      </tr>
-      <tr>
-          <td>i</td>
-          <td>10</td>
-      </tr>
-      <tr>
-          <td>j</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>k</td>
-          <td>6</td>
-      </tr>
-      <tr>
-          <td>l</td>
-          <td>14</td>
-      </tr>
-      <tr>
-          <td>m</td>
-          <td>6</td>
-      </tr>
-      <tr>
-          <td>n</td>
-          <td>6</td>
-      </tr>
-      <tr>
-          <td>o</td>
-          <td>14</td>
-      </tr>
-      <tr>
-          <td>p</td>
-          <td>7</td>
-      </tr>
-      <tr>
-          <td>r</td>
-          <td>8</td>
-      </tr>
-      <tr>
-          <td>s</td>
-          <td>15</td>
-      </tr>
-      <tr>
-          <td>t</td>
-          <td>13</td>
-      </tr>
-      <tr>
-          <td>u</td>
-          <td>4</td>
-      </tr>
-      <tr>
-          <td>w</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>x</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>y</td>
-          <td>4</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>letter</th>
+					<th>count</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>a</td>
+					<td>16</td>
+			</tr>
+			<tr>
+					<td>b</td>
+					<td>7</td>
+			</tr>
+			<tr>
+					<td>c</td>
+					<td>15</td>
+			</tr>
+			<tr>
+					<td>d</td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>e</td>
+					<td>26</td>
+			</tr>
+			<tr>
+					<td>f</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>g</td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>h</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td>i</td>
+					<td>10</td>
+			</tr>
+			<tr>
+					<td>j</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>k</td>
+					<td>6</td>
+			</tr>
+			<tr>
+					<td>l</td>
+					<td>14</td>
+			</tr>
+			<tr>
+					<td>m</td>
+					<td>6</td>
+			</tr>
+			<tr>
+					<td>n</td>
+					<td>6</td>
+			</tr>
+			<tr>
+					<td>o</td>
+					<td>14</td>
+			</tr>
+			<tr>
+					<td>p</td>
+					<td>7</td>
+			</tr>
+			<tr>
+					<td>r</td>
+					<td>8</td>
+			</tr>
+			<tr>
+					<td>s</td>
+					<td>15</td>
+			</tr>
+			<tr>
+					<td>t</td>
+					<td>13</td>
+			</tr>
+			<tr>
+					<td>u</td>
+					<td>4</td>
+			</tr>
+			<tr>
+					<td>w</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>x</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>y</td>
+					<td>4</td>
+			</tr>
+	</tbody>
 </table>
 <p>In this case, the letter E is found in 26 words, the most of any letter. Therefore our algorithm should pick E since it is the safest guess. Once we guess a letter correctly, this gives important positional information which can filter the word list even further.</p>
 <p>This process is repeated, each time picking the most likely letter, given the constraints we know. If we know some of the letters in the secret word, we can eliminate any words that don&rsquo;t have those letters in those positions. If we have guessed a letter incorrectly, we know that letter isn&rsquo;t in the secret word and can eliminate all words which have that letter. You can see a python implementation of this algorithm <a href="https://gist.github.com/lukesalamone/a815cda5e427b28db78e0caafdbbc0f3#file-hangman_solver-py">here</a>.</p>
@@ -4997,86 +5052,86 @@ pyenv shell 3.7.5
 <h1 id="preliminary-results">Preliminary results</h1>
 <p>With this preliminary caveat in mind, we can still calculate the difficulty of every word in the dictionary. If we assume that in a situation where multiple letters are equally probable, our opponent will break the tie using alphabetical ordering, which hangman words are the hardest to guess? Here are the top 17:</p>
 <table>
-  <thead>
-      <tr>
-          <th>word</th>
-          <th>difficulty</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>zill</td>
-          <td>19</td>
-      </tr>
-      <tr>
-          <td>zills</td>
-          <td>18</td>
-      </tr>
-      <tr>
-          <td>yill</td>
-          <td>18</td>
-      </tr>
-      <tr>
-          <td>zin</td>
-          <td>17</td>
-      </tr>
-      <tr>
-          <td>zax</td>
-          <td>17</td>
-      </tr>
-      <tr>
-          <td>yills</td>
-          <td>17</td>
-      </tr>
-      <tr>
-          <td>will</td>
-          <td>17</td>
-      </tr>
-      <tr>
-          <td>vox</td>
-          <td>17</td>
-      </tr>
-      <tr>
-          <td>mem</td>
-          <td>17</td>
-      </tr>
-      <tr>
-          <td>zins</td>
-          <td>16</td>
-      </tr>
-      <tr>
-          <td>yuck</td>
-          <td>16</td>
-      </tr>
-      <tr>
-          <td>yin</td>
-          <td>16</td>
-      </tr>
-      <tr>
-          <td>wills</td>
-          <td>16</td>
-      </tr>
-      <tr>
-          <td>vill</td>
-          <td>16</td>
-      </tr>
-      <tr>
-          <td>oak</td>
-          <td>16</td>
-      </tr>
-      <tr>
-          <td>jazz</td>
-          <td>16</td>
-      </tr>
-      <tr>
-          <td>foy</td>
-          <td>16</td>
-      </tr>
-      <tr>
-          <td>(27 more)</td>
-          <td>15</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>word</th>
+					<th>difficulty</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>zill</td>
+					<td>19</td>
+			</tr>
+			<tr>
+					<td>zills</td>
+					<td>18</td>
+			</tr>
+			<tr>
+					<td>yill</td>
+					<td>18</td>
+			</tr>
+			<tr>
+					<td>zin</td>
+					<td>17</td>
+			</tr>
+			<tr>
+					<td>zax</td>
+					<td>17</td>
+			</tr>
+			<tr>
+					<td>yills</td>
+					<td>17</td>
+			</tr>
+			<tr>
+					<td>will</td>
+					<td>17</td>
+			</tr>
+			<tr>
+					<td>vox</td>
+					<td>17</td>
+			</tr>
+			<tr>
+					<td>mem</td>
+					<td>17</td>
+			</tr>
+			<tr>
+					<td>zins</td>
+					<td>16</td>
+			</tr>
+			<tr>
+					<td>yuck</td>
+					<td>16</td>
+			</tr>
+			<tr>
+					<td>yin</td>
+					<td>16</td>
+			</tr>
+			<tr>
+					<td>wills</td>
+					<td>16</td>
+			</tr>
+			<tr>
+					<td>vill</td>
+					<td>16</td>
+			</tr>
+			<tr>
+					<td>oak</td>
+					<td>16</td>
+			</tr>
+			<tr>
+					<td>jazz</td>
+					<td>16</td>
+			</tr>
+			<tr>
+					<td>foy</td>
+					<td>16</td>
+			</tr>
+			<tr>
+					<td>(27 more)</td>
+					<td>15</td>
+			</tr>
+	</tbody>
 </table>
 <h1 id="previous-research">Previous research</h1>
 <p>I should note that <a href="https://web.archive.org/web/20100815092214/http://blog.wolfram.com/2010/08/13/25-best-hangman-words/">previous research by Jon McLoone in 2010</a> has explored the same topic, although he used slightly different methodology and a smaller 90,000 word dictionary. His algorithm was not deterministic, and so does not always pick the most frequent letter available. Instead, his algorithm picks a letter with a probability proportional to the frequency with which it occurs in candidate words. For example, if we refer to the letter frequencies of the 50 word 4-letter dictionary above, <em>j</em> appears in just 1 word, while <em>e</em> appears in 26 of them. In this case, since the sum of the numbers in the frequency table is 188, McLoone&rsquo;s algorithm would pick <em>z</em> in 1 out of every 188 first guesses, and <em>e</em> in 26 of them.  Although it might seem that this strategy is not optimal, it does avoid the deterministic results shown above.</p>
@@ -5229,9 +5284,9 @@ In February 2020 I decided to code up Gomoku2049. The game is a demonstration of
 <p><a href="http://gomoku2049.s3-website-us-east-1.amazonaws.com/">Click here to try out the game!</a></p>
 <h2 id="minimax-with-alpha-beta-pruning">Minimax with alpha-beta pruning</h2>
 <figure><img src="/img/game-tree.png"
-    alt="In the tree above, the current game is shown on the left, green to move. If green fails to block orange’s 3 in a row now, orange cannot be stopped."><figcaption>
-      <p>In the tree above, the current game is shown on the left, green to move. If green fails to block orange’s 3 in a row now, orange cannot be stopped.</p>
-    </figcaption>
+			alt="In the tree above, the current game is shown on the left, green to move. If green fails to block orange’s 3 in a row now, orange cannot be stopped."><figcaption>
+			<p>In the tree above, the current game is shown on the left, green to move. If green fails to block orange’s 3 in a row now, orange cannot be stopped.</p>
+		</figcaption>
 </figure>
 
 <p>The Minimax algorithm represents every game as a tree of moves, with the current game position at the root of the tree. The algorithm is recursive with exponential time complexity and can have a very high branching factor: after the first move there are 225–1=224 possible moves. Because it is not feasible to evaluate all possible games to completion, Minimax calculation is usually limited to a fixed depth, after which the algorithm evaluates terminal leaf nodes using the gameover function and the static evaluator.</p>
@@ -5251,9 +5306,9 @@ At the leaf nodes of the tree, either the game is over (the human has won or the
 <p>Here is where the fun begins. I realized that a very efficient way of representing a game board was with a sequence of bits, where 1 represented an occupied square, and 0 represented an unoccupied square. A game state would therefore only require a bit sequence for each player (the game engine would prevent overlapping bits). For a 15×15=225 square board, each player’s occupied squares could be represented with a number 225 bits in length. Although Javascript Numbers are only 53 bits long, Javascript has a newer primitive, BigInt, which can store numbers of arbitrary length.</p>
 <p>The biggest benefit of representing the game board this way is that it facilitates bitwise operations, which drastically reduces the time complexity for the static evaluator and gameover functions.</p>
 <figure><img src="/img/bitmask.gif"
-    alt="Here the mask is shown in white, and the actual squares occupied are shown in orange. With each step in the bitmask check, the board and the mask are bitwise ANDed together, a very fast operation which reduces the computational complexity required in the static evaluator and gameover function."><figcaption>
-      <p>Here the mask is shown in white, and the actual squares occupied are shown in orange. With each step in the bitmask check, the board and the mask are bitwise ANDed together, a very fast operation which reduces the computational complexity required in the static evaluator and gameover function.</p>
-    </figcaption>
+			alt="Here the mask is shown in white, and the actual squares occupied are shown in orange. With each step in the bitmask check, the board and the mask are bitwise ANDed together, a very fast operation which reduces the computational complexity required in the static evaluator and gameover function."><figcaption>
+			<p>Here the mask is shown in white, and the actual squares occupied are shown in orange. With each step in the bitmask check, the board and the mask are bitwise ANDed together, a very fast operation which reduces the computational complexity required in the static evaluator and gameover function.</p>
+		</figcaption>
 </figure>
 
 <h2 id="about-bigint">About BigInt</h2>

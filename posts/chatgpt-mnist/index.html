@@ -58,36 +58,36 @@
 
 
 
-  <meta itemprop="name" content="Can ChatGPT Recognize Handwritten Digits?">
-  <meta itemprop="description" content="TLDR: No. No it cannot.
+	<meta itemprop="name" content="Can ChatGPT Recognize Handwritten Digits?">
+	<meta itemprop="description" content="TLDR: No. No it cannot.
 This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a decoder-only model. It shouldn’t be able to perform an image recognition task. But then again, a decoder-only model wouldn’t have been my first choice for translation or summarization either. In my experience, ChatGPT has created translations which are at least as coherent and idiomatic as Google Translate, if not more so.">
-  <meta itemprop="datePublished" content="2023-07-30T22:45:57-07:00">
-  <meta itemprop="dateModified" content="2023-07-30T22:45:57-07:00">
-  <meta itemprop="wordCount" content="350">
-  <meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta itemprop="keywords" content="Chatgpt,Computer-Vision">
+	<meta itemprop="datePublished" content="2023-07-30T22:45:57-07:00">
+	<meta itemprop="dateModified" content="2023-07-30T22:45:57-07:00">
+	<meta itemprop="wordCount" content="350">
+	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta itemprop="keywords" content="Chatgpt,Computer-Vision">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta name="twitter:title" content="Can ChatGPT Recognize Handwritten Digits?">
-  <meta name="twitter:description" content="TLDR: No. No it cannot.
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta name="twitter:title" content="Can ChatGPT Recognize Handwritten Digits?">
+	<meta name="twitter:description" content="TLDR: No. No it cannot.
 This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a decoder-only model. It shouldn’t be able to perform an image recognition task. But then again, a decoder-only model wouldn’t have been my first choice for translation or summarization either. In my experience, ChatGPT has created translations which are at least as coherent and idiomatic as Google Translate, if not more so.">
 
 
 
     <meta property="og:url" content="https://blog.lukesalamone.com/posts/chatgpt-mnist/">
-  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
-  <meta property="og:title" content="Can ChatGPT Recognize Handwritten Digits?">
-  <meta property="og:description" content="TLDR: No. No it cannot.
+	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+	<meta property="og:title" content="Can ChatGPT Recognize Handwritten Digits?">
+	<meta property="og:description" content="TLDR: No. No it cannot.
 This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a decoder-only model. It shouldn’t be able to perform an image recognition task. But then again, a decoder-only model wouldn’t have been my first choice for translation or summarization either. In my experience, ChatGPT has created translations which are at least as coherent and idiomatic as Google Translate, if not more so.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2023-07-30T22:45:57-07:00">
-    <meta property="article:modified_time" content="2023-07-30T22:45:57-07:00">
-    <meta property="article:tag" content="Chatgpt">
-    <meta property="article:tag" content="Computer-Vision">
-    <meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2023-07-30T22:45:57-07:00">
+		<meta property="article:modified_time" content="2023-07-30T22:45:57-07:00">
+		<meta property="article:tag" content="Chatgpt">
+		<meta property="article:tag" content="Computer-Vision">
+		<meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
 
 
 
@@ -172,54 +172,54 @@ This was admittedly a fairly stupid experiment on the face of it. ChatGPT is a d
 <p><img src="../../img/chatgpt_mnist.png" alt="chatgpt performance on 100 handwritten digits"></p>
 <p>It is interesting that only the 0s and the 7s were correctly identified. Let&rsquo;s take a look at the distribution of ChatGPT&rsquo;s guesses.</p>
 <table>
-  <thead>
-      <tr>
-          <th>Guess</th>
-          <th>Count</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>0</td>
-          <td>85</td>
-      </tr>
-      <tr>
-          <td>1</td>
-          <td>0</td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td>3</td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>5</td>
-          <td>4</td>
-      </tr>
-      <tr>
-          <td>6</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>7</td>
-          <td>5</td>
-      </tr>
-      <tr>
-          <td>8</td>
-          <td>0</td>
-      </tr>
-      <tr>
-          <td>9</td>
-          <td>0</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Guess</th>
+					<th>Count</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>85</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>4</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>9</td>
+					<td>0</td>
+			</tr>
+	</tbody>
 </table>
 <p>Oh. It got 8/10 zeros correct because it guessed zero 85% of the time.</p>
 

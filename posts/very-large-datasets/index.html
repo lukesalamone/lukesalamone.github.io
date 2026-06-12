@@ -58,39 +58,39 @@
 
 
 
-  <meta itemprop="name" content="Very Large Datasets in PyTorch">
-  <meta itemprop="description" content="In God we trust. All others must bring data. ~ W. Edwards Deming
+	<meta itemprop="name" content="Very Large Datasets in PyTorch">
+	<meta itemprop="description" content="In God we trust. All others must bring data. ~ W. Edwards Deming
 Datasets that fit in memory For simple machine learning problems, your PyTorch dataset class probably looks something like this:
 class SimpleDataset(Dataset): def __init__(self, features, targets): self.features = [] for feature in features: self.features.append(self._feature_transform(feature)) self.targets = targets def _feature_transform(self, feature): # Optional feature transformation function which # converts each feature into its input representation # for the model. This might be an expensive operation, # so its best to do now rather than during training. return some_transformation_fn(feature) def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.targets[idx] With this method, we basically load all of the data into RAM at once, which is perfectly fine for small datasets. But sooner or later you’re going to run into a machine learning problem with a large dataset. What do I mean by this? I mean a dataset which can’t easily fit into RAM/VRAM.">
-  <meta itemprop="datePublished" content="2024-06-27T18:40:06-07:00">
-  <meta itemprop="dateModified" content="2024-06-27T18:40:06-07:00">
-  <meta itemprop="wordCount" content="842">
-  <meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta itemprop="keywords" content="Machine-Learning,Pytorch">
+	<meta itemprop="datePublished" content="2024-06-27T18:40:06-07:00">
+	<meta itemprop="dateModified" content="2024-06-27T18:40:06-07:00">
+	<meta itemprop="wordCount" content="842">
+	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta itemprop="keywords" content="Machine-Learning,Pytorch">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta name="twitter:title" content="Very Large Datasets in PyTorch">
-  <meta name="twitter:description" content="In God we trust. All others must bring data. ~ W. Edwards Deming
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta name="twitter:title" content="Very Large Datasets in PyTorch">
+	<meta name="twitter:description" content="In God we trust. All others must bring data. ~ W. Edwards Deming
 Datasets that fit in memory For simple machine learning problems, your PyTorch dataset class probably looks something like this:
 class SimpleDataset(Dataset): def __init__(self, features, targets): self.features = [] for feature in features: self.features.append(self._feature_transform(feature)) self.targets = targets def _feature_transform(self, feature): # Optional feature transformation function which # converts each feature into its input representation # for the model. This might be an expensive operation, # so its best to do now rather than during training. return some_transformation_fn(feature) def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.targets[idx] With this method, we basically load all of the data into RAM at once, which is perfectly fine for small datasets. But sooner or later you’re going to run into a machine learning problem with a large dataset. What do I mean by this? I mean a dataset which can’t easily fit into RAM/VRAM.">
 
 
 
     <meta property="og:url" content="https://blog.lukesalamone.com/posts/very-large-datasets/">
-  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
-  <meta property="og:title" content="Very Large Datasets in PyTorch">
-  <meta property="og:description" content="In God we trust. All others must bring data. ~ W. Edwards Deming
+	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+	<meta property="og:title" content="Very Large Datasets in PyTorch">
+	<meta property="og:description" content="In God we trust. All others must bring data. ~ W. Edwards Deming
 Datasets that fit in memory For simple machine learning problems, your PyTorch dataset class probably looks something like this:
 class SimpleDataset(Dataset): def __init__(self, features, targets): self.features = [] for feature in features: self.features.append(self._feature_transform(feature)) self.targets = targets def _feature_transform(self, feature): # Optional feature transformation function which # converts each feature into its input representation # for the model. This might be an expensive operation, # so its best to do now rather than during training. return some_transformation_fn(feature) def __len__(self): return len(self.features) def __getitem__(self, idx): return self.features[idx], self.targets[idx] With this method, we basically load all of the data into RAM at once, which is perfectly fine for small datasets. But sooner or later you’re going to run into a machine learning problem with a large dataset. What do I mean by this? I mean a dataset which can’t easily fit into RAM/VRAM.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-06-27T18:40:06-07:00">
-    <meta property="article:modified_time" content="2024-06-27T18:40:06-07:00">
-    <meta property="article:tag" content="Machine-Learning">
-    <meta property="article:tag" content="Pytorch">
-    <meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2024-06-27T18:40:06-07:00">
+		<meta property="article:modified_time" content="2024-06-27T18:40:06-07:00">
+		<meta property="article:tag" content="Machine-Learning">
+		<meta property="article:tag" content="Pytorch">
+		<meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
 
 
 

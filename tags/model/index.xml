@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Model on Luke Salamone&#39;s Blog</title>
+		<link>https://blog.lukesalamone.com/tags/model/</link>
+		<description>Recent content in Model on Luke Salamone&#39;s Blog</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 05 Apr 2026 19:25:25 -0700</lastBuildDate>
+		
+			<atom:link href="https://blog.lukesalamone.com/tags/model/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Model is an Overloaded Term</title>
+				<link>https://blog.lukesalamone.com/posts/model-is-overloaded/</link>
+				<pubDate>Sun, 05 Apr 2026 19:25:25 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/posts/model-is-overloaded/</guid>
+				<description>&lt;p&gt;There are a lot of meanings of the term &amp;ldquo;model&amp;rdquo; in machine learning and machine learning-adjacent fields. Depending on the context, &amp;ldquo;model&amp;rdquo; can mean:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;a general architecture/configuration for weights of a specific model&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;e.g. &amp;ldquo;We embedded texts using a BERT model&amp;rdquo; might mean DistillBERT, RoBERTa, ModernBERT etc which all differ from the architecture in &lt;a href=&#34;https://arxiv.org/pdf/1810.04805&#34;&gt;the original 2018 BERT paper&lt;/a&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;a specific set of weights which are the result of a training process&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

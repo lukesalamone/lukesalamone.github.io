@@ -58,37 +58,37 @@
 
 
 
-  <meta itemprop="name" content="A new type of chess tournament">
-  <meta itemprop="description" content="This is part 2 of a paper I wrote for Ken Forbus’ Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
+	<meta itemprop="name" content="A new type of chess tournament">
+	<meta itemprop="description" content="This is part 2 of a paper I wrote for Ken Forbus’ Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
 In the previous post I discussed the history of chess engines and why they don’t “think” like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it. At the time, though, the goal was to beat human grandmasters by any means necessary, a great engineering feat that the field had been working on for decades.">
-  <meta itemprop="datePublished" content="2022-10-08T15:17:36-07:00">
-  <meta itemprop="dateModified" content="2022-10-08T15:17:36-07:00">
-  <meta itemprop="wordCount" content="3180">
-  <meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta itemprop="keywords" content="Chess,Qualitative-Reasoning,Ai">
+	<meta itemprop="datePublished" content="2022-10-08T15:17:36-07:00">
+	<meta itemprop="dateModified" content="2022-10-08T15:17:36-07:00">
+	<meta itemprop="wordCount" content="3180">
+	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta itemprop="keywords" content="Chess,Qualitative-Reasoning,Ai">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta name="twitter:title" content="A new type of chess tournament">
-  <meta name="twitter:description" content="This is part 2 of a paper I wrote for Ken Forbus’ Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta name="twitter:title" content="A new type of chess tournament">
+	<meta name="twitter:description" content="This is part 2 of a paper I wrote for Ken Forbus’ Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
 In the previous post I discussed the history of chess engines and why they don’t “think” like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it. At the time, though, the goal was to beat human grandmasters by any means necessary, a great engineering feat that the field had been working on for decades.">
 
 
 
     <meta property="og:url" content="https://blog.lukesalamone.com/posts/qualitative-analysis-chess/">
-  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
-  <meta property="og:title" content="A new type of chess tournament">
-  <meta property="og:description" content="This is part 2 of a paper I wrote for Ken Forbus’ Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
+	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+	<meta property="og:title" content="A new type of chess tournament">
+	<meta property="og:description" content="This is part 2 of a paper I wrote for Ken Forbus’ Qualitative Reasoning course, adapted for this blog. You can find a printable version of the paper here and part 1 here.
 In the previous post I discussed the history of chess engines and why they don’t “think” like we think. Trading interpretability for computation cycles ultimately led to the engines we have today, fairly alien in nature and perhaps less pedagogically useful because of it. At the time, though, the goal was to beat human grandmasters by any means necessary, a great engineering feat that the field had been working on for decades.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2022-10-08T15:17:36-07:00">
-    <meta property="article:modified_time" content="2022-10-08T15:17:36-07:00">
-    <meta property="article:tag" content="Chess">
-    <meta property="article:tag" content="Qualitative-Reasoning">
-    <meta property="article:tag" content="Ai">
-    <meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2022-10-08T15:17:36-07:00">
+		<meta property="article:modified_time" content="2022-10-08T15:17:36-07:00">
+		<meta property="article:tag" content="Chess">
+		<meta property="article:tag" content="Qualitative-Reasoning">
+		<meta property="article:tag" content="Ai">
+		<meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
 
 
 
@@ -164,9 +164,9 @@ In the previous post I discussed the history of chess engines and why they don�
 <p>Qualitatively, there are many aspects to a chess game that may be captured. Let&rsquo;s take a look at the way a grandmaster analyzes a position. It will become quite apparent that at the highest levels, the qualitative aspects of position analysis dominate over quantitative aspects (i.e. the number and value of each piece).</p>
 <p>In the selected lecture, Grandmaster Varuzhan Akobian details a game he played previously. At a key moment of the game, Akobian sacrificed his rook for a key pawn in the center of the board. The resulting position is reproduced for convenience in Figure 1.</p>
 <figure><img src="../../img/human_analysis_fig4.png"
-    alt="Figure 1. Quantitative analysis would posit that black is winning due to his extra rook for white’s knight and pawn. However, qualitative analysis provides a more complete picture of black’s predicament."><figcaption>
-      <p>Figure 1. Quantitative analysis would posit that black is winning due to his extra rook for white’s knight and pawn. However, qualitative analysis provides a more complete picture of black’s predicament.</p>
-    </figcaption>
+			alt="Figure 1. Quantitative analysis would posit that black is winning due to his extra rook for white’s knight and pawn. However, qualitative analysis provides a more complete picture of black’s predicament."><figcaption>
+			<p>Figure 1. Quantitative analysis would posit that black is winning due to his extra rook for white’s knight and pawn. However, qualitative analysis provides a more complete picture of black’s predicament.</p>
+		</figcaption>
 </figure>
 
 <p><a href="https://youtu.be/h80Mu4N6oYI?t=1515">His analysis starts at 25:15 in the video</a>:</p>
@@ -200,9 +200,9 @@ In the previous post I discussed the history of chess engines and why they don�
 <p>Qualitative spatial calculi may also be used to construct more psychologically plausible models of chess positions than simply noting which pieces occupy which squares, seeking to emulate the models suggested by Chase and Simon. Chess pieces have intricate relationships which can be captured, and which change whenever a piece moves to another square. Importantly, however, not all relationships are affected by the movement of a single chess piece, suggesting that performance gains may be realized by recomputing only those relationships which have changed.</p>
 <p>It is likely that low-level piece relationships may give rise to higher level relationships and tactics. For example, the concept of “capturing the defender” arises from the concept of attacking a piece A which defends B, which works when pieces A and B are attacked by pieces C and D of opposing colors. And in the case of Figure 2 below, a defender may be “deflected” to win the piece it is defending. Defensive relationships may be thought of in a chain or directed graph, with each piece defending another and the safety of a piece being considered in relation to its connection to a defensive group.</p>
 <figure><img src="../../img/human_analysis_fig5.png"
-    alt="Figure 2. White to move. From this image, many basic piece relationships are apparent with only 8 pieces left on the board. Importantly, the black king is defending the black queen. The black queen is also being attacked by the white queen, and is attacking the white queen. White’s queen is undefended, a state sometimes referred to as hanging. These relationships reveal the opportunity for a tactic. White can simultaneously move his rook to attack black’s king (danger levels) and take advantage of the defensive connection between the black king and queen with the move rook to b8. This forces black to move his king, removing the defense of his queen. In this position, black’s queen can be freely captured by white’s queen. Due to the mobility advantages of a queen over a rook, this is a favorable move sequence for white."><figcaption>
-      <p>Figure 2. White to move. From this image, many basic piece relationships are apparent with only 8 pieces left on the board. Importantly, the black king is defending the black queen. The black queen is also being attacked by the white queen, and is attacking the white queen. White’s queen is undefended, a state sometimes referred to as hanging. These relationships reveal the opportunity for a tactic. White can simultaneously move his rook to attack black’s king (danger levels) and take advantage of the defensive connection between the black king and queen with the move rook to b8. This forces black to move his king, removing the defense of his queen. In this position, black’s queen can be freely captured by white’s queen. Due to the mobility advantages of a queen over a rook, this is a favorable move sequence for white.</p>
-    </figcaption>
+			alt="Figure 2. White to move. From this image, many basic piece relationships are apparent with only 8 pieces left on the board. Importantly, the black king is defending the black queen. The black queen is also being attacked by the white queen, and is attacking the white queen. White’s queen is undefended, a state sometimes referred to as hanging. These relationships reveal the opportunity for a tactic. White can simultaneously move his rook to attack black’s king (danger levels) and take advantage of the defensive connection between the black king and queen with the move rook to b8. This forces black to move his king, removing the defense of his queen. In this position, black’s queen can be freely captured by white’s queen. Due to the mobility advantages of a queen over a rook, this is a favorable move sequence for white."><figcaption>
+			<p>Figure 2. White to move. From this image, many basic piece relationships are apparent with only 8 pieces left on the board. Importantly, the black king is defending the black queen. The black queen is also being attacked by the white queen, and is attacking the white queen. White’s queen is undefended, a state sometimes referred to as hanging. These relationships reveal the opportunity for a tactic. White can simultaneously move his rook to attack black’s king (danger levels) and take advantage of the defensive connection between the black king and queen with the move rook to b8. This forces black to move his king, removing the defense of his queen. In this position, black’s queen can be freely captured by white’s queen. Due to the mobility advantages of a queen over a rook, this is a favorable move sequence for white.</p>
+		</figcaption>
 </figure>
 
 <h2 id="applications-of-a-qualitative-chess-engine">Applications of a qualitative chess engine</h2>

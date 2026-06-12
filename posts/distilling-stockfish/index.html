@@ -58,36 +58,36 @@
 
 
 
-  <meta itemprop="name" content="Distilling Stockfish with One Billion Positions">
-  <meta itemprop="description" content="TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. To my knowledge, this is the largest open state-value chess dataset released. The dataset is released as the Gigafish dataset on Huggingface.
+	<meta itemprop="name" content="Distilling Stockfish with One Billion Positions">
+	<meta itemprop="description" content="TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. To my knowledge, this is the largest open state-value chess dataset released. The dataset is released as the Gigafish dataset on Huggingface.
 Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.">
-  <meta itemprop="datePublished" content="2026-03-06T20:25:56-08:00">
-  <meta itemprop="dateModified" content="2026-03-06T20:25:56-08:00">
-  <meta itemprop="wordCount" content="971">
-  <meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta itemprop="keywords" content="Chess,Neural-Networks">
+	<meta itemprop="datePublished" content="2026-03-06T20:25:56-08:00">
+	<meta itemprop="dateModified" content="2026-03-06T20:25:56-08:00">
+	<meta itemprop="wordCount" content="971">
+	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta itemprop="keywords" content="Chess,Neural-Networks">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta name="twitter:title" content="Distilling Stockfish with One Billion Positions">
-  <meta name="twitter:description" content="TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. To my knowledge, this is the largest open state-value chess dataset released. The dataset is released as the Gigafish dataset on Huggingface.
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta name="twitter:title" content="Distilling Stockfish with One Billion Positions">
+	<meta name="twitter:description" content="TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. To my knowledge, this is the largest open state-value chess dataset released. The dataset is released as the Gigafish dataset on Huggingface.
 Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.">
 
 
 
     <meta property="og:url" content="https://blog.lukesalamone.com/posts/distilling-stockfish/">
-  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
-  <meta property="og:title" content="Distilling Stockfish with One Billion Positions">
-  <meta property="og:description" content="TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. To my knowledge, this is the largest open state-value chess dataset released. The dataset is released as the Gigafish dataset on Huggingface.
+	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+	<meta property="og:title" content="Distilling Stockfish with One Billion Positions">
+	<meta property="og:description" content="TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. To my knowledge, this is the largest open state-value chess dataset released. The dataset is released as the Gigafish dataset on Huggingface.
 Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-03-06T20:25:56-08:00">
-    <meta property="article:modified_time" content="2026-03-06T20:25:56-08:00">
-    <meta property="article:tag" content="Chess">
-    <meta property="article:tag" content="Neural-Networks">
-    <meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-03-06T20:25:56-08:00">
+		<meta property="article:modified_time" content="2026-03-06T20:25:56-08:00">
+		<meta property="article:tag" content="Chess">
+		<meta property="article:tag" content="Neural-Networks">
+		<meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
 
 
 
@@ -157,9 +157,9 @@ Loss continued to decrease during the entire training run, strongly suggesting t
       <div class="post-content">
         <p><strong>TLDR: I extracted fens and stockfish evaluations for 3.9 billion chess positions. I then trained a neural network on 1 billion of them. To my knowledge, this is the largest open state-value chess dataset released. The dataset is released as the <a href="https://huggingface.co/datasets/lukesalamone/gigafish-3.8b-d10">Gigafish dataset on Huggingface</a>.</strong></p>
 <figure><img src="../../img/distill_stockfish_loss_curve.png"
-    alt="Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume."><figcaption>
-      <p>Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.</p>
-    </figcaption>
+			alt="Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume."><figcaption>
+			<p>Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.</p>
+		</figcaption>
 </figure>
 
 <p>Stockfish is currently the strongest chess engine in the world. It works by using a small neural network millions of times per position. One interesting question we could ask is whether we could replace search depth with a more accurate value function. In 2024, researchers at DeepMind <a href="https://arxiv.org/pdf/2402.04494v1">attempted</a> to answer this question. Critically, this approach did not hold search depth constant, and although they had 15 billion action-value pairs, they only had around 530 million state-value estimates.</p>
@@ -168,17 +168,17 @@ Loss continued to decrease during the entire training run, strongly suggesting t
 <p>I trained variants from three main categories of architectures: pure Vision Transformer, pure ResNet, and a hybrid with ResNet blocks followed by Transformer blocks.</p>
 <p>I performed pilot runs to narrow down to the best architecture for this task. The first pilot run trained a 40M param variant, and it became clear early on that the Hybrid and ResNet architectures were significantly better than the pure vision transformer. Compared to the ResNet and the Hybrid, the vision transformer is not able to benefit from the inductive biases provided by convolutions. It effectively needs to learn what a 2D grid is from scratch./</p>
 <figure><img src="../../img/distill_40M_comparison.png"
-    alt="On the first pilot run, the vision transformer was clearly worse than the ResNet and the Hybrid."><figcaption>
-      <p>On the first pilot run, the vision transformer was clearly worse than the ResNet and the Hybrid.</p>
-    </figcaption>
+			alt="On the first pilot run, the vision transformer was clearly worse than the ResNet and the Hybrid."><figcaption>
+			<p>On the first pilot run, the vision transformer was clearly worse than the ResNet and the Hybrid.</p>
+		</figcaption>
 </figure>
 
 <p>I then performed a scaled up 80M param pilot run to compare the pure ResNet with the Hybrid. From the loss curves, we can see that ResNet benefits from its inductive biases about the chess board and so the loss on the pure ResNet model quickly drops. However, it struggles to learn the more nuanced whole-board relationships that are necessary for an accurate evaluation and learns more slowly.</p>
 <p>The hybrid approach gets us the best of both worlds. ResNet blocks quickly learn spatial patterns and feed them into the Transformer blocks. This is also part of why transformers are so famously data-hungry: they can keep cranking through enormous datasets.</p>
 <figure><img src="../../img/distill_80M_comparison.png"
-    alt="From the second pilot run we can see the Hybrid approach benefitting from inductive biases provided by convolutions as well as the global reasoning from attention blocks."><figcaption>
-      <p>From the second pilot run we can see the Hybrid approach benefitting from inductive biases provided by convolutions as well as the global reasoning from attention blocks.</p>
-    </figcaption>
+			alt="From the second pilot run we can see the Hybrid approach benefitting from inductive biases provided by convolutions as well as the global reasoning from attention blocks."><figcaption>
+			<p>From the second pilot run we can see the Hybrid approach benefitting from inductive biases provided by convolutions as well as the global reasoning from attention blocks.</p>
+		</figcaption>
 </figure>
 
 <h3 id="input-format">Input format</h3>

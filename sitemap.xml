@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.lukesalamone.com/</loc>
+    <lastmod>2026-04-05T19:25:25-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/tags/machine-learning/</loc>
+    <lastmod>2026-04-05T19:25:25-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/tags/model/</loc>
+    <lastmod>2026-04-05T19:25:25-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/posts/model-is-overloaded/</loc>
+    <lastmod>2026-04-05T19:25:25-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/posts/</loc>
+    <lastmod>2026-04-05T19:25:25-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/tags/reinforcement-learning/</loc>
+    <lastmod>2026-04-05T19:25:25-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/tags/</loc>
+    <lastmod>2026-04-05T19:25:25-07:00</lastmod>
+  </url><url>
     <loc>https://blog.lukesalamone.com/tags/agents/</loc>
     <lastmod>2026-03-11T20:14:56-07:00</lastmod>
   </url><url>
@@ -12,15 +33,6 @@
     <lastmod>2026-03-11T20:14:56-07:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/tags/llm/</loc>
-    <lastmod>2026-03-11T20:14:56-07:00</lastmod>
-  </url><url>
-    <loc>https://blog.lukesalamone.com/</loc>
-    <lastmod>2026-03-11T20:14:56-07:00</lastmod>
-  </url><url>
-    <loc>https://blog.lukesalamone.com/posts/</loc>
-    <lastmod>2026-03-11T20:14:56-07:00</lastmod>
-  </url><url>
-    <loc>https://blog.lukesalamone.com/tags/</loc>
     <lastmod>2026-03-11T20:14:56-07:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/tags/chess/</loc>
@@ -62,9 +74,6 @@
     <loc>https://blog.lukesalamone.com/posts/notes-on-deepseek-r1/</loc>
     <lastmod>2025-01-28T08:35:55-08:00</lastmod>
   </url><url>
-    <loc>https://blog.lukesalamone.com/tags/reinforcement-learning/</loc>
-    <lastmod>2025-01-28T08:35:55-08:00</lastmod>
-  </url><url>
     <loc>https://blog.lukesalamone.com/tags/space/</loc>
     <lastmod>2024-07-29T12:16:49-07:00</lastmod>
   </url><url>
@@ -72,9 +81,6 @@
     <lastmod>2024-07-29T12:16:49-07:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/posts/custom-pytorch-collate/</loc>
-    <lastmod>2024-07-12T14:48:27-07:00</lastmod>
-  </url><url>
-    <loc>https://blog.lukesalamone.com/tags/machine-learning/</loc>
     <lastmod>2024-07-12T14:48:27-07:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/tags/pytorch/</loc>

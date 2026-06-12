@@ -58,37 +58,37 @@
 
 
 
-  <meta itemprop="name" content="Optimal Ask">
-  <meta itemprop="description" content="Let’s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.
+	<meta itemprop="name" content="Optimal Ask">
+	<meta itemprop="description" content="Let’s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.
 The maximum price that people will pay is normally distributed around $100, with a standard deviation of $5. In other words, about 34% have a max price between $95 and $100, another 34% have a max price between $100 and $105, and the rest have max prices above or below those ranges.">
-  <meta itemprop="datePublished" content="2025-09-16T18:02:23-07:00">
-  <meta itemprop="dateModified" content="2025-09-16T18:02:23-07:00">
-  <meta itemprop="wordCount" content="384">
-  <meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta itemprop="keywords" content="Monte-Carlo,Statistics,Python">
+	<meta itemprop="datePublished" content="2025-09-16T18:02:23-07:00">
+	<meta itemprop="dateModified" content="2025-09-16T18:02:23-07:00">
+	<meta itemprop="wordCount" content="384">
+	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta itemprop="keywords" content="Monte-Carlo,Statistics,Python">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta name="twitter:title" content="Optimal Ask">
-  <meta name="twitter:description" content="Let’s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta name="twitter:title" content="Optimal Ask">
+	<meta name="twitter:description" content="Let’s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.
 The maximum price that people will pay is normally distributed around $100, with a standard deviation of $5. In other words, about 34% have a max price between $95 and $100, another 34% have a max price between $100 and $105, and the rest have max prices above or below those ranges.">
 
 
 
     <meta property="og:url" content="https://blog.lukesalamone.com/posts/optimal-ask/">
-  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
-  <meta property="og:title" content="Optimal Ask">
-  <meta property="og:description" content="Let’s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.
+	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+	<meta property="og:title" content="Optimal Ask">
+	<meta property="og:description" content="Let’s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.
 The maximum price that people will pay is normally distributed around $100, with a standard deviation of $5. In other words, about 34% have a max price between $95 and $100, another 34% have a max price between $100 and $105, and the rest have max prices above or below those ranges.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-09-16T18:02:23-07:00">
-    <meta property="article:modified_time" content="2025-09-16T18:02:23-07:00">
-    <meta property="article:tag" content="Monte-Carlo">
-    <meta property="article:tag" content="Statistics">
-    <meta property="article:tag" content="Python">
-    <meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2025-09-16T18:02:23-07:00">
+		<meta property="article:modified_time" content="2025-09-16T18:02:23-07:00">
+		<meta property="article:tag" content="Monte-Carlo">
+		<meta property="article:tag" content="Statistics">
+		<meta property="article:tag" content="Python">
+		<meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
 
 
 
@@ -160,9 +160,9 @@ The maximum price that people will pay is normally distributed around $100, with
 <p>The maximum price that people will pay is normally distributed around $100, with a standard deviation of $5. In other words, about 34% have a max price between $95 and $100, another 34% have a max price between $100 and $105, and the rest have max prices above or below those ranges.</p>
 <p><strong>The question is, what&rsquo;s the best price to ask?</strong></p>
 <figure><img src="../../img/optimal_ask_bids.png"
-    alt="Chart of the distribution of the maximum amounts that customers are willing to pay. If you ask more than the customer is willing to pay, they won&rsquo;t buy. If you ask less, you will make the sale but you could be leaving money on the table."><figcaption>
-      <p>Chart of the distribution of the maximum amounts that customers are willing to pay. If you ask more than the customer is willing to pay, they won&rsquo;t buy. If you ask less, you will make the sale but you could be leaving money on the table.</p>
-    </figcaption>
+			alt="Chart of the distribution of the maximum amounts that customers are willing to pay. If you ask more than the customer is willing to pay, they won&rsquo;t buy. If you ask less, you will make the sale but you could be leaving money on the table."><figcaption>
+			<p>Chart of the distribution of the maximum amounts that customers are willing to pay. If you ask more than the customer is willing to pay, they won&rsquo;t buy. If you ask less, you will make the sale but you could be leaving money on the table.</p>
+		</figcaption>
 </figure>
 
 <p>This is a good gut check. If you set the price lower, you sell more widgets but make less money. If you ask higher, you sell fewer widgets but each sale makes more money.</p>

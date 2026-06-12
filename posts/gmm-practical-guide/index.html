@@ -58,35 +58,35 @@
 
 
 
-  <meta itemprop="name" content="A Practical Guide to Gaussian Mixture Models">
-  <meta itemprop="description" content="Are you studying machine learning and want to know more about Gaussian Mixture Models? You’ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.">
-  <meta itemprop="datePublished" content="2020-10-24T18:10:29-05:00">
-  <meta itemprop="dateModified" content="2020-10-24T18:10:29-05:00">
-  <meta itemprop="wordCount" content="1109">
-  <meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta itemprop="keywords" content="Machine-Learning,Math,Clustering,Python">
+	<meta itemprop="name" content="A Practical Guide to Gaussian Mixture Models">
+	<meta itemprop="description" content="Are you studying machine learning and want to know more about Gaussian Mixture Models? You’ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.">
+	<meta itemprop="datePublished" content="2020-10-24T18:10:29-05:00">
+	<meta itemprop="dateModified" content="2020-10-24T18:10:29-05:00">
+	<meta itemprop="wordCount" content="1109">
+	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta itemprop="keywords" content="Machine-Learning,Math,Clustering,Python">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta name="twitter:title" content="A Practical Guide to Gaussian Mixture Models">
-  <meta name="twitter:description" content="Are you studying machine learning and want to know more about Gaussian Mixture Models? You’ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta name="twitter:title" content="A Practical Guide to Gaussian Mixture Models">
+	<meta name="twitter:description" content="Are you studying machine learning and want to know more about Gaussian Mixture Models? You’ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.">
 
 
 
     <meta property="og:url" content="https://blog.lukesalamone.com/posts/gmm-practical-guide/">
-  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
-  <meta property="og:title" content="A Practical Guide to Gaussian Mixture Models">
-  <meta property="og:description" content="Are you studying machine learning and want to know more about Gaussian Mixture Models? You’ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2020-10-24T18:10:29-05:00">
-    <meta property="article:modified_time" content="2020-10-24T18:10:29-05:00">
-    <meta property="article:tag" content="Machine-Learning">
-    <meta property="article:tag" content="Math">
-    <meta property="article:tag" content="Clustering">
-    <meta property="article:tag" content="Python">
-    <meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+	<meta property="og:title" content="A Practical Guide to Gaussian Mixture Models">
+	<meta property="og:description" content="Are you studying machine learning and want to know more about Gaussian Mixture Models? You’ve come to the right place. I have found other online resources to be difficult to approach and/or lacking crucial details. Here I will try to explain GMMs in plain language.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2020-10-24T18:10:29-05:00">
+		<meta property="article:modified_time" content="2020-10-24T18:10:29-05:00">
+		<meta property="article:tag" content="Machine-Learning">
+		<meta property="article:tag" content="Math">
+		<meta property="article:tag" content="Clustering">
+		<meta property="article:tag" content="Python">
+		<meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
 
 
 
@@ -244,83 +244,83 @@ MathJax.Hub.Config({
 <p>This method has two major sub-parts: the <em>expectation step</em>, and the <em>Maximization step</em>. These two parts will be run inside of an update loop which typically terminates after a set number of iterations or the algorithm has stopped improving.</p>
 <p>I personally find that examples are the best way to understand many concepts, so in this article I will use a dataset with 4 features, each of the features having 3 dimensions:</p>
 <table>
-  <thead>
-      <tr>
-          <th>feature</th>
-          <th>d<sub>0</sub></th>
-          <th>d<sub>1</sub></th>
-          <th>d<sub>2</sub></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>x<sub>0</sub></td>
-          <td>x<sub>00</sub></td>
-          <td>x<sub>01</sub></td>
-          <td>x<sub>02</sub></td>
-      </tr>
-      <tr>
-          <td>x<sub>1</sub></td>
-          <td>x<sub>10</sub></td>
-          <td>x<sub>11</sub></td>
-          <td>x<sub>12</sub></td>
-      </tr>
-      <tr>
-          <td>x<sub>2</sub></td>
-          <td>x<sub>20</sub></td>
-          <td>x<sub>21</sub></td>
-          <td>x<sub>22</sub></td>
-      </tr>
-      <tr>
-          <td>x<sub>3</sub></td>
-          <td>x<sub>30</sub></td>
-          <td>x<sub>31</sub></td>
-          <td>x<sub>32</sub></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>feature</th>
+					<th>d<sub>0</sub></th>
+					<th>d<sub>1</sub></th>
+					<th>d<sub>2</sub></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>x<sub>0</sub></td>
+					<td>x<sub>00</sub></td>
+					<td>x<sub>01</sub></td>
+					<td>x<sub>02</sub></td>
+			</tr>
+			<tr>
+					<td>x<sub>1</sub></td>
+					<td>x<sub>10</sub></td>
+					<td>x<sub>11</sub></td>
+					<td>x<sub>12</sub></td>
+			</tr>
+			<tr>
+					<td>x<sub>2</sub></td>
+					<td>x<sub>20</sub></td>
+					<td>x<sub>21</sub></td>
+					<td>x<sub>22</sub></td>
+			</tr>
+			<tr>
+					<td>x<sub>3</sub></td>
+					<td>x<sub>30</sub></td>
+					<td>x<sub>31</sub></td>
+					<td>x<sub>32</sub></td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="expectation-step">Expectation Step</h2>
 <p>The purpose of this step is to calculate for each of our features, the probability of that feature belonging to cluster k. In this example we have 4 clusters and 4 data points. So we need to fill in the following table:</p>
 <table>
-  <thead>
-      <tr>
-          <th>feature</th>
-          <th>k<sub>0</sub></th>
-          <th>k<sub>1</sub></th>
-          <th>k<sub>2</sub></th>
-          <th>k<sub>3</sub></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>x<sub>0</sub></td>
-          <td>γ<sub>00</sub></td>
-          <td>γ<sub>01</sub></td>
-          <td>γ<sub>02</sub></td>
-          <td>γ<sub>03</sub></td>
-      </tr>
-      <tr>
-          <td>x<sub>1</sub></td>
-          <td>γ<sub>10</sub></td>
-          <td>γ<sub>11</sub></td>
-          <td>γ<sub>12</sub></td>
-          <td>γ<sub>13</sub></td>
-      </tr>
-      <tr>
-          <td>x<sub>2</sub></td>
-          <td>γ<sub>20</sub></td>
-          <td>γ<sub>21</sub></td>
-          <td>γ<sub>22</sub></td>
-          <td>γ<sub>23</sub></td>
-      </tr>
-      <tr>
-          <td>x<sub>3</sub></td>
-          <td>γ<sub>30</sub></td>
-          <td>γ<sub>31</sub></td>
-          <td>γ<sub>32</sub></td>
-          <td>γ<sub>33</sub></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>feature</th>
+					<th>k<sub>0</sub></th>
+					<th>k<sub>1</sub></th>
+					<th>k<sub>2</sub></th>
+					<th>k<sub>3</sub></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>x<sub>0</sub></td>
+					<td>γ<sub>00</sub></td>
+					<td>γ<sub>01</sub></td>
+					<td>γ<sub>02</sub></td>
+					<td>γ<sub>03</sub></td>
+			</tr>
+			<tr>
+					<td>x<sub>1</sub></td>
+					<td>γ<sub>10</sub></td>
+					<td>γ<sub>11</sub></td>
+					<td>γ<sub>12</sub></td>
+					<td>γ<sub>13</sub></td>
+			</tr>
+			<tr>
+					<td>x<sub>2</sub></td>
+					<td>γ<sub>20</sub></td>
+					<td>γ<sub>21</sub></td>
+					<td>γ<sub>22</sub></td>
+					<td>γ<sub>23</sub></td>
+			</tr>
+			<tr>
+					<td>x<sub>3</sub></td>
+					<td>γ<sub>30</sub></td>
+					<td>γ<sub>31</sub></td>
+					<td>γ<sub>32</sub></td>
+					<td>γ<sub>33</sub></td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="maximization-step">Maximization Step</h2>
 <p>In this step we need to update three variables for each of the clusters: the weight, the mean, and the diagonal covariance. In this article I will use w<sub>j</sub> to represent the weight of the j<sup>th</sup> gaussian, μ<sub>j</sub> to represent the j<sup>th</sup> mean, and σ<sub>j</sub> to represent the j<sup>th</sup> variance.</p>

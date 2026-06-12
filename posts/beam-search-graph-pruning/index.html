@@ -58,33 +58,33 @@
 
 
 
-  <meta itemprop="name" content="Graph Topology and Battle Royale Mechanics">
-  <meta itemprop="description" content="The other day I found Alan Pike’s blog post from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Ultimately, finding a formal solution to city closing wasn’t necessary for the game, but it’s worth giving it a shot anyways since pruning by hand isn’t always convenient.">
-  <meta itemprop="datePublished" content="2026-02-19T20:27:24-08:00">
-  <meta itemprop="dateModified" content="2026-02-19T20:27:24-08:00">
-  <meta itemprop="wordCount" content="982">
-  <meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta itemprop="keywords" content="Graph-Theory,Search">
+	<meta itemprop="name" content="Graph Topology and Battle Royale Mechanics">
+	<meta itemprop="description" content="The other day I found Alan Pike’s blog post from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Ultimately, finding a formal solution to city closing wasn’t necessary for the game, but it’s worth giving it a shot anyways since pruning by hand isn’t always convenient.">
+	<meta itemprop="datePublished" content="2026-02-19T20:27:24-08:00">
+	<meta itemprop="dateModified" content="2026-02-19T20:27:24-08:00">
+	<meta itemprop="wordCount" content="982">
+	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta itemprop="keywords" content="Graph-Theory,Search">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta name="twitter:title" content="Graph Topology and Battle Royale Mechanics">
-  <meta name="twitter:description" content="The other day I found Alan Pike’s blog post from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Ultimately, finding a formal solution to city closing wasn’t necessary for the game, but it’s worth giving it a shot anyways since pruning by hand isn’t always convenient.">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta name="twitter:title" content="Graph Topology and Battle Royale Mechanics">
+	<meta name="twitter:description" content="The other day I found Alan Pike’s blog post from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Ultimately, finding a formal solution to city closing wasn’t necessary for the game, but it’s worth giving it a shot anyways since pruning by hand isn’t always convenient.">
 
 
 
     <meta property="og:url" content="https://blog.lukesalamone.com/posts/beam-search-graph-pruning/">
-  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
-  <meta property="og:title" content="Graph Topology and Battle Royale Mechanics">
-  <meta property="og:description" content="The other day I found Alan Pike’s blog post from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Ultimately, finding a formal solution to city closing wasn’t necessary for the game, but it’s worth giving it a shot anyways since pruning by hand isn’t always convenient.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-02-19T20:27:24-08:00">
-    <meta property="article:modified_time" content="2026-02-19T20:27:24-08:00">
-    <meta property="article:tag" content="Graph-Theory">
-    <meta property="article:tag" content="Search">
-    <meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+	<meta property="og:title" content="Graph Topology and Battle Royale Mechanics">
+	<meta property="og:description" content="The other day I found Alan Pike’s blog post from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Ultimately, finding a formal solution to city closing wasn’t necessary for the game, but it’s worth giving it a shot anyways since pruning by hand isn’t always convenient.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-02-19T20:27:24-08:00">
+		<meta property="article:modified_time" content="2026-02-19T20:27:24-08:00">
+		<meta property="article:tag" content="Graph-Theory">
+		<meta property="article:tag" content="Search">
+		<meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
 
 
 
@@ -186,9 +186,9 @@
 <p>Closing cities without considering the resulting map can be suboptimal or unplayable. His post named two specific issues: disconnected graphs and path graphs (i.e. long lines of cities). A disconnected graph can result in a situation where the players can no longer interact. A path graph results in a map which isn&rsquo;t very fun since the single path severely limits the strategies players can use.</p>
 <p>The difficulty is that removing a city permanently changes the topology of the map. A choice might seem reasonable at one point but causes issues down the line. So picking the correct sequence of removals is important in maintaining a playable map.</p>
 <figure><img src="../../img/graph_pruning_options.png"
-    alt="With the four nodes a, b, c, and d, there are four pruning options. However, option 1 results in a disconnected graph, and options 3 and 4 result in suboptional path graphs. Option 2 is the only one which maintains a connected, non-path graph."><figcaption>
-      <p>With the four nodes a, b, c, and d, there are four pruning options. However, option 1 results in a disconnected graph, and options 3 and 4 result in suboptional path graphs. Option 2 is the only one which maintains a connected, non-path graph.</p>
-    </figcaption>
+			alt="With the four nodes a, b, c, and d, there are four pruning options. However, option 1 results in a disconnected graph, and options 3 and 4 result in suboptional path graphs. Option 2 is the only one which maintains a connected, non-path graph."><figcaption>
+			<p>With the four nodes a, b, c, and d, there are four pruning options. However, option 1 results in a disconnected graph, and options 3 and 4 result in suboptional path graphs. Option 2 is the only one which maintains a connected, non-path graph.</p>
+		</figcaption>
 </figure>
 
 <h2 id="avoiding-disconnected-graphs">Avoiding disconnected graphs</h2>
@@ -198,9 +198,9 @@
 <p>Intuitively, the reason that path graphs aren&rsquo;t great is because as a hidden information game, the strategy of Two Spies relies on the fact that the opponent could be in multiple places at once, but path graphs reduce strategic possibility space and hidden state uncertainty.</p>
 <p>We can quantify this by counting the number of steps it takes for every node to reach every other node. (For simplicity, we don&rsquo;t have to count reverse paths. We don&rsquo;t need to count A -&gt; B and B -&gt; A separately.) It turns out this measurement is called the <a href="https://en.wikipedia.org/wiki/Wiener_index">Wiener number</a>, the sum of the shortest paths between all nodes. Graphs with lower Wiener numbers are more optimal for the purposes of this game.</p>
 <figure><img src="../../img/wiener_distances.png"
-    alt="The graph on the left has a total distance of three, while the graph on the right (a path graph) has a total distance of four."><figcaption>
-      <p>The graph on the left has a total distance of three, while the graph on the right (a path graph) has a total distance of four.</p>
-    </figcaption>
+			alt="The graph on the left has a total distance of three, while the graph on the right (a path graph) has a total distance of four."><figcaption>
+			<p>The graph on the left has a total distance of three, while the graph on the right (a path graph) has a total distance of four.</p>
+		</figcaption>
 </figure>
 
 <h2 id="greedy-pruning">Greedy pruning</h2>

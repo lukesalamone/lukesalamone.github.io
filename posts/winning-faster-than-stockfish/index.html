@@ -58,34 +58,34 @@
 
 
 
-  <meta itemprop="name" content="Opponent Modeling Wins 2× Faster Than Stockfish">
-  <meta itemprop="description" content="TLDR: Using opponent modeling we can win 2x faster than Stockfish by playing high risk, high reward moves that Stockfish will avoid.">
-  <meta itemprop="datePublished" content="2022-07-02T16:24:10-05:00">
-  <meta itemprop="dateModified" content="2022-07-02T16:24:10-05:00">
-  <meta itemprop="wordCount" content="1022">
-  <meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta itemprop="keywords" content="Chess,Ai,Game-Theory">
+	<meta itemprop="name" content="Opponent Modeling Wins 2× Faster Than Stockfish">
+	<meta itemprop="description" content="TLDR: Using opponent modeling we can win 2x faster than Stockfish by playing high risk, high reward moves that Stockfish will avoid.">
+	<meta itemprop="datePublished" content="2022-07-02T16:24:10-05:00">
+	<meta itemprop="dateModified" content="2022-07-02T16:24:10-05:00">
+	<meta itemprop="wordCount" content="1022">
+	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta itemprop="keywords" content="Chess,Ai,Game-Theory">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
-  <meta name="twitter:title" content="Opponent Modeling Wins 2× Faster Than Stockfish">
-  <meta name="twitter:description" content="TLDR: Using opponent modeling we can win 2x faster than Stockfish by playing high risk, high reward moves that Stockfish will avoid.">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta name="twitter:title" content="Opponent Modeling Wins 2× Faster Than Stockfish">
+	<meta name="twitter:description" content="TLDR: Using opponent modeling we can win 2x faster than Stockfish by playing high risk, high reward moves that Stockfish will avoid.">
 
 
 
     <meta property="og:url" content="https://blog.lukesalamone.com/posts/winning-faster-than-stockfish/">
-  <meta property="og:site_name" content="Luke Salamone&#39;s Blog">
-  <meta property="og:title" content="Opponent Modeling Wins 2× Faster Than Stockfish">
-  <meta property="og:description" content="TLDR: Using opponent modeling we can win 2x faster than Stockfish by playing high risk, high reward moves that Stockfish will avoid.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2022-07-02T16:24:10-05:00">
-    <meta property="article:modified_time" content="2022-07-02T16:24:10-05:00">
-    <meta property="article:tag" content="Chess">
-    <meta property="article:tag" content="Ai">
-    <meta property="article:tag" content="Game-Theory">
-    <meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+	<meta property="og:title" content="Opponent Modeling Wins 2× Faster Than Stockfish">
+	<meta property="og:description" content="TLDR: Using opponent modeling we can win 2x faster than Stockfish by playing high risk, high reward moves that Stockfish will avoid.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2022-07-02T16:24:10-05:00">
+		<meta property="article:modified_time" content="2022-07-02T16:24:10-05:00">
+		<meta property="article:tag" content="Chess">
+		<meta property="article:tag" content="Ai">
+		<meta property="article:tag" content="Game-Theory">
+		<meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
 
 
 
@@ -196,35 +196,35 @@ $ e_i(m_i) = p_L(M_{i+1}) \cdot r(M_{i+1}) $
 <p>Let&rsquo;s use an example. Suppose that at some stage in the game the algorithm must choose between 2 possible moves. For simplicity, the opponent will have 4 possible replies after each of the two possible moves. After the algorithm makes the the first possible move, the probabilities look like this:</p>
 <h3 id="opponent-move-distribution-at-position-1">Opponent move distribution at position 1</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Opponent Move</th>
-          <th>Probability of play</th>
-          <th>Resulting position evaluation</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1</td>
-          <td>0.6</td>
-          <td>5</td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td>0.3</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td>0.1</td>
-          <td>0.5</td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td>0.1</td>
-          <td>-1</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Opponent Move</th>
+					<th>Probability of play</th>
+					<th>Resulting position evaluation</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>0.6</td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>0.3</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>0.1</td>
+					<td>0.5</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>0.1</td>
+					<td>-1</td>
+			</tr>
+	</tbody>
 </table>
 <p style="text-align: center; font-size: 1.5em">
 $ \begin{bmatrix} 0.6 \\ 0.3 \\ 0.1 \\ 0.1 \end{bmatrix}
@@ -233,35 +233,35 @@ $ \begin{bmatrix} 0.6 \\ 0.3 \\ 0.1 \\ 0.1 \end{bmatrix}
 <h3 id="opponent-move-distribution-at-position-2">Opponent move distribution at position 2</h3>
 <p>And after the second possible move, the opponent move distribution looks like this:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Opponent Move</th>
-          <th>Probability of play</th>
-          <th>Resulting position evaluation</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1</td>
-          <td>0.9</td>
-          <td>4</td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td>0.05</td>
-          <td>0.5</td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td>0.03</td>
-          <td>0</td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td>0.02</td>
-          <td>-2</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Opponent Move</th>
+					<th>Probability of play</th>
+					<th>Resulting position evaluation</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>0.9</td>
+					<td>4</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>0.05</td>
+					<td>0.5</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>0.03</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>0.02</td>
+					<td>-2</td>
+			</tr>
+	</tbody>
 </table>
 <p style="text-align: center; font-size: 1.5em">
 $ \begin{bmatrix} 0.9 \\ 0.05 \\ 0.03 \\ 0.02 \end{bmatrix}
@@ -276,45 +276,45 @@ $ \begin{bmatrix} 0.9 \\ 0.05 \\ 0.03 \\ 0.02 \end{bmatrix}
 <p>Instead, once the game is in a forced-win situation (&ldquo;mate in N moves&rdquo;) the algorithm will stop sampling from the distribution and simply play the moves which lead to checkmate. While this will inevitably lead to a win, it changes the character of the algorithm somewhat. Therefore, I have limited the lookahead to checkmates in the immediate next few moves (specifically, mate in 5 or fewer moves). Since the original goal was to create an algorithm which is used for training, this seems reasonable.</p>
 <h2 id="games">Games</h2>
 <table>
-  <thead>
-      <tr>
-          <th>White</th>
-          <th>Black</th>
-          <th>Games</th>
-          <th>White win %</th>
-          <th>Average half moves per game</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Antimaia 1900</td>
-          <td>Maia 1900</td>
-          <td>100</td>
-          <td>100%</td>
-          <td>37</td>
-      </tr>
-      <tr>
-          <td>Maia 1900</td>
-          <td>Antimaia 1900</td>
-          <td>100</td>
-          <td>0%</td>
-          <td>43</td>
-      </tr>
-      <tr>
-          <td>Maia 1900</td>
-          <td>Stockfish @10</td>
-          <td>100</td>
-          <td>0%</td>
-          <td>67</td>
-      </tr>
-      <tr>
-          <td>Stockfish @10</td>
-          <td>Maia 1900</td>
-          <td>100</td>
-          <td>100%</td>
-          <td>70</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>White</th>
+					<th>Black</th>
+					<th>Games</th>
+					<th>White win %</th>
+					<th>Average half moves per game</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Antimaia 1900</td>
+					<td>Maia 1900</td>
+					<td>100</td>
+					<td>100%</td>
+					<td>37</td>
+			</tr>
+			<tr>
+					<td>Maia 1900</td>
+					<td>Antimaia 1900</td>
+					<td>100</td>
+					<td>0%</td>
+					<td>43</td>
+			</tr>
+			<tr>
+					<td>Maia 1900</td>
+					<td>Stockfish @10</td>
+					<td>100</td>
+					<td>0%</td>
+					<td>67</td>
+			</tr>
+			<tr>
+					<td>Stockfish @10</td>
+					<td>Maia 1900</td>
+					<td>100</td>
+					<td>100%</td>
+					<td>70</td>
+			</tr>
+	</tbody>
 </table>
 <p>I simulated 400 matches testing this opponent modeling approach, which I wrote about <a href="../../posts/best-antimaia-games/">here</a>.</p>
 <p>Key findings:</p>
