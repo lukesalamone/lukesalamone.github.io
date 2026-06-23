@@ -21,12 +21,12 @@
             <pubDate>Fri, 19 Jun 2026 22:24:12 -0700</pubDate>
             
             <guid>https://blog.lukesalamone.com/posts/creating-tiny-semantic-search/</guid>
-            <description>&lt;p&gt;This project is a continuation of my &lt;a href=&#34;../posts/autoresearch/&#34;&gt;previous autoresearch project&lt;/a&gt;, which optimized a reranking model to be under 10MB. Digging deeper by hand, I was able to take the size reduction much further, while outperforming reranking models which are 30x larger. In the end I was able to reduce the payload from 11.4 MB to 2.79 MB gzipped.&lt;/p&gt;
+            <description>&lt;p&gt;This project is a continuation of my &lt;a href=&#34;../posts/autoresearch/&#34;&gt;previous autoresearch project&lt;/a&gt;, which optimized a reranking model to be under 10MB. Digging deeper by hand, I was able to take the size reduction much further, while outperforming reranking models which are 30x larger on this task. In the end I was able to reduce the payload from 11.4 MB to 2.79 MB gzipped.&lt;/p&gt;
 &lt;p&gt;You can see it in action on my &lt;a href=&#34;https://lukesalamone.com&#34;&gt;resume page&lt;/a&gt;.&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;../img/tiny_reranker.png&#34;
 			alt=&#34;Each square represents 1 kB. The majority of overall size reduction came from removing the ORT dependency. However, other changes enabled much better representation quality than the baseline.&#34;&gt;&lt;figcaption&gt;
 			&lt;p&gt;Each square represents 1 kB. The majority of overall size reduction came from removing the ORT dependency. However, other changes enabled much better representation quality than the baseline.&lt;/p&gt;</description>
-            <content type="html"><![CDATA[<p>This project is a continuation of my <a href="/posts/autoresearch/">previous autoresearch project</a>, which optimized a reranking model to be under 10MB. Digging deeper by hand, I was able to take the size reduction much further, while outperforming reranking models which are 30x larger. In the end I was able to reduce the payload from 11.4 MB to 2.79 MB gzipped.</p>
+            <content type="html"><![CDATA[<p>This project is a continuation of my <a href="/posts/autoresearch/">previous autoresearch project</a>, which optimized a reranking model to be under 10MB. Digging deeper by hand, I was able to take the size reduction much further, while outperforming reranking models which are 30x larger on this task. In the end I was able to reduce the payload from 11.4 MB to 2.79 MB gzipped.</p>
 <p>You can see it in action on my <a href="https://lukesalamone.com">resume page</a>.</p>
 <figure><img src="/img/tiny_reranker.png"
 			alt="Each square represents 1 kB. The majority of overall size reduction came from removing the ORT dependency. However, other changes enabled much better representation quality than the baseline."><figcaption>
@@ -53,25 +53,26 @@
 <li>Finally, use the same LLM to identify high-precision matches from my actual resume, if any.</li>
 </ol>
 <p>After one round of this process, I had mined 94 queries which raised MRR 21%. But after a second round with ~1000 pairs MRR had mostly plateaued, increasing the same metric ~3 points.</p>
-<h2 id="neural-architecture-search">Neural architecture search</h2>
+<h2 id="architecture-ablations">Architecture ablations</h2>
 <p>At this point, the model was pretty decent for its size. I wanted to see how much more performance we could squeeze out of it, so I ran a series of quick architecture experiments:</p>
-<p><strong>Max pooling vs mean pooling</strong>: In order to get the final 256-dimensional embedding for comparison, we need to convert the L x 256 output matrix from the model into a 256-dimensional vector, where L is up to 64 tokens long. Previously we used the mean of each column, which is known as &ldquo;mean pooling&rdquo;. Switching to max pooling was slighly better (0.60 to 0.634 on a harder query set) because it allowed the strongest value to directly affect the output.</p>
-<p><strong>Factorized embeddings</strong>: Embeddings for each token are stored in a lookup token with shape (V x D). However, we can factorize this matrix using a low-rank approximation, <a href="https://arxiv.org/abs/1909.11942">which is what ALBERT does to save parameters</a>. This saves ~1M params and was neutral on nDCG.</p>
+<p><strong>Max pooling vs mean pooling</strong>: In order to get the final 256-dimensional embedding for comparison, we need to convert the L x 256 output matrix from the model into a 256-dimensional vector, where L is up to 64 tokens long. Previously we used the mean of each column, which is known as &ldquo;mean pooling&rdquo;. Switching to max pooling was slightly better (0.60 to 0.634 on a harder query set) because it allowed the strongest value to directly affect the output.</p>
+<p><strong>Factorized embeddings</strong>: Embeddings for each token are stored in a lookup table with shape (V x D). However, we can factorize this matrix using a low-rank approximation, <a href="https://arxiv.org/abs/1909.11942">which is what ALBERT does to save parameters</a>. This saves ~1M params and was neutral on nDCG.</p>
 <p><strong>SwiGLU</strong>: SwiGLU replaces GELU with a gated unit, and can theoretically lead to richer intermediate representations. However, SwiGLU resulted in no measurable performance gain.</p>
 <p><strong>Multi-vector late interaction</strong>: Rather than pooling output vectors with mean/max pooling, we use ColBERT-style token-level expressiveness using the MaxSim function. Concretely it looks like this:</p>
 <pre><code class="language-python">def maxsim(query:str, document:str) -&gt; float:
-    query_vectors = emcoder(query)
+    query_vectors = encoder(query)
     document_vectors = encoder(document)
 
     score = 0
     for q in query_vectors:
-        for d in document_vectors:
-            score += np.dot(q, d)
+        # find the highest dot-product match among all document token vectors
+        best = max(np.dot(q,d) for d in document_vectors)
+        score += best
     return score
 </code></pre>
 <h2 id="vocab-pruning">Vocab pruning</h2>
 <p>The first step after tokenizing a string is to get each token’s corresponding embedding from a lookup table. That means the model stores <code>vocab_size x embedding_dimension</code> parameters which is ~8MB already. To make this smaller on disk there’s really only three things you can do: reduce the vocab, reduce the embedding dimension, and reduce bytes per param (quantization). I did all three.</p>
-<p>The full BERT wordpiece vocab is 30k tokens, which is way too much. It contains ~1000 “unused” tokens (tokens like <code>[unused123]</code>, <code>[unused456]</code>), tokens in foreign languages, and full words like “baltimore” and “vampires” that are irrelevant to my resume. I was able to cut it down to 5000 tokens safely by trimming “unused” and foreign language tokens, then used the</p>
+<p>The full BERT wordpiece vocab is 30k tokens, which is way too much. It contains ~1000 “unused” tokens (tokens like <code>[unused123]</code>, <code>[unused456]</code>), tokens in foreign languages, and full words like “baltimore” and “vampires” that are irrelevant to my resume. I was able to cut it down to 5000 tokens safely by trimming “unused” and foreign language tokens, then whitelisted tokens present in documents.</p>
 <p>Second, I reduced the embedding dimension</p>
 <ul>
 <li>I directly reduced the embedding dimension from 768 to 256.</li>
@@ -80,7 +81,9 @@
 <p>I also aggressively quantized the model, which enabled savings for the whole model, not just the embedding table.</p>
 <h2 id="replacing-onnxruntime-web">Replacing onnxruntime-web</h2>
 <p>After pruning the vocab, I realized another large source of file size overhead was the inference code itself, <a href="https://onnxruntime.ai/docs/tutorials/web/">ONNX Runtime Web</a>. ORT was 3.4MB over the wire, 13.2MB uncompressed. The reason it&rsquo;s so big is that ORT is a general-purpose interpreter for ONNX files, which contain a graph of the weights and all operations in inference.</p>
-<p>But my model is extremely simple, and only contains a few different operations. So instead of shipping the model as an <code>.onnx</code> file and relying on ORT to handle it, I shipped the model as a <code>.safetensors</code> file and did the interpretation in a custom WASM binary. <a href="https://huggingface.co/docs/safetensors/index">Safetensors</a> is a standard protocol for shipping files and only contains three parts:</p>
+<p>But my model is extremely simple, and only contains a few different operations. So instead of shipping the model as an <code>.onnx</code> file and relying on ORT to handle it, I shipped the model as a <code>.safetensors</code> file and did the interpretation in a custom WASM binary, built from Rust. To prevent any issues, I ensured numerical parity with ORT prior to swapping it out.</p>
+<p>Dropping ONNX means we don&rsquo;t need general-purpose functions like <code>Transpose</code>, <code>Concat</code>, <code>Reshape</code>, etc. We can get away with index arithmatic alone. That said, I didn&rsquo;t implement any multithreading or SIMD since the model is so small.</p>
+<p><a href="https://huggingface.co/docs/safetensors/index">Safetensors</a> is a standard protocol for shipping files and only contains three parts:</p>
 <ol>
 <li>8 bytes specifying header size</li>
 <li>The header, containing byte offsets into the payload</li>
@@ -90,19 +93,47 @@
 <p><strong>In the end, this change reduced the cost of the inference logic over the wire from 3.4 MB to 4 kB, an 850x reduction.</strong></p>
 <h2 id="158-bit-quantization">1.58-bit quantization</h2>
 <p>Quantization is a pretty standard technique for model size reduction. Models which are trained at 32 bit precision can be served at 16, 8, or even 4 bits while maintaining acceptable quality. <a href="https://en.wikipedia.org/wiki/1.58-bit_large_language_model">1.58 bit quantization</a> is the most aggressive quantization which tends to work. Ternary quantization restricts weights to only three values: <code>{-1, 0, +1}</code>.</p>
-<p>Since this task is a simple reranking task, quality degredation is less obvious than if we were quantizing a decoder model, since there is no &ldquo;cascade&rdquo; of increasingly incorrect tokens that will be generated. For this task, I used self-distillation, with the teacher being the multi-vector late interaction model from before, training directly into ternary.</p>
+<p>Since this task is a simple reranking task, quality degradation is less obvious than if we were quantizing a decoder model, since there is no &ldquo;cascade&rdquo; of increasingly incorrect tokens that will be generated. For this task, I used self-distillation, with the teacher being the multi-vector late interaction model from before, training directly into ternary.</p>
 <p>Note that I only quantized the weights to 1.58 bit, and kept the activations in f16. This helped to cut down on the errors and has no effect on the cost over the wire.</p>
 <p><strong>Overall, 1.58 bit quantization resulted in an over-the-wire file size reduction from 8.3MB to 3.9MB</strong>.</p>
+<h2 id="results">Results</h2>
+<p>Graded nDCG@10 over 43 LLM-judged queries (0–3 relevance), with a 21-query hard subset:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Ranker</th>
+					<th>nDCG@10 (all)</th>
+					<th>nDCG@10 (hard)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>auto_researcher distilled model (baseline)</td>
+					<td>0.562</td>
+					<td>0.285</td>
+			</tr>
+			<tr>
+					<td>BM25 lexical baseline</td>
+					<td>0.641</td>
+					<td>0.507</td>
+			</tr>
+			<tr>
+					<td>shipped 1.58-bit model (after)</td>
+					<td>0.787</td>
+					<td>0.694</td>
+			</tr>
+	</tbody>
+</table>
 <h2 id="other-experiments">Other experiments</h2>
 <p>Some of the things I tried didn&rsquo;t work, either providing no quality benefit or helping on file size while damaging quality too much:</p>
-<p><strong>The original distilled embedding model</strong>. The 4.7 MB ONNX model from autoresearch wasn&rsquo;t finetunedd for this task. It actually performed worse than BM25 on this corpus. It&rsquo;s is what motivated this entire improvement process. I believe that smaller models have much more difficulty generalizing, although they can still be finetuned for very specific tasks.</p>
+<p><strong>The original distilled embedding model</strong>. The 4.7 MB ONNX model from autoresearch wasn&rsquo;t finetuned for this task. It actually performed worse than BM25 on this corpus. It&rsquo;s what motivated this entire improvement process. I believe that smaller models have much more difficulty generalizing, although they can still be finetuned for very specific tasks.</p>
 <p><strong>Factorizing token embeddings after training</strong>. Factorizing the table after training with a low-rank SVD caused high reconstruction error and visibly hurt ranking for ~1 MB saved.</p>
 <ul>
 <li>The same factorization applied during training was neutral.</li>
 </ul>
 <p><strong>Attention pooling</strong>. I tried added a pooling head but it had no benefit over max-pooling and required additional parameters.</p>
 <p><strong>SwiGLU FFN</strong>. I tried replacing GELU with SwiGLU, but it didn&rsquo;t improve the model&rsquo;s quality. I believe it might have been more helpful in making sense out of more complex representations, but this model is fairly straightforward.</p>
-<p><strong>Ternary cross-encoder</strong>. This was my original attemptted ternary quantization. As a cross encoder, it actually matched the quality of the much larger dual encoder teacher. <a href="https://proceedings.mlr.press/v162/menon22a/menon22a.pdf">Cross encoders are known to be more expressive than dual encoders</a>, so if this didn&rsquo;t work it would mean ternary quantization was too strong for this task.</p>
+<p><strong>Ternary cross-encoder</strong>. This was my original attempted ternary quantization. As a cross encoder, it actually matched the quality of the much larger dual encoder teacher. <a href="https://proceedings.mlr.press/v162/menon22a/menon22a.pdf">Cross encoders are known to be more expressive than dual encoders</a>, so if this didn&rsquo;t work it would mean ternary quantization was too strong for this task.</p>
 <p><strong>Diminishing returns of extra data</strong>. I scaled the job post mining from 10 postings to 260, but there were significant diminishing returns. I believe this is partially due to the diversity of queries extracted from the job postings, so it might still be possible to increase diversity somewhat without wasting parameters on out-of-domain concepts. At some point, I don&rsquo;t really care if my model knows what <a href="https://en.wikipedia.org/wiki/Pneumonoultramicroscopicsilicovolcanoconiosis">Pneumonoultramicroscopicsilicovolcanoconiosis</a> is.</p>
 <h1 id="conclusion">Conclusion</h1>
 <p>I learned a few things here. First, small models can work in narrow domains, and even outperform much larger models.</p>
