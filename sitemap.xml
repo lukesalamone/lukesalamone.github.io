@@ -2,10 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.lukesalamone.com/posts/model-is-overloaded/</loc>
-    <lastmod>2026-04-05T19:25:25-07:00</lastmod>
+    <loc>https://blog.lukesalamone.com/tags/distillation/</loc>
+    <lastmod>2026-06-19T22:24:12-07:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/</loc>
+    <lastmod>2026-06-19T22:24:12-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/tags/neural-networks/</loc>
+    <lastmod>2026-06-19T22:24:12-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/posts/</loc>
+    <lastmod>2026-06-19T22:24:12-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/tags/quantization/</loc>
+    <lastmod>2026-06-19T22:24:12-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/tags/search/</loc>
+    <lastmod>2026-06-19T22:24:12-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/posts/creating-tiny-semantic-search/</loc>
+    <lastmod>2026-06-19T22:24:12-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/tags/</loc>
+    <lastmod>2026-06-19T22:24:12-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/posts/model-is-overloaded/</loc>
     <lastmod>2026-04-05T19:25:25-07:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/tags/machine-learning/</loc>
@@ -14,22 +35,13 @@
     <loc>https://blog.lukesalamone.com/tags/model/</loc>
     <lastmod>2026-04-05T19:25:25-07:00</lastmod>
   </url><url>
-    <loc>https://blog.lukesalamone.com/posts/</loc>
-    <lastmod>2026-04-05T19:25:25-07:00</lastmod>
-  </url><url>
     <loc>https://blog.lukesalamone.com/tags/reinforcement-learning/</loc>
-    <lastmod>2026-04-05T19:25:25-07:00</lastmod>
-  </url><url>
-    <loc>https://blog.lukesalamone.com/tags/</loc>
     <lastmod>2026-04-05T19:25:25-07:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/tags/agents/</loc>
     <lastmod>2026-03-11T20:14:56-07:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/posts/autoresearch/</loc>
-    <lastmod>2026-03-11T20:14:56-07:00</lastmod>
-  </url><url>
-    <loc>https://blog.lukesalamone.com/tags/distillation/</loc>
     <lastmod>2026-03-11T20:14:56-07:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/tags/llm/</loc>
@@ -41,16 +53,10 @@
     <loc>https://blog.lukesalamone.com/posts/distilling-stockfish/</loc>
     <lastmod>2026-03-06T20:25:56-08:00</lastmod>
   </url><url>
-    <loc>https://blog.lukesalamone.com/tags/neural-networks/</loc>
-    <lastmod>2026-03-06T20:25:56-08:00</lastmod>
-  </url><url>
     <loc>https://blog.lukesalamone.com/posts/beam-search-graph-pruning/</loc>
     <lastmod>2026-02-19T20:27:24-08:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/tags/graph-theory/</loc>
-    <lastmod>2026-02-19T20:27:24-08:00</lastmod>
-  </url><url>
-    <loc>https://blog.lukesalamone.com/tags/search/</loc>
     <lastmod>2026-02-19T20:27:24-08:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/tags/monte-carlo/</loc>

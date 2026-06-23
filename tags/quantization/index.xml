@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>Distillation on Luke Salamone&#39;s Blog</title>
-		<link>https://blog.lukesalamone.com/tags/distillation/</link>
-		<description>Recent content in Distillation on Luke Salamone&#39;s Blog</description>
+		<title>Quantization on Luke Salamone&#39;s Blog</title>
+		<link>https://blog.lukesalamone.com/tags/quantization/</link>
+		<description>Recent content in Quantization on Luke Salamone&#39;s Blog</description>
 		<generator>Hugo</generator>
 		<language>en-us</language>
 		
@@ -12,20 +12,13 @@
 		
 			<lastBuildDate>Fri, 19 Jun 2026 22:24:12 -0700</lastBuildDate>
 		
-			<atom:link href="https://blog.lukesalamone.com/tags/distillation/index.xml" rel="self" type="application/rss+xml" />
+			<atom:link href="https://blog.lukesalamone.com/tags/quantization/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>Semantic Search in Under 3MB</title>
 				<link>https://blog.lukesalamone.com/posts/creating-tiny-semantic-search/</link>
 				<pubDate>Fri, 19 Jun 2026 22:24:12 -0700</pubDate>
 				<guid>https://blog.lukesalamone.com/posts/creating-tiny-semantic-search/</guid>
 				<description>&lt;p&gt;This project is a continuation of my &lt;a href=&#34;../../posts/autoresearch/&#34;&gt;previous autoresearch project&lt;/a&gt;, which optimized a reranking model to be under 10MB. Digging deeper by hand, I was able to take the size reduction much further, while outperforming reranking models which are 30x larger. In the end I was able to reduce the payload from 11.4 MB to 2.79 MB gzipped.&lt;/p&gt;&#xA;&lt;p&gt;You can see it in action on my &lt;a href=&#34;https://lukesalamone.com&#34;&gt;resume page&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;../../img/tiny_reranker.png&#34;&#xA;&#x9;&#x9;&#x9;alt=&#34;Each square represents 1 kB. The majority of overall size reduction came from removing the ORT dependency. However, other changes enabled much better representation quality than the baseline.&#34;&gt;&lt;figcaption&gt;&#xA;&#x9;&#x9;&#x9;&lt;p&gt;Each square represents 1 kB. The majority of overall size reduction came from removing the ORT dependency. However, other changes enabled much better representation quality than the baseline.&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>Autoresearch</title>
-				<link>https://blog.lukesalamone.com/posts/autoresearch/</link>
-				<pubDate>Wed, 11 Mar 2026 20:14:56 -0700</pubDate>
-				<guid>https://blog.lukesalamone.com/posts/autoresearch/</guid>
-				<description>&lt;figure&gt;&lt;img src=&#34;../../img/autoresearch_progress.png&#34;&#xA;&#x9;&#x9;&#x9;alt=&#34;Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.&#34;&gt;&lt;figcaption&gt;&#xA;&#x9;&#x9;&#x9;&lt;p&gt;Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.&lt;/p&gt;&#xA;&#x9;&#x9;&lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;I saw Andrej Karpathy&amp;rsquo;s &lt;a href=&#34;https://github.com/karpathy/autoresearch&#34;&gt;Autoresearch&lt;/a&gt; results the other day and decided to give it a shot on a relatively difficult task: distilling a retrieval/reranking model into a much smaller 10MB model. The model was trained on MS MARCO v1.1 and SQuAD (~169K pairs total) and evaluated on MRR@10.&lt;/p&gt;</description>
 			</item>
 	</channel>
 </rss>
