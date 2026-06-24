@@ -1,0 +1,1 @@
+{"dim": 384, "max_seq_len": 256, "pool": "mean", "unk": "[UNK]", "cls": "[CLS]", "sep": "[SEP]", "pad": "[PAD]"}
