@@ -262,10 +262,7 @@ Each square represents 1 kB. The majority of overall size reduction came from re
 <h2 id="other-experiments">Other experiments</h2>
 <p>Some of the things I tried didn&rsquo;t work, either providing no quality benefit or helping on file size while damaging quality too much:</p>
 <p><strong>The original distilled embedding model</strong>. The 4.7 MB ONNX model from autoresearch wasn&rsquo;t finetuned for this task. It actually performed worse than BM25 on this corpus. It&rsquo;s what motivated this entire improvement process. I believe that smaller models have much more difficulty generalizing, although they can still be finetuned for very specific tasks.</p>
-<p><strong>Factorizing token embeddings after training</strong>. Factorizing the table after training with a low-rank SVD caused high reconstruction error and visibly hurt ranking for ~1 MB saved.</p>
-<ul>
-<li>The same factorization applied during training was neutral.</li>
-</ul>
+<p><strong>Factorizing token embeddings after training</strong>. Factorizing the table after training with a low-rank SVD caused high reconstruction error and visibly hurt ranking for ~1 MB saved. The same factorization applied during training was neutral.</p>
 <p><strong>Attention pooling</strong>. I tried added a pooling head but it had no benefit over max-pooling and required additional parameters.</p>
 <p><strong>SwiGLU FFN</strong>. I tried replacing GELU with SwiGLU, but it didn&rsquo;t improve the model&rsquo;s quality. I believe it might have been more helpful in making sense out of more complex representations, but this model is fairly straightforward.</p>
 <p><strong>Ternary cross-encoder</strong>. This was my original attempted ternary quantization. As a cross encoder, it actually matched the quality of the much larger dual encoder teacher. <a href="https://proceedings.mlr.press/v162/menon22a/menon22a.pdf">Cross encoders are known to be more expressive than dual encoders</a>, so if this didn&rsquo;t work it would mean ternary quantization was too strong for this task.</p>

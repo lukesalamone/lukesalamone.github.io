@@ -128,10 +128,7 @@
 <h2 id="other-experiments">Other experiments</h2>
 <p>Some of the things I tried didn&rsquo;t work, either providing no quality benefit or helping on file size while damaging quality too much:</p>
 <p><strong>The original distilled embedding model</strong>. The 4.7 MB ONNX model from autoresearch wasn&rsquo;t finetuned for this task. It actually performed worse than BM25 on this corpus. It&rsquo;s what motivated this entire improvement process. I believe that smaller models have much more difficulty generalizing, although they can still be finetuned for very specific tasks.</p>
-<p><strong>Factorizing token embeddings after training</strong>. Factorizing the table after training with a low-rank SVD caused high reconstruction error and visibly hurt ranking for ~1 MB saved.</p>
-<ul>
-<li>The same factorization applied during training was neutral.</li>
-</ul>
+<p><strong>Factorizing token embeddings after training</strong>. Factorizing the table after training with a low-rank SVD caused high reconstruction error and visibly hurt ranking for ~1 MB saved. The same factorization applied during training was neutral.</p>
 <p><strong>Attention pooling</strong>. I tried added a pooling head but it had no benefit over max-pooling and required additional parameters.</p>
 <p><strong>SwiGLU FFN</strong>. I tried replacing GELU with SwiGLU, but it didn&rsquo;t improve the model&rsquo;s quality. I believe it might have been more helpful in making sense out of more complex representations, but this model is fairly straightforward.</p>
 <p><strong>Ternary cross-encoder</strong>. This was my original attempted ternary quantization. As a cross encoder, it actually matched the quality of the much larger dual encoder teacher. <a href="https://proceedings.mlr.press/v162/menon22a/menon22a.pdf">Cross encoders are known to be more expressive than dual encoders</a>, so if this didn&rsquo;t work it would mean ternary quantization was too strong for this task.</p>
@@ -2577,15 +2574,15 @@ This is the part where Vaswani delves into a database analogy with <strong>keys<
 &lt;li&gt;Search in the browser. Standing up a server is a lot of extra work. It&amp;rsquo;s also overkill since I only have about 30 articles so far.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;semantic-search&#34;&gt;Semantic search&lt;/h2&gt;
-&lt;p&gt;I did some experiments with small neural networks deployed using ONNX but ultimately they didn&amp;rsquo;t seem to be a good fit for this blog. The search experience was not quite as snappy as I&amp;rsquo;d have liked it to be, and while I was able to get the model under 10MB, it still added a good amount of bloat to the page size. Further, it wasn&amp;rsquo;t clear to me that the search results were significantly better, and in some cases they were worse. In any case, the advantages were not enough to justify the added page size.&lt;/p&gt;</description>
+&lt;p&gt;I ran some experiments with small neural networks deployed using ONNX but ultimately they didn&amp;rsquo;t seem to be a good fit for this blog. The search experience was not quite as snappy as I&amp;rsquo;d have liked it to be, and while I was able to get the model under 10MB, it still added a good amount of bloat to the page size. Further, it wasn&amp;rsquo;t clear to me that the search results were significantly better, and in some cases they were worse. In any case, the advantages were not enough to justify the added page size.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<p>I&rsquo;ve found myself hitting ctrl+f on this blog enough that I figured it&rsquo;s about time to add some search functionality to it. While there are certainly prefab solutions out there, this task is simple enough and fairly instructive. I had a few requirements, though:</p>
 <ol>
 <li>The search needs to be fast, useful, and aesthetically pleasing.</li>
 <li>Search in the browser. Standing up a server is a lot of extra work. It&rsquo;s also overkill since I only have about 30 articles so far.</li>
 </ol>
 <h2 id="semantic-search">Semantic search</h2>
-<p>I did some experiments with small neural networks deployed using ONNX but ultimately they didn&rsquo;t seem to be a good fit for this blog. The search experience was not quite as snappy as I&rsquo;d have liked it to be, and while I was able to get the model under 10MB, it still added a good amount of bloat to the page size. Further, it wasn&rsquo;t clear to me that the search results were significantly better, and in some cases they were worse. In any case, the advantages were not enough to justify the added page size.</p>
-<p>I did learn a lot with this experiment which probably deserves a blog post of its own at some point. I might revisit semantic matching at a later point as well.</p>
+<p>I ran some experiments with small neural networks deployed using ONNX but ultimately they didn&rsquo;t seem to be a good fit for this blog. The search experience was not quite as snappy as I&rsquo;d have liked it to be, and while I was able to get the model under 10MB, it still added a good amount of bloat to the page size. Further, it wasn&rsquo;t clear to me that the search results were significantly better, and in some cases they were worse. In any case, the advantages were not enough to justify the added page size.</p>
+<p>I learned a lot with this experiment which probably deserves a blog post of its own at some point. I might revisit semantic matching at a later point as well. (Post script: <a href="/posts/creating-tiny-semantic-search/#extending-techniques-to-blog-search">I did</a>.)</p>
 <h2 id="bm25">BM25</h2>
 <p>Rather than loading a neural network, I decided instead to index the text of my blog and use <a href="https://en.wikipedia.org/wiki/Okapi_BM25">BM25</a> to rank documents.</p>
 <p>One difficulty in this was finding the actual algorithm which didn&rsquo;t include a ton of extra code. I was only interested in the function itself, not all of the extra boilerplate code floating around. In the end I broke down and rewrote it myself.</p>
