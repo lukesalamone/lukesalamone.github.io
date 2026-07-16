@@ -65,7 +65,8 @@
 
     score = 0
     for q in query_vectors:
-        # find the highest dot-product match among all document token vectors
+        # find the highest dot-product match among all
+        # document token vectors
         best = max(np.dot(q,d) for d in document_vectors)
         score += best
     return score
@@ -134,8 +135,20 @@
 <p><strong>Attention pooling</strong>. I tried added a pooling head but it had no benefit over max-pooling and required additional parameters.</p>
 <p><strong>SwiGLU FFN</strong>. I tried replacing GELU with SwiGLU, but it didn&rsquo;t improve the model&rsquo;s quality. I believe it might have been more helpful in making sense out of more complex representations, but this model is fairly straightforward.</p>
 <p><strong>Ternary cross-encoder</strong>. This was my original attempted ternary quantization. As a cross encoder, it actually matched the quality of the much larger dual encoder teacher. <a href="https://proceedings.mlr.press/v162/menon22a/menon22a.pdf">Cross encoders are known to be more expressive than dual encoders</a>, so if this didn&rsquo;t work it would mean ternary quantization was too strong for this task.</p>
-<p><strong>Diminishing returns of extra data</strong>. I scaled the job post mining from 10 postings to 260, but there were significant diminishing returns. I believe this is partially due to the diversity of queries extracted from the job postings, so it might still be possible to increase diversity somewhat without wasting parameters on out-of-domain concepts. At some point, I don&rsquo;t really care if my model knows what <a href="https://en.wikipedia.org/wiki/Pneumonoultramicroscopicsilicovolcanoconiosis">Pneumonoultramicroscopicsilicovolcanoconiosis</a> is.</p>
-<h1 id="conclusion">Conclusion</h1>
+<p><strong>Diminishing returns of extra data</strong>. I scaled the job post mining from 10 postings to 260, but there were significant diminishing returns. I believe this is partially due to the diversity of queries extracted from the job postings, so it might still be possible to increase diversity somewhat without wasting parameters on out-of-domain concepts. At some point, I don&rsquo;t really care if my model knows what <a href="https://en.wikipedia.org/wiki/Antidisestablishmentarianism">antidisestablishmentarianism</a> is.</p>
+<h2 id="extending-techniques-to-blog-search">Extending techniques to Blog Search</h2>
+<p>Next, I applied many of the same techniques to the search on this blog, with some slight adaptations.</p>
+<p>First, because this is a blog with a much larger scope of topics, I needed a larger vocabulary. I pruned the vocab in the following way:</p>
+<ol>
+<li>All tokens contained in docs are kept (protected).</li>
+<li>The rest of the tokens (non-protected) are ranked by their max cosine sim with any blog post</li>
+<li>I generated a small set of synthetic queries and had Qwen rate each blog post 0-3 for relevance against each query</li>
+<li>Among the remaining (non-protected) tokens I ran an nDCG sweep over number of tokens to prune, removing the least relevant N tokens in each trial.</li>
+</ol>
+<p>After this process, I still had ~13k tokens in the vocab. This meant that I actually needed to use int4 precision to store token embeddings, which is even lower than before.</p>
+<p>Second, pooling strategy. <code>MaxSim</code> is very powerful, but it runs a similarity against every query token and every doc token. This is computationally infeasible. Instead, the blog encoder uses simple mean pooling. The embeddings from the blog correspond to larger chunks of text which have more semantic meaning, so the quality tradeoff is acceptable.</p>
+<p>Since blog text is a much less specialized domain than resume text, I also opted to simply distill from <code>all-MiniLM-L6-v2</code> as a teacher, which is a more standard reranking model. This was standard KL distillation from the full-precision teacher into a ternary student, and uses the same number and sizes of layers as the teacher.</p>
+<h2 id="conclusion">Conclusion</h2>
 <p>I learned a few things here. First, small models can work in narrow domains, and even outperform much larger models.</p>
 <p>Second, having an eval set we can continuously test ideas against helps tremendously. Some things, like adding an attention pooling head, seem like they should work. But when they are clearly outclassed by things like late interaction with MaxSim, it allows us to move on to optimizing other parts of the model.</p>
 <p>Third, although none of these tricks are particularly exotic, it&rsquo;s good to have a sense of what works and what doesn&rsquo;t. Late interaction vectors really work, although they have a cost tradeoff. Encoders ship with a ton of tokens which aren&rsquo;t used. Ternary quantization really works, although the errors probably become more pronounced</p>
