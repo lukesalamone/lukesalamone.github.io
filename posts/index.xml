@@ -3099,6 +3099,18 @@ rewards = [
 mean_reward = np.mean(rewards)
 std_reward = np.std(rewards)
 advantages = [(reward-mean_reward)/std_reward for reward in rewards]
+
+# policy gradient update
+log_probs = [model.compute_log_prob(r) for r in responses]
+pg_loss = 0
+for log_prob, advantage in zip(log_probs, advantages):
+    pg_loss += -log_prob * advantage
+
+# KL penalty prevents model from changing too quickly
+ref_log_probs = [ref_model.compute_log_prob(r) for r in responses]
+kl = sum(r - p for p, r in zip(log_probs, ref_log_probs)) / group_size
+
+loss = pg_loss / group_size + beta * kl
 </code></pre>
 <h2 id="kl-divergence">KL-Divergence</h2>
 <p>A measurement of the &ldquo;distance&rdquo; between two distributions.</p>
