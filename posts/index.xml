@@ -3026,7 +3026,7 @@ MathJax.Hub.Config({
     x = (x - mean) / np.sqrt(variance + eps)
     return x
 </code></pre>
-<p>In practice, we include a gamma and beta parameter which are learnable parameters of length F, where F is the number of features. These parameters that allow the network to undo .</p>
+<p>In practice, we include a gamma and beta parameter which are learnable parameters of length F, where F is the number of features. These parameters that allow the network to undo the normalization if needed.</p>
 <pre><code class="language-python">def batch_norm2(
         features: np.array,
         gamma: np.array,
@@ -3090,7 +3090,6 @@ rewards = [
 mean_reward = np.mean(rewards)
 std_reward = np.std(rewards)
 advantages = [(reward-mean_reward)/std_reward for reward in rewards]
-
 </code></pre>
 <h2 id="kl-divergence">KL-Divergence</h2>
 <p>A measurement of the &ldquo;distance&rdquo; between two distributions.</p>
@@ -3172,6 +3171,31 @@ def layer_norm(sequence, eps=1e-5):
 </ol>
 <p>2a. Calculate the expected reward $ E[R(x,y)] $</p>
 <p>2b. Penalize large KL-divergence with the old policy</p>
+<p>Pros</p>
+<p>Stable (no advantage-collapse / KL-drift / dead-group pathologies), debuggable (you inspect data, yield, and faithfulness rate — not a black-box optimization that took real effort to autopsy), off-policy (use a teacher stronger than the student), clean credit assignment (every token of an accepted trace is a positive, no noisy advantage estimation), and it optimizes the actual deliverable rather than a proxy.</p>
+<p>Cons / risks (honest)</p>
+<ul>
+<li>Teacher-ceiling cap. RFT can&rsquo;t exceed what passes the filter — pure imitation caps you near the teacher+oracle&rsquo;s strength. If you later want to push past the MoE&rsquo;s chess ability, imitation won&rsquo;t get you there. But v8 shows GRPO&rsquo;s exploration doesn&rsquo;t actually cash out on this 3B, so today this is a theoretical loss, not one you&rsquo;re realizing.</li>
+<li>Positives-only, no negative gradient. RFT never says &ldquo;do less of this,&rdquo; so it sharpens the decision boundary less directly and can be slow to unlearn habits (SAN answers, confabulation). Mitigation: DPO on (accepted vs rejected) pairs — &ldquo;RL-lite&rdquo; that gives the negative signal without GRPO&rsquo;s plateau dynamics. Good middle option after round 0.</li>
+<li>Rich-get-richer. Iterating on the model&rsquo;s own accepted traces improves it where it&rsquo;s already OK and stalls where it&rsquo;s weak (few passing samples exactly on the hard positions). Mitigation: keep the teacher in the loop for low-yield positions.</li>
+<li>Ritual collapse. Repeated SFT on filtered data is precisely how v3–v8 produced templated ritual. Same guards required: n-gram dedup, teacher/temperature diversity, and — critically — the causal-reliance eval (corrupt the tool outputs, the move must change). RFT doesn&rsquo;t prevent &ldquo;faithful-looking but decorative&rdquo; traces any more than RL does.</li>
+<li>Inherited teacher errors. The oracle catches move-mistakes, but a subtle reasoning misconception the teacher shares across accepted-move traces can propagate. The faithfulness filter helps, imperfectly.</li>
+</ul>
+<h2 id="rejection-samplingrejection-fine-tuning">Rejection Sampling/Rejection Fine-Tuning</h2>
+<p>The idea of rejection sampling is to generate multiple responses or &ldquo;roll-outs&rdquo; to an input. Typically we will increase sampling temperature  Responses which do not meet some criterion are &ldquo;rejected&rdquo; or thrown away. This leaves the responses which do pass the criterion. If we fine-tune on these examples, this is called rejection fine-tuning.</p>
+<p>RFT has some similarity with RL techniques like GRPO, which also involve using multiple roll-outs.</p>
+<p>On the one hand, RFT is very simple and intuitive. It avoids a lot of the RL complexity such as entropy collapse and policy divergence. Additionally, because GRPO relies on the relative advantages within the group, RFT can outperform GRPO in situations where all members of the group have perfect or close to perfect rewards.</p>
+<ul>
+<li>If all members have perfect scores, the advantage will be zero for each completion.</li>
+<li>If all members have close to perfect scores, GRPO will amplify noise within the group.</li>
+</ul>
+<p>On the other hand, RFT can be far less sample efficient than RL, because it only learns from positive examples (since the negatives are rejected). For hard problems, your acceptance rate for the problem may be very low.</p>
+<ul>
+<li>If your acceptance rate is 1 in 16, you will throw away 94% of your work to get the 6% to learn from.</li>
+<li>Meanwhile with GRPO, if 1 out of 16 samples in the group is correct, your algorithm can learn from all 16.</li>
+<li>However, if none of the samples in the group get a reward, the relative advantage for all members collapses to zero and you get nothing. In this case, it would be better to keep generating until we get a correct completion.</li>
+</ul>
+<p>For this reason, we can use RFT until the acceptance rate is high enough for GRPO.</p>
 <!--## Rotary Positional Embeddings (RoPE)-->
 <h2 id="speculative-decoding">Speculative Decoding</h2>
 <p>The idea of speculative decoding is to use a small &ldquo;draft&rdquo; model to speed up inference for the big &ldquo;target&rdquo; model. This is possible because the target model can predict probabilities for multiple sequences in parallel. For example, a small draft model might predict:</p>
