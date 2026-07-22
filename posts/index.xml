@@ -3082,8 +3082,8 @@ def calc_per_token_entropy(probabilities):
 <p>There is a connection to <a href="/posts/perplexity/">perplexity</a>, which is $ e^{H(x)} $, where $H(x)$ is the entropy of the distribution.</p>
 <!--## Grouped Query Attention-->
 <h2 id="group-relative-preference-optimization-grpo">Group-Relative Preference Optimization (GRPO)</h2>
-<p>GRPO can be seen as an improvement to PPO. Both are RL algorithms which attempt to solve the problem of determining how good a rollout is so that we can apply a reward.</p>
-<p>In PPO, we use a second model (the &ldquo;critic&rdquo;) to score rollouts, and in practice this model may on the order of the same size as the model we&rsquo;re training. This is both slow and resource intensive.</p>
+<p>GRPO is an RL algorithm for LLM post-training which attempts to determine how good a rollout is in order to apply a reward to it.</p>
+<p>GRPO has some advantages over more traditional PPO. In PPO, we use a second model (the &ldquo;critic&rdquo;) to score rollouts, and in practice this model may on the order of the same size as the model we&rsquo;re training. This is both slow and resource intensive.</p>
 <p>In GRPO, we get rid of the critic entirely.</p>
 <pre><code class="language-python">prompt = 'write a python function to determine if a number is prime'
 group_size = 8 # usually between 4 and 16
@@ -3107,7 +3107,7 @@ advantages = [(reward-mean_reward)/std_reward for reward in rewards]
 def kl_divergence(p:list[float], q:list[float]) -&gt; float:
   total = 0
   for a,b in zip(p, q):
-    total += p * log(a/b) if p != 0 else 0
+    total += a * log(a/b) if p != 0 else 0
   return total
 </code></pre>
 <p>Note that KL-divergence is not symmetrical.</p>
@@ -3141,7 +3141,7 @@ def layer_norm(sequence, eps=1e-5):
     result = []
     for emb,mean,variance in zip(sequence, means, variances):
         emb -= mean
-        emb /= np.sqrt(variance) + eps
+        emb /= np.sqrt(variance + eps)
         result.append(emb)
     return np.array(result)
 </code></pre>
@@ -3173,6 +3173,7 @@ def layer_norm(sequence, eps=1e-5):
 <h3 id="tensor-parallel">Tensor parallel</h3>
 <p>This is used when even a single layer cannot fit on a device.</p>
 <p>The individual tensors (weights and activations) can be split across multiple devices to enable a huge matrix multiplications.</p>
+<!--## REINFORCE-->
 <h2 id="reinforcement-learning-from-human-feedback-rlhf">Reinforcement Learning from Human Feedback (RLHF)</h2>
 <p>RLHF has three steps:</p>
 <ol>
@@ -3218,6 +3219,7 @@ def layer_norm(sequence, eps=1e-5):
 </ul>
 <p>If the target model rejects a token that the draft model proposes, none of its subsequent tokens will be considered. The draft model will rerun with all of the accepted tokens and propose new tokens.</p>
 <p>This is how it is possible to speed up the target model&rsquo;s inference without losing quality.</p>
+<!--## Supervised Fine Tuning (SFT)-->
 <!--## SwiGLU-->
 <h2 id="wordpiece-tokenization">Wordpiece Tokenization</h2>
 <p>An algorithm for training a tokenizer with a slightly more advanced rule for merging tokens. For example, consider the following pair frequencies in a corpus <code>abracadabra</code>:</p>
