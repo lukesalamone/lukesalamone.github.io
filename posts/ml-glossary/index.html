@@ -62,7 +62,7 @@
 	<meta itemprop="description" content="Batch Norm Normalizes the mean and variance for all instances of a feature in a batch. Commonly used in older architectures like CNNs by smoothing out the loss landscape and allowing for higher learning rates and faster convergence. Example implementation:">
 	<meta itemprop="datePublished" content="2022-06-26T22:45:18-07:00">
 	<meta itemprop="dateModified" content="2022-06-26T22:45:18-07:00">
-	<meta itemprop="wordCount" content="2265">
+	<meta itemprop="wordCount" content="1979">
 	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
 	<meta itemprop="keywords" content="Machine-Learning">
 
@@ -137,7 +137,7 @@
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
-        11 minutes
+        10 minutes
 
         
       </p>
@@ -331,16 +331,6 @@ def layer_norm(sequence, eps=1e-5):
 </ol>
 <p>2a. Calculate the expected reward $ E[R(x,y)] $</p>
 <p>2b. Penalize large KL-divergence with the old policy</p>
-<p>Pros</p>
-<p>Stable (no advantage-collapse / KL-drift / dead-group pathologies), debuggable (you inspect data, yield, and faithfulness rate — not a black-box optimization that took real effort to autopsy), off-policy (use a teacher stronger than the student), clean credit assignment (every token of an accepted trace is a positive, no noisy advantage estimation), and it optimizes the actual deliverable rather than a proxy.</p>
-<p>Cons / risks (honest)</p>
-<ul>
-<li>Teacher-ceiling cap. RFT can&rsquo;t exceed what passes the filter — pure imitation caps you near the teacher+oracle&rsquo;s strength. If you later want to push past the MoE&rsquo;s chess ability, imitation won&rsquo;t get you there. But v8 shows GRPO&rsquo;s exploration doesn&rsquo;t actually cash out on this 3B, so today this is a theoretical loss, not one you&rsquo;re realizing.</li>
-<li>Positives-only, no negative gradient. RFT never says &ldquo;do less of this,&rdquo; so it sharpens the decision boundary less directly and can be slow to unlearn habits (SAN answers, confabulation). Mitigation: DPO on (accepted vs rejected) pairs — &ldquo;RL-lite&rdquo; that gives the negative signal without GRPO&rsquo;s plateau dynamics. Good middle option after round 0.</li>
-<li>Rich-get-richer. Iterating on the model&rsquo;s own accepted traces improves it where it&rsquo;s already OK and stalls where it&rsquo;s weak (few passing samples exactly on the hard positions). Mitigation: keep the teacher in the loop for low-yield positions.</li>
-<li>Ritual collapse. Repeated SFT on filtered data is precisely how v3–v8 produced templated ritual. Same guards required: n-gram dedup, teacher/temperature diversity, and — critically — the causal-reliance eval (corrupt the tool outputs, the move must change). RFT doesn&rsquo;t prevent &ldquo;faithful-looking but decorative&rdquo; traces any more than RL does.</li>
-<li>Inherited teacher errors. The oracle catches move-mistakes, but a subtle reasoning misconception the teacher shares across accepted-move traces can propagate. The faithfulness filter helps, imperfectly.</li>
-</ul>
 <h2 id="rejection-samplingrejection-fine-tuning">Rejection Sampling/Rejection Fine-Tuning</h2>
 <p>The idea of rejection sampling is to generate multiple responses or &ldquo;roll-outs&rdquo; to an input. Typically we will increase sampling temperature  Responses which do not meet some criterion are &ldquo;rejected&rdquo; or thrown away. This leaves the responses which do pass the criterion. If we fine-tune on these examples, this is called rejection fine-tuning.</p>
 <p>RFT has some similarity with RL techniques like GRPO, which also involve using multiple roll-outs.</p>
@@ -437,7 +427,7 @@ def layer_norm(sequence, eps=1e-5):
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        2265 Words
+        1979 Words
       </p>
 
       <p>
