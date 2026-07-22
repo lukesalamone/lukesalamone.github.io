@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+
+    
+
+<meta name="author" content="Luke Salamone">
+<meta name="keywords" content=", machine-learning" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://blog.lukesalamone.com/posts/ml-glossary/" />
+
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:description" content=""/>
+
+<script>
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
+</script>
+
+<script data-goatcounter="https://api.lukesalamone.com/count" async src="../../js/count.js"></script>
+
+
+    <title>
+        
+            Machine Learning Glossary :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+	<meta itemprop="name" content="Machine Learning Glossary">
+	<meta itemprop="description" content="Batch Norm Normalizes the mean and variance for all instances of a feature in a batch. Commonly used in older architectures like CNNs by smoothing out the loss landscape and allowing for higher learning rates and faster convergence. Example implementation:">
+	<meta itemprop="datePublished" content="2022-06-26T22:45:18-07:00">
+	<meta itemprop="dateModified" content="2022-06-26T22:45:18-07:00">
+	<meta itemprop="wordCount" content="1682">
+	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta itemprop="keywords" content="Machine-Learning">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
+	<meta name="twitter:title" content="Machine Learning Glossary">
+	<meta name="twitter:description" content="Batch Norm Normalizes the mean and variance for all instances of a feature in a batch. Commonly used in older architectures like CNNs by smoothing out the loss landscape and allowing for higher learning rates and faster convergence. Example implementation:">
+
+
+
+    <meta property="og:url" content="https://blog.lukesalamone.com/posts/ml-glossary/">
+	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+	<meta property="og:title" content="Machine Learning Glossary">
+	<meta property="og:description" content="Batch Norm Normalizes the mean and variance for all instances of a feature in a batch. Commonly used in older architectures like CNNs by smoothing out the loss landscape and allowing for higher learning rates and faster convergence. Example implementation:">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2022-06-26T22:45:18-07:00">
+		<meta property="article:modified_time" content="2022-06-26T22:45:18-07:00">
+		<meta property="article:tag" content="Machine-Learning">
+		<meta property="og:image" content="https://blog.lukesalamone.com/img/logo.png">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2022-06-26 22:45:18 -0700 PDT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="Search here" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        8 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://blog.lukesalamone.com/posts/ml-glossary/">Machine Learning Glossary</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      },
+      extensions: ["AMSmath.js", "AMSsymbols.js"]
+    }
+  }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<h2 id="batch-norm">Batch Norm</h2>
+<p>Normalizes the mean and variance for all instances of a feature in a batch. Commonly used in older architectures like CNNs by smoothing out the loss landscape and allowing for higher learning rates and faster convergence. Example implementation:</p>
+<pre><code class="language-python">def batch_norm(features: np.array, i: int, eps=1e-5) -&gt; np.array:
+    x = features[:,i]
+    mean = x.mean()
+    variance = x.var()
+    x = (x - mean) / np.sqrt(variance + eps)
+    return x
+</code></pre>
+<p>In practice, we include a gamma and beta parameter which are learnable parameters of length F, where F is the number of features. These parameters that allow the network to undo .</p>
+<pre><code class="language-python">def batch_norm2(
+        features: np.array,
+        gamma: np.array,
+        beta: np.array,
+        eps=1e-5
+    ):
+        mean = features.mean(axis=0)
+        variance = features.var(axis=0)
+        normalized = (features - mean) / np.sqrt(variance + eps)
+        return gamma * normalized + beta
+</code></pre>
+<p>See also: <a href="../../posts/ml-glossary/#layer-norm">Layer norm</a></p>
+<h2 id="byte-pair-encoding-bpe">Byte Pair Encoding (BPE)</h2>
+<p>A tokenization algorithm which iteratively merges the most frequent pair of tokens. For example, let&rsquo;s take the sentence <code>snug_as_a_bug_in_a_rug</code> as our corpus (underscores used to make things easier to see).</p>
+<p>First, we break up the text into its individual characters:</p>
+<pre><code class="language-python">corpus: ['s', 'n', 'u', 'g', '_', 'a', 's', '_', 'a', '_', 'b', 'u', 'g', '_', 'i', 'n', '_', 'a', '_', 'r', 'u', 'g']
+vocab: ['s', 'n', 'u', 'g', '_', 'a', 'b', 'i', 'r']
+</code></pre>
+<p>After splitting by chars, we have 9 unique tokens in our vocabulary. Next, we merge the most common pair in our vocabulary, <code>('u','g') =&gt; 'ug'</code> and retokenize:</p>
+<pre><code class="language-python">corpus: ['s', 'n', 'ug', '_', 'a', 's', '_', 'a', '_', 'b', 'ug', '_', 'i', 'n', '_', 'a', '_', 'r', 'ug']
+vocab: ['s', 'n', 'u', 'g', '_', 'a', 'b', 'i', 'r', 'ug']
+</code></pre>
+<p>Then, we find that the most common pair is <code>('_','a')</code> which gives us the next merged token <code>&quot;_a&quot;</code>:</p>
+<pre><code class="language-python">corpus: ['s', 'n', 'ug', '_a', 's', '_a', '_', 'b', 'ug', '_', 'i', 'n', '_a', '_', 'r', 'ug']
+vocab: ['s', 'n', 'u', 'g', '_', 'a', 'b', 'i', 'r', 'ug', '_a']
+</code></pre>
+<p>We can repeat this process until the vocabulary is the size we need.</p>
+<p>See also: <a href="../../posts/ml-glossary/#wordpiece-tokenization">Wordpiece tokenization</a></p>
+<!--## Direct Preference Optimization-->
+<h2 id="distillation">Distillation</h2>
+<p>Distillation is the task of training a smaller &ldquo;student&rdquo; model to behave like a larger &ldquo;teacher&rdquo; model.</p>
+<p>Classically, this has meant directly using the teacher&rsquo;s output distribution, and minimizing <code>KL(p_teacher || p_student)</code>.</p>
+<p>Less formally, the larger teacher model can be used as a pseudo-labeler of real inputs, and a smaller student can learn from those labels.</p>
+<h2 id="entropy">Entropy</h2>
+<p>When training LLMs, we want some level of the model&rsquo;s uncertainty when generating tokens. To do this, we multiply the probability by the negative log of the probability.</p>
+<pre><code class="language-python">import math
+def calc_per_token_entropy(probabilities):
+    entropy = 0
+    for probability in probabilities:
+        entropy -= probability * math.log(probability)
+    return entropy
+</code></pre>
+<p>The negative log of the probability can be thought of as the &ldquo;surprise&rdquo; from that token: high probability tokens have very little surprise to them, and low probability tokens have surprise approaching infinity. Then, multiplying by the probability itself helps to balance the total by preventing it from exploding.</p>
+<p>There is a connection to <a href="../../posts/perplexity/">perplexity</a>, which is $ e^{H(x)} $, where $H(x)$ is the entropy of the distribution.</p>
+<!--## Grouped Query Attention-->
+<h2 id="group-relative-preference-optimization-grpo">Group-Relative Preference Optimization (GRPO)</h2>
+<p>GRPO can be seen as an improvement to PPO. Both are RL algorithms which attempt to solve the problem of determining how good a rollout is so that we can apply a reward.</p>
+<p>In PPO, we use a second model (the &ldquo;critic&rdquo;) to score rollouts, and in practice this model may on the order of the same size as the model we&rsquo;re training. This is both slow and resource intensive.</p>
+<p>In GRPO, we get rid of the critic entirely.</p>
+<pre><code class="language-python">prompt = 'write a python function to determine if a number is prime'
+group_size = 8 # usually between 4 and 16
+responses = [
+    generate_response(model, prompt, temp=1.1)
+    for _ in range(group_size)
+]
+
+rewards = [
+    calculate_reward(response) for response in responses
+]
+
+mean_reward = np.mean(rewards)
+std_reward = np.std(rewards)
+advantages = [(reward-mean_reward)/std_reward for reward in rewards]
+
+</code></pre>
+<h2 id="kl-divergence">KL-Divergence</h2>
+<p>A measurement of the &ldquo;distance&rdquo; between two distributions.</p>
+<pre><code class="language-python">from math import log
+
+def kl_divergence(p:list[float], q:list[float]) -&gt; float:
+  total = 0
+  for a,b in zip(p, q):
+    total += p * log(a/b) if p != 0 else 0
+  return total
+</code></pre>
+<p>Note that KL-divergence is not symmetrical.</p>
+<p>Where it shows up:</p>
+<ul>
+<li>In RLHF, it is used to measure the change between old policy and the updated policy, and prevent it from drifting too far using a KL penalty.</li>
+<li>In knowledge distillation, we directly train on minimizing <code>KL(p_teacher||p_student)</code> on the distribution of logits.</li>
+</ul>
+<h2 id="layer-norm">Layer Norm</h2>
+<p>This could probably be called &ldquo;token norm&rdquo; and avoid a lot of confusion since in practice this is often used in LLMs.</p>
+<pre><code class="language-python">
+# hypothetical input embeddings for &quot;ai is cool&quot;
+sequence = np.array([
+    [0.3, 0.1, 0.4, 0.1], # &quot;ai&quot;
+    [0.5, 0.9, 0.2, 0.6], # &quot;is&quot;
+    [0.5, 0.3, 0.5, 0.8]  # &quot;fun&quot;
+])
+
+def layer_norm(sequence, eps=1e-5):
+    &quot;&quot;&quot;
+    Example for learning, not vectorized.
+
+    Here, `sequence` has dimensions (seq_length, emb_dim)
+    and we are ignoring the batch dimension.
+    &quot;&quot;&quot;
+    means = []
+    variances = []
+    for emb in sequence:
+        means.append(emb.mean())
+        variances.append(emb.var())
+    result = []
+    for emb,mean,variance in zip(sequence, means, variances):
+        emb -= mean
+        emb /= np.sqrt(variance) + eps
+        result.append(emb)
+    return np.array(result)
+</code></pre>
+<p>Today, <a href="https://sebastianraschka.com/faq/docs/rmsnorm-vs-layernorm.html">many more modern LLMs use RMSNorm instead</a>, which skips subtracting the mean.</p>
+<p>See also: <a href="../../posts/ml-glossary/#batch-norm">Batch norm</a></p>
+<h2 id="offline-rl">Offline RL</h2>
+<p>Models are trained from a fixed dataset of preferences rather than the rollouts they would naturally generate. This is much faster, but can be less useful if the training data distribution shifts far from the the model&rsquo;s actual predictions.</p>
+<p>Examples of offline RL algorithms include DPO, IPO, and KTO.</p>
+<h2 id="online-rl">Online RL</h2>
+<p>Models generate rollouts, get scored, and update from that signal. Considered stronger than offline RL because the model is getting direct feedback on its own predictions. However, the scoring itself can be expensive, and gradient updates must wait for the scores to come back.</p>
+<p>Examples of online RL algorithms include PPO, GRPO, and REINFORCE.</p>
+<h2 id="parallelism">Parallelism</h2>
+<h3 id="data-parallel">Data parallel</h3>
+<p>Replicate the same model over all devices.</p>
+<ol>
+<li>For each batch, split the data between devices.</li>
+<li>Each copy computes a forward pass, a loss, and a backwards pass to compute local gradients.</li>
+<li>Each device reports its gradients.</li>
+<li>Each copy is updated with the same average gradient.</li>
+</ol>
+<h3 id="model-parallel">Model parallel</h3>
+<p>This is used when a model is too large to fit on a single device.</p>
+<p>The model can be split between multiple devices, with each device computing its part, handing it off to the next device, then waiting for the next batch.</p>
+<p>This is very slow. Pipeline parallelism is an improvement to Model Parallelism.</p>
+<h3 id="pipeline-parallel">Pipeline parallel</h3>
+<p>The idea here is to reduce wait time between devices.</p>
+<p>Rather than a single device computing and then waiting as in model parallelism, a device finishes its forward pass on a &ldquo;micro-batch&rdquo; and then immediately starts working on the next &ldquo;micro-batch&rdquo;.</p>
+<p>Similarly, backwards passes flow in reverse.</p>
+<h3 id="tensor-parallel">Tensor parallel</h3>
+<p>This is used when even a single layer cannot fit on a device.</p>
+<p>The individual tensors (weights and activations) can be split across multiple devices to enable a huge matrix multiplications.</p>
+<h2 id="reinforcement-learning-from-human-feedback-rlhf">Reinforcement Learning from Human Feedback (RLHF)</h2>
+<p>RLHF has three steps:</p>
+<ol>
+<li>Train a reward model on human preference pairs. This is very similar to a standard pairwise Learn-to-Rank model where we train on <code>(input, positive, negative)</code> triplets. You can simply add a linear layer to the top of the LLM to create <code>R(x,y)</code> which generates the ranking scores.</li>
+</ol>
+<p>2a. Calculate the expected reward $ E[R(x,y)] $</p>
+<p>2b. Penalize large KL-divergence with the old policy</p>
+<!--## Rotary Positional Embeddings (RoPE)-->
+<h2 id="speculative-decoding">Speculative Decoding</h2>
+<p>The idea of speculative decoding is to use a small &ldquo;draft&rdquo; model to speed up inference for the big &ldquo;target&rdquo; model. This is possible because the target model can predict probabilities for multiple sequences in parallel. For example, a small draft model might predict:</p>
+<pre><code class="language-python">draft_tokens = ['take', 'me', 'out', 'to', 'the', 'ballgame']
+</code></pre>
+<p>Now, the target model can simply predict the probabilities for each of these in parallel:</p>
+<pre><code class="language-python">probabilities = model([
+  {'token': 'take'},
+  {'token': 'me', 'prefix':['take']},
+  {'token': 'out', 'prefix':['take', 'me']},
+  {'token': 'to', 'prefix':['take', 'me', 'out']},
+  {'token': 'the', 'prefix':['take', 'me', 'out', 'to']},
+  {'token': 'ballgame', 'prefix':['take', 'me', 'out', 'to', 'the']},
+])
+</code></pre>
+<p>Because we&rsquo;re not just using greedy decoding, we need to accept tokens from the draft model probabilistically. In other words, we accept a token with probability <code>p_accept(token) = min(1, target_prob(token) / draft_prob(token))</code>.</p>
+<ul>
+<li>So if the target model thinks the token is a lot less likely than the draft model does, the ratio will be small and <code>p_accept</code> will be small for that token.</li>
+<li>On the other hand, if the target model agrees with the draft model the ratio will be close to 1 and <code>p_accept</code> will be close to 1.</li>
+<li>In the case where the target model thinks the token is more likely than the draft model did, it&rsquo;s somewhat of a happy accident that the token was actually selected by the draft model but the acceptance probability will be 1.</li>
+</ul>
+<p>If the target model rejects a token that the draft model proposes, none of its subsequent tokens will be considered. The draft model will rerun with all of the accepted tokens and propose new tokens.</p>
+<p>This is how it is possible to speed up the target model&rsquo;s inference without losing quality.</p>
+<!--## SwiGLU-->
+<h2 id="wordpiece-tokenization">Wordpiece Tokenization</h2>
+<p>An algorithm for training a tokenizer with a slightly more advanced rule for merging tokens. For example, consider the following pair frequencies in a corpus <code>abracadabra</code>:</p>
+<pre><code class="language-python">Counter({
+    ('a', 'b'): 4,
+    ('b', 'a'): 3,
+    ('a', 'c'): 2,
+    ('d', 'a'): 2,
+    ('c', 'a'): 1,
+    ('c', 'd'): 1,
+    ('a', 'd'): 1,
+})
+</code></pre>
+<p>Under byte-pair encoding tokenization, we would automatically merge <code>('a','b') =&gt; 'ab'</code>. However, wordpiece tokenization also takes the frequencies of the tokens into account individually as well:</p>
+<pre><code class="language-python">Counter({
+    'a':7,
+    'b':4,
+    'c':2,
+    'd':2
+})
+</code></pre>
+<p>In wordpiece tokenization, we merge the tokens when the pair maximizes <code>score(x,y) = freq(xy) / (freq(x) * freq(y))</code>. In other words, we penalize pairs if they are made up of common tokens. Let&rsquo;s compute the scores:</p>
+<pre><code class="language-python">scores = {
+    ('a', 'b'): 4÷(7*4) = 0.14,
+    ('b', 'a'): 3÷(4*7) = 0.11,
+    ('a', 'c'): 2÷(7*2) = 0.14,
+    ('d', 'a'): 2÷(2*7) = 0.14,
+    ('c', 'a'): 1÷(2*7) = 0.04,
+    ('c', 'd'): 1÷(2*2) = 0.25,
+    ('a', 'd'): 1÷(7*2) = 0.04,
+}
+</code></pre>
+<p>In this case, <code>('c','d')</code> is actually the winning pair because it is composed of rare tokens.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://blog.lukesalamone.com/tags/machine-learning/">machine-learning</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1682 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2022-06-26 22:45
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://blog.lukesalamone.com/posts/winning-faster-than-stockfish/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Opponent Modeling Wins 2× Faster Than Stockfish</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://blog.lukesalamone.com/posts/alphabet-chess/">
+                <span class="button__text">Alphabet Chess</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+  </main>
+  <div id="shadow-search" class="posts">
+    <div class="posts-group">
+      <div class="post-year">2022</div>
+      <ul class="posts-list"></ul>
+    </div>
+  </div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2026 Luke Salamone</span>&nbsp;|&nbsp;
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.7e1ba68c25d6e41e7592198004a4ecb52b58be9492e72c6b3581d76cad339a8a39dc0ee1393a1c95d459bcd189ba0b1d571a38fe8619329e90f7ae52e9b6542e.js" integrity="sha512-fhumjCXW5B51khmABKTstStYvpSS5yxrNYHXbK0zmoo53A7hOTocldRZvNGJugsdVxo4/oYZMp6Q965S6bZULg=="></script>
+
+
+
+
+
+
+    </body>
+</html>

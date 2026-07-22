@@ -64,7 +64,7 @@ You can see it in action on my resume page.
 Each square represents 1 kB. The majority of overall size reduction came from removing the ORT dependency. However, other changes enabled much better representation quality than the baseline.">
 	<meta itemprop="datePublished" content="2026-06-19T22:24:12-07:00">
 	<meta itemprop="dateModified" content="2026-06-19T22:24:12-07:00">
-	<meta itemprop="wordCount" content="1961">
+	<meta itemprop="wordCount" content="1965">
 	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
 	<meta itemprop="keywords" content="Search,Neural-Networks,Distillation,Quantization">
 
@@ -282,7 +282,7 @@ Each square represents 1 kB. The majority of overall size reduction came from re
 <h2 id="conclusion">Conclusion</h2>
 <p>I learned a few things here. First, small models can work in narrow domains, and even outperform much larger models.</p>
 <p>Second, having an eval set we can continuously test ideas against helps tremendously. Some things, like adding an attention pooling head, seem like they should work. But when they are clearly outclassed by things like late interaction with MaxSim, it allows us to move on to optimizing other parts of the model.</p>
-<p>Third, although none of these tricks are particularly exotic, it&rsquo;s good to have a sense of what works and what doesn&rsquo;t. Late interaction vectors really work, although they have a cost tradeoff. Encoders ship with a ton of tokens which aren&rsquo;t used. Ternary quantization really works, although the errors probably become more pronounced</p>
+<p>Third, although none of these tricks are particularly exotic, it&rsquo;s good to have a sense of what works and what doesn&rsquo;t. Late interaction vectors really work, although they have a cost tradeoff. Encoders ship with a ton of tokens which aren&rsquo;t used. Ternary quantization really works, although the errors probably become more pronounced as the domain expands.</p>
 
       </div>
     </article>
@@ -311,7 +311,7 @@ Each square represents 1 kB. The majority of overall size reduction came from re
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1961 Words
+        1965 Words
       </p>
 
       <p>
