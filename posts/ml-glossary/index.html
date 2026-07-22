@@ -62,7 +62,7 @@
 	<meta itemprop="description" content="Batch Norm Normalizes the mean and variance for all instances of a feature in a batch. Commonly used in older architectures like CNNs by smoothing out the loss landscape and allowing for higher learning rates and faster convergence. Example implementation:">
 	<meta itemprop="datePublished" content="2022-06-26T22:45:18-07:00">
 	<meta itemprop="dateModified" content="2022-06-26T22:45:18-07:00">
-	<meta itemprop="wordCount" content="1979">
+	<meta itemprop="wordCount" content="2201">
 	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
 	<meta itemprop="keywords" content="Machine-Learning">
 
@@ -137,7 +137,7 @@
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
-        10 minutes
+        11 minutes
 
         
       </p>
@@ -215,7 +215,16 @@ vocab: ['s', 'n', 'u', 'g', '_', 'a', 'b', 'i', 'r', 'ug', '_a']
 </code></pre>
 <p>We can repeat this process until the vocabulary is the size we need.</p>
 <p>See also: <a href="../../posts/ml-glossary/#wordpiece-tokenization">Wordpiece tokenization</a></p>
-<!--## Direct Preference Optimization-->
+<h2 id="direct-preference-optimization">Direct Preference Optimization</h2>
+<p><a href="https://arxiv.org/pdf/2305.18290">Direct preference optimization</a> (DPO) is a contrastive learning method, often used for fine-tuning an LLM to align with human preferences.</p>
+<p>Like other contrastive learning methods (for example those used to fine-tune encoders) DPO works with <code>(anchor, positive, negative)</code> triplets. In this case, the anchor is the prompt, the positive sample is the preferred completion, and the negative sample is the bad completion. By computing the probabilities the models assign to each of the responses, we can train the model to assign higher probabilities to the preferred response.</p>
+<p>DPO is simpler, more stable, and more lightweight than more traditional methods like PPO and RLHF. It does not require a second model at training time like PPO and RLHF do. It doesn&rsquo;t require a separately trained reward model at all. The model is updated by simple gradient descent rather than generating during training.</p>
+<p>However, since DPO is technically off-policy from an RL perspective, since the samples it is scoring are not actually generated from the model.</p>
+<p>DPO pairs technically do not need to be created based on human preferences. Any reward model will do. For example:</p>
+<ul>
+<li>If we&rsquo;re training a chess model, we can use a chess engine to score potential moves</li>
+<li>If we&rsquo;re training a code generation model, we can use the compiler&rsquo;s feedback to create positive and negative samples</li>
+</ul>
 <h2 id="distillation">Distillation</h2>
 <p>Distillation is the task of training a smaller &ldquo;student&rdquo; model to behave like a larger &ldquo;teacher&rdquo; model.</p>
 <p>Classically, this has meant directly using the teacher&rsquo;s output distribution, and minimizing <code>KL(p_teacher || p_student)</code>.</p>
@@ -427,7 +436,7 @@ def layer_norm(sequence, eps=1e-5):
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1979 Words
+        2201 Words
       </p>
 
       <p>
