@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Untagged on Luke Salamone&#39;s Blog</title>
+		<link>https://blog.lukesalamone.com/tags/untagged/</link>
+		<description>Recent content in Untagged on Luke Salamone&#39;s Blog</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 08 Mar 2021 20:11:28 -0600</lastBuildDate>
+		
+			<atom:link href="https://blog.lukesalamone.com/tags/untagged/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>RL Trading Agent</title>
+				<link>https://blog.lukesalamone.com/posts/rl-trading-agent/</link>
+				<pubDate>Mon, 08 Mar 2021 20:11:28 -0600</pubDate>
+				<guid>https://blog.lukesalamone.com/posts/rl-trading-agent/</guid>
+				<description>&lt;p&gt;Here we will demonstrate an implementation of the paper &lt;a href=&#34;https://www.sciencedirect.com/science/article/abs/pii/S0957417418306134&#34;&gt;Improving financial trading decision using deep Q-learning: Predicting the number of shares, action strategies, and transfer learning&lt;/a&gt; by Jeong et al. This paper covers three separate deep Q-learning architectures, transfer learning, two different means of index component rankings, and action strategies for dealing with confused markets.&lt;/p&gt;&#xA;&lt;p&gt;Trading agents for finance are nothing new. Previous attempts at creating automated trading systems have used statistical indicators such as moving average to determine how to act at any time. However, most of these agents focus on the action to take, opting to trade a fixed number of shares. This is not realistic for real-world trading scenarios.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

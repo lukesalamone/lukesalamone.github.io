@@ -10,9 +10,16 @@
 		
 		
 		
-			<lastBuildDate>Wed, 16 Nov 2022 15:24:15 -0500</lastBuildDate>
+			<lastBuildDate>Tue, 22 Nov 2022 23:35:04 -0700</lastBuildDate>
 		
 			<atom:link href="https://blog.lukesalamone.com/tags/transformer/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Attention Walkthrough</title>
+				<link>https://blog.lukesalamone.com/posts/attention-walkthrough/</link>
+				<pubDate>Tue, 22 Nov 2022 23:35:04 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/posts/attention-walkthrough/</guid>
+				<description>&lt;p&gt;In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it&amp;rsquo;s easier to understand what&amp;rsquo;s going on.&lt;/p&gt;&#xA;&lt;h2 id=&#34;step-0-define-some-constants&#34;&gt;Step 0: Define some constants&lt;/h2&gt;&#xA;&lt;p&gt;We will use the three tokens &lt;code&gt;[&#39;major&#39;, &#39;league&#39;, &#39;baseball&#39;]&lt;/code&gt; with model dimension 4 (&lt;code&gt;d_model=4&lt;/code&gt;) and two attention heads (&lt;code&gt;num_heads=2&lt;/code&gt;).&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;num_heads = 2&#xA;d_model = 4&#xA;d_k = d_v = d_model // num_heads&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Here we also define the dimensions of the key and value here so that after after concatenation in the multihead attention algorithm, the final result will have dimension &lt;code&gt;(seq_len, d_model)&lt;/code&gt;.&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>A Few Notes on the Transformer</title>
 				<link>https://blog.lukesalamone.com/posts/self-attention/</link>

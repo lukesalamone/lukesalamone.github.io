@@ -189,6 +189,13 @@
 				<description>&lt;figure&gt;&lt;img src=&#34;./img/antipode_land.png&#34;&#xA;&#x9;&#x9;&#x9;alt=&#34;White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.&#34;&gt;&lt;figcaption&gt;&#xA;&#x9;&#x9;&#x9;&lt;p&gt;White areas show points of earth on land whose antipode is also on land. This is only about 8.6% of all of earth&amp;rsquo;s surface.&lt;/p&gt;&#xA;&#x9;&#x9;&lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;If you want to fly across the Pacific Ocean, you&amp;rsquo;ll have to board an airplane and fly around 12 hours. It&amp;rsquo;s pretty slow. A much faster route would be to go directly through the center of the earth. &amp;ldquo;Digging to China&amp;rdquo; was a common expression I heard growing up, with the implication that the opposite side of the globe is somewhere in Asia.&lt;/p&gt;</description>
 			</item>
 			<item>
+				<title>Attention Walkthrough</title>
+				<link>https://blog.lukesalamone.com/posts/attention-walkthrough/</link>
+				<pubDate>Tue, 22 Nov 2022 23:35:04 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/posts/attention-walkthrough/</guid>
+				<description>&lt;p&gt;In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it&amp;rsquo;s easier to understand what&amp;rsquo;s going on.&lt;/p&gt;&#xA;&lt;h2 id=&#34;step-0-define-some-constants&#34;&gt;Step 0: Define some constants&lt;/h2&gt;&#xA;&lt;p&gt;We will use the three tokens &lt;code&gt;[&#39;major&#39;, &#39;league&#39;, &#39;baseball&#39;]&lt;/code&gt; with model dimension 4 (&lt;code&gt;d_model=4&lt;/code&gt;) and two attention heads (&lt;code&gt;num_heads=2&lt;/code&gt;).&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;num_heads = 2&#xA;d_model = 4&#xA;d_k = d_v = d_model // num_heads&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Here we also define the dimensions of the key and value here so that after after concatenation in the multihead attention algorithm, the final result will have dimension &lt;code&gt;(seq_len, d_model)&lt;/code&gt;.&lt;/p&gt;</description>
+			</item>
+			<item>
 				<title>A Few Notes on the Transformer</title>
 				<link>https://blog.lukesalamone.com/posts/self-attention/</link>
 				<pubDate>Wed, 16 Nov 2022 15:24:15 -0500</pubDate>
@@ -348,6 +355,13 @@
 				<pubDate>Wed, 10 Mar 2021 03:03:53 -0600</pubDate>
 				<guid>https://blog.lukesalamone.com/posts/s3-bucket-url/</guid>
 				<description>&lt;p&gt;Assuming your bucket is publicly accessible, the url of your S3 bucket will be&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;http://[bucket-name].s3-website-[region].amazonaws.com&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;For example for &amp;ldquo;mybucket&amp;rdquo; in &amp;ldquo;us-east-1&amp;rdquo; your url will be&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;http://mybucket.s3-website-us-east-1.amazonaws.com&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+			</item>
+			<item>
+				<title>RL Trading Agent</title>
+				<link>https://blog.lukesalamone.com/posts/rl-trading-agent/</link>
+				<pubDate>Mon, 08 Mar 2021 20:11:28 -0600</pubDate>
+				<guid>https://blog.lukesalamone.com/posts/rl-trading-agent/</guid>
+				<description>&lt;p&gt;Here we will demonstrate an implementation of the paper &lt;a href=&#34;https://www.sciencedirect.com/science/article/abs/pii/S0957417418306134&#34;&gt;Improving financial trading decision using deep Q-learning: Predicting the number of shares, action strategies, and transfer learning&lt;/a&gt; by Jeong et al. This paper covers three separate deep Q-learning architectures, transfer learning, two different means of index component rankings, and action strategies for dealing with confused markets.&lt;/p&gt;&#xA;&lt;p&gt;Trading agents for finance are nothing new. Previous attempts at creating automated trading systems have used statistical indicators such as moving average to determine how to act at any time. However, most of these agents focus on the action to take, opting to trade a fixed number of shares. This is not realistic for real-world trading scenarios.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>About My Quick Reference Articles</title>

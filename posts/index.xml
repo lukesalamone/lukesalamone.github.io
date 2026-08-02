@@ -2484,6 +2484,134 @@ def x2lon(x):
         </item>
         
         <item>
+            <title>Attention Walkthrough</title>
+            <link>https://blog.lukesalamone.com/posts/attention-walkthrough/</link>
+            <pubDate>Tue, 22 Nov 2022 23:35:04 -0700</pubDate>
+            
+            <guid>https://blog.lukesalamone.com/posts/attention-walkthrough/</guid>
+            <description>&lt;p&gt;In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it&amp;rsquo;s easier to understand what&amp;rsquo;s going on.&lt;/p&gt;
+&lt;h2 id=&#34;step-0-define-some-constants&#34;&gt;Step 0: Define some constants&lt;/h2&gt;
+&lt;p&gt;We will use the three tokens &lt;code&gt;[&#39;major&#39;, &#39;league&#39;, &#39;baseball&#39;]&lt;/code&gt; with model dimension 4 (&lt;code&gt;d_model=4&lt;/code&gt;) and two attention heads (&lt;code&gt;num_heads=2&lt;/code&gt;).&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;num_heads = 2
+d_model = 4
+d_k = d_v = d_model // num_heads
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here we also define the dimensions of the key and value here so that after after concatenation in the multihead attention algorithm, the final result will have dimension &lt;code&gt;(seq_len, d_model)&lt;/code&gt;.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it&rsquo;s easier to understand what&rsquo;s going on.</p>
+<h2 id="step-0-define-some-constants">Step 0: Define some constants</h2>
+<p>We will use the three tokens <code>['major', 'league', 'baseball']</code> with model dimension 4 (<code>d_model=4</code>) and two attention heads (<code>num_heads=2</code>).</p>
+<pre><code class="language-python">num_heads = 2
+d_model = 4
+d_k = d_v = d_model // num_heads
+</code></pre>
+<p>Here we also define the dimensions of the key and value here so that after after concatenation in the multihead attention algorithm, the final result will have dimension <code>(seq_len, d_model)</code>.</p>
+<h2 id="step-1-get-token-embeddings">Step 1: Get token embeddings</h2>
+<p>Usually we would tokenize the input string &ldquo;major league baseball&rdquo; and then look up each corresponding embedding in the model&rsquo;s token embedding table. Here, we will just use random numbers to illustrate the math.</p>
+<pre><code class="language-python">major = array([0.4, 0.2, 0.1, 0.3])
+league = array([0.5, 0.3, 0. , 0.9])
+baseball = array([0.8, 0.4, 0.2, 0.6])
+
+x = np.stack([major, league, baseball])
+</code></pre>
+<h2 id="step-2-define-weight-matrices">Step 2: Define weight matrices</h2>
+<p>Here we define four weight matrices:</p>
+<ul>
+<li>The query, key, and value weight matrices have dimensions <code>(n_heads, d_model, d_k)</code>. It is pretty standard for <code>d_k == d_v</code>, although it is technically not mathematically required to be the case.</li>
+<li>The output projection matrix is typically a square matrix with dimension <code>(d_model, d_model)</code>.</li>
+</ul>
+<pre><code class="language-python">wq = array([
+    [
+        [0.5, 0.6],
+        [0.8, 0.3],
+        [0.7, 0.2],
+        [0.1, 0.8]
+    ],
+    [
+        [0.3, 0.6],
+        [0.5, 0.8],
+        [0.9, 0.1],
+        [0.5, 0.8]
+    ]
+])
+
+wk = array([
+    [
+        [0. , 0.7],
+        [0.4, 0.3],
+        [0.8, 0.3],
+        [0.7, 0.4]
+    ],
+    [
+        [0.4, 0.9],
+        [0.1, 0.7],
+        [0.6, 0.6],
+        [0.1, 0.6]
+    ]
+])
+
+wv = array([
+    [
+        [0.4, 0.5],
+        [0.7, 0.6],
+        [0.9, 0.8],
+        [0. , 0.3]
+    ],
+    [
+        [0.9, 0.2],
+        [0.2, 0.8],
+        [0.7, 0. ],
+        [0.1, 0.4]
+    ]
+])
+
+wo = array([
+    [0.2, 0.2, 0.6, 0.1],
+    [0.3, 0.2, 0.2, 0.8],
+    [0.2, 0.5, 0.1, 0.3],
+    [0.6, 0.9, 0.5, 0.7]
+])
+</code></pre>
+<h2 id="step-3-the-multi-head-attention-algorithm">Step 3: The multi-head attention algorithm</h2>
+<p>Now that we have our pieces ready, we can compute multihead attention on the input. The following is an example to illustrate the mechanism of multihead attention. Real implementations are vectorized to avoid slow loops.</p>
+<pre><code class="language-python"># the input x has shape (seq_len, d_model)
+def mha(x):
+    heads = []
+    for h in range(num_heads):
+        q = x@wq[h]
+        k = x@wk[h]
+        v = x@wv[h]
+        head = sdpa(q, k, v) # head has shape (seq_len, d_v)
+        heads.append(head)
+    concat = np.concatenate(heads, axis=1)
+    return concat @ wo
+</code></pre>
+<p>As you can see, for each head we:</p>
+<ul>
+<li>compute the query matrix by matmul of input x with the query weights for that head. Notice that in this operation the input <code>x</code> has shape <code>(seq_len, d_model)</code> and the query weights for that head will have shape <code>(d_model, d_k)</code>, so the resulting matrix will have shape <code>(seq_len, d_k)</code>.</li>
+<li>compute the key and value matrices in the same way</li>
+<li>compute the final value of the head after scaled dot product attention between that head&rsquo;s query, key, and value matrices. We will talk about SDPA in the next step</li>
+<li>The final value of the head will have shape <code>(seq_len, d_v)</code>. If we think of these dimensions as rows and columns, the &ldquo;head&rdquo; is really operating on a group of columns to make a &ldquo;skinny&rdquo; matrix.</li>
+</ul>
+<p>Finally, we concatenate all heads over the last dimension. This combines all &ldquo;skinny&rdquo; head matrices into a final matrix with shape <code>(seq_len, d_model)</code>. We then matmul that combined matrix by the out projection matrix.</p>
+<h2 id="step-4-scaled-dot-product-attention">Step 4: Scaled dot product attention</h2>
+<p>Scaled dot product attention here is the same as in single-head attention (i.e. self-attention). The difference here is that we are sending &ldquo;skinnier&rdquo; matrices into the SPDA function.</p>
+<pre><code class="language-python">def sdpa(q, k, v):
+    raw_attn_scores = q@k.T
+    norm_attn_scores = raw_attn_scores / d_k ** 0.5
+    weights = np.stack([
+        softmax(row)
+        for row in norm_attn_scores
+    ])
+    return weights @ v
+</code></pre>
+<p>First, we matmul the query by the transpose of the key. Both the query and key matrices have dimension <code>(seq_len, d_v)</code>, so <code>raw_attn_scores</code> will have dimension <code>(seq_len, seq_len)</code>.</p>
+<p>Next, we divide <code>raw_attn_scores</code> by the square root of <code>d_k</code>. This helps to stabilize training since the variance here scales with <code>d_k</code>, specifically in the softmax in the next step.</p>
+<p>After that, we compute the softmax values for each row. Since each corresponds to a token in the input, this can be thought of as emphasizing which tokens in the sequence are most relevant to each query token. This operation doesn&rsquo;t change the input shape.</p>
+<p>Finally, we matmul the weights with the value matrix, <code>(seq_len, seq_len) x (seq_len, d_v)</code> resulting in a final matrix of <code>(seq_len, d_v)</code>.</p>
+]]></content>
+        </item>
+        
+        <item>
             <title>A Few Notes on the Transformer</title>
             <link>https://blog.lukesalamone.com/posts/self-attention/</link>
             <pubDate>Wed, 16 Nov 2022 15:24:15 -0500</pubDate>
@@ -4613,6 +4741,195 @@ $ perplexity = e^{1.604} = 4.973 $
 <p>For example for &ldquo;mybucket&rdquo; in &ldquo;us-east-1&rdquo; your url will be</p>
 <pre><code>http://mybucket.s3-website-us-east-1.amazonaws.com
 </code></pre>
+]]></content>
+        </item>
+        
+        <item>
+            <title>RL Trading Agent</title>
+            <link>https://blog.lukesalamone.com/posts/rl-trading-agent/</link>
+            <pubDate>Mon, 08 Mar 2021 20:11:28 -0600</pubDate>
+            
+            <guid>https://blog.lukesalamone.com/posts/rl-trading-agent/</guid>
+            <description>&lt;p&gt;Here we will demonstrate an implementation of the paper &lt;a href=&#34;https://www.sciencedirect.com/science/article/abs/pii/S0957417418306134&#34;&gt;Improving financial trading decision using deep Q-learning: Predicting the number of shares, action strategies, and transfer learning&lt;/a&gt; by Jeong et al. This paper covers three separate deep Q-learning architectures, transfer learning, two different means of index component rankings, and action strategies for dealing with confused markets.&lt;/p&gt;
+&lt;p&gt;Trading agents for finance are nothing new. Previous attempts at creating automated trading systems have used statistical indicators such as moving average to determine how to act at any time. However, most of these agents focus on the action to take, opting to trade a fixed number of shares. This is not realistic for real-world trading scenarios.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>Here we will demonstrate an implementation of the paper <a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417418306134">Improving financial trading decision using deep Q-learning: Predicting the number of shares, action strategies, and transfer learning</a> by Jeong et al. This paper covers three separate deep Q-learning architectures, transfer learning, two different means of index component rankings, and action strategies for dealing with confused markets.</p>
+<p>Trading agents for finance are nothing new. Previous attempts at creating automated trading systems have used statistical indicators such as moving average to determine how to act at any time. However, most of these agents focus on the action to take, opting to trade a fixed number of shares. This is not realistic for real-world trading scenarios.</p>
+<p>This repository contains all of the code you&rsquo;ll need to train and run a deep-Q agent, but if you&rsquo;d like a deeper understanding of how it all works we&rsquo;ve included a tutorial below.</p>
+<h1 id="tutorial-overview">Tutorial Overview</h1>
+<p>After following this tutorial you will have completed the following:</p>
+<ul>
+<li>Scraped four different stock indices for daily stock data trained</li>
+<li>Trained three deep-Q trading architectures:
+<ul>
+<li>NumQ, a simple feed-forward network which uses a single branch to determine both the action and number of shares to trade.</li>
+<li>NumDReg-AD, an action-dependent network with a branch controlling the action to take and another branch controlling the number of shares to trade.</li>
+<li>NumDReg-ID, an action-independent network with two branches as above, but with the number of shares entirely independent of the action taken.</li>
+</ul>
+</li>
+<li>Scraped all components of the four stock indices used above and classified the components using two different methodologies.</li>
+<li>Trained an autoencoder, creating a neural basis for stock similarity within an index.</li>
+<li>Pretrained multiple models on groups of component stocks within each index.</li>
+<li>Trained final models on index data.</li>
+<li>Drawn beautiful charts displaying your results.</li>
+</ul>
+<p>This tutorial assumes a basic understanding of Python and Pytorch. If you would like to brush up on Pytorch we highly recommend their <a href="https://pytorch.org/tutorials/">tutorials</a>.</p>
+<h1 id="scraping-stock-indices">Scraping stock indices</h1>
+<p>This repository contains a file called <code>download_stock_data.py</code>. Edit this file to include the names of the components for each of the following stock indices:</p>
+<ul>
+<li>Dow Jones Industrial Average (<code>^DJI</code>)</li>
+<li>S&amp;P 500 (<code>^GSPC</code>)</li>
+<li>NASDAQ (<code>^IXIC</code>)</li>
+<li>New York Stock Exchange (<code>^NYSE</code>)</li>
+</ul>
+<pre><code class="language-python">INDEX_NAME = 'ixic'
+COMPONENTS_LIST = ['OPTT', 'NMRK', 'SCOA', ...]
+</code></pre>
+<p>Running this file will save each of the components into a directory <code>raw/{index_name}/</code> with each component saved as a CSV file.</p>
+<h1 id="numq">NumQ</h1>
+<p>The Jeong paper experiments with three architectures for trading. The first and simplist of these architectures is called NumQ which uses a single branch of fully-connected layers to determine both the action to take and the ratios for those actions. Its structure is shown below:</p>
+<p><img src="src/img/numq.png" alt="numq architecture"></p>
+<p>This can be succinctly represented in pytorch as a series of <code>torch.nn.Linear</code> layers:</p>
+<pre><code class="language-python">class NumQModel(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.fc1 = nn.Linear(in_features=200, out_features=200, bias=True)
+        self.fc2 = nn.Linear(in_features=200, out_features=100, bias=True)
+        self.fc3 = nn.Linear(in_features=100, out_features=50, bias=True)
+        self.fc_q = nn.Linear(in_features=50, out_features=3, bias=True)
+
+    def forward(self, x: Tensor) -&gt; Tuple[Tensor, Tensor]:
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+
+        q = self.fc_q(F.relu(x))
+        r = F.softmax(self.fc_q(torch.sigmoid(x)))
+
+        return q, r
+
+</code></pre>
+<p>Of note in this model are the return values of the <code>forward()</code> function. Rather than simply returning one result of a forward-pass through the network, the NumQ network will return two values: a list of Q values associated with the input, and the ratios for each of the three actions (BUY, HOLD, SELL). When in use, the Q values determine which action will be taken, while the ratios determine with how many shares the action will be executed with.</p>
+<h1 id="numdreg-ad">NumDReg-AD</h1>
+<p>The second model is a bit more complex. It contains a branch for determining the Q values associated with the input, as well as a separate branch for determining the numbers of shares to trade.</p>
+<p><img src="src/img/numdregad.png" alt="numdreg-ad architecture"></p>
+<p>This architecture is quite a bit more involved than NumQ. In fact, this increase in complexity motivates a reduction in each of the fully-connected layers in the network from those in NumQ: 100, 50, 20 versus the 200, 100, 50 used in NumQ. In spite of this adjustment, this and the next model, NumDReg-ID, need to be trained using a three-step training process. The training process will be discussed later on.</p>
+<pre><code class="language-python">class NumDRegModel(nn.Module):
+    def __init__(self, method):
+        super().__init__()
+
+        # Set method
+        self.method = method
+
+        # Training step
+        self.step = 0
+
+        # root
+        self.fc1 = nn.Linear(in_features=200, out_features=100, bias=True)
+
+        # action branch
+        self.fc2_act = nn.Linear(in_features=100, out_features=50, bias=True)
+        self.fc3_act = nn.Linear(in_features=50, out_features=20, bias=True)
+        self.fc_q = nn.Linear(in_features=20, out_features=3, bias=True)
+
+        # number branch
+        self.fc2_num = nn.Linear(in_features=100, out_features=50, bias=True)
+        self.fc3_num = nn.Linear(in_features=50, out_features=20, bias=True)
+        self.fc_r = nn.Linear(in_features=20, out_features=(3 if self.method == NUMDREG_AD else 1), bias=True)
+
+    def forward(self, x: Tensor) -&gt; Tuple[Tensor, Tensor]:
+        # Root
+        x = F.relu(self.fc1(x))
+
+        # Action branch
+        x_act = F.relu(self.fc2_act(x))
+        x_act = F.relu(self.fc3_act(x_act))
+        q = self.fc_q(x_act)
+
+        if self.step == 1:
+            # Number branch based on q values
+            r = F.softmax(self.fc_q(torch.sigmoid(x_act)))
+        else:
+            # Number branch
+            x_num = F.relu(self.fc2_num(x))
+            x_num = torch.sigmoid(self.fc3_num(x_num))
+            # Output layer depends on method
+            if self.method == NUMDREG_ID:
+                r = torch.sigmoid(self.fc_r(x_num))
+            else:
+                r = F.softmax(self.fc_r(x_num))
+
+        return q, r
+
+    def set_step(self, s):
+        self.step = s
+</code></pre>
+<h1 id="numdreg-id">NumDReg-ID</h1>
+<p>This is the third and final paper introduced in the paper. It contains an action-independent branch which specifies the number of shares to trade. Its architecture is identical to NumDReg-AD except for the output layer in the number branch which has a size of one. The activation function of the number branch was not specified in the paper, so we opted to use the <a href="https://en.wikipedia.org/wiki/Sigmoid_function">sigmoid function</a>.</p>
+<p>(Sigmoid has the convenient property of being bounded between 0 and 1. This avoids the awkward circumstance where the action branch predicts BUY while the number branch predicts a negative number, resulting in a SELL action.)</p>
+<p><img src="src/img/numdregid.png" alt="numdreg-id architecture"></p>
+<h1 id="reinforcement-learning">Reinforcement learning</h1>
+<p>At each timestep t, the agent observes a state of 200 price differences, chooses an action (either <code>BUY</code>, <code>HOLD</code>, or <code>SELL</code>) with a number of shares, and receives a reward equal to the normalized profit.</p>
+<h1 id="training-process">Training process</h1>
+<p>Reinforcement learning agents are trained over a number of episodes, during which they observe states, take actions, receive rewards, and observe the next state. These (state, action, reward, next_state) transitions are stored in a memory buffer which the agent then uses to optimize its neural network.</p>
+<p>The learning process for deep Q networks is a bit different from normal Q learning models. Deep Q models typically contain two neural networks working in tandem: a policy network which evaluates a given state, and a target network which is periodically updated with the weights from the policy net. This periodic update pattern helps to maintain stability while training.</p>
+<p>Our training logic defines an episode as one chronological pass through the training data. This detail is not specified in the paper, but one pass over the data makes logical sense in this context. We used a <code>TradingEnvironment</code> class to track information during training, which has the added benefit of making the code more readable. The details of <code>TradingEnvironment</code> will be discussed later on.</p>
+<p>At the beginning of training, the policy network and target network are initialized. After this, we begin to iterate over a number of episodes.</p>
+<p>During an episode, the agent is provided with a state, which you will recall is a number of price differences. This state is fed into the policy network, which will calculate Q values and ratios. We then calculate the reward for each of the three actions. The (state, action, reward, next_state) transitions for each of the actions are stored in a memory buffer. Next, the model will undergo an optimization step.</p>
+<p>During optimization, batch transitions are retrieved from the memory buffer. Then the loss is computed as the difference between actual and expected Q values and backpropagated through the policy net.</p>
+<p>After an episode concludes, we do an update of the target network with the policy network and reset the environment to begin serving states from the beginning of the episode again.</p>
+<h1 id="3-step-training-numdreg-adid">3 step training (NumDReg-AD/ID)</h1>
+<ol>
+<li>Train the shared root and action branch only. The number branch is frozen.</li>
+<li>Train the number branch from the action branch&rsquo;s Q-values. The action branch is frozen.</li>
+<li>Train the entire network end-to-end.</li>
+</ol>
+<p>Each step runs for the same number of episodes.</p>
+<h1 id="component-stock-relationships">Component stock relationships</h1>
+<p>Because of their large number of weights, deep neural networks have the tendency to overfit their training data if there isn&rsquo;t enough of it. To counteract this behavior, we reduced the number of weights and changed the training process into a 3-step procedure. One other thing which can help to prevent overfitting is to train with more data. This is why we pretrain using component stocks and finish training on the index stock.</p>
+<p>But first we need to choose which components to pretrain with. Training with all of them will be too time-consuming. Instead, we will create 6 groups of stocks based on 2 different measures of the components: <a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">Pearson correlation</a> and the mean squared predicting error from an autoencoder. The autoencoder implementation will be discussed in the next section. We will measure each component stock and choose 6 groups according to the following:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Correlation</th>
+					<th>MSE</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Highest 2n</td>
+					<td>Highest 2n</td>
+			</tr>
+			<tr>
+					<td>Lowest 2n</td>
+					<td>Lowest 2n</td>
+			</tr>
+			<tr>
+					<td>Highest n + Lowest n</td>
+					<td>Highest n + Lowest n</td>
+			</tr>
+	</tbody>
+</table>
+<p>So for each stock we will measure its correlation with the index and measure its autoencoder MSE. One group of stocks will be made up of the highest <code>2n</code> components when measured by correlation with the index. (Here <code>n</code> is chosen in proportion to the number of components in the index.) Another group will be made up of the <code>2n</code> stocks which have the lowest correlation with the index. And so forth.</p>
+<p>Creating these groups allows our models to be pretrained on stocks which are proxies to the index, or in the case of the &ldquo;low&rdquo; group, on stocks which might help the agent generalize later on.</p>
+<h1 id="autoencoding-component-stocks">Autoencoding component stocks</h1>
+<p>In order to calculate the mean squared error of the component stocks, we need to train an autoencoder which will predict a series of stock prices for each component in an index. That is, the input size of the network will be MxN, where M is the number of components in the index and N is the number of days in the time series.</p>
+<p>We will train an autoencoder such that X=Y, where X is the input and Y is the output. The architecture of the autoencoder is very simple, having only 2 hidden layers with 5 units each. These small hidden layers force the model to encode the most essential information of its inputs into a small latent space. All extraneous information not represented in the latent space is discarded. Each of the inputs x<sub>i</sub> will be encoder with the autoencoder as y<sub>i</sub>, and it is against these that mean squared error is measured.</p>
+<p><img src="/src/img/autoencoder.png" alt="autoencoder"></p>
+<p>Training an autoencoder is fairly simple if you understand the basics of neural networks. Rather than training with (input, target) pairs, since we only care that input=input, we will train on (input, input) pairs.</p>
+<h1 id="transfer-learning">Transfer learning</h1>
+<p>Financial datasets are small, so we pretrain on grouped component stocks, then transfer those weights to train on the actual index. Stock groupings are chosen by two measures — Pearson correlation with the index and autoencoder reconstruction MSE — each producing a &ldquo;high 2n,&rdquo; &ldquo;low 2n,&rdquo; and &ldquo;high n + low n&rdquo; group.</p>
+<p>When the max Q-value for an action is within 0.0002 of the min, the market signal is too weak to act on, so the agent defaults to <code>HOLD</code>.</p>
+<h1 id="finance-environment">Finance Environment</h1>
+<p>For convenience, we include an environment for training which encapsulates many variables that would otherwise need to be tracked in the training loop. Instead, we use the <code>FinanceEnvironment</code> to store these variables and provide them as needed to the agent during training.</p>
+<p>The <code>FinanceEnvironment</code> class exposes only a few necessary methods to the training loop. For example, <code>step()</code> returns <code>state</code> and <code>done</code>. The first of these is the difference in stock prices for the 200 days prior to the current day. The second indicates whether the episode is done. Executing <code>step()</code> updates several internal variables used in profit and reward calculations.</p>
+<p>The other important method of the environment is <code>update_replay_memory()</code>. This method adds a <code>(state, action, rewards_all_actions, next_state)</code> transition to the replay memory. This will be sampled later when the model is optimized. Because the environment stores and updates most of these variables internally, they do not clutter up the training loop.</p>
+<h1 id="putting-it-all-together">Putting it all together</h1>
+<p>You can see our implementation in the <a href="https://github.com/lukesalamone/deep-q-trading-agent">github repo</a>.</p>
+<pre><code class="language-bash">python main.py --train --architecture numdreg_ad --index ixic
+</code></pre>
+<p>See <code>python main.py --help</code> for all options: architecture selection, pretraining, tensorboard logging, and checkpointing.</p>
+<h1 id="selected-results">Selected Results</h1>
+<p>NumQ and NumDReg-ID generally outperformed NumDReg-AD across indices, with the best returns on ^GSPC (S&amp;P 500). Final cumulative profits fell short of the paper&rsquo;s reported figures — likely due to unreported hyperparameters, a shorter training window, and the inherent difficulty of equity prediction. Full result tables and Sharpe ratio comparisons are in the <a href="https://github.com/lukesalamone/deep-q-trading-agent">repo</a>.</p>
 ]]></content>
         </item>
         
