@@ -49,6 +49,13 @@
 				<description>&lt;link rel=&#34;stylesheet&#34; href=&#34;./css/graph-pruning-demo.css&#34; /&gt;&#xA;&lt;style&gt;&#xA;  #mapContainer1, #mapContainer2 {&#xA;    color: #000;&#xA;  }&#xA;  #mapContainer1 button, #mapContainer2 button {&#xA;    padding: 10px 14px;&#xA;    border: none;&#xA;    border-radius: 8px;&#xA;    background: #3a2c1a;&#xA;    color: #fef7e5;&#xA;    cursor: pointer;&#xA;  }&#xA;  .prune-textarea {&#xA;    min-width: 280px;&#xA;    width: min(520px, 100%);&#xA;    min-height: 160px;&#xA;    font-family: inherit;&#xA;    resize: vertical;&#xA;  }&#xA;  .helper {&#xA;    font-size: 12px;&#xA;    color: #6b5a3a;&#xA;  }&#xA;  .message {&#xA;    font-size: 12px;&#xA;    color: #3a2c1a;&#xA;  }&#xA;&lt;/style&gt;&#xA;&lt;p&gt;The other day I found &lt;a href=&#34;https://allenpike.com/2022/how-to-close-a-city/&#34;&gt;Alan Pike&amp;rsquo;s blog post&lt;/a&gt; from a few years ago which describes his iterative process for determining the order cities should be closed in the game Two Spies. Ultimately, finding a formal solution to city closing wasn&amp;rsquo;t necessary for the game, but it&amp;rsquo;s worth giving it a shot anyways since pruning by hand isn&amp;rsquo;t always convenient.&lt;/p&gt;</description>
 			</item>
 			<item>
+				<title>Multi-Agent RL</title>
+				<link>https://blog.lukesalamone.com/posts/multiagent-rl/</link>
+				<pubDate>Sat, 22 Nov 2025 14:43:21 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/posts/multiagent-rl/</guid>
+				<description>&lt;p&gt;In reinforcement learning, an &amp;ldquo;agent&amp;rdquo; is an entity which can observe the world and take actions. Multi-agent setups have multiple agents observing and taking actions. The interplay between them is very interesting, but this also introduces some complexity.&lt;/p&gt;&#xA;&lt;p&gt;Before talking about multiagent setups it&amp;rsquo;s worth a note about two other RL algorithms.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Proximal Policy Optimization&lt;/strong&gt; (PPO) is an algorithm containing an Actor and a Critic, trained together. The Actor is a neural network which determines which action to take. The Critic is a neural network which&lt;/p&gt;</description>
+			</item>
+			<item>
 				<title>Optimal Ask</title>
 				<link>https://blog.lukesalamone.com/posts/optimal-ask/</link>
 				<pubDate>Tue, 16 Sep 2025 18:02:23 -0700</pubDate>

@@ -21,6 +21,13 @@
 				<description>&lt;p&gt;There are a lot of meanings of the term &amp;ldquo;model&amp;rdquo; in machine learning and machine learning-adjacent fields. Depending on the context, &amp;ldquo;model&amp;rdquo; can mean:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;a general architecture/configuration for weights of a specific model&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;e.g. &amp;ldquo;We embedded texts using a BERT model&amp;rdquo; might mean DistillBERT, RoBERTa, ModernBERT etc which all differ from the architecture in &lt;a href=&#34;https://arxiv.org/pdf/1810.04805&#34;&gt;the original 2018 BERT paper&lt;/a&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;a specific set of weights which are the result of a training process&lt;/p&gt;</description>
 			</item>
 			<item>
+				<title>Multi-Agent RL</title>
+				<link>https://blog.lukesalamone.com/posts/multiagent-rl/</link>
+				<pubDate>Sat, 22 Nov 2025 14:43:21 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/posts/multiagent-rl/</guid>
+				<description>&lt;p&gt;In reinforcement learning, an &amp;ldquo;agent&amp;rdquo; is an entity which can observe the world and take actions. Multi-agent setups have multiple agents observing and taking actions. The interplay between them is very interesting, but this also introduces some complexity.&lt;/p&gt;&#xA;&lt;p&gt;Before talking about multiagent setups it&amp;rsquo;s worth a note about two other RL algorithms.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Proximal Policy Optimization&lt;/strong&gt; (PPO) is an algorithm containing an Actor and a Critic, trained together. The Actor is a neural network which determines which action to take. The Critic is a neural network which&lt;/p&gt;</description>
+			</item>
+			<item>
 				<title>Notes on Deepseek R1</title>
 				<link>https://blog.lukesalamone.com/posts/notes-on-deepseek-r1/</link>
 				<pubDate>Tue, 28 Jan 2025 08:35:55 -0800</pubDate>

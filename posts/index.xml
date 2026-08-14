@@ -441,6 +441,31 @@ When creating a chess engine, you'll need a couple of things. First, you'll need
         </item>
         
         <item>
+            <title>Multi-Agent RL</title>
+            <link>https://blog.lukesalamone.com/posts/multiagent-rl/</link>
+            <pubDate>Sat, 22 Nov 2025 14:43:21 -0700</pubDate>
+            
+            <guid>https://blog.lukesalamone.com/posts/multiagent-rl/</guid>
+            <description>&lt;p&gt;In reinforcement learning, an &amp;ldquo;agent&amp;rdquo; is an entity which can observe the world and take actions. Multi-agent setups have multiple agents observing and taking actions. The interplay between them is very interesting, but this also introduces some complexity.&lt;/p&gt;
+&lt;p&gt;Before talking about multiagent setups it&amp;rsquo;s worth a note about two other RL algorithms.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proximal Policy Optimization&lt;/strong&gt; (PPO) is an algorithm containing an Actor and a Critic, trained together. The Actor is a neural network which determines which action to take. The Critic is a neural network which&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>In reinforcement learning, an &ldquo;agent&rdquo; is an entity which can observe the world and take actions. Multi-agent setups have multiple agents observing and taking actions. The interplay between them is very interesting, but this also introduces some complexity.</p>
+<p>Before talking about multiagent setups it&rsquo;s worth a note about two other RL algorithms.</p>
+<p><strong>Proximal Policy Optimization</strong> (PPO) is an algorithm containing an Actor and a Critic, trained together. The Actor is a neural network which determines which action to take. The Critic is a neural network which</p>
+<p><strong>Self-play</strong></p>
+<p>There are a few ways to set up multi-agent training, in two general buckets: &ldquo;simple&rdquo; methods and population-based methods.</p>
+<h2 id="simple-marl-methods">Simple MARL methods</h2>
+<p><strong>Independent PPO</strong> (IPPO) is a two agent setup, where Agents A and B play matches and train based on the outcomes of those games.</p>
+<p><strong>Two-Timescale PPO</strong> is similar to IPPO but trains the agents with different learning rates, creating a &ldquo;leader&rdquo; agent and a &ldquo;follower&rdquo; agent.</p>
+<h2 id="population-based-methods">Population-based methods</h2>
+<p><strong>Fictitious Self-Play</strong> (FSP) trains agents against all past policies, sampled uniformly.</p>
+<p><strong>Prioritized Fictitious Self-Play</strong> (PFSP) samples opponents based on how difficult they are. The agent will practice against difficult opponents more often.</p>
+<p><strong>League training</strong> maintains a &ldquo;league&rdquo; of agents. The idea being that a lot of past policies are just bad, so we should only add an agent into the league if it meets some performance threshold. Agents train from games played against other agents in the league.</p>
+<p><strong>Policy Space Response Oracle</strong> (PSRO) attempts to fill in exploitability gaps in the population of agents by finding a policy which performs best against the group.</p>
+]]></content>
+        </item>
+        
+        <item>
             <title>Optimal Ask</title>
             <link>https://blog.lukesalamone.com/posts/optimal-ask/</link>
             <pubDate>Tue, 16 Sep 2025 18:02:23 -0700</pubDate>
