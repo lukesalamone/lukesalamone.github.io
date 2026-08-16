@@ -25,7 +25,7 @@
 				<link>https://blog.lukesalamone.com/posts/multiagent-rl/</link>
 				<pubDate>Sat, 22 Nov 2025 14:43:21 -0700</pubDate>
 				<guid>https://blog.lukesalamone.com/posts/multiagent-rl/</guid>
-				<description>&lt;p&gt;In reinforcement learning, an &amp;ldquo;agent&amp;rdquo; is an entity which can observe the world and take actions. Multi-agent setups have multiple agents observing and taking actions. The interplay between them is very interesting, but this also introduces some complexity.&lt;/p&gt;&#xA;&lt;p&gt;Before talking about multiagent setups it&amp;rsquo;s worth a note about two other RL algorithms.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Proximal Policy Optimization&lt;/strong&gt; (PPO) is an algorithm containing an Actor and a Critic, trained together. The Actor is a neural network which determines which action to take. The Critic is a neural network which&lt;/p&gt;</description>
+				<description>&lt;p&gt;In reinforcement learning, an &amp;ldquo;agent&amp;rdquo; is an entity which can observe the world and take actions. Multi-agent setups have multiple agents observing and taking actions. The interplay between them is very interesting, but this also introduces some complexity.&lt;/p&gt;&#xA;&lt;p&gt;Before talking about multiagent setups it&amp;rsquo;s worth a note about two other RL algorithms.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Proximal Policy Optimization&lt;/strong&gt; (PPO) is an algorithm containing an Actor and a Critic, trained together. The Actor is a neural network which determines which action to take. The Critic is a neural network which estimates how good the current state is.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>Notes on Deepseek R1</title>

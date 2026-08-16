@@ -448,10 +448,10 @@ When creating a chess engine, you'll need a couple of things. First, you'll need
             <guid>https://blog.lukesalamone.com/posts/multiagent-rl/</guid>
             <description>&lt;p&gt;In reinforcement learning, an &amp;ldquo;agent&amp;rdquo; is an entity which can observe the world and take actions. Multi-agent setups have multiple agents observing and taking actions. The interplay between them is very interesting, but this also introduces some complexity.&lt;/p&gt;
 &lt;p&gt;Before talking about multiagent setups it&amp;rsquo;s worth a note about two other RL algorithms.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Proximal Policy Optimization&lt;/strong&gt; (PPO) is an algorithm containing an Actor and a Critic, trained together. The Actor is a neural network which determines which action to take. The Critic is a neural network which&lt;/p&gt;</description>
+&lt;p&gt;&lt;strong&gt;Proximal Policy Optimization&lt;/strong&gt; (PPO) is an algorithm containing an Actor and a Critic, trained together. The Actor is a neural network which determines which action to take. The Critic is a neural network which estimates how good the current state is.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<p>In reinforcement learning, an &ldquo;agent&rdquo; is an entity which can observe the world and take actions. Multi-agent setups have multiple agents observing and taking actions. The interplay between them is very interesting, but this also introduces some complexity.</p>
 <p>Before talking about multiagent setups it&rsquo;s worth a note about two other RL algorithms.</p>
-<p><strong>Proximal Policy Optimization</strong> (PPO) is an algorithm containing an Actor and a Critic, trained together. The Actor is a neural network which determines which action to take. The Critic is a neural network which</p>
+<p><strong>Proximal Policy Optimization</strong> (PPO) is an algorithm containing an Actor and a Critic, trained together. The Actor is a neural network which determines which action to take. The Critic is a neural network which estimates how good the current state is.</p>
 <p><strong>Self-play</strong></p>
 <p>There are a few ways to set up multi-agent training, in two general buckets: &ldquo;simple&rdquo; methods and population-based methods.</p>
 <h2 id="simple-marl-methods">Simple MARL methods</h2>
@@ -483,6 +483,25 @@ When creating a chess engine, you'll need a couple of things. First, you'll need
 </figure>
 
 <p>This is a good gut check. If you set the price lower, you sell more widgets but make less money. If you ask higher, you sell fewer widgets but each sale makes more money.</p>
+<h2 id="simulating-it">Simulating it</h2>
+<p>Luckily for those of us whose calculus and statistics are a little rusty, we have computers. You can use yours to try out the numerical optimization yourself using the following monte carlo simulation.</p>
+<p>The purple curve represents the distribution of prices that customers are willing to pay, and the blue curve represents the optimal asking price based off of those customers&rsquo; bid prices.</p>
+<script src="/js/chart.min.js" type="text/javascript"></script>
+<script src="/js/optimal-ask.js" type="text/javascript"></script>
+<div id="optimal-ask" style="background-color: #2f3033; padding: 20px; margin: 20px 0; font-family: monospace;">
+  <div style="display: flex; justify-content: center; gap: 10px; padding-bottom: 10px;">
+    <button id="optimal-ask-start" style="flex: 0 0 auto;">start simulation</button>
+    <button id="optimal-ask-stop" disabled style="flex: 0 0 auto;">stop simulation</button>
+  </div>
+  <div style="width: 100%; height: 420px;">
+    <canvas id="optimal-ask-canvas"></canvas>
+  </div>
+  <div style="color: #ffffff; padding-top: 10px;">
+    <div id="optimal-ask-customers">Customers: 0</div>
+    <div id="optimal-ask-price">Optimal asking price: $0.00</div>
+    <div id="optimal-ask-error">% error: --</div>
+  </div>
+</div>
 <h2 id="figuring-it-out">Figuring it out</h2>
 <p>We can use the cumulative distribution function (CDF) to calculate <em>for a given price P, what portion of people have a price lower than P?</em> For instance, at $0.01, basically nobody has a lower max price. So the CDF of 0.01 is 0, which means 1 - CDF(0.01) = 1 and 100% of customers will pay $0.01. Therefore you can make $0.01 per customer.</p>
 <p>The CDF of 100 is 0.5, so at $100, half of everyone has a lower max price. Since 50% of customers remain, you can make $50/customer.</p>
