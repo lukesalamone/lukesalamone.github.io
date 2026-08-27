@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Multi-Agent-Rl on Luke Salamone&#39;s Blog</title>
+		<link>https://blog.lukesalamone.com/tags/multi-agent-rl/</link>
+		<description>Recent content in Multi-Agent-Rl on Luke Salamone&#39;s Blog</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 08 Jun 2026 00:20:43 -0700</lastBuildDate>
+		
+			<atom:link href="https://blog.lukesalamone.com/tags/multi-agent-rl/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Teaching a Neural Net to Fight</title>
+				<link>https://blog.lukesalamone.com/posts/fighting-game-rl/</link>
+				<pubDate>Mon, 08 Jun 2026 00:20:43 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/posts/fighting-game-rl/</guid>
+				<description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;In this project, I wanted to set up what I thought was a simple experiment: if we let a neural network play a fighting game, will it learn any interesting emergent behaviors? I would say the answer is a resounding &amp;ldquo;kind of&amp;rdquo;. The players will find &amp;ldquo;optimal&amp;rdquo; strategies, but whether we see those optimal strategies as interesting or simply as hacks is a bit of a matter of opinion.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

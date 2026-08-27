@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Martial Fighter</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+/* The drawing buffer stays 800x450, so every game coordinate is unchanged.
+   CSS scales the element to whatever box the embedding iframe gives it;
+   object-fit letterboxes rather than stretching if that box is not 16:9. */
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+#loading {
+  position: absolute;
+  color: #aaa;
+  font: 16px monospace;
+}
+</style>
+</head>
+<body>
+<div id="loading">Loading...</div>
+<canvas id="game"></canvas>
+<script type="module">
+// ═══════════════════════════════════════════════════════════════════════════
+// All game logic (physics, combat, observations) lives in the shared Rust
+// engine (engine/core), compiled to WASM.  This file only does three things:
+//   1. collect actions (keyboard / scripted bot / NN policy)
+//   2. step the engine
+//   3. render the returned state
+// ═══════════════════════════════════════════════════════════════════════════
+import wasmInit, { GameEnv, metadata_json } from './engine-wasm-pkg/sf_engine_wasm.js';
+
+const W = 800, H = 450;
+
+// Filled from engine metadata after WASM init
+let META = null;          // parsed metadata_json()
+let ANIM_NAMES = [];      // anim id → name
+let ACTION_REPEAT = 4;
+let STARTING_HEALTH = 30;
+
+// Training episode timeout — matches past this would have been a timeout
+// decision rather than a KO during training (display only).
+const MAX_TICKS_TRAIN = 600;
+
+// ─── Render configs (sprite sheets only — no game data) ──────────────────────
+const CONFIGS = {
+  player: {
+    folder: './assets-sprites/player',
+    frameW: 126, frameH: 126, scale: 2.5, footY: 81, headY: 41,
+    files: {
+      idle: 'Idle', run: 'Run', jump: 'Going Up', fall: 'Going Down',
+      attack1: 'Attack1', grab1: 'Grab', takeHit: 'Take Hit', death: 'Death',
+      slammed: 'Death',          // lying pose = death sheet's final frame
+    },
+    frameOverride: { slammed: 10 },
+  },
+  cpu: {
+    folder: './assets-sprites/cpu',
+    frameW: 200, frameH: 200, scale: 1.8, footY: 127, headY: 65,
+    files: {
+      idle: 'Idle', run: 'Run', jump: 'Jump', fall: 'Fall',
+      attack1: 'Attack1', grab1: 'Grab', takeHit: 'Take hit', death: 'Death',
+      slammed: 'Death',
+    },
+    frameOverride: { slammed: 6 },
+  },
+};
+
+const canvas = document.getElementById('game');
+canvas.width = W;
+canvas.height = H;
+const ctx = canvas.getContext('2d');
+ctx.imageSmoothingEnabled = false;
+
+// ─── Asset loading ────────────────────────────────────────────────────────────
+const images = { player: {}, cpu: {} };
+let bgImage = null;
+let instrImage = null, pressImage = null;
+
+function loadAll(cb) {
+  let pending = 1; // 1 for background
+  function done() { if (--pending === 0) cb(); }
+
+  const bg = new Image();
+  bg.src = './street_background.png';
+  bg.onload = () => { bgImage = bg; done(); };
+  bg.onerror = done;
+
+  for (const [src, set] of [['./instructions.png',    i => instrImage = i],
+                            ['./press_to_start.png',  i => pressImage = i]]) {
+    pending++;
+    const img = new Image();
+    img.src = src;
+    img.onload = () => { set(img); done(); };
+    img.onerror = done;
+  }
+
+  for (const [role, cfg] of Object.entries(CONFIGS)) {
+    for (const [state, file] of Object.entries(cfg.files)) {
+      pending++;
+      const img = new Image();
+      img.src = `${cfg.folder}/${encodeURIComponent(file)}.png`;
+      img.onload = () => { images[role][state] = img; done(); };
+      img.onerror = done;
+    }
+  }
+}
+
+// ─── NN inference (vanilla JS — the net is tiny) ──────────────────────────────
+function _mm(Wm, b, x, rows, cols) {
+  const y = new Float32Array(rows);
+  for (let i = 0; i < rows; i++) {
+    let s = b[i], base = i * cols;
+    for (let j = 0; j < cols; j++) s += Wm[base + j] * x[j];
+    y[i] = s;
+  }
+  return y;
+}
+function _tanh(v) { for (let i = 0; i < v.length; i++) v[i] = Math.tanh(v[i]); return v; }
+function _argmax(v) { let b = 0; for (let i = 1; i < v.length; i++) if (v[i] > v[b]) b = i; return b; }
+
+function prepWeights(raw) {
+  const f = k => new Float32Array(raw[k]);
+  return { t0w:f('t0w'), t0b:f('t0b'), t2w:f('t2w'), t2b:f('t2b'),
+           mw:f('mw'), mb:f('mb'), jw:f('jw'), jb:f('jb'),
+           aw:f('aw'), ab:f('ab'), sw:f('sw'), sb:f('sb') };
+}
+
+function runModel(w, obs) {
+  const Hn = w.t0b.length;
+  const IN = w.t0w.length / Hn;   // input width, from weights
+  let h = _tanh(_mm(w.t0w, w.t0b, obs, Hn, IN));
+      h = _tanh(_mm(w.t2w, w.t2b, h,   Hn, Hn));
+  return [
+    _argmax(_mm(w.mw, w.mb, h, w.mb.length, Hn)),
+    _argmax(_mm(w.jw, w.jb, h, w.jb.length, Hn)),
+    _argmax(_mm(w.aw, w.ab, h, w.ab.length, Hn)),
+    _argmax(_mm(w.sw, w.sb, h, w.sb.length, Hn)),
+  ];
+}
+
+let weightsP = null, weightsA = null;
+let spectatorMode = false, ckptLabel = '';
+
+async function loadCheckpoint(param) {
+  // Checkpoint endpoints live on the local dev server only; on a static
+  // host the game simply falls back to the human-vs-scripted-bot demo.
+  const dev = location.protocol === 'http:' && location.hostname === 'localhost';
+  if (!dev) return;
+  try {
+    const url = param === 'latest'
+      ? '/api/checkpoint/latest'
+      : `/api/checkpoint/${param}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const info = await res.json();
+    const [rp, ra] = await Promise.all([fetch(info.player), fetch(info.cpu)]);
+    weightsP = prepWeights(await rp.json());
+    weightsA = prepWeights(await ra.json());
+    spectatorMode = true;
+    ckptLabel = `step ${info.step.toLocaleString()}  (${info.dir})`;
+    console.log('Loaded checkpoint:', info);
+  } catch(e) {
+    console.warn('Could not load checkpoint:', e);
+  }
+}
+
+// The opponent a reader actually fights: the league main agent's right-side
+// policy, exported from checkpoints_league_v2. If this fails to load the game
+// falls back to aiAction(), the hand-written bot.
+let leagueOpponent = null;
+
+async function loadLeagueOpponent() {
+  try {
+    const res = await fetch('./league_cpu.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    leagueOpponent = prepWeights(await res.json());
+    console.log('League opponent loaded');
+  } catch (e) {
+    console.warn('League opponent unavailable, using scripted bot:', e);
+  }
+}
+
+// ─── Engine state ─────────────────────────────────────────────────────────────
+let env = null;
+let st = null;            // { p: {...}, a: {...} } unpacked from env.state()
+let gameOver, winner, frameCount;
+let started = false;   // false until the player presses R on the title screen
+let heldActP = [0, 0, 0, 0], heldActA = [0, 0, 0, 0];
+
+function unpackState() {
+  const flat = env.state();
+  const fields = META.state_fields;
+  const k = fields.length;
+  const mk = (off) => {
+    const o = {};
+    fields.forEach((f, i) => { o[f] = flat[off + i]; });
+    o.anim = ANIM_NAMES[o.animId | 0];
+    return o;
+  };
+  return { p: mk(0), a: mk(k) };
+}
+
+function init() {
+  env.reset(200.0, 600.0);
+  gameOver = false;
+  winner = '';
+  frameCount = 0;
+  heldActP = [0, 0, 0, 0];
+  heldActA = [0, 0, 0, 0];   // [move, jump, offense, shield]
+  aiState.cooldown = aiState.retreatTimer = aiState.shieldTimer = 0;
+  st = unpackState();
+}
+
+// ─── Input ────────────────────────────────────────────────────────────────────
+const keys = {};
+document.addEventListener('keydown', e => {
+  keys[e.code] = true;
+  if (['Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code))
+    e.preventDefault();
+});
+document.addEventListener('keyup', e => { keys[e.code] = false; });
+
+function consume(code) { const v = keys[code]; keys[code] = false; return v; }
+
+// action = [move(0/1/2), jump, offense(0=none/1=attack/2=grab), shield]
+function humanAction() {
+  let move = 0;
+  if (keys['KeyA'] || keys['ArrowLeft'])       move = 1;
+  else if (keys['KeyD'] || keys['ArrowRight']) move = 2;
+  const jump   = (keys['KeyW'] || keys['Space']) ? 1 : 0;
+  let offense = 0;
+  if (consume('KeyJ') || consume('KeyZ'))      offense = 1;
+  else if (consume('KeyK') || consume('KeyX')) offense = 2;
+  const shield = (keys['KeyS'] || keys['ShiftLeft']) ? 1 : 0;
+  return [move, jump, offense, shield];
+}
+
+// ─── Scripted fallback bot (used when no model is loaded) ─────────────────────
+const aiState = { cooldown: 0, retreatTimer: 0, shieldTimer: 0 };
+
+function aiAction(s, t) {
+  // s = our fighter (cpu), t = target (player) — unpacked state objects
+  // action = [move, jump, offense(0/1=attack/2=grab), shield]
+  if (s.dead || s.hitStun > 0 || s.attacking || s.grabbing || s.beingHeld || s.slammed)
+    return [0, 0, 0, 0];
+
+  // Holding the player: mostly slam, occasionally let go for the mind games.
+  if (s.holding) {
+    if (Math.random() < 0.10) return [0, 0, 0, 0];          // keep holding
+    return Math.random() < 0.85 ? [0, 0, 1, 0] : [1, 0, 0, 0]; // slam : release
+  }
+
+  if (aiState.cooldown > 0) aiState.cooldown--;
+
+  if (aiState.shieldTimer > 0) {
+    aiState.shieldTimer--;
+    return [0, 0, 0, 1];
+  }
+  if (t.attacking && s.shieldHealth > 25 && !s.shieldBroken && Math.random() < 0.08) {
+    aiState.shieldTimer = 35;
+    return [0, 0, 0, 1];
+  }
+
+  const dx = t.x - s.x;
+  const dist = Math.abs(dx);
+  const towards = dx > 0 ? 2 : 1;   // move code toward the player
+  const away    = dx > 0 ? 1 : 2;
+
+  // Grab when the player turtles in range (grab beats shield)
+  if (dist < 110 && t.shieldActive && t.onGround && aiState.cooldown <= 0 && Math.random() < 0.04) {
+    aiState.cooldown = 40;
+    return [0, 0, 2, 0];
+  }
+
+  if (aiState.retreatTimer > 0) {
+    aiState.retreatTimer--;
+    return [away, 0, 0, 0];
+  }
+
+  const jump = (s.onGround && Math.random() < 0.003) ? 1 : 0;
+
+  if (dist < 120) {
+    if (aiState.cooldown <= 0) {
+      if (Math.random() < 0.6) {
+        aiState.cooldown = 40;
+        return [0, jump, 1, 0];
+      }
+      aiState.retreatTimer = 24;
+      aiState.cooldown = 58;
+    }
+    return [0, jump, 0, 0];
+  }
+  return [towards, jump, 0, 0];
+}
+
+// ─── Update ──────────────────────────────────────────────────────────────────
+function update() {
+  if (!started) { if (consume('KeyR')) { started = true; init(); } return; }
+  if (gameOver) { if (consume('KeyR')) init(); return; }
+
+  let actP, actA;
+  if (spectatorMode && weightsP && weightsA) {
+    // Decide every ACTION_REPEAT ticks and hold — mirrors training exactly.
+    // Observations come from the engine (same stacking as training).
+    if (frameCount % ACTION_REPEAT === 0) {
+      heldActP = runModel(weightsP, env.obs_p());
+      heldActA = runModel(weightsA, env.obs_a());
+    }
+    actP = heldActP;
+    actA = heldActA;
+  } else if (leagueOpponent) {
+    if (frameCount % ACTION_REPEAT === 0)
+      heldActA = runModel(leagueOpponent, env.obs_a());
+    actP = humanAction();
+    actA = heldActA;
+  } else {
+    actP = humanAction();
+    actA = aiAction(st.a, st.p);
+  }
+
+  env.step(actP, actA);
+  st = unpackState();
+  frameCount = env.tick();
+
+  if (st.p.dead && st.p.deathDone) { gameOver = true; winner = 'cpu'; }
+  if (st.a.dead && st.a.deathDone) { gameOver = true; winner = 'player'; }
+}
+
+// ─── Render ──────────────────────────────────────────────────────────────────
+function drawBg() {
+  if (bgImage) {
+    ctx.drawImage(bgImage, 0, 0, W, H);
+  } else {
+    ctx.fillStyle = '#0a0a1a';
+    ctx.fillRect(0, 0, W, H);
+  }
+}
+
+function drawFighter(f, role) {
+  const img = images[role][f.anim];
+  if (!img) return;
+  const cfg = CONFIGS[role];
+  const { frameW, frameH, scale, footY } = cfg;
+
+  // Landing lag reads as a squash: compressed vertically, slightly wider,
+  // anchored at the feet — eases out as the lag ticks down.
+  let sqY = 1, sqX = 1;
+  if (f.landingLag > 0 && !f.dead) {
+    const t = f.landingLag / 10;          // 1 → just landed, 0 → recovered
+    sqY = 1 - 0.18 * t;
+    sqX = 1 + 0.10 * t;
+  }
+  const dw = frameW * scale * sqX;
+  const dh = frameH * scale * sqY;
+  const dx = f.x - dw / 2;
+  const dy = f.y - footY * scale * sqY;   // keep feet planted while squashed
+
+  ctx.save();
+  // Lighter tint while stunned (hitstun, held, or slam-bounce) for readability.
+  if ((f.hitStun > 0 || f.beingHeld || f.slammed) && !f.dead)
+    ctx.filter = 'brightness(1.7) saturate(0.7)';
+  if (f.facing === -1) {
+    ctx.translate(f.x, 0);
+    ctx.scale(-1, 1);
+    ctx.translate(-f.x, 0);
+  }
+  // Clamp to the sheet: engine anims can be extended via tunables config
+  const maxFrame = (img.width / frameW | 0) - 1;
+  const frame = Math.min(cfg.frameOverride?.[f.anim] ?? (f.frame | 0), maxFrame);
+  ctx.drawImage(img, frame * frameW, 0, frameW, frameH, dx, dy, dw, dh);
+  ctx.restore();
+
+  drawShieldBubble(f, cfg);
+}
+
+function drawShieldBubble(f, cfg) {
+  if (!f.shieldActive || f.shieldHealth <= 0) return;
+
+  const charH = (cfg.footY - cfg.headY) * cfg.scale;
+  const cx = f.x;
+  const cy = f.y - charH * 0.55; // slightly above center toward torso
+
+  const maxR = 52, minR = 16;
+  const r = minR + (f.shieldHealth / 100) * (maxR - minR);
+  const baseAlpha = 0.28 + (f.shieldHealth / 100) * 0.28;
+  const alpha = f.shieldFlash > 0
+    ? Math.min(0.85, baseAlpha + f.shieldFlash * 0.06)
+    : baseAlpha;
+
+  const grad = ctx.createRadialGradient(cx, cy - r * 0.25, r * 0.05, cx, cy, r);
+  grad.addColorStop(0,    `rgba(200, 230, 255, ${alpha + 0.18})`);
+  grad.addColorStop(0.55, `rgba(90, 150, 255, ${alpha})`);
+  grad.addColorStop(1,    `rgba(40, 80, 220, 0)`);
+
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  ctx.strokeStyle = `rgba(180, 220, 255, ${alpha + 0.1})`;
+  ctx.lineWidth = f.shieldFlash > 0 ? 3 : 1.5;
+  ctx.stroke();
+}
+
+function drawHUD() {
+  const bw = 270, bh = 20, mt = 14, ml = 14;
+
+  const shieldBarH = 5;
+  const hudH = mt + bh + 4 + shieldBarH + 4;
+
+  // Backdrop strip so HUD is readable over busy background
+  ctx.fillStyle = 'rgba(0,0,0,0.45)';
+  ctx.fillRect(0, 0, W, hudH);
+
+  // P1 bar
+  ctx.fillStyle = '#111';
+  ctx.fillRect(ml, mt, bw, bh);
+  const p1w = bw * (st.p.health / STARTING_HEALTH);
+  const g1 = ctx.createLinearGradient(ml, 0, ml + p1w, 0);
+  g1.addColorStop(0, st.p.health > STARTING_HEALTH * 0.4 ? '#1acc44' : '#cc2222');
+  g1.addColorStop(1, st.p.health > STARTING_HEALTH * 0.4 ? '#55ff99' : '#ff4444');
+  ctx.fillStyle = g1;
+  ctx.fillRect(ml, mt, p1w, bh);
+  ctx.strokeStyle = '#555';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(ml, mt, bw, bh);
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 11px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('P1', ml + 4, mt + 14);
+
+  // CPU bar (fills from right)
+  const rx = W - ml - bw;
+  ctx.fillStyle = '#111';
+  ctx.fillRect(rx, mt, bw, bh);
+  const cpuw = bw * (st.a.health / STARTING_HEALTH);
+  const g2 = ctx.createLinearGradient(rx + bw - cpuw, 0, rx + bw, 0);
+  g2.addColorStop(0, st.a.health > STARTING_HEALTH * 0.4 ? '#55ff99' : '#ff4444');
+  g2.addColorStop(1, st.a.health > STARTING_HEALTH * 0.4 ? '#1acc44' : '#cc2222');
+  ctx.fillStyle = g2;
+  ctx.fillRect(rx + bw - cpuw, mt, cpuw, bh);
+  ctx.strokeStyle = '#555';
+  ctx.strokeRect(rx, mt, bw, bh);
+  ctx.fillStyle = '#fff';
+  ctx.textAlign = 'right';
+  ctx.fillText('CPU', rx + bw - 4, mt + 14);
+
+  // Frame counter (centered). Amber once past the training timeout.
+  const overCap = frameCount >= MAX_TICKS_TRAIN;
+  ctx.font = 'bold 13px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillStyle = overCap ? '#ffb030' : '#ddd';
+  ctx.fillText(`${frameCount} / ${MAX_TICKS_TRAIN}`, W/2, mt + 11);
+  ctx.font = '8px monospace';
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  ctx.fillText(`${(frameCount/60).toFixed(1)}s`, W/2, mt + 22);
+
+  // Shield bars (slim row under health bars)
+  const sbt = mt + bh + 4;
+  const shieldColor = (f) => f.shieldBroken ? '#ff4444' : `rgba(120,180,255,${0.5 + f.shieldHealth / 200})`;
+  ctx.fillStyle = '#111';
+  ctx.fillRect(ml, sbt, bw, shieldBarH);
+  ctx.fillStyle = shieldColor(st.p);
+  ctx.fillRect(ml, sbt, bw * (st.p.shieldHealth / 100), shieldBarH);
+
+  ctx.fillStyle = '#111';
+  ctx.fillRect(rx, sbt, bw, shieldBarH);
+  ctx.fillStyle = shieldColor(st.a);
+  ctx.fillRect(rx + bw - bw * (st.a.shieldHealth / 100), sbt, bw * (st.a.shieldHealth / 100), shieldBarH);
+
+  // Spectator label or controls hint
+  ctx.font = '9px monospace';
+  ctx.textAlign = 'center';
+  if (spectatorMode) {
+    ctx.fillStyle = 'rgba(255,220,80,0.75)';
+    ctx.fillText(`SPECTATOR  —  ${ckptLabel}  —  engine v${META.engine_version}`, W/2, H - 5);
+  } else {
+    ctx.fillStyle = 'rgba(255,255,255,0.28)';
+    ctx.fillText('A/D: move  W/Space: jump  J/Z: attack (slam while holding)  S/Shift: shield  K/X: grab→hold  R: restart', W/2, H - 5);
+  }
+  ctx.textAlign = 'left';
+}
+
+function drawGameOver() {
+  ctx.fillStyle = 'rgba(0,0,0,0.65)';
+  ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = winner === 'player' ? '#55ff99' : '#ff4455';
+  ctx.font = 'bold 54px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText(winner === 'player' ? 'YOU WIN' : 'YOU LOSE', W/2, H/2 - 10);
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.font = '16px monospace';
+  ctx.fillText('Press R to restart', W/2, H/2 + 34);
+  ctx.textAlign = 'left';
+}
+
+// instructions.png is a 80%-opaque scrim sized to the canvas; its key rows sit
+// in the upper two thirds, leaving the bottom clear for the prompt.
+// press_to_start.png is transparent apart from a text band across its middle,
+// so centring the image centres the text.
+function drawStartOverlay() {
+  if (instrImage) ctx.drawImage(instrImage, 0, 0, W, H);
+  if (pressImage && Math.floor(performance.now() / 450) % 2 === 0) {
+    const pw = W * 0.55;
+    const ph = pw * (pressImage.height / pressImage.width);
+    ctx.drawImage(pressImage, (W - pw) / 2, H * 0.86 - ph / 2, pw, ph);
+  }
+}
+
+function render() {
+  ctx.clearRect(0, 0, W, H);
+  drawBg();
+  drawFighter(st.p, 'player');
+  drawFighter(st.a, 'cpu');
+  drawHUD();
+  if (!started) drawStartOverlay();
+  else if (gameOver) drawGameOver();
+}
+
+// ─── Loop ────────────────────────────────────────────────────────────────────
+function loop() {
+  update();
+  render();
+  requestAnimationFrame(loop);
+}
+
+// ─── Bootstrap ───────────────────────────────────────────────────────────────
+(async () => {
+  await wasmInit();
+  META = JSON.parse(metadata_json());
+  ANIM_NAMES = META.anim_names;
+  ACTION_REPEAT = META.action_repeat;
+  STARTING_HEALTH = META.starting_health;
+  console.log('Engine:', META.engine_version, META);
+
+  // Browser matches never auto-timeout; the HUD shows the training cap.
+  env = new GameEnv(1_000_000_000);
+
+  loadAll(async () => {
+    const params = new URLSearchParams(location.search);
+    const ckptParam = params.get('checkpoint') || params.get('ckpt');
+    if (ckptParam) await loadCheckpoint(ckptParam);
+    if (!spectatorMode) await loadLeagueOpponent();
+    started = spectatorMode;   // watching two nets needs no title screen
+    document.getElementById('loading').style.display = 'none';
+    init();
+    requestAnimationFrame(loop);
+  });
+})();
+</script>
+</body>
+</html>

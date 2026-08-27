@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+
+    
+
+<meta name="author" content="Luke Salamone">
+<meta name="keywords" content=", reinforcement-learning, multi-agent-rl, neural-network" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://blog.lukesalamone.com/posts/fighting-game-rl/" />
+
+
+
+
+
+
+<script>
+    if(location.hostname !== 'localhost') {
+        
+            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+        
+    }
+</script>
+
+<script data-goatcounter="https://api.lukesalamone.com/count" async src="../../js/count.js"></script>
+
+
+    <title>
+        
+            Teaching a Neural Net to Fight :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+	<meta itemprop="name" content="Teaching a Neural Net to Fight">
+	<meta itemprop="description" content="In this project, I wanted to set up what I thought was a simple experiment: if we let a neural network play a fighting game, will it learn any interesting emergent behaviors? I would say the answer is a resounding “kind of”. The players will find “optimal” strategies, but whether we see those optimal strategies as interesting or simply as hacks is a bit of a matter of opinion.">
+	<meta itemprop="datePublished" content="2026-06-08T00:20:43-07:00">
+	<meta itemprop="dateModified" content="2026-06-08T00:20:43-07:00">
+	<meta itemprop="wordCount" content="1247">
+	<meta itemprop="image" content="https://blog.lukesalamone.com/img/covers/fighting-game-rl.png">
+	<meta itemprop="keywords" content="Reinforcement-Learning,Multi-Agent-Rl,Neural-Network">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/covers/fighting-game-rl.png">
+	<meta name="twitter:title" content="Teaching a Neural Net to Fight">
+	<meta name="twitter:description" content="In this project, I wanted to set up what I thought was a simple experiment: if we let a neural network play a fighting game, will it learn any interesting emergent behaviors? I would say the answer is a resounding “kind of”. The players will find “optimal” strategies, but whether we see those optimal strategies as interesting or simply as hacks is a bit of a matter of opinion.">
+
+
+
+    <meta property="og:url" content="https://blog.lukesalamone.com/posts/fighting-game-rl/">
+	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+	<meta property="og:title" content="Teaching a Neural Net to Fight">
+	<meta property="og:description" content="In this project, I wanted to set up what I thought was a simple experiment: if we let a neural network play a fighting game, will it learn any interesting emergent behaviors? I would say the answer is a resounding “kind of”. The players will find “optimal” strategies, but whether we see those optimal strategies as interesting or simply as hacks is a bit of a matter of opinion.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-06-08T00:20:43-07:00">
+		<meta property="article:modified_time" content="2026-06-08T00:20:43-07:00">
+		<meta property="article:tag" content="Reinforcement-Learning">
+		<meta property="article:tag" content="Multi-Agent-Rl">
+		<meta property="article:tag" content="Neural-Network">
+		<meta property="og:image" content="https://blog.lukesalamone.com/img/covers/fighting-game-rl.png">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2026-06-08 00:20:43 -0700 PDT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="Search here" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        6 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://blog.lukesalamone.com/posts/fighting-game-rl/">Teaching a Neural Net to Fight</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      },
+      extensions: ["AMSmath.js", "AMSsymbols.js"]
+    }
+  }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<p>In this project, I wanted to set up what I thought was a simple experiment: if we let a neural network play a fighting game, will it learn any interesting emergent behaviors? I would say the answer is a resounding &ldquo;kind of&rdquo;. The players will find &ldquo;optimal&rdquo; strategies, but whether we see those optimal strategies as interesting or simply as hacks is a bit of a matter of opinion.</p>
+<p><strong>Introducing Neural Knockout!</strong> Below, you can try your hand playing against the agent trained via opponent league.</p>
+<div style="max-width:760px;margin:0 auto;aspect-ratio:16/9"><iframe src="../../streetfighter-demo/" style="width:100%;height:100%;border:1px solid #444" allow="keyboard" loading="lazy"></iframe></div>
+<p><em>Credit to <a href="https://luizmelo.itch.io/">Luiz Melo</a> for game assets.</em></p>
+<h2 id="technical-background">Technical background</h2>
+<p>Reinforcement learning is commonly used in tasks like games (and more recently, language modeling) where we want the model to take a long sequence of actions, and we want to label the entire sequence as good or bad. In a game, the action might be to take one step to the right. In language modeling, the action might be to emit a single token.</p>
+<p>Unlike in regular supervised learning, in reinforcement learning we don&rsquo;t know whether an individual action is good or bad. We will wait until the game ends or the writing sample is complete, and then score the entire sequence.</p>
+<p>And what if the sequence never ends? Welcome to the wonderful world of <em>the cold start problem</em>.</p>
+<h2 id="reward-design">Reward design</h2>
+<p>The simplest version of rewards in RL is to give +1 to the winning model and -1 to the losing model. In 2D fighting games like Streetfighter and Mortal Kombat the players start on opposite sides of the screen. To a human, it&rsquo;s pretty obvious what to do next. But for an RL agent initialized with a random policy, going to the other side of the screen and actually attacking the opponent until you win is a small miracle.</p>
+<details>
+    <summary>🍿Click here to view</summary>
+    <video width="760" height="570" controls>
+      <source src="../../img/neural_knockout/m006_v24_early_5M.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+</details>
+<p>The problem above is actually two separate issues. First, the players don&rsquo;t approach each other. They aren&rsquo;t shy, they just don&rsquo;t know any better. Second, even when they do, they don&rsquo;t know to attack the opponent. They will jump or walk away and it will take a very long time to actually win or lose. And those two problems result in a third problem of credit assignment. It&rsquo;s really hard to reward the useful actions if they&rsquo;re buried in a pile of irrelevant ones.</p>
+<p>To fix these problems, we can use reward shaping, which encourages the agents to take actions we&rsquo;d like them to by being more precise about how we reward the model. To fix the distance issue, we can give a small reward for closing the distance with the opponent. To fix the pacifism issue, we can reward the models with <code>opponent_damage - player_damage</code>, so that giving the opponent damage increases the reward and taking damage reduces the reward.</p>
+<h3 id="grabs">Grabs</h3>
+<p>After adding those two reward shaping changes, the agents learned to approach and attack, throwing in a good amount of hopping and a bit of shielding as well. However, after watching a few of the games, one of the players seemed to learn that simply spamming attacks against the opponent&rsquo;s shield was enough to win.</p>
+<details>
+    <summary>🍿Click here to view</summary>
+    <video width="760" height="570" controls>
+      <source src="../../img/neural_knockout/m026_v36_late_99M_cpu_80pct.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+</details>
+<p>It seemed like we needed to add a grab-slam mechanic to counter this: shield + attack = grab, which could punish attacks that hit an opponent&rsquo;s shield. This rock-paper-scissors mix is commonly found in fighting games.</p>
+<p>Grabbing was a slightly more complex mechanic for the model to learn since it requires landing a grab then pressing <code>attack</code> (to slam) to actually do any damage. I added a small reward for actually landing a grab in order to encourage more grabbing. After restarting the training, the model still took 88 million steps to learn to grab consistently.</p>
+<figure><img src="../../img/v33_meta.png"
+			alt="Run 33: grab -&gt; slam was discovered around 88M steps, receding as the opponent adapted."><figcaption>
+			<p>Run 33: grab -&gt; slam was discovered around 88M steps, receding as the opponent adapted.</p>
+		</figcaption>
+</figure>
+
+<details>
+    <summary>🍿Click here to view</summary>
+    <video width="760" height="570" controls>
+      <source src="../../img/neural_knockout/m093_grab_v36_16M.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+</details>
+<h2 id="hopping">Hopping</h2>
+<p>Another interesting metagame appeared after a few training runs. The models found that being in the air avoided attacks entirely, and jump attacks were un-counterable.</p>
+<p>This was a clear flaw in the game design, which I resolved by increasing landing lag and increasing the height of each grounded player&rsquo;s hitbox so they can hit the airborne player. RL agents are good at discovering bugs like these.</p>
+<details>
+    <summary>🍿Click here to view</summary>
+    <video width="760" height="570" controls>
+      <source src="../../img/neural_knockout/m016_v32_bunny_hop_analysis_99M.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+</details>
+<h2 id="league-play">League play</h2>
+<p>Up until this point, I had been training the models using (asymmetric) self-play: both policies play a set of games against each other, then models are trained on the data from those games. One model&rsquo;s loss is another model&rsquo;s win, and the models learn to take actions to maximize their respective rewards.</p>
+<p>However, self-play can lead the policies to learn brittle strategies. Rather than learning well-rounded play, the models will find that the most reliable way to get reward is to beat the particular opponent it is training against.</p>
+<figure><img src="../../img/selfplay_plateau.png"
+			alt="After pitting all checkpoints from run 38 against each other, we would expect that later checkpoints would outperform earlier ones since they received more compute. In reality, they plateau after ~200M steps. This suggests that rather than improving together, the two players were doing something more akin to a sophisticated dance, learning to counter the other&#39;s narrow gameplay style."><figcaption>
+			<p>After pitting all checkpoints from run 38 against each other, we would expect that later checkpoints would outperform earlier ones since they received more compute. In reality, they plateau after ~200M steps. This suggests that rather than improving together, the two players were doing something more akin to a sophisticated dance, learning to counter the other's narrow gameplay style.</p>
+		</figcaption>
+</figure>
+
+<p>Rather than playing against a single, fixed opponent, pitting the Main policy against a pool of opponents should give it a more diverse experience. I created a league of opponents for Main composed of the following agent types (inspired by <a href="https://github.com/wenzhe-li/FightLadder">FightLadder</a>):</p>
+<ul>
+<li><strong>Opponent</strong>. The most recent snapshot of the model trained to play against Main, also trained against a pool.</li>
+<li><strong>Exploiter</strong>. An agent trained against a frozen version of Main, specializing in beating Main (and only Main).</li>
+<li><strong>League Exploiters</strong>. Trained against the pool of previous checkpoints.</li>
+<li><strong>Historicals</strong>. Previous copies of Main, before it was improved.</li>
+</ul>
+<p>Here we use Prioritized Fictitious Self-Play, meaning that Main will face opponents that it loses to more often (specifically, $ (1-w)^2 $, where $w$ is Main&rsquo;s win rate against that opponent).</p>
+<p>League training works. The model trained for 48M steps in the league won every matchup against previously-trained self-play-only checkpoints, despite never facing them. This also indicates that the strategies that those self-play agents discovered were independently discovered in the league to some respect.</p>
+<figure><img src="../../img/league.png"
+			alt="Main&rsquo;s win rate stays around 50% even as the historical pool grows to ~66 checkpoints."><figcaption>
+			<p>Main&rsquo;s win rate stays around 50% even as the historical pool grows to ~66 checkpoints.</p>
+		</figcaption>
+</figure>
+
+<details>
+    <summary>🍿Click here to view</summary>
+    <video width="760" height="570" controls>
+      <source src="../../img/neural_knockout/m071_v38_vs_league_v2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+</details>
+<h2 id="practical-note">Practical note</h2>
+<p>Originally, I was copying game logic back and forth between Python training code and the HTML game viewing code. This is tedious and error-prone.</p>
+<p>Instead, it is better to write the game engine once in Rust, then import it into the browser with <code>wasm-pack</code> and into the python training environment with <code>maturin</code>. Rust is also much faster than Python, so it&rsquo;s easy to simulate billions of steps overnight if necessary.</p>
+<p>See also: <a href="../../posts/how-to-create-rust-python-bindings/">How to Create Rust Python Bindings</a></p>
+<h2 id="applications">Applications</h2>
+<p>I believe this method, co-evolving a game with agents that learn to play it, can be used to find degenerate strategies in games during development. This kind of &ldquo;reward hacking&rdquo; means that agents will find the simplest way to receive a reward.</p>
+<p>Therefore, training simple agents to play a game can be used to find bugs before sending a game to playtesters. If RL agents are able to break a game with silly strategies, it might be worth rebalancing before humans see it.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://blog.lukesalamone.com/tags/reinforcement-learning/">reinforcement-learning</a></span>
+        <span class="tag"><a href="https://blog.lukesalamone.com/tags/multi-agent-rl/">multi-agent-rl</a></span>
+        <span class="tag"><a href="https://blog.lukesalamone.com/tags/neural-network/">neural-network</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1247 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2026-06-08 00:20
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://blog.lukesalamone.com/posts/creating-tiny-semantic-search/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Semantic Search in Under 3MB</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://blog.lukesalamone.com/posts/model-is-overloaded/">
+                <span class="button__text">Definitions of Model</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+  </main>
+  <div id="shadow-search" class="posts">
+    <div class="posts-group">
+      <div class="post-year">2022</div>
+      <ul class="posts-list"></ul>
+    </div>
+  </div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2026 Luke Salamone</span>&nbsp;|&nbsp;
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.7e1ba68c25d6e41e7592198004a4ecb52b58be9492e72c6b3581d76cad339a8a39dc0ee1393a1c95d459bcd189ba0b1d571a38fe8619329e90f7ae52e9b6542e.js" integrity="sha512-fhumjCXW5B51khmABKTstStYvpSS5yxrNYHXbK0zmoo53A7hOTocldRZvNGJugsdVxo4/oYZMp6Q965S6bZULg=="></script>
+
+
+
+
+
+
+    </body>
+</html>
