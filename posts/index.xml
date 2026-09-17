@@ -683,6 +683,76 @@ best_price = max(sales, key=sales.get)
         </item>
         
         <item>
+            <title>Can a Neural Net Learn It?</title>
+            <link>https://blog.lukesalamone.com/posts/can-a-neural-net-learn/</link>
+            <pubDate>Tue, 16 Sep 2025 17:57:57 -0700</pubDate>
+            
+            <guid>https://blog.lukesalamone.com/posts/can-a-neural-net-learn/</guid>
+            <description>&lt;p&gt;A neural network is a type of function originally inspired by how the brain works. However, what makes it particularly useful in machine learning are the following properties:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Neural networks can approximate any continuous function (&lt;a href=&#34;https://en.wikipedia.org/wiki/Universal_approximation_theorem&#34;&gt;universal approximation theorem&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;We have an effective way to fit a neural network to input data, called &lt;a href=&#34;https://en.wikipedia.org/wiki/Backpropagation&#34;&gt;backpropagation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Using the neural network (forward propagation) and training the network (backpropagation) can both be done very efficiently using existing hardware (GPUs).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Below you can experiment with fitting a small neural net to a function and watch as it learns. You can select sample functions from the dropdown, write your own custom function, and specify the (fully connected) neural network structure.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>A neural network is a type of function originally inspired by how the brain works. However, what makes it particularly useful in machine learning are the following properties:</p>
+<ol>
+<li>Neural networks can approximate any continuous function (<a href="https://en.wikipedia.org/wiki/Universal_approximation_theorem">universal approximation theorem</a>)</li>
+<li>We have an effective way to fit a neural network to input data, called <a href="https://en.wikipedia.org/wiki/Backpropagation">backpropagation</a>.</li>
+<li>Using the neural network (forward propagation) and training the network (backpropagation) can both be done very efficiently using existing hardware (GPUs).</li>
+</ol>
+<p>Below you can experiment with fitting a small neural net to a function and watch as it learns. You can select sample functions from the dropdown, write your own custom function, and specify the (fully connected) neural network structure.</p>
+<link rel="stylesheet" href="/css/can-a-neural-net-learn-demo.css" />
+<script defer src="/js/tf-4.22.0.min.js"></script>
+<script defer src="/js/math-13.2.0.min.js"></script>
+<script defer src="/js/can-a-neural-net-learn-demo.js"></script>
+<div id="nn-playground" class="nn-playground">
+  <div class="nn-controls">
+    <div class="nn-field">
+      <label for="nn-fn-select">example</label>
+      <select id="nn-fn-select">
+        <option value="0.5 * sign(cos(50*x))">square wave</option>
+        <option value="sin(1/x)">sin(1/x)</option>
+        <option value="sin(20*x)">sin(20x)</option>
+        <option value="sign(x)">step(x)</option>
+        <option value="x^3 - x">x³ − x</option>
+        <option value="x^2">x²</option>
+        <option value="abs(x)">|x|</option>
+      </select>
+    </div>
+    <div class="nn-field">
+      <label for="nn-fn-input">f(x) =</label>
+      <input type="text" id="nn-fn-input" value="0.5 * sign(cos(50*x))" />
+    </div>
+    <div class="nn-field">
+      <label for="nn-arch-input">hidden layers</label>
+      <input type="text" id="nn-arch-input" value="32 32" />
+      <div class="nn-hint">space-separated sizes<br>1 input → layers → 1 output<br>ReLU activations, linear output</div>
+    </div>
+  </div>
+  <div class="nn-buttons">
+    <button id="nn-train">train</button>
+    <button id="nn-reset">reset model</button>
+    <button id="nn-copy-link">copy link</button>
+  </div>
+  <div class="nn-graph">
+    <canvas id="nn-canvas"></canvas>
+  </div>
+  <div class="nn-footer">
+    <div class="nn-stats">
+      <div>Epoch: <span id="nn-epoch">0</span></div>
+      <div>MSE loss: <span id="nn-loss">—</span></div>
+    </div>
+    <div class="nn-legend">
+      <div><span class="nn-swatch nn-swatch--target"></span>target function</div>
+      <div><span class="nn-swatch nn-swatch--net"></span>neural network</div>
+    </div>
+  </div>
+</div>
+]]></content>
+        </item>
+        
+        <item>
             <title>Keep Summer Safe</title>
             <link>https://blog.lukesalamone.com/posts/keep-summer-safe/</link>
             <pubDate>Thu, 20 Mar 2025 17:26:32 -0800</pubDate>

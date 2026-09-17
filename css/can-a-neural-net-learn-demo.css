@@ -1,0 +1,117 @@
+/* Neural network playground for "Can a Neural Net Learn It?"
+ * Matches the dark demo panels in optimal-ask.md. Buttons use the theme's
+ * default button style. */
+
+.nn-playground {
+  background-color: #2f3033;
+  padding: 20px;
+  margin: 20px 0;
+  font-family: monospace;
+  color-scheme: dark;
+}
+
+.nn-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding-bottom: 14px;
+}
+
+.nn-field label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.nn-field select,
+.nn-field input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px 9px;
+  border: 1px solid #4a4b50;
+  border-radius: 8px;
+  background: #292a2d;
+  color: #ffffff;
+  font-family: monospace;
+  font-size: 14px;
+  outline: none;
+}
+
+.nn-field select:focus,
+.nn-field input[type="text"]:focus {
+  border-color: #0091df;
+}
+
+.nn-hint {
+  font-size: 11px;
+  color: #73747b;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.nn-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.nn-buttons button {
+  flex: 0 0 auto;
+}
+
+.nn-graph {
+  position: relative;
+  width: 100%;
+  height: 420px;
+}
+
+/* Absolute positioning keeps the canvas size from feeding back into the
+ * container size that the ResizeObserver measures. */
+.nn-graph canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.nn-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  color: #ffffff;
+  padding-top: 10px;
+}
+
+.nn-stats span {
+  font-variant-numeric: tabular-nums;
+}
+
+.nn-legend div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nn-swatch {
+  display: inline-block;
+  width: 26px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.nn-swatch--target { background: #55ef53; }
+.nn-swatch--net    { background: #0091df; }
+
+@media (max-width: 684px) {
+  .nn-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .nn-graph {
+    height: 320px;
+  }
+}

@@ -70,6 +70,13 @@
 				<description>&lt;p&gt;Let&amp;rsquo;s say that you are selling N widgets and you need to determine a price for your widgets. There are N customers, each of whom will buy at most one widget if your price is lower than the maximum price they are willing to pay.&lt;/p&gt;&#xA;&lt;p&gt;The maximum price that people will pay is normally distributed around $100, with a standard deviation of $5. In other words, about 34% have a max price between $95 and $100, another 34% have a max price between $100 and $105, and the rest have max prices above or below those ranges.&lt;/p&gt;</description>
 			</item>
 			<item>
+				<title>Can a Neural Net Learn It?</title>
+				<link>https://blog.lukesalamone.com/posts/can-a-neural-net-learn/</link>
+				<pubDate>Tue, 16 Sep 2025 17:57:57 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/posts/can-a-neural-net-learn/</guid>
+				<description>&lt;p&gt;A neural network is a type of function originally inspired by how the brain works. However, what makes it particularly useful in machine learning are the following properties:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Neural networks can approximate any continuous function (&lt;a href=&#34;https://en.wikipedia.org/wiki/Universal_approximation_theorem&#34;&gt;universal approximation theorem&lt;/a&gt;)&lt;/li&gt;&#xA;&lt;li&gt;We have an effective way to fit a neural network to input data, called &lt;a href=&#34;https://en.wikipedia.org/wiki/Backpropagation&#34;&gt;backpropagation&lt;/a&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Using the neural network (forward propagation) and training the network (backpropagation) can both be done very efficiently using existing hardware (GPUs).&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Below you can experiment with fitting a small neural net to a function and watch as it learns. You can select sample functions from the dropdown, write your own custom function, and specify the (fully connected) neural network structure.&lt;/p&gt;</description>
+			</item>
+			<item>
 				<title>Keep Summer Safe</title>
 				<link>https://blog.lukesalamone.com/posts/keep-summer-safe/</link>
 				<pubDate>Thu, 20 Mar 2025 17:26:32 -0800</pubDate>
