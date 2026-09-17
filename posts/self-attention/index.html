@@ -23,9 +23,14 @@
 <meta property="og:description" content="Check out this interactive demo to learn how the transformer and self-attention work!"/>
 
 <script>
-    if(location.hostname !== 'localhost') {
+    
+    
+    if(!/^(localhost|127\.|\[::1\]$)/.test(location.hostname)) {
         
-            fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + window.location.href.match(/\/([^/]+)\/$/)[1]);
+            
+            
+            let page = location.pathname.match(/([^/]+)\/?$/);
+            if(page) fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + encodeURIComponent(page[1])).catch(() => {});
         
     }
 </script>

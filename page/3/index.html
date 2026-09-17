@@ -24,9 +24,11 @@
 
 
 <script>
-    if(location.hostname !== 'localhost') {
+    
+    
+    if(!/^(localhost|127\.|\[::1\]$)/.test(location.hostname)) {
         
-            fetch('https://d1tkdcmshl91xi.cloudfront.net/');
+            fetch('https://d1tkdcmshl91xi.cloudfront.net/').catch(() => {});
         
     }
 </script>
