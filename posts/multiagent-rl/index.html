@@ -46,7 +46,7 @@
 
 
 
-<link rel="stylesheet" href="../../main.e929a2b129440353e8b5e39dd12696947040fd7c9a9639e600bca78a3fadd11b.css">
+<link rel="stylesheet" href="../../main.4c638b2336ad39abb50b11dcc67e7269d04c221e07ac75eec5d6d426349096c9.css">
 
 
 
@@ -127,7 +127,8 @@ Proximal Policy Optimization (PPO) is an algorithm containing an Actor and a Cri
         <span class="header__right">
             
             <div id="header_search">
-              <input type="text" placeholder="Search here" />
+              <input type="text" placeholder="search" aria-label="Search posts"
+                     role="combobox" aria-controls="search-results" aria-expanded="false" aria-autocomplete="list" />
             </div>
         </span>
     </span>
@@ -246,12 +247,22 @@ Proximal Policy Optimization (PPO) is an algorithm containing an Actor and a Cri
     
 
   </main>
-  <div id="shadow-search" class="posts">
-    <div class="posts-group">
-      <div class="post-year">2022</div>
-      <ul class="posts-list"></ul>
+
+                <div id="shadow-search" class="posts">
+  <div class="posts-group">
+    <div class="post-year">2022</div>
+    <div class="search-results">
+      <div class="search-toolbar">
+        <div class="search-legend" hidden></div>
+        <label class="search-advanced-toggle">
+          <input type="checkbox" id="search-advanced" />
+          advanced view
+        </label>
+      </div>
+      <ul class="posts-list" id="search-results" role="listbox" aria-label="Search results"></ul>
     </div>
   </div>
+</div>
 
             </div>
 
@@ -273,7 +284,7 @@ Proximal Policy Optimization (PPO) is an algorithm containing an Actor and a Cri
 
 
 
-<script type="text/javascript" src="../../bundle.min.f49707028a87e7f7bfe45ca37f243ac074d7f4f96060bd4f5fcfdb77603a4d954ff6eb4d4464f6c7819c7da976a1b10807378578043a1b38257bdcd038ab78ac.js" integrity="sha512-9JcHAoqH5/e/5FyjfyQ6wHTX9PlgYL1PX8/bd2A6TZVP9utNRGT2x4Gcfal2obEIBzeFeAQ6Gzgle9zQOKt4rA=="></script>
+<script type="text/javascript" src="../../bundle.min.b1bd5ba19f8576521c935b84c36f816c85658fd17b5fe2a1d989b0bb15a04d07f809a4ddc3e0cad4a0e62512a487936480a2d9c52c0039c3f9957c80716e9fe0.js" integrity="sha512-sb1boZ&#43;FdlIck1uEw2&#43;BbIVlj9F7X&#43;Kh2YmwuxWgTQf4CaTdw&#43;DK1KDmJRKkh5NkgKLZxSwAOcP5lXyAcW6f4A=="></script>
 
 
 
