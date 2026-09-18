@@ -714,6 +714,9 @@ best_price = max(sales, key=sales.get)
     <div class="nn-field">
       <label for="nn-fn-select">example</label>
       <select id="nn-fn-select">
+        <option value="0.6*sin(4*x) + 0.3*sin(20*x)">hills</option>
+        <option value="0.5*cos(pi*x) + 0.25*cos(3*pi*x) + 0.125*cos(9*pi*x) + 0.0625*cos(27*pi*x)">weierstrass-like</option>
+        <option value="x*sin(1/x^2)">singularity pulse</option>
         <option value="0.5 * sign(cos(50*x))">square wave</option>
         <option value="sin(1/x)">sin(1/x)</option>
         <option value="sin(20*x)">sin(20x)</option>
@@ -725,7 +728,7 @@ best_price = max(sales, key=sales.get)
     </div>
     <div class="nn-field">
       <label for="nn-fn-input">f(x) =</label>
-      <input type="text" id="nn-fn-input" value="0.5 * sign(cos(50*x))" />
+      <input type="text" id="nn-fn-input" value="0.6*sin(4*x) + 0.3*sin(20*x)" />
     </div>
     <div class="nn-field">
       <label for="nn-arch-input">hidden layers</label>

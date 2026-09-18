@@ -69,7 +69,7 @@
 Neural networks can approximate any continuous function (universal approximation theorem) We have an effective way to fit a neural network to input data, called backpropagation. Using the neural network (forward propagation) and training the network (backpropagation) can both be done very efficiently using existing hardware (GPUs). Below you can experiment with fitting a small neural net to a function and watch as it learns. You can select sample functions from the dropdown, write your own custom function, and specify the (fully connected) neural network structure.">
 	<meta itemprop="datePublished" content="2025-09-16T17:57:57-07:00">
 	<meta itemprop="dateModified" content="2025-09-16T17:57:57-07:00">
-	<meta itemprop="wordCount" content="158">
+	<meta itemprop="wordCount" content="162">
 	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
 	<meta itemprop="keywords" content="Neural-Network,Demo">
 
@@ -179,6 +179,9 @@ Neural networks can approximate any continuous function (universal approximation
     <div class="nn-field">
       <label for="nn-fn-select">example</label>
       <select id="nn-fn-select">
+        <option value="0.6*sin(4*x) + 0.3*sin(20*x)">hills</option>
+        <option value="0.5*cos(pi*x) + 0.25*cos(3*pi*x) + 0.125*cos(9*pi*x) + 0.0625*cos(27*pi*x)">weierstrass-like</option>
+        <option value="x*sin(1/x^2)">singularity pulse</option>
         <option value="0.5 * sign(cos(50*x))">square wave</option>
         <option value="sin(1/x)">sin(1/x)</option>
         <option value="sin(20*x)">sin(20x)</option>
@@ -190,7 +193,7 @@ Neural networks can approximate any continuous function (universal approximation
     </div>
     <div class="nn-field">
       <label for="nn-fn-input">f(x) =</label>
-      <input type="text" id="nn-fn-input" value="0.5 * sign(cos(50*x))" />
+      <input type="text" id="nn-fn-input" value="0.6*sin(4*x) + 0.3*sin(20*x)" />
     </div>
     <div class="nn-field">
       <label for="nn-arch-input">hidden layers</label>
@@ -252,7 +255,7 @@ Neural networks can approximate any continuous function (universal approximation
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        158 Words
+        162 Words
       </p>
 
       <p>
