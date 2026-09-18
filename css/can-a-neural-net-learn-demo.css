@@ -61,6 +61,17 @@
   flex: 0 0 auto;
 }
 
+/* The one button to press first. It drops back to the default style while
+   training, when it reads "stop". */
+.nn-buttons button.nn-go {
+  background: #55ef53;
+  color: #1c1d1f;
+}
+
+.nn-buttons button.nn-go:hover {
+  background: #7df37b;
+}
+
 .nn-graph {
   position: relative;
   width: 100%;
@@ -75,6 +86,55 @@
   width: 100%;
   height: 100%;
   display: block;
+}
+
+/* Network diagram: nodes per layer, edges colored by weight. */
+.nn-net {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin-top: 12px;
+}
+
+.nn-net canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.nn-net-legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  color: #ffffff;
+  font-size: 11px;
+  padding-top: 6px;
+}
+
+/* matplotlib's "cool": cyan at the most negative weight, magenta at the most
+   positive. */
+.nn-net-scale {
+  width: 120px;
+  height: 8px;
+  border-radius: 2px;
+  background: linear-gradient(to right, #00ffff, #ff00ff);
+}
+
+/* Before training the edges are grey, so the scale is too. */
+.nn-net-legend.is-untrained .nn-net-scale {
+  background: rgba(169, 169, 179, 0.35);
+}
+
+.nn-net-scale-label {
+  font-variant-numeric: tabular-nums;
+  color: #a9a9b3;
+}
+
+.nn-net-caption {
+  color: #73747b;
 }
 
 .nn-footer {
@@ -113,5 +173,9 @@
 
   .nn-graph {
     height: 320px;
+  }
+
+  .nn-net {
+    height: 220px;
   }
 }
