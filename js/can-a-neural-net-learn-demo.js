@@ -373,7 +373,7 @@ function computeNetGeometry(W, H, sizes) {
     const nodes = [];
     if (n <= CIRCLE_LIMIT) {
       const spacing = Math.min(usableH / n, 44);
-      const r = Math.max(2.5, Math.min(11, spacing * 0.34));
+      const r = Math.max(2, Math.min(5, spacing * 0.34));
       const top = padTop + (usableH - spacing * n) / 2;
       for (let k = 0; k < n; k++) nodes.push({ x, y: top + spacing * (k + 0.5), off: r, r, cell: false });
     } else {
