@@ -690,6 +690,9 @@ best_price = max(sales, key=sales.get)
             <guid>https://blog.lukesalamone.com/posts/can-a-neural-net-learn/</guid>
             <description>&lt;!-- ~/development/can_a_neural_net_learn --&gt;
 &lt;!-- ~/development/neural_net_visualization --&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Neural networks are the second-best way to do almost anything. &lt;strong&gt;~ John S. Denker&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;A neural network is a type of function originally inspired by how the brain works. However, what makes it particularly useful in machine learning are the following properties:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Neural networks can approximate any continuous function (&lt;a href=&#34;https://en.wikipedia.org/wiki/Universal_approximation_theorem&#34;&gt;universal approximation theorem&lt;/a&gt;)&lt;/li&gt;
@@ -699,6 +702,9 @@ best_price = max(sales, key=sales.get)
 &lt;p&gt;Below you can experiment with fitting a small neural net to a function and watch as it learns. You can select sample functions from the dropdown, write your own custom function, and specify the (fully connected) neural network structure.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<!-- ~/development/can_a_neural_net_learn -->
 <!-- ~/development/neural_net_visualization -->
+<blockquote>
+<p>Neural networks are the second-best way to do almost anything. <strong>~ John S. Denker</strong></p>
+</blockquote>
 <p>A neural network is a type of function originally inspired by how the brain works. However, what makes it particularly useful in machine learning are the following properties:</p>
 <ol>
 <li>Neural networks can approximate any continuous function (<a href="https://en.wikipedia.org/wiki/Universal_approximation_theorem">universal approximation theorem</a>)</li>
