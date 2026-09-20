@@ -731,7 +731,7 @@ best_price = max(sales, key=sales.get)
       <input type="text" id="nn-fn-input" value="0.6*sin(4*x) + 0.3*sin(20*x)" />
     </div>
     <div class="nn-field">
-      <label for="nn-arch-input">hidden layers</label>
+      <label for="nn-arch-input">hidden layer sizes</label>
       <input type="text" id="nn-arch-input" value="32 32" />
       <div class="nn-hint">space-separated sizes<br>ex: "3 3" = 1 → 3 → 3 → 1</div>
     </div>
