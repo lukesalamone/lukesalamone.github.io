@@ -70,7 +70,7 @@ Before talking about multiagent setups it’s worth a note about two other RL al
 Proximal Policy Optimization (PPO) is an algorithm containing an Actor and a Critic, trained together. The Actor is a neural network which determines which action to take. The Critic is a neural network which estimates how good the current state is.">
 	<meta itemprop="datePublished" content="2025-11-22T14:43:21-07:00">
 	<meta itemprop="dateModified" content="2025-11-22T14:43:21-07:00">
-	<meta itemprop="wordCount" content="268">
+	<meta itemprop="wordCount" content="281">
 	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
 	<meta itemprop="keywords" content="Reinforcement-Learning">
 
@@ -176,6 +176,9 @@ Proximal Policy Optimization (PPO) is an algorithm containing an Actor and a Cri
 <p><strong>Fictitious Self-Play</strong> (FSP) trains agents against all past policies, sampled uniformly.</p>
 <p><strong>Prioritized Fictitious Self-Play</strong> (PFSP) samples opponents based on how difficult they are. The agent will practice against difficult opponents more often.</p>
 <p><strong>League training</strong> maintains a &ldquo;league&rdquo; of agents. The idea being that a lot of past policies are just bad, so we should only add an agent into the league if it meets some performance threshold. Agents train from games played against other agents in the league.</p>
+<ul>
+<li>See also: <a href="../../posts/fighting-game-rl/">League training and PFSP used for training two agents to fight</a></li>
+</ul>
 <p><strong>Policy Space Response Oracle</strong> (PSRO) attempts to fill in exploitability gaps in the population of agents by finding a policy which performs best against the group.</p>
 
       </div>
@@ -202,7 +205,7 @@ Proximal Policy Optimization (PPO) is an algorithm containing an Actor and a Cri
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        268 Words
+        281 Words
       </p>
 
       <p>

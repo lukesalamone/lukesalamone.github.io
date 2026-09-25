@@ -68,7 +68,7 @@
 	<meta itemprop="description" content="Embeddings, or vector representations of a document (which could be a piece of text, image, sound, etc.), can be extremely useful for making sense of large datasets. They transform information into a vector space such that their distance corresponds to their similarity.">
 	<meta itemprop="datePublished" content="2024-03-27T18:19:54-07:00">
 	<meta itemprop="dateModified" content="2024-03-27T18:19:54-07:00">
-	<meta itemprop="wordCount" content="1083">
+	<meta itemprop="wordCount" content="1139">
 	<meta itemprop="image" content="https://blog.lukesalamone.com/img/covers/learning-the-haystack.png">
 	<meta itemprop="keywords" content="Vector,Loss">
 
@@ -210,7 +210,7 @@ MathJax.Hub.Config({
 <p>The applicability of the next few methods will depend on the format of your data and labels.</p>
 <p>Here is a simple example for creating text embeddings with <code>sentence-transformers</code> using ContrastiveLoss:</p>
 <pre><code class="language-python">from sentence_transformers import (
-  SentenceTransformer, 
+  SentenceTransformer,
   SentenceTransformerTrainer
 )
 from sentence_transformers.losses import ContrastiveLoss
@@ -219,7 +219,7 @@ from datasets import Dataset
 model = SentenceTransformer('all-MiniLM-L6-v2')
 train_dataset = Dataset.from_dict({
     &quot;sentence1&quot;: [
-      &quot;I feel the need...&quot;, 
+      &quot;I feel the need...&quot;,
       &quot;Life is like a box of chocolates.&quot;
     ],
     &quot;sentence2&quot;: [
@@ -291,6 +291,9 @@ $$
 $$
 </p>
 <p>Experiments have shown <a href="https://github.com/UKPLab/sentence-transformers/pull/2454#issuecomment-1914664814">improved performance</a> over Cosine Similarity loss.</p>
+<h2 id="using-them-sub-linear-vector-search">Using them: Sub-linear Vector Search</h2>
+<p>Once we have generated our vectors, we will want to search through them as quickly as possible. If our application is maintaining a large (i.e. million or billions of items) catalogue, linear scan through them all will be too slow.</p>
+<p>Instead, we can <a href="../../posts/how-does-hnsw-work/">use an approximate nearest neighbors algorithm like HNSW</a>.</p>
 
       </div>
     </article>
@@ -317,7 +320,7 @@ $$
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1083 Words
+        1139 Words
       </p>
 
       <p>

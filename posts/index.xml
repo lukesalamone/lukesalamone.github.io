@@ -21,12 +21,8 @@
             <pubDate>Fri, 19 Jun 2026 22:24:12 -0700</pubDate>
             
             <guid>https://blog.lukesalamone.com/posts/creating-tiny-semantic-search/</guid>
-            <description>&lt;p&gt;This project is a continuation of my &lt;a href=&#34;../posts/autoresearch/&#34;&gt;previous autoresearch project&lt;/a&gt;, which optimized a reranking model to be under 10MB. Digging deeper by hand, I was able to take the size reduction much further, while outperforming reranking models which are 30x larger on this task. In the end I was able to reduce the payload from 11.4 MB to 2.79 MB gzipped.&lt;/p&gt;
-&lt;p&gt;You can see it in action on my &lt;a href=&#34;https://lukesalamone.com&#34;&gt;resume page&lt;/a&gt;.&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;../img/tiny_reranker.png&#34;
-			alt=&#34;Each square represents 1 kB. The majority of overall size reduction came from removing the ORT dependency. However, other changes enabled much better representation quality than the baseline.&#34;&gt;&lt;figcaption&gt;
-			&lt;p&gt;Each square represents 1 kB. The majority of overall size reduction came from removing the ORT dependency. However, other changes enabled much better representation quality than the baseline.&lt;/p&gt;</description>
-            <content type="html"><![CDATA[<p>This project is a continuation of my <a href="/posts/autoresearch/">previous autoresearch project</a>, which optimized a reranking model to be under 10MB. Digging deeper by hand, I was able to take the size reduction much further, while outperforming reranking models which are 30x larger on this task. In the end I was able to reduce the payload from 11.4 MB to 2.79 MB gzipped.</p>
+            <description>&lt;p&gt;This project is a continuation of my &lt;a href=&#34;../posts/autoresearch/&#34;&gt;previous autoresearch project&lt;/a&gt; which was a continuation of &lt;a href=&#34;../posts/rolling-my-own-blog-search/&#34;&gt;a previous client-side search project&lt;/a&gt;. The autoresearch project optimized a reranking model to be under 10MB. Digging deeper by hand, I was able to take the size reduction much further, while outperforming reranking models which are 30x larger on this task. In the end I was able to reduce the payload from 11.4 MB to 2.79 MB gzipped.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>This project is a continuation of my <a href="/posts/autoresearch/">previous autoresearch project</a> which was a continuation of <a href="/posts/rolling-my-own-blog-search/">a previous client-side search project</a>. The autoresearch project optimized a reranking model to be under 10MB. Digging deeper by hand, I was able to take the size reduction much further, while outperforming reranking models which are 30x larger on this task. In the end I was able to reduce the payload from 11.4 MB to 2.79 MB gzipped.</p>
 <p>You can see it in action on my <a href="https://lukesalamone.com">resume page</a>.</p>
 <figure><img src="/img/tiny_reranker.png"
 			alt="Each square represents 1 kB. The majority of overall size reduction came from removing the ORT dependency. However, other changes enabled much better representation quality than the baseline."><figcaption>
@@ -372,14 +368,14 @@ MathJax.Hub.Config({
 		&lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;I saw Andrej Karpathy&amp;rsquo;s &lt;a href=&#34;https://github.com/karpathy/autoresearch&#34;&gt;Autoresearch&lt;/a&gt; results the other day and decided to give it a shot on a relatively difficult task: distilling a retrieval/reranking model into a much smaller 10MB model. The model was trained on MS MARCO v1.1 and SQuAD (~169K pairs total) and evaluated on MRR@10.&lt;/p&gt;</description>
+&lt;p&gt;I saw Andrej Karpathy&amp;rsquo;s &lt;a href=&#34;https://github.com/karpathy/autoresearch&#34;&gt;Autoresearch&lt;/a&gt; results the other day and decided to give it a shot on a relatively difficult task: distilling a retrieval/reranking model into a much smaller 10MB model. &lt;a href=&#34;../posts/rolling-my-own-blog-search/&#34;&gt;This is something that I had wanted to do for a few years now&lt;/a&gt;. The model was trained on MS MARCO v1.1 and SQuAD (~169K pairs total) and evaluated on MRR@10.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<figure><img src="/img/autoresearch_progress.png"
 			alt="Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task."><figcaption>
 			<p>Leaving the autoresearch loop going, the LLM was able to make 7.8% progress on the distillation task.</p>
 		</figcaption>
 </figure>
 
-<p>I saw Andrej Karpathy&rsquo;s <a href="https://github.com/karpathy/autoresearch">Autoresearch</a> results the other day and decided to give it a shot on a relatively difficult task: distilling a retrieval/reranking model into a much smaller 10MB model. The model was trained on MS MARCO v1.1 and SQuAD (~169K pairs total) and evaluated on MRR@10.</p>
+<p>I saw Andrej Karpathy&rsquo;s <a href="https://github.com/karpathy/autoresearch">Autoresearch</a> results the other day and decided to give it a shot on a relatively difficult task: distilling a retrieval/reranking model into a much smaller 10MB model. <a href="/posts/rolling-my-own-blog-search/">This is something that I had wanted to do for a few years now</a>. The model was trained on MS MARCO v1.1 and SQuAD (~169K pairs total) and evaluated on MRR@10.</p>
 <h2 id="setup">Setup</h2>
 <p>I opted for a fully local setup. Claude Code might have been better, but I wanted to control the costs of this experiment. Instead, I went with <code>qwen3-coder:30b</code> as the &ldquo;researcher&rdquo; and used the following scheduling loop:</p>
 <ol>
@@ -423,7 +419,7 @@ MathJax.Hub.Config({
 </figure>
 
 <p>Stockfish is currently the strongest chess engine in the world. It works by using a small neural network millions of times per position. One interesting question we could ask is whether we could replace search depth with a more accurate value function. In 2024, researchers at DeepMind <a href="https://arxiv.org/pdf/2402.04494v1">attempted</a> to answer this question. Critically, this approach did not hold search depth constant, and although they had 15 billion action-value pairs, they only had around 530 million state-value estimates.</p>
-<p>I wanted to take another look at this problem, building a large state-value dataset with a fixed search depth and experimenting with different model architectures.</p>
+<p>The stockfish evaluation of a position is <a href="/posts/chess-blunders/">a good indication of win probability</a>, so I wanted to take another look at this problem. To do this, I built a large state-value dataset with a fixed search depth and experimented with different model architectures.</p>
 <h2 id="attention-isnt-all-you-need">Attention isn&rsquo;t all you need</h2>
 <p>I trained variants from three main categories of architectures: pure Vision Transformer, pure ResNet, and a hybrid with ResNet blocks followed by Transformer blocks.</p>
 <p>I performed pilot runs to narrow down to the best architecture for this task. The first pilot run trained a 40M param variant, and it became clear early on that the Hybrid and ResNet architectures were significantly better than the pure vision transformer. Compared to the ResNet and the Hybrid, the vision transformer is not able to benefit from the inductive biases provided by convolutions. It effectively needs to learn what a 2D grid is from scratch./</p>
@@ -468,12 +464,12 @@ MathJax.Hub.Config({
 - How much does depth matter? This is only a depth 10 dataset. Could we achieve the same performance on fewer data points if those data points had better labels?
 - How much does evaluation accuracy improve with depth. What is the MSE of depths 10, 15, 20 etc if we assume depth 30 is the true value?
 - Are certain positions inherently inaccurate at low depth? Can we predict that? -->
-<!-- It works based on the minimax algorithm, which is effectively a breadth-first search of the game tree, with some pruning. Since it's not possible to reach all leaf nodes in most positions, we need a value function to estimate how good a position is. 
+<!-- It works based on the minimax algorithm, which is effectively a breadth-first search of the game tree, with some pruning. Since it's not possible to reach all leaf nodes in most positions, we need a value function to estimate how good a position is.
 
 What makes a good evaluation function? Well, a perfect evaluation function could take any game state (piece positions, en passant, repetition counter, half/full move counter, etc.) and return *whether it is possible for white to win if black plays perfectly* (+∞), *whether it is possible for black to win if white plays perfectly* (-∞) or *neither player can win if their opponent plays perfectly* (0). However a perfect evaluation would require searching the complete game tree, which is usually computationally infeasible. So we're stuck with approximations.
 
 Historically, Stockfish's value function used hand-crafted rules but was replaced by a neural network called NNUE. The purpose of the value function and NNUE are to approximate or "distill" the result of what we would get if we ran minimax through the whole game tree. -->
-<!-- 
+<!--
 In this paper the authors outline a supervised learning approach to creating a chess engine which performs no tree search during game play.
 
 But why would you want to do this? Well, there are a few reasons.
@@ -614,6 +610,9 @@ When creating a chess engine, you'll need a couple of things. First, you'll need
 <p><strong>Fictitious Self-Play</strong> (FSP) trains agents against all past policies, sampled uniformly.</p>
 <p><strong>Prioritized Fictitious Self-Play</strong> (PFSP) samples opponents based on how difficult they are. The agent will practice against difficult opponents more often.</p>
 <p><strong>League training</strong> maintains a &ldquo;league&rdquo; of agents. The idea being that a lot of past policies are just bad, so we should only add an agent into the league if it meets some performance threshold. Agents train from games played against other agents in the league.</p>
+<ul>
+<li>See also: <a href="/posts/fighting-game-rl/">League training and PFSP used for training two agents to fight</a></li>
+</ul>
 <p><strong>Policy Space Response Oracle</strong> (PSRO) attempts to fill in exploitability gaps in the population of agents by finding a policy which performs best against the group.</p>
 ]]></content>
         </item>
@@ -637,7 +636,7 @@ When creating a chess engine, you'll need a couple of things. First, you'll need
 
 <p>This is a good gut check. If you set the price lower, you sell more widgets but make less money. If you ask higher, you sell fewer widgets but each sale makes more money.</p>
 <h2 id="simulating-it">Simulating it</h2>
-<p>Luckily for those of us whose calculus and statistics are a little rusty, we have computers. You can use yours to try out the numerical optimization yourself using the following monte carlo simulation.</p>
+<p>Luckily for those of us whose calculus and statistics are a little rusty, we have computers. You can use yours to try out the numerical optimization yourself using the following monte carlo simulation. A monte carlo simulation is a type of simulation which can be used to estimate the probabilities of outcomes (like <a href="https://www.fangraphs.com/standings/playoff-odds">which team will win the World Series this year</a>) and estimating the values of definite integrals (which can be used to <a href="/posts/monte-carlo/">estimate the value of pi</a>).</p>
 <p>The purple curve represents the distribution of prices that customers are willing to pay, and the blue curve represents the optimal asking price based off of those customers&rsquo; bid prices.</p>
 <script src="/js/chart.min.js" type="text/javascript"></script>
 <script src="/js/optimal-ask.js" type="text/javascript"></script>
@@ -1707,20 +1706,20 @@ $$
             <pubDate>Mon, 20 May 2024 13:38:01 -0700</pubDate>
             
             <guid>https://blog.lukesalamone.com/posts/how-does-hnsw-work/</guid>
-            <description>&lt;p&gt;Suppose we have a vector database with a billion items in it (the &lt;em&gt;haystack&lt;/em&gt;). And suppose we are looking for K vectors, the &lt;em&gt;needles&lt;/em&gt; which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing &lt;code&gt;1-distance(x,y)&lt;/code&gt;.) And also suppose that we&amp;rsquo;d like to do this quickly.&lt;/p&gt;
+            <description>&lt;p&gt;Suppose we have a vector database with a billion &lt;a href=&#34;../posts/learning-the-haystack/&#34;&gt;embeddings&lt;/a&gt; in it (the &lt;em&gt;haystack&lt;/em&gt;). And suppose we are looking for K vectors, the &lt;em&gt;needles&lt;/em&gt; which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing &lt;code&gt;1-distance(x,y)&lt;/code&gt;.) And also suppose that we&amp;rsquo;d like to do this quickly.&lt;/p&gt;
 &lt;h2 id=&#34;naive-and-semi-naive-approaches&#34;&gt;Naive and semi-naive approaches&lt;/h2&gt;
 &lt;p&gt;One approach might be to compare every vector and take the argmax. In that case, for vectors of length D our runtime will be &lt;code&gt;1 billion x D&lt;/code&gt;.&lt;/p&gt;</description>
-            <content type="html"><![CDATA[<p>Suppose we have a vector database with a billion items in it (the <em>haystack</em>). And suppose we are looking for K vectors, the <em>needles</em> which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing <code>1-distance(x,y)</code>.) And also suppose that we&rsquo;d like to do this quickly.</p>
+            <content type="html"><![CDATA[<p>Suppose we have a vector database with a billion <a href="/posts/learning-the-haystack/">embeddings</a> in it (the <em>haystack</em>). And suppose we are looking for K vectors, the <em>needles</em> which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing <code>1-distance(x,y)</code>.) And also suppose that we&rsquo;d like to do this quickly.</p>
 <h2 id="naive-and-semi-naive-approaches">Naive and semi-naive approaches</h2>
 <p>One approach might be to compare every vector and take the argmax. In that case, for vectors of length D our runtime will be <code>1 billion x D</code>.</p>
 <pre><code class="language-python">def search(needle, haystack, arg_k=1):
     # normalize needle and haystack vectors
     needle /= np.linalg.norm(needle)
     haystack /= np.linalg.norm(haystack, axis=1, keepdims=True)
-    
+
     # compute cosine similarities
     similarities = np.dot(haystack, needle)
-    
+
     # get the indexes of the top k elements
     idx_topk = np.argpartition(a, -k)[-k:]
 
@@ -1855,7 +1854,7 @@ MathJax.Hub.Config({
 <p>The applicability of the next few methods will depend on the format of your data and labels.</p>
 <p>Here is a simple example for creating text embeddings with <code>sentence-transformers</code> using ContrastiveLoss:</p>
 <pre><code class="language-python">from sentence_transformers import (
-  SentenceTransformer, 
+  SentenceTransformer,
   SentenceTransformerTrainer
 )
 from sentence_transformers.losses import ContrastiveLoss
@@ -1864,7 +1863,7 @@ from datasets import Dataset
 model = SentenceTransformer('all-MiniLM-L6-v2')
 train_dataset = Dataset.from_dict({
     &quot;sentence1&quot;: [
-      &quot;I feel the need...&quot;, 
+      &quot;I feel the need...&quot;,
       &quot;Life is like a box of chocolates.&quot;
     ],
     &quot;sentence2&quot;: [
@@ -1936,6 +1935,9 @@ $$
 $$
 </p>
 <p>Experiments have shown <a href="https://github.com/UKPLab/sentence-transformers/pull/2454#issuecomment-1914664814">improved performance</a> over Cosine Similarity loss.</p>
+<h2 id="using-them-sub-linear-vector-search">Using them: Sub-linear Vector Search</h2>
+<p>Once we have generated our vectors, we will want to search through them as quickly as possible. If our application is maintaining a large (i.e. million or billions of items) catalogue, linear scan through them all will be too slow.</p>
+<p>Instead, we can <a href="/posts/how-does-hnsw-work/">use an approximate nearest neighbors algorithm like HNSW</a>.</p>
 ]]></content>
         </item>
         
@@ -2346,7 +2348,7 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
 &lt;li&gt;&amp;ldquo;severely worsens the player&amp;rsquo;s situation by allowing a loss of material, checkmate, or anything similar&amp;rdquo; ~ &lt;a href=&#34;https://en.wikipedia.org/wiki/Blunder_%28chess%29&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&amp;ldquo;Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.&amp;rdquo; ~ &lt;a href=&#34;https://www.reddit.com/r/chess/comments/1iiqyb/what_distinguishes_the_difference_between_a/&#34;&gt;r/chess&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;An issue with these qualitative answers is that while their words may be correct, smart people may still disagree with their applicability at the margins. For a suboptimal move to have a &amp;ldquo;significant&amp;rdquo; negative effect, it requires that the opponent notices and takes advantage of it.&lt;/p&gt;</description>
+&lt;p&gt;More generally, &lt;a href=&#34;../posts/qualitative-analysis-chess/&#34;&gt;qualitative analysis is happy to consider more abstract aspects of a position&lt;/a&gt; than piece count, such as the positional strength of an active knight, king safety, and &amp;ldquo;practical chances&amp;rdquo; i.e. how easy it is for a human to play the position.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<p>What is a blunder in chess? The tension between the qualitative and quantitative answers to this question is at the heart of different approaches towards chess, and more broadly, how quantitative metrics may lack context, but qualitative metrics lack precision.</p>
 <h2 id="qualitative-answer">Qualitative answer</h2>
 <p>There are many qualitative answers to this question, especially when comparing &ldquo;blunders&rdquo; and &ldquo;mistakes&rdquo;:</p>
@@ -2355,6 +2357,7 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
 <li>&ldquo;severely worsens the player&rsquo;s situation by allowing a loss of material, checkmate, or anything similar&rdquo; ~ <a href="https://en.wikipedia.org/wiki/Blunder_%28chess%29">Wikipedia</a></li>
 <li>&ldquo;Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.&rdquo; ~ <a href="https://www.reddit.com/r/chess/comments/1iiqyb/what_distinguishes_the_difference_between_a/">r/chess</a></li>
 </ul>
+<p>More generally, <a href="/posts/qualitative-analysis-chess/">qualitative analysis is happy to consider more abstract aspects of a position</a> than piece count, such as the positional strength of an active knight, king safety, and &ldquo;practical chances&rdquo; i.e. how easy it is for a human to play the position.</p>
 <p>An issue with these qualitative answers is that while their words may be correct, smart people may still disagree with their applicability at the margins. For a suboptimal move to have a &ldquo;significant&rdquo; negative effect, it requires that the opponent notices and takes advantage of it.</p>
 <h2 id="quantitative-answer">Quantitative answer</h2>
 <p>The quantitative answer considers a move which causes a significant drop in probability of winning to be blunder. What is &ldquo;significant&rdquo;? <a href="https://github.com/lichess-org/lila/blob/a02b6fb2b76edfd4c73c36b2e022d2c9265dbb42/ui/analyse/src/practice/practiceCtrl.ts#L116">A change 14% or greater</a>.</p>
@@ -2363,10 +2366,14 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
 <div style="width:100%; display: flex; justify-content: center;">
   <iframe src="https://www.desmos.com/calculator/ieqrq3ry9z?embed" width="500" height="500" frameborder=0></iframe>
 </div>
-<p>Of course, this isn&rsquo;t perfect, and there&rsquo;s an argument to be made that outcomes for 2300+ elo players may not be representative of lower-rated players. It also doesn&rsquo;t take time pressure into consideration. But there is a tradeoff between accuracy of our metric and generalization power of the model.</p>
+<p>However, <a href="https://lichess.org/page/accuracy">Lichess&rsquo; accuracy article</a> suggests that this relationship is slightly flawed in two ways:</p>
+<ol>
+<li>Higher-rated players tend to play more theoretical openings which will have a lower centipawn loss.</li>
+<li>Higher-rated players tend to resign in lost positions, perhaps underestimating their true win percentage due to opponent blunders. <a href="https://www.youtube.com/watch?v=5zfWLcwUsIM">Never resign!</a></li>
+</ol>
+<p>Of course, this isn&rsquo;t perfect, and there&rsquo;s an argument to be made that outcomes for 2300+ elo players may not be representative of lower-rated players. It also doesn&rsquo;t take time pressure into consideration. Taken to the extreme, we can even use an <a href="/posts/winning-faster-than-stockfish/">adversarial player-modeling algorithm</a> to win faster than Stockfish. But there is a tradeoff between accuracy of our metric and generalization power of the model.</p>
+<p>(We can also go the opposite direction and directly <a href="/posts/distilling-stockfish/">try to quickly predict the stockfish evaluation of a position</a>.)</p>
 <p><a href="https://zwischenzug.substack.com/p/centipawns-suck">One other important objection</a> to this line of inquery is that the centipawn evaluation of a position is not a constant. The evaluation varies by search depth and between engines. So if Stockfish 15 evaluates a position at +1 and Stockfish 16 evaluates the same position at +1.5, white&rsquo;s actual winning chances haven&rsquo;t changed at all. The evaluation is not anchored to any real value, especially with the introduction of NNUE eval functions.</p>
-<h2 id="references">References</h2>
-<p><a href="https://lichess.org/page/accuracy">https://lichess.org/page/accuracy</a></p>
 ]]></content>
         </item>
         
@@ -2508,7 +2515,7 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
 		</figcaption>
 </figure>
 
-<p>The great thing about DE models is that document embeddings can be computed ahead of time. When users enter a query, only that query embedding needs to be calculated, and then compared with the embeddings already calculated for each of the documents. It&rsquo;s a lot faster. So much faster, in fact, that CA is generally not used for initial retrieval, only for reranking afterwards.</p>
+<p>The great thing about DE models is that <a href="/posts/creating-tiny-semantic-search/">document embeddings can be computed ahead of time</a>. When users enter a query, only that query embedding needs to be calculated, and then compared with the embeddings already calculated for each of the documents. It&rsquo;s a lot faster. So much faster, in fact, that CA is generally not used for initial retrieval, only for reranking afterwards.</p>
 <p>However, DE models tend to be less accurate than CA models. It would be great if it was possible to transfer some of the benefits of CA models to DE models.</p>
 <h2 id="the-problem">The Problem</h2>
 <p>It&rsquo;s unclear whether the shortcomings of DEs are due to the DE model&rsquo;s capacity or because of its training procedure. DEs may be overfitting.</p>
@@ -2777,15 +2784,10 @@ def x2lon(x):
             <pubDate>Tue, 22 Nov 2022 23:35:04 -0700</pubDate>
             
             <guid>https://blog.lukesalamone.com/posts/attention-walkthrough/</guid>
-            <description>&lt;p&gt;In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it&amp;rsquo;s easier to understand what&amp;rsquo;s going on.&lt;/p&gt;
+            <description>&lt;p&gt;In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it&amp;rsquo;s easier to understand what&amp;rsquo;s going on. For a more conceptual explanation of attention, see &lt;a href=&#34;../posts/self-attention/&#34;&gt;A Few Notes on the Transformer&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;step-0-define-some-constants&#34;&gt;Step 0: Define some constants&lt;/h2&gt;
-&lt;p&gt;We will use the three tokens &lt;code&gt;[&#39;major&#39;, &#39;league&#39;, &#39;baseball&#39;]&lt;/code&gt; with model dimension 4 (&lt;code&gt;d_model=4&lt;/code&gt;) and two attention heads (&lt;code&gt;num_heads=2&lt;/code&gt;).&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;num_heads = 2
-d_model = 4
-d_k = d_v = d_model // num_heads
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here we also define the dimensions of the key and value here so that after after concatenation in the multihead attention algorithm, the final result will have dimension &lt;code&gt;(seq_len, d_model)&lt;/code&gt;.&lt;/p&gt;</description>
-            <content type="html"><![CDATA[<p>In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it&rsquo;s easier to understand what&rsquo;s going on.</p>
+&lt;p&gt;We will use the three tokens &lt;code&gt;[&#39;major&#39;, &#39;league&#39;, &#39;baseball&#39;]&lt;/code&gt; with model dimension 4 (&lt;code&gt;d_model=4&lt;/code&gt;) and two attention heads (&lt;code&gt;num_heads=2&lt;/code&gt;).&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it&rsquo;s easier to understand what&rsquo;s going on. For a more conceptual explanation of attention, see <a href="/posts/self-attention/">A Few Notes on the Transformer</a>.</p>
 <h2 id="step-0-define-some-constants">Step 0: Define some constants</h2>
 <p>We will use the three tokens <code>['major', 'league', 'baseball']</code> with model dimension 4 (<code>d_model=4</code>) and two attention heads (<code>num_heads=2</code>).</p>
 <pre><code class="language-python">num_heads = 2
@@ -2905,16 +2907,16 @@ def mha(x):
             <pubDate>Wed, 16 Nov 2022 15:24:15 -0500</pubDate>
             
             <guid>https://blog.lukesalamone.com/posts/self-attention/</guid>
-            <description>&lt;figure&gt;&lt;img src=&#34;../img/self-attention.png&#34;
+            <description>&lt;p&gt;&lt;em&gt;For a more mechanical explanation of the self-attention and multi-headed attention calculation, see the &lt;a href=&#34;../posts/attention-walkthrough/&#34;&gt;Attention Walkthrough&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;../img/self-attention.png&#34;
 			alt=&#34;A self-attention block depicted as a neural network.&#34;&gt;&lt;figcaption&gt;
 			&lt;p&gt;A self-attention block depicted as a neural network.&lt;/p&gt;
 		&lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in &lt;a href=&#34;https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf&#34;&gt;Attention is All You Need&lt;/a&gt; by Vaswani et al.&lt;/p&gt;
-&lt;h2 id=&#34;what-is-attention&#34;&gt;What is attention?&lt;/h2&gt;
-&lt;p&gt;At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren&amp;rsquo;t. In language models, attention is used as a way for the model to learn which portions of a sentence are relevant to each word.&lt;/p&gt;</description>
-            <content type="html"><![CDATA[<figure><img src="/img/self-attention.png"
+&lt;p&gt;In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in &lt;a href=&#34;https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf&#34;&gt;Attention is All You Need&lt;/a&gt; by Vaswani et al.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p><em>For a more mechanical explanation of the self-attention and multi-headed attention calculation, see the <a href="/posts/attention-walkthrough/">Attention Walkthrough</a>.</em></p>
+<figure><img src="/img/self-attention.png"
 			alt="A self-attention block depicted as a neural network."><figcaption>
 			<p>A self-attention block depicted as a neural network.</p>
 		</figcaption>
@@ -3029,7 +3031,7 @@ This is the part where Vaswani delves into a database analogy with <strong>keys<
 <p>This post contains two related proposals. The first is a chess engine tournament, unique in the type of engine which will be permitted to enter and likely to succeed. Importantly, the vast majority of engines currently holding the highest performance ratings will likely not be effective.</p>
 <p>The second proposal is the outlines of a chess engine that is likely to be successful in this tournament, taking advantage of the highly qualitative nature of chess position evaluation. Although it is unlikely to perform as strongly against top-performing engines, there are several distinct advantages of such an engine. In short, there is likely to be a great deal of educational value as well as financial incentive driving the construction of highly successful qualitative chess engines.</p>
 <h1 id="qualitative-chess-analysis">Qualitative chess analysis</h1>
-<p>Qualitatively, there are many aspects to a chess game that may be captured. Let&rsquo;s take a look at the way a grandmaster analyzes a position. It will become quite apparent that at the highest levels, the qualitative aspects of position analysis dominate over quantitative aspects (i.e. the number and value of each piece).</p>
+<p>Qualitatively, there are many aspects to a chess game that may be captured. Let&rsquo;s take a look at the way a grandmaster analyzes a position. It will become quite apparent that at the highest levels, the qualitative aspects of position analysis dominate over <a href="/posts/chess-blunders/">quantitative aspects</a> (i.e. the number and value of each piece).</p>
 <p>In the selected lecture, Grandmaster Varuzhan Akobian details a game he played previously. At a key moment of the game, Akobian sacrificed his rook for a key pawn in the center of the board. The resulting position is reproduced for convenience in Figure 1.</p>
 <figure><img src="/img/human_analysis_fig4.png"
 			alt="Figure 1. Quantitative analysis would posit that black is winning due to his extra rook for white’s knight and pawn. However, qualitative analysis provides a more complete picture of black’s predicament."><figcaption>
@@ -3050,7 +3052,7 @@ This is the part where Vaswani delves into a database analogy with <strong>keys<
 <blockquote>
 <p>. . . How much advantage does white have here? Big advantage, slight advantage, maybe winning? . . . We’re not going to use Houdini [a chess engine], Houdini will probably say black is slightly worse. But in practical play, I would be very comfortable to play this against anybody, and pretty comfortable I can win this position for white.</p>
 </blockquote>
-<p>Note that quantitative analysis is almost entirely absent from GM Akobian’s evaluation. Towards the beginning he mentions that he has sacrificed his rook for a knight and a pawn, and consequently is at a material deficit. However, he quickly discards this shallow evaluation, going so far as to label his subsequent qualitative evaluation as the “proper” evaluation.</p>
+<p>Note that <a href="/posts/chess-blunders/">quantitative analysis</a> is almost entirely absent from GM Akobian’s evaluation. Towards the beginning he mentions that he has sacrificed his rook for a knight and a pawn, and consequently is at a material deficit. However, he quickly discards this shallow evaluation, going so far as to label his subsequent qualitative evaluation as the “proper” evaluation.</p>
 <p>GM Akobian goes on to mention several other qualitative features of the position which are difficult to assign quantitative value to. Firstly, the activity of his pieces means that it is much easier to play the position as white because his pieces are on better squares, including some deep in black’s half of the board. The lack of activity is mentioned later on, noting that black’s bishop is essentially trapped behind his own pieces.</p>
 <p>King safety is another difficult thing to quantify. In the given position, it is difficult to find a way that black can even check the white king. Moving the d8 rook to b1 will take 2 moves, and even then the b1 square is guarded by the bishop on d3. So the white king is indeed quite safe. In contrast black king is quite vulnerable, guarded mainly by the black queen, who is herself vulnerable to deflection or direct attack. (Deflection is a chess tactic which involves “distracting” an opponent’s piece which plays an important defensive role. For example, a piece which is defending two pieces simultaneously may be deflected by capturing one of the defended pieces.)</p>
 <p>GM Akobian emphasizes the weakness of black’s king by sketching out a simple game-winning checkmate plan: arrange the bishop and queen in a battery which attacks the h7 pawn, deflect the black queen, and deliver checkmate with the queen by taking the h7 pawn. Although it is not immediately clear how to implement the plan, this type of simple plan creates a well-defined long-term “threat” that black must contend with.</p>
@@ -3159,7 +3161,8 @@ This is the part where Vaswani delves into a database analogy with <strong>keys<
 </figure>
 
 <p>Neural networks may also be used more directly. <a href="https://lczero.org/dev/wiki/technical-explanation-of-leela-chess-zero/">Leela Chess Zero</a>, also known as Lc0 is another open-source chess engine, modeled after DeepMind’s AlphaZero chess engine. Lc0 uses Predictor + Upper Confidence Bound tree search (PUCT) to search its game tree. Leela evaluates new nodes by iteratively choosing moves from a probability distribution until it reaches an unexplored node. At that point, Leela&rsquo;s neural network estimates the node&rsquo;s value and propagates that value back up the tree. PUCT is very similar to Monte Carlo Tree Search, but with game “rollouts” replaced by neural network evaluations.</p>
-<p>One other notable engine is <a href="https://arxiv.org/abs/2006.01855">Maia Chess</a>. Maia is interesting for two reasons. Unlike most other engines, Maia&rsquo;s objective is to model human behavior rather than to perform optimally. This is interesting because Maia is in many cases trained on suboptimal data. The other notable feature about Maia is the unusual manner in which moves are selected: instead of performing any type of tree search at all, the engine simply returns the neural network&rsquo;s static evaluation of the current board position.</p>
+<p>Another notable engine is <a href="https://arxiv.org/abs/2006.01855">Maia Chess</a>. Maia is interesting for two reasons. Unlike most other engines, Maia&rsquo;s objective is to model human behavior rather than to perform optimally. This is interesting because Maia is in many cases trained on suboptimal data. The other notable feature about Maia is the unusual manner in which moves are selected: instead of performing any type of tree search at all, the engine simply returns the neural network&rsquo;s static evaluation of the current board position.</p>
+<p>We can also attempt to predict the evaluation of Stockfish directly with a neural network, as <a href="https://arxiv.org/pdf/2402.04494v1">Deepmind did in 2024</a> and as I did using <a href="/posts/distilling-stockfish/">one billion positions from the Gigafish dataset</a>.</p>
 <p>Suffice it to say, however, that despite computation no longer being a significant limitation, prior qualitative approaches still have garnered relatively little attention.</p>
 <h1 id="conclusion">Conclusion</h1>
 <p>Engineers have historically sought to build the most powerful chess engine possible. With the singular goal of defeating human (and now computer) opponents, explainability was an expedient but understandable tradeoff to make. In the present day, however, there is no longer a question of whether humans or computers are superior chess players. It seems quite clear that the time has come to revisit some of the tradeoffs made in the past.</p>
@@ -4073,12 +4076,10 @@ drive.mount('/content/gdrive')
             <pubDate>Mon, 21 Jun 2021 01:04:42 -0500</pubDate>
             
             <guid>https://blog.lukesalamone.com/posts/bert-vs-gpt2/</guid>
-            <description>&lt;p&gt;There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/lukesalamone/gpt2-vs-bert&#34;&gt;The code used in this experiment can be found on my Github&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;bert&#34;&gt;BERT&lt;/h2&gt;
-&lt;p&gt;The &lt;a href=&#34;https://arxiv.org/pdf/1810.04805.pdf&#34;&gt;Devlin et al. model&lt;/a&gt; was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the &lt;em&gt;cloze&lt;/em&gt; task). During pretraining, 15% of tokens are hidden from the model, and it is trained to predict the masked tokens. As a result, I was able to evaluate its ability to correctly predict a masked token at a random position in a fixed-size input.&lt;/p&gt;</description>
-            <content type="html"><![CDATA[<p>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments.</p>
-<p><a href="https://github.com/lukesalamone/gpt2-vs-bert">The code used in this experiment can be found on my Github</a></p>
+            <description>&lt;p&gt;There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments. If you&amp;rsquo;re interested in GPT-3&amp;rsquo;s performance on image recognition, &lt;a href=&#34;../posts/chatgpt-mnist/&#34;&gt;I also tested that&lt;/a&gt; later on.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/lukesalamone/gpt2-vs-bert&#34;&gt;The code used in this experiment can be found on my Github&lt;/a&gt;.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>There are quite a few BERT vs GPT-2 breakdowns online, mostly focusing on the architectural differences between the two models. However, I am more interested in the performance differences between the two models, specifically their predictive capabilities. This blog post outlines the results of my experiments. If you&rsquo;re interested in GPT-3&rsquo;s performance on image recognition, <a href="/posts/chatgpt-mnist/">I also tested that</a> later on.</p>
+<p><a href="https://github.com/lukesalamone/gpt2-vs-bert">The code used in this experiment can be found on my Github</a>.</p>
 <h2 id="bert">BERT</h2>
 <p>The <a href="https://arxiv.org/pdf/1810.04805.pdf">Devlin et al. model</a> was released in November 2018. It is a transformer-based language model pretrained on masked input (also known as the <em>cloze</em> task). During pretraining, 15% of tokens are hidden from the model, and it is trained to predict the masked tokens. As a result, I was able to evaluate its ability to correctly predict a masked token at a random position in a fixed-size input.</p>
 <p>I looked at the following varieties of BERT:</p>
@@ -4338,7 +4339,7 @@ len(nltk_words)
 
 <p>If you want to perform inference with transformers one sequence at a time, you can ignore attention masks. The &ldquo;slow way&rdquo; will be sufficient for your needs.</p>
 <h2 id="the-slow-way">The slow way</h2>
-<p>We can perform inference with GPT-2 using sequences one at a time, but it&rsquo;s slow:</p>
+<p>We can <a href="/posts/gpt2-tokenization/">tokenize and perform inference with GPT-2</a> one sequence at a time, but it&rsquo;s slow:</p>
 <pre><code class="language-python">from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
@@ -5243,6 +5244,17 @@ COMPONENTS_LIST = ['OPTT', 'NMRK', 'SCOA', ...]
 <li>Writing these things out explicitly helps me to remember them. Paradoxically, this may make these how-to pages less useful to me, but maybe someone else will find them useful.</li>
 </ol>
 <p>These quick reference articles don&rsquo;t explain much because I don&rsquo;t need an explanation of what is going on. I just need a chunk of working code. There are other websites which have far more comprehensive guides covering how to do things. They cover all of the fundamentals of how things are done. But I don&rsquo;t need that, I just want a 30 second reference with a working chunk of code.</p>
+<h1 id="articles">Articles</h1>
+<ul>
+<li><a href="/posts/python-format-string/">Python: Formatting a string</a></li>
+<li><a href="/posts/read-write-json/">Python: Read &amp; Write Json</a></li>
+<li><a href="/posts/python-serve-html/">Python: Serve an HTML File</a></li>
+<li><a href="/posts/managing-python-environments/">Managing Python Environments</a></li>
+<li><a href="/posts/connect-to-colab/">Colab: Connect to Google Drive</a></li>
+<li><a href="/posts/connect-jupyter-to-remote/">Connect Jupyter to Remote</a></li>
+<li><a href="/posts/s3-bucket-url/">S3 Bucket Url</a></li>
+<li><a href="/posts/how-to-tar-untar-file/">How to Zip and Unzip a tar.gz File</a></li>
+</ul>
 ]]></content>
         </item>
         
@@ -5581,7 +5593,7 @@ MathJax.Hub.Config({
 </div>
 <script src="/js/gmm-practical-guide-demo.js"></script>
 <h1 id="overview">Overview</h1>
-<p>Gaussian Mixture Models are used to group data points into different clusters. In this way, it is similar to K-means clustering, where each cluster is specified by a point at its center. In a way, GMMs are a generalization of K-means, where we relax the assumption that the clusters are circular (or spherical, or n-dimensional sphere, depending on how many dimensions your features have). Gaussians are specified by three parameters. Just like how the K-means algorithm seeks a point which best &ldquo;fits&rdquo; your data points, the GMM algorithm will seek a gaussian which best fits them.</p>
+<p>Gaussian Mixture Models are used to group data points into different clusters. In this way, it is similar to <a href="/posts/vectorized-kmeans/">K-means clustering</a>, where each cluster is specified by a point at its center. In a way, GMMs are a generalization of K-means, where we relax the assumption that the clusters are circular (or spherical, or n-dimensional sphere, depending on how many dimensions your features have). Gaussians are specified by three parameters. Just like how the K-means algorithm seeks a point which best &ldquo;fits&rdquo; your data points, the GMM algorithm will seek a gaussian which best fits them.</p>
 <p>Any GMM model you will be implementing will probably have a <code>fit</code> and a <code>predict</code> method. The goal of the <code>fit</code> method is to find a number of gaussians to cluster your data points. The <code>predict</code> method takes a new point (or a list of new points) and predicts which gaussian is closest to it. So you may have a skeleton class like so:</p>
 <pre><code class="language-python">class GMM():
     def __init__(self, n_clusters, covariance_type):
@@ -6328,10 +6340,10 @@ $$</p>
             <pubDate>Tue, 19 May 2020 14:28:57 +0800</pubDate>
             
             <guid>https://blog.lukesalamone.com/posts/gomoku2049/</guid>
-            <description>&lt;p&gt;Gomoku is a strategy game similar to tic tac toe, but played on a larger board and with the goal of getting 5 in a row rather than 3. Since the game has perfect information and has simple rules, I thought it would be a fun exercise in creating a game AI.
-In February 2020 I decided to code up Gomoku2049. The game is a demonstration of MiniMax, which is an algorithm for finding the move which minimizes the opponent’s best moves. This article is an overview of the game’s technical highlights.&lt;/p&gt;</description>
-            <content type="html"><![CDATA[<p>Gomoku is a strategy game similar to tic tac toe, but played on a larger board and with the goal of getting 5 in a row rather than 3. Since the game has perfect information and has simple rules, I thought it would be a fun exercise in creating a game AI.
-In February 2020 I decided to code up Gomoku2049. The game is a demonstration of MiniMax, which is an algorithm for finding the move which minimizes the opponent’s best moves. This article is an overview of the game’s technical highlights.</p>
+            <description>&lt;p&gt;Gomoku is a strategy game similar to tic tac toe, but played on a larger board and with the goal of getting 5 in a row rather than 3. Since the game has perfect information and has simple rules, I thought it would be a fun exercise in creating a game AI.&lt;/p&gt;
+&lt;p&gt;In February 2020 I decided to code up Gomoku2049. The game is a demonstration of MiniMax, which is &lt;a href=&#34;../posts/chess-engine-history/&#34;&gt;an algorithm for finding the move which minimizes the opponent’s best moves&lt;/a&gt;. This article is an overview of the game’s technical highlights.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>Gomoku is a strategy game similar to tic tac toe, but played on a larger board and with the goal of getting 5 in a row rather than 3. Since the game has perfect information and has simple rules, I thought it would be a fun exercise in creating a game AI.</p>
+<p>In February 2020 I decided to code up Gomoku2049. The game is a demonstration of MiniMax, which is <a href="/posts/chess-engine-history/">an algorithm for finding the move which minimizes the opponent’s best moves</a>. This article is an overview of the game’s technical highlights.</p>
 <p><a href="http://gomoku2049.s3-website-us-east-1.amazonaws.com/">Click here to try out the game!</a></p>
 <h2 id="minimax-with-alpha-beta-pruning">Minimax with alpha-beta pruning</h2>
 <figure><img src="/img/game-tree.png"

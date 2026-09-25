@@ -65,30 +65,30 @@
 
 
 	<meta itemprop="name" content="A Few Notes on the Transformer">
-	<meta itemprop="description" content="A self-attention block depicted as a neural network.
-In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.
-What is attention? At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren’t. In language models, attention is used as a way for the model to learn which portions of a sentence are relevant to each word.">
+	<meta itemprop="description" content="For a more mechanical explanation of the self-attention and multi-headed attention calculation, see the Attention Walkthrough.
+A self-attention block depicted as a neural network.
+In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.">
 	<meta itemprop="datePublished" content="2022-11-16T15:24:15-05:00">
 	<meta itemprop="dateModified" content="2022-11-16T15:24:15-05:00">
-	<meta itemprop="wordCount" content="716">
+	<meta itemprop="wordCount" content="732">
 	<meta itemprop="image" content="https://blog.lukesalamone.com/img/covers/transformer_cover.png">
 	<meta itemprop="keywords" content="Transformer,Attention">
 
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/covers/transformer_cover.png">
 	<meta name="twitter:title" content="A Few Notes on the Transformer">
-	<meta name="twitter:description" content="A self-attention block depicted as a neural network.
-In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.
-What is attention? At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren’t. In language models, attention is used as a way for the model to learn which portions of a sentence are relevant to each word.">
+	<meta name="twitter:description" content="For a more mechanical explanation of the self-attention and multi-headed attention calculation, see the Attention Walkthrough.
+A self-attention block depicted as a neural network.
+In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.">
 
 
 
     <meta property="og:url" content="https://blog.lukesalamone.com/posts/self-attention/">
 	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
 	<meta property="og:title" content="A Few Notes on the Transformer">
-	<meta property="og:description" content="A self-attention block depicted as a neural network.
-In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.
-What is attention? At a high level, attention is a mechanism for neural networks to boost portions of an input which are relevant and ignore those which aren’t. In language models, attention is used as a way for the model to learn which portions of a sentence are relevant to each word.">
+	<meta property="og:description" content="For a more mechanical explanation of the self-attention and multi-headed attention calculation, see the Attention Walkthrough.
+A self-attention block depicted as a neural network.
+In this post I will describe the attention mechanism, commonly used in transformers, a popular neural language architecture. Most of the most well-known large language models of late are based on the transformer architecture. Attention was first described in Attention is All You Need by Vaswani et al.">
 	<meta property="og:locale" content="en_us">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="posts">
@@ -165,7 +165,8 @@ What is attention? At a high level, attention is a mechanism for neural networks
       
 
       <div class="post-content">
-        <figure><img src="../../img/self-attention.png"
+        <p><em>For a more mechanical explanation of the self-attention and multi-headed attention calculation, see the <a href="../../posts/attention-walkthrough/">Attention Walkthrough</a>.</em></p>
+<figure><img src="../../img/self-attention.png"
 			alt="A self-attention block depicted as a neural network."><figcaption>
 			<p>A self-attention block depicted as a neural network.</p>
 		</figcaption>
@@ -252,7 +253,7 @@ This is the part where Vaswani delves into a database analogy with <strong>keys<
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        716 Words
+        732 Words
       </p>
 
       <p>

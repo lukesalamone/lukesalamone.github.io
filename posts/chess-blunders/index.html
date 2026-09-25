@@ -67,10 +67,10 @@
 	<meta itemprop="name" content="What is a blunder in chess?">
 	<meta itemprop="description" content="What is a blunder in chess? The tension between the qualitative and quantitative answers to this question is at the heart of different approaches towards chess, and more broadly, how quantitative metrics may lack context, but qualitative metrics lack precision.
 Qualitative answer There are many qualitative answers to this question, especially when comparing “blunders” and “mistakes”:
-“a move that negatively affects their position in a significant way” ~ chess.com “severely worsens the player’s situation by allowing a loss of material, checkmate, or anything similar” ~ Wikipedia “Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.” ~ r/chess An issue with these qualitative answers is that while their words may be correct, smart people may still disagree with their applicability at the margins. For a suboptimal move to have a “significant” negative effect, it requires that the opponent notices and takes advantage of it.">
+“a move that negatively affects their position in a significant way” ~ chess.com “severely worsens the player’s situation by allowing a loss of material, checkmate, or anything similar” ~ Wikipedia “Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.” ~ r/chess More generally, qualitative analysis is happy to consider more abstract aspects of a position than piece count, such as the positional strength of an active knight, king safety, and “practical chances” i.e. how easy it is for a human to play the position.">
 	<meta itemprop="datePublished" content="2023-09-25T20:47:30-08:00">
 	<meta itemprop="dateModified" content="2023-09-25T20:47:30-08:00">
-	<meta itemprop="wordCount" content="402">
+	<meta itemprop="wordCount" content="528">
 	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
 	<meta itemprop="keywords" content="Chess,Evaluation,Statistics,Explainability">
 
@@ -79,7 +79,7 @@ Qualitative answer There are many qualitative answers to this question, especial
 	<meta name="twitter:title" content="What is a blunder in chess?">
 	<meta name="twitter:description" content="What is a blunder in chess? The tension between the qualitative and quantitative answers to this question is at the heart of different approaches towards chess, and more broadly, how quantitative metrics may lack context, but qualitative metrics lack precision.
 Qualitative answer There are many qualitative answers to this question, especially when comparing “blunders” and “mistakes”:
-“a move that negatively affects their position in a significant way” ~ chess.com “severely worsens the player’s situation by allowing a loss of material, checkmate, or anything similar” ~ Wikipedia “Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.” ~ r/chess An issue with these qualitative answers is that while their words may be correct, smart people may still disagree with their applicability at the margins. For a suboptimal move to have a “significant” negative effect, it requires that the opponent notices and takes advantage of it.">
+“a move that negatively affects their position in a significant way” ~ chess.com “severely worsens the player’s situation by allowing a loss of material, checkmate, or anything similar” ~ Wikipedia “Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.” ~ r/chess More generally, qualitative analysis is happy to consider more abstract aspects of a position than piece count, such as the positional strength of an active knight, king safety, and “practical chances” i.e. how easy it is for a human to play the position.">
 
 
 
@@ -88,7 +88,7 @@ Qualitative answer There are many qualitative answers to this question, especial
 	<meta property="og:title" content="What is a blunder in chess?">
 	<meta property="og:description" content="What is a blunder in chess? The tension between the qualitative and quantitative answers to this question is at the heart of different approaches towards chess, and more broadly, how quantitative metrics may lack context, but qualitative metrics lack precision.
 Qualitative answer There are many qualitative answers to this question, especially when comparing “blunders” and “mistakes”:
-“a move that negatively affects their position in a significant way” ~ chess.com “severely worsens the player’s situation by allowing a loss of material, checkmate, or anything similar” ~ Wikipedia “Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.” ~ r/chess An issue with these qualitative answers is that while their words may be correct, smart people may still disagree with their applicability at the margins. For a suboptimal move to have a “significant” negative effect, it requires that the opponent notices and takes advantage of it.">
+“a move that negatively affects their position in a significant way” ~ chess.com “severely worsens the player’s situation by allowing a loss of material, checkmate, or anything similar” ~ Wikipedia “Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.” ~ r/chess More generally, qualitative analysis is happy to consider more abstract aspects of a position than piece count, such as the positional strength of an active knight, king safety, and “practical chances” i.e. how easy it is for a human to play the position.">
 	<meta property="og:locale" content="en_us">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="posts">
@@ -153,7 +153,7 @@ Qualitative answer There are many qualitative answers to this question, especial
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
-        2 minutes
+        3 minutes
 
         
       </p>
@@ -175,6 +175,7 @@ Qualitative answer There are many qualitative answers to this question, especial
 <li>&ldquo;severely worsens the player&rsquo;s situation by allowing a loss of material, checkmate, or anything similar&rdquo; ~ <a href="https://en.wikipedia.org/wiki/Blunder_%28chess%29">Wikipedia</a></li>
 <li>&ldquo;Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.&rdquo; ~ <a href="https://www.reddit.com/r/chess/comments/1iiqyb/what_distinguishes_the_difference_between_a/">r/chess</a></li>
 </ul>
+<p>More generally, <a href="../../posts/qualitative-analysis-chess/">qualitative analysis is happy to consider more abstract aspects of a position</a> than piece count, such as the positional strength of an active knight, king safety, and &ldquo;practical chances&rdquo; i.e. how easy it is for a human to play the position.</p>
 <p>An issue with these qualitative answers is that while their words may be correct, smart people may still disagree with their applicability at the margins. For a suboptimal move to have a &ldquo;significant&rdquo; negative effect, it requires that the opponent notices and takes advantage of it.</p>
 <h2 id="quantitative-answer">Quantitative answer</h2>
 <p>The quantitative answer considers a move which causes a significant drop in probability of winning to be blunder. What is &ldquo;significant&rdquo;? <a href="https://github.com/lichess-org/lila/blob/a02b6fb2b76edfd4c73c36b2e022d2c9265dbb42/ui/analyse/src/practice/practiceCtrl.ts#L116">A change 14% or greater</a>.</p>
@@ -183,10 +184,14 @@ Qualitative answer There are many qualitative answers to this question, especial
 <div style="width:100%; display: flex; justify-content: center;">
   <iframe src="https://www.desmos.com/calculator/ieqrq3ry9z?embed" width="500" height="500" frameborder=0></iframe>
 </div>
-<p>Of course, this isn&rsquo;t perfect, and there&rsquo;s an argument to be made that outcomes for 2300+ elo players may not be representative of lower-rated players. It also doesn&rsquo;t take time pressure into consideration. But there is a tradeoff between accuracy of our metric and generalization power of the model.</p>
+<p>However, <a href="https://lichess.org/page/accuracy">Lichess&rsquo; accuracy article</a> suggests that this relationship is slightly flawed in two ways:</p>
+<ol>
+<li>Higher-rated players tend to play more theoretical openings which will have a lower centipawn loss.</li>
+<li>Higher-rated players tend to resign in lost positions, perhaps underestimating their true win percentage due to opponent blunders. <a href="https://www.youtube.com/watch?v=5zfWLcwUsIM">Never resign!</a></li>
+</ol>
+<p>Of course, this isn&rsquo;t perfect, and there&rsquo;s an argument to be made that outcomes for 2300+ elo players may not be representative of lower-rated players. It also doesn&rsquo;t take time pressure into consideration. Taken to the extreme, we can even use an <a href="../../posts/winning-faster-than-stockfish/">adversarial player-modeling algorithm</a> to win faster than Stockfish. But there is a tradeoff between accuracy of our metric and generalization power of the model.</p>
+<p>(We can also go the opposite direction and directly <a href="../../posts/distilling-stockfish/">try to quickly predict the stockfish evaluation of a position</a>.)</p>
 <p><a href="https://zwischenzug.substack.com/p/centipawns-suck">One other important objection</a> to this line of inquery is that the centipawn evaluation of a position is not a constant. The evaluation varies by search depth and between engines. So if Stockfish 15 evaluates a position at +1 and Stockfish 16 evaluates the same position at +1.5, white&rsquo;s actual winning chances haven&rsquo;t changed at all. The evaluation is not anchored to any real value, especially with the introduction of NNUE eval functions.</p>
-<h2 id="references">References</h2>
-<p><a href="https://lichess.org/page/accuracy">https://lichess.org/page/accuracy</a></p>
 
       </div>
     </article>
@@ -215,7 +220,7 @@ Qualitative answer There are many qualitative answers to this question, especial
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        402 Words
+        528 Words
       </p>
 
       <p>

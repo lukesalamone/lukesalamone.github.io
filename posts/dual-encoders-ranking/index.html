@@ -172,7 +172,7 @@ Background Search requires an automatic way to find the most relevant documents 
 		</figcaption>
 </figure>
 
-<p>The great thing about DE models is that document embeddings can be computed ahead of time. When users enter a query, only that query embedding needs to be calculated, and then compared with the embeddings already calculated for each of the documents. It&rsquo;s a lot faster. So much faster, in fact, that CA is generally not used for initial retrieval, only for reranking afterwards.</p>
+<p>The great thing about DE models is that <a href="../../posts/creating-tiny-semantic-search/">document embeddings can be computed ahead of time</a>. When users enter a query, only that query embedding needs to be calculated, and then compared with the embeddings already calculated for each of the documents. It&rsquo;s a lot faster. So much faster, in fact, that CA is generally not used for initial retrieval, only for reranking afterwards.</p>
 <p>However, DE models tend to be less accurate than CA models. It would be great if it was possible to transfer some of the benefits of CA models to DE models.</p>
 <h2 id="the-problem">The Problem</h2>
 <p>It&rsquo;s unclear whether the shortcomings of DEs are due to the DE model&rsquo;s capacity or because of its training procedure. DEs may be overfitting.</p>

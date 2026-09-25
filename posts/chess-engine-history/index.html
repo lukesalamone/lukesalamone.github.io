@@ -69,7 +69,7 @@
 Computers that play chess, otherwise known as chess engines, have existed since at least the late 1940s. Because the game was said to require the perfect combination of planning, strategy, psychology, and calculation, chess was once thought to be an activity directly correlated with intelligence, and that only a truly intelligent computer should be able to defeat humans. However, as a recent chess.com report explains, computers are now far stronger than humans:">
 	<meta itemprop="datePublished" content="2022-10-07T20:17:21-07:00">
 	<meta itemprop="dateModified" content="2022-10-07T20:17:21-07:00">
-	<meta itemprop="wordCount" content="1882">
+	<meta itemprop="wordCount" content="1913">
 	<meta itemprop="image" content="https://blog.lukesalamone.com/img/covers/chess-engine-history.png">
 	<meta itemprop="keywords" content="Chess,Ai,Explainability">
 
@@ -218,7 +218,8 @@ Computers that play chess, otherwise known as chess engines, have existed since 
 </figure>
 
 <p>Neural networks may also be used more directly. <a href="https://lczero.org/dev/wiki/technical-explanation-of-leela-chess-zero/">Leela Chess Zero</a>, also known as Lc0 is another open-source chess engine, modeled after DeepMind’s AlphaZero chess engine. Lc0 uses Predictor + Upper Confidence Bound tree search (PUCT) to search its game tree. Leela evaluates new nodes by iteratively choosing moves from a probability distribution until it reaches an unexplored node. At that point, Leela&rsquo;s neural network estimates the node&rsquo;s value and propagates that value back up the tree. PUCT is very similar to Monte Carlo Tree Search, but with game “rollouts” replaced by neural network evaluations.</p>
-<p>One other notable engine is <a href="https://arxiv.org/abs/2006.01855">Maia Chess</a>. Maia is interesting for two reasons. Unlike most other engines, Maia&rsquo;s objective is to model human behavior rather than to perform optimally. This is interesting because Maia is in many cases trained on suboptimal data. The other notable feature about Maia is the unusual manner in which moves are selected: instead of performing any type of tree search at all, the engine simply returns the neural network&rsquo;s static evaluation of the current board position.</p>
+<p>Another notable engine is <a href="https://arxiv.org/abs/2006.01855">Maia Chess</a>. Maia is interesting for two reasons. Unlike most other engines, Maia&rsquo;s objective is to model human behavior rather than to perform optimally. This is interesting because Maia is in many cases trained on suboptimal data. The other notable feature about Maia is the unusual manner in which moves are selected: instead of performing any type of tree search at all, the engine simply returns the neural network&rsquo;s static evaluation of the current board position.</p>
+<p>We can also attempt to predict the evaluation of Stockfish directly with a neural network, as <a href="https://arxiv.org/pdf/2402.04494v1">Deepmind did in 2024</a> and as I did using <a href="../../posts/distilling-stockfish/">one billion positions from the Gigafish dataset</a>.</p>
 <p>Suffice it to say, however, that despite computation no longer being a significant limitation, prior qualitative approaches still have garnered relatively little attention.</p>
 <h1 id="conclusion">Conclusion</h1>
 <p>Engineers have historically sought to build the most powerful chess engine possible. With the singular goal of defeating human (and now computer) opponents, explainability was an expedient but understandable tradeoff to make. In the present day, however, there is no longer a question of whether humans or computers are superior chess players. It seems quite clear that the time has come to revisit some of the tradeoffs made in the past.</p>
@@ -250,7 +251,7 @@ Computers that play chess, otherwise known as chess engines, have existed since 
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1882 Words
+        1913 Words
       </p>
 
       <p>

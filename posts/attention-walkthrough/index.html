@@ -65,30 +65,27 @@
 
 
 	<meta itemprop="name" content="Attention Walkthrough">
-	<meta itemprop="description" content="In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it’s easier to understand what’s going on.
-Step 0: Define some constants We will use the three tokens [&#39;major&#39;, &#39;league&#39;, &#39;baseball&#39;] with model dimension 4 (d_model=4) and two attention heads (num_heads=2).
-num_heads = 2 d_model = 4 d_k = d_v = d_model // num_heads Here we also define the dimensions of the key and value here so that after after concatenation in the multihead attention algorithm, the final result will have dimension (seq_len, d_model).">
+	<meta itemprop="description" content="In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it’s easier to understand what’s going on. For a more conceptual explanation of attention, see A Few Notes on the Transformer.
+Step 0: Define some constants We will use the three tokens [&#39;major&#39;, &#39;league&#39;, &#39;baseball&#39;] with model dimension 4 (d_model=4) and two attention heads (num_heads=2).">
 	<meta itemprop="datePublished" content="2022-11-22T23:35:04-07:00">
 	<meta itemprop="dateModified" content="2022-11-22T23:35:04-07:00">
-	<meta itemprop="wordCount" content="752">
+	<meta itemprop="wordCount" content="766">
 	<meta itemprop="image" content="https://blog.lukesalamone.com/img/logo.png">
 	<meta itemprop="keywords" content="Attention,Transformer">
 
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/logo.png">
 	<meta name="twitter:title" content="Attention Walkthrough">
-	<meta name="twitter:description" content="In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it’s easier to understand what’s going on.
-Step 0: Define some constants We will use the three tokens [&#39;major&#39;, &#39;league&#39;, &#39;baseball&#39;] with model dimension 4 (d_model=4) and two attention heads (num_heads=2).
-num_heads = 2 d_model = 4 d_k = d_v = d_model // num_heads Here we also define the dimensions of the key and value here so that after after concatenation in the multihead attention algorithm, the final result will have dimension (seq_len, d_model).">
+	<meta name="twitter:description" content="In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it’s easier to understand what’s going on. For a more conceptual explanation of attention, see A Few Notes on the Transformer.
+Step 0: Define some constants We will use the three tokens [&#39;major&#39;, &#39;league&#39;, &#39;baseball&#39;] with model dimension 4 (d_model=4) and two attention heads (num_heads=2).">
 
 
 
     <meta property="og:url" content="https://blog.lukesalamone.com/posts/attention-walkthrough/">
 	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
 	<meta property="og:title" content="Attention Walkthrough">
-	<meta property="og:description" content="In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it’s easier to understand what’s going on.
-Step 0: Define some constants We will use the three tokens [&#39;major&#39;, &#39;league&#39;, &#39;baseball&#39;] with model dimension 4 (d_model=4) and two attention heads (num_heads=2).
-num_heads = 2 d_model = 4 d_k = d_v = d_model // num_heads Here we also define the dimensions of the key and value here so that after after concatenation in the multihead attention algorithm, the final result will have dimension (seq_len, d_model).">
+	<meta property="og:description" content="In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it’s easier to understand what’s going on. For a more conceptual explanation of attention, see A Few Notes on the Transformer.
+Step 0: Define some constants We will use the three tokens [&#39;major&#39;, &#39;league&#39;, &#39;baseball&#39;] with model dimension 4 (d_model=4) and two attention heads (num_heads=2).">
 	<meta property="og:locale" content="en_us">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="posts">
@@ -165,7 +162,7 @@ num_heads = 2 d_model = 4 d_k = d_v = d_model // num_heads Here we also define t
       
 
       <div class="post-content">
-        <p>In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it&rsquo;s easier to understand what&rsquo;s going on.</p>
+        <p>In this post we will walk through a very simple example of multiheaded attention is computed. The goal is to keep the dimensions small so that it&rsquo;s easier to understand what&rsquo;s going on. For a more conceptual explanation of attention, see <a href="../../posts/self-attention/">A Few Notes on the Transformer</a>.</p>
 <h2 id="step-0-define-some-constants">Step 0: Define some constants</h2>
 <p>We will use the three tokens <code>['major', 'league', 'baseball']</code> with model dimension 4 (<code>d_model=4</code>) and two attention heads (<code>num_heads=2</code>).</p>
 <pre><code class="language-python">num_heads = 2
@@ -302,7 +299,7 @@ def mha(x):
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        752 Words
+        766 Words
       </p>
 
       <p>

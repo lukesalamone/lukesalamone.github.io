@@ -69,7 +69,7 @@
 Here we use a batch with three samples padded from the left since we want to predict the next token on the right. (Padding on the right would probably predict another pad.)">
 	<meta itemprop="datePublished" content="2021-06-15T19:09:36-05:00">
 	<meta itemprop="dateModified" content="2021-06-15T19:09:36-05:00">
-	<meta itemprop="wordCount" content="828">
+	<meta itemprop="wordCount" content="829">
 	<meta itemprop="image" content="https://blog.lukesalamone.com/img/covers/what-are-attention-masks.png">
 	<meta itemprop="keywords" content="Nlp,Python,Transformers,Gpt2,Bert,Pytorch,Huggingface">
 
@@ -175,7 +175,7 @@ Here we use a batch with three samples padded from the left since we want to pre
 
 <p>If you want to perform inference with transformers one sequence at a time, you can ignore attention masks. The &ldquo;slow way&rdquo; will be sufficient for your needs.</p>
 <h2 id="the-slow-way">The slow way</h2>
-<p>We can perform inference with GPT-2 using sequences one at a time, but it&rsquo;s slow:</p>
+<p>We can <a href="../../posts/gpt2-tokenization/">tokenize and perform inference with GPT-2</a> one sequence at a time, but it&rsquo;s slow:</p>
 <pre><code class="language-python">from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
@@ -357,7 +357,7 @@ tensor([[1,2], [3]])   # error!
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        828 Words
+        829 Words
       </p>
 
       <p>

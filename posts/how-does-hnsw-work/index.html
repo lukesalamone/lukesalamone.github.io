@@ -65,7 +65,7 @@
 
 
 	<meta itemprop="name" content="How does HNSW work?">
-	<meta itemprop="description" content="Suppose we have a vector database with a billion items in it (the haystack). And suppose we are looking for K vectors, the needles which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing 1-distance(x,y).) And also suppose that we’d like to do this quickly.
+	<meta itemprop="description" content="Suppose we have a vector database with a billion embeddings in it (the haystack). And suppose we are looking for K vectors, the needles which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing 1-distance(x,y).) And also suppose that we’d like to do this quickly.
 Naive and semi-naive approaches One approach might be to compare every vector and take the argmax. In that case, for vectors of length D our runtime will be 1 billion x D.">
 	<meta itemprop="datePublished" content="2024-05-20T13:38:01-07:00">
 	<meta itemprop="dateModified" content="2024-05-20T13:38:01-07:00">
@@ -76,7 +76,7 @@ Naive and semi-naive approaches One approach might be to compare every vector an
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/covers/how-does-hnsw-work.png">
 	<meta name="twitter:title" content="How does HNSW work?">
-	<meta name="twitter:description" content="Suppose we have a vector database with a billion items in it (the haystack). And suppose we are looking for K vectors, the needles which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing 1-distance(x,y).) And also suppose that we’d like to do this quickly.
+	<meta name="twitter:description" content="Suppose we have a vector database with a billion embeddings in it (the haystack). And suppose we are looking for K vectors, the needles which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing 1-distance(x,y).) And also suppose that we’d like to do this quickly.
 Naive and semi-naive approaches One approach might be to compare every vector and take the argmax. In that case, for vectors of length D our runtime will be 1 billion x D.">
 
 
@@ -84,7 +84,7 @@ Naive and semi-naive approaches One approach might be to compare every vector an
     <meta property="og:url" content="https://blog.lukesalamone.com/posts/how-does-hnsw-work/">
 	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
 	<meta property="og:title" content="How does HNSW work?">
-	<meta property="og:description" content="Suppose we have a vector database with a billion items in it (the haystack). And suppose we are looking for K vectors, the needles which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing 1-distance(x,y).) And also suppose that we’d like to do this quickly.
+	<meta property="og:description" content="Suppose we have a vector database with a billion embeddings in it (the haystack). And suppose we are looking for K vectors, the needles which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing 1-distance(x,y).) And also suppose that we’d like to do this quickly.
 Naive and semi-naive approaches One approach might be to compare every vector and take the argmax. In that case, for vectors of length D our runtime will be 1 billion x D.">
 	<meta property="og:locale" content="en_us">
 	<meta property="og:type" content="article">
@@ -163,17 +163,17 @@ Naive and semi-naive approaches One approach might be to compare every vector an
       
 
       <div class="post-content">
-        <p>Suppose we have a vector database with a billion items in it (the <em>haystack</em>). And suppose we are looking for K vectors, the <em>needles</em> which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing <code>1-distance(x,y)</code>.) And also suppose that we&rsquo;d like to do this quickly.</p>
+        <p>Suppose we have a vector database with a billion <a href="../../posts/learning-the-haystack/">embeddings</a> in it (the <em>haystack</em>). And suppose we are looking for K vectors, the <em>needles</em> which maximize some similarity function. (In the case of cosine similarity or euclidean distance, we may be maximizing <code>1-distance(x,y)</code>.) And also suppose that we&rsquo;d like to do this quickly.</p>
 <h2 id="naive-and-semi-naive-approaches">Naive and semi-naive approaches</h2>
 <p>One approach might be to compare every vector and take the argmax. In that case, for vectors of length D our runtime will be <code>1 billion x D</code>.</p>
 <pre><code class="language-python">def search(needle, haystack, arg_k=1):
     # normalize needle and haystack vectors
     needle /= np.linalg.norm(needle)
     haystack /= np.linalg.norm(haystack, axis=1, keepdims=True)
-    
+
     # compute cosine similarities
     similarities = np.dot(haystack, needle)
-    
+
     # get the indexes of the top k elements
     idx_topk = np.argpartition(a, -k)[-k:]
 

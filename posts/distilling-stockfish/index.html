@@ -69,7 +69,7 @@
 Loss continued to decrease during the entire training run, strongly suggesting the importance of data volume.">
 	<meta itemprop="datePublished" content="2026-03-06T20:25:56-08:00">
 	<meta itemprop="dateModified" content="2026-03-06T20:25:56-08:00">
-	<meta itemprop="wordCount" content="971">
+	<meta itemprop="wordCount" content="989">
 	<meta itemprop="image" content="https://blog.lukesalamone.com/img/covers/distilling-stockfish.png">
 	<meta itemprop="keywords" content="Chess,Neural-Networks">
 
@@ -170,7 +170,7 @@ Loss continued to decrease during the entire training run, strongly suggesting t
 </figure>
 
 <p>Stockfish is currently the strongest chess engine in the world. It works by using a small neural network millions of times per position. One interesting question we could ask is whether we could replace search depth with a more accurate value function. In 2024, researchers at DeepMind <a href="https://arxiv.org/pdf/2402.04494v1">attempted</a> to answer this question. Critically, this approach did not hold search depth constant, and although they had 15 billion action-value pairs, they only had around 530 million state-value estimates.</p>
-<p>I wanted to take another look at this problem, building a large state-value dataset with a fixed search depth and experimenting with different model architectures.</p>
+<p>The stockfish evaluation of a position is <a href="../../posts/chess-blunders/">a good indication of win probability</a>, so I wanted to take another look at this problem. To do this, I built a large state-value dataset with a fixed search depth and experimented with different model architectures.</p>
 <h2 id="attention-isnt-all-you-need">Attention isn&rsquo;t all you need</h2>
 <p>I trained variants from three main categories of architectures: pure Vision Transformer, pure ResNet, and a hybrid with ResNet blocks followed by Transformer blocks.</p>
 <p>I performed pilot runs to narrow down to the best architecture for this task. The first pilot run trained a 40M param variant, and it became clear early on that the Hybrid and ResNet architectures were significantly better than the pure vision transformer. Compared to the ResNet and the Hybrid, the vision transformer is not able to benefit from the inductive biases provided by convolutions. It effectively needs to learn what a 2D grid is from scratch./</p>
@@ -215,12 +215,12 @@ Loss continued to decrease during the entire training run, strongly suggesting t
 - How much does depth matter? This is only a depth 10 dataset. Could we achieve the same performance on fewer data points if those data points had better labels?
 - How much does evaluation accuracy improve with depth. What is the MSE of depths 10, 15, 20 etc if we assume depth 30 is the true value?
 - Are certain positions inherently inaccurate at low depth? Can we predict that? -->
-<!-- It works based on the minimax algorithm, which is effectively a breadth-first search of the game tree, with some pruning. Since it's not possible to reach all leaf nodes in most positions, we need a value function to estimate how good a position is. 
+<!-- It works based on the minimax algorithm, which is effectively a breadth-first search of the game tree, with some pruning. Since it's not possible to reach all leaf nodes in most positions, we need a value function to estimate how good a position is.
 
 What makes a good evaluation function? Well, a perfect evaluation function could take any game state (piece positions, en passant, repetition counter, half/full move counter, etc.) and return *whether it is possible for white to win if black plays perfectly* (+∞), *whether it is possible for black to win if white plays perfectly* (-∞) or *neither player can win if their opponent plays perfectly* (0). However a perfect evaluation would require searching the complete game tree, which is usually computationally infeasible. So we're stuck with approximations.
 
 Historically, Stockfish's value function used hand-crafted rules but was replaced by a neural network called NNUE. The purpose of the value function and NNUE are to approximate or "distill" the result of what we would get if we ran minimax through the whole game tree. -->
-<!-- 
+<!--
 In this paper the authors outline a supervised learning approach to creating a chess engine which performs no tree search during game play.
 
 But why would you want to do this? Well, there are a few reasons.
@@ -254,7 +254,7 @@ When creating a chess engine, you'll need a couple of things. First, you'll need
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        971 Words
+        989 Words
       </p>
 
       <p>
