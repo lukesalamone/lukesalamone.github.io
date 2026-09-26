@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>Evaluation on Luke Salamone&#39;s Blog</title>
-		<link>https://blog.lukesalamone.com/tags/evaluation/</link>
-		<description>Recent content in Evaluation on Luke Salamone&#39;s Blog</description>
+		<title>Stockfish on Luke Salamone&#39;s Blog</title>
+		<link>https://blog.lukesalamone.com/tags/stockfish/</link>
+		<description>Recent content in Stockfish on Luke Salamone&#39;s Blog</description>
 		<generator>Hugo</generator>
 		<language>en-us</language>
 		
@@ -12,20 +12,13 @@
 		
 			<lastBuildDate>Sun, 30 Nov 2025 23:38:45 -0700</lastBuildDate>
 		
-			<atom:link href="https://blog.lukesalamone.com/tags/evaluation/index.xml" rel="self" type="application/rss+xml" />
+			<atom:link href="https://blog.lukesalamone.com/tags/stockfish/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>How well can Stockfish Estimate Itself?</title>
 				<link>https://blog.lukesalamone.com/posts/stockfish-depth-accuracy/</link>
 				<pubDate>Sun, 30 Nov 2025 23:38:45 -0700</pubDate>
 				<guid>https://blog.lukesalamone.com/posts/stockfish-depth-accuracy/</guid>
 				<description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;MathJax.Hub.Config({&#xA;  tex2jax: {&#xA;    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],&#xA;    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],&#xA;    processEscapes: true,&#xA;    processEnvironments: true,&#xA;    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],&#xA;    TeX: {&#xA;      equationNumbers: {&#xA;        autoNumber: &#34;AMS&#34;&#xA;      },&#xA;      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]&#xA;    }&#xA;  }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;script type=&#34;text/x-mathjax-config&#34;&gt;&#xA;  MathJax.Hub.Queue(function() {&#xA;    // Fix &lt;code&gt; tags after MathJax finishes running. This is a&#xA;    // hack to overcome a shortcoming of Markdown. Discussion at&#xA;    // https://github.com/mojombo/jekyll/issues/199&#xA;    var all = MathJax.Hub.getAllJax(), i;&#xA;    for(i = 0; i &lt; all.length; i += 1) {&#xA;        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;&#xA;    }&#xA;});&#xA;&lt;/script&gt;&#xA;&lt;p&gt;When I built &lt;a href=&#34;https://huggingface.co/datasets/lukesalamone/gigafish-3.8b-d10&#34;&gt;the Gigafish dataset&lt;/a&gt;, I deliberately chose to use positions evaluated at depth 10. These positions could be evaluated relatively quickly on my machine, but there was an accuracy tradeoff. At depth 10, Stockfish might not see or fully appreciate a tactic which becomes apparent at depth 15.&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>What is a blunder in chess?</title>
-				<link>https://blog.lukesalamone.com/posts/chess-blunders/</link>
-				<pubDate>Mon, 25 Sep 2023 20:47:30 -0800</pubDate>
-				<guid>https://blog.lukesalamone.com/posts/chess-blunders/</guid>
-				<description>&lt;p&gt;What is a blunder in chess? The tension between the qualitative and quantitative answers to this question is at the heart of different approaches towards chess, and more broadly, how quantitative metrics may lack context, but qualitative metrics lack precision.&lt;/p&gt;&#xA;&lt;h2 id=&#34;qualitative-answer&#34;&gt;Qualitative answer&lt;/h2&gt;&#xA;&lt;p&gt;There are many qualitative answers to this question, especially when comparing &amp;ldquo;blunders&amp;rdquo; and &amp;ldquo;mistakes&amp;rdquo;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&amp;ldquo;a move that negatively affects their position in a significant way&amp;rdquo; ~ &lt;a href=&#34;https://www.chess.com/terms/chess-blunder&#34;&gt;chess.com&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&amp;ldquo;severely worsens the player&amp;rsquo;s situation by allowing a loss of material, checkmate, or anything similar&amp;rdquo; ~ &lt;a href=&#34;https://en.wikipedia.org/wiki/Blunder_%28chess%29&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&amp;ldquo;Blunders tend to be immediately refutable, while mistakes require planning to capitalize on.&amp;rdquo; ~ &lt;a href=&#34;https://www.reddit.com/r/chess/comments/1iiqyb/what_distinguishes_the_difference_between_a/&#34;&gt;r/chess&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;More generally, &lt;a href=&#34;../../posts/qualitative-analysis-chess/&#34;&gt;qualitative analysis is happy to consider more abstract aspects of a position&lt;/a&gt; than piece count, such as the positional strength of an active knight, king safety, and &amp;ldquo;practical chances&amp;rdquo; i.e. how easy it is for a human to play the position.&lt;/p&gt;</description>
 			</item>
 	</channel>
 </rss>

@@ -590,6 +590,111 @@ When creating a chess engine, you'll need a couple of things. First, you'll need
         </item>
         
         <item>
+            <title>How well can Stockfish Estimate Itself?</title>
+            <link>https://blog.lukesalamone.com/posts/stockfish-depth-accuracy/</link>
+            <pubDate>Sun, 30 Nov 2025 23:38:45 -0700</pubDate>
+            
+            <guid>https://blog.lukesalamone.com/posts/stockfish-depth-accuracy/</guid>
+            <description>&lt;script type=&#34;text/javascript&#34; async src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/x-mathjax-config&#34;&gt;
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],
+    displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\[&#39;,&#39;\]&#39;]],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],
+    TeX: {
+      equationNumbers: {
+        autoNumber: &#34;AMS&#34;
+      },
+      extensions: [&#34;AMSmath.js&#34;, &#34;AMSsymbols.js&#34;]
+    }
+  }
+});
+&lt;/script&gt;
+&lt;script type=&#34;text/x-mathjax-config&#34;&gt;
+  MathJax.Hub.Queue(function() {
+    // Fix &lt;code&gt; tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i &lt; all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;
+    }
+});
+&lt;/script&gt;
+&lt;p&gt;When I built &lt;a href=&#34;https://huggingface.co/datasets/lukesalamone/gigafish-3.8b-d10&#34;&gt;the Gigafish dataset&lt;/a&gt;, I deliberately chose to use positions evaluated at depth 10. These positions could be evaluated relatively quickly on my machine, but there was an accuracy tradeoff. At depth 10, Stockfish might not see or fully appreciate a tactic which becomes apparent at depth 15.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      },
+      extensions: ["AMSmath.js", "AMSsymbols.js"]
+    }
+  }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<p>When I built <a href="https://huggingface.co/datasets/lukesalamone/gigafish-3.8b-d10">the Gigafish dataset</a>, I deliberately chose to use positions evaluated at depth 10. These positions could be evaluated relatively quickly on my machine, but there was an accuracy tradeoff. At depth 10, Stockfish might not see or fully appreciate a tactic which becomes apparent at depth 15.</p>
+<p>At a conceptual level, shallow searches attempt to approximate the result of deeper searches. For instance if search terminates at an NNUE leaf node, its neural network will attempt to approximate the result of searching all child nodes. In the extreme case, if we had perfect NNUE evaluators no search would be necessary at all.</p>
+<h2 id="centipawns-and-logs">Centipawns and Logs</h2>
+<p>A Stockfish evaluation comes in the form of centipawns: 1/100th of a pawn, always from white&rsquo;s perspective. So if white is winning by one pawn, the Stockfish eval will be +100. If black is winning by 2 pawns, the Stockfish eval will be -200.</p>
+<p>Therefore, the question we would like to ask is: how does the centipawn error change as Stockfish evaluation gets deeper?</p>
+<p>However, there are a few issues with simply measuring centipawn error, which I also discussed in <a href="/posts/chess-blunders/">What is a Blunder in Chess?</a>:</p>
+<ol>
+<li>The first practical issue is that this centipawn scale has to account for checkmate positions. White might be up two queens (+1800) but that&rsquo;s still not as good as having a forced checkmate. We can somewhat get around this by saying that forced mate positions are worth something like 10 pawns, but now we lose the distinction between +1000 and +2000.</li>
+<li>Not all errors are equally important. A 100 centipawn difference is a lot less important when white is already up a queen. But in an equal position, it&rsquo;s the kind of difference which can decide games.</li>
+<li>Relatedly, in winning positions Stockfish evaluations tend to fluctuate a lot as depth increases, as the engine finds that the losing player must give up more and more to stay in the game. However, whether the evaluation is +1200, +3500, or #8, white will almost certainly win this game.</li>
+</ol>
+<p>All of these factors are pointing in the same direction: centipawn is the wrong metric. What we really should be using is the difference in estimated win probability, which we can get from <a href="https://github.com/lichess-org/lila/pull/11148">this Lichess formula</a>:</p>
+<p style="text-align: center; font-size: 1.5em">
+$$
+\text{win %} = \frac{ 2 }{1 + e^{-0.00368608 * cp}} - 1
+$$
+</p>
+<div style="width:100%; display: flex; justify-content: center;">
+  <iframe src="https://www.desmos.com/calculator/ieqrq3ry9z?embed" width="500" height="500" frameborder=0></iframe>
+</div>
+<p>Intuitively this seems right. A 200 centipawn mistake (on the x-axis above) is barely noticeable above 1000, but catastrophic at 0. This also has the nice property of aligning forced mates with large centipawn evaluations: forced mate for white means white has a 100% chance of winning, and +2000 is very close to that.</p>
+<h2 id="accuracy-by-depth">Accuracy by depth</h2>
+<figure><img src="/img/stockfish_accuracy_by_depth.png"
+			alt="Measuring on 10k positions, we can see that accuracy improves most between depth 6 and depth 25."><figcaption>
+			<p>Measuring on 10k positions, we can see that accuracy improves most between depth 6 and depth 25.</p>
+		</figcaption>
+</figure>
+
+<p>Now that we&rsquo;ve established the motivation for win percentage prediction accuracy as the metric to track, we can see how well this improves as depth increases.</p>
+<p>It is interesting to note that even at depth 1, where we are just doing argmax over NNUE leaf values, Stockfish is still 82.5% accurate</p>
+<p>We can also see that there is a large jump in accuracy between depths 5 and 6, and up to depth 25 there is steady improvement. I believe that the jump between depths 5 and 6 is the result of foiled quiescence searches: Stockfish might be missing tactics which contain a quiet move.</p>
+<figure><img src="/img/stockfish_error_by_depth_ridgeline.png"
+			alt="The distribution of errors in estimated win probability at depths 5, 10, 15, 20 and 25 relative to depth 30. The deeper we search, the tighter the estimation is."><figcaption>
+			<p>The distribution of errors in estimated win probability at depths 5, 10, 15, 20 and 25 relative to depth 30. The deeper we search, the tighter the estimation is.</p>
+		</figcaption>
+</figure>
+
+]]></content>
+        </item>
+        
+        <item>
             <title>Multi-Agent RL</title>
             <link>https://blog.lukesalamone.com/posts/multiagent-rl/</link>
             <pubDate>Sat, 22 Nov 2025 14:43:21 -0700</pubDate>
