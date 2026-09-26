@@ -1909,7 +1909,7 @@ $$
 <p>Like triplet loss, contrastive loss also includes a margin parameter. For dissimilar pairs, a loss is incurred only if their predicted distance falls within the margin&rsquo;s radius.</p>
 <p style="text-align: center; font-size: 1.5em">
 $$
-\text{loss} = \frac{(1-y_{i})(D_{W_i})^2 + y_i \left( \text{max}(0, m - D_{W_i}) \right) ^ 2 }{2}
+\text{loss} = \frac{y_{i}(D_{W_i})^2 + (1 - y_i) \left( \text{max}(0, m - D_{W_i}) \right) ^ 2 }{2}
 $$
 </p>
 <p>Where $ D_{W_i} $ is euclidean distance between the two embeddings of sentences $ a_i $ and $ b_i $:</p>
