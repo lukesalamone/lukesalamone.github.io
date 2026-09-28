@@ -166,7 +166,7 @@ Background Search requires an automatic way to find the most relevant documents 
 <h2 id="background">Background</h2>
 <p>Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches. An example of a bag-of-words approach might simply be to count the number of similar words between the query and each document, and return the document with the highest number of similar words. There are word-stuffing issues with this idea, but the larger issue is that a bag-of-words strategy can&rsquo;t account for synonyms. If I search for <em>bad guy</em> I will never find <em>villain</em> without some additional logic to account for this. A neural network implicitly understands the relationship between words, and avoids the fragile logic of simple word counts.</p>
 <p>The idea of a neural encoding approach is pretty simple. For each document in your corpus, pass the query a document into a function which will return a similarity score between 0 and 1. Then, just sort the documents by that score. There are two main architectures for doing this: dual-encoders and cross-attention models.</p>
-<figure><img src="../../img/dual_vs_cross_encoder.png"
+<figure><img src="../../img/matthew_effect.png"
 			alt="Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models."><figcaption>
 			<p>Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models.</p>
 		</figcaption>

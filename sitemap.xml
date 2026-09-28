@@ -2,16 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.lukesalamone.com/tags/grpo/</loc>
+    <lastmod>2026-09-26T02:36:55-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/</loc>
+    <lastmod>2026-09-26T02:36:55-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/posts/matthew-effect/</loc>
+    <lastmod>2026-09-26T02:36:55-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/posts/</loc>
+    <lastmod>2026-09-26T02:36:55-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/tags/reinforcement-learning/</loc>
+    <lastmod>2026-09-26T02:36:55-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.lukesalamone.com/tags/</loc>
+    <lastmod>2026-09-26T02:36:55-07:00</lastmod>
+  </url><url>
     <loc>https://blog.lukesalamone.com/tags/distillation/</loc>
     <lastmod>2026-06-19T22:24:12-07:00</lastmod>
   </url><url>
-    <loc>https://blog.lukesalamone.com/</loc>
-    <lastmod>2026-06-19T22:24:12-07:00</lastmod>
-  </url><url>
     <loc>https://blog.lukesalamone.com/tags/neural-networks/</loc>
-    <lastmod>2026-06-19T22:24:12-07:00</lastmod>
-  </url><url>
-    <loc>https://blog.lukesalamone.com/posts/</loc>
     <lastmod>2026-06-19T22:24:12-07:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/tags/quantization/</loc>
@@ -23,16 +35,10 @@
     <loc>https://blog.lukesalamone.com/posts/creating-tiny-semantic-search/</loc>
     <lastmod>2026-06-19T22:24:12-07:00</lastmod>
   </url><url>
-    <loc>https://blog.lukesalamone.com/tags/</loc>
-    <lastmod>2026-06-19T22:24:12-07:00</lastmod>
-  </url><url>
     <loc>https://blog.lukesalamone.com/tags/multi-agent-rl/</loc>
     <lastmod>2026-06-08T00:20:43-07:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/tags/neural-network/</loc>
-    <lastmod>2026-06-08T00:20:43-07:00</lastmod>
-  </url><url>
-    <loc>https://blog.lukesalamone.com/tags/reinforcement-learning/</loc>
     <lastmod>2026-06-08T00:20:43-07:00</lastmod>
   </url><url>
     <loc>https://blog.lukesalamone.com/posts/fighting-game-rl/</loc>

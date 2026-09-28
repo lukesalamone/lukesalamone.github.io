@@ -12,8 +12,76 @@
         <description>Recent content in Posts on Luke Salamone&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 19 Jun 2026 22:24:12 -0700</lastBuildDate>
+        <lastBuildDate>Sat, 26 Sep 2026 02:36:55 -0700</lastBuildDate>
         <atom:link href="https://blog.lukesalamone.com/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Paper Summary: The Matthew Effect in RL</title>
+            <link>https://blog.lukesalamone.com/posts/matthew-effect/</link>
+            <pubDate>Sat, 26 Sep 2026 02:36:55 -0700</pubDate>
+            
+            <guid>https://blog.lukesalamone.com/posts/matthew-effect/</guid>
+            <description>&lt;p&gt;&lt;a href=&#34;https://arxiv.org/pdf/2609.13443v1&#34;&gt;Learning to Solve Hard Problems in RL for LLMs by Never Giving Up&lt;/a&gt; discusses an approach for countering what the authors call the &lt;em&gt;Matthew Effect&lt;/em&gt;, the tendency for the LLM to improve much more on easy problems that it is already good than harder problems that have a lower solve rate. Their approach is to allocate training time dynamically based on the difficulty of the problem.&lt;/p&gt;
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+&lt;p&gt;After an LLM has been pretrained on a large corpus of supervised fine-tuning (SFT) data, it is common to post-train &lt;a href=&#34;../posts/notes-on-deepseek-r1/&#34;&gt;using reinforcement learning methods like GRPO&lt;/a&gt;. This allows the model to improve on tasks with verifiable rewards and even exceed the performance of the original SFT data.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p><a href="https://arxiv.org/pdf/2609.13443v1">Learning to Solve Hard Problems in RL for LLMs by Never Giving Up</a> discusses an approach for countering what the authors call the <em>Matthew Effect</em>, the tendency for the LLM to improve much more on easy problems that it is already good than harder problems that have a lower solve rate. Their approach is to allocate training time dynamically based on the difficulty of the problem.</p>
+<h2 id="background">Background</h2>
+<p>After an LLM has been pretrained on a large corpus of supervised fine-tuning (SFT) data, it is common to post-train <a href="/posts/notes-on-deepseek-r1/">using reinforcement learning methods like GRPO</a>. This allows the model to improve on tasks with verifiable rewards and even exceed the performance of the original SFT data.</p>
+<p>In GRPO, we compute K completions (&ldquo;rollouts&rdquo;) for a single prompt. Next, the advantage of each rollout is calculated relative to the average of its peers.</p>
+<p>So at K=8,</p>
+<ul>
+<li>If seven of eight rollouts received a reward, the average reward of the group is 0.875. The relative reward of each correct rollout is <code>1 - avg_reward = 1.0 - 0.875 = 0.125</code>. The rollout which failed receives <code>0 - 0.875 = -0.875</code> reward.</li>
+<li>If only one of the 8 receives a reward, the average reward is 0.125. The relative reward of the correct sample is <code>1 - 0.125 = 0.875</code>. Seven of eight rollouts receive <code>0 - 0.125 = -0.125</code> reward.</li>
+<li>If none of the 8 samples receive a reward, the average reward is zero and all eight rollouts receive zero reward.</li>
+</ul>
+<p><em>Note that in reality we also normalize rewards by the standard deviation, but that detail doesn&rsquo;t change the conclusion.</em></p>
+<p>Performing vanilla GRPO in this way has a problem. For easy tasks, the model will be more likely to succeed and so at least one rollout in the group will receive a reward, so all members of the group will receive a gradient. For more difficult tasks, it is possible that none of the rollouts receive a reward, in which case the gradient will be zero for the group. As a result, the model tends to improve much more on easy problems than hard ones.</p>
+<figure><img src="/img/matthew_effect.png"
+			alt="RL improves performance of LLMs on math and coding, but those gains are not distributed equally."><figcaption>
+			<p>RL improves performance of LLMs on math and coding, but those gains are not distributed equally.</p>
+		</figcaption>
+</figure>
+
+<p>The authors call the phenomenon of zero gradient on difficult problems the <em>signal loss hypothesis</em>. One standard way to combat the signal loss phenonmenon is to simply increase K, which increases the chance of the group containing at least one good rollout.</p>
+<p>This problem and solution seem reasonable, but the authors also suggest a related explanation called the <em>signal efficiency hypothesis</em>: in addition to having too few examples of difficult problems, the model might be seeing too many examples of good solutions to easy problems.</p>
+<h2 id="probably-dont-give-up">Probably don&rsquo;t give up</h2>
+<p>The authors come up with a nice solution to this problem:</p>
+<ol>
+<li>
+<p>First, sample a small number K completions for the prompt (e.g. 4).</p>
+</li>
+<li>
+<p>If all of the completions are correct, it&rsquo;s an easy problem and we don&rsquo;t need to train on it.</p>
+</li>
+<li>
+<p>If all completions are wrong, we <em>probably</em> try again. The authors&rsquo; algorithm puts the problem back into the queue with probability <code>p_ngu</code>, and sample K more completions</p>
+</li>
+</ol>
+<ul>
+<li>For example with <code>p_ngu = 0.95</code> there&rsquo;s a 95% chance they try K more times, and if all of those rollouts fail there&rsquo;s a 95% chance that they try K more times.</li>
+</ul>
+<p>This algorithm allows us to dynamically scale compute based on problem difficulty.Easy problems might not be trained on at all, and hard ones can receive many attempts.</p>
+<p>Additionally, because a rare solution to a hard problem will be compared to a large group of unsuccessful rollouts, the solution will receive a large reward <code>1-average_reward</code>.</p>
+<p>Because after each batch of all-failed rollouts there is a small probability that the algorithm won&rsquo;t retry the prompt, the algorithm is more accurately called <em>probably don&rsquo;t give up</em>. However, that name may have been taken.</p>
+<h2 id="results">Results</h2>
+<p>The authors trained Qwen 3 4B-base on 10k problems from Deepscaler math, dividing problems into 4 difficulty buckets based on Qwen&rsquo;s initial solve rate. They then compared the performance of simply increasing K across all problems with using <code>p_ngu</code> of 0.5, 0.75, and 0.875.</p>
+<p>They found that simply increasing K on all problems sacrifices performance on easy problems, while NGU was able to maintain performance on easy problems while improving even more on difficult ones.</p>
+<p>This is likely because if performance begins to degrade on an easy problem, the algorithm can dynamically allocate more compute and put it back into the queue as well. In contrast, simply allocating K rollouts at the beginning of training based on initial performance fails to take into account fluctuations in performance during training.</p>
+<figure><img src="/img/ngu_vs_increasing_k.png"
+			alt="On hard problems, NGU outperforms the strategy of simply increasing K, and on easy problems it matches performance."><figcaption>
+			<p>On hard problems, NGU outperforms the strategy of simply increasing K, and on easy problems it matches performance.</p>
+		</figcaption>
+</figure>
+
+<p>On a coding-like benchmark, asking the model to play a game called Manufactoria, NGU is able to dynamically allocate compute towards the harder test cases, significantly outperforming vanilla GRPO.</p>
+<figure><img src="/img/manufactoria_ngu_vs_grpo.png"
+			alt="Vanilla GRPO struggles with hard tests, meaning it cannot solve even a single example in the game."><figcaption>
+			<p>Vanilla GRPO struggles with hard tests, meaning it cannot solve even a single example in the game.</p>
+		</figcaption>
+</figure>
+
+]]></content>
+        </item>
         
         <item>
             <title>Semantic Search in Under 3MB</title>
@@ -2614,7 +2682,7 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
 <h2 id="background">Background</h2>
 <p>Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches. An example of a bag-of-words approach might simply be to count the number of similar words between the query and each document, and return the document with the highest number of similar words. There are word-stuffing issues with this idea, but the larger issue is that a bag-of-words strategy can&rsquo;t account for synonyms. If I search for <em>bad guy</em> I will never find <em>villain</em> without some additional logic to account for this. A neural network implicitly understands the relationship between words, and avoids the fragile logic of simple word counts.</p>
 <p>The idea of a neural encoding approach is pretty simple. For each document in your corpus, pass the query a document into a function which will return a similarity score between 0 and 1. Then, just sort the documents by that score. There are two main architectures for doing this: dual-encoders and cross-attention models.</p>
-<figure><img src="/img/dual_vs_cross_encoder.png"
+<figure><img src="/img/matthew_effect.png"
 			alt="Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models."><figcaption>
 			<p>Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models.</p>
 		</figcaption>

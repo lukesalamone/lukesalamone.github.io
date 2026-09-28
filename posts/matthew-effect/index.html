@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+
+    
+
+<meta name="author" content="Luke Salamone">
+<meta name="keywords" content=", reinforcement-learning, grpo" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://blog.lukesalamone.com/posts/matthew-effect/" />
+
+
+
+
+
+
+<script>
+    
+    
+    if(!/^(localhost|127\.|\[::1\]$)/.test(location.hostname)) {
+        
+            
+            
+            let page = location.pathname.match(/([^/]+)\/?$/);
+            if(page) fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + encodeURIComponent(page[1])).catch(() => {});
+        
+    }
+</script>
+
+<script data-goatcounter="https://api.lukesalamone.com/tally" async src="../../js/tally.js"></script>
+
+
+    <title>
+        
+            Paper Summary: The Matthew Effect in RL :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.b7e84414d64d3dacd6b64362958768d873e827d788872f7916d6d86169f89d70.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+	<meta itemprop="name" content="Paper Summary: The Matthew Effect in RL">
+	<meta itemprop="description" content="Learning to Solve Hard Problems in RL for LLMs by Never Giving Up discusses an approach for countering what the authors call the Matthew Effect, the tendency for the LLM to improve much more on easy problems that it is already good than harder problems that have a lower solve rate. Their approach is to allocate training time dynamically based on the difficulty of the problem.
+Background After an LLM has been pretrained on a large corpus of supervised fine-tuning (SFT) data, it is common to post-train using reinforcement learning methods like GRPO. This allows the model to improve on tasks with verifiable rewards and even exceed the performance of the original SFT data.">
+	<meta itemprop="datePublished" content="2026-09-26T02:36:55-07:00">
+	<meta itemprop="dateModified" content="2026-09-26T02:36:55-07:00">
+	<meta itemprop="wordCount" content="840">
+	<meta itemprop="image" content="https://blog.lukesalamone.com/img/covers/matthew-effect.png">
+	<meta itemprop="keywords" content="Reinforcement-Learning,Grpo">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/covers/matthew-effect.png">
+	<meta name="twitter:title" content="Paper Summary: The Matthew Effect in RL">
+	<meta name="twitter:description" content="Learning to Solve Hard Problems in RL for LLMs by Never Giving Up discusses an approach for countering what the authors call the Matthew Effect, the tendency for the LLM to improve much more on easy problems that it is already good than harder problems that have a lower solve rate. Their approach is to allocate training time dynamically based on the difficulty of the problem.
+Background After an LLM has been pretrained on a large corpus of supervised fine-tuning (SFT) data, it is common to post-train using reinforcement learning methods like GRPO. This allows the model to improve on tasks with verifiable rewards and even exceed the performance of the original SFT data.">
+
+
+
+    <meta property="og:url" content="https://blog.lukesalamone.com/posts/matthew-effect/">
+	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+	<meta property="og:title" content="Paper Summary: The Matthew Effect in RL">
+	<meta property="og:description" content="Learning to Solve Hard Problems in RL for LLMs by Never Giving Up discusses an approach for countering what the authors call the Matthew Effect, the tendency for the LLM to improve much more on easy problems that it is already good than harder problems that have a lower solve rate. Their approach is to allocate training time dynamically based on the difficulty of the problem.
+Background After an LLM has been pretrained on a large corpus of supervised fine-tuning (SFT) data, it is common to post-train using reinforcement learning methods like GRPO. This allows the model to improve on tasks with verifiable rewards and even exceed the performance of the original SFT data.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-26T02:36:55-07:00">
+		<meta property="article:modified_time" content="2026-09-26T02:36:55-07:00">
+		<meta property="article:tag" content="Reinforcement-Learning">
+		<meta property="article:tag" content="Grpo">
+		<meta property="og:image" content="https://blog.lukesalamone.com/img/covers/matthew-effect.png">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2026-09-26 02:36:55 -0700 PDT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="search" aria-label="Search posts"
+                     role="combobox" aria-controls="search-results" aria-expanded="false" aria-autocomplete="list" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        4 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://blog.lukesalamone.com/posts/matthew-effect/">Paper Summary: The Matthew Effect in RL</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <p><a href="https://arxiv.org/pdf/2609.13443v1">Learning to Solve Hard Problems in RL for LLMs by Never Giving Up</a> discusses an approach for countering what the authors call the <em>Matthew Effect</em>, the tendency for the LLM to improve much more on easy problems that it is already good than harder problems that have a lower solve rate. Their approach is to allocate training time dynamically based on the difficulty of the problem.</p>
+<h2 id="background">Background</h2>
+<p>After an LLM has been pretrained on a large corpus of supervised fine-tuning (SFT) data, it is common to post-train <a href="../../posts/notes-on-deepseek-r1/">using reinforcement learning methods like GRPO</a>. This allows the model to improve on tasks with verifiable rewards and even exceed the performance of the original SFT data.</p>
+<p>In GRPO, we compute K completions (&ldquo;rollouts&rdquo;) for a single prompt. Next, the advantage of each rollout is calculated relative to the average of its peers.</p>
+<p>So at K=8,</p>
+<ul>
+<li>If seven of eight rollouts received a reward, the average reward of the group is 0.875. The relative reward of each correct rollout is <code>1 - avg_reward = 1.0 - 0.875 = 0.125</code>. The rollout which failed receives <code>0 - 0.875 = -0.875</code> reward.</li>
+<li>If only one of the 8 receives a reward, the average reward is 0.125. The relative reward of the correct sample is <code>1 - 0.125 = 0.875</code>. Seven of eight rollouts receive <code>0 - 0.125 = -0.125</code> reward.</li>
+<li>If none of the 8 samples receive a reward, the average reward is zero and all eight rollouts receive zero reward.</li>
+</ul>
+<p><em>Note that in reality we also normalize rewards by the standard deviation, but that detail doesn&rsquo;t change the conclusion.</em></p>
+<p>Performing vanilla GRPO in this way has a problem. For easy tasks, the model will be more likely to succeed and so at least one rollout in the group will receive a reward, so all members of the group will receive a gradient. For more difficult tasks, it is possible that none of the rollouts receive a reward, in which case the gradient will be zero for the group. As a result, the model tends to improve much more on easy problems than hard ones.</p>
+<figure><img src="../../img/matthew_effect.png"
+			alt="RL improves performance of LLMs on math and coding, but those gains are not distributed equally."><figcaption>
+			<p>RL improves performance of LLMs on math and coding, but those gains are not distributed equally.</p>
+		</figcaption>
+</figure>
+
+<p>The authors call the phenomenon of zero gradient on difficult problems the <em>signal loss hypothesis</em>. One standard way to combat the signal loss phenonmenon is to simply increase K, which increases the chance of the group containing at least one good rollout.</p>
+<p>This problem and solution seem reasonable, but the authors also suggest a related explanation called the <em>signal efficiency hypothesis</em>: in addition to having too few examples of difficult problems, the model might be seeing too many examples of good solutions to easy problems.</p>
+<h2 id="probably-dont-give-up">Probably don&rsquo;t give up</h2>
+<p>The authors come up with a nice solution to this problem:</p>
+<ol>
+<li>
+<p>First, sample a small number K completions for the prompt (e.g. 4).</p>
+</li>
+<li>
+<p>If all of the completions are correct, it&rsquo;s an easy problem and we don&rsquo;t need to train on it.</p>
+</li>
+<li>
+<p>If all completions are wrong, we <em>probably</em> try again. The authors&rsquo; algorithm puts the problem back into the queue with probability <code>p_ngu</code>, and sample K more completions</p>
+</li>
+</ol>
+<ul>
+<li>For example with <code>p_ngu = 0.95</code> there&rsquo;s a 95% chance they try K more times, and if all of those rollouts fail there&rsquo;s a 95% chance that they try K more times.</li>
+</ul>
+<p>This algorithm allows us to dynamically scale compute based on problem difficulty.Easy problems might not be trained on at all, and hard ones can receive many attempts.</p>
+<p>Additionally, because a rare solution to a hard problem will be compared to a large group of unsuccessful rollouts, the solution will receive a large reward <code>1-average_reward</code>.</p>
+<p>Because after each batch of all-failed rollouts there is a small probability that the algorithm won&rsquo;t retry the prompt, the algorithm is more accurately called <em>probably don&rsquo;t give up</em>. However, that name may have been taken.</p>
+<h2 id="results">Results</h2>
+<p>The authors trained Qwen 3 4B-base on 10k problems from Deepscaler math, dividing problems into 4 difficulty buckets based on Qwen&rsquo;s initial solve rate. They then compared the performance of simply increasing K across all problems with using <code>p_ngu</code> of 0.5, 0.75, and 0.875.</p>
+<p>They found that simply increasing K on all problems sacrifices performance on easy problems, while NGU was able to maintain performance on easy problems while improving even more on difficult ones.</p>
+<p>This is likely because if performance begins to degrade on an easy problem, the algorithm can dynamically allocate more compute and put it back into the queue as well. In contrast, simply allocating K rollouts at the beginning of training based on initial performance fails to take into account fluctuations in performance during training.</p>
+<figure><img src="../../img/ngu_vs_increasing_k.png"
+			alt="On hard problems, NGU outperforms the strategy of simply increasing K, and on easy problems it matches performance."><figcaption>
+			<p>On hard problems, NGU outperforms the strategy of simply increasing K, and on easy problems it matches performance.</p>
+		</figcaption>
+</figure>
+
+<p>On a coding-like benchmark, asking the model to play a game called Manufactoria, NGU is able to dynamically allocate compute towards the harder test cases, significantly outperforming vanilla GRPO.</p>
+<figure><img src="../../img/manufactoria_ngu_vs_grpo.png"
+			alt="Vanilla GRPO struggles with hard tests, meaning it cannot solve even a single example in the game."><figcaption>
+			<p>Vanilla GRPO struggles with hard tests, meaning it cannot solve even a single example in the game.</p>
+		</figcaption>
+</figure>
+
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://blog.lukesalamone.com/tags/reinforcement-learning/">reinforcement-learning</a></span>
+        <span class="tag"><a href="https://blog.lukesalamone.com/tags/grpo/">grpo</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        840 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2026-09-26 02:36
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+
+          
+            <span class="button next">
+              <a href="https://blog.lukesalamone.com/posts/creating-tiny-semantic-search/?ref=nextprev">
+                <span class="button__text">Semantic Search in Under 3MB</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+  </main>
+
+                <div id="shadow-search" class="posts">
+  <div class="posts-group">
+    <div class="post-year">2022</div>
+    <div class="search-results">
+      <div class="search-toolbar">
+        <div class="search-legend" hidden></div>
+        <label class="search-advanced-toggle">
+          <input type="checkbox" id="search-advanced" />
+          advanced view
+        </label>
+      </div>
+      <ul class="posts-list" id="search-results" role="listbox" aria-label="Search results"></ul>
+    </div>
+  </div>
+</div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2026 Luke Salamone</span>&nbsp;|&nbsp;
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a>&nbsp;|&nbsp;<a href="https://blog.lukesalamone.com/index.xml" class="footer__rss" type="application/rss+xml"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>rss</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.b1bd5ba19f8576521c935b84c36f816c85658fd17b5fe2a1d989b0bb15a04d07f809a4ddc3e0cad4a0e62512a487936480a2d9c52c0039c3f9957c80716e9fe0.js" integrity="sha512-sb1boZ&#43;FdlIck1uEw2&#43;BbIVlj9F7X&#43;Kh2YmwuxWgTQf4CaTdw&#43;DK1KDmJRKkh5NkgKLZxSwAOcP5lXyAcW6f4A=="></script>
+
+
+
+
+
+
+    </body>
+</html>

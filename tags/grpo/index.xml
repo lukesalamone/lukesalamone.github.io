@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Grpo on Luke Salamone&#39;s Blog</title>
+		<link>https://blog.lukesalamone.com/tags/grpo/</link>
+		<description>Recent content in Grpo on Luke Salamone&#39;s Blog</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 26 Sep 2026 02:36:55 -0700</lastBuildDate>
+		
+			<atom:link href="https://blog.lukesalamone.com/tags/grpo/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Paper Summary: The Matthew Effect in RL</title>
+				<link>https://blog.lukesalamone.com/posts/matthew-effect/</link>
+				<pubDate>Sat, 26 Sep 2026 02:36:55 -0700</pubDate>
+				<guid>https://blog.lukesalamone.com/posts/matthew-effect/</guid>
+				<description>&lt;p&gt;&lt;a href=&#34;https://arxiv.org/pdf/2609.13443v1&#34;&gt;Learning to Solve Hard Problems in RL for LLMs by Never Giving Up&lt;/a&gt; discusses an approach for countering what the authors call the &lt;em&gt;Matthew Effect&lt;/em&gt;, the tendency for the LLM to improve much more on easy problems that it is already good than harder problems that have a lower solve rate. Their approach is to allocate training time dynamically based on the difficulty of the problem.&lt;/p&gt;&#xA;&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;After an LLM has been pretrained on a large corpus of supervised fine-tuning (SFT) data, it is common to post-train &lt;a href=&#34;../../posts/notes-on-deepseek-r1/&#34;&gt;using reinforcement learning methods like GRPO&lt;/a&gt;. This allows the model to improve on tasks with verifiable rewards and even exceed the performance of the original SFT data.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
