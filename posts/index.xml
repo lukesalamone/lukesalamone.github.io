@@ -522,6 +522,14 @@ MathJax.Hub.Config({
 <p>Other metrics tell a clearer story. <strong>Directional accuracy, whether the model correctly predicts which side is winning, reached 92.97%</strong>. In other words, given an arbitrary position, the model agrees with Stockfish on which side is winning roughly 19 out of 20 cases, which is fairly impressive considering the number of unclear positions in the dataset.</p>
 <p>For positions where there is not a forced checkmate, the model&rsquo;s predicted win probability was off by about 4–5 percentage points on average. Converting those win probabilities back to Stockfish centipawns gives a <strong>centipawn MAE of 64 cp</strong> on positions that span the full range from nearly lost to nearly won.</p>
 <p>Due to compute constraints, I decided to cap training at 1 billion positions, which took around three days. But based on the loss curves, there is still a great deal of performance left on the table.</p>
+<h2 id="performance-against-stockfish">Performance against Stockfish</h2>
+<p>Since we used Stockfish at depth 10 as a teacher, we should expect that the model performs approximately as good as Stockfish depth 10, but with small inaccuracies.</p>
+<figure><img src="/img/distill_net_vs_stockfish_outcomes.png"
+			alt="Win, draw, and loss % against Stockfish at various search depths. Before about depth 7, it plays fairly well, but by depth 9 it is mostly losing or drawing."><figcaption>
+			<p>Win, draw, and loss % against Stockfish at various search depths. Before about depth 7, it plays fairly well, but by depth 9 it is mostly losing or drawing.</p>
+		</figcaption>
+</figure>
+
 <h2 id="building-the-gigafish-dataset">Building the Gigafish Dataset</h2>
 <p>This dataset was constructed from the <a href="https://database.lichess.org/">Lichess Open Database</a> using positions from 37 months of games. I first extracted the fen positions from each of the games using a multithreaded rust script.</p>
 <p>Next, I deduplicated the fens, since many of the positions are overrepresented in the dataset. I did this with a poor-man&rsquo;s map-reduce on disk: hash each fen and append it to a file corresponding to the first 12 bits of the hash. This results in 4096 individual files, which were small enough to deduplicate individually using a hash set in RAM.</p>
@@ -2682,7 +2690,7 @@ def low_rank_cross(x_0, x_i, weight_u_i, weight_v_i, bias_i):
 <h2 id="background">Background</h2>
 <p>Search requires an automatic way to find the most relevant documents to a query. There are bag-of-word approaches to this task (for example BM25) and neural approaches. An example of a bag-of-words approach might simply be to count the number of similar words between the query and each document, and return the document with the highest number of similar words. There are word-stuffing issues with this idea, but the larger issue is that a bag-of-words strategy can&rsquo;t account for synonyms. If I search for <em>bad guy</em> I will never find <em>villain</em> without some additional logic to account for this. A neural network implicitly understands the relationship between words, and avoids the fragile logic of simple word counts.</p>
 <p>The idea of a neural encoding approach is pretty simple. For each document in your corpus, pass the query a document into a function which will return a similarity score between 0 and 1. Then, just sort the documents by that score. There are two main architectures for doing this: dual-encoders and cross-attention models.</p>
-<figure><img src="/img/matthew_effect.png"
+<figure><img src="/img/dual_vs_cross_encoder.png"
 			alt="Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models."><figcaption>
 			<p>Dual encoder architectures can precompute document embeddings but tend to be less accurate than cross attention models.</p>
 		</figcaption>
