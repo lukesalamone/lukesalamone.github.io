@@ -51,7 +51,7 @@
 
 
 
-<link rel="stylesheet" href="../../main.b7e84414d64d3dacd6b64362958768d873e827d788872f7916d6d86169f89d70.css">
+<link rel="stylesheet" href="../../main.d11593702ed80680e176b592dc794e4f68ee52c7093f0d30f413f488c3e689b7.css">
 
 
 
@@ -67,7 +67,11 @@
 	<meta itemprop="name" content="Definitions of Model">
 	<meta itemprop="description" content="There are a lot of meanings of the term “model” in machine learning and machine learning-adjacent fields. Depending on the context, “model” can mean:
 a general architecture/configuration for weights of a specific model
-e.g. “We embedded texts using a BERT model” might mean DistillBERT, RoBERTa, ModernBERT etc which all differ from the architecture in the original 2018 BERT paper. a specific set of weights which are the result of a training process">
+e.g. “We embedded texts using a BERT model” might mean DistillBERT, RoBERTa, ModernBERT etc which all differ from the architecture in the original 2018 BERT paper. a specific set of weights which are the result of a training process
+e.g. “You can download the model from HuggingFace” Confusingly, models can be versioned to fix bugs so the same model (by definition #1) can actually be different models (by definition #2). a product and the system around that product, which isn’t quite #2 because it likely includes additional systems like guardrails and rate limiting. And the specific weights used might change without the end-user knowing, such as with additional fine-tuning.
+e.g. “Our newest Claude model is the most powerful yet” in reinforcement learning, a “model” is simply the understanding of how the world works, i.e. the “world model”.
+This leads to the confusing situation of “model-free” systems which still include neural networks, but simply don’t act based on any information about what effects their actions will have on the world. For example, AlphaZero is not a model-free algorithm because it uses Monte Carlo Tree Search, and each node in that tree is the result an action taken in a simulated world. It’s not learning from scratch what the resulting chessboard if it moves a piece. since it’s also possible to “model” a complex process with a simpler one, a “model” might be some heuristic or simpler algorithm which is implied to be imperfect.
+This is the original etymology behind language “modeling” since early models were simple bigrams and trigrams. This is also the connotation of climate models, economic models, and models of the spread of disease.">
 	<meta itemprop="datePublished" content="2026-04-05T19:25:25-07:00">
 	<meta itemprop="dateModified" content="2026-04-05T19:25:25-07:00">
 	<meta itemprop="wordCount" content="308">
@@ -79,7 +83,11 @@ e.g. “We embedded texts using a BERT model” might mean DistillBERT, RoBERTa,
 	<meta name="twitter:title" content="Definitions of Model">
 	<meta name="twitter:description" content="There are a lot of meanings of the term “model” in machine learning and machine learning-adjacent fields. Depending on the context, “model” can mean:
 a general architecture/configuration for weights of a specific model
-e.g. “We embedded texts using a BERT model” might mean DistillBERT, RoBERTa, ModernBERT etc which all differ from the architecture in the original 2018 BERT paper. a specific set of weights which are the result of a training process">
+e.g. “We embedded texts using a BERT model” might mean DistillBERT, RoBERTa, ModernBERT etc which all differ from the architecture in the original 2018 BERT paper. a specific set of weights which are the result of a training process
+e.g. “You can download the model from HuggingFace” Confusingly, models can be versioned to fix bugs so the same model (by definition #1) can actually be different models (by definition #2). a product and the system around that product, which isn’t quite #2 because it likely includes additional systems like guardrails and rate limiting. And the specific weights used might change without the end-user knowing, such as with additional fine-tuning.
+e.g. “Our newest Claude model is the most powerful yet” in reinforcement learning, a “model” is simply the understanding of how the world works, i.e. the “world model”.
+This leads to the confusing situation of “model-free” systems which still include neural networks, but simply don’t act based on any information about what effects their actions will have on the world. For example, AlphaZero is not a model-free algorithm because it uses Monte Carlo Tree Search, and each node in that tree is the result an action taken in a simulated world. It’s not learning from scratch what the resulting chessboard if it moves a piece. since it’s also possible to “model” a complex process with a simpler one, a “model” might be some heuristic or simpler algorithm which is implied to be imperfect.
+This is the original etymology behind language “modeling” since early models were simple bigrams and trigrams. This is also the connotation of climate models, economic models, and models of the spread of disease.">
 
 
 
@@ -88,7 +96,11 @@ e.g. “We embedded texts using a BERT model” might mean DistillBERT, RoBERTa,
 	<meta property="og:title" content="Definitions of Model">
 	<meta property="og:description" content="There are a lot of meanings of the term “model” in machine learning and machine learning-adjacent fields. Depending on the context, “model” can mean:
 a general architecture/configuration for weights of a specific model
-e.g. “We embedded texts using a BERT model” might mean DistillBERT, RoBERTa, ModernBERT etc which all differ from the architecture in the original 2018 BERT paper. a specific set of weights which are the result of a training process">
+e.g. “We embedded texts using a BERT model” might mean DistillBERT, RoBERTa, ModernBERT etc which all differ from the architecture in the original 2018 BERT paper. a specific set of weights which are the result of a training process
+e.g. “You can download the model from HuggingFace” Confusingly, models can be versioned to fix bugs so the same model (by definition #1) can actually be different models (by definition #2). a product and the system around that product, which isn’t quite #2 because it likely includes additional systems like guardrails and rate limiting. And the specific weights used might change without the end-user knowing, such as with additional fine-tuning.
+e.g. “Our newest Claude model is the most powerful yet” in reinforcement learning, a “model” is simply the understanding of how the world works, i.e. the “world model”.
+This leads to the confusing situation of “model-free” systems which still include neural networks, but simply don’t act based on any information about what effects their actions will have on the world. For example, AlphaZero is not a model-free algorithm because it uses Monte Carlo Tree Search, and each node in that tree is the result an action taken in a simulated world. It’s not learning from scratch what the resulting chessboard if it moves a piece. since it’s also possible to “model” a complex process with a simpler one, a “model” might be some heuristic or simpler algorithm which is implied to be imperfect.
+This is the original etymology behind language “modeling” since early models were simple bigrams and trigrams. This is also the connotation of climate models, economic models, and models of the spread of disease.">
 	<meta property="og:locale" content="en_us">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="posts">

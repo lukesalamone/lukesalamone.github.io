@@ -51,7 +51,7 @@
 
 
 
-<link rel="stylesheet" href="../../main.b7e84414d64d3dacd6b64362958768d873e827d788872f7916d6d86169f89d70.css">
+<link rel="stylesheet" href="../../main.d11593702ed80680e176b592dc794e4f68ee52c7093f0d30f413f488c3e689b7.css">
 
 
 
@@ -67,7 +67,11 @@
 	<meta itemprop="name" content="Notes on Deepseek R1">
 	<meta itemprop="description" content="DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many decoder-based models in the past which simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before the final answer is given. According to the researchers, its performance is on par with OpenAI’s O1 model.
 Terminology First, I will briefly describe some terminology related to training techniques:
-Supervised fine-tuning (SFT) is a process which uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.">
+Supervised fine-tuning (SFT) is a process which uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.
+Preference fine-tuning involves training a model using preferences between different outputs for the same input. Usually these preferences are human-generated. Relative quality assessments are easier for humans to make, but are still a valuable training signal.
+Rejection sampling fine-tuning (RFT) is a method for generating synthetic training data. First, a model produces k diverse candidate completions for a prompt using temperature sampling. Next, a reward model ranks or selects the best completions for training data.
+In the simplest version, this technique simply generates k (reasoning, answer) pairs for each prompt using a nonzero temperature (e.g. 0.7) and filters out incorrect answers. Paper Large scale reinforcement learning (RL), as DeepSeek refers to it, is a training method which which assigns synthetic labels to a response based on easily-verified outcomes from reasoning problems such as correctness and formatting.
+This is in contrast to a supervised learning approach, which would typically enforce strict token-level matching.">
 	<meta itemprop="datePublished" content="2025-01-28T08:35:55-08:00">
 	<meta itemprop="dateModified" content="2025-01-28T08:35:55-08:00">
 	<meta itemprop="wordCount" content="828">
@@ -79,7 +83,11 @@ Supervised fine-tuning (SFT) is a process which uses input/output pairs to direc
 	<meta name="twitter:title" content="Notes on Deepseek R1">
 	<meta name="twitter:description" content="DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many decoder-based models in the past which simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before the final answer is given. According to the researchers, its performance is on par with OpenAI’s O1 model.
 Terminology First, I will briefly describe some terminology related to training techniques:
-Supervised fine-tuning (SFT) is a process which uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.">
+Supervised fine-tuning (SFT) is a process which uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.
+Preference fine-tuning involves training a model using preferences between different outputs for the same input. Usually these preferences are human-generated. Relative quality assessments are easier for humans to make, but are still a valuable training signal.
+Rejection sampling fine-tuning (RFT) is a method for generating synthetic training data. First, a model produces k diverse candidate completions for a prompt using temperature sampling. Next, a reward model ranks or selects the best completions for training data.
+In the simplest version, this technique simply generates k (reasoning, answer) pairs for each prompt using a nonzero temperature (e.g. 0.7) and filters out incorrect answers. Paper Large scale reinforcement learning (RL), as DeepSeek refers to it, is a training method which which assigns synthetic labels to a response based on easily-verified outcomes from reasoning problems such as correctness and formatting.
+This is in contrast to a supervised learning approach, which would typically enforce strict token-level matching.">
 
 
 
@@ -88,7 +96,11 @@ Supervised fine-tuning (SFT) is a process which uses input/output pairs to direc
 	<meta property="og:title" content="Notes on Deepseek R1">
 	<meta property="og:description" content="DeepSeek R1 is a large language model which employs test-time compute to generate a response. Unlike many decoder-based models in the past which simply continue the given text (and may be fine-tuned for conversation), R1 generates reasoning tokens before the final answer is given. According to the researchers, its performance is on par with OpenAI’s O1 model.
 Terminology First, I will briefly describe some terminology related to training techniques:
-Supervised fine-tuning (SFT) is a process which uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.">
+Supervised fine-tuning (SFT) is a process which uses input/output pairs to directly fine-tune a model. In a reinforcement learning setting, SFT can help to mitigate cold start issues by providing initial policy behavior prior to RL training. The downside of SFT is that the input/output pairs can be expensive to acquire.
+Preference fine-tuning involves training a model using preferences between different outputs for the same input. Usually these preferences are human-generated. Relative quality assessments are easier for humans to make, but are still a valuable training signal.
+Rejection sampling fine-tuning (RFT) is a method for generating synthetic training data. First, a model produces k diverse candidate completions for a prompt using temperature sampling. Next, a reward model ranks or selects the best completions for training data.
+In the simplest version, this technique simply generates k (reasoning, answer) pairs for each prompt using a nonzero temperature (e.g. 0.7) and filters out incorrect answers. Paper Large scale reinforcement learning (RL), as DeepSeek refers to it, is a training method which which assigns synthetic labels to a response based on easily-verified outcomes from reasoning problems such as correctness and formatting.
+This is in contrast to a supervised learning approach, which would typically enforce strict token-level matching.">
 	<meta property="og:locale" content="en_us">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="posts">

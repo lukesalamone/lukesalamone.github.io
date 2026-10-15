@@ -51,7 +51,7 @@
 
 
 
-<link rel="stylesheet" href="../../main.b7e84414d64d3dacd6b64362958768d873e827d788872f7916d6d86169f89d70.css">
+<link rel="stylesheet" href="../../main.d11593702ed80680e176b592dc794e4f68ee52c7093f0d30f413f488c3e689b7.css">
 
 
 
@@ -247,7 +247,6 @@ def calc_per_token_entropy(probabilities):
 </code></pre>
 <p>The negative log of the probability can be thought of as the &ldquo;surprise&rdquo; from that token: high probability tokens have very little surprise to them, and low probability tokens have surprise approaching infinity. Then, multiplying by the probability itself helps to balance the total by preventing it from exploding.</p>
 <p>There is a connection to <a href="../../posts/perplexity/">perplexity</a>, which is $ e^{H(x)} $, where $H(x)$ is the entropy of the distribution.</p>
-<!--## Grouped Query Attention-->
 <h2 id="group-relative-preference-optimization-grpo">Group-Relative Preference Optimization (GRPO)</h2>
 <p>GRPO is an RL algorithm for LLM post-training which attempts to determine how good a rollout is in order to apply a reward to it.</p>
 <p>GRPO has some advantages over more traditional PPO. In PPO, we use a second model (the &ldquo;critic&rdquo;) to score rollouts, and in practice this model may on the order of the same size as the model we&rsquo;re training. This is both slow and resource intensive.</p>
@@ -352,7 +351,6 @@ def layer_norm(sequence, eps=1e-5):
 <h3 id="tensor-parallel">Tensor parallel</h3>
 <p>This is used when even a single layer cannot fit on a device.</p>
 <p>The individual tensors (weights and activations) can be split across multiple devices to enable a huge matrix multiplications.</p>
-<!--## REINFORCE-->
 <h2 id="reinforcement-learning-from-human-feedback-rlhf">Reinforcement Learning from Human Feedback (RLHF)</h2>
 <p>RLHF has three steps:</p>
 <ol>
@@ -375,7 +373,6 @@ def layer_norm(sequence, eps=1e-5):
 <li>However, if none of the samples in the group get a reward, the relative advantage for all members collapses to zero and you get nothing. In this case, it would be better to keep generating until we get a correct completion.</li>
 </ul>
 <p>For this reason, we can use RFT until the acceptance rate is high enough for GRPO.</p>
-<!--## Rotary Positional Embeddings (RoPE)-->
 <h2 id="speculative-decoding">Speculative Decoding</h2>
 <p>The idea of speculative decoding is to use a small &ldquo;draft&rdquo; model to speed up inference for the big &ldquo;target&rdquo; model. This is possible because the target model can predict probabilities for multiple sequences in parallel. For example, a small draft model might predict:</p>
 <pre><code class="language-python">draft_tokens = ['take', 'me', 'out', 'to', 'the', 'ballgame']
@@ -398,8 +395,6 @@ def layer_norm(sequence, eps=1e-5):
 </ul>
 <p>If the target model rejects a token that the draft model proposes, none of its subsequent tokens will be considered. The draft model will rerun with all of the accepted tokens and propose new tokens.</p>
 <p>This is how it is possible to speed up the target model&rsquo;s inference without losing quality.</p>
-<!--## Supervised Fine Tuning (SFT)-->
-<!--## SwiGLU-->
 <h2 id="wordpiece-tokenization">Wordpiece Tokenization</h2>
 <p>An algorithm for training a tokenizer with a slightly more advanced rule for merging tokens. For example, consider the following pair frequencies in a corpus <code>abracadabra</code>:</p>
 <pre><code class="language-python">Counter({

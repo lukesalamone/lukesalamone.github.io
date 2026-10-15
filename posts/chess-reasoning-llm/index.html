@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+
+    
+
+<meta name="author" content="Luke Salamone">
+<meta name="keywords" content=", chess, llm, rl, rlvr, grpo" />
+<meta name="google-site-verification" content="sPwRw-1pCCEcm2EbqDJiJzJEnze1K7FkQzY9xLreBJQ" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://blog.lukesalamone.com/posts/chess-reasoning-llm/" />
+
+
+
+
+
+
+<script>
+    
+    
+    if(!/^(localhost|127\.|\[::1\]$)/.test(location.hostname)) {
+        
+            
+            
+            let page = location.pathname.match(/([^/]+)\/?$/);
+            if(page) fetch('https://d1tkdcmshl91xi.cloudfront.net?p=' + encodeURIComponent(page[1])).catch(() => {});
+        
+    }
+</script>
+
+<script data-goatcounter="https://api.lukesalamone.com/tally" async src="../../js/tally.js"></script>
+
+
+    <title>
+        
+            Training a Chess Reasoning Agent :: Luke Salamone&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../main.d11593702ed80680e176b592dc794e4f68ee52c7093f0d30f413f488c3e689b7.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+	<meta itemprop="name" content="Training a Chess Reasoning Agent">
+	<meta itemprop="description" content="TLDR: I trained an LLM reasoning agent to play chess, with model sizes 0.8B, 2B and 9B. The agent calls tools which help it keep track of the board state, which enables good performance with a relatively small number of parameters.
+The demo code is available on Github.
+Your browser does not support the video tag. Background I became excited about the power of RLVR after the Deepseek R1 paper came out. They demonstrated that through the use of “thinking” tokens, an LLM could solve verifiable tasks like math problems. Additionally, they described the necessity of bootstrapping the thinking process with supervised examples, which prevents the model from generating a nonsense chain of thought.">
+	<meta itemprop="datePublished" content="2026-10-11T18:06:06-07:00">
+	<meta itemprop="dateModified" content="2026-10-11T18:06:06-07:00">
+	<meta itemprop="wordCount" content="548">
+	<meta itemprop="image" content="https://blog.lukesalamone.com/img/covers/chess-reasoning-llm.png">
+	<meta itemprop="keywords" content="Chess,Llm,Rl,Rlvr,Grpo">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://blog.lukesalamone.com/img/covers/chess-reasoning-llm.png">
+	<meta name="twitter:title" content="Training a Chess Reasoning Agent">
+	<meta name="twitter:description" content="TLDR: I trained an LLM reasoning agent to play chess, with model sizes 0.8B, 2B and 9B. The agent calls tools which help it keep track of the board state, which enables good performance with a relatively small number of parameters.
+The demo code is available on Github.
+Your browser does not support the video tag. Background I became excited about the power of RLVR after the Deepseek R1 paper came out. They demonstrated that through the use of “thinking” tokens, an LLM could solve verifiable tasks like math problems. Additionally, they described the necessity of bootstrapping the thinking process with supervised examples, which prevents the model from generating a nonsense chain of thought.">
+
+
+
+    <meta property="og:url" content="https://blog.lukesalamone.com/posts/chess-reasoning-llm/">
+	<meta property="og:site_name" content="Luke Salamone&#39;s Blog">
+	<meta property="og:title" content="Training a Chess Reasoning Agent">
+	<meta property="og:description" content="TLDR: I trained an LLM reasoning agent to play chess, with model sizes 0.8B, 2B and 9B. The agent calls tools which help it keep track of the board state, which enables good performance with a relatively small number of parameters.
+The demo code is available on Github.
+Your browser does not support the video tag. Background I became excited about the power of RLVR after the Deepseek R1 paper came out. They demonstrated that through the use of “thinking” tokens, an LLM could solve verifiable tasks like math problems. Additionally, they described the necessity of bootstrapping the thinking process with supervised examples, which prevents the model from generating a nonsense chain of thought.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-10-11T18:06:06-07:00">
+		<meta property="article:modified_time" content="2026-10-11T18:06:06-07:00">
+		<meta property="article:tag" content="Chess">
+		<meta property="article:tag" content="Llm">
+		<meta property="article:tag" content="Rl">
+		<meta property="article:tag" content="Rlvr">
+		<meta property="article:tag" content="Grpo">
+		<meta property="og:image" content="https://blog.lukesalamone.com/img/covers/chess-reasoning-llm.png">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2026-10-11 18:06:06 -0700 PDT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../" style="text-decoration: none;">
+  <div class="logo">
+    <div class="logo-holder-dark">
+      <img src="../../img/logo.png" alt="Blog Home" />
+    </div>
+    <div class="logo-holder-light">
+      <img src="../../img/logo2.png" alt="Blog Home" />
+    </div>
+  </div>
+</a>
+
+
+        <span class="header__right">
+            
+            <div id="header_search">
+              <input type="text" placeholder="search" aria-label="Search posts"
+                     role="combobox" aria-controls="search-results" aria-expanded="false" aria-autocomplete="list" />
+            </div>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        3 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://blog.lukesalamone.com/posts/chess-reasoning-llm/">Training a Chess Reasoning Agent</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <p><strong>TLDR: I trained an LLM reasoning agent to play chess, with model sizes 0.8B, 2B and 9B. The agent calls tools which help it keep track of the board state, which enables good performance with a relatively small number of parameters.</strong></p>
+<p><strong>The demo code is <a href="https://github.com/lukesalamone/chess_reasoner_demo">available on Github</a>.</strong></p>
+<video width="760" height="430" style="width: 100%; max-width: 760px; height: auto;" autoplay muted loop playsinline>
+<source src="../../video/chess_reasoner_0_8b.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<h2 id="background">Background</h2>
+<p>I became excited about the power of RLVR after the <a href="../../posts/notes-on-deepseek-r1/">Deepseek R1 paper</a> came out. They demonstrated that through the use of &ldquo;thinking&rdquo; tokens, an LLM could solve verifiable tasks like math problems. Additionally, they described the necessity of bootstrapping the thinking process with supervised examples, which prevents the model from generating a nonsense chain of thought.</p>
+<p>Chess is an ideal candidate for a verifiable rewards setup. You could call it &ldquo;fractally verifiable&rdquo;: Not only are games themselves verifiable outcomes, but the strength of individual moves are verifiable, and even the individual claims used to justify those moves can be verified.</p>
+<p>The majority of prior work in chess engines has had the sole purpose of maximizing playing strength. I&rsquo;ve written a longer history of chess engines <a href="../../posts/chess-engine-history/">here</a> and <a href="../../posts/qualitative-analysis-chess/">here</a>. This would be a much different type of engine: we should favor explainable, intuitive moves over the absolute best moves.</p>
+<h2 id="why-train-an-agent">Why train an agent?</h2>
+<p>The short answer is, I initially wanted to train a pure LLM, but a 4090 limits candidate base models to around 3 billion parameters. Unfortunately, the smaller models were plagued by confabulation. Reacting to phantom threats, making illegal moves, and just a general lack of grounding in reality. Allowing the model to call tools that track the board state independently removes this type of error.</p>
+<h2 id="what-tools-does-it-have">What tools does it have?</h2>
+<p>The goal of these tools is to allow the harness to track the board state while the LLM reasons about how to search. They are intended to be simple and atomic operations that a human chess player can easily follow along with. None of these tools are intended to provide the LLM with judgement calls about the position.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Tool Call</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>piece_on(square)</code></td>
+					<td>What piece is on a square</td>
+			</tr>
+			<tr>
+					<td><code>pieces()</code></td>
+					<td>Every piece on the board and where it is (both sides)</td>
+			</tr>
+			<tr>
+					<td><code>material()</code></td>
+					<td>Material count for both sides in pawn units</td>
+			</tr>
+			<tr>
+					<td><code>attackers(square)</code></td>
+					<td>Which pieces (any side) attack a square. If occupied, distinguishes attackers from defenders</td>
+			</tr>
+			<tr>
+					<td><code>targets(square)</code></td>
+					<td>What enemy pieces the piece on square attacks, and what friendly pieces it defends</td>
+			</tr>
+			<tr>
+					<td><code>hanging(color)</code></td>
+					<td>What pieces of this color are hanging</td>
+			</tr>
+			<tr>
+					<td><code>pins(color)</code></td>
+					<td>What pins against the king for color</td>
+			</tr>
+			<tr>
+					<td><code>forcing_moves()</code></td>
+					<td>Legal checks, captures, and promotions are available in this position</td>
+			</tr>
+			<tr>
+					<td><code>legal_moves()</code></td>
+					<td>Every legal move in this position, plus whether the side to move is in check</td>
+			</tr>
+			<tr>
+					<td><code>try(move)</code></td>
+					<td>Push a move onto the stack to evaluate one ply deeper</td>
+			</tr>
+			<tr>
+					<td><code>undo()</code></td>
+					<td>Pop off the stack to back out of a search</td>
+			</tr>
+			<tr>
+					<td><code>quiet_moves()</code></td>
+					<td>Legal moves that are not in <code>forcing_moves()</code></td>
+			</tr>
+			<tr>
+					<td><code>root()</code></td>
+					<td>Pop the whole stack to return to the starting position</td>
+			</tr>
+			<tr>
+					<td><code>threats()</code></td>
+					<td>What the opponent could do if it were their move: mates, checks, captures that win material</td>
+			</tr>
+			<tr>
+					<td><code>exchange(square)</code></td>
+					<td>Result of the capture sequence on a square, starting with the best first capture</td>
+			</tr>
+	</tbody>
+</table>
+<p>When calling a tool, the LLM must also provide a justification for why it wants to call this tool. This prevents the reasoning trace from devolving into a list of bare tool calls.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://blog.lukesalamone.com/tags/chess/">chess</a></span>
+        <span class="tag"><a href="https://blog.lukesalamone.com/tags/llm/">llm</a></span>
+        <span class="tag"><a href="https://blog.lukesalamone.com/tags/rl/">rl</a></span>
+        <span class="tag"><a href="https://blog.lukesalamone.com/tags/rlvr/">rlvr</a></span>
+        <span class="tag"><a href="https://blog.lukesalamone.com/tags/grpo/">grpo</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        548 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2026-10-11 18:06
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+
+          
+            <span class="button next">
+              <a href="https://blog.lukesalamone.com/posts/matthew-effect/?ref=nextprev">
+                <span class="button__text">Paper Summary: The Matthew Effect in RL</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+  </main>
+
+                <div id="shadow-search" class="posts">
+  <div class="posts-group">
+    <div class="post-year">2022</div>
+    <div class="search-results">
+      <div class="search-toolbar">
+        <div class="search-legend" hidden></div>
+        <label class="search-advanced-toggle">
+          <input type="checkbox" id="search-advanced" />
+          advanced view
+        </label>
+      </div>
+      <ul class="posts-list" id="search-results" role="listbox" aria-label="Search results"></ul>
+    </div>
+  </div>
+</div>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2026 Luke Salamone</span>&nbsp;|&nbsp;
+            <span><a href="https://lukesalamone.com/" target="_blank">lukesalamone.com</a>&nbsp;|&nbsp;<a href="https://github.com/lukesalamone/" target="_blank">github</a>&nbsp;|&nbsp;<a href="https://blog.lukesalamone.com/index.xml" class="footer__rss" type="application/rss+xml"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>rss</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="../../bundle.min.b1bd5ba19f8576521c935b84c36f816c85658fd17b5fe2a1d989b0bb15a04d07f809a4ddc3e0cad4a0e62512a487936480a2d9c52c0039c3f9957c80716e9fe0.js" integrity="sha512-sb1boZ&#43;FdlIck1uEw2&#43;BbIVlj9F7X&#43;Kh2YmwuxWgTQf4CaTdw&#43;DK1KDmJRKkh5NkgKLZxSwAOcP5lXyAcW6f4A=="></script>
+
+
+
+
+
+
+    </body>
+</html>

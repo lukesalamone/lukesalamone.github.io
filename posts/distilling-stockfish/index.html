@@ -51,7 +51,7 @@
 
 
 
-<link rel="stylesheet" href="../../main.b7e84414d64d3dacd6b64362958768d873e827d788872f7916d6d86169f89d70.css">
+<link rel="stylesheet" href="../../main.d11593702ed80680e176b592dc794e4f68ee52c7093f0d30f413f488c3e689b7.css">
 
 
 
@@ -218,24 +218,6 @@ Loss continued to decrease during the entire training run, strongly suggesting t
 <p>Next, I deduplicated the fens, since many of the positions are overrepresented in the dataset. I did this with a poor-man&rsquo;s map-reduce on disk: hash each fen and append it to a file corresponding to the first 12 bits of the hash. This results in 4096 individual files, which were small enough to deduplicate individually using a hash set in RAM.</p>
 <p>Finally, I annotated each remaining fen with Stockfish at depth 10. While this is an embarrassingly parallel task, even distributing across 24 cores took more than a day of compute time.</p>
 <p>To my knowledge, this is the largest open <code>(position, eval)</code> chess dataset. The ChessBench dataset has more data points, however those are state-action-value (position + move + eval) and were not calculated at a fixed search depth.</p>
-<!-- ## Future questions
-
-- How much does depth matter? This is only a depth 10 dataset. Could we achieve the same performance on fewer data points if those data points had better labels?
-- How much does evaluation accuracy improve with depth. What is the MSE of depths 10, 15, 20 etc if we assume depth 30 is the true value?
-- Are certain positions inherently inaccurate at low depth? Can we predict that? -->
-<!-- It works based on the minimax algorithm, which is effectively a breadth-first search of the game tree, with some pruning. Since it's not possible to reach all leaf nodes in most positions, we need a value function to estimate how good a position is.
-
-What makes a good evaluation function? Well, a perfect evaluation function could take any game state (piece positions, en passant, repetition counter, half/full move counter, etc.) and return *whether it is possible for white to win if black plays perfectly* (+∞), *whether it is possible for black to win if white plays perfectly* (-∞) or *neither player can win if their opponent plays perfectly* (0). However a perfect evaluation would require searching the complete game tree, which is usually computationally infeasible. So we're stuck with approximations.
-
-Historically, Stockfish's value function used hand-crafted rules but was replaced by a neural network called NNUE. The purpose of the value function and NNUE are to approximate or "distill" the result of what we would get if we ran minimax through the whole game tree. -->
-<!--
-In this paper the authors outline a supervised learning approach to creating a chess engine which performs no tree search during game play.
-
-But why would you want to do this? Well, there are a few reasons.
-
-When creating a chess engine, you'll need a couple of things. First, you'll need a general search algorithm, which will decide how you explore the game tree efficiently, because the first thing you'll find is that unlike a game like tic-tac-toe, the game tree of chess can't be searched exhaustively. Minimax, minimax with alpha-beta pruning, negamax, Monte-Carlo tree search, and [PUCT](https://lczero.org/dev/wiki/technical-explanation-of-leela-chess-zero/) are a few common game tree search algorithms. For algorithms like minimax which usually don't reach terminal (win or draw) nodes in the game tree, we still need a way to evaluate non-terminal leaf nodes. And this is where the magic happens.
-
--->
 
       </div>
     </article>
