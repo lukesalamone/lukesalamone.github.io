@@ -178,13 +178,6 @@ Your browser does not support the video tag.
 <p>I became excited about the power of RLVR after the <a href="../../posts/notes-on-deepseek-r1/">Deepseek R1 paper</a> came out. They demonstrated that through the use of &ldquo;thinking&rdquo; tokens, an LLM could solve verifiable tasks like math problems. Additionally, they described the necessity of bootstrapping the thinking process with supervised examples, which prevents the model from generating a nonsense chain of thought.</p>
 <p>Chess is an ideal candidate for a verifiable rewards setup. You could call it &ldquo;fractally verifiable&rdquo;: Not only are games themselves verifiable outcomes, but the strength of individual moves are verifiable, and even the individual claims used to justify those moves can be verified.</p>
 <p>The majority of prior work in chess engines has had the sole purpose of maximizing playing strength. I&rsquo;ve written a longer history of chess engines <a href="../../posts/chess-engine-history/">here</a> and <a href="../../posts/qualitative-analysis-chess/">here</a>. This would be a much different type of engine: we should favor explainable, intuitive moves over the absolute best moves.</p>
-<h2 id="some-terminology">Some terminology</h2>
-<p>Here are some terms I use throughout the post.</p>
-<ul>
-<li>Hit: a move which is within 50 centipawns of the best move (i.e. CPL &lt;= 50)</li>
-<li>Hit rate: percentage of moves which are hits</li>
-<li>Hit@k: at least one of k rollouts results in a hit i.e. a hit@4 means there was a hit after four attempts.</li>
-</ul>
 <h2 id="training-procedure">Training procedure</h2>
 <p>The general procedure for training a reasoning model is Supervised Fine-Tuning (SFT) followed by Reinforcement Learning (RL). In my case, I used GRPO with <a href="../../posts/matthew-effect/">Never Give Up</a> for the RL stage.</p>
 <p>In the SFT stage, I had originally been using a LoRA with rank 16, but I found that using rank 64 was actually much better. (Similar to the <a href="https://thinkingmachines.ai/blog/lora/">LoRA Without Regret</a> paper, however, I did not see similar benefits in RL, so I kept LoRA rank at 16 there.) I also found that the SFT stage is very data-hungry, and training for one epoch over 30k samples was much better than three epochs over 10k samples.</p>
@@ -279,6 +272,13 @@ Your browser does not support the video tag.
 		</figcaption>
 </figure>
 
+<h2 id="some-terminology">Some terminology</h2>
+<p>Here are some terms I use throughout the post.</p>
+<ul>
+<li>Hit: a move which is within 50 centipawns of the best move (i.e. CPL &lt;= 50)</li>
+<li>Hit rate: percentage of moves which are hits</li>
+<li>Hit@k: at least one of k rollouts results in a hit i.e. a hit@4 means there was a hit after four attempts.</li>
+</ul>
 
       </div>
     </article>
