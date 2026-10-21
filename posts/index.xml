@@ -49,9 +49,17 @@ Your browser does not support the video tag.
 <h3 id="dynamics-of-grpo">Dynamics of GRPO</h3>
 <p>GRPO itself has interesting behavior, which can see this from the hit@1 and hit@4 metrics, which indicate how often the model&rsquo;s move was a hit on the first attempt and any of four attempts, respectively. Typical training behavior is for GRPO to cause dramatic improvements in hit@1 vs SFT, but for hit@4 to be close to the same at the beginning and end of GRPO.</p>
 <p>During the entire RL run, we are fighting the model natural &ldquo;cooling and hardening&rdquo; process, known as entropy collapse. As training progresses, the diversity of moves that the model makes decreases. This is desirable on positions where the model is making good moves, since it will be less likely to make bad moves. However, it also makes it more difficult for the model to find any good move if it hasn&rsquo;t already.</p>
-<p>With Never Give Up, we resample failed positions, which has the effect of dynamically scaling compute, giving the model more opportunities to find the best move. GRPO will reward samples which score better than the average reward of the group, but as training progresses and the model cools, positions which are unsuccessful are more likely to remain unsuccessful. To counteract this, we can raise the sampling temperature and <a href="https://arxiv.org/pdf/2503.14476">asymmetric importance sampling clipping</a>.</p>
+<p>With Never Give Up, we resample failed positions, which has the effect of dynamically scaling compute, giving the model more opportunities to find the best move. GRPO will reward samples which score better than the average reward of the group, but as training progresses and the model cools, positions which are unsuccessful are more likely to remain unsuccessful. To counteract this, we can raise the sampling temperature and apply <a href="https://arxiv.org/pdf/2503.14476">asymmetric importance sampling clipping</a>.</p>
 <h2 id="why-train-an-agent">Why train an agent?</h2>
 <p>The short answer is, I initially wanted to train a pure LLM, but a 4090 limits candidate base models to around 3 billion parameters. Unfortunately, the smaller models were plagued by confabulation. Reacting to phantom threats, making illegal moves, and just a general lack of grounding in reality. Allowing the model to call tools that track the board state independently removes this type of error.</p>
+<h2 id="do-tools-help">Do tools help?</h2>
+<p>Training the model at different sizes, we can see that tools are a very significant contributor to the model strength. Note that the numbers below are after SFT only, and GRPO typically adds 12 more points after that.</p>
+<figure><img src="/img/chess_tool_scaling.png"
+			alt="Skill after SFT by model size. No tools: 0.8B 6.2%, 2B 7.9%, 4B 9.6%. Tools: 0.8B 30.4%, 2B 31.8%, 4B 34.1%."><figcaption>
+			<p>While model size gives modest improvement in skill, the availability of tools is a far larger factor.</p>
+		</figcaption>
+</figure>
+
 <h2 id="what-tools-does-it-have">What tools does it have?</h2>
 <p>The goal of these tools is to allow the harness to track the board state while the LLM reasons about how to search. They are intended to be simple and atomic operations that a human chess player can easily follow along with. None of these tools are intended to provide the LLM with judgement calls about the position.</p>
 <table>
@@ -125,14 +133,6 @@ Your browser does not support the video tag.
 	</tbody>
 </table>
 <p>When calling a tool, the LLM must also provide a justification for why it wants to call this tool. This prevents the reasoning trace from devolving into a list of bare tool calls.</p>
-<h2 id="do-tools-help">Do tools help?</h2>
-<p>Training the model at different sizes, we can see that tools are a very significant contributor to the model strength. Note that the numbers below are after SFT only, and GRPO typically adds 12 more points after that.</p>
-<figure><img src="/img/chess_tool_scaling.png"
-			alt="Skill after SFT by model size. No tools: 0.8B 6.2%, 2B 7.9%, 4B 9.6%. Tools: 0.8B 30.4%, 2B 31.8%, 4B 34.1%."><figcaption>
-			<p>While model size gives modest improvement in skill, the availability of tools is a far larger factor.</p>
-		</figcaption>
-</figure>
-
 <h2 id="some-terminology">Some terminology</h2>
 <p>Here are some terms I use throughout the post.</p>
 <ul>
